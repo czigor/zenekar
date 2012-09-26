@@ -1,0 +1,40 @@
+name = MEZ
+description = Localized profile for the MEZ project.
+core = 7.x
+
+; Core
+dependencies[] = block
+dependencies[] = dblog
+dependencies[] = update
+dependencies[] = menu
+
+; Contrib
+dependencies[] = devel
+; Shipped by 'admin', depends on admin.module
+dependencies[] = admin_menu_toolbar
+; Shipped by 'pathauto' and 'token', depends on token.module and core's path.module
+dependencies[] = pathauto
+dependencies[] = transliteration
+;dependencies[] = wysiwyg
+dependencies[] = features
+; Shipped by 'strongarm' and 'ctools', depends on ctools.module
+dependencies[] = strongarm
+
+; Dependencies of own features, to get around http://drupal.org/node/677200
+dependencies[] = date_popup
+dependencies[] = taxonomy
+dependencies[] = email
+dependencies[] = entity
+dependencies[] = image
+dependencies[] = field_collection
+dependencies[] = field_ui
+dependencies[] = list
+dependencies[] = number
+dependencies[] = views
+
+; Own modules (all of them should be dependencies of at least one own feature)
+
+; Own features are installed explicitly in the last installation step.
+
+; Files
+files[] = mez_profile.profile

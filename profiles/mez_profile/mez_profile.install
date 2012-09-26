@@ -1,0 +1,250 @@
+<?php
+
+/**
+ * Implements hook_install().
+ *
+ * Perform actions to set up the site for this profile.
+ */
+function mez_profile_install() {
+  variable_set('theme_default', 'mez_theme');
+  theme_enable(array('mez_theme'));
+
+  $theme_settings = array(
+    'toggle_logo' => 1,
+    'toggle_name' => 1,
+    'toggle_slogan' => 1,
+    'toggle_node_user_picture' => 1,
+    'toggle_comment_user_picture' => 1,
+    'toggle_favicon' => 1,
+    'toggle_main_menu' => 1,
+    'toggle_secondary_menu' => 1,
+    'default_logo' => 1,
+    'logo_path' => '',
+    'logo_upload' => '',
+    'default_favicon' => 1,
+    'favicon_path' => '',
+    'favicon_upload' => '',
+    'zen_breadcrumb' => 'admin',
+    'zen_breadcrumb_separator' =>  '›',
+    'zen_breadcrumb_home' => 1,
+    'zen_breadcrumb_trailing' => 1,
+    'zen_breadcrumb_title' => 0,
+    'zen_rebuild_registry' => 0,
+    'zen_jump_link_target' => '',
+    'zen_wireframes' => 0,
+  );
+  variable_set('theme_mez_theme_settings', $theme_settings);
+
+  // Enable some standard blocks.
+  $default_theme = variable_get('theme_default', 'garland');
+  $values = array(
+    array(
+      'module' => 'system',
+      'delta' => 'main',
+      'theme' => $default_theme,
+      'status' => 1,
+      'weight' => 0,
+      'region' => 'content',
+      'pages' => '',
+      'cache' => -1,
+    ),
+    array(
+      'module' => 'user',
+      'delta' => 'login',
+      'theme' => $default_theme,
+      'status' => 1,
+      'weight' => 0,
+      'region' => 'sidebar_first',
+      'pages' => '',
+      'cache' => -1,
+    ),
+    array(
+      'module' => 'system',
+      'delta' => 'navigation',
+      'theme' => $default_theme,
+      'status' => 1,
+      'weight' => 0,
+      'region' => 'sidebar_first',
+      'pages' => '',
+      'cache' => -1,
+    ),
+    array(
+      'module' => 'system',
+      'delta' => 'management',
+      'theme' => $default_theme,
+      'status' => 1,
+      'weight' => 1,
+      'region' => 'sidebar_first',
+      'pages' => '',
+      'cache' => -1,
+    ),
+    array(
+      'module' => 'system',
+      'delta' => 'help',
+      'theme' => $default_theme,
+      'status' => 1,
+      'weight' => 0,
+      'region' => 'help',
+      'pages' => '',
+      'cache' => -1,
+    ),
+    array(
+      'module' => 'menu',
+      'delta' => 'devel',
+      'theme' => $default_theme,
+      'status' => 1,
+      'weight' => -8,
+      'region' => 'sidebar_first',
+      'pages' => '',
+      'cache' => -1,
+    ),
+  );
+  $query = db_insert('block')->fields(array('module', 'delta', 'theme', 'status', 'weight', 'region', 'pages', 'cache'));
+  foreach ($values as $record) {
+    $query->values($record);
+  }
+  $query->execute();
+
+  // Date formats & settings.
+  $format = array(
+    'format' => 'Y-m-d H:i',
+    'type' => 'custom',
+    'locked' => 0,
+  );
+  system_date_format_save($format);
+  variable_set('date_format_short', 'Y-m-d H:i');
+
+  $format = array(
+    'format' => 'Y. M j. H:i',
+    'type' => 'custom',
+    'locked' => 0,
+  );
+  system_date_format_save($format);
+  variable_set('date_format_medium', 'Y. M j. H:i');
+
+  $format = array(
+    'format' => 'Y. F j. l H:i',
+    'type' => 'custom',
+    'locked' => 0,
+  );
+  system_date_format_save($format);
+  variable_set('date_format_long', 'Y. F j. l H:i');
+
+  $format = array(
+    'format' => 'Y',
+    'type' => 'custom',
+    'locked' => 0,
+    'is_new' => TRUE,
+  );
+  system_date_format_save($format);
+  $type = array(
+    'type' => 'csakev',
+    'title' => t('Year'),
+    'locked' => 0,
+    'is_new' => TRUE,
+  );
+  system_date_format_type_save($type);
+  variable_set('date_format_csakev', 'Y');
+
+  $format = array(
+    'format' => 'Y. F j.',
+    'type' => 'custom',
+    'locked' => 0,
+    'is_new' => TRUE,
+  );
+  system_date_format_save($format);
+  $type = array(
+    'type' => 'csaknap',
+    'title' => t('Day'),
+    'locked' => 0,
+    'is_new' => TRUE,
+  );
+  system_date_format_type_save($type);
+  variable_set('date_format_csaknap', 'Y. F j.');
+  variable_set('date_first_day', 1);
+
+  // Set up some core variables.
+  variable_set('cron_safe_threshold', 3600);
+  // TODO: These should be better set by some drupal_execute_form() or
+  // something, since the directories would get created that way.
+  variable_set('file_default_scheme', 'public');
+  variable_set('file_public_path', 'files');
+  variable_set('file_temporary_path', '../tmp');
+  variable_set('file_private_path', '../priv');
+  // JPEG quality - never take another round because of this.
+  variable_set('image_jpeg_quality', 100);
+
+  // Set up the default modules.
+  // Admin menu defaults.
+  variable_set('admin_menu_margin_top', 1);
+  variable_set('admin_menu_position_fixed', 0);
+  variable_set('admin_menu_tweak_modules', 1);
+  variable_set('admin_menu_tweak_permissions', 1);
+  variable_set('admin_menu_tweak_tabs', 0);
+  variable_set('admin_menu_devel_modules_skip', array(
+    'devel' => 0,
+    'devel_node_access' => 0,
+    'views_ui' => 0,
+  ));
+  variable_set('configurable_timezones', 0);
+  // Pathauto defaults (without content type specific cruft).
+  variable_set('pathauto_case', 1);
+  variable_set('pathauto_ignore_words', '');
+  variable_set('pathauto_max_component_length', 100);
+  variable_set('pathauto_max_length', 100);
+  variable_set('pathauto_node_pattern', 'tartalom/[node:title]');
+  variable_set('pathauto_punctuation_ampersand', 0);
+  variable_set('pathauto_punctuation_asterisk', 0);
+  variable_set('pathauto_punctuation_at', 0);
+  variable_set('pathauto_punctuation_backtick', 0);
+  variable_set('pathauto_punctuation_back_slash', 0);
+  variable_set('pathauto_punctuation_caret', 0);
+  variable_set('pathauto_punctuation_colon', 0);
+  variable_set('pathauto_punctuation_comma', 0);
+  variable_set('pathauto_punctuation_dollar', 0);
+  variable_set('pathauto_punctuation_double_quotes', 0);
+  variable_set('pathauto_punctuation_equal', 0);
+  variable_set('pathauto_punctuation_exclamation', 0);
+  variable_set('pathauto_punctuation_greater_than', 0);
+  variable_set('pathauto_punctuation_hash', 0);
+  variable_set('pathauto_punctuation_hyphen', 1);
+  variable_set('pathauto_punctuation_left_curly', 0);
+  variable_set('pathauto_punctuation_left_parenthesis', 0);
+  variable_set('pathauto_punctuation_left_square', 0);
+  variable_set('pathauto_punctuation_less_than', 0);
+  variable_set('pathauto_punctuation_percent', 0);
+  variable_set('pathauto_punctuation_period', 0);
+  variable_set('pathauto_punctuation_pipe', 0);
+  variable_set('pathauto_punctuation_plus', 0);
+  variable_set('pathauto_punctuation_question_mark', 0);
+  variable_set('pathauto_punctuation_quotes', 0);
+  variable_set('pathauto_punctuation_right_curly', 0);
+  variable_set('pathauto_punctuation_right_parenthesis', 0);
+  variable_set('pathauto_punctuation_right_square', 0);
+  variable_set('pathauto_punctuation_semicolon', 0);
+  variable_set('pathauto_punctuation_slash', 0);
+  variable_set('pathauto_punctuation_tilde', 0);
+  variable_set('pathauto_punctuation_underscore', 2);
+  variable_set('pathauto_reduce_ascii', 1);
+  variable_set('pathauto_separator', '-');
+  variable_set('pathauto_transliterate', 1);
+  variable_set('pathauto_update_action', 2);
+  variable_set('pathauto_user_pattern', 'emberek/[user:name]');
+  variable_set('pathauto_verbose', 1);
+  variable_set('transliteration_file_lowercase', 1);
+  variable_set('transliteration_file_uploads', 1);
+
+  // User notification mails
+  $email_body = "Kedves [user:name]!\n
+ MEZ";
+
+  variable_set('user_mail_register_admin_created_body', $email_body);
+  variable_set('user_mail_status_activated_body', $email_body);
+
+  // Create new roles.
+  $role_oldaladmin = (object) array(
+    'name' => 'oldaladmin',
+  );
+  user_role_save($role_oldaladmin);
+
+}
