@@ -10,14 +10,43 @@ dependencies[] = menu
 
 ; Contrib
 dependencies[] = devel
+dependencies[] = views_ui
+dependencies[] = field_ui
+dependencies[] = comment
+dependencies[] = translation
+dependencies[] = locale
+dependencies[] = statistics
+dependencies[] = date
+dependencies[] = date_all_day
+dependencies[] = date_api
+dependencies[] = date_views
+dependencies[] = link
+dependencies[] = simplenews
+dependencies[] = media
+dependencies[] = mediafield
+dependencies[] = media_internet
+dependencies[] = media_youtube
+dependencies[] = i18n_menu
+dependencies[] = i18n_node
+dependencies[] = i18n_string
+dependencies[] = i18n_sync
+dependencies[] = i18n_taxonomy
+dependencies[] = i18n_translation
+dependencies[] = i18n_variable
+dependencies[] = colorbox
+dependencies[] = diff
+dependencies[] = entity_token
+dependencies[] = variable
+dependencies[] = variable_admin
+dependencies[] = variable_views
+
 ; Shipped by 'admin', depends on admin.module
 dependencies[] = admin_menu_toolbar
 ; Shipped by 'pathauto' and 'token', depends on token.module and core's path.module
 dependencies[] = pathauto
 dependencies[] = transliteration
-;dependencies[] = wysiwyg
+dependencies[] = wysiwyg
 dependencies[] = features
-; Shipped by 'strongarm' and 'ctools', depends on ctools.module
 dependencies[] = strongarm
 
 ; Dependencies of own features, to get around http://drupal.org/node/677200
@@ -30,7 +59,6 @@ dependencies[] = field_collection
 dependencies[] = field_ui
 dependencies[] = list
 dependencies[] = number
-dependencies[] = views
 
 ; Own modules (all of them should be dependencies of at least one own feature)
 
