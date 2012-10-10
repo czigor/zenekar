@@ -7,10 +7,6 @@
  * This input filter attempts to make sure that link and image paths will
  * always be correct, even when domain names change, content is moved from one
  * server to another, the Clean URLs feature is toggled, etc.
- *
- * @TODO: Removing "old" base paths currently does not work. For example, if
- * "/banana" is in the "All base paths" field and Pathologic encounters a path
- * of "/banana/foo", it will not strip off the "banana."
  */
 
 /**
@@ -134,7 +130,7 @@ function _pathologic_filter($text, $filter, $format, $langcode, $cache, $cache_i
     // running as a CLI script, we might not be able to determine what that
     // root is. In that case, we'll use the Drupal root.
     // @see http://drupal.org/node/1780398
-    $filter->settings['docroot'] = (drupal_is_cli() || isset($_SERVER) || isset($_SERVER['DOCUMENT_ROOT']))
+    $filter->settings['docroot'] = (drupal_is_cli() || !isset($_SERVER) || !isset($_SERVER['DOCUMENT_ROOT']))
       ? DRUPAL_ROOT
       : $_SERVER['DOCUMENT_ROOT'];
 
@@ -182,7 +178,9 @@ function _pathologic_replace($matches) {
   }
   // Now parse the URL after reverting HTML character encoding.
   // @see http://drupal.org/node/1672932
-  $parts = parse_url(htmlspecialchars_decode($matches[2]));
+  $original_url = htmlspecialchars_decode($matches[2]);
+  // …and parse the URL
+  $parts = parse_url($original_url);
   // Do some more early tests to see if we should just give up now.
   if (
     // If parse_url() failed, give up.
@@ -314,6 +312,42 @@ function _pathologic_replace($matches) {
     $parts['path'] = substr($parts['path'], 1);
   }
 
+  // If we get to this point and $parts['path'] is now an empty string (which
+  // will be the case if the path was originally just "/"), then we
+  // want to link to <front>.
+  if ($parts['path'] === '') {
+    $parts['path'] = '<front>';
+  }
+  // Build the parameters we will send to url()
+  $url_params = array(
+    'path' => $parts['path'],
+    'options' => array(
+      'query' => $parts['qparts'],
+      'fragment' => isset($parts['fragment']) ? $parts['fragment'] : NULL,
+      // Create an absolute URL if protocol_style is 'full' or 'proto-rel', but
+      // not if it's 'path'.
+      'absolute' => $settings['current_settings']['protocol_style'] !== 'path',
+      'language' => isset($settings['language_list'][$settings['langcode']]) ? $settings['language_list'][$settings['langcode']] : $settings['language_list'][LANGUAGE_NONE],
+      // A special parameter not actually used by url(), but we use it to see if
+      // an alter hook implementation wants us to just pass through the original
+      // URL.
+      'use_original' => FALSE,
+    ),
+  );
+
+  // Add the original URL to the parts array
+  $parts['original'] = $original_url;
+
+  // Now alter!
+  // @see http://drupal.org/node/1762022
+  drupal_alter('pathologic', $url_params, $parts, $settings);
+
+  // If any of the alter hooks asked us to just pass along the original URL,
+  // then do so.
+  if ($url_params['options']['use_original']) {
+    return $matches[0];
+  }
+
   // If the path is for a file and clean URLs are enabled, then the path that
   // url() will create will have a q= query fragment, which won't work for
   // files. To avoid that, we use this trick to temporarily turn clean URLs on.
@@ -328,17 +362,8 @@ function _pathologic_replace($matches) {
     }
   }
 
-  $url = url(
-    $parts['path'] === '' ? '<front>' : $parts['path'],
-    array(
-      'query' => $parts['qparts'],
-      'fragment' => isset($parts['fragment']) ? $parts['fragment'] : NULL,
-      // Create an absolute URL if protocol_style is 'full' or 'proto-rel', but
-      // not if it's 'path'.
-      'absolute' => $settings['current_settings']['protocol_style'] !== 'path',
-      'language' => isset($settings['language_list'][$settings['langcode']]) ? $settings['language_list'][$settings['langcode']] : $settings['language_list'][LANGUAGE_NONE],
-    )
-  );
+  // Now for the url() call. Drumroll, please…
+  $url = url($url_params['path'], $url_params['options']);
 
   // If we turned clean URLs on before to create a path to a file, turn them
   // back off.
