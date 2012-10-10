@@ -1,0 +1,12 @@
+<?php
+/**
+ * @file
+ * Install and update hooks for the module.
+ */
+
+/**
+ * Make sure mini panels is enabled.
+ */
+function panels_ref_formatter_update_7101() {
+  module_enable(array('panels_mini'));
+}

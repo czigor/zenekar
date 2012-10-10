@@ -1,0 +1,15 @@
+<?php
+
+/**
+ * Implementation of hook_install().
+ */
+function nodestream_install() {
+  theme_enable(array('seven'));
+  $variables = array(
+    'admin_theme' => 'seven',
+    'node_admin_theme' => 1,
+  );
+  foreach ($variables as $key => $variable) {
+    variable_set($key, $variable);
+  }
+}

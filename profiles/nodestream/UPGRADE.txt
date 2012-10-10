@@ -1,0 +1,17 @@
+UPGRADING
+-----------
+
+Specific upgrade instructions will be in this document, please consult it
+before you attempt a new upgrade.
+
+NodeStream 7 alpha instructions
+
+Currently there is no easy upgrade path between alpha versions. The currently
+recommended way of upgrading NodeStream is to remove the NodeStream folder, run
+clone down the repository again and run the make file. This is to make sure that
+files in any of the contributed modules are properly removed if any files have
+been removed.
+
+Modules will not be removed without an upgrade path and/or a very clear 
+advertisement that this is happening. No modules will be removed once NodeStream
+hits beta.

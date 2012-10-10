@@ -1,0 +1,74 @@
+<?php
+/**
+ * @file
+ * Install-related hooks for ns_prod_news.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function ns_prod_news_install() {
+  theme_enable(array('ns_theme', 'precision'));
+  ns_core_enable_panels_everywhere();
+  ns_core_enable_panels_term_view();
+  ns_core_enable_panels_node_view();
+
+  // Some variables needs to be set in the database so that they
+  // can be edited by the user.
+  $variables = array(
+    'theme_default' => 'ns_theme',
+    'default_page_manager_handlers' => array('ns_field_translation_node_lang_filter' => FALSE),
+  );
+  foreach ($variables as $key => $value) {
+    variable_set($key, $value);
+  }
+  // Enable comment module.
+  module_enable(array('comment'));
+  // Make the main menu into a translatable menu if ns_i18n is on.
+  if (module_exists('ns_i18n')) {
+    $main_menu = menu_load('main-menu');
+    $main_menu['i18n_mode'] = I18N_MODE_MULTIPLE;
+    menu_save($main_menu);
+  }
+}
+
+/**
+ * Change media field into a file field.
+ */
+function ns_prod_news_update_7201() {
+  module_load_include('install', 'ns_core');
+  ns_core_change_media_field('field_ns_prod_news_promo_media');
+  ns_core_update_media_instance('node', 'ns_prod_news_promo', 'field_ns_prod_news_promo_media');
+}
+
+/**
+ * Migrate the promo article field into a references field.
+ */
+function ns_prod_news_update_7202() {
+  module_load_include('install', 'ns_core');
+  ns_core_migrate_references_field('field_ns_prod_news_promo_article');
+}
+
+/**
+ * Make sure Panels reference formatter is enabled.
+ */
+function ns_prod_news_update_7203() {
+  module_enable(array('panels_ref_formatter'));
+}
+
+/**
+ * Uninstall draggableviews and re-enable it. This will only happen if
+ * draggableviews 1.x is still used. Ordering data will be lost.
+ */
+function ns_prod_news_update_7204() {
+  if (module_exists('draggableviews')) {
+    $modules = system_list('module_enabled');
+    // Only perform update if we don't already run draggable views 2.x.
+    if ($modules['draggableviews']->schema_version < 7200) {
+      module_disable(array('draggableviews'));
+      drupal_uninstall_modules(array('draggableviews'));
+      module_enable(array('draggableviews'));
+    }
+  }
+}
+

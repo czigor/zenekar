@@ -1,0 +1,9 @@
+<?php
+
+/**
+ * Migrate credit field to entity reference.
+ */
+function ns_media_update_7201() {
+  module_load_include('install', 'ns_core');
+  ns_core_migrate_references_field('field_ns_media_credit');
+}

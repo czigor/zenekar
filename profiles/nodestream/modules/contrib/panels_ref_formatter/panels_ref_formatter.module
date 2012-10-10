@@ -1,0 +1,272 @@
+<?php
+
+/**
+ * @file
+ * Main module file.
+ */
+
+// Control how much recusions.
+define('PANELS_REF_FORMATTER_MAX_RECURSION', 20);
+
+/**
+ * Implements hook_views_api().
+ */
+function panels_ref_formatter_views_api() {
+  return array(
+    'api' => 3,
+    'path' => drupal_get_path('module', 'panels_ref_formatter') . '/views',
+  );
+}
+
+/**
+ * Implements hook_theme().
+ */
+function panels_ref_formatter_theme() {
+  return array(
+    'panels_ref_formatter_row' => array(
+      'variables' => array(
+        'entity_type' => NULL,
+        'entity' => NULL,
+        'items' => NULL,
+        'field' => NULL,
+        'instance' => NULL,
+      ),
+    ),
+  );
+}
+
+/**
+ * Implements hook_field_formatter_info().
+ */
+function panels_ref_formatter_field_formatter_info() {
+  return array(
+    'panels_ref_ref_formatter_mini' => array(
+      'label' => t('Mini Panel'),
+      'field types' => array('node_reference', 'entityreference', 'media', 'file'),
+      'settings' => array('mini_panel' => NULL, 'language_filter' => TRUE, 'cols' => 0),
+    ),
+  );
+}
+
+/**
+ * Implements hook_field_formatter_settings_form().
+ */
+function panels_ref_formatter_field_formatter_settings_form($field, $instance, $view_mode, $form, &$form_state) {
+  $display = $instance['display'][$view_mode];
+  $settings = $display['settings'];
+  $target_type = panels_ref_formatter_get_entity_type($field);
+  $element = array();
+  $element['mini_panel'] = array(
+    '#type' => 'select',
+    '#options' => panels_ref_formatter_panels_options($target_type),
+    '#title' => t('Mini panel'),
+    '#description' => t('The mini panel to use to render this field'),
+    '#default_value' => $settings['mini_panel'],
+  );
+  $element['language_filter'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Language filter'),
+    '#description' => t('Filter out content if a translation doesn\'t exist.'),
+    '#default_value' => $settings['language_filter'],
+  );
+  $element['cols'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Columns per row'),
+    '#description' => t('Wrap a number of rows into a row with cols. Enter 0 to not group rows together.'),
+    '#default_value' => isset($settings['cols']) ? $settings['cols'] : 0,
+    '#size' => 2,
+  );
+  return $element;
+}
+
+/**
+ * Implements hook_field_formatter_prepare_view().
+ */
+function panels_ref_formatter_field_formatter_prepare_view($entity_type, $entities, $field, $instances, $langcode, &$items, $displays) {
+  // We should probably run the prepare view in the original module.
+  // module_invoke destroys parameters passed by reference in some way,
+  // so we need to deal with this ourselves.
+  $fn = $field['module'] . '_field_formatter_prepare_view';
+  // Include tha field.inc file if necessary.
+  module_load_include('field.inc', $field['module']);
+  if (function_exists($fn)) {
+    $fn($entity_type, $entities, $field, $instances, $langcode, $items, $displays);
+  }
+}
+
+/**
+ * Implements hook_field_formatter_view().
+ */
+function panels_ref_formatter_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
+  $rendered_entities = &drupal_static(__FUNCTION__, array());
+  $element = array();
+  // If we have no items to render, let's not bother with this mess.
+  if (!count($items)) {
+    return array();
+  }
+  ctools_include('context');
+  $panel = panels_mini_load($display['settings']['mini_panel']);
+  $target_type = panels_ref_formatter_get_entity_type($field);
+  $ids = array();
+  // Fetch the entities we are going to render.
+  foreach ($items as $delta => $item) {
+    $eid = panels_ref_formatter_get_entity_id($field, $item);
+    $entity = panels_ref_formatter_get_entity($field, $item);
+    if ($eid && $entity) {
+      $entities[$eid] = $entity;
+      $ids[$delta] = $eid;
+    }
+  }
+  // Reset our rendered entities array if we are not in a recursion situation.
+  if (!isset($entity->referencing_entity)) {
+    $rendered_entities = array();
+  }
+  foreach ($ids as $delta => $id) {
+    if (isset($entities[$id]) && panels_ref_formatter_show_entity($target_type, $entities[$id], $display['settings'])) {
+      $entity = $entities[$id];
+      $entity->referencing_entity = $entity;
+      // Only render this entity if we haven't done it before.
+      // If we do this over and over, things will go bad.
+      if ((!isset($rendered_entities[$id]) || $rendered_entities[$id] < PANELS_REF_FORMATTER_MAX_RECURSION)  && (isset($item['access']) ? $item['access'] : TRUE)) {
+        // We assume that the first required context is the one to use.
+        $contexts = array(ctools_context_create('entity:' . $target_type, $entity));
+        $context = ctools_context_match_required_contexts($panel->requiredcontexts, $contexts);
+        $panel->context = $panel->display->context = ctools_context_load_contexts($panel, FALSE, $context);
+        $panel->display->owner = $panel;
+        $panel->display->owner->id = $panel->name;
+        $panel->additional_info = $panel->context;
+        if (!empty($display['settings']['cols'])) {
+          $row = $delta / $display['settings']['cols'];
+          if (!isset($element[$row])) {
+            $element[$row] = array(
+              '#theme' => 'panels_ref_formatter_row',
+              '#entity_type' => $entity_type,
+              '#entity' => $entity,
+              '#field' => $field,
+              '#instance' => $instance,
+              '#items' => array(),
+            );
+          }
+          $element[$row]['#items'][$delta] = panels_render_display($panel->display);
+        }
+        else {
+          $element[$delta]['#markup'] = panels_render_display($panel->display);
+        }
+      }
+      else {
+        $entity = $item[$entity_type];
+        $uri = entity_uri($entity_type, $entity);
+        $result[$delta] = array(
+          '#type' => 'link',
+          '#title' => $entity->title,
+          '#href' => $uri['path'],
+          '#options' => $uri['options'],
+        );
+      }
+      $rendered_entities[$id] = isset($rendered_entities[$id]) ? $rendered_entities[$id] + 1 : 1;
+    }
+  }
+  return $element;
+}
+
+/**
+ * Check if we actually should show the entity.
+ */
+function panels_ref_formatter_show_entity($entity_type, $entity, $settings) {
+  global $language_content;
+  if (!empty($settings['language_filter'])) {
+    // Language fallback might be relevant if we have entity translation.
+    if (module_exists('entity_translation') && entity_translation_enabled($entity_type)) {
+      $translations = entity_translation_get_handler($entity_type, $entity)->getTranslations()->data;
+      if (!isset($translations['und']) && (!isset($translations[$language_content->language]) || empty($translations[$language_content->language]['status']))) {
+        return FALSE;
+      }
+    }
+    // It might also be relevant if we have a node and it's language is not the same as the current content language.
+    else if($entity_type == 'node' && isset($entity->language) && $entity->language != 'und' && $entity->language != $language_content) {
+      return FALSE;
+    }
+  }
+  return TRUE;
+}
+
+/**
+ * Fetch all applicable mini panels.
+ */
+function panels_ref_formatter_panels_options($entity_type) {
+  $mini_panels = panels_mini_load_all();
+  $options = array();
+  foreach ($mini_panels as $name => $mini_panel) {
+    if (isset($mini_panel->requiredcontexts[0]) && $mini_panel->requiredcontexts[0]['name'] == 'entity:' . $entity_type) {
+      $options[$name] = $mini_panel->admin_title;
+    }
+  }
+  return $options;
+}
+
+/**
+ * Get the entity type by inspecting the field.
+ * @param array $field The field definition
+ * @return the entity type.
+ */
+function panels_ref_formatter_get_entity_type($field) {
+  // @todo Add a better system for this.
+  switch ($field['type']) {
+    case 'node_reference':
+      return 'node';
+    case 'entityreference':
+      return $field['settings']['target_type'];
+    case 'user_reference':
+      return 'user';
+    case 'media': case 'file':
+      return 'file';
+    default:
+      return FALSE;
+  }
+}
+
+/**
+ * Get a fully loaded entity from a reference field.
+ */
+function panels_ref_formatter_get_entity($field, $item) {
+  if (isset($item['entity'])) {
+    return $item['entity'];
+  }
+  elseif(isset($item['fid'])) {
+    return (object)$item;
+  }
+  else {
+    $type = panels_ref_formatter_get_entity_type($field);
+    if (!empty($item[$type])) {
+      return $item[$type];
+    }
+  }
+}
+
+/**
+ * Get the id of the referenced entity.
+ */
+function panels_ref_formatter_get_entity_id($field, $item) {
+  switch ($field['type']) {
+    case 'node_reference': case 'user_reference':
+      $type = panels_ref_formatter_get_entity_type($field);
+      if (!empty($item[$type])) {
+        return current(entity_extract_ids($type, $item[$type]));
+      }
+      return FALSE;
+    case 'entityreference':
+      return $item['target_id'];
+    case 'media': case 'file':
+      return $item['fid'];
+    default:
+      return FALSE;
+  }
+}
+
+/**
+ * Render a dynamic formatters row.
+ */
+function theme_panels_ref_formatter_row($variables) {
+  $output = '<div class="row">' . implode("\n", $variables['items']) . '</div>';
+  return $output;
+}

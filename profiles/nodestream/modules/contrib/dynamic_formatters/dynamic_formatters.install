@@ -1,0 +1,106 @@
+<?php
+
+/**
+ * @file
+ * Installation-related things for dynamic formatters.
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function dynamic_formatters_schema() {
+  $schema = array();
+
+  $schema['dynamic_formatters_presets'] = array(
+    'description' => 'Base table holding Dynamic Formatter presets.',
+    'export' => array(
+      'api' => array(
+        'owner' => 'dynamic_formatters',
+        'api' => 'dynamic_formatters_default',
+        'minimum_version' => 1,
+        'current_version' => 1,
+      ),
+      'key' => 'name',
+      'key name' => 'Name',
+      'primary key' => 'pid',
+      'identifier' => 'preset',
+      'default hook' => 'dynamic_formatters_presets_default',
+      'load callback' => 'dynamic_formatters_preset_load',
+    ),
+    'fields' => array(
+      'pid' => array(
+        'description' => 'Serial id for this preset. Only used for internal lookups.',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'no export' => TRUE,
+      ),
+      'name' => array(
+        'description' => 'Machine-readable name for this preset.',
+        'type' => 'varchar',
+        'length' => 128,
+        'not null' => TRUE,
+      ),
+      'title' => array(
+        'description' => 'Administrative title for this preset.',
+        'type' => 'varchar',
+        'length' => 128,
+        'not null' => TRUE,
+      ),
+      'description' => array(
+        'description' => 'Administrative description for this preset.',
+        'type' => 'text',
+        'size' => 'medium',
+        'not null' => TRUE,
+      ),
+      'parent_style' => array(
+        'description' => 'Name of the parent style.',
+        'type' => 'varchar',
+        'length' => 128,
+        'not null' => TRUE,
+      ),
+      'children_style' => array(
+        'description' => 'Name of the style to be used by the children.',
+        'type' => 'varchar',
+        'length' => 128,
+        'not null' => TRUE,
+      ),
+      'renderer' => array(
+        'description' => 'Name of the renderer to use.',
+        'type' => 'varchar',
+        'length' => 128,
+        'not null' => TRUE,
+      ),
+      'options' => array(
+        'type' => 'text',
+        'size' => 'big',
+        'description' => 'A serialized array with options that might be needed by the renderer.',
+      ),
+    ),
+    'primary key' => array('pid', 'name'),
+  );
+
+  return $schema;
+}
+
+/**
+ * Implements hook_field_schema().
+ */
+function dynamic_formatters_field_schema($field) {
+  $columns = array(
+    'preset' => array(
+      'type' => 'varchar',
+      'length' => 255,
+      'not null' => FALSE,
+    ),
+  );
+  return array(
+    'columns' => $columns,
+    'foreign keys' => array(
+      'preset' => array(
+        'table' => 'dynamic_formatters_presets',
+        'columns' => array('preset' => 'name'),
+      ),
+    ),
+  );
+}

@@ -1,0 +1,17 @@
+name = "Dynamic Formatters"
+description = "Provides a view style plugin which lets you use dynamic formatters."
+core = "7.x"
+package = "Dynamic Formatters"
+dependencies[] = "views"
+dependencies[] = "ctools"
+dependencies[] = "options"
+files[] = "plugins/dynamic_formatters_renderer/dynamic_formatters_renderer.inc"
+files[] = "plugins/dynamic_formatters_renderer/dynamic_formatters_renderer_pane.inc"
+files[] = "views/plugins/dynamic_formatters_plugin_style.inc"
+files[] = "views/plugins/dynamic_formatters_plugin_row.inc"
+; Information added by drupal.org packaging script on 2012-08-18
+version = "7.x-2.0-alpha3"
+core = "7.x"
+project = "dynamic_formatters"
+datestamp = "1345303923"
+

@@ -1,0 +1,32 @@
+<?php
+
+/**
+ * Update node reference field to entityreference.
+ */
+function ns_prod_rss_update_7201() {
+  module_load_include('install', 'ns_core');
+  ns_core_migrate_references_field('field_ns_prod_rss_promo_article');
+}
+
+/**
+ * Removed reference field from RSS to Topic
+ */
+function ns_prod_rss_update_7202() {
+  field_delete_field('field_ns_prod_rss_web_topic');
+}
+
+/**
+ * Uninstall draggableviews and re-enable it. This will only happen if
+ * draggableviews 1.x is still used. Ordering data will be lost.
+ */
+function ns_prod_rss_update_7204() {
+  if (module_exists('draggableviews')) {
+    $modules = system_list('module_enabled');
+    // Only perform update if we don't already run draggable views 2.x.
+    if ($modules['draggableviews']->schema_version < 7200) {
+      module_disable(array('draggableviews'));
+      drupal_uninstall_modules(array('draggableviews'));
+      module_enable(array('draggableviews'));
+    }
+  }
+}

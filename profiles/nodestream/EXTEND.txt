@@ -1,0 +1,116 @@
+
+ABSTRACT
+------------
+
+This documentation is intended for developers who like to extend NodeStream.
+The purpose of this text is to suggest how to build upon NodeStream by using a
+sub-profile and also outlines the different features from a developers perspective
+and how to extend them.
+
+
+SETTING UP YOUR DISTRIBUTION TO EXTEND NODESTREAM
+---------------------------------------------------
+
+Download NodeStream by following the instructions in INSTALL.txt. When you're done,
+create your own folder in the profiles/ folder in your drupal root. This folder should be
+the machine name of your installation profile. We are going to call it "example" here.
+
+1. SET UP YOUR DISTRIBUTION
+
+Create the following files:
+
+* example.profile
+    This profile file should include the profiler library. look in nodestream/nodestream.profile for an example.
+
+* example.info
+    Define all dependencies you have for your distribution here. 
+    For an example of how it looks, check nodestream/nodestream.info.
+    Specify all NodeStream features and the custom modules and features
+    you want to install here.
+   
+* example.make (Optional)
+    Specify the modules not included in the nodestream package here. 
+    That way you can easily track what modules you are using. If you
+    add NodeStream as a dependency here, you can even get drush make to download
+    all modules required for NodeStream as well.
+
+* libraries => ../nodestream/libraries
+  Create a symlink to the nodestream libraries folder. That way, you will gain access to all libraries included in NodeStream.
+
+* modules => ../nodestream/modules
+  Create a symlink to the nodestream modules folder. That way, you will gain access to all modules included in NodeStream.
+
+* themes => ../nodestream/themes
+  Create a symlink to the nodestream modules folder. That way, you will gain access to all themes included in NodeStream.
+  
+2. INSTALLATION
+
+After you created these files, go to install.php. You should see your installation profile listed.
+
+3. EXAMPLE 
+
+For a working example of how to build a distribution that extends nodestream please check this drupal sandbox:
+
+http://drupal.org/sandbox/fabsor/1075924
+
+It contains a distribution, NodeStream Test, that provides lots of example content for NodeStream.
+
+FEATURES
+----------
+
+Features (http://drupal.org/project/features) is a way of controlling configuration in code. 
+
+Most NodeStream configuration resides in Features. Each feature provides
+a specific functionality like articles.
+
+Here is a short overview of the features in NodeStream:
+
+* NS Article 
+    NS Article is one of the cornerstones of NodeStream. It contains the base
+    Article node type along with some administrative views to make it easy to create articles.
+            
+* NS Blog
+    NS Blog provides a multi-user blog functionality. It contains a Blog and a
+    blog post content type, along with some administrative views.
+    
+* NS Contributor
+    The Contributor Feature is used for author bios. It is a content type
+    with information about authors that is used for blogs and articles. The easiest way
+    to extend the profile is by providing new fields to the content type in other features.
+
+* NS Media
+    The NS Media feature adds fields to the video and image media type.
+    You can depend on this feature and add a field referencing media fields
+    to add the media functionality on top of your content types.
+    
+* NS Article Comment and NS Blog Comment
+    This feature provides comments for articles and blogs respectively. 
+    These settings resides in their own feature in order to be able extend 
+    the comment functionality in NodeStream more easily in the future and also to allow for other methods of handling
+    comments, like disqus. If you are interested in using disqus, enable the module, it is in the NodeStream package already.
+    
+* NS Poll, NS Form, NS Fact
+    These features provides more fields to the article node type. When you enable them
+    you get a new field in the article node type. This is a great way of extendning
+    the article content type with more fields, since you don't have to override anything to make it work.
+    The principle used in these features works just as well for other content types as well of course.
+
+* NS Ad
+    This is a very basic Advertisement system. If you want to use a system like openx, just disable it.
+    
+MODULES
+---------
+
+NodeStream contains two modules specificly built for it, 
+ns_core (http://drupal.org/project/ns_core) which contains all features specified above and some custom code to glue some of the functionality together,
+and ns_translation_ref which is a part of ns_core, and is used for handling translation and node references.
+
+The code is basicly some form alters, and if they should cause any inconvience, please file an issue.
+
+PATCHES FOR MODULES
+---------------------
+
+All patches in NodeStream are part of issues that solves the general problem, 
+no special patches that only applies for NodeStream exists in the bundle. 
+For specific details about the patches that we use, 
+consult the NodeStream Make file, which contains references to the specific issues involved.

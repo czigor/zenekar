@@ -1,0 +1,1084 @@
+
+/**
+ * Page header
+ */
+.page-branding,
+.page-branding a:link,
+.page-branding a:visited,
+.page-branding a:hover,
+.page-branding a:focus,
+.page-branding a:active {
+  color: #000;
+}
+/* Logo */
+.site-logo img {
+  display: block;
+}
+/* Search box in header */
+.page-branding .search-box {
+  left: 726px;
+  position: absolute;
+  top: 78px;
+}
+#search-block-form label {
+   display: none;
+}
+#search-block-form .form-item {
+  float: left;
+  margin: 0;
+}
+#search-block-form input.form-text {
+  width: 134px;
+  margin-right: 10px;
+}
+#search-block-form .container-inline {
+  min-width: 220px; /* Sometimes the browser get the wrong size, in that case, for a min width */
+}
+.pane-search-form {
+  margin-bottom: 20px;
+}
+/* Teaser for latest blog post in header */
+.page-branding .latest-blog-post {
+  display: block;
+  left: 400px;
+  position: absolute;
+  top: 76px;
+  width: 250px;
+}
+.page-branding .latest-blog-post .contributor-photo {
+  float: right;
+  padding-left: 10px;
+}
+.page-branding .latest-blog-post .blog-title {
+  font-weight: bold;
+}
+.page-branding .latest-blog-post .blog-post-title a {
+  color: #f7931e;
+  text-decoration: none;
+}
+/* Todays date, placed under the logo */
+.page-branding .pane-today-date {
+  color: #666666;
+  display: inline-block;
+  left: 95px;
+  position: absolute;
+  top: 95px;
+}
+
+
+/**
+ * Main menu level 1 and 2.
+ */
+ .page-nav-wrapper {
+  background: url("../img/nav-bg.png") repeat-x scroll 100% 28px transparent;
+  padding-bottom: 3px;
+  margin-top: 15px;
+}
+/* Styles common for every level of primary links */
+.pane-main-menu ul {
+  margin: 0;
+}
+.page-nav .pane-main-menu ul li,
+.page-nav .pane-main-menu ul li a {
+  padding: 0;
+  margin: 0;
+  display: block;
+  float: left;
+}
+.page-nav .pane-main-menu ul li.active + li a,
+.page-nav .pane-main-menu ul li.active-trail + li a {
+  border: 0;
+}
+.page-nav .pane-main-menu ul li a:hover,
+.page-nav .pane-main-menu ul li a:focus {
+  background-color: #e6e6e6;
+}
+.page-nav .pane-main-menu ul li a:link,
+.page-nav .pane-main-menu ul li a:visited {
+  background-color: transparent;
+  color: #666666;
+}
+.page-nav .pane-main-menu ul li a:active,
+.page-nav .pane-main-menu ul li a.active:link,
+.page-nav .pane-main-menu ul li a.active:visited,
+.page-nav .pane-main-menu ul li a.active:hover,
+.page-nav .pane-main-menu ul li a.active:active,
+.page-nav .pane-main-menu ul li a.active-trail:link,
+.page-nav .pane-main-menu ul li a.active-trail:visited,
+.page-nav .pane-main-menu ul li a.active-trail:hover,
+.page-nav .pane-main-menu ul li a.active-trail:active {
+  background-color: #f7931e;
+  color: #fff;
+  font-weight: 700;
+}
+/* Fixes line break problem with to many items in primary links. */
+.pane-main-menu.pm-lvl-1 {
+  height: 28px;
+  overflow: hidden;
+}
+/* Styles for primary links level 1 */
+.pane-main-menu.pm-lvl-1 ul li a {
+  border-left: 1px solid #B2B2B2;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 7px 10px 3px 10px;
+  text-decoration: none;
+}
+.pane-main-menu.pm-lvl-1 ul li a.active:link,
+.pane-main-menu.pm-lvl-1 ul li a.active:visited,
+.pane-main-menu.pm-lvl-1 ul li a.active:active,
+.pane-main-menu.pm-lvl-1 ul li a.active-trail:link,
+.pane-main-menu.pm-lvl-1 ul li a.active-trail:visited,
+.pane-main-menu.pm-lvl-1 ul li a.active-trail:active {
+  border: 0;
+}
+.pane-main-menu.pm-lvl-1 ul li.first a {
+  border-left: 0;
+}
+/* Styles for primary links level 2 */
+.pane-main-menu.pm-lvl-2 {
+  padding: 5px 0;
+  margin-top: 3px;
+}
+.pane-main-menu.pm-lvl-2 ul li a {
+  font-size: 14px;
+  margin-right: 5px;
+  padding: 2px 5px;
+  text-decoration: none
+}
+
+
+/**
+ * Secondary links.
+ */
+.page-closure-wrapper .pane-secondary-links {
+  margin-bottom: 10px;
+}
+.page-branding .pane-secondary-links ul.menu {
+  float: right;
+}
+.pane-secondary-links ul.menu,
+.pane-secondary-links ul.menu li {
+  margin: 0;
+  padding: 0;
+  list-style-image: none;
+  list-style-type: none;
+}
+.pane-secondary-links ul.menu li,
+.pane-secondary-links ul.menu li a {
+  float: left;
+  display: inline;
+}
+.pane-secondary-links ul.menu li a {
+  text-decoration: none;
+  margin-right: 10px;
+}
+.pane-secondary-links ul.menu li a:link,
+.pane-secondary-links ul.menu li a:visited {
+  color: #666;
+}
+.pane-secondary-links ul.menu li a:hover,
+.pane-secondary-links ul.menu li a:focus,
+.pane-secondary-links ul.menu li a:active,
+.pane-secondary-links ul.menu li a.active {
+  color: #000;
+}
+.pane-secondary-links ul.menu li a.active {
+  text-decoration: underline;
+}
+
+
+/**
+ * Page closure (Footer)
+ */
+.page-closure {
+  color: #666;
+  font-size: 12px;
+  line-height: 18px;
+}
+.page-closure h2 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  line-height: 15px;
+  color: #666;
+  margin-bottom: 3px;
+  font-weight: normal;
+}
+/* Gives a border only to the RSS feed box */
+.page-closure .pane-ns-ch-rss-topic-footer-panel-pane-1 .inner {
+  border-right: 1px solid #ccc;
+  min-height: 80px;
+}
+/* Styles for the view of footer content */
+.page-closure .footer-content-holder {
+  display: inline-block;
+  float: left;
+}
+.page-closure .footer-content-holder .footer-content {
+  float: left;
+  border-right: 1px solid #ccc;
+  min-height: 80px;
+}
+
+
+/**
+ * RSS links.
+ */
+.view-ns-ch-rss-topic-footer .item-list ul,
+.view-ns-ch-rss-topic-footer ul li {
+  padding: 0;
+  margin: 0;
+}
+.view-ns-ch-rss-topic-footer {
+  font-size: 10px;
+  line-height: 10px;
+}
+.view-ns-ch-rss-topic-footer ul li {
+  width: 49%; /* Since we use a border on the wrapper, this can't be 50% to work in IE */
+}
+.view-ns-ch-rss-topic-footer ul li,
+.view-ns-ch-rss-topic-footer ul li a {
+  float: left;
+  display: inline;
+  margin: 0;
+}
+.view-ns-ch-rss-topic-footer ul li a {
+  background: url(../img/rss.gif) 0 1px no-repeat;
+  padding: 2px 5px 2px 14px;
+}
+.view-ns-ch-rss-topic-footer ul li a:link,
+.view-ns-ch-rss-topic-footer ul li a:visited,
+.view-ns-ch-rss-topic-footer ul li a:hover,
+.view-ns-ch-rss-topic-footer ul li a:focus,
+.view-ns-ch-rss-topic-footer ul li a:active {
+  color: #666;
+  text-decoration: none;
+}
+.view-ns-ch-rss-topic-footer ul li a:hover,
+.view-ns-ch-rss-topic-footer ul li a:focus,
+.view-ns-ch-rss-topic-footer ul li a:active {
+  color: #000;
+}
+
+
+/**
+ * Aside alpha
+ */
+.page-aside-alpha ul,
+.page-aside-alpha ol {
+  margin-left: 20px;
+}
+.page-aside-alpha ul.list-links {
+  margin: 0 0 10px 0;
+}
+.page-aside-alpha ul.list-links li a {
+  display: block;
+  margin: 0 -35px 0 -10px;
+  padding: 3px 35px 3px 10px;
+}
+
+
+/**
+ * Forms.
+ */
+.form-item label {
+  font-size: 12px;
+  line-height: 15px;
+  font-weight: normal;
+  margin-bottom: 2px;
+}
+input.form-text,
+textarea.form-textarea {
+  border: 1px solid #C2C2C2;
+  padding: 4px 2px;
+  margin: 0;
+}
+input.form-text {
+  height: 20px;
+}
+input.form-submit {
+  line-height: 1;
+  padding: 0 10px;
+  height: 30px;
+  text-transform: uppercase;
+  color: #fff;
+  background-color: #F7931E;
+  cursor: pointer;
+  font-weight: bold;
+  font-family: "Myriad Pro", Arial, Helvetica, sans-serif;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  width: auto;
+  overflow: visible;
+}
+input.form-radio,
+input.form-checkbox {
+  vertical-align: middle;
+}
+.form-item .description,
+.description {
+  color: #666;
+  font-size: 11px;
+  line-height: 13px;
+}
+.node-ns-form input.form-text {
+  width: 423px;
+}
+/* The fieldsets that appears under forms */
+fieldset.collapsible .fieldset-title {
+  cursor: pointer;
+}
+html.js fieldset.collapsed .fieldset-content {
+  display: none;
+}
+html.js fieldset.collapsible {
+  border: 1px solid #ccc;
+  padding: 0 10px;
+  margin-bottom: 10px;
+}
+html.js fieldset.collapsed {
+  height: auto;
+  border-bottom: none;
+  border-left: none;
+  border-right: none;
+}
+
+
+/**
+ * Node.
+ */
+.read-more a {
+  text-decoration: none;
+  color: #61B3D2;
+  margin-left: 3px;
+}
+/* Published and updated dates for articles and blog posts */
+.post-submitted,
+.post-published,
+.post-updated {
+  color: #666666;
+  font-size: 11px;
+  margin-right: 20px;
+}
+.node .field-label {
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+
+/**
+ * Slideshow.
+ */
+.pane-node-field-ns-blog-post-media,
+.pane-node-field-ns-article-media {
+   position: relative;
+}
+.media-wrapper {
+  margin-bottom: 35px;
+}
+.pane-node-field-ns-article-media .file .content,
+.pane-node-field-ns-blog-post-media .file .content {
+  line-height: 13px;
+}
+.slideshow-controls-bottom {
+  position: absolute;
+  bottom: 5px;
+  right: 0;
+}
+.slideshow-controls-bottom .slideshow-pager {
+  float: left;
+  margin: 0 10px;
+}
+.slideshow-controls-bottom .slideshow-controls {
+  height: 14px;
+  float: left;
+}
+.slideshow-controls-bottom .slideshow-controls a.prev-slide,
+.slideshow-controls-bottom .slideshow-controls a.next-slide {
+  display: block;
+  float: left;
+  width: 9px;
+  height: 14px;
+  text-indent: -9000em;
+  cursor: pointer;
+}
+.slideshow-controls-bottom .slideshow-controls a.prev-slide {
+  background: url(../img/previous.png) 0 0 no-repeat;
+}
+.slideshow-controls-bottom .slideshow-controls a.next-slide {
+  background: url(../img/next.png) 0 0 no-repeat;
+  position: absolute;
+  right: 0;
+}
+.slideshow-controls-bottom .slideshow-pager a {
+  background-color: #ccc;
+  color: #000;
+  display: block;
+  float: left;
+  padding: 2px 3px;
+  font-size: 10px;
+  line-height: 10px;
+  text-decoration: none;
+  margin: 0px 10px 0 0;
+}
+.slideshow-controls-bottom .slideshow-pager a.activeSlide {
+  background-color: #EB8C1E;
+}
+
+
+/* Caption and Credti related to media file */
+.file span.file-styles {
+  display: block;
+}
+.file .field-label,
+.file .field-name-field-ns-media-credit,
+.file .field-name-field-ns-media-caption {
+  display: inline;
+  color: #666666;
+  font-size: 11px;
+  line-height: 13px;
+}
+.file .field-label {
+  font-weight: bold;
+}
+
+
+/**
+ * Article.
+ */
+/* Article and blog image */
+.view-ns-prod-news-article-slideshow img,
+.view-ns-prod-blog-slideshow img {
+  display: block;
+  padding-bottom: 2px;
+}
+.view-ns-prod-news-article-slideshow,
+.view-ns-prod-blog-slideshow {
+  position: relative;
+  margin-bottom: 20px;
+}
+/* Article lead and kicker */
+.pane-node-field-ns-article-lead {
+  font-size: 20px;
+  line-height: 22px;
+  display: inline; /* Needed for IE */
+}
+.pane-node-field-ns-article-kicker {
+  color: #EB8C1E;
+  float: left;
+  font-size: 14px;
+  line-height: 14px;
+  font-weight: bold;
+  margin: 6px 5px 0 0;
+}
+.pane-node-field-ns-article-kicker,
+.promo .promo-kicker {
+  text-transform: uppercase;
+}
+.node-type-ns-article .page-main-content-wrapper .pane-page-title h1 {
+  font-size: 40px;
+  line-height: 42px;
+}
+/* Related articles block */
+.pane-node-field-ns-article-related .field-item {
+  border-bottom: 1px solid #D7D7D7;
+  font-weight: bold;
+  padding: 0 0 7px 0;
+  margin: 0 0 7px 0;
+}
+.pane-node-field-ns-article-related a {
+  text-decoration: none;
+}
+/* @TODO: We should have a class wrapper for all content in aside to the node instead */
+.page-aside-alpha .pane-node-field-ns-article-related h2.pane-title {
+  font-size: 14px;
+  line-height: 16px;
+  margin: 0 0 8px 0;
+  text-transform: uppercase;
+}
+/* Things in article sidebar. e.g facts pr related articles */
+.page-aside-alpha .pane-node-field-ns-article-related,
+.page-aside-alpha .view-ns-prod-news-article-facts,
+.page-aside-alpha .pane-ns-prod-blog-contributor-panel-pane-1,
+.page-aside-alpha .pane-ns-prod-blog-post-contributor-panel-pane-1 {
+  font-size: 12px;
+  line-height: 15px;
+}
+.page-aside-alpha .pane-node-field-ns-article-related p {
+  margin-bottom: 15px;
+}
+
+
+/**
+ * Facts.
+ */
+.view-ns-prod-news-article-facts h2.attachment-title {
+  font-size: 20px;
+  line-height: 22px;
+}
+.view-ns-prod-news-article-facts .views-row {
+  background-color: #D7D7D7;
+  margin: 0 0 10px;
+  padding: 10px;
+}
+.view-ns-prod-news-article-facts p,
+.view-ns-prod-news-article-facts ul,
+.view-ns-prod-news-article-facts ol {
+  margin-bottom: 15px;
+}
+.view-ns-prod-news-article-facts p:last-child,
+.view-ns-prod-news-article-facts ul:last-child,
+.view-ns-prod-news-article-facts ol:last-child {
+  margin-bottom: 0;
+}
+.view-ns-prod-news-article-facts {
+  margin-bottom: 25px;
+}
+
+
+/**
+ * Promos.
+ */
+/* The new promos needs to be re-written since the markup is completely
+   different from D6. */
+.promo .media-wrapper {
+  margin-bottom: 8px;
+}
+.promo .field-name-field-ns-prod-news-promo-article {
+  font-family: "Myriad Pro",Arial,Helvetica,sans-serif;
+  font-size: 24px;
+  line-height: 26px;
+  margin-bottom: 5px;
+}
+.promo .field-name-field-ns-prod-news-promo-article a {
+  text-decoration: none;
+  color: #000;
+  font-weight: bold;
+}
+.promo .field-name-field-ns-prod-news-promo-article a:hover {
+  text-decoration: underline;
+  color: #000;
+}
+.promo .field-name-field-ns-prod-news-promo-kicker {
+  text-transform: uppercase;
+  display: inline;
+  color: #EC8C1E; /* Move to kicker a selector when it is a link */
+  font-weight: bold; /* Move to kicker a selector when it is a link */
+  text-decoration: none; /* Move to kicker a selector when it is a link */
+}
+.promo .field-name-field-ns-prod-news-promo-lead {
+  display: inline;
+}
+.page-aside-alpha .promo {
+  font-size: 12px;
+  line-height: 16px;
+}
+.promo-kicker a,
+.content-column-two-w-wrappers-right .post-blog a {
+  color: #EC8C1E;
+  text-transform: uppercase;
+  font-weight: bold;
+  text-decoration: none;
+}
+.promo p {
+  color: #333333;
+}
+.page-header-alpha .promo p,
+.page-header-beta .promo p,
+.page-main .promo p,
+.page-aside-alpha .promo p {
+  display: inline;
+}
+.page-aside-alpha .promo p {
+  margin: 4px 0 0;
+}
+
+
+/**
+ * Poll object.
+ */
+.node-poll,
+div.panel-pane div.node-poll {
+  padding: 10px;
+  background-color: #D7D7D7;
+}
+.node-poll h2.node-title {
+  font-size: 20px;
+  line-height: 24px;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+div.poll {
+  font-size: 12px;
+  line-height: 17px;
+}
+.poll .total {
+  font-size: 10px;
+  line-height: 15px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.poll .vote-form {
+  text-align: left;
+}
+.poll .vote-form .choices {
+  display: block;
+  margin: 0;
+}
+.poll .form-radios {
+  margin: 10px 0;
+}
+.poll .bar .foreground {
+  background-color: #F7931E;
+}
+.poll .bar {
+  background-color: #eee;
+}
+
+
+/**
+ * Node panes
+ */
+.pane-ns-poll-article-poll-panel-pane-1,
+.pane-ns-form-article-form-panel-pane-1,
+.pane-node-comment-form,
+.pane-node-comments {
+  border-top: 1px solid #ccc;
+  padding-top: 10px;
+}
+.pane-node-comment-form + .pane-node-comments {
+  border: none;
+}
+div.panel-pane div.node-poll,
+div.panel-pane div.node-ns-form {
+  margin-bottom: 10px;
+}
+
+
+/**
+ * Comment form and posts.
+ */
+.pane-node-comment-form h2.pane-title,
+.pane-node-comments h2.pane-title {
+  color: #666;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 18px;
+}
+#comment-form textarea.form-textarea {
+  height: 85px;
+  width: 429px;
+  background-color: #fff;
+}
+#comment-form input.form-text {
+  width: 429px;
+}
+.pane-node-comment-form .total-comment-count {
+  font-size: 12px;
+  margin-left: 20px;
+}
+.pane-node-comments {
+  margin-top: 10px;
+}
+.pane-node-comments .comment {
+  background-color: #F7F7F7;
+  border: 1px solid #DDDDDD;
+  border-radius: 10px 10px 10px 10px;
+  font-size: 12px;
+  margin: 0 0 10px;
+  padding: 15px;
+}
+.pane-node-comments .comment .content {
+  line-height: 15px;
+}
+.pane-node-comments .comment .submitted {
+  margin-top: 10px;
+  font-weight: bold;
+}
+.post-comment-count a,
+.promo-comment-count a {
+  background: url(../img/comment-icon.png) no-repeat scroll 0 50%;
+  padding: 1px 0 1px 25px;
+  font-size: 11px;
+  text-decoration: none;
+}
+
+
+/**
+ * Article byline and blog post contributor.
+ */
+ /* e-mail for contributors styled the same for articles and blog posts */
+.contributor .contributor-email a,
+.blog-contributor .email a,
+.blog-post-contributor .email a {
+  color: #61B3D2;
+  font-size: 11px;
+  line-height: 15px;
+  text-decoration: none;
+}
+/* Contributor/Byline box for articles */
+.contributor {
+  margin: 10px 0;
+}
+.contributor .contributor-photo,
+.contributor .title-email-wrapper {
+  display: inline-block;
+  margin-right: 10px;
+  zoom: 1; /* necessary for IE */
+  *display: inline; /* necessary for IE */
+}
+.contributor .contributor-photo img {
+  display: block;
+}
+.contributor .title-email-wrapper {
+  line-height: 15px;
+}
+/* Contributor box for blog posts */
+.blog-contributor,
+.blog-post-contributor {
+  line-height: 15px;
+  margin-top: 20px;
+}
+.blog-contributor:first-child {
+  margin-top: 0;
+}
+.blog-contributor .email,
+.blog-contributor .photo,
+.blog-post-contributor .email,
+.blog-post-contributor .photo {
+  margin-bottom: 10px;
+}
+.blog-contributor .name,
+.blog-post-contributor .name {
+  font-size: 16px;
+  line-height: 18px;
+  color: #000;
+}
+.blog-contributor,
+.blog-post-contributor {
+  margin-bottom: 10px;
+}
+
+
+/**
+ * Blog start page, with overview of blogs and latest blog posts
+ */
+.page-blogs .page-main-inner {
+  background-color: #FFFFFF;
+  padding: 10px;
+}
+.page-blogs .blog {
+  float: left;
+  margin-bottom: 20px;
+  width: 330px;
+  position: relative;
+  font-size: 12px;
+  line-height: 15px;
+}
+.page-blogs .blog h2.blog-title {
+  font-size: 28px;
+  line-height: 30px;
+  margin-top: 5px;
+}
+.page-blogs .blog .blog-short-description p {
+  display: inline;
+}
+.page-blogs .blog.views-row-odd {
+  margin-right: 10px;
+}
+.pane-ns-prod-blog-post-latest-panel-pane-1 h2.pane-title,
+.pane-ns-prod-news-topic-panel h2.pane-title,
+.view-ns-search-search .view-header /* Same style for search results */ {
+  padding: 0 10px;
+  margin: 30px 0 10px 0;
+  border-bottom: 2px solid #333;
+  color: #333;
+  text-transform: uppercase;
+  font-size: 21px;
+  line-height: 24px;
+  font-weight: normal;
+}
+/* Latest blog entries that appears under the boxes for the blogs. */
+.view-ns-prod-blog-post-latest .post h3.post-title {
+  font-size: 24px;
+}
+.view-ns-prod-blog-post-latest .post {
+  font-size: 14px;
+  color: #333;
+  background: #fff;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+.view-ns-prod-blog-post-latest .content-column-two-w-wrappers-right .post-body p {
+  display: inline;
+}
+.view-ns-prod-blog-post-latest .content-column-two-w-wrappers-left + .content-column-two-w-wrappers-right {
+  width: 460px;
+}
+
+
+/**
+ * Start page when viewing a blog
+ */
+.node-type-ns-blog .post {
+  margin: 0 0 20px;
+}
+.node-type-ns-blog .page-header-beta h1 {
+  font-size: 40px;
+  line-height: 40px;
+}
+.node-type-ns-blog .page-header-beta .field-name-field-ns-blog-description-long {
+  font-size: 16px;
+  line-height: 22px;
+  margin-bottom: 30px;
+}
+.node-type-ns-blog .post-updated,
+.node-type-ns-blog .post-published {
+  color: #666666;
+  margin-right: 20px;
+  font-size: 11px;
+}
+.node-type-ns-blog .post-title {
+  font-size: 34px;
+  line-height: 33px;
+  margin: 5px 0 15px;
+}
+.node-type-ns-blog .view-ns-blog-post p {
+  font-size: 14px;
+  color: #333333;
+}
+.node-type-ns-blog .post-comment-count {
+  margin-top: -15px;
+}
+
+
+/**
+ * Page for a single blog post
+ */
+.node-type-ns-blog-post .page-main h1 {
+  font-size: 34px;
+  line-height: 33px;
+  margin-top: 10px;
+}
+#mini-panel-ns-blog-post-blog {
+  position: relative;
+}
+#mini-panel-ns-blog-post-blog a {
+  color: #000000;
+  display: block;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 22px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  text-decoration: none;
+}
+#mini-panel-ns-blog-post-blog a:hover {
+  text-decoration: underline;
+}
+.node-type-ns-blog-post .blog-contributor .about {
+  display: none;
+}
+
+
+/**
+ * Language swithcer.
+ */
+.language-switcher {
+  float: right;
+  margin-bottom: 3px;
+}
+.language-switcher ul {
+  list-style: none;
+  margin-bottom: 0
+}
+.language-switcher ul li {
+  display: inline;
+  text-indent: 30px;
+}
+.language-switcher ul li.active a {
+  border-bottom: 2px solid #666666;
+}
+.page-branding .language-switcher ul li a.language-link {
+  display: inline-block;
+  height: 11px;
+  width: 16px;
+  margin-right: 10px;
+  padding-bottom: 3px;
+  overflow: hidden;
+}
+/* Style for some country flags. */
+.page-branding .language-switcher ul li a.language-link {
+  background: url("../img/country_flags.png") no-repeat scroll -284px -61px transparent;
+}
+.page-branding .language-switcher ul li.en a.language-link {
+  background: url("../img/country_flags.png") no-repeat scroll -284px -173px transparent;
+}
+.page-branding .language-switcher ul li.sv a.language-link {
+  background: url("../img/country_flags.png") no-repeat scroll -32px -481px transparent;
+}
+.page-branding .language-switcher ul li.da a.language-link {
+  background: url("../img/country_flags.png") no-repeat scroll -32px -145px transparent;
+}
+.page-branding .language-switcher ul li.fr a.language-link {
+  background: url("../img/country_flags.png") no-repeat scroll -228px -173px transparent;
+}
+.page-branding .language-switcher ul li.de a.language-link {
+  background: url("../img/country_flags.png") no-repeat scroll -284px -117px transparent;
+}
+.page-branding .language-switcher ul li.nb a.language-link {
+  background: url("../img/country_flags.png") no-repeat scroll -256px -61px transparent;
+}
+.page-branding .language-switcher ul li.es a.language-link {
+  background: url("../img/country_flags.png") no-repeat scroll -4px -173px transparent;
+}
+.page-branding .language-switcher ul li.kl a.language-link {
+  background: url("../img/country_flags.png") no-repeat scroll -88px -201px transparent;
+}
+
+
+/**
+ * Search view.
+ */
+.view-ns-search-search .view-header {
+  margin-bottom: 20px;
+}
+.view-ns-search-search .views-row {
+  margin-bottom: 20px;
+  position: relative;
+  border-top: 1px solid #888888;
+}
+.view-ns-search-search p {
+  margin: 0;
+}
+/* Article and blog post search result */
+.view-ns-search-search .field-name-field-ns-article-kicker,
+.view-ns-search-search .field-name-field-ns-blog-post-blog a {
+  text-transform: uppercase;
+  display: inline;
+  color: #EC8C1E;
+  font-weight: bold;
+  text-decoration: none;
+}
+/* All of these need to be displayed inline */
+.view-ns-search-search .field-name-field-ns-article-lead,
+.view-ns-search-search .field-name-field-ns-article-lead p,
+.view-ns-search-search .field-name-field-ns-blog-post-blog,
+.view-ns-search-search .field-name-field-ns-blog-post-body,
+.view-ns-search-search .field-name-field-ns-blog-post-body p {
+  display: inline;
+}
+/* The search result type, displatyed on top */
+.view-ns-search-search .node-type {
+  background-color: #888888;
+  color: #FFFFFF;
+  display: inline-block;
+  font-size: 10px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  padding: 2px 7px;
+  text-transform: uppercase;
+}
+
+
+/**
+ * The basic and advanced search forms
+ */
+/* Edit basic */
+.search-form #edit-basic {
+  margin-bottom: 10px;
+}
+.search-form #edit-basic .form-item label {
+  font-size: 28px;
+  font-weight: bold;
+  line-height: 28px;
+  margin-bottom: 10px;
+  display: block;
+}
+.search-form #edit-basic input.form-submit {
+  height: 32px;
+}
+/*  Edit advanced*/
+.search-form #edit-advanced label {
+  font-weight: bold;
+}
+.search-form #edit-advanced label.option {
+  font-weight: normal;
+}
+.search-form #edit-advanced .action {
+  margin-bottom: 10px;
+}
+
+
+/**
+ * Pager.
+ */
+.item-list ul.pager {
+  margin-bottom: 10px;
+  font-size: 12px;
+  line-height: 14px;
+}
+.item-list .pager li {
+  padding: 5px;
+  margin: 0 5px 0 0;
+}
+.item-list .pager li a {
+  text-decoration: none;
+}
+.item-list .pager .pager-item a {
+  color: #EC8C1E;
+}
+.item-list .pager .pager-current {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+
+/**
+ * Tabs
+ */
+ul.tabs.primary {
+  border: none;
+  margin-left: 0;
+  padding-left: 0;
+}
+ul.tabs.primary li a {
+  background: #888888;
+  border: medium none;
+  color: #FFFFFF;
+  margin-right: -2px;
+  padding: 5px 15px;
+  -moz-border-radius: 5px 5px 0 0;
+  -webkit-border-radius: 5px 5px 0 0;
+  border-radius: 5px 5px 0 0;
+}
+ul.tabs.primary li.active a {
+  background: #FFFFFF;
+  color: #000;
+}
+
+
+/**
+ * Ads
+ */
+.pane-views-panes .view-ns-prod-news-ad .views-row {
+  background-color: #FFFFFF;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+.pane-views-panes .view-ns-prod-news-ad .views-row .ad-text {
+  color: #999999;
+  font-size: 9px;
+  margin-top: -5px;
+  text-transform: uppercase;
+}
+
+/**
+ * Contextual links
+ */
+ 
+/* We need to avoid contextual links that are placed on top of each other. */
+ .view-ns-prod-news-topic .contextual-links-wrapper {
+  margin-top: 20px;
+}

@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the panels_ref_formatter_test feature.
+ */
+
+include_once('panels_ref_formatter_test.features.inc');

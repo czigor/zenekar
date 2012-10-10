@@ -1,0 +1,658 @@
+<?php
+
+define('CROSSCLONE_RETURN', 0);
+
+define('CROSSCLONE_SAVE', 1);
+
+define('CROSSCLONE_CLONE_STRAIGHT', 1);
+
+define('CROSSCLONE_CLONE_SIMILAR', 2);
+
+define('CROSSCLONE_COUPLE_NONE', 0);
+
+define('CROSSCLONE_COUPLE_DOWNSTREAM_STRAIGHT', 1);
+
+define('CROSSCLONE_COUPLE_DOWNSTREAM_SIMILAR', 2);
+
+define('CROSSCLONE_COUPLE_UPSTREAM_STRAIGHT', 3);
+
+define('CROSSCLONE_COUPLE_UPSTREAM_SIMILAR', 4);
+
+define('CROSSCLONE_COUPLE_CROSS_STRAIGHT', 5);
+
+define('CROSSCLONE_COUPLE_CROSS_SIMILAR', 6);
+
+define('CROSSCLONE_DELETE_NONE', 0);
+
+define('CROSSCLONE_DELETE_DOWNSTREAM', 1);
+
+define('CROSSCLONE_DELETE_UPSTREAM', 2);
+
+define('CROSSCLONE_DELETE_CROSS', 3);
+
+
+/**
+ * Implements hook_views_api().
+ */
+function crossclone_views_api() {
+  return array(
+    'api' => 2.0,
+    'path' => drupal_get_path('module', 'crossclone') . '/views',
+  );
+}
+
+/**
+ * Implements hook_menu().
+ */
+function crossclone_menu() {
+  $items = array();
+  $items['crossclone/clone/%node/%/%/%'] = array(
+    'title' => 'Clone node',
+    'page callback' => 'crossclone_clone_callback',
+    'page arguments' => array(2, 3, 4, 5),
+    'access callback' => 'node_access',
+    'access arguments' => array('create', 2),
+  );
+  return $items;
+}
+
+/**
+ * This callback clones a node. It is currently only used throgh Views.
+ */
+function crossclone_clone_callback($node, $view_name, $display_name, $field_name) {
+  $view = views_get_view($view_name);
+  $view->set_display($display_name);
+  $field = $view->get_item($display_name, 'field', $field_name);
+  if (empty($field['bundle']) || $field['bundle'] == 'current') {
+    $field['bundle'] = $node->type;
+  }
+  crossclone_entity('node', $node, $field, CROSSCLONE_SAVE);
+  if (isset($_GET['destination'])) {
+    drupal_goto($_GET['destination']);
+  }
+  exit();
+}
+
+/**
+ * Central clone functionality for nodes.
+ */
+function crossclone_entity($entity_type, $original_entity, $settings, $action = CROSSCLONE_RETURN) {
+  $entity_info = entity_get_info($entity_type);
+  $entity_id = $entity_info['entity keys']['id'];
+  $bundle_key = isset($entity_info['bundle keys']['bundle']) ? $entity_info['bundle keys']['bundle'] : FALSE;
+  $revision_id = isset($entity_info['entity keys']['revision']) ? $entity_info['entity keys']['revision'] : FALSE;
+  $schema = drupal_get_schema($entity_info['base table']);
+  if (!isset($settings['bundle'])) {
+    return FALSE;
+  }
+
+  if (is_numeric($original_entity)) {
+    $original_entity = entity_load($entity_type, $original_entity);
+  }
+
+  // Set defaults.
+  $default_settings = array(
+    'clone' => CROSSCLONE_CLONE_SIMILAR,
+    'couple_setting' => CROSSCLONE_COUPLE_CROSS_SIMILAR,
+    'delete_setting' => CROSSCLONE_DELETE_DOWNSTREAM,
+  );
+  $settings = array_merge($default_settings, $settings);
+  // Only clone if we found an original entity.
+  if (isset($original_entity->$entity_id)) {
+    $entity = clone $original_entity;
+    unset($entity->$entity_id);
+    // If we have a uuid, remove it.
+    if (module_exists('uuid') && $entity->uuid) {
+      unset($entity->uuid);
+    }
+    if ($revision_id) {
+      unset($entity->{$revision_id});
+    }
+    // Prepare some necessary properties.
+    $entity->crossclone->original = $original_entity->$entity_id;
+    $entity->crossclone->couple_setting = $settings['couple_setting'];
+    $entity->crossclone->delete_setting = $settings['delete_setting'];
+    if ($bundle_key) {
+      $entity->$bundle_key = $settings['bundle'];
+    }
+    // Decide if we shall clone similar fields.
+    if ($bundle_key && $settings['clone'] == CROSSCLONE_CLONE_SIMILAR || $settings['clone'] == CROSSCLONE_CLONE_STRAIGHT) {
+      $fields = field_info_fields();
+      foreach ($fields as $field) {
+        if (isset($field['bundles'][$entity_type]) && in_array($original_entity->$bundle_key, $field['bundles'][$entity_type])) {
+          if ($settings['clone'] == CROSSCLONE_CLONE_SIMILAR) {
+            $field_name = strtr($field['field_name'], array($original_entity->$bundle_key => $settings['bundle']));
+          }
+          else {
+            $field_name = $field['field_name'];
+          }
+          $field_info = field_info_field($field_name);
+          // Make sure the fields have the same type.
+          if (isset($original_entity->{$field['field_name']}) && $field_info['type'] == $field['type']) {
+            $entity->{$field_name} = $original_entity->{$field['field_name']};
+          }
+        }
+      }
+    }
+    // Let other modules modify the clone before save.
+    drupal_alter('crossclone_entity', $entity_type, $original_entity, $entity);
+
+    if ($action == CROSSCLONE_SAVE) {
+      return entity_save($entity_type, $entity);
+    }
+    return $entity;
+  }
+  return FALSE;
+}
+
+/**
+ * Update content from one entity to another.
+ */
+function crossclone_update($entity_type, $from, &$to, $couple_similar) {
+  $entity_info = entity_get_info($entity_type);
+  $fields = crossclone_entity_bundle_fields($entity_type, $from->{$entity_info['bundle keys']['bundle']});
+  $new_to = clone $from;
+  // Entity keys should be maintained.
+  foreach ($entity_info['entity keys'] as $type => $entity_key) {
+    if ($type != 'title' || $type != 'title callback') {
+      $new_to->$entity_key = $to->$entity_key;
+    }
+  }
+  $to = $new_to;
+  foreach ($info['fields'] as $field) {
+    if ($couple_similar) {
+      $field_name = strtr($field['field_name'], array($from->type => $to->type));
+    }
+    else {
+      $field_name = $field['field_name'];
+    }
+    $field_info = field_info_field($field['field_name']);
+    // Make sure the fields have the same type.
+    if ($field_info['type']== $field['type']) {
+      $to->{$field_name} = $from->{$field['field_name']};
+    }
+  }
+}
+
+/**
+ * Get all fields belonging to an entity in a specific bundle.
+ */
+function crossclone_entity_bundle_fields($entity_type, $bundle) {
+  $fields = field_info_fields();
+  $bundle_fields = array();
+  foreach ($fields as $field_name => $field) {
+    if (isset($field['bundles'][$entity_type]) && in_array($bundle, $field['bundles'][$entity_type])) {
+      $bundle_fields[$field_name] = $field;
+    }
+  }
+  return $bundle_fields;
+}
+
+/**
+ * Implements hook_entity_insert().
+ */
+function crossclone_entity_insert($entity, $entity_type) {
+  crossclone_handler_invoke('insert', $entity_type, $entity);
+  if (!empty($entity->crossclone->original)) {
+    $info = entity_get_info($entity_type);
+    $entity->crossclone->entity_id = $entity->{$info['entity keys']['id']};
+    $entity->crossclone->type = $entity_type;
+    drupal_write_record('crossclone', $entity->crossclone);
+  }
+  // Invoke our non-intrusive entity save operation.
+  if ($entity_type == 'node') {
+    rules_invoke_event('crossclone_node_insert', $entity);
+  }
+}
+
+/**
+ * Update an entity.
+ * @param stdClass $entity
+ *  The entity to update.
+ * @param stdClass $entity_type
+ *   The type of entity.
+ */
+function crossclone_entity_update($entity, $entity_type) {
+  $info = entity_get_info($entity_type);
+  $entity_id = $entity->{$info['entity keys']['id']};
+  crossclone_handler_invoke('update', $entity_type, $entity);
+  if (!empty($entity->crossclone->original)) {
+    // Always delete the record so that we have the current settings in the
+    // help table.
+    db_delete('crossclone')
+      ->condition('entity_id', $entity_id)
+      ->condition('type', $entity_type)
+      ->execute();
+    $entity->crossclone->entity_id = $entity_id;
+    $entity->crossclone->type = $entity_type;
+    drupal_write_record('crossclone', $entity->crossclone, array('entity_id', 'type'));
+  }
+  crossclone_enforce_update_settings($entity_type, $entity);
+}
+
+/**
+ * Enforce delete settings.
+ * @param stdClass $entity
+ *   The entity that is being deleted.
+ * @param string $entity_type
+ *   The type of entity.
+ */
+function crossclone_entity_delete($entity, $entity_type) {
+  $info = entity_get_info($entity_type);
+  $entity_id = $entity->{$info['entity keys']['id']};
+  crossclone_handler_invoke('delete', $entity_type, $entity);
+  if (!empty($entity->crossclone->original)) {
+    // Remove the entry in the table.
+    db_delete('crossclone')
+      ->condition('entity_id', $entity_id)
+      ->condition('type', $entity_type)
+      ->execute();
+  }
+  crossclone_enforce_delete_settings($entity_type, $entity);
+  // Remove all entries in the crossclone tables which points to this node. They are now useless.
+  db_delete('crossclone')
+    ->condition('original', $entity_id)
+    ->condition('type', $entity_type)
+    ->execute();
+}
+
+/**
+ * Load entity information from the crossclone table.
+ * @param array $entities
+ *   An array of entity IDs.
+ * @param string $entity_type
+ *   The type the entities have.
+ */
+function crossclone_entity_load($entities, $entity_type) {
+  $result = db_select('crossclone', 'c')
+        ->fields('c')
+        ->condition('entity_id', array_keys($entities))
+        ->condition('type', $entity_type)
+        ->execute();
+  foreach ($result as $crossclone_entry) {
+    $entities[$crossclone_entry->entity_id]->crossclone = $crossclone_entry;
+  }
+}
+
+/**
+ * Invoke an operation on a crossclone handler
+ * @param string $op
+ *   The operation to invoke.
+ * @param string $entity_type
+ *   The type entity type.
+ * @param stdClasd $entity
+ *   The entity to invoke the operation on.
+ */
+function crossclone_handler_invoke($op, $entity_type, $entity) {
+  list(, , $bundle) = entity_extract_ids($entity_type, $entity);
+  $entity_info = entity_get_info($entity_type);
+  if ($entity_info['fieldable']) {
+    $handlers = crossclone_get_handlers_by_field_type();
+    $instances = field_info_instances($entity_type, $bundle);
+    foreach ($instances as $instance) {
+      $field = field_info_field($instance['field_name']);
+      if (isset($handlers[$field['type']])) {
+        if (isset($handlers[$field['type']][$op . '_callback']) && function_exists($handlers[$field['type']][$op . '_callback'])) {
+          $items = field_get_items($entity_type, $entity, $field['field_name']);
+          $handlers[$field['type']][$op . '_callback']($entity_type, $entity, $items, $field, $instance);
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_crossclone_reference_handlers().
+ */
+function crossclone_crossclone_reference_handlers() {
+  $handlers = array();
+  $handlers['crossclone_nodereference_handler'] = array(
+    'entity_types' => array('node'),
+    'field_types' => array('node_reference'),
+    'insert_callback' => 'crossclone_nodereference_handler_save',
+    'update_callback' => 'crossclone_nodereference_handler_save',
+  );
+  if (module_exists('entityreference')) {
+    $entities = array_keys(entity_get_info());
+    $handlers['crossclone_nodereference_handler'] = array(
+      'entity_types' => $entities,
+      'field_types' => array('entityreference'),
+      'insert_callback' => 'crossclone_entityreference_handler_save',
+      'update_callback' => 'crossclone_entityreference_handler_save',
+    );
+  }
+  return $handlers;
+}
+
+/**
+ * Node reference handler implementation for node_reference.
+ */
+function crossclone_nodereference_handler_save($entity_type, $entity, $field_items, $field, $instance) {
+  $info = entity_get_info($entity_type);
+  $settings = $instance['settings'];
+  if ($entity_type == 'node' && $field['type'] == 'node_reference' && count($field_items) == 1 && !empty($settings['crossclone']['coupling'])) {
+    if (isset($field_items[0]['nid'])) {
+      // Check if we already have an entry in the crossclone table.
+      if (isset($entity->crossclone) && $entity->crossclone->original != $field_items[0]['nid']) {
+        db_delete('crossclone')
+          ->condition('entity_id', $entity->{$info['entity keys']['id']})
+          ->condition('type', $entity_type)
+          ->execute();
+      }
+      $entity->crossclone->original = $field_items[0]['nid'];
+      $entity->crossclone->type = $entity_type;
+      $entity->crossclone->couple_setting = $settings['crossclone']['couple_setting'];
+      $entity->crossclone->delete_setting = $settings['crossclone']['delete_setting'];
+    }
+  }
+}
+
+/**
+ * Reference handler implementation for entityreference.
+ */
+function crossclone_entityreference_handler_save($entity_type, $entity, $field_items, $field, $instance) {
+  $info = entity_get_info($entity_type);
+  $settings = $instance['settings'];
+  if ($field['type'] == 'entityreference' && count($field_items) == 1 && !empty($settings['crossclone']['coupling'])) {
+    if (isset($field_items[0]['target_id']) && $field['settings']['target_type'] == $entity_type) {
+      // Check if we already have an entry in the crossclone table.
+      if (isset($entity->crossclone) && $entity->crossclone->original != $field_items[0]['target_id']) {
+        db_delete('crossclone')
+          ->condition('entity_id', $entity->{$info['entity keys']['id']})
+          ->condition('type', $entity_type)
+          ->execute();
+      }
+      $entity->crossclone->original = $field_items[0]['target_id'];
+      $entity->crossclone->type = $entity_type;
+      $entity->crossclone->couple_setting = $settings['crossclone']['couple_setting'];
+      $entity->crossclone->delete_setting = $settings['crossclone']['delete_setting'];
+    }
+  }
+}
+
+/**
+ * Implements hook_field_info_alter().
+ */
+function crossclone_field_info_alter(&$info) {
+  // Go through all fields that we have handlers for and add
+  // the appropriate settings.
+  foreach (array_keys(crossclone_get_handlers_by_field_type()) as $field_type) {
+    if (isset($info[$field_type])) {
+      if (!isset($info[$field_type]['instance_settings'])) {
+        $info[$field_type]['instance_settings'] = array();
+      }
+      $info[$field_type]['instance_settings'] += array(
+          'crossclone' => array(
+          'coupling' => 0,
+          'couple_setting' => 0,
+          'delete_setting' => 0,
+        ),
+      );
+    }
+  }
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function crossclone_form_field_ui_field_edit_form_alter(&$form, $form_state) {
+  if (array_key_exists($form['#field']['type'], crossclone_get_handlers_by_field_type())) {
+    $field = $form['#field'];
+    $instance = $form['#instance'];
+    $form['instance']['settings'] = crossclone_reference_handler_settings_form($field, $instance);
+  }
+}
+
+/**
+ * Get all reference handlers.
+ * @return array
+ *   An array of handlers.
+ */
+function crossclone_get_handlers() {
+  return module_invoke_all('crossclone_reference_handlers');
+}
+
+/**
+ * Get handlers by field type.
+ */
+function crossclone_get_handlers_by_field_type() {
+  $handlers = crossclone_get_handlers();
+  $handlers_by_field_type = array();
+  foreach ($handlers as $handler) {
+    if (isset($handler['field_types'])) {
+      foreach ($handler['field_types'] as $field_type) {
+        $handlers_by_field_type[$field_type] = $handler;
+      }
+    }
+  }
+  return $handlers_by_field_type;
+}
+
+/**
+ * Enforce update settings for nodes.
+ * @param stdClass $node the node object that has been updated.
+ */
+function crossclone_enforce_update_settings($entity_type, &$entity) {
+  $info = entity_get_info($entity_type);
+  $entity_key = $info['entity keys']['id'];
+  $entity_id = $entity->$entity_key;
+
+  if (empty($entity->crossclone->updating)) {
+    $args = array(
+      ':original' => $entity_id,
+      ':couple_downstream_similar' => CROSSCLONE_COUPLE_DOWNSTREAM_SIMILAR,
+      ':couple_downstream_straight' => CROSSCLONE_COUPLE_DOWNSTREAM_STRAIGHT,
+      ':couple_cross_similar' => CROSSCLONE_COUPLE_CROSS_SIMILAR,
+      ':couple_cross_straight' =>  CROSSCLONE_COUPLE_CROSS_STRAIGHT,
+    );
+    // Get entity ids from all children who wants to be updated.
+    $result = db_select('crossclone', 'c')
+      ->fields('c')
+      ->condition('type', $entity_type)
+      ->where("c.original = :original AND
+      (c.couple_setting = :couple_downstream_similar OR
+      c.couple_setting = :couple_downstream_straight OR
+      c.couple_setting = :couple_cross_similar OR
+      c.couple_setting = :couple_cross_straight)", $args)
+      ->execute();
+    foreach ($result as $clone) {
+      $cloned_entity = entity_load($entity_type, $clone->$entity_key);
+      crossclone_update($entity_type, $entity, $cloned_entity,
+              $cloned_entity->crossclone->couple_setting == CROSSCLONE_COUPLE_DOWNSTREAM_SIMILAR
+              || $cloned_entity->crossclone->couple_setting == CROSSCLONE_COUPLE_CROSS_SIMILAR);
+      entity_save($entity_type, $clone);
+    }
+    $upstream = !empty($entity->crossclone->original) && ($entity->crossclone->couple_setting== CROSSCLONE_COUPLE_CROSS_SIMILAR ||
+            $entity->crossclone->couple_setting == CROSSCLONE_COUPLE_CROSS_STRAIGHT ||
+            $entity->crossclone->couple_setting == CROSSCLONE_COUPLE_UPSTREAM_SIMILAR ||
+            $entity->crossclone->couple_setting == CROSSCLONE_COUPLE_UPSTREAM_STRAIGHT);
+    if ($upstream) {
+      $original = entity_load($entity_type, $entity->crossclone->original);
+      // Prevent loop.
+      $original->crossclone->updating = TRUE;
+      crossclone_update($entity_type, $entity, $original,
+              $entity->crossclone->couple_setting == CROSSCLONE_COUPLE_CROSS_SIMILAR ||
+              $entity->crossclone->couple_setting == CROSSCLONE_COUPLE_UPSTREAM_SIMILAR);
+      entity_save($entity_type, $original);
+    }
+  }
+}
+
+/**
+ * Enforce delete settings for an entity
+ * @param string $entity_type
+ *   The entity type.
+ * @param stdClass $entity
+ *   The type of entity
+ */
+function crossclone_enforce_delete_settings($entity_type, $entity) {
+  $info = entity_get_info($entity_type);
+  $entity_id = $entity->{$info['entity keys']['id']};
+  crossclone_enforce_delete_downstream($entity_type, $entity_id);
+  crossclone_enforce_delete_upstream($entity_type, $entity_id);
+  crossclone_enforce_cross_delete($entity_type, $entity_id);
+}
+
+/**
+ * Enforce delete settings downstream.
+ * @param string $entity_type
+ *   The entity type.
+ * @param stdClass $entity
+ *   The type of entity
+ */
+function crossclone_enforce_delete_downstream($entity_type, $entity_id) {
+  $result = db_select('crossclone', 'c')
+    ->fields('c', array('entity_id'))
+    ->condition('original', $entity_id)
+    ->condition('delete_setting', CROSSCLONE_DELETE_DOWNSTREAM)
+    ->condition('type', $entity_type)
+    ->execute();
+  foreach ($result as $row) {
+    entity_delete($entity_type, $row->entity_id);
+  }
+}
+
+/**
+ * Enforce delete settings upstream.
+ * @param string $entity_type
+ *   The entity type.
+ * @param stdClass $entity
+ *   The type of entity
+ */
+function crossclone_enforce_delete_upstream($entity_type, $entity_id) {
+  $result = db_select('crossclone', 'c')
+    ->fields('c', array('entity_id'))
+    ->condition('entity_id', $entity_id)
+    ->condition('delete_setting', CROSSCLONE_DELETE_UPSTREAM)
+    ->condition('type', $entity_type)
+    ->execute();
+  foreach ($result as $row) {
+    entity_delete($entity_type, $entity_id);
+  }
+}
+
+/**
+ * Enforce cross deletion settings.
+ * @param string $entity_type
+ *   The entity type.
+ * @param stdClass $entity
+ *   The type of entity
+ */
+function crossclone_enforce_cross_delete($entity_type, $entity_id) {
+  $args = array(
+    ':entity_id' => $entity_id,
+    ':original' => $entity_id,
+  );
+  $result = db_select('crossclone', 'c')
+    ->fields('c', array('entity_id', 'original'))
+    ->where('c.entity_id = :entity_id OR c.original = :original', $args)
+    ->condition('delete_setting', CROSSCLONE_DELETE_CROSS)
+    ->condition('type', $entity_type)
+    ->execute();
+  foreach ($result as $row) {
+    if ($row->entity_id != $entity_id) {
+      entity_delete($entity_type, $row->entity_id);
+    }
+    else {
+      entity_delete($entity_type, $row->crossclone->original);
+    }
+  }
+}
+
+/**
+ * Implements hook_token_list().
+ */
+function crossclone_token_list($type = 'all') {
+  $tokens = array();
+  if ($type == 'node' || $type == 'all') {
+    $tokens['node']['crossclone-original'] = t('Node ID from which this node was cloned.');
+  }
+  return $tokens;
+}
+
+/**
+ * Implements hook_token_values().
+ */
+function crossclone_token_values($type, $object = NULL) {
+  $values = array();
+  if ($type == 'node') {
+    $values['crossclone-original'] = isset($node->crossclone->original) ? $node->crossclone->original : 0;
+  }
+  return $values;
+}
+
+/**
+ * Helper function to fetch clone options.
+ */
+function crossclone_get_clone_options($node_type = NULL) {
+  return array(
+    CROSSCLONE_CLONE_STRAIGHT => t('Clone straight'),
+    CROSSCLONE_CLONE_SIMILAR => t('Clone similar'),
+  );
+}
+
+/**
+ * Helper function to fetch couple options.
+ */
+function crossclone_get_couple_options($node_type = NULL) {
+  return array(
+    CROSSCLONE_COUPLE_NONE => t('No coupling'),
+    CROSSCLONE_COUPLE_DOWNSTREAM_STRAIGHT => t('Couple downstream, straight'),
+    CROSSCLONE_COUPLE_DOWNSTREAM_SIMILAR => t('Couple downstream, similar'),
+    CROSSCLONE_COUPLE_UPSTREAM_STRAIGHT => t('Couple upstream, straight'),
+    CROSSCLONE_COUPLE_UPSTREAM_SIMILAR => t('Couple upstream, similar'),
+    CROSSCLONE_COUPLE_CROSS_STRAIGHT => t('Cross couple, straight'),
+    CROSSCLONE_COUPLE_CROSS_SIMILAR => t('Cross couple, similar'),
+  );
+}
+
+/**
+ * Helper function to fetch delete options.
+ */
+function crossclone_get_delete_options($node_type = NULL) {
+  return array(
+    CROSSCLONE_DELETE_NONE => t('No delete coupling'),
+    CROSSCLONE_DELETE_DOWNSTREAM => t('Delete downstream'),
+    CROSSCLONE_DELETE_UPSTREAM => t('Delete upstream'),
+    CROSSCLONE_DELETE_CROSS => t('Cross delete'),
+  );
+}
+
+/**
+ * A settings for for a reference handler
+ * @param array $field
+ *   the field to show the form for.
+ * @param array $instance
+ *   the field instance
+ * @return array
+ *   A form array that can be merged with the original form.
+ */
+function crossclone_reference_handler_settings_form($field, $instance) {
+  $form = array();
+  $settings = $instance['settings'];
+  $form['crossclone'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Crossclone'),
+  );
+  $form['crossclone']['coupling'] = array(
+    '#type' => 'checkbox',
+    '#default_value' => $settings['crossclone']['coupling'],
+    '#title' => t('Create crossclone coupling'),
+    '#description' => t('This will create a crossclone relationship for all nodes that establish a reference to another node'),
+  );
+  $form['crossclone']['couple_setting'] = array(
+    '#type' => 'select',
+    '#title' => t('Coupling settings'),
+    '#description' => t('Choose how the original node should couple to the clone.'),
+    '#options' => crossclone_get_couple_options(),
+    '#default_value' =>  $settings['crossclone']['couple_setting'],
+  );
+  $form['crossclone']['delete_setting'] = array(
+    '#type' => 'select',
+    '#title' => t('Delete settings'),
+    '#description' => t('Choose how the original node should behave when it gets deleted.'),
+    '#options' => crossclone_get_delete_options(),
+    '#default_value' => $settings['crossclone']['delete_setting'],
+  );
+  return $form;
+}

@@ -1,0 +1,27 @@
+<?php
+/**
+ * @file
+ * Code for the NS Blog Channel feature.
+ */
+
+include_once('ns_prod_blog.features.inc');
+
+/**
+ * Implements hook_modules_enabled().
+ */
+function ns_prod_blog_modules_enabled($modules) {
+   // Make the main menu into a translatable menu if ns_i18n is on.
+  if (in_array('ns_i18n', $modules)) {
+    $main_menu = menu_load('main-menu');
+    $main_menu['i18n_mode'] = I18N_MODE_MULTIPLE;
+    menu_save($main_menu);
+  }
+}
+
+/**
+ * Indicate that we want to the field translation feature
+ * to handle things for us when it's enabled.
+ */
+function ns_prod_blog_ns_field_translation_modules() {
+  return array('ns_prod_blog');
+}

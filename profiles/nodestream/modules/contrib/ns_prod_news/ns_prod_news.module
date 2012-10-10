@@ -1,0 +1,141 @@
+<?php
+/**
+ * @file
+ */
+
+require_once('ns_prod_news.features.inc');
+
+/**
+ * Implementation of hook_crossclone_entity_alter().
+ */
+function ns_prod_news_crossclone_entity_alter($entity_type, &$original_entity, &$entity) {
+  // When a Promo node is cloned from an Article, we must populate the node
+  // reference field on the Promo.
+  if ($entity_type == 'node' && $original_entity->type == 'ns_article' && $entity->type == 'ns_prod_news_promo') {
+    // Set the promo article to the right one.
+    $entity->field_ns_prod_news_promo_article['und'][0]['target_id'] = $original_entity->nid;
+    // Remove workbench properties in order to prevent problems with manipulating the new entity.
+    if (isset($entity->workbench_moderation)) {
+      unset($entity->workbench_moderation_state_current, $entity->workbench_moderation_state_new, $entity->workbench_moderation);
+    }
+  }
+}
+
+/**
+ * Implements hook_modules_enabled().
+ */
+function ns_prod_news_modules_enabled($modules) {
+   // Make the main menu into a translatable menu if ns_i18n is on.
+  if (in_array('ns_i18n', $modules)) {
+    $main_menu = menu_load('main-menu');
+    $main_menu['i18n_mode'] = I18N_MODE_MULTIPLE;
+    menu_save($main_menu);
+  }
+}
+
+/**
+ * Implements hook_panels_pre_render().
+ */
+function ns_prod_news_panels_pre_render(&$display, $renderer) {
+  foreach ($display->content as $pane) {
+    // Find the topic panel.
+    if ($pane->subtype == 'ns_prod_news_topic-panel_pane_1') {
+      // Fetch the tid, which should actually be a uuid,
+      // and replace it with it's proper value.
+      $tid = $pane->configuration['arguments']['uuid'];
+      // Add some css necessary for the "edit region" links.
+      if (isset($pane->css['css_class'])) {
+        $pane->css['css_class'] .= ' region-' . $tid;
+      }
+      else {
+        $pane->css['css_class'] = ' region-' . $tid;
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_ctools_plugin_post_alter().
+ */
+function ns_prod_news_ctools_plugin_post_alter(&$plugin, &$info) {
+  // Override a function defined by the plugin.
+  if (module_exists('uuid') && $plugin['module'] == 'views_content' && $info['type'] == 'content_types' && $plugin['content types'] == 'views_content_views_panes_content_type_content_types') {
+    $plugin['edit form'] = 'ns_prod_news_views_panes_edit_form';
+    $plugin['add form'] = 'ns_prod_news_views_panes_edit_form';
+    $plugin['render callback'] = 'ns_prod_news_views_panes_render';
+  }
+}
+
+function ns_prod_news_views_panes_render($subtype, $conf, $panel_args, $contexts) {
+  $content = views_content_views_panes_content_type_render($subtype, $conf, $panel_args, $contexts);
+  // Replace tids with uuids and then pass this on to the regular views content pane renderer.
+  if ($subtype == 'ns_prod_news_topic-panel_pane_1') {
+    $context = current($contexts);
+    if (!empty($context)) {
+      $edit_link = array('href' => 'admin/content/topic-editor/' . $context->argument . '/' . $conf['arguments']['uuid'], 'title' => t('Content'));
+    }
+    if (isset($content) && isset($edit_link)) {
+      $content->admin_links[] = $edit_link;
+    }
+  }
+  return $content;
+}
+
+
+/**
+ * Custom form for views panes that replaces tid arguments with a select.
+ */
+function ns_prod_news_views_panes_edit_form($form, &$form_state) {
+  $form = views_content_views_panes_content_type_edit_form($form, $form_state);
+  $pane = $form_state['pane'];
+  // Add an autocomplete on the tid input.
+  if ($pane->subtype == 'ns_prod_news_topic-panel_pane_1' && isset($form['arguments']['uuid'])) {
+    $form['arguments']['uuid']['#type'] = 'select';
+    $form['arguments']['uuid']['#options'] = ns_prod_news_get_regions();
+  }
+  $form['#submit'][] = 'views_content_views_panes_content_type_edit_form_submit';
+  return $form;
+}
+
+/**
+ * Implements hook_admin_paths().
+ */
+function ns_prod_news_admin_paths() {
+  // We need to make sure that our promo view appears in the admin interface.
+  return array(
+    'node/*/promos' => TRUE,
+  );
+}
+
+/**
+ * Fetch uuids for regions
+ * @param int $tid
+ *   The taxonomy term id
+ * @return string $uuid
+ *   The uuid of the term.
+ */
+function ns_prod_news_get_region_uuid($tid) {
+  return db_select('taxonomy_term_data', 't')
+  ->fields('t', array('uuid'))
+  ->condition('tid', $tid)
+  ->execute()
+  ->fetchField();
+}
+
+/**
+ * Get all regions keyed by uuid.
+ */
+function ns_prod_news_get_regions() {
+  $vids = taxonomy_vocabulary_get_names();
+  return db_select('taxonomy_term_data', 't')
+    ->addTag('translatable')
+    ->addTag('term_access')
+    ->fields('t', array('uuid', 'name'))
+    ->condition('vid', $vids['ns_prod_news_topic_region']->vid)
+    ->execute()
+    ->fetchAllKeyed();
+}
+
+function ns_prod_news_ns_field_translation_modules() {
+  return array('ns_prod_news');
+}

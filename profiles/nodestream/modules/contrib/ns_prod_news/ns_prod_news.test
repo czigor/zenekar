@@ -1,0 +1,678 @@
+<?php
+/**
+ * @file
+ * Tests for the newspaper product.
+ */
+
+/**
+ * Base class for newspaper tests.
+ */
+class NsProdNewsTestCase extends NodeStreamWebTestCase {
+
+  /**
+   * Get a byline node.
+   */
+  protected function getBylineNode($lang) {
+    $title = $this->randomName();
+    $test_file = $this->createTestFile();
+
+    return array(
+      'type' => 'ns_contributor',
+      'language' => $lang,
+      'title' => $title,
+      'title_field' => array($lang => array(array('value' => $title))),
+      'body' => array($lang => array(array('value' => ''))),
+      'field_ns_contributor_about' => array($lang => array(array('value' => $this->loremIpsum()))),
+      'field_ns_contributor_email' => array($lang => array(array('value' => 'example@nodene.se'))),
+      'field_ns_contributor_photo' => array($lang => array(array('fid' => $test_file->fid, 'display' => TRUE))),
+      'field_ns_contributor_user' => array($lang => array(array('target_id' => 1))),
+    );
+  }
+
+  /**
+   * Get an article node.
+   */
+  protected function getTestNode($lang, $byline_nid = NULL) {
+    $title = $this->randomName();
+    $node = array(
+      'type' => 'ns_article',
+      'language' => $lang,
+      'title' => $title,
+      'title_field' => array($lang => array(array('value' => $title))),
+      'body' => array($lang => array(array('value' => ''))),
+      'field_ns_article_body' => array($lang => array(array('value' => $this->loremIpsum()))),
+      'field_ns_article_kicker' => array($lang => array(array('value' => $this->randomName()))),
+      'field_ns_article_lead' => array($lang => array(array('value' => $this->loremIpsum()))),
+      'field_ns_prod_news_topic' => array('und' => array(array('tid' => 5))),
+      'field_ns_prod_news_region' => array('und' => array(array('tid' => 4))),
+    );
+    if (isset($byline_nid)) {
+      $node['field_ns_article_byline'] = array($lang => array(array('target_id' => $byline_nid)));
+    }
+    return $node;
+  }
+
+  /**
+   * Get a promo node.
+   */
+  protected function getTestPromoNode($lang, $article_nid) {
+    $title = $this->randomName();
+    $node = array(
+      'type' => 'ns_prod_news_promo',
+      'language' => $lang,
+      'title' => $title,
+      'title_field' => array($lang => array(array('value' => $title))),
+      'body' => array($lang => array(array('value' => ''))),
+      'field_ns_prod_news_kicker' => array($lang => array(array('value' => $this->randomName()))),
+      'field_ns_prod_news_lead' => array($lang => array(array('value' => $this->loremIpsum()))),
+      'field_ns_prod_news_topic' => array('und' => array(array('tid' => 5))),
+      'field_ns_prod_news_region' => array('und' => array(array('tid' => 4))),
+    );
+    if (isset($article_nid)) {
+      $node['field_ns_prod_news_promo_article'] = array($lang => array(array('target_id' => $article_nid)));
+    }
+    return $node;
+  }
+
+}
+
+/**
+ * Test translatability with entity translation.
+ */
+class NSProdNewsTranslationTest extends NSProdNewsTestCase {
+
+  /**
+   * @see parent::getInfo().
+   */
+  public static function getInfo() {
+    return array(
+      'name' => 'Field translation',
+      'description' => 'Test that the newspaper product plays ball with the nodestream field translation feature.',
+      'group' => 'NodeStream newspaper'
+    );
+  }
+
+  /**
+   * @see parent::setUp().
+   */
+  function setUp() {
+    parent::setUp(
+      'ns_prod_news'
+    );
+    // We need to indicate that we don't want to run a batch.
+    variable_set('ns_field_translation_skip_batch', TRUE);
+    module_enable(array('ns_field_translation'));
+  }
+
+  /**
+   * We should have replacements for node title, term name and term description
+   * when ns_field_translation and ns_prod_news is enabled.
+   */
+  function testFields() {
+    // Check that we have replacement instances for terms
+    // and nodes.
+    $this->assertTrue(field_read_instance('node', 'title_field', 'ns_prod_news_promo'), 'Promo title is a field');
+    $this->assertTrue(field_read_instance('taxonomy_term', 'description_field', 'ns_prod_news_topic'), 'topic description is a field');
+    $this->assertTrue(field_read_instance('taxonomy_term', 'name_field', 'ns_prod_news_topic'), 'Topic name is a field');
+    $this->assertTrue(field_read_instance('taxonomy_term', 'description_field', 'ns_prod_news_topic_region'), 'Region description is a field');
+    $this->assertTrue(field_read_instance('taxonomy_term', 'name_field', 'ns_prod_news_topic_region'), 'Region name is a field');
+  }
+
+  /**
+   * Test that the cloning of promos isn't affected by the fact that there are
+   * multiple content languages.
+   */
+  function testPromoClone() {
+    // Add an additional language.
+    locale_add_language('sv');
+    // Create an article
+    $this->drupalCreateNode(array(
+        'language' => 'sv',
+        'type' => 'ns_article',
+        // We don't have a body field,
+        // but that #!%& test class does really stupid things
+        // when we try to use another language.
+        'body' => array('sv' => array(array('value' => ''))),
+        'field_ns_article_body' => array('sv' => array(array('value' => $this->loremIpsum()))),
+        'field_ns_article_kicker' => array('sv' => array(array('value' => $this->randomString()))),
+        'field_ns_article_lead' => array('sv' => array(array('value' => $this->loremIpsum()))),
+        'field_ns_prod_news_topic' => array('und' => array(array('tid' => 5))),
+        'field_ns_prod_news_region' => array('und' => array(array('tid' => 4))),
+      )
+    );
+    // There should be a promo and it's entity reference field should point to
+    // the created article. This field should not be translatable, so we should
+    // find the value under 'und'.
+    $promo = node_load(2);
+    $this->assertEqual($promo->field_ns_prod_news_promo_article['und'][0]['target_id'], 1);
+  }
+
+  /**
+   * Test that untranslated content isn't shown unnecessarily.
+   */
+  public function testLanguageCheck() {
+    // Add a langauge.
+    locale_add_language('sv');
+    // Create a swedish article.
+    $node_sv = $this->drupalCreateNode($this->getTestNode('sv'));
+    // Go to the topic page, the item should not be listed.
+    $user = $this->drupalCreateUser(array('access content'));
+    $this->drupalLogin($user);
+    $this->drupalGet('taxonomy/term/5');
+    $this->assertNoText($node_sv->title, t('The node does not show up on the english listing.'));
+    $node_en = $this->drupalCreateNode($this->getTestNode('en'));
+    $this->drupalGet('taxonomy/term/5');
+    $this->assertText($node_en->title, t('The node shows up on the english listing.'));
+    $node_und = $this->drupalCreateNode($this->getTestNode('und'));
+    $this->drupalGet('taxonomy/term/5');
+    $this->assertText($node_und->title, t('Language neutral nodes shows up in the listing.'));
+  }
+}
+
+/**
+ * Test that the content editor works as expected.
+ */
+class NSProdNewsTopicEditorTestCase extends NSProdNewsTestCase {
+
+  /**
+   * @see DrupalWebTestCase::getInfo().
+   */
+  public static function getInfo() {
+    return array(
+      'name' => 'Topic editor',
+      'description' => 'Test the topic editor.',
+      'group' => 'NodeStream newspaper'
+    );
+  }
+
+  public function setUp() {
+    parent::setUp('ns_prod_news');
+  }
+
+  /**
+   * Test that the content editor is accessible and that promos
+   * shows up in it.
+   */
+  public function testContentEditor() {
+    // Create an article
+    $this->drupalCreateNode(array(
+        'type' => 'ns_article',
+        'field_ns_article_body' => array('und' => array(array('value' => $this->loremIpsum()))),
+        'field_ns_article_kicker' => array('und' => array(array('value' => $this->randomString()))),
+        'field_ns_article_lead' => array('und' => array(array('value' => $this->loremIpsum()))),
+        'field_ns_prod_news_topic' => array('und' => array(array('tid' => 5))),
+        'field_ns_prod_news_region' => array('und' => array(array('tid' => 4))),
+      )
+    );
+    // A promo should have been created.
+    $promo = node_load(2);
+    $this->assertTrue($promo !== FALSE, 'A promo was created.');
+    $user = $this->drupalCreateUser(array(
+      'access content',
+      'create ns_article content',
+      'create ns_prod_news_promo content',
+      'edit any ns_prod_news_promo content',
+      'manage topic regions',
+    ));
+    // Go to the topic region page.
+    $this->drupalLogin($user);
+    $this->drupalGet('admin/content/topic-editor/5/a3e30f46-72ed-e304-913c-3af5663d15f3');
+    // The promo should be there.
+    $this->assertText($promo->title);
+    $this->assertLink('Edit promo');
+  }
+}
+
+/**
+ * Test that article pages works as expected.
+ */
+class NSProdNewsArticleTestCase extends NSProdNewsTestCase {
+
+  /**
+   * @see DrupalWebTestCase::getInfo().
+   */
+  public static function getInfo() {
+    return array(
+      'name' => 'Article representation',
+      'description' => 'Test article representation',
+      'group' => 'NodeStream newspaper'
+    );
+  }
+
+  /**
+   * @see DrupalWebTestCase::setUp().
+   */
+  public function setUp() {
+    parent::setUp('ns_prod_news');
+  }
+
+  /**
+   * Test article representation.
+   */
+  public function testArticle() {
+    $user = $this->drupalCreateUser(array('access content'));
+    $this->drupalLogin($user);
+    $byline = $this->drupalCreateNode($this->getBylineNode('und'));
+    // Create an article.
+    $node = $this->drupalCreateNode($this->getTestNode('und', $byline->nid));
+    // Go to the article page.
+    $this->drupalGet('node/' . $node->nid);
+    // Title should be present.
+    $this->assertText($node->title);
+    $fields = array(
+      'field_ns_article_kicker',
+      'field_ns_article_body',
+      'field_ns_article_lead',
+    );
+    foreach ($fields as $field) {
+      $value = field_get_items('node', $node, $field);
+      $this->assertText($value[0]['value']);
+    }
+    // Assert that the byline is present.
+    $this->assertText($byline->title, 'Byline name is present.');
+    $photo = $this->xpath('//div[contains(@class, field-name-field-ns-contributor-photo)]');
+    $this->assertTrue(!empty($photo), 'Byline photo is present');
+    // Create another article. That article should show up in a listing
+    // on the first node.
+    $second_node = $this->drupalCreateNode($this->getTestNode('und'));
+    $this->drupalGet('node/' . $node->nid);
+    $this->assertText($second_node->title);
+    // The same should be true for the first article
+    $this->drupalGet('node/' . $second_node->nid);
+    $this->assertText($node->title);
+    // There should be field groups present in the form.
+    $editor = $this->DrupalCreateUser(array('access content', 'create ns_article content', 'edit any ns_prod_news_promo content'));
+    $this->drupalLogin($editor);
+    $this->drupalGet('node/add/ns-article');
+    $this->assertText(t('Categories'), 'The categories field group is present.');
+    $this->assertText(t('Media'), 'The media field group is present.');
+    $this->assertText(t('Byline'), 'The byline field group is present.');
+    // Create a promo node and try to access it. we should be redirected to the edit page.
+    $promo = $this->drupalCreateNode($this->getTestPromoNode('und', $second_node->nid));
+    $this->drupalGet('node/' . $promo->nid);
+    $this->assertField('field_ns_prod_news_promo_lead[und][0][value]', 'Editors get redirected to the promo edit page');
+    $this->drupalLogin($user);
+    $this->drupalGet('node/' . $promo->nid);
+    $this->assertText($node->title);
+  }
+}
+
+/**
+ * Test that search works as expected.
+ */
+class NSProdNewsSearchTestCase extends NSProdNewsTestCase {
+
+  /**
+   * @see DrupalWebTestCase::getInfo().
+   */
+  public static function getInfo() {
+    return array(
+      'name' => 'Search',
+      'description' => 'Test that you can do searches properly.',
+      'group' => 'NodeStream newspaper'
+    );
+  }
+
+  /**
+   * @see DrupalWebTestCase::setUp().
+   */
+  public function setUp() {
+    parent::setUp('ns_prod_news', 'ns_prod_search');
+  }
+
+  /**
+   * Test that search functionality works as expected.
+   */
+  public function testSearch() {
+    $node = $this->drupalCreateNode($this->getTestNode('und'));
+    // Update the search index.
+    module_invoke('node', 'update_index');
+    // Create a user that is allowed to search and log in.
+    $user = $this->drupalCreateUser(array('access content', 'search content', 'use advanced search'));
+    $this->drupalLogin($user);
+    $this->assertField('search_block_form', 'The search form exists');
+    $this->drupalPost(NULL, array('search_block_form' => $node->title), t('Search'));
+    $this->assertText($node->title, "Node {$node->title} exits");
+  }
+}
+
+/**
+ * Test ad placement.
+ */
+class NSProdNewsAdTestCase extends NSProdNewsTestCase {
+
+  /**
+   * @see DrupalWebTestCase::getInfo().
+   */
+  public static function getInfo() {
+    return array(
+      'name' => 'Ads',
+      'description' => 'Test that ads can be placed.',
+      'group' => 'NodeStream newspaper',
+    );
+  }
+
+  /**
+   * @see DrupalWebTestCase::setUp().
+   */
+  public function setUp() {
+    parent::setUp('ns_prod_news', 'ns_ad');
+  }
+
+  /**
+   * Test that ad placement works as expected.
+   */
+  public function testAdPlacement() {
+    $node = $this->drupalCreateNode($this->getAdNode('und'));
+    $user = $this->drupalCreateUser(array('access content'));
+    $this->drupalLogin($user);
+    $this->drupalGet('taxonomy/term/5');
+    $image = $this->xpath("//div[contains(@class, view-ns-prod-news-ad)]/img");
+    $this->assertTrue(count($image), 'An image was found');
+  }
+
+  /**
+   * Get an ad node.
+   */
+  protected function getAdNode($lang) {
+    $file = $this->createTestFile();
+    $title = $this->randomName();
+    return array(
+      'type' => 'ns_ad',
+      'language' => $lang,
+      'title' => $title,
+      'title_field' => array($lang => array(array('value' => $title))),
+      'body' => array($lang => array(array('value' => ''))),
+      'field_ns_ad_media' => array($lang => array(array('fid' => $file->fid, 'display' => TRUE))),
+      'field_ns_ad_link' => array($lang => array(array('url' => 'http://nodeone.se/'))),
+      'field_ns_prod_news_topic' => array('und' => array(array('tid' => 5))),
+    );
+  }
+}
+
+/**
+ * Tests for fact attachments.
+ */
+class NSProdNewsFactTestCase extends NSProdNewsTestCase {
+
+  /**
+   * @see DrupalWebTestCase::getInfo().
+   */
+  public static function getInfo() {
+    return array(
+      'name' => 'Facts',
+      'description' => 'Test that facts can be used.',
+      'group' => 'NodeStream newspaper',
+    );
+  }
+
+  /**
+   * @see DrupalWebTestCase::setUp().
+   */
+  public function setUp() {
+    parent::setUp('ns_prod_news', 'ns_fact');
+    defaultconfig_optional_save('ns_fact', 'field_default_fields', 'node-ns_article-field_ns_fact_ns_article_fact', TRUE);
+    drupal_flush_all_caches();
+  }
+
+  /**
+   * Test that facts can be attached.
+   */
+  public function testFacts() {
+    $fact = $this->drupalCreateNode($this->getFactNode('und'));
+    $node = $this->drupalCreateNode($this->getTestNode('und', $fact->nid));
+    $user = $this->drupalCreateUser(array('access content'));
+    $this->drupalLogin($user);
+    $this->drupalGet('node/2');
+    $this->assertText($fact->title, 'Fact title is present');
+    $fact_body = field_get_items('node', $fact, 'field_ns_fact_body');
+    $this->assertText($fact_body[0]['value'], 'Fact body is present');
+  }
+
+  /**
+   * Override the original function to be able to attach a fact instead of a byline.
+   */
+  protected function getTestNode($lang, $fact_nid = NULL) {
+    $node = parent::getTestNode($lang);
+    $node['field_ns_fact_ns_article_fact'] = array($lang => array(array('target_id' => $fact_nid)));
+    return $node;
+  }
+
+  /**
+   * Get a fact test node.
+   */
+  protected function getFactNode($lang) {
+    $file = $this->createTestFile();
+    $title = $this->randomName();
+    return array(
+      'type' => 'ns_fact',
+      'language' => $lang,
+      'title' => $title,
+      'title_field' => array($lang => array(array('value' => $title))),
+      'body' => array($lang => array(array('value' => ''))),
+      'field_ns_fact_body' => array($lang => array(array('value' => $this->loremIpsum()))),
+    );
+  }
+}
+
+/**
+ * Tests for poll attachments.
+ */
+class NSProdNewsPollTestCase extends NSProdNewsTestCase {
+
+  /**
+   * @see DrupalWebTestCase::getInfo().
+   */
+  public static function getInfo() {
+    return array(
+      'name' => 'Polls',
+      'description' => 'Test that polls can be used.',
+      'group' => 'NodeStream newspaper',
+    );
+  }
+
+  /**
+   * @see DrupalWebTestCase::setUp().
+   */
+  public function setUp() {
+    parent::setUp('ns_prod_news', 'ns_poll');
+    defaultconfig_optional_save('ns_poll', 'field_default_fields', 'node-ns_article-field_ns_poll_ns_article_poll', TRUE);
+    drupal_flush_all_caches();
+  }
+
+  /**
+   * Test that poll can be attached.
+   */
+  public function testPoll() {
+    $poll = $this->drupalCreateNode($this->getPollNode('und'));
+    $node = $this->drupalCreateNode($this->getTestNode('und', $poll->nid));
+    $user = $this->drupalCreateUser(array('access content', 'vote on polls'));
+    $this->drupalLogin($user);
+    $this->drupalGet('node/2');
+    $this->assertText($poll->title, 'Poll title is present');
+    foreach ($poll->choice as $choice) {
+      $this->assertText($choice['chtext']);
+    }
+  }
+
+  /**
+   * Override the original function to be able to attach a poll instead of a byline.
+   */
+  protected function getTestNode($lang, $poll_nid = NULL) {
+    $node = parent::getTestNode($lang);
+    $node['field_ns_poll_ns_article_poll'] = array($lang => array(array('target_id' => $poll_nid)));
+    return $node;
+  }
+
+  /**
+   * Get a fact test node.
+   */
+  protected function getPollNode($lang) {
+    $title = $this->randomName();
+    return array(
+      'active' => TRUE,
+      'runtime' => 0,
+      'uid' => 0,
+      'type' => 'poll',
+      'allowvotes' => TRUE,
+      'choice' => array(
+        1 => array(
+          'chtext' => 'test',
+          'chvotes' => 0,
+          'weight' => 1,
+        ),
+        2 => array(
+          'chtext' => 'test2',
+          'chvotes' => 0,
+          'weight' => 1,
+        ),
+      ),
+      'language' => $lang,
+      'title' => $title,
+      'title_field' => array($lang => array(array('value' => $title))),
+      'body' => array($lang => array(array('value' => ''))),
+    );
+  }
+}
+
+/**
+ * Tests for footer content representation.
+ */
+class NSProdNewsFooterContentTestCase extends NSProdNewsTestCase {
+
+  /**
+   * @see DrupalWebTestCase::getInfo().
+   */
+  public static function getInfo() {
+    return array(
+      'name' => 'Footer content',
+      'description' => 'Test that footer content shows up.',
+      'group' => 'NodeStream newspaper',
+    );
+  }
+
+  /**
+   * @see DrupalWebTestCase::setUp().
+   */
+  public function setUp() {
+    parent::setUp(
+      'ns_prod_news',
+      'ns_footer_content'
+    );
+    // We need to indicate that we don't want to run a batch.
+    variable_set('ns_field_translation_skip_batch', TRUE);
+    module_enable(array('ns_field_translation'));
+  }
+
+  /**
+   * Test that footer content is present.
+   */
+  public function testFooterContent() {
+    // Add an additional language.
+    locale_add_language('sv');
+    $footer_content = $this->drupalCreateNode($this->getFooterContentNode('und'));
+    $user = $this->drupalCreateUser(array('access content'));
+    $this->drupalLogin($user);
+    $body = field_get_items('node', $footer_content, 'field_ns_footer_content_body');
+    $this->assertText($body[0]['value'], 'Footer content body is present');
+    // English content should also show up.
+    $footer_content = $this->drupalCreateNode($this->getFooterContentNode('en'));
+    $this->drupalGet('node');
+    $body = field_get_items('node', $footer_content, 'field_ns_footer_content_body');
+    $this->assertText($body[0]['value'], 'English footer content body is present');
+    // Swedish footer content shouldn't show up.
+    $footer_content = $this->drupalCreateNode($this->getFooterContentNode('sv'));
+    $this->drupalGet('node');
+    $body = field_get_items('node', $footer_content, 'field_ns_footer_content_body');
+    $this->assertNoText($body[0]['value'], 'Swedish footer content body is present');
+    $this->drupalGet('node');
+  }
+
+  /**
+   * Get a footer content test node.
+   */
+  protected function getFooterContentNode($lang) {
+    $title = $this->randomName();
+    return array(
+      'type' => 'ns_footer_content',
+      'language' => $lang,
+      'title' => $lang . '_' . $title,
+      'title_field' => array($lang => array(array('value' => $title))),
+      'body' => array($lang => array(array('value' => ''))),
+      'field_ns_footer_content_body' => array($lang => array(array('value' => $lang . '_' . $this->loremIpsum()))),
+    );
+  }
+}
+
+/**
+ * Tests for webform representation.
+ */
+class NSProdNewsWebFormTestCase extends NSProdNewsTestCase {
+
+  /**
+   * @see DrupalWebTestCase::getInfo().
+   */
+  public static function getInfo() {
+    return array(
+      'name' => 'Forms',
+      'description' => 'Test that webforms works as expected.',
+      'group' => 'NodeStream newspaper',
+    );
+  }
+
+  /**
+   * @see DrupalWebTestCase::setUp().
+   */
+  public function setUp() {
+    parent::setUp(
+      'ns_prod_news',
+      'ns_form'
+    );
+    defaultconfig_optional_save('ns_form', 'field_default_fields', 'node-ns_article-field_ns_form_ns_article_form', TRUE);
+    drupal_flush_all_caches();
+  }
+
+  /**
+   * Test that forms can be created and used.
+   */
+  public function testForm() {
+    $user = $this->drupalCreateUser(array('access content', 'create ns_form content', 'create ns_article content', 'edit own ns_form content', 'edit own ns_article content'));
+    $this->drupalLogin($user);
+    $this->drupalGet('node/add/ns-form');
+    $post = array(
+      'title' => $this->randomName(),
+    );
+    $this->drupalPost(NULL, $post, t('Save'));
+    $node = end(entity_load('node'));
+    $this->drupalGet('node/' . $node->nid . '/webform');
+    $component = array(
+      'add[name]' => 'test',
+      'add[type]' => 'textfield',
+      'add[mandatory]' => TRUE,
+    );
+    $this->drupalPost(NULL, $component, t('Add'));
+    $component = array(
+      'name' => 'test',
+      'form_key' => 'test',
+      'mandatory' => TRUE,
+      'extra[title_display]' => 'before',
+    );
+    $this->drupalPost(NULL, $component, t('Save component'));
+    $this->drupalGet('node/add/ns-article');
+    $article = $this->drupalCreateNode($this->getTestNode('und', $node->nid));
+    $this->drupalGet('node/' . $article->nid);
+    $this->assertText($node->title, 'Form title exists');
+    $this->assertField('submitted[test]', 'Created component is visible');
+  }
+
+  /**
+   * Override the original function to be able to attach a form instead of a byline.
+   */
+  protected function getTestNode($lang, $form_nid = NULL) {
+    $node = parent::getTestNode($lang);
+    $node['field_ns_form_ns_article_form'] = array($lang => array(array('target_id' => $form_nid)));
+    return $node;
+  }
+
+}
+

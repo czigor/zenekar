@@ -1,0 +1,42 @@
+<?php
+/**
+ * @file
+ * Tests for Panels ref formatter.
+ */
+
+/**
+ * Basic test for pluggable argument default.
+ */
+class PanelsRefFormatterViewsTest extends DrupalWebTestCase {
+  public static function getInfo() {
+    return array(
+      'name' => 'Views test',
+      'description' => 'Tests views integration.',
+      'group' => 'Panels ref formatter'
+    );
+  }
+
+  public function setUp() {
+    parent::setUp('views', 'panels_ref_formatter', 'panels_ref_formatter_test');
+  }
+
+  /**
+   * Test the views integration.
+   */
+  public function testViewsIntegration() {
+    // Check that the plugin exists.
+    $plugin = views_get_plugin('row', 'panels_ref_formatter_row');
+    $this->assertTrue($plugin, t('The panels ref formatter plugin exists'));
+    $type = $this->drupalCreateContentType();
+    // Create some test nodes.
+    for ($i = 0; $i < 5; $i++) {
+      $nodes[] = $this->drupalCreateNode(array('type' => $type->type));
+    }
+    $this->drupalLogin($this->drupalCreateUser(array('access content')));
+    $this->drupalGet('panels-ref-formatter-test');
+    foreach ($nodes as $node) {
+      $this->assertText($node->title, t('Node title %title found', array('%title' => $node->title)));
+    }
+    $this->assertText('Custom content', t('Custom content pane was present'));
+  }
+}

@@ -1,0 +1,112 @@
+<?php
+/**
+ * @file
+ * Tests for the module.
+ */
+
+class NSProdRSSTranslationTestCase extends NodeStreamWebTestCase {
+
+  /**
+   * @see parent::getInfo().
+   */
+  public static function getInfo() {
+    return array(
+      'name' => 'Field translation',
+      'description' => 'Test that the RSS product plays ball with the nodestream field translation feature.',
+      'group' => 'NodeStream RSS'
+    );
+  }
+
+  /**
+   * @see parent::setUp().
+   */
+  function setUp() {
+    parent::setUp(
+      'ns_prod_rss'
+    );
+    // We need to indicate that we don't want to run a batch.
+    variable_set('ns_field_translation_skip_batch', TRUE);
+    module_enable(array('ns_field_translation'));
+  }
+
+  /**
+   * Test that the cloning of promos isn't affected by the fact that there are
+   * multiple content languages.
+   */
+  function testPromoClone() {
+    // Add an additional language.
+    locale_add_language('sv');
+    // Create a term
+    $term = $this->getTestTerm();
+    taxonomy_term_save($term);
+    // Create an article
+    $this->drupalCreateNode(array(
+        'language' => 'sv',
+        'type' => 'ns_article',
+        'body' => array('sv' => array(array('value' => ''))),
+        'field_ns_article_body' => array('sv' => array(array('value' => $this->loremIpsum()))),
+        'field_ns_article_kicker' => array('sv' => array(array('value' => $this->randomString()))),
+        'field_ns_article_lead' => array('sv' => array(array('value' => $this->loremIpsum()))),
+        'field_ns_prod_rss_topic' => array('und' => array(array('tid' => $term->tid))),
+      )
+    );
+    // There should be a promo and it's entity reference field should point to
+    // the created article. This field should not be translatable, so we should
+    // find the value under 'und'.
+    $promo = node_load(2);
+    $this->assertEqual($promo->field_ns_prod_rss_promo_article['und'][0]['target_id'], 1, 'The promo field still has the appropriate value');
+  }
+
+  /**
+   * Test that untranslated content isn't shown unnecessarily.
+   */
+  public function testLanguageCheck() {
+    // Add a langauge
+    drupal_flush_all_caches();
+    locale_add_language('sv');
+    $term = $this->getTestTerm();
+    taxonomy_term_save($term);
+    $feed_path = "feed/{$term->tid}/rss.xml";
+    // Create a swedish article.
+    $node_sv = $this->drupalCreateNode($this->getTestNode('sv', $term->tid));
+    // Go to the topic rss feed, the item should not be listed.
+    $user = $this->drupalCreateUser(array('access content'));
+    $this->drupalLogin($user);
+    $this->assertNoText($node_sv->title, 'The node does not show up on the english listing.');
+    $node_en = $this->drupalCreateNode($this->getTestNode('en', $term->tid));
+    $this->drupalGet($feed_path);
+    $this->assertText($node_en->title, 'The node shows up on the english listing.');
+    $node_und = $this->drupalCreateNode($this->getTestNode('und', $term->tid));
+    $this->drupalGet($feed_path);
+    $this->assertText($node_und->title, 'Language neutral nodes shows up in the listing.');
+  }
+
+  /**
+   * Get a test term.
+   */
+  protected function getTestTerm() {
+    $vids = taxonomy_vocabulary_get_names();
+    $term = new stdClass;
+    $term->vid = $vids['ns_prod_rss_topic']->vid;
+    $term->name = $this->randomName();
+    $term->name_field = array(
+      'en' => array(array('value' => $term->name)),
+    );
+    return $term;
+  }
+
+  protected function getTestNode($lang, $tid) {
+    $title = $this->randomName();
+    return array(
+      'type' => 'ns_article',
+      'language' => $lang,
+      'title' => $title,
+      'title_field' => array($lang => array(array('value' => $title))),
+      'body' => array($lang => array(array('value' => ''))),
+      'field_ns_article_body' => array($lang => array(array('value' => $this->loremIpsum()))),
+      'field_ns_article_kicker' => array($lang => array(array('value' => $this->randomString()))),
+      'field_ns_article_lead' => array($lang => array(array('value' => $this->loremIpsum()))),
+      'field_ns_prod_rss_topic' => array('und' => array(array('tid' => $tid))),
+    );
+  }
+}

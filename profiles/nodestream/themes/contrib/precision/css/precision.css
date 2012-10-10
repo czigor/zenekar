@@ -1,0 +1,19 @@
+/**
+ * Precision general minimal general stuffs
+ */
+ul.action-links {
+  overflow: hidden;
+}
+
+ul.action-links li a {
+  float: left;
+  display: block;
+  padding: 3px 5px;
+  border: 1px solid #CCC;
+  background: #DDD;
+  margin-right: 10px;
+}
+
+ul.action-links li a:hover {
+  background: #EEE;
+}

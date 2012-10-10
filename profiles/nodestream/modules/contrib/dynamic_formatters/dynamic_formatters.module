@@ -1,0 +1,250 @@
+<?php
+
+/**
+ * Implements hook_views_api().
+ */
+function dynamic_formatters_views_api() {
+  return array(
+    'api' => 2,
+    'path' => drupal_get_path('module', 'dynamic_formatters') . '/views',
+  );
+}
+
+/**
+ * Implements hook_permission().
+ */
+function dynamic_formatters_permission() {
+  return array(
+    'administer dynamic formatters' => array(
+      'title' => t('Administer dynamic formatters'),
+      'description' => t('Administer all dynamic formatters.'),
+    ),
+    'create dynamic formatters' => array(
+      'title' => t('Create dynamic formatters'),
+      'description' => t('Create new dynamic formatters.'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_ctools_plugin_directory().
+ */
+function dynamic_formatters_ctools_plugin_directory($module, $type) {
+  if ($type == 'export_ui' || 'dynamic_formatters_renderer') {
+    return 'plugins/' . $type;
+  }
+}
+
+/**
+ * Implements hook_ctools_api().
+ */
+function dynamic_formatters_ctools_plugin_api($module, $api) {
+  if ($module == 'dynamic_formatters' && $api == 'plugins') {
+    return array('version' => 1);
+  }
+}
+
+/**
+ * Implements hook_field_info().
+ */
+function dynamic_formatters_field_info() {
+  return array(
+    'dynamic_formatters_preset' => array(
+      'label' => t('Dynamic formatter reference'),
+      'description' => t('Stores a reference to a dynamic formatter preset.'),
+      'settings' => array('allowed_values' => array(), 'allowed_values_function' => ''),
+      'default_widget' => 'options_select',
+      'default_formatter' => 'dynamic_formatters_default',
+    ),
+  );
+}
+
+/**
+ * Implements hook_field_presave().
+ */
+function dynamic_formatters_field_presave($entity_type, $entity, $field, $instance, $langcode, &$items) {
+  foreach ($items as $delta => $item) {
+    $items[$delta]['safe'] = check_plain($item['preset']);
+  }
+}
+
+/**
+ * Implements hook_field_is_empty().
+ */
+function dynamic_formatters_field_is_empty($item, $field) {
+  if (empty($item['preset'])) {
+    return TRUE;
+  }
+  return FALSE;
+}
+
+/**
+ * Implements hook_field_settings_form().
+ */
+function dynamic_formatters_field_settings_form($field, $instance, $has_data) {
+  $settings = $field['settings'];
+  $form['allowed_values'] = array(
+    '#type' => 'select',
+    '#title' => t('Allowed values list'),
+    '#multiple' => TRUE,
+    '#default_value' => $settings['allowed_values'],
+    '#options' => dynamic_formatters_get_preset_options(),
+    '#field_has_data' => $has_data,
+    '#field' => $field,
+    '#field_type' => $field['type'],
+    '#access' => empty($settings['allowed_values_function']),
+  );
+  $description = t('The possible values this field can contain. Select allowed values from the list.');
+  $form['allowed_values']['#description'] = $description;
+  return $form;
+}
+
+/**
+ * Implements hook_field_widget_info_alter().
+ */
+function dynamic_formatters_field_widget_info_alter(&$info) {
+  $info['options_select']['field types'][] = 'dynamic_formatters_preset';
+  $info['options_buttons']['field types'][] = 'dynamic_formatters_preset';
+}
+
+/**
+ * Implements hook_options_list().
+ */
+function dynamic_formatters_options_list($field) {
+  $preset_values = dynamic_formatters_get_preset_options();
+  $allowed_values = $field['settings']['allowed_values'];
+  if (!isset($allowed_values) || empty($allowed_values)) {
+    return $preset_values;
+  }
+  $display_values = array();
+  foreach ($allowed_values as $item) {
+    if (isset($preset_values[$item]) ) {
+      $display_values[$item] = $preset_values[$item];
+    }
+  }
+  return $display_values;
+}
+
+/**
+ * Implements hook_field_formatter_info().
+ */
+function dynamic_formatters_field_formatter_info() {
+  return array(
+    'dynamic_formatters_default' => array(
+      'label' => t('Default'),
+      'field types' => array('dynamic_formatters_preset'),
+    ),
+    'dynamic_formatters_plain' => array(
+      'label' => t('Plain text'),
+      'field types' => array('dynamic_formatters_preset'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_field_formatter_view().
+ */
+function dynamic_formatters_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
+  $element = array();
+  foreach ($items as $delta => $item) {
+    $element[$delta] = array('#markup' => strip_tags($item['preset']));
+  }
+  return $element;
+}
+
+/**
+ * Implements hook_ctools_plugin_plugin_type().
+ */
+function dynamic_formatters_ctools_plugin_type() {
+  return array(
+    'plugins' => array(
+      'cache' => TRUE,
+      'use hooks' => TRUE,
+      'classes' => array('renderer'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_dynamic_formatters_plugins().
+ */
+function dynamic_formatters_dynamic_formatters_plugins() {
+  $info = array();
+  $path = drupal_get_path('module', 'dynamic_formatters') . '/plugins/dynamic_formatters_renderer';
+  $info['dynamic_formatters_renderer'] = array(
+    'renderer' => array(
+      'class' => 'dynamic_formatters_renderer',
+      'file' => 'dynamic_formatters_renderer.inc',
+      'path' => $path,
+    ),
+  );
+  $info['dynamic_formatters_renderer_panels_mini'] = array(
+    'title' => 'Mini Panels',
+    'renderer' => array(
+      'parent' => 'dynamic_formatters_renderer',
+      'class' => 'dynamic_formatters_renderer_panels_mini',
+      'file' => 'dynamic_formatters_renderer_panels_mini.inc',
+      'path' => $path,
+    ),
+  );
+  return $info;
+}
+
+/**
+ * Get all renderers formatted for #options
+ * @return array
+ *   An array of renderers.
+ */
+function dynamic_formatters_get_renderer_options() {
+  $renderers = ctools_get_plugins('dynamic_formatters', 'plugins');
+  // Get all available renderers.
+  $renderer_options = array();
+  foreach ($renderers as $name => $info) {
+    if (isset($info['title'])) {
+      $renderer_options[$name] = $info['title'];
+    }
+  }
+  return $renderer_options;
+}
+
+/**
+ * Get presets formatted appropriately for #options.
+ * @param $renderer
+ *  A renderer object
+ * @return array
+ *  An options array.
+ */
+function dynamic_formatters_get_preset_options($renderer = NULL) {
+  ctools_include('export');
+  $presets = dynamic_formatters_get_presets($renderer);
+  $preset_options = array();
+  foreach ($presets as $name => $preset) {
+    $preset_options[$name] = !empty($preset->title) ? $preset->title : $preset->name;
+  }
+  return $preset_options;
+}
+
+/**
+ * Get presets for a renderer.
+ * @param $renderer
+ *   A renderer object.
+ * @return array
+ *   A list of applicable presets.
+ */
+function dynamic_formatters_get_presets($renderer = NULL) {
+  $presets = ctools_export_load_object('dynamic_formatters_presets');
+  if (!isset($renderer)) {
+    return $presets;
+  }
+}
+
+/**
+ * Load a preset by name
+ * @param string $name
+ * @return stdClass
+ *   A dynamic formatters definition.
+ */
+function dynamic_formatters_preset_load($name) {
+  $presets = ctools_export_load_object('dynamic_formatters_presets', 'names', array($name));
+  return isset($presets[$name]) ? $presets[$name] : FALSE;
+}

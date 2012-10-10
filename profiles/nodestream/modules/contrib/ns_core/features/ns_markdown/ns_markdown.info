@@ -1,0 +1,18 @@
+name = "Markdown"
+description = "Provides a markdown filter together with other handy tools like code conversions."
+core = "7.x"
+package = "Tools"
+php = "5.2.4"
+dependencies[] = "codefilter"
+dependencies[] = "features"
+dependencies[] = "filter"
+dependencies[] = "markdown"
+dependencies[] = "pathologic"
+features[filter][] = "markdown"
+files[] = ns_markdown.test
+; Information added by drupal.org packaging script on 2012-10-01
+version = "7.x-2.0-beta5"
+core = "7.x"
+project = "ns_core"
+datestamp = "1349073374"
+

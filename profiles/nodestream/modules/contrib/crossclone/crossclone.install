@@ -1,0 +1,52 @@
+<?php
+
+/**
+ * @file
+ * Installation script for this module.
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function crossclone_schema() {
+  $schema = array();
+  $schema['crossclone'] = array(
+    'description' => 'Stores clone information about entities.',
+    'fields' => array(
+      'entity_id' => array(
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => 'Primary Key: Entity id.',
+      ),
+      'type' => array(
+        'description' => 'The entity type',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'original' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => 'Original entity id.',
+      ),
+      'couple_setting' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => 'Coupling settings.',
+      ),
+      'delete_setting' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => 'action to take upon deletion.',
+      ),
+    ),
+    'primary key' => array('entity_id', 'type'),
+  );
+  return $schema;
+}

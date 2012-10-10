@@ -1,0 +1,206 @@
+/**
+ * CSS for the enterprise channel
+ */
+#ent-section .page-aside-left-inner,
+#ent-section .page-aside-right-inner,
+#ent-section .page-main-inner > div,
+#ent-page .page-aside-left-inner,
+#ent-page .page-aside-right-inner,
+#ent-page .page-main-inner,
+#ent-cal .page-aside-beta-inner {
+  background-color: #FFF;
+  padding: 10px;
+}
+
+#ent-section .pane-ns-ch-ent-section-news-panel-pane-1 {
+  margin-top: 10px;
+}
+
+#ent-section .page-header-alpha,
+#ent-page .page-header-alpha,
+#ent-section .page-main,
+#ent-page .page-main {
+  margin-bottom: 10px;
+}
+
+/**
+ * Promotions shown on section landing pages and node type pages
+ */
+.view-ns-ch-ent-promo.view-display-id-panel_pane_1 .views-row {
+  float: left;
+  width: 450px;
+  padding: 10px;
+  background-color: #FFFFFF;
+}
+.view-ns-ch-ent-promo .views-row-odd {
+  margin-right: 10px;
+}
+.view-ns-ch-ent-promo .views-row .views-field a,
+.view-ns-ch-ent-promo .views-row .views-field a:hover {
+  text-decoration: none;
+  color: #000;
+}
+.view-ns-ch-ent-promo .views-row .views-field-title a {
+  font-size: 26px;
+}
+.view-ns-ch-ent-promo .views-row .views-field-field-ns-promo-link a,
+.view-ns-ch-ent-promo .views-row .views-field-field-ns-promo-link a:hover {
+  color: #f7931e;
+  margin: 5px 0;
+  display: block;
+}
+
+/**
+ * Promotion slideshow
+ */
+#ent-section .view-ns-ch-ent-promo.view-display-id-panel_pane_2 {
+   position: relative;
+   margin-bottom: 10px;
+}
+#ent-section .views-slideshow-cycle-main-frame-row-item {
+  position: relative;
+}
+#ent-section .views-slideshow-pager-fields-render {
+  display:none;
+}
+#ent-section .views-slideshow-cycle-main-frame-row-item .views-field-title {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 320px;
+}
+#ent-section .views-slideshow-cycle-main-frame-row-item .views-field-title a {
+  background-color: white;
+  font-size: 22px;
+  line-height: 32px;
+  text-decoration: none;
+  padding: 10px 20px;
+}
+#ent-section .views-slideshow-controls-text-pause {
+  display: none;
+}
+#ent-section .views-slideshow-controls-text-previous:before {
+  content: ' « ';
+}
+#ent-section .views-slideshow-controls-text-next:after {
+  content: ' » ';
+}
+#ent-section .views-slideshow-pager-fields-render div {
+  display: inline;
+}
+#ent-section .views-slideshow-controls-bottom {
+  background-color: #FFFFFF;
+  padding: 5px;
+  position: absolute;
+  right: 10px;
+  top: 210px;
+  z-index: 100;
+}
+
+/**
+ * News box under a section
+ */
+.view-ns-ch-ent-section-news .date {
+  font-size: 11px;
+}
+.view-ns-ch-ent-section-news .title a,
+.view-ns-ch-ent-section-news .title a:hover {
+  text-decoration: none;
+  font-size: 18px;
+}
+
+/**
+ * The level 2 of the main menu, shown in the right sidebar under sections
+ */
+.page-aside-left-inner > .panel-pane {
+  margin-bottom: 20px;
+}
+.page-aside-left .pane-main-menu {
+  margin-left: -17px;
+}
+.page-aside-left .pane-main-menu ul li,
+.page-aside-left .pane-main-menu ul li a,
+.page-aside-left .pane-main-menu ul li a:hover {
+  display: block;
+  text-decoration: none;
+  color: #000;
+}
+.page-aside-left .pane-main-menu ul li {
+  padding: 1px 0 1px 10px;
+}
+.page-aside-left .pane-main-menu ul li a {
+  padding: 2px 10px;
+}
+.page-aside-left .pane-main-menu ul li a.active,
+.page-aside-left .pane-main-menu ul li a.active-trail {
+  background-color: #f7931e;
+  color: #FFF;
+}
+
+/**
+ * Styles for a page node type
+ */
+#ent-page .page-aside-right .pane-node-field-ns-page-link-list,
+#ent-page .page-aside-right .pane-node-field-ns-page-attachments,
+#ent-page .page-aside-right .view-ns-ch-ent-page-facts .views-row {
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #DDDDDD;
+}
+#ent-page .page-aside-right .panel-pane p:last-child {
+  margin: 0;
+}
+#ent-page .page-aside-right .pane-node-field-ns-page-link-list .field-item {
+  display: list-item;
+  list-style-position: inside;
+}
+#ent-page .page-aside-right .pane-node-field-ns-page-attachments .field-item {
+  overflow: hidden;
+  height: 23px;
+}
+
+
+/**
+ * Styles for a calendar page and calendar events
+ */
+.view-ns-ch-ent-calendar {
+  margin-top: 20px;
+}
+.view-ns-ch-ent-calendar tr td a:hover {
+  color: #FFF;
+}
+#ent-cal .page-aside-beta .panel-pane {
+  margin-bottom: 10px;
+}
+/* Calendar event lead and kicker */
+.pane-node-field-ns-calendar-lead {
+  font-size: 20px;
+  line-height: 22px;
+  display: inline; /* Needed for IE */
+}
+.pane-node-field-ns-calendar-kicker {
+  color: #EB8C1E;
+  float: left;
+  font-size: 14px;
+  line-height: 14px;
+  font-weight: bold;
+  margin: 6px 5px 0 0;
+}
+.pane-node-field-ns-calendar-kicker {
+  text-transform: uppercase;
+}
+.node-type-ns-calendar-event .page-main-content-wrapper .page-header-beta {
+  margin-bottom: 10px;
+}
+/* Right sidebar for calendar event */
+#ent-cal-event .page-aside-alpha .panel-pane {
+  border-bottom: 1px solid #DDDDDD;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+}
+#ent-cal-event .page-aside-alpha .panel-pane .field-label {
+  font-weight: bold;
+}
+#ent-cal-event .pane-node-field-ns-calendar-media {
+  position: relative;
+}

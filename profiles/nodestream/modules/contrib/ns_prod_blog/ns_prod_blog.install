@@ -1,0 +1,35 @@
+<?php
+
+/**
+ * @file
+ * Installation hooks for ns_prod_blog.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function ns_prod_blog_install() {
+  // Make sure precision is enabled, since we use layouts from that theme.
+  theme_enable(array('precision', 'ns_theme'));
+  variable_set('theme_default', 'ns_theme');
+  ns_core_enable_panels_everywhere();
+  ns_core_enable_panels_node_view();
+  drupal_flush_all_caches();
+  if (!module_exists('ns_prod_blog')) {
+    variable_set('site_frontpage', 'blogs');
+  }
+  // Make the main menu into a translatable menu if ns_i18n is on.
+  if (module_exists('ns_i18n')) {
+    $main_menu = menu_load('main-menu');
+    $main_menu['i18n_mode'] = I18N_MODE_MULTIPLE;
+    menu_save($main_menu);
+  }
+  variable_set('default_page_manager_handlers', array('ns_field_translation_node_lang_filter' => FALSE));
+}
+
+/**
+ * Make sure Panels reference formatter is enabled.
+ */
+function ns_prod_blog_update_7201() {
+  module_enable(array('panels_ref_formatter'));
+}

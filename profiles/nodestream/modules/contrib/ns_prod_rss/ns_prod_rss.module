@@ -1,0 +1,32 @@
+<?php
+/**
+ * @file
+ * Code for the RSS Channel feature.
+ */
+
+include_once('ns_prod_rss.features.inc');
+
+/**
+ * Implementation of hook_crossclone_entity_alter().
+ */
+function ns_prod_rss_crossclone_entity_alter($entity_type, &$original_entity, &$entity) {
+  // When a Promo node is cloned from an Article, we must populate the node
+  // reference field on the Promo.
+  if ($entity_type == 'node' && $original_entity->type == 'ns_article' && $entity->type == 'ns_prod_rss_promo') {
+    // Get our langcode.
+    $entity->field_ns_prod_rss_promo_article['und'][0]['target_id'] = $original_entity->nid;
+    $entity->field_ns_prod_rss_promo_article['und'][0]['target_type'] = 'node';
+    // Remove workbench properties in order to prevent problems with manipulating the new entity.
+    if (isset($entity->workbench_moderation)) {
+      unset($entity->workbench_moderation_state_current, $entity->workbench_moderation_state_new, $entity->workbench_moderation);
+    }
+  }
+}
+
+function ns_prod_rss_ns_field_translation_modules() {
+  return array('ns_prod_rss');
+}
+
+function ns_prod_rss_views_pre_render(&$view) {
+
+}

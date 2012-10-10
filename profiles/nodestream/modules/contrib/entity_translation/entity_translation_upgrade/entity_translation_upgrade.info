@@ -1,0 +1,12 @@
+name = Entity Translation Upgrade
+description = Provides an upgrade path from node-based translation to field-based translation.
+package = Multilingual
+core = 7.x
+dependencies[] = entity_translation
+
+
+; Information added by drush on 2012-10-10
+version = ""
+project = "entity_translation"
+datestamp = "1349895453"
+

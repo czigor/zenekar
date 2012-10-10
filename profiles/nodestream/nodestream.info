@@ -1,0 +1,29 @@
+
+name = NodeStream
+description = Default installation profile for NodeStream.
+core = 7.x
+
+; Contrib
+dependencies[] = uuid
+dependencies[] = entitycache
+dependencies[] = nodestream
+dependencies[] = libraries
+dependencies[] = features
+
+; NodeStream
+dependencies[] = ns_core
+
+; Recommended modules will be installed by default but they are not required for
+; NodeStream to operate.
+nodestream_recommended[] = menu
+nodestream_recommended[] = toolbar
+nodestream_recommended[] = dblog
+nodestream_recommended[] = help
+nodestream_recommended[] = ns_roles
+nodestream_recommended[] = defaultconfig
+nodestream_recommended[] = menu
+nodestream_recommended[] = taxonomy
+nodestream_recommended[] = taxonomy_menu_form
+nodestream_recommended[] = apps
+nodestream_recommended[] = speedy
+nodestream_recommended[] = references_dialog

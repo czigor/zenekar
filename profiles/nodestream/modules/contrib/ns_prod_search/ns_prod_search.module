@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the NS Search feature.
+ */
+
+include_once('ns_prod_search.features.inc');

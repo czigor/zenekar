@@ -1,0 +1,15 @@
+core = "7.x"
+dependencies[] = "ctools"
+dependencies[] = "panels_mini"
+description = "Let's you use a mini panel for rendering references fields"
+name = "Panels reference formatter"
+package = "Panels"
+php = "5.2.4"
+files[] = panels_ref_formatter.test
+files[] = views/plugins/panels_ref_formatter_plugin_row.inc
+; Information added by drupal.org packaging script on 2012-05-25
+version = "7.x-1.0-alpha5"
+core = "7.x"
+project = "panels_ref_formatter"
+datestamp = "1337926589"
+

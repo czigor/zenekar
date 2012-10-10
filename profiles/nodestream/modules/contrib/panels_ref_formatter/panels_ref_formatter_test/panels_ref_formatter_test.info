@@ -1,0 +1,19 @@
+name = "panels_ref_formatter_test"
+description = "Panels ref formatter"
+core = "7.x"
+package = "Features"
+php = "5.2.4"
+dependencies[] = "ctools"
+dependencies[] = "panels_mini"
+dependencies[] = "views"
+features[ctools][] = "panels_mini:panels_default:1"
+features[ctools][] = "views:views_default:3.0"
+features[panels_mini][] = "panels_ref_formatter_test"
+features[views_view][] = "panels_ref_formatter_test"
+hidden = TRUE
+; Information added by drupal.org packaging script on 2012-05-25
+version = "7.x-1.0-alpha5"
+core = "7.x"
+project = "panels_ref_formatter"
+datestamp = "1337926589"
+

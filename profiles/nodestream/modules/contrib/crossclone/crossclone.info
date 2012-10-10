@@ -1,0 +1,10 @@
+name = "Cross Clone"
+description = "This module let's you clone and couple nodes in different ways and between different node types."
+core = 7.x
+files[] = views/crossclone_views_handler_field_node_clone.inc
+; Information added by drupal.org packaging script on 2012-04-16
+version = "7.x-1.0-alpha4"
+core = "7.x"
+project = "crossclone"
+datestamp = "1334569599"
+

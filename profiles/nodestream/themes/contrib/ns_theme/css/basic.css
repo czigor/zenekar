@@ -1,0 +1,173 @@
+
+/**
+ * Basic.
+ */
+body {
+  color: #333;
+  background-color: #fff;
+}
+body#tinymce {
+  background-color: #fff;
+}
+input,
+select,
+textarea,
+body {
+  font: 14px/18px Arial, Helvetica, san-serif;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Myriad Pro", Arial, Helvetica, sans-serif;
+}
+p,
+ul,
+ol {
+  margin-bottom: 20px;
+}
+
+
+/**
+ * Lists.
+ */
+ul ul,
+ol ol {
+  margin-bottom: 0;
+}
+
+ul,
+ol {
+  margin-left: 30px;
+  padding-left: 0;
+}
+
+ul li {
+  list-style-type: disc;
+}
+
+ol li {
+  list-style-type: decimal;
+}
+
+dd {
+  margin-left: 10px;
+}
+
+
+/**
+ * Headings.
+ */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: bold;
+  color: #000;
+}
+
+h1 {
+  font-size: 26px;
+  line-height: 28px;
+  margin-bottom: 10px;
+}
+
+h2 {
+  font-size: 24px;
+  line-height: 26px;
+  margin-bottom: 5px;
+}
+
+h3 {
+  font-size: 18px;
+  line-height: 21px;
+  margin-bottom: 5px;
+}
+
+h4 {
+  font-size: 16px;
+  line-height: 18px;
+  margin-bottom: 3px;
+}
+
+h5 {
+  font-size: 15px;
+  line-height: 17px;
+  margin-bottom: 3px;
+}
+
+h6 {
+  font-size: 14px;
+  line-height: 16px;
+  margin-bottom: 3px;
+}
+
+
+/**
+ * Links.
+ */
+a:link {
+  color: #000;
+  text-decoration: underline;
+}
+
+a:visited {
+  color: #000;
+  text-decoration: underline;
+}
+
+a:hover {
+  color: #666;
+  text-decoration: none;
+}
+
+a:focus {
+  color: #666;
+  text-decoration: none;
+}
+
+a:active {
+  color: #666;
+  text-decoration: none;
+}
+
+h1 a:link,
+h1 a:visited,
+h2 a:link,
+h2 a:visited,
+h3 a:link,
+h3 a:visited,
+h4 a:link,
+h4 a:visited,
+h5 a:link,
+h5 a:visited,
+h6 a:link,
+h6 a:visited {
+  color: #000;
+  text-decoration: none;
+}
+h1 a:hover,
+h1 a:focus,
+h1 a:active,
+h2 a:hover,
+h2 a:focus,
+h2 a:active,
+h3 a:hover,
+h3 a:focus,
+h3 a:active,
+h4 a:hover,
+h4 a:focus,
+h4 a:active,
+h5 a:hover,
+h5 a:focus,
+h5 a:active,
+h6 a:hover,
+h6 a:focus,
+h6 a:active {
+  color: #000;
+  text-decoration: underline;
+}

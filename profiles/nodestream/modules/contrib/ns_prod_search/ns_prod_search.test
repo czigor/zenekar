@@ -1,0 +1,123 @@
+<?php
+/**
+ * @file
+ * Tests for ns_prod_search.
+ */
+
+/**
+ * Basic test for the ns_contributor content type.
+ */
+class NSSearchTestCase extends NodeStreamWebTestCase {
+
+  /**
+   * Definition.
+   */
+  public static function getInfo() {
+    return array(
+      'name' => 'Search',
+      'description' => 'Test search functionality.',
+      'group' => 'NodeStream'
+    );
+  }
+
+  /**
+   * @see DrupalWebTestCase::setUp()
+   */
+  function setUp() {
+    parent::setUp('ns_article', 'ns_prod_search');
+  }
+
+  /**
+   * Test that the search functionality works as expected.
+   */
+  function testSearch() {
+    // Create several nodes.
+    for ($i = 0; $i < 5; $i++) {
+      $nodes[] = $this->drupalCreateNode($this->getTestNode());
+    }
+    // Update the search index.
+    module_invoke('node', 'update_index');
+    // Create a user that is allowed to search and log in.
+    $user = $this->drupalCreateUser(array('access content', 'search content', 'use advanced search'));
+    $this->drupalLogin($user);
+    $this->drupalGet('search/node');
+    // Perform a search
+    $this->assertField('keys', t('Search form exists'));
+    foreach ($nodes as $node) {
+      $this->drupalPost(NULL, array('keys' => $nodes[0]->title), t('Search'));
+      $this->assertText($nodes[0]->title, "Node {$node->title} exits");
+    }
+  }
+
+  /**
+   * Get a test article node.
+   */
+  function getTestNode() {
+    $node = array();
+    $node['type'] = 'ns_article';
+    $node['title'] = $this->randomName();
+    $node['status'] = 1;
+    $node['field_ns_article_body'] = array(
+      'und' => array(
+        array(
+          'value' => $this->loremIpsum(),
+        ),
+      ),
+    );
+    $node['field_ns_article_lead'] = array(
+      'und' => array(
+        array(
+          'value' => $this->loremIpsum(),
+        ),
+      ),
+    );
+    $node['field_ns_article_kicker'] = array(
+      'und' => array(
+        array(
+          'value' => $this->randomString(),
+        ),
+      ),
+    );
+    return $node;
+  }
+}
+
+
+/**
+ * Test that users with different roles are experiencing the intended behavior.
+ */
+class NSSearchRoleTestCase extends NodeStreamWebTestCase {
+  /**
+   * Definition.
+   */
+  public static function getInfo() {
+    return array(
+      'name' => 'Search permissions',
+      'description' => 'Test that the defined roles have the access they are supposed to have.',
+      'group' => 'NodeStream'
+    );
+  }
+
+  /**
+   * @see DrupalWebTestCase::setUp()
+   */
+  function setUp() {
+    parent::setUp('ns_roles', 'ns_prod_search');
+  }
+
+  /**
+   * Test that the various roles have appropriate permissions.
+   */
+  function testRoles() {
+    // Anonymous should be able to search for content, but not for users.
+    $anonymous = $this->role('anonymous');
+    $anonymous->can()
+      ->accessPath('search/node');
+    $anonymous->cant()
+      ->accessPath('search/user');
+  }
+
+  function role($role) {
+    return new NSContentTypeAccessHelper($this, $role);
+  }
+}

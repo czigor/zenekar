@@ -1,0 +1,157 @@
+
+/**
+ * Page layout
+ */
+body {
+  background-color: #fff;
+}
+.page-body-wrapper {
+  background: #ECECEC;
+}
+.page-closure-wrapper
+{
+  border-top: 3px solid #F7931E;
+  padding: 10px 0;
+}
+.page-body-wrapper {
+  min-width: 1000px; /* (width of container) this is needed when the body view port is smaller then the containers with */
+  min-height: 600px;
+  padding: 10px 0;
+}
+.page-branding-inner {
+  padding: 20px 0;
+}
+.pane-page-messages .messages {
+  margin-bottom: 15px;
+}
+
+
+/**
+ * Node Layout
+ */
+.page-node .page-main {
+  margin-bottom: 0;
+}
+.page-node .page-main-content-wrapper {
+  background: #fff;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.page-node .page-main-content-wrapper .page-header-beta-inner,
+.page-node .page-main-content-wrapper .page-main-inner {
+  padding-right: 10px;
+  padding-left: 10px;
+}
+.page-node .page-main-content-wrapper .page-aside-alpha-inner {
+  padding-right: 10px;
+}
+.page-node .page-main-content-wrapper .page-main-inner {
+  border-right: 1px solid #ccc;
+}
+.page-node .page-main-content-wrapper .page-main-inner {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.page-node .page-footer-alpha .page-main-content-wrapper {
+  background-color: transparent;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.page-node .page-footer-alpha .page-main-content-wrapper .page-footer-alpha.page-header-beta-inner,
+.page-node .page-footer-alpha .page-main-content-wrapper .page-main-inner,
+.page-node .page-footer-alpha .page-main-content-wrapper .page-aside-alpha-inner,
+.page-node .page-footer-alpha .page-main-content-wrapper .page-main-inner,
+.page-node .page-footer-alpha .page-main-content-wrapper .page-header-beta-inner {
+  padding: 0;
+}
+.page-node .page-footer-alpha .page-main-inner {
+  border-right: none;
+}
+.page-node .page-main-content-wrapper .page-header-beta {
+  margin-bottom: 0;
+}
+
+
+/**
+ * layout for other pages.
+ */
+.page-search .page-main-inner {
+  padding: 10px;
+  background-color: #fff;
+}
+/* custom for non managed pages */
+.pane-page-content.not-managed {
+  background: #FFF;
+  padding: 10px;
+}
+
+
+/**
+ * Text layout.
+ */
+.text-large {
+  font-size: 18px;
+  line-height: 22px;
+}
+.text-medium {
+  font-size: 16px;
+  line-height: 18px;
+}
+.text-small {
+  font-size: 12px;
+  line-height: 16px;
+}
+.text-large .promo-title {
+  font-size: 50px;
+  line-height: 55px;
+}
+.text-medium .promo-title {
+  font-size: 40px;
+  line-height: 44px;
+}
+.text-small p,
+.text-small ol,
+.text-small ul {
+  margin-bottom: 15px;
+}
+
+
+/**
+ * Promo groups layout
+ */
+.promo-group {
+  margin-bottom: 10px;
+  background-color: #fff;
+  padding: 10px;
+}
+.promo-group .promo {
+  padding-top: 10px;
+}
+.promo-group .promo-0 {
+  padding-top: 0;
+}
+
+
+/*
+ * Common styles for the content column two layout
+ */
+.content-column-two-left {
+  float: left;
+  margin-right: 10px;
+}
+
+.content-column-two-w-wrappers-left {
+  float: left;
+}
+
+.content-column-two-w-wrappers-left + .content-column-two-w-wrappers-right {
+  float: left;
+}
+
+.content-column-two-w-wrappers-left-inner {
+  padding-right: 10px;
+} 
+
+.content-column-two-w-wrappers-right-inner {
+  padding-left: 10px;	
+}

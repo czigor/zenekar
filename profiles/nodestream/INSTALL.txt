@@ -1,0 +1,65 @@
+
+REQUIREMENTS
+------------
+
+NodeStream is distributed with one .make file and one .profile file. The
+.make file defines what packages that must be downloaded and the .profile file
+is responsible for configuring all those modules.
+
+To run this .make file you need two things:
+
+ * Drush (http://drupal.org/project/drush)
+ * Drush Make (http://drupal.org/project/drush_make)
+ * Git
+
+For instructions on how to install those packages, please consult their
+respective documentation.
+
+INSTALLATION
+------------
+
+1. DOWNLOAD DRUPAL CORE
+
+   Fetch Drupal core and extract it in the web root of your server. NodeStream
+   is compatible with Drupal Core 7.x.
+
+   * The recommended way of fetching core is through drush.
+     run this command:
+       drush dl drupal-7
+   * You can also download drupal core from http://drupal.org/project/drupal.
+     Always take the latest version of core.
+
+1. DOWNLOAD NODESTREAM
+
+   Currently NodeStream can only be fetched directly from the GIT repository.
+   This is because of incompatibility with the packaging system on drupal.org.
+
+   * Go to the profiles directory in your drupal core installation:
+       cd profiles/
+   * run the following command:
+       git clone --branch 7.x-2.x http://git.drupal.org/project/nodestream.git
+   * change to the new directory:
+       cd nodestream
+   * You now have the 7.x branch of NodeStream. If you want you can check out a specific version check out that version tag, for example:
+       git checkout 7.x-2.x-alpha1
+
+   Fetching NodeStream from GIT will create a directory containing only the
+   .make file, the .profile file and some include files. In the following
+   examples we assume this drectory is called nodestream/.
+
+2. RUN THE MAKE FILE TO DOWNLOAD ALL REQUIRED PACKAGES
+
+   In order to get all the required packages for NodeStream you need to
+   run the make file.
+
+   * Go into the nodestream folder if you are not already there and run the following:
+     drush make --no-core --contrib-destination=. drupal-org.make
+   * That's it, you now have a working copy of NodeStream!
+
+4. INSTALL NODESTREAM
+
+   From now on, the steps to get your site up and running is the same as with a
+   regular Drupal site. Set up your settings file and database as usual and go to
+   http://yourdomain.com/install.php. Select NodeStream as your profile when you install!
+   For more detailed instructions, please consult the Drupal installation instructions from
+   step 2 in /your-web-root/INSTALL.txt
