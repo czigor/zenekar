@@ -108,7 +108,7 @@ function entity_translation_overview($entity_type, $entity, $callback = NULL) {
       }
 
       $edit_path = $is_original ? $handler->getEditPath() : $base_path . '/translate/edit/' . $langcode;
-      if (!$is_original || $handler->getAccess('update')) {
+      if ($edit_path && $handler->getAccess('update')) {
         $options[] = l($is_original ? t('edit') : t('edit translation'), $edit_path);
       }
 
@@ -128,7 +128,7 @@ function entity_translation_overview($entity_type, $entity, $callback = NULL) {
       $row_title = $source_name = t('n/a');
       $add_path = "$base_path/translate/add/$langcode/$source";
 
-      if ($source != $langcode) {
+      if ($source != $langcode && $handler->getAccess('update')) {
         list(, , $bundle) = entity_extract_ids($entity_type, $entity);
         $translatable = FALSE;
 

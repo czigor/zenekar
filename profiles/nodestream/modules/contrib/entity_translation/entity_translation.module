@@ -52,15 +52,6 @@ function entity_translation_translation_info($types = NULL) {
 }
 
 /**
- * Implements hook_ctools_plugin_directory().
- */
-function entity_translation_ctools_plugin_directory($module, $plugin) {
-  if ($module == 'ctools' && $plugin == 'access') {
-    return 'plugins/' . $plugin;
-  }
-}
-
-/**
  * Implements hook_entity_info_alter().
  */
 function entity_translation_entity_info_alter(&$entity_info) {
