@@ -36,9 +36,13 @@ dependencies[] = i18n_variable
 dependencies[] = colorbox
 dependencies[] = diff
 dependencies[] = entity_token
+dependencies[] = entity_translation
+dependencies[] = entityreference
 dependencies[] = variable
 dependencies[] = variable_admin
 dependencies[] = variable_views
+dependencies[] = uuid
+
 
 ; Shipped by 'admin', depends on admin.module
 dependencies[] = admin_menu_toolbar
