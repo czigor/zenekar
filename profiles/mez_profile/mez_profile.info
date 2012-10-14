@@ -26,6 +26,7 @@ dependencies[] = media
 dependencies[] = mediafield
 dependencies[] = media_internet
 dependencies[] = media_youtube
+dependencies[] = mez_instruments
 dependencies[] = i18n_menu
 dependencies[] = i18n_node
 dependencies[] = i18n_string

@@ -1,0 +1,160 @@
+<?php
+
+/**
+ * @file
+ * Generate Instruments vocabulary
+ *
+ */
+
+/**
+ * Implements hook_menu().
+ */
+function mez_instruments_menu() {
+  $items = array();
+  $items['admin/config/mez/create_instruments_vocabulary'] = array(
+    'title' => 'MEZ instruments vocabulary creation',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('mez__create_instruments_taxonomy_form'),
+    'access arguments' => array('administer taxonomy'),
+    'type' => MENU_NORMAL_ITEM,
+  );
+  return $items;
+}
+
+
+/**
+ * Form to create Instruments vocabualry
+ */
+function mez__create_instruments_taxonomy_form() {
+  $form = array();
+  $instruments_vocab = taxonomy_vocabulary_machine_name_load('instruments');
+  if (!$instruments_vocab) {
+    $form['help-text'] = array(
+      '#markup' => t('You can create the Instruments vocabulary by clicking the Submit button.'),
+      '#prefix' => '<div>',
+      '#suffix' => '</div>',
+    );
+    $form['submit'] = array(
+      '#type' => 'submit',
+      '#value' => t('Submit'),
+    );
+  }
+  else {
+    $form['help-text'] = array(
+      '#markup' => t('The instruments vocabulary already exists.'),
+      '#prefix' => '<div>',
+      '#suffix' => '</div>',
+    );
+  }
+  return $form;
+}
+
+/*
+ * Submit handler for the mez__create_instruments_taxonomy_form.
+ * 
+ * No & for $form_state as this function gets called directly with NULL 
+ * passed in.  
+ */
+function mez__create_instruments_taxonomy_form_submit($form, $form_state) {
+  $instruments_vocab = taxonomy_vocabulary_machine_name_load('instruments');
+  if (!$instruments_vocab) {
+    $vocabulary = array(
+      'name' => 'Instruments',
+      'machine_name' => 'instruments',
+      'description' => 'Instruments',
+      'hierarchy' => 1,
+      'module' => 'mez',
+      'i18n_mode' => 1,
+    );
+    $instruments = (object) $vocabulary;
+    taxonomy_vocabulary_save($instruments);
+    
+    $instrument_terms = array(
+      'string', 'wind', 'percussion', 'conductor'
+    );
+    foreach ($instrument_terms as $key => $term) {
+      $instrument = array(
+        'name' => $term,
+        'vid' => $instruments->vid,
+        'weight' => $key,
+      );
+      $instrument_obj = (object) $instrument;
+      taxonomy_term_save($instrument_obj);
+    }
+    
+    $tid = reset(taxonomy_get_term_by_name('string'))->tid;
+    $instrument_terms = array(
+      'violin', 'viola', 'vionloncello', 'double bass', 
+    );
+    foreach ($instrument_terms as $key => $term) {
+      $instrument = array(
+        'name' => $term,
+        'vid' => $instruments->vid,
+        'weight' => $key,
+        'parent' => $tid,
+      );
+      $instrument_obj = (object) $instrument;
+      taxonomy_term_save($instrument_obj);
+    }
+    
+    $tid = reset(taxonomy_get_term_by_name('violin'))->tid;
+    $instrument_terms = array(
+      '1st violin', '2nd violin',
+    );
+    foreach ($instrument_terms as $key => $term) {
+      $instrument = array(
+        'name' => $term,
+        'vid' => $instruments->vid,
+        'weight' => $key,
+        'parent' => $tid,
+      );
+      $instrument_obj = (object) $instrument;
+      taxonomy_term_save($instrument_obj);
+    }
+    
+    $tid = reset(taxonomy_get_term_by_name('wind'))->tid;
+    $instrument_terms = array(
+      'wood', 'brass',
+    );
+    foreach ($instrument_terms as $key => $term) {
+      $instrument = array(
+        'name' => $term,
+        'vid' => $instruments->vid,
+        'weight' => $key,
+        'parent' => $tid,
+      );
+      $instrument_obj = (object) $instrument;
+      taxonomy_term_save($instrument_obj);
+    }
+    
+    $tid = reset(taxonomy_get_term_by_name('wood'))->tid;
+    $instrument_terms = array(
+      'flute', 'oboe', 'clarinet', 'bassoon',
+    );
+    foreach ($instrument_terms as $key => $term) {
+      $instrument = array(
+        'name' => $term,
+        'vid' => $instruments->vid,
+        'weight' => $key,
+        'parent' => $tid,
+      );
+      $instrument_obj = (object) $instrument;
+      taxonomy_term_save($instrument_obj);
+    }
+    
+    $tid = reset(taxonomy_get_term_by_name('brass'))->tid;
+    $instrument_terms = array(
+      'horn', 'trumpet', 'trombone', 'tuba',
+    );
+    foreach ($instrument_terms as $key => $term) {
+      $instrument = array(
+        'name' => $term,
+        'vid' => $instruments->vid,
+        'weight' => $key,
+        'parent' => $tid,
+      );
+      $instrument_obj = (object) $instrument;
+      taxonomy_term_save($instrument_obj);
+    }
+  }
+}
