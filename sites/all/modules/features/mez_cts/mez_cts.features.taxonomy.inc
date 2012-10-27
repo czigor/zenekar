@@ -19,5 +19,15 @@ function mez_cts_taxonomy_default_vocabularies() {
       'language' => 'und',
       'i18n_mode' => '1',
     ),
+    'media' => array(
+      'name' => 'Media tags',
+      'machine_name' => 'media',
+      'description' => 'Tags for files',
+      'hierarchy' => '0',
+      'module' => 'taxonomy',
+      'weight' => '0',
+      'language' => 'und',
+      'i18n_mode' => '4',
+    ),
   );
 }

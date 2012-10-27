@@ -10,6 +10,600 @@
 function mez_cts_field_default_fields() {
   $fields = array();
 
+  // Exported field: 'file-application-field_tags'.
+  $fields['file-application-field_tags'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '-1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_tags',
+      'foreign keys' => array(
+        'tid' => array(
+          'columns' => array(
+            'tid' => 'tid',
+          ),
+          'table' => 'taxonomy_term_data',
+        ),
+      ),
+      'indexes' => array(
+        'tid' => array(
+          0 => 'tid',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'taxonomy',
+      'settings' => array(
+        'allowed_values' => array(
+          0 => array(
+            'vocabulary' => 'media',
+            'parent' => '0',
+          ),
+        ),
+        'options_list_callback' => 'i18n_taxonomy_allowed_values',
+      ),
+      'translatable' => '0',
+      'type' => 'taxonomy_term_reference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'application',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'Tags separated by commas.',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'i18n_taxonomy',
+          'settings' => array(),
+          'type' => 'i18n_taxonomy_term_reference_link',
+          'weight' => 0,
+        ),
+        'media_large' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'media_link' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'media_original' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'media_preview' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'media_small' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'file',
+      'field_name' => 'field_tags',
+      'label' => 'Tags',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 0,
+        'module' => 'taxonomy',
+        'settings' => array(
+          'autocomplete_path' => 'taxonomy/autocomplete',
+          'size' => 60,
+        ),
+        'type' => 'taxonomy_autocomplete',
+        'weight' => '-4',
+      ),
+    ),
+  );
+
+  // Exported field: 'file-audio-field_tags'.
+  $fields['file-audio-field_tags'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '-1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_tags',
+      'foreign keys' => array(
+        'tid' => array(
+          'columns' => array(
+            'tid' => 'tid',
+          ),
+          'table' => 'taxonomy_term_data',
+        ),
+      ),
+      'indexes' => array(
+        'tid' => array(
+          0 => 'tid',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'taxonomy',
+      'settings' => array(
+        'allowed_values' => array(
+          0 => array(
+            'vocabulary' => 'media',
+            'parent' => '0',
+          ),
+        ),
+        'options_list_callback' => 'i18n_taxonomy_allowed_values',
+      ),
+      'translatable' => '0',
+      'type' => 'taxonomy_term_reference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'audio',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'Tags separated by commas.',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'i18n_taxonomy',
+          'settings' => array(),
+          'type' => 'i18n_taxonomy_term_reference_link',
+          'weight' => 0,
+        ),
+        'media_large' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'media_link' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'media_original' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'media_preview' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'media_small' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'file',
+      'field_name' => 'field_tags',
+      'label' => 'Tags',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 0,
+        'module' => 'taxonomy',
+        'settings' => array(
+          'autocomplete_path' => 'taxonomy/autocomplete',
+          'size' => 60,
+        ),
+        'type' => 'taxonomy_autocomplete',
+        'weight' => '-3',
+      ),
+    ),
+  );
+
+  // Exported field: 'file-default-field_tags'.
+  $fields['file-default-field_tags'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '-1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_tags',
+      'foreign keys' => array(
+        'tid' => array(
+          'columns' => array(
+            'tid' => 'tid',
+          ),
+          'table' => 'taxonomy_term_data',
+        ),
+      ),
+      'indexes' => array(
+        'tid' => array(
+          0 => 'tid',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'taxonomy',
+      'settings' => array(
+        'allowed_values' => array(
+          0 => array(
+            'vocabulary' => 'media',
+            'parent' => '0',
+          ),
+        ),
+        'options_list_callback' => 'i18n_taxonomy_allowed_values',
+      ),
+      'translatable' => '0',
+      'type' => 'taxonomy_term_reference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'default',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'Tags separated by commas.',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'i18n_taxonomy',
+          'settings' => array(),
+          'type' => 'i18n_taxonomy_term_reference_link',
+          'weight' => 0,
+        ),
+        'media_large' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'media_link' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'media_original' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'media_preview' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'media_small' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'file',
+      'field_name' => 'field_tags',
+      'label' => 'Tags',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 0,
+        'module' => 'taxonomy',
+        'settings' => array(
+          'autocomplete_path' => 'taxonomy/autocomplete',
+          'size' => 60,
+        ),
+        'type' => 'taxonomy_autocomplete',
+        'weight' => '-3',
+      ),
+    ),
+  );
+
+  // Exported field: 'file-image-field_tags'.
+  $fields['file-image-field_tags'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '-1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_tags',
+      'foreign keys' => array(
+        'tid' => array(
+          'columns' => array(
+            'tid' => 'tid',
+          ),
+          'table' => 'taxonomy_term_data',
+        ),
+      ),
+      'indexes' => array(
+        'tid' => array(
+          0 => 'tid',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'taxonomy',
+      'settings' => array(
+        'allowed_values' => array(
+          0 => array(
+            'vocabulary' => 'media',
+            'parent' => '0',
+          ),
+        ),
+        'options_list_callback' => 'i18n_taxonomy_allowed_values',
+      ),
+      'translatable' => '0',
+      'type' => 'taxonomy_term_reference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'image',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'Tags separated by commas.',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'i18n_taxonomy',
+          'settings' => array(),
+          'type' => 'i18n_taxonomy_term_reference_link',
+          'weight' => 0,
+        ),
+        'media_large' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'media_link' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'media_original' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'media_preview' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'media_small' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'file',
+      'field_name' => 'field_tags',
+      'label' => 'Tags',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 0,
+        'module' => 'taxonomy',
+        'settings' => array(
+          'autocomplete_path' => 'taxonomy/autocomplete',
+          'size' => 60,
+        ),
+        'type' => 'taxonomy_autocomplete',
+        'weight' => '-3',
+      ),
+    ),
+  );
+
+  // Exported field: 'file-text-field_tags'.
+  $fields['file-text-field_tags'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '-1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_tags',
+      'foreign keys' => array(
+        'tid' => array(
+          'columns' => array(
+            'tid' => 'tid',
+          ),
+          'table' => 'taxonomy_term_data',
+        ),
+      ),
+      'indexes' => array(
+        'tid' => array(
+          0 => 'tid',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'taxonomy',
+      'settings' => array(
+        'allowed_values' => array(
+          0 => array(
+            'vocabulary' => 'media',
+            'parent' => '0',
+          ),
+        ),
+        'options_list_callback' => 'i18n_taxonomy_allowed_values',
+      ),
+      'translatable' => '0',
+      'type' => 'taxonomy_term_reference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'text',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'Tags separated by commas.',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'i18n_taxonomy',
+          'settings' => array(),
+          'type' => 'i18n_taxonomy_term_reference_link',
+          'weight' => 0,
+        ),
+        'media_large' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'media_link' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'media_original' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'media_preview' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'media_small' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'file',
+      'field_name' => 'field_tags',
+      'label' => 'Tags',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 0,
+        'module' => 'taxonomy',
+        'settings' => array(
+          'autocomplete_path' => 'taxonomy/autocomplete',
+          'size' => 60,
+        ),
+        'type' => 'taxonomy_autocomplete',
+        'weight' => '-3',
+      ),
+    ),
+  );
+
+  // Exported field: 'file-video-field_tags'.
+  $fields['file-video-field_tags'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '-1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_tags',
+      'foreign keys' => array(
+        'tid' => array(
+          'columns' => array(
+            'tid' => 'tid',
+          ),
+          'table' => 'taxonomy_term_data',
+        ),
+      ),
+      'indexes' => array(
+        'tid' => array(
+          0 => 'tid',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'taxonomy',
+      'settings' => array(
+        'allowed_values' => array(
+          0 => array(
+            'vocabulary' => 'media',
+            'parent' => '0',
+          ),
+        ),
+        'options_list_callback' => 'i18n_taxonomy_allowed_values',
+      ),
+      'translatable' => '0',
+      'type' => 'taxonomy_term_reference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'video',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'Tags separated by commas. ',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'i18n_taxonomy',
+          'settings' => array(),
+          'type' => 'i18n_taxonomy_term_reference_link',
+          'weight' => 0,
+        ),
+        'media_large' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'media_link' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'media_original' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'media_preview' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'media_small' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'file',
+      'field_name' => 'field_tags',
+      'label' => 'Tags',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 0,
+        'module' => 'taxonomy',
+        'settings' => array(
+          'autocomplete_path' => 'taxonomy/autocomplete',
+          'size' => 60,
+        ),
+        'type' => 'taxonomy_autocomplete',
+        'weight' => '-3',
+      ),
+    ),
+  );
+
   // Exported field: 'node-member-body'.
   $fields['node-member-body'] = array(
     'field_config' => array(
@@ -50,7 +644,7 @@ function mez_cts_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 0,
+          'weight' => '13',
         ),
         'teaser' => array(
           'label' => 'hidden',
@@ -79,7 +673,7 @@ function mez_cts_field_default_fields() {
           'summary_rows' => 5,
         ),
         'type' => 'text_textarea_with_summary',
-        'weight' => '13',
+        'weight' => '15',
       ),
     ),
   );
@@ -120,11 +714,11 @@ function mez_cts_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 6,
+          'weight' => '7',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -148,7 +742,7 @@ function mez_cts_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '7',
+        'weight' => '8',
       ),
     ),
   );
@@ -189,11 +783,11 @@ function mez_cts_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 4,
+          'weight' => '5',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -217,7 +811,7 @@ function mez_cts_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '5',
+        'weight' => '6',
       ),
     ),
   );
@@ -245,11 +839,11 @@ function mez_cts_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'email',
           'settings' => array(),
           'type' => 'email_default',
-          'weight' => 11,
+          'weight' => '12',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -272,7 +866,7 @@ function mez_cts_field_default_fields() {
           'size' => '40',
         ),
         'type' => 'email_textfield',
-        'weight' => '12',
+        'weight' => '13',
       ),
     ),
   );
@@ -314,11 +908,11 @@ function mez_cts_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
-          'weight' => 10,
+          'weight' => '11',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -341,7 +935,7 @@ function mez_cts_field_default_fields() {
           'display_label' => 1,
         ),
         'type' => 'options_onoff',
-        'weight' => '11',
+        'weight' => '12',
       ),
     ),
   );
@@ -383,11 +977,11 @@ function mez_cts_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'file',
           'settings' => array(),
           'type' => 'file_default',
-          'weight' => 1,
+          'weight' => '2',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -432,7 +1026,7 @@ function mez_cts_field_default_fields() {
           'progress_indicator' => 'throbber',
         ),
         'type' => 'media_generic',
-        'weight' => '2',
+        'weight' => '3',
       ),
     ),
   );
@@ -479,11 +1073,11 @@ function mez_cts_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'i18n_taxonomy',
           'settings' => array(),
-          'type' => 'i18n_taxonomy_term_reference_link',
-          'weight' => 13,
+          'type' => 'i18n_taxonomy_term_reference_plain',
+          'weight' => '0',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -504,7 +1098,7 @@ function mez_cts_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_select',
-        'weight' => '15',
+        'weight' => '2',
       ),
     ),
   );
@@ -548,14 +1142,14 @@ function mez_cts_field_default_fields() {
           'label' => 'above',
           'module' => 'date',
           'settings' => array(
-            'format_type' => 'long',
+            'format_type' => 'csaknap',
             'fromto' => 'both',
             'multiple_from' => '',
             'multiple_number' => '',
             'multiple_to' => '',
           ),
           'type' => 'date_default',
-          'weight' => 12,
+          'weight' => '3',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -629,11 +1223,11 @@ function mez_cts_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 8,
+          'weight' => '9',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -657,7 +1251,7 @@ function mez_cts_field_default_fields() {
           'size' => '20',
         ),
         'type' => 'text_textfield',
-        'weight' => '9',
+        'weight' => '10',
       ),
     ),
   );
@@ -698,11 +1292,11 @@ function mez_cts_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 3,
+          'weight' => '4',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -726,7 +1320,7 @@ function mez_cts_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '4',
+        'weight' => '5',
       ),
     ),
   );
@@ -767,11 +1361,11 @@ function mez_cts_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 2,
+          'weight' => '1',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -795,7 +1389,7 @@ function mez_cts_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '3',
+        'weight' => '4',
       ),
     ),
   );
@@ -836,11 +1430,11 @@ function mez_cts_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 7,
+          'weight' => '8',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -864,7 +1458,7 @@ function mez_cts_field_default_fields() {
           'size' => '20',
         ),
         'type' => 'text_textfield',
-        'weight' => '8',
+        'weight' => '9',
       ),
     ),
   );
@@ -905,11 +1499,11 @@ function mez_cts_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 9,
+          'weight' => '10',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -933,7 +1527,7 @@ function mez_cts_field_default_fields() {
           'size' => '20',
         ),
         'type' => 'text_textfield',
-        'weight' => '10',
+        'weight' => '11',
       ),
     ),
   );
@@ -974,11 +1568,11 @@ function mez_cts_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 5,
+          'weight' => '6',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1002,7 +1596,7 @@ function mez_cts_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '6',
+        'weight' => '7',
       ),
     ),
   );
@@ -1351,6 +1945,9 @@ function mez_cts_field_default_fields() {
   t('Orchestra email list');
   t('Phone');
   t('Remark');
+  t('Tags');
+  t('Tags separated by commas.');
+  t('Tags separated by commas. ');
   t('Workplace phone');
   t('Zip code');
 
