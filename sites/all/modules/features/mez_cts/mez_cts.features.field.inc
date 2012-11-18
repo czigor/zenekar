@@ -58,12 +58,6 @@ function mez_cts_field_default_fields() {
           'type' => 'i18n_taxonomy_term_reference_link',
           'weight' => 0,
         ),
-        'media_large' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
         'media_link' => array(
           'label' => 'above',
           'settings' => array(),
@@ -76,13 +70,13 @@ function mez_cts_field_default_fields() {
           'type' => 'hidden',
           'weight' => 0,
         ),
-        'media_preview' => array(
+        'preview' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
           'weight' => 0,
         ),
-        'media_small' => array(
+        'teaser' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -159,7 +153,7 @@ function mez_cts_field_default_fields() {
           'type' => 'date_default',
           'weight' => 1,
         ),
-        'media_large' => array(
+        'full' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -177,13 +171,13 @@ function mez_cts_field_default_fields() {
           'type' => 'hidden',
           'weight' => 0,
         ),
-        'media_preview' => array(
+        'preview' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
           'weight' => 0,
         ),
-        'media_small' => array(
+        'teaser' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -268,12 +262,6 @@ function mez_cts_field_default_fields() {
           'type' => 'i18n_taxonomy_term_reference_link',
           'weight' => 0,
         ),
-        'media_large' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
         'media_link' => array(
           'label' => 'above',
           'settings' => array(),
@@ -286,13 +274,13 @@ function mez_cts_field_default_fields() {
           'type' => 'hidden',
           'weight' => 0,
         ),
-        'media_preview' => array(
+        'preview' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
           'weight' => 0,
         ),
-        'media_small' => array(
+        'teaser' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -369,7 +357,7 @@ function mez_cts_field_default_fields() {
           'type' => 'date_default',
           'weight' => 1,
         ),
-        'media_large' => array(
+        'full' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -387,13 +375,13 @@ function mez_cts_field_default_fields() {
           'type' => 'hidden',
           'weight' => 0,
         ),
-        'media_preview' => array(
+        'preview' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
           'weight' => 0,
         ),
-        'media_small' => array(
+        'teaser' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -478,12 +466,6 @@ function mez_cts_field_default_fields() {
           'type' => 'i18n_taxonomy_term_reference_link',
           'weight' => 0,
         ),
-        'media_large' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
         'media_link' => array(
           'label' => 'above',
           'settings' => array(),
@@ -496,13 +478,13 @@ function mez_cts_field_default_fields() {
           'type' => 'hidden',
           'weight' => 0,
         ),
-        'media_preview' => array(
+        'preview' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
           'weight' => 0,
         ),
-        'media_small' => array(
+        'teaser' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -579,7 +561,7 @@ function mez_cts_field_default_fields() {
           'type' => 'date_default',
           'weight' => 1,
         ),
-        'media_large' => array(
+        'full' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -597,13 +579,13 @@ function mez_cts_field_default_fields() {
           'type' => 'hidden',
           'weight' => 0,
         ),
-        'media_preview' => array(
+        'preview' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
           'weight' => 0,
         ),
-        'media_small' => array(
+        'teaser' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -688,12 +670,6 @@ function mez_cts_field_default_fields() {
           'type' => 'i18n_taxonomy_term_reference_link',
           'weight' => 0,
         ),
-        'media_large' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
         'media_link' => array(
           'label' => 'above',
           'settings' => array(),
@@ -706,13 +682,13 @@ function mez_cts_field_default_fields() {
           'type' => 'hidden',
           'weight' => 0,
         ),
-        'media_preview' => array(
+        'preview' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
           'weight' => 0,
         ),
-        'media_small' => array(
+        'teaser' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -789,7 +765,7 @@ function mez_cts_field_default_fields() {
           'type' => 'date_default',
           'weight' => 1,
         ),
-        'media_large' => array(
+        'full' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -807,13 +783,13 @@ function mez_cts_field_default_fields() {
           'type' => 'hidden',
           'weight' => 0,
         ),
-        'media_preview' => array(
+        'preview' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
           'weight' => 0,
         ),
-        'media_small' => array(
+        'teaser' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -898,12 +874,6 @@ function mez_cts_field_default_fields() {
           'type' => 'i18n_taxonomy_term_reference_link',
           'weight' => 0,
         ),
-        'media_large' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
         'media_link' => array(
           'label' => 'above',
           'settings' => array(),
@@ -916,13 +886,13 @@ function mez_cts_field_default_fields() {
           'type' => 'hidden',
           'weight' => 0,
         ),
-        'media_preview' => array(
+        'preview' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
           'weight' => 0,
         ),
-        'media_small' => array(
+        'teaser' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -999,7 +969,7 @@ function mez_cts_field_default_fields() {
           'type' => 'date_default',
           'weight' => 1,
         ),
-        'media_large' => array(
+        'full' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -1017,13 +987,13 @@ function mez_cts_field_default_fields() {
           'type' => 'hidden',
           'weight' => 0,
         ),
-        'media_preview' => array(
+        'preview' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
           'weight' => 0,
         ),
-        'media_small' => array(
+        'teaser' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -1108,12 +1078,6 @@ function mez_cts_field_default_fields() {
           'type' => 'i18n_taxonomy_term_reference_link',
           'weight' => 0,
         ),
-        'media_large' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
         'media_link' => array(
           'label' => 'above',
           'settings' => array(),
@@ -1126,13 +1090,13 @@ function mez_cts_field_default_fields() {
           'type' => 'hidden',
           'weight' => 0,
         ),
-        'media_preview' => array(
+        'preview' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
           'weight' => 0,
         ),
-        'media_small' => array(
+        'teaser' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -1209,7 +1173,7 @@ function mez_cts_field_default_fields() {
           'type' => 'date_default',
           'weight' => 1,
         ),
-        'media_large' => array(
+        'full' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -1227,13 +1191,13 @@ function mez_cts_field_default_fields() {
           'type' => 'hidden',
           'weight' => 0,
         ),
-        'media_preview' => array(
+        'preview' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
           'weight' => 0,
         ),
-        'media_small' => array(
+        'teaser' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -2598,25 +2562,316 @@ function mez_cts_field_default_fields() {
     ),
   );
 
+  // Exported field: 'node-piece-field_comma_separator'.
+  $fields['node-piece-field_comma_separator'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_comma_separator',
+      'foreign keys' => array(),
+      'indexes' => array(
+        'value' => array(
+          0 => 'value',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'list',
+      'settings' => array(
+        'allowed_values' => array(
+          0 => '',
+          1 => '',
+        ),
+        'allowed_values_function' => '',
+      ),
+      'translatable' => '0',
+      'type' => 'list_boolean',
+    ),
+    'field_instance' => array(
+      'bundle' => 'piece',
+      'default_value' => array(
+        0 => array(
+          'value' => 1,
+        ),
+      ),
+      'deleted' => '0',
+      'description' => 'The family name of the composer is displayed before the given name(s). Check this if you want a comma between them. ',
+      'display' => array(
+        'default' => array(
+          'label' => 'hidden',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '5',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_comma_separator',
+      'label' => 'Comma separator',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(
+          'display_label' => 1,
+        ),
+        'type' => 'options_onoff',
+        'weight' => '5',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-piece-field_family_name'.
+  $fields['node-piece-field_family_name'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_family_name',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(
+        'max_length' => '255',
+      ),
+      'translatable' => '0',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'piece',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'The family name of the composer like \'Bach\'. This will be used to sort the piece. ',
+      'display' => array(
+        'default' => array(
+          'label' => 'hidden',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '1',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_family_name',
+      'label' => 'Family name',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '60',
+        ),
+        'type' => 'text_textfield',
+        'weight' => '3',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-piece-field_given_name'.
+  $fields['node-piece-field_given_name'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '-1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_given_name',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(
+        'max_length' => '255',
+      ),
+      'translatable' => '0',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'piece',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'hidden',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '2',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_given_name',
+      'label' => 'Given name',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '60',
+        ),
+        'type' => 'text_textfield',
+        'weight' => '4',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-piece-field_piece_title'.
+  $fields['node-piece-field_piece_title'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_piece_title',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(
+        'max_length' => '255',
+      ),
+      'translatable' => '0',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'piece',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'No roman numbers should be used. If only some movements of the composition were played add each movement separately. Guidline examples: 
+<ul>
+<li>3rd symphony</li>
+<li>5th symphony - 1st movement</li>
+<li>1st symphony (Titan) - 2nd movement (</li>
+<li>Romeo and Juliet - Dance of the Knights</li>
+</ul>',
+      'display' => array(
+        'default' => array(
+          'label' => 'hidden',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '4',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_piece_title',
+      'label' => 'Piece title',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '60',
+        ),
+        'type' => 'text_textfield',
+        'weight' => '6',
+      ),
+    ),
+  );
+
   // Translatables
   // Included for use with string extractors like potx.
   t('Address');
   t('Body');
   t('City');
+  t('Comma separator');
   t('Email');
+  t('Family name');
+  t('Given name');
   t('Image');
   t('Instrument');
   t('Media');
   t('Membership dates');
   t('Mobile');
   t('Neptun code');
+  t('No roman numbers should be used. If only some movements of the composition were played add each movement separately. Guidline examples: 
+<ul>
+<li>3rd symphony</li>
+<li>5th symphony - 1st movement</li>
+<li>1st symphony (Titan) - 2nd movement (</li>
+<li>Romeo and Juliet - Dance of the Knights</li>
+</ul>');
   t('Occupation');
   t('Orchestra email list');
   t('Phone');
+  t('Piece title');
   t('Remark');
   t('Tags');
   t('Tags separated by commas.');
   t('Tags separated by commas. ');
+  t('The family name of the composer is displayed before the given name(s). Check this if you want a comma between them. ');
+  t('The family name of the composer like \'Bach\'. This will be used to sort the piece. ');
   t('Time');
   t('Workplace phone');
   t('Zip code');

@@ -47,6 +47,14 @@ function mez_cts_node_info() {
       'title_label' => t('Title'),
       'help' => '',
     ),
+    'piece' => array(
+      'name' => t('Piece'),
+      'base' => 'node_content',
+      'description' => t('A piece played on a concert.'),
+      'has_title' => '1',
+      'title_label' => t('Title'),
+      'help' => '',
+    ),
   );
   return $items;
 }
