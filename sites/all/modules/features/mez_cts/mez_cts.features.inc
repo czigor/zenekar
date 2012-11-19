@@ -23,6 +23,14 @@ function mez_cts_ctools_plugin_api() {
  */
 function mez_cts_node_info() {
   $items = array(
+    'concert' => array(
+      'name' => t('Concert'),
+      'base' => 'node_content',
+      'description' => '',
+      'has_title' => '1',
+      'title_label' => t('Title'),
+      'help' => '',
+    ),
     'member' => array(
       'name' => t('Member'),
       'base' => 'node_content',
