@@ -40,6 +40,7 @@ function mez_cts_field_default_fields() {
             'parent' => '0',
           ),
         ),
+        'entity_translation_sync' => FALSE,
         'options_list_callback' => 'i18n_taxonomy_allowed_values',
       ),
       'translatable' => '0',
@@ -55,7 +56,7 @@ function mez_cts_field_default_fields() {
           'label' => 'hidden',
           'module' => 'i18n_taxonomy',
           'settings' => array(),
-          'type' => 'i18n_taxonomy_term_reference_link',
+          'type' => 'i18n_taxonomy_term_reference_plain',
           'weight' => '1',
         ),
       ),
@@ -64,6 +65,7 @@ function mez_cts_field_default_fields() {
       'label' => 'Instrument',
       'required' => 0,
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -100,6 +102,7 @@ function mez_cts_field_default_fields() {
       'locked' => '0',
       'module' => 'entityreference',
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'handler' => 'base',
         'handler_settings' => array(
           'behaviors' => array(
@@ -131,7 +134,7 @@ function mez_cts_field_default_fields() {
           'label' => 'hidden',
           'module' => 'entityreference',
           'settings' => array(
-            'link' => FALSE,
+            'link' => 1,
           ),
           'type' => 'entityreference_label',
           'weight' => '0',
@@ -142,6 +145,7 @@ function mez_cts_field_default_fields() {
       'label' => 'Performer',
       'required' => 0,
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -167,6 +171,7 @@ function mez_cts_field_default_fields() {
       'locked' => '0',
       'module' => 'field_collection',
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'path' => '',
       ),
       'translatable' => '0',
@@ -186,7 +191,6 @@ function mez_cts_field_default_fields() {
             'delete' => '',
             'description' => 1,
             'edit' => '',
-            'empty' => TRUE,
             'view_mode' => 'full',
           ),
           'type' => 'field_collection_view',
@@ -198,13 +202,14 @@ function mez_cts_field_default_fields() {
       'label' => 'Performers',
       'required' => 0,
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'user_register_form' => FALSE,
       ),
       'widget' => array(
         'active' => 0,
         'module' => 'field_collection',
         'settings' => array(),
-        'type' => 'field_collection_hidden',
+        'type' => 'field_collection_embed',
         'weight' => '2',
       ),
     ),
@@ -234,6 +239,7 @@ function mez_cts_field_default_fields() {
       'locked' => '0',
       'module' => 'entityreference',
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'handler' => 'base',
         'handler_settings' => array(
           'behaviors' => array(
@@ -265,7 +271,7 @@ function mez_cts_field_default_fields() {
           'label' => 'hidden',
           'module' => 'entityreference',
           'settings' => array(
-            'link' => FALSE,
+            'link' => 1,
           ),
           'type' => 'entityreference_label',
           'weight' => '0',
@@ -276,6 +282,7 @@ function mez_cts_field_default_fields() {
       'label' => 'Piece',
       'required' => 0,
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -318,6 +325,7 @@ function mez_cts_field_default_fields() {
             'parent' => '0',
           ),
         ),
+        'entity_translation_sync' => FALSE,
         'options_list_callback' => 'i18n_taxonomy_allowed_values',
       ),
       'translatable' => '0',
@@ -366,6 +374,7 @@ function mez_cts_field_default_fields() {
       'label' => 'Tags',
       'required' => 0,
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -396,6 +405,7 @@ function mez_cts_field_default_fields() {
       'settings' => array(
         'cache_count' => '4',
         'cache_enabled' => 0,
+        'entity_translation_sync' => FALSE,
         'granularity' => array(
           'day' => 'day',
           'hour' => 'hour',
@@ -471,6 +481,7 @@ function mez_cts_field_default_fields() {
         'default_value2' => 'same',
         'default_value_code' => '',
         'default_value_code2' => '',
+        'entity_translation_sync' => FALSE,
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -522,6 +533,7 @@ function mez_cts_field_default_fields() {
             'parent' => '0',
           ),
         ),
+        'entity_translation_sync' => FALSE,
         'options_list_callback' => 'i18n_taxonomy_allowed_values',
       ),
       'translatable' => '0',
@@ -570,6 +582,7 @@ function mez_cts_field_default_fields() {
       'label' => 'Tags',
       'required' => 0,
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -600,6 +613,7 @@ function mez_cts_field_default_fields() {
       'settings' => array(
         'cache_count' => '4',
         'cache_enabled' => 0,
+        'entity_translation_sync' => FALSE,
         'granularity' => array(
           'day' => 'day',
           'hour' => 'hour',
@@ -675,6 +689,7 @@ function mez_cts_field_default_fields() {
         'default_value2' => 'same',
         'default_value_code' => '',
         'default_value_code2' => '',
+        'entity_translation_sync' => FALSE,
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -726,6 +741,7 @@ function mez_cts_field_default_fields() {
             'parent' => '0',
           ),
         ),
+        'entity_translation_sync' => FALSE,
         'options_list_callback' => 'i18n_taxonomy_allowed_values',
       ),
       'translatable' => '0',
@@ -774,6 +790,7 @@ function mez_cts_field_default_fields() {
       'label' => 'Tags',
       'required' => 0,
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -804,6 +821,7 @@ function mez_cts_field_default_fields() {
       'settings' => array(
         'cache_count' => '4',
         'cache_enabled' => 0,
+        'entity_translation_sync' => FALSE,
         'granularity' => array(
           'day' => 'day',
           'hour' => 'hour',
@@ -879,6 +897,7 @@ function mez_cts_field_default_fields() {
         'default_value2' => 'same',
         'default_value_code' => '',
         'default_value_code2' => '',
+        'entity_translation_sync' => FALSE,
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -930,6 +949,7 @@ function mez_cts_field_default_fields() {
             'parent' => '0',
           ),
         ),
+        'entity_translation_sync' => FALSE,
         'options_list_callback' => 'i18n_taxonomy_allowed_values',
       ),
       'translatable' => '0',
@@ -978,6 +998,7 @@ function mez_cts_field_default_fields() {
       'label' => 'Tags',
       'required' => 0,
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -1008,6 +1029,7 @@ function mez_cts_field_default_fields() {
       'settings' => array(
         'cache_count' => '4',
         'cache_enabled' => 0,
+        'entity_translation_sync' => FALSE,
         'granularity' => array(
           'day' => 'day',
           'hour' => 'hour',
@@ -1083,6 +1105,7 @@ function mez_cts_field_default_fields() {
         'default_value2' => 'same',
         'default_value_code' => '',
         'default_value_code2' => '',
+        'entity_translation_sync' => FALSE,
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -1134,6 +1157,7 @@ function mez_cts_field_default_fields() {
             'parent' => '0',
           ),
         ),
+        'entity_translation_sync' => FALSE,
         'options_list_callback' => 'i18n_taxonomy_allowed_values',
       ),
       'translatable' => '0',
@@ -1182,6 +1206,7 @@ function mez_cts_field_default_fields() {
       'label' => 'Tags',
       'required' => 0,
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -1212,6 +1237,7 @@ function mez_cts_field_default_fields() {
       'settings' => array(
         'cache_count' => '4',
         'cache_enabled' => 0,
+        'entity_translation_sync' => FALSE,
         'granularity' => array(
           'day' => 'day',
           'hour' => 'hour',
@@ -1287,6 +1313,7 @@ function mez_cts_field_default_fields() {
         'default_value2' => 'same',
         'default_value_code' => '',
         'default_value_code2' => '',
+        'entity_translation_sync' => FALSE,
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -1338,6 +1365,7 @@ function mez_cts_field_default_fields() {
             'parent' => '0',
           ),
         ),
+        'entity_translation_sync' => FALSE,
         'options_list_callback' => 'i18n_taxonomy_allowed_values',
       ),
       'translatable' => '0',
@@ -1386,6 +1414,7 @@ function mez_cts_field_default_fields() {
       'label' => 'Tags',
       'required' => 0,
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -1416,6 +1445,7 @@ function mez_cts_field_default_fields() {
       'settings' => array(
         'cache_count' => '4',
         'cache_enabled' => 0,
+        'entity_translation_sync' => FALSE,
         'granularity' => array(
           'day' => 'day',
           'hour' => 'hour',
@@ -1491,6 +1521,7 @@ function mez_cts_field_default_fields() {
         'default_value2' => 'same',
         'default_value_code' => '',
         'default_value_code2' => '',
+        'entity_translation_sync' => FALSE,
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -1508,6 +1539,216 @@ function mez_cts_field_default_fields() {
         ),
         'type' => 'date_popup',
         'weight' => '-1',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-composer-field_comma_separator'.
+  $fields['node-composer-field_comma_separator'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_comma_separator',
+      'foreign keys' => array(),
+      'indexes' => array(
+        'value' => array(
+          0 => 'value',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'list',
+      'settings' => array(
+        'allowed_values' => array(
+          0 => '',
+          1 => '',
+        ),
+        'allowed_values_function' => '',
+        'entity_translation_sync' => FALSE,
+      ),
+      'translatable' => '0',
+      'type' => 'list_boolean',
+    ),
+    'field_instance' => array(
+      'bundle' => 'composer',
+      'default_value' => array(
+        0 => array(
+          'value' => 1,
+        ),
+      ),
+      'deleted' => '0',
+      'description' => 'The family name of the composer is displayed before the given name(s). Check this if you want a comma between them. (So do not check it for Hungarian names.)',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '3',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_comma_separator',
+      'label' => 'Comma separator',
+      'required' => 0,
+      'settings' => array(
+        'entity_translation_sync' => FALSE,
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(
+          'display_label' => 1,
+        ),
+        'type' => 'options_onoff',
+        'weight' => '37',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-composer-field_family_name'.
+  $fields['node-composer-field_family_name'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_family_name',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(
+        'entity_translation_sync' => FALSE,
+        'max_length' => '255',
+      ),
+      'translatable' => '0',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'composer',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'The family name of the composer like \'Bach\'. This will be used to sort the piece. ',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '1',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_family_name',
+      'label' => 'Family name',
+      'required' => 1,
+      'settings' => array(
+        'entity_translation_sync' => FALSE,
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '60',
+        ),
+        'type' => 'text_textfield',
+        'weight' => '33',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-composer-field_given_name'.
+  $fields['node-composer-field_given_name'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '-1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_given_name',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(
+        'entity_translation_sync' => FALSE,
+        'max_length' => '255',
+      ),
+      'translatable' => '0',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'composer',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'The given name(s) of the composer. Each name (like Johann and Sebastian) should go into a different textbox. ',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '2',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_given_name',
+      'label' => 'Given name',
+      'required' => 0,
+      'settings' => array(
+        'entity_translation_sync' => FALSE,
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '60',
+        ),
+        'type' => 'text_textfield',
+        'weight' => '35',
       ),
     ),
   );
@@ -1538,9 +1779,12 @@ function mez_cts_field_default_fields() {
       'settings' => array(
         'display_default' => 0,
         'display_field' => 0,
+        'entity_translation_sync' => array(
+          0 => 'fid',
+        ),
         'uri_scheme' => 'public',
       ),
-      'translatable' => '0',
+      'translatable' => '1',
       'type' => 'file',
     ),
     'field_instance' => array(
@@ -1550,10 +1794,12 @@ function mez_cts_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'file',
-          'settings' => array(),
-          'type' => 'file_default',
-          'weight' => 2,
+          'module' => 'file_entity',
+          'settings' => array(
+            'file_view_mode' => 'default',
+          ),
+          'type' => 'file_rendered',
+          'weight' => '3',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1568,7 +1814,8 @@ function mez_cts_field_default_fields() {
       'required' => 0,
       'settings' => array(
         'description_field' => 0,
-        'file_directory' => '',
+        'entity_translation_sync' => FALSE,
+        'file_directory' => 'concert/media/[current-user:uuid]',
         'file_extensions' => 'txt pdf doc odt jpg gif png bmp jpeg mp3 ogg avi mpg mpeg',
         'max_filesize' => '',
         'user_register_form' => FALSE,
@@ -1578,7 +1825,7 @@ function mez_cts_field_default_fields() {
         'module' => 'media',
         'settings' => array(
           'allowed_schemes' => array(
-            'private' => 'private',
+            'private' => 0,
             'public' => 'public',
             'youtube' => 'youtube',
           ),
@@ -1589,10 +1836,11 @@ function mez_cts_field_default_fields() {
             'video' => 'video',
           ),
           'browser_plugins' => array(
-            'media_default--media_browser_1' => 'media_default--media_browser_1',
+            'media_default--media_browser_1' => 0,
             'media_default--media_browser_my_files' => 'media_default--media_browser_my_files',
             'media_internet' => 'media_internet',
             'upload' => 'upload',
+            'youtube' => 'youtube',
           ),
           'progress_indicator' => 'throbber',
         ),
@@ -1615,6 +1863,7 @@ function mez_cts_field_default_fields() {
       'locked' => '0',
       'module' => 'field_collection',
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'path' => '',
       ),
       'translatable' => '0',
@@ -1628,7 +1877,7 @@ function mez_cts_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'field_collection',
+          'module' => 'field_collection_table',
           'settings' => array(
             'add' => '',
             'delete' => '',
@@ -1637,8 +1886,8 @@ function mez_cts_field_default_fields() {
             'empty' => TRUE,
             'view_mode' => 'full',
           ),
-          'type' => 'field_collection_view',
-          'weight' => '1',
+          'type' => 'field_collection_table_view',
+          'weight' => '2',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1652,13 +1901,14 @@ function mez_cts_field_default_fields() {
       'label' => 'Programme',
       'required' => 0,
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'user_register_form' => FALSE,
       ),
       'widget' => array(
         'active' => 0,
-        'module' => 'field_collection',
+        'module' => 'field_collection_table',
         'settings' => array(),
-        'type' => 'field_collection_hidden',
+        'type' => 'field_collection_table',
         'weight' => '2',
       ),
     ),
@@ -1679,6 +1929,7 @@ function mez_cts_field_default_fields() {
       'settings' => array(
         'cache_count' => '4',
         'cache_enabled' => 0,
+        'entity_translation_sync' => FALSE,
         'granularity' => array(
           'day' => 'day',
           'hour' => 'hour',
@@ -1712,7 +1963,7 @@ function mez_cts_field_default_fields() {
             'show_repeat_rule' => 'show',
           ),
           'type' => 'date_default',
-          'weight' => '0',
+          'weight' => '1',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1730,6 +1981,7 @@ function mez_cts_field_default_fields() {
         'default_value2' => 'same',
         'default_value_code' => '',
         'default_value_code2' => '',
+        'entity_translation_sync' => FALSE,
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -1747,6 +1999,85 @@ function mez_cts_field_default_fields() {
         ),
         'type' => 'date_popup',
         'weight' => '1',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-concert-title_field'.
+  $fields['node-concert-title_field'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'title_field',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(
+        'entity_translation_sync' => FALSE,
+        'max_length' => '255',
+      ),
+      'translatable' => '1',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'concert',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'A field replacing node title.',
+      'display' => array(
+        'default' => array(
+          'label' => 'hidden',
+          'module' => 'title',
+          'settings' => array(
+            'title_class' => '',
+            'title_link' => 'content',
+            'title_style' => 'span',
+          ),
+          'type' => 'title_linked',
+          'weight' => '0',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'title_field',
+      'label' => 'Cím',
+      'required' => 1,
+      'settings' => array(
+        'entity_translation_sync' => FALSE,
+        'hide_label' => array(
+          'entity' => 'entity',
+          'page' => 'page',
+        ),
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '60',
+        ),
+        'type' => 'text_textfield',
+        'weight' => -5,
       ),
     ),
   );
@@ -1776,8 +2107,10 @@ function mez_cts_field_default_fields() {
       ),
       'locked' => '0',
       'module' => 'text',
-      'settings' => array(),
-      'translatable' => '0',
+      'settings' => array(
+        'entity_translation_sync' => FALSE,
+      ),
+      'translatable' => '1',
       'type' => 'text_with_summary',
     ),
     'field_instance' => array(
@@ -1809,6 +2142,7 @@ function mez_cts_field_default_fields() {
       'required' => 0,
       'settings' => array(
         'display_summary' => 1,
+        'entity_translation_sync' => FALSE,
         'text_processing' => '1',
         'user_register_form' => FALSE,
       ),
@@ -1820,7 +2154,7 @@ function mez_cts_field_default_fields() {
           'summary_rows' => 5,
         ),
         'type' => 'text_textarea_with_summary',
-        'weight' => '15',
+        'weight' => '16',
       ),
     ),
   );
@@ -1849,6 +2183,7 @@ function mez_cts_field_default_fields() {
       'locked' => '0',
       'module' => 'text',
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'max_length' => '255',
       ),
       'translatable' => '0',
@@ -1879,6 +2214,7 @@ function mez_cts_field_default_fields() {
       'label' => 'Address',
       'required' => 0,
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'text_processing' => '0',
         'user_register_form' => FALSE,
       ),
@@ -1889,7 +2225,7 @@ function mez_cts_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '8',
+        'weight' => '9',
       ),
     ),
   );
@@ -1918,6 +2254,7 @@ function mez_cts_field_default_fields() {
       'locked' => '0',
       'module' => 'text',
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'max_length' => '255',
       ),
       'translatable' => '0',
@@ -1948,6 +2285,7 @@ function mez_cts_field_default_fields() {
       'label' => 'City',
       'required' => 0,
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'text_processing' => '0',
         'user_register_form' => FALSE,
       ),
@@ -1958,7 +2296,7 @@ function mez_cts_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '6',
+        'weight' => '7',
       ),
     ),
   );
@@ -1975,7 +2313,9 @@ function mez_cts_field_default_fields() {
       'indexes' => array(),
       'locked' => '0',
       'module' => 'email',
-      'settings' => array(),
+      'settings' => array(
+        'entity_translation_sync' => FALSE,
+      ),
       'translatable' => '0',
       'type' => 'email',
     ),
@@ -2004,6 +2344,7 @@ function mez_cts_field_default_fields() {
       'label' => 'Email',
       'required' => 0,
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -2013,7 +2354,7 @@ function mez_cts_field_default_fields() {
           'size' => '40',
         ),
         'type' => 'email_textfield',
-        'weight' => '13',
+        'weight' => '14',
       ),
     ),
   );
@@ -2040,6 +2381,7 @@ function mez_cts_field_default_fields() {
           1 => '',
         ),
         'allowed_values_function' => '',
+        'entity_translation_sync' => FALSE,
       ),
       'translatable' => '0',
       'type' => 'list_boolean',
@@ -2073,6 +2415,7 @@ function mez_cts_field_default_fields() {
       'label' => 'Orchestra email list',
       'required' => 0,
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -2082,7 +2425,7 @@ function mez_cts_field_default_fields() {
           'display_label' => 1,
         ),
         'type' => 'options_onoff',
-        'weight' => '12',
+        'weight' => '13',
       ),
     ),
   );
@@ -2109,26 +2452,31 @@ function mez_cts_field_default_fields() {
         ),
       ),
       'locked' => '0',
-      'module' => 'file',
+      'module' => 'image',
       'settings' => array(
-        'display_default' => 0,
-        'display_field' => 0,
+        'default_image' => 0,
+        'entity_translation_sync' => array(
+          0 => 'fid',
+        ),
         'uri_scheme' => 'public',
       ),
       'translatable' => '0',
-      'type' => 'file',
+      'type' => 'image',
     ),
     'field_instance' => array(
       'bundle' => 'member',
       'deleted' => '0',
-      'description' => '',
+      'description' => 'Member\'s picture',
       'display' => array(
         'default' => array(
-          'label' => 'hidden',
-          'module' => 'file',
-          'settings' => array(),
-          'type' => 'file_default',
-          'weight' => '2',
+          'label' => 'above',
+          'module' => 'image',
+          'settings' => array(
+            'image_link' => '',
+            'image_style' => '',
+          ),
+          'type' => 'image',
+          'weight' => '1',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2142,10 +2490,15 @@ function mez_cts_field_default_fields() {
       'label' => 'Image',
       'required' => 0,
       'settings' => array(
-        'description_field' => 0,
+        'alt_field' => 0,
+        'default_image' => 0,
+        'entity_translation_sync' => FALSE,
         'file_directory' => 'member/image',
-        'file_extensions' => 'jpg png jpeg tiff',
+        'file_extensions' => 'png gif jpg jpeg',
         'max_filesize' => '',
+        'max_resolution' => '',
+        'min_resolution' => '',
+        'title_field' => 0,
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -2153,27 +2506,27 @@ function mez_cts_field_default_fields() {
         'module' => 'media',
         'settings' => array(
           'allowed_schemes' => array(
-            'private' => 'private',
+            'private' => 0,
             'public' => 'public',
             'youtube' => 0,
           ),
           'allowed_types' => array(
             'audio' => 0,
-            'default' => 0,
+            'document' => 0,
             'image' => 'image',
             'video' => 0,
           ),
           'browser_plugins' => array(
-            'library' => 'library',
             'media_default--media_browser_1' => 0,
-            'media_default--media_browser_my_files' => 0,
+            'media_default--media_browser_my_files' => 'media_default--media_browser_my_files',
             'media_internet' => 'media_internet',
             'upload' => 'upload',
+            'youtube' => 0,
           ),
           'progress_indicator' => 'throbber',
         ),
         'type' => 'media_generic',
-        'weight' => '3',
+        'weight' => '1',
       ),
     ),
   );
@@ -2208,6 +2561,7 @@ function mez_cts_field_default_fields() {
             'parent' => '0',
           ),
         ),
+        'entity_translation_sync' => FALSE,
         'options_list_callback' => 'i18n_taxonomy_allowed_values',
       ),
       'translatable' => '0',
@@ -2238,6 +2592,7 @@ function mez_cts_field_default_fields() {
       'label' => 'Instrument',
       'required' => 0,
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -2245,7 +2600,7 @@ function mez_cts_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_select',
-        'weight' => '2',
+        'weight' => '3',
       ),
     ),
   );
@@ -2265,6 +2620,7 @@ function mez_cts_field_default_fields() {
       'settings' => array(
         'cache_count' => '4',
         'cache_enabled' => 0,
+        'entity_translation_sync' => FALSE,
         'granularity' => array(
           'day' => 'day',
           'hour' => 0,
@@ -2316,6 +2672,7 @@ function mez_cts_field_default_fields() {
         'default_value2' => 'blank',
         'default_value_code' => '',
         'default_value_code2' => '',
+        'entity_translation_sync' => FALSE,
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -2332,7 +2689,7 @@ function mez_cts_field_default_fields() {
           'year_range' => '1896:+3',
         ),
         'type' => 'date_popup',
-        'weight' => '14',
+        'weight' => '15',
       ),
     ),
   );
@@ -2361,6 +2718,7 @@ function mez_cts_field_default_fields() {
       'locked' => '0',
       'module' => 'text',
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'max_length' => '255',
       ),
       'translatable' => '0',
@@ -2391,6 +2749,7 @@ function mez_cts_field_default_fields() {
       'label' => 'Mobile',
       'required' => 0,
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'text_processing' => '0',
         'user_register_form' => FALSE,
       ),
@@ -2401,7 +2760,7 @@ function mez_cts_field_default_fields() {
           'size' => '20',
         ),
         'type' => 'text_textfield',
-        'weight' => '10',
+        'weight' => '11',
       ),
     ),
   );
@@ -2430,6 +2789,7 @@ function mez_cts_field_default_fields() {
       'locked' => '0',
       'module' => 'text',
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'max_length' => '255',
       ),
       'translatable' => '0',
@@ -2460,6 +2820,7 @@ function mez_cts_field_default_fields() {
       'label' => 'Neptun code',
       'required' => 0,
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'text_processing' => '0',
         'user_register_form' => FALSE,
       ),
@@ -2470,7 +2831,7 @@ function mez_cts_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '5',
+        'weight' => '6',
       ),
     ),
   );
@@ -2499,6 +2860,7 @@ function mez_cts_field_default_fields() {
       'locked' => '0',
       'module' => 'text',
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'max_length' => '255',
       ),
       'translatable' => '0',
@@ -2515,7 +2877,7 @@ function mez_cts_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '1',
+          'weight' => '2',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2529,6 +2891,7 @@ function mez_cts_field_default_fields() {
       'label' => 'Occupation',
       'required' => 0,
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'text_processing' => '0',
         'user_register_form' => FALSE,
       ),
@@ -2568,6 +2931,7 @@ function mez_cts_field_default_fields() {
       'locked' => '0',
       'module' => 'text',
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'max_length' => '255',
       ),
       'translatable' => '0',
@@ -2598,6 +2962,7 @@ function mez_cts_field_default_fields() {
       'label' => 'Phone',
       'required' => 0,
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'text_processing' => '0',
         'user_register_form' => FALSE,
       ),
@@ -2608,7 +2973,7 @@ function mez_cts_field_default_fields() {
           'size' => '20',
         ),
         'type' => 'text_textfield',
-        'weight' => '9',
+        'weight' => '10',
       ),
     ),
   );
@@ -2637,6 +3002,7 @@ function mez_cts_field_default_fields() {
       'locked' => '0',
       'module' => 'text',
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'max_length' => '255',
       ),
       'translatable' => '0',
@@ -2667,6 +3033,7 @@ function mez_cts_field_default_fields() {
       'label' => 'Workplace phone',
       'required' => 0,
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'text_processing' => '0',
         'user_register_form' => FALSE,
       ),
@@ -2677,7 +3044,7 @@ function mez_cts_field_default_fields() {
           'size' => '20',
         ),
         'type' => 'text_textfield',
-        'weight' => '11',
+        'weight' => '12',
       ),
     ),
   );
@@ -2706,6 +3073,7 @@ function mez_cts_field_default_fields() {
       'locked' => '0',
       'module' => 'text',
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'max_length' => '255',
       ),
       'translatable' => '0',
@@ -2736,6 +3104,7 @@ function mez_cts_field_default_fields() {
       'label' => 'Zip code',
       'required' => 0,
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'text_processing' => '0',
         'user_register_form' => FALSE,
       ),
@@ -2746,7 +3115,7 @@ function mez_cts_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '7',
+        'weight' => '8',
       ),
     ),
   );
@@ -2776,8 +3145,10 @@ function mez_cts_field_default_fields() {
       ),
       'locked' => '0',
       'module' => 'text',
-      'settings' => array(),
-      'translatable' => '0',
+      'settings' => array(
+        'entity_translation_sync' => FALSE,
+      ),
+      'translatable' => '1',
       'type' => 'text_with_summary',
     ),
     'field_instance' => array(
@@ -2791,7 +3162,7 @@ function mez_cts_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 0,
+          'weight' => '1',
         ),
         'teaser' => array(
           'label' => 'hidden',
@@ -2806,16 +3177,18 @@ function mez_cts_field_default_fields() {
       'entity_type' => 'node',
       'field_name' => 'body',
       'label' => 'Body',
-      'required' => FALSE,
+      'required' => 0,
       'settings' => array(
-        'display_summary' => TRUE,
-        'text_processing' => 1,
+        'display_summary' => 1,
+        'entity_translation_sync' => FALSE,
+        'text_processing' => '1',
         'user_register_form' => FALSE,
       ),
       'widget' => array(
+        'active' => 1,
         'module' => 'text',
         'settings' => array(
-          'rows' => 20,
+          'rows' => '20',
           'summary_rows' => 5,
         ),
         'type' => 'text_textarea_with_summary',
@@ -2850,9 +3223,12 @@ function mez_cts_field_default_fields() {
       'settings' => array(
         'display_default' => 0,
         'display_field' => 0,
+        'entity_translation_sync' => array(
+          0 => 'fid',
+        ),
         'uri_scheme' => 'public',
       ),
-      'translatable' => '0',
+      'translatable' => '1',
       'type' => 'file',
     ),
     'field_instance' => array(
@@ -2865,7 +3241,7 @@ function mez_cts_field_default_fields() {
           'module' => 'file',
           'settings' => array(),
           'type' => 'file_default',
-          'weight' => 1,
+          'weight' => '2',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2880,7 +3256,8 @@ function mez_cts_field_default_fields() {
       'required' => 0,
       'settings' => array(
         'description_field' => 0,
-        'file_directory' => 'news',
+        'entity_translation_sync' => 0,
+        'file_directory' => 'news/media',
         'file_extensions' => 'txt pdf doc odt jpg gif png bmp jpeg mp3 ogg avi mpg mpeg',
         'max_filesize' => '',
         'user_register_form' => FALSE,
@@ -2890,27 +3267,106 @@ function mez_cts_field_default_fields() {
         'module' => 'media',
         'settings' => array(
           'allowed_schemes' => array(
-            'private' => 'private',
+            'private' => 0,
             'public' => 'public',
             'youtube' => 'youtube',
           ),
           'allowed_types' => array(
             'audio' => 'audio',
-            'default' => 'default',
+            'document' => 0,
             'image' => 'image',
             'video' => 'video',
           ),
           'browser_plugins' => array(
-            'library' => 'library',
             'media_default--media_browser_1' => 0,
-            'media_default--media_browser_my_files' => 0,
+            'media_default--media_browser_my_files' => 'media_default--media_browser_my_files',
             'media_internet' => 'media_internet',
             'upload' => 'upload',
+            'youtube' => 0,
           ),
           'progress_indicator' => 'throbber',
         ),
         'type' => 'media_generic',
         'weight' => '33',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-news-title_field'.
+  $fields['node-news-title_field'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'title_field',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(
+        'entity_translation_sync' => FALSE,
+        'max_length' => '255',
+      ),
+      'translatable' => '1',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'news',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'A field replacing node title.',
+      'display' => array(
+        'default' => array(
+          'label' => 'hidden',
+          'module' => 'title',
+          'settings' => array(
+            'title_class' => '',
+            'title_link' => 'content',
+            'title_style' => 'span',
+          ),
+          'type' => 'title_linked',
+          'weight' => '0',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'title_field',
+      'label' => 'Cím',
+      'required' => 1,
+      'settings' => array(
+        'entity_translation_sync' => FALSE,
+        'hide_label' => array(
+          'entity' => 'entity',
+          'page' => 'page',
+        ),
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '60',
+        ),
+        'type' => 'text_textfield',
+        'weight' => -5,
       ),
     ),
   );
@@ -2940,8 +3396,10 @@ function mez_cts_field_default_fields() {
       ),
       'locked' => '0',
       'module' => 'text',
-      'settings' => array(),
-      'translatable' => '0',
+      'settings' => array(
+        'entity_translation_sync' => FALSE,
+      ),
+      'translatable' => '1',
       'type' => 'text_with_summary',
     ),
     'field_instance' => array(
@@ -2955,7 +3413,7 @@ function mez_cts_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 0,
+          'weight' => '1',
         ),
         'teaser' => array(
           'label' => 'hidden',
@@ -2970,16 +3428,18 @@ function mez_cts_field_default_fields() {
       'entity_type' => 'node',
       'field_name' => 'body',
       'label' => 'Body',
-      'required' => FALSE,
+      'required' => 0,
       'settings' => array(
-        'display_summary' => TRUE,
-        'text_processing' => 1,
+        'display_summary' => 1,
+        'entity_translation_sync' => FALSE,
+        'text_processing' => '1',
         'user_register_form' => FALSE,
       ),
       'widget' => array(
+        'active' => 1,
         'module' => 'text',
         'settings' => array(
-          'rows' => 20,
+          'rows' => '20',
           'summary_rows' => 5,
         ),
         'type' => 'text_textarea_with_summary',
@@ -3014,9 +3474,12 @@ function mez_cts_field_default_fields() {
       'settings' => array(
         'display_default' => 0,
         'display_field' => 0,
+        'entity_translation_sync' => array(
+          0 => 'fid',
+        ),
         'uri_scheme' => 'public',
       ),
-      'translatable' => '0',
+      'translatable' => '1',
       'type' => 'file',
     ),
     'field_instance' => array(
@@ -3029,7 +3492,7 @@ function mez_cts_field_default_fields() {
           'module' => 'file',
           'settings' => array(),
           'type' => 'file_default',
-          'weight' => 1,
+          'weight' => '2',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -3044,6 +3507,7 @@ function mez_cts_field_default_fields() {
       'required' => 0,
       'settings' => array(
         'description_field' => 0,
+        'entity_translation_sync' => 0,
         'file_directory' => 'page',
         'file_extensions' => 'txt pdf doc odt jpg gif png bmp jpeg mp3 ogg avi mpg mpeg',
         'max_filesize' => '',
@@ -3054,22 +3518,22 @@ function mez_cts_field_default_fields() {
         'module' => 'media',
         'settings' => array(
           'allowed_schemes' => array(
-            'private' => 'private',
+            'private' => 0,
             'public' => 'public',
             'youtube' => 'youtube',
           ),
           'allowed_types' => array(
             'audio' => 'audio',
-            'default' => 0,
+            'document' => 0,
             'image' => 'image',
             'video' => 'video',
           ),
           'browser_plugins' => array(
-            'library' => 'library',
             'media_default--media_browser_1' => 0,
             'media_default--media_browser_my_files' => 0,
             'media_internet' => 'media_internet',
             'upload' => 'upload',
+            'youtube' => 0,
           ),
           'progress_indicator' => 'throbber',
         ),
@@ -3079,82 +3543,14 @@ function mez_cts_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-piece-field_comma_separator'.
-  $fields['node-piece-field_comma_separator'] = array(
+  // Exported field: 'node-page-title_field'.
+  $fields['node-page-title_field'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_comma_separator',
-      'foreign keys' => array(),
-      'indexes' => array(
-        'value' => array(
-          0 => 'value',
-        ),
-      ),
-      'locked' => '0',
-      'module' => 'list',
-      'settings' => array(
-        'allowed_values' => array(
-          0 => '',
-          1 => '',
-        ),
-        'allowed_values_function' => '',
-      ),
-      'translatable' => '0',
-      'type' => 'list_boolean',
-    ),
-    'field_instance' => array(
-      'bundle' => 'piece',
-      'default_value' => array(
-        0 => array(
-          'value' => 1,
-        ),
-      ),
-      'deleted' => '0',
-      'description' => 'The family name of the composer is displayed before the given name(s). Check this if you want a comma between them. ',
-      'display' => array(
-        'default' => array(
-          'label' => 'hidden',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '5',
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_comma_separator',
-      'label' => 'Comma separator',
-      'required' => 0,
-      'settings' => array(
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'options',
-        'settings' => array(
-          'display_label' => 1,
-        ),
-        'type' => 'options_onoff',
-        'weight' => '5',
-      ),
-    ),
-  );
-
-  // Exported field: 'node-piece-field_family_name'.
-  $fields['node-piece-field_family_name'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_family_name',
+      'field_name' => 'title_field',
       'foreign keys' => array(
         'format' => array(
           'columns' => array(
@@ -3171,19 +3567,114 @@ function mez_cts_field_default_fields() {
       'locked' => '0',
       'module' => 'text',
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'max_length' => '255',
       ),
-      'translatable' => '0',
+      'translatable' => '1',
       'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'page',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'A field replacing node title.',
+      'display' => array(
+        'default' => array(
+          'label' => 'hidden',
+          'module' => 'title',
+          'settings' => array(
+            'title_class' => '',
+            'title_link' => 'content',
+            'title_style' => 'span',
+          ),
+          'type' => 'title_linked',
+          'weight' => '0',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'title_field',
+      'label' => 'Cím',
+      'required' => TRUE,
+      'settings' => array(
+        'entity_translation_sync' => FALSE,
+        'hide_label' => array(
+          'entity' => FALSE,
+          'page' => FALSE,
+        ),
+        'text_processing' => 0,
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'module' => 'text',
+        'settings' => array(
+          'size' => 60,
+        ),
+        'type' => 'text_textfield',
+        'weight' => -5,
+      ),
+    ),
+  );
+
+  // Exported field: 'node-piece-field_composer'.
+  $fields['node-piece-field_composer'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_composer',
+      'foreign keys' => array(
+        'node' => array(
+          'columns' => array(
+            'target_id' => 'nid',
+          ),
+          'table' => 'node',
+        ),
+      ),
+      'indexes' => array(
+        'target_id' => array(
+          0 => 'target_id',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'entityreference',
+      'settings' => array(
+        'entity_translation_sync' => FALSE,
+        'handler' => 'base',
+        'handler_settings' => array(
+          'behaviors' => array(
+            'views-select-list' => array(
+              'status' => 0,
+            ),
+          ),
+          'sort' => array(
+            'direction' => 'ASC',
+            'property' => 'title',
+            'type' => 'property',
+          ),
+          'target_bundles' => array(
+            'composer' => 'composer',
+          ),
+        ),
+        'target_type' => 'node',
+      ),
+      'translatable' => '0',
+      'type' => 'entityreference',
     ),
     'field_instance' => array(
       'bundle' => 'piece',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => 'The family name of the composer like \'Bach\'. This will be used to sort the piece. ',
+      'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'hidden',
+          'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
           'weight' => '1',
@@ -3196,89 +3687,19 @@ function mez_cts_field_default_fields() {
         ),
       ),
       'entity_type' => 'node',
-      'field_name' => 'field_family_name',
-      'label' => 'Family name',
-      'required' => 0,
+      'field_name' => 'field_composer',
+      'label' => 'Composer',
+      'required' => 1,
       'settings' => array(
-        'text_processing' => '0',
+        'entity_translation_sync' => FALSE,
         'user_register_form' => FALSE,
       ),
       'widget' => array(
         'active' => 1,
-        'module' => 'text',
-        'settings' => array(
-          'size' => '60',
-        ),
-        'type' => 'text_textfield',
+        'module' => 'options',
+        'settings' => array(),
+        'type' => 'options_select',
         'weight' => '3',
-      ),
-    ),
-  );
-
-  // Exported field: 'node-piece-field_given_name'.
-  $fields['node-piece-field_given_name'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '-1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_given_name',
-      'foreign keys' => array(
-        'format' => array(
-          'columns' => array(
-            'format' => 'format',
-          ),
-          'table' => 'filter_format',
-        ),
-      ),
-      'indexes' => array(
-        'format' => array(
-          0 => 'format',
-        ),
-      ),
-      'locked' => '0',
-      'module' => 'text',
-      'settings' => array(
-        'max_length' => '255',
-      ),
-      'translatable' => '0',
-      'type' => 'text',
-    ),
-    'field_instance' => array(
-      'bundle' => 'piece',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'hidden',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '2',
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_given_name',
-      'label' => 'Given name',
-      'required' => 0,
-      'settings' => array(
-        'text_processing' => '0',
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'text',
-        'settings' => array(
-          'size' => '60',
-        ),
-        'type' => 'text_textfield',
-        'weight' => '4',
       ),
     ),
   );
@@ -3307,16 +3728,17 @@ function mez_cts_field_default_fields() {
       'locked' => '0',
       'module' => 'text',
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'max_length' => '255',
       ),
-      'translatable' => '0',
+      'translatable' => '1',
       'type' => 'text',
     ),
     'field_instance' => array(
       'bundle' => 'piece',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => 'No roman numbers should be used. If only some movements of the composition were played add each movement separately. Guidline examples: 
+      'description' => 'No roman numbers should be used. If only some movements of the composition were played add each movement separately. Guideline examples: 
 <ul>
 <li>3rd symphony</li>
 <li>5th symphony - 1st movement</li>
@@ -3328,7 +3750,7 @@ function mez_cts_field_default_fields() {
           'label' => 'hidden',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '4',
+          'weight' => '2',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -3340,8 +3762,9 @@ function mez_cts_field_default_fields() {
       'entity_type' => 'node',
       'field_name' => 'field_piece_title',
       'label' => 'Piece title',
-      'required' => 0,
+      'required' => 1,
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'text_processing' => '0',
         'user_register_form' => FALSE,
       ),
@@ -3352,28 +3775,106 @@ function mez_cts_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '6',
+        'weight' => '4',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-piece-title_field'.
+  $fields['node-piece-title_field'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'title_field',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(
+        'entity_translation_sync' => FALSE,
+        'max_length' => '255',
+      ),
+      'translatable' => '1',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'piece',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'A field replacing node title.',
+      'display' => array(
+        'default' => array(
+          'label' => 'hidden',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'title_field',
+      'label' => 'Cím',
+      'required' => 0,
+      'settings' => array(
+        'entity_translation_sync' => FALSE,
+        'hide_label' => array(
+          'entity' => 'entity',
+          'page' => 0,
+        ),
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '60',
+        ),
+        'type' => 'text_textfield',
+        'weight' => 0,
       ),
     ),
   );
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('A field replacing node title.');
   t('Address');
   t('Body');
   t('City');
   t('Comma separator');
+  t('Composer');
+  t('Cím');
   t('Email');
   t('Family name');
   t('Given name');
   t('Image');
   t('Instrument');
   t('Media');
+  t('Member\'s picture');
   t('Membership dates');
   t('Mobile');
   t('Média');
   t('Neptun code');
-  t('No roman numbers should be used. If only some movements of the composition were played add each movement separately. Guidline examples: 
+  t('No roman numbers should be used. If only some movements of the composition were played add each movement separately. Guideline examples: 
 <ul>
 <li>3rd symphony</li>
 <li>5th symphony - 1st movement</li>
@@ -3392,8 +3893,9 @@ function mez_cts_field_default_fields() {
   t('Tags');
   t('Tags separated by commas.');
   t('Tags separated by commas. ');
-  t('The family name of the composer is displayed before the given name(s). Check this if you want a comma between them. ');
+  t('The family name of the composer is displayed before the given name(s). Check this if you want a comma between them. (So do not check it for Hungarian names.)');
   t('The family name of the composer like \'Bach\'. This will be used to sort the piece. ');
+  t('The given name(s) of the composer. Each name (like Johann and Sebastian) should go into a different textbox. ');
   t('Time');
   t('Workplace phone');
   t('Zip code');

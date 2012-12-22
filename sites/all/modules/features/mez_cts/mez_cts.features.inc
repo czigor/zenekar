@@ -23,12 +23,20 @@ function mez_cts_ctools_plugin_api() {
  */
 function mez_cts_node_info() {
   $items = array(
+    'composer' => array(
+      'name' => t('Composer'),
+      'base' => 'node_content',
+      'description' => '',
+      'has_title' => '1',
+      'title_label' => t('Cím'),
+      'help' => '',
+    ),
     'concert' => array(
       'name' => t('Concert'),
       'base' => 'node_content',
       'description' => '',
       'has_title' => '1',
-      'title_label' => t('Title'),
+      'title_label' => t('Cím'),
       'help' => '',
     ),
     'member' => array(
@@ -36,7 +44,7 @@ function mez_cts_node_info() {
       'base' => 'node_content',
       'description' => t('Member of the orchestra'),
       'has_title' => '1',
-      'title_label' => t('Name'),
+      'title_label' => t('Név'),
       'help' => '',
     ),
     'news' => array(
@@ -44,15 +52,15 @@ function mez_cts_node_info() {
       'base' => 'node_content',
       'description' => '',
       'has_title' => '1',
-      'title_label' => t('Title'),
+      'title_label' => t('Cím'),
       'help' => '',
     ),
     'page' => array(
-      'name' => t('Page'),
+      'name' => t('Oldal'),
       'base' => 'node_content',
       'description' => '',
       'has_title' => '1',
-      'title_label' => t('Title'),
+      'title_label' => t('Cím'),
       'help' => '',
     ),
     'piece' => array(
@@ -60,7 +68,7 @@ function mez_cts_node_info() {
       'base' => 'node_content',
       'description' => t('A piece played on a concert.'),
       'has_title' => '1',
-      'title_label' => t('Title'),
+      'title_label' => t('Cím'),
       'help' => '',
     ),
   );
