@@ -258,8 +258,29 @@ function l10n_update_flag_history($available) {
  */
 function l10n_update_http_check($url, $headers = array()) {
   $result = l10n_update_http_request($url, array('headers' => $headers, 'method' => 'HEAD'));
-  if ($result && $result->code == '200') {
-    $result->updated = isset($result->headers['last-modified']) ? strtotime($result->headers['last-modified']) : 0;
+  if (!isset($result->error)) {
+    if ($result && $result->code == 200) {
+      $result->updated = isset($result->headers['last-modified']) ? strtotime($result->headers['last-modified']) : 0;
+    }
+    return $result;
+  }
+  else {
+    switch ($result->code) {
+      case 404:
+        // File not found occurs when a translation file is not yet available
+        // at the translation server. But also if a custom module or custom
+        // theme does not define the location of a translation file. By default
+        // the file is checked at the translation server, but it will not be
+        // found there.
+        watchdog('l10n_update', 'File not found: @uri.', array('@uri' => $url));
+        return TRUE;
+      case 0:
+        watchdog('l10n_update', 'Error occurred when trying to check @remote: @errormessage.', array('@errormessage' => $result->error, '@remote' => $url), WATCHDOG_ERROR);
+        break;
+      default:
+        watchdog('l10n_update', 'HTTP error @errorcode occurred when trying to check @remote.', array('@errorcode' => $result->code, '@remote' => $url), WATCHDOG_ERROR);
+        break;
+    }
   }
   return $result;
 }
