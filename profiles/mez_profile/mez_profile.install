@@ -243,8 +243,12 @@ function mez_profile_install() {
 
   // Create new roles.
   $role_oldaladmin = (object) array(
-    'name' => 'oldaladmin',
+    'name' => 'site admin',
   );
   user_role_save($role_oldaladmin);
 
+  $role_oldaladmin = (object) array(
+    'name' => 'editor',
+  );
+  user_role_save($role_oldaladmin);
 }

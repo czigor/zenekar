@@ -18,8 +18,21 @@ function system_form_install_select_profile_form_alter(&$form, $form_state) {
  */
 function mez_profile_install_tasks($install_state) {
   return array(
+
+    'mez_profile_install_import_translation' => array(
+      'display_name' => st('Set up translations'),
+      'display' => TRUE,
+      'run' => INSTALL_TASK_RUN_IF_NOT_COMPLETED,
+      'type' => 'batch',
+    ),
     'mez_profile_install_enable_features' => array(
       'display_name' => st('Configure features'),
+      'display' => TRUE,
+      'run' => INSTALL_TASK_RUN_IF_NOT_COMPLETED,
+      'type' => 'batch',
+    ),
+    'mez_profile_install_instruments' => array(
+      'display_name' => st('Create instruments'),
       'display' => TRUE,
       'run' => INSTALL_TASK_RUN_IF_NOT_COMPLETED,
       'type' => 'normal',
@@ -79,11 +92,38 @@ function mez_profile_form_install_configure_form_alter(&$form, $form_state) {
  * @param $install_state
  *   An array of information about the current installation state.
  */
-function mez_profile_install_enable_features(&$install_state) {
+function mez_profile_install_import_translation(&$install_state) {
   // Enable installation language as default site language.
   include_once DRUPAL_ROOT . '/includes/locale.inc';
   $install_locale = $install_state['parameters']['locale'];
-  locale_add_language($install_locale, NULL, NULL, NULL, '', NULL, 1, TRUE);
+  locale_add_language($install_locale, NULL, NULL, LANGUAGE_LTR, '', '', TRUE, TRUE);
+  module_enable(array('l10n_update'));
+  
+  db_update('languages')
+    ->fields(array(
+      'prefix' => 'en',
+    ))
+    ->condition('language', 'en')
+    ->execute();
+  
+  // Build batch with l10n_update module.
+  $history = l10n_update_get_history();
+  module_load_include('check.inc', 'l10n_update');
+  $available = l10n_update_available_releases();
+  $updates = l10n_update_build_updates($history, $available);
+  module_load_include('batch.inc', 'l10n_update');
+  $updates = _l10n_update_prepare_updates($updates, NULL, array());
+  $batch = l10n_update_batch_multiple($updates, LOCALE_IMPORT_KEEP);
+  return $batch;
+}
+
+/**
+ * Installation step callback.
+ *
+ * @param $install_state
+ *   An array of information about the current installation state.
+ */
+function mez_profile_install_enable_features(&$install_state) {
   // Some of features may start as overridden, eg. in the case they have
   // strongarmed variables, because the accompanying module which gets
   // installed as a dependency of the feature sets a variable in its
@@ -95,22 +135,26 @@ function mez_profile_install_enable_features(&$install_state) {
   // feature modules and immediately revert all the components of all them.
   // Weird, but yields the expected results.
   $modules = array(
+    'mez_wysiwyg',
+    'mez_settings',
     'mez_cts',
-    'mez_views',
     'mez_permissions',
   );
-//  features_install_modules($modules);
+  features_install_modules($modules);
   features_revert();
-  node_access_rebuild();
   drupal_flush_all_caches();
 
-  // Install those modules as well that depend on the just-installed feature
-  // modules.
-  $modules = array(
-  );
-  module_enable($modules);
-  drupal_flush_all_caches();
   node_access_rebuild();
-  
 }
 
+/**
+ * Installation step callback.
+ * 
+ * Creates the Instruments taxonomy terms.
+ *
+ * @param $install_state
+ *   An array of information about the current installation state.
+ */
+function mez_profile_install_instruments(&$install_state) {
+  mez_create_instruments_taxonomy_form_submit(NULL, NULL);
+}

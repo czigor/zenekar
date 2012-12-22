@@ -7,15 +7,33 @@ dependencies[] = block
 dependencies[] = dblog
 dependencies[] = update
 dependencies[] = menu
+dependencies[] = image
+dependencies[] = number
+dependencies[] = text
+dependencies[] = list
+dependencies[] = comment
+dependencies[] = taxonomy
+dependencies[] = locale
+dependencies[] = field_ui
+dependencies[] = statistics
+dependencies[] = translation
 
 ; Contrib
 dependencies[] = devel
+dependencies[] = diff
+dependencies[] = admin_menu_toolbar
+dependencies[] = pathauto
+dependencies[] = transliteration
+dependencies[] = features
+dependencies[] = uuid
+dependencies[] = entity_translation
+dependencies[] = i18n_taxonomy
+dependencies[] = strongarm
+dependencies[] = googleanalytics
+dependencies[] = libraries
+dependencies[] = lang_dropdown
 dependencies[] = views_ui
 dependencies[] = field_ui
-dependencies[] = comment
-dependencies[] = translation
-dependencies[] = locale
-dependencies[] = statistics
 dependencies[] = date
 dependencies[] = date_all_day
 dependencies[] = date_api
@@ -23,49 +41,28 @@ dependencies[] = date_views
 dependencies[] = link
 dependencies[] = simplenews
 dependencies[] = media
-dependencies[] = mediafield
 dependencies[] = media_internet
 dependencies[] = media_youtube
-dependencies[] = mez_instruments
-dependencies[] = i18n_menu
-dependencies[] = i18n_node
-dependencies[] = i18n_string
-dependencies[] = i18n_sync
 dependencies[] = i18n_taxonomy
-dependencies[] = i18n_translation
-dependencies[] = i18n_variable
 dependencies[] = colorbox
-dependencies[] = diff
 dependencies[] = entity_token
-dependencies[] = entity_translation
 dependencies[] = entityreference
-dependencies[] = variable
-dependencies[] = variable_admin
-dependencies[] = variable_views
-dependencies[] = uuid
-
-
-; Shipped by 'admin', depends on admin.module
-dependencies[] = admin_menu_toolbar
-; Shipped by 'pathauto' and 'token', depends on token.module and core's path.module
-dependencies[] = pathauto
-dependencies[] = transliteration
 dependencies[] = wysiwyg
-dependencies[] = features
-dependencies[] = strongarm
+dependencies[] = title
 
 ; Dependencies of own features, to get around http://drupal.org/node/677200
 dependencies[] = date_popup
-dependencies[] = taxonomy
 dependencies[] = email
-dependencies[] = entity
-dependencies[] = image
 dependencies[] = field_collection
-dependencies[] = field_ui
-dependencies[] = list
-dependencies[] = number
+dependencies[] = auto_nodetitle
+dependencies[] = taxonomy_access_fix
+dependencies[] = l10n_update
+dependencies[] = date_repeat_field
+dependencies[] = date_repeat
+dependencies[] = field_collection_table
 
 ; Own modules (all of them should be dependencies of at least one own feature)
+dependencies[] = mez_instruments
 
 ; Own features are installed explicitly in the last installation step.
 
