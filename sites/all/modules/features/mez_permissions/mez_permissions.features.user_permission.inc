@@ -26,6 +26,7 @@ function mez_permissions_user_default_permissions() {
       0 => 'anonymous user',
       1 => 'authenticated user',
       2 => 'editor',
+      3 => 'site admin',
     ),
     'module' => 'node',
   );
@@ -35,15 +36,37 @@ function mez_permissions_user_default_permissions() {
     'name' => 'access content overview',
     'roles' => array(
       0 => 'editor',
+      1 => 'site admin',
     ),
     'module' => 'node',
+  );
+
+  // Exported permission: access statistics.
+  $permissions['access statistics'] = array(
+    'name' => 'access statistics',
+    'roles' => array(
+      0 => 'anonymous user',
+      1 => 'authenticated user',
+    ),
+    'module' => 'statistics',
+  );
+
+  // Exported permission: access user profiles.
+  $permissions['access user profiles'] = array(
+    'name' => 'access user profiles',
+    'roles' => array(
+      0 => 'site admin',
+    ),
+    'module' => 'user',
   );
 
   // Exported permission: add media from remote sources.
   $permissions['add media from remote sources'] = array(
     'name' => 'add media from remote sources',
     'roles' => array(
-      0 => 'editor',
+      0 => 'authenticated user',
+      1 => 'editor',
+      2 => 'site admin',
     ),
     'module' => 'media_internet',
   );
@@ -60,6 +83,7 @@ function mez_permissions_user_default_permissions() {
     'name' => 'add terms in 2',
     'roles' => array(
       0 => 'editor',
+      1 => 'site admin',
     ),
     'module' => 'taxonomy_access_fix',
   );
@@ -69,6 +93,7 @@ function mez_permissions_user_default_permissions() {
     'name' => 'add terms in 3',
     'roles' => array(
       0 => 'editor',
+      1 => 'site admin',
     ),
     'module' => 'taxonomy_access_fix',
   );
@@ -76,17 +101,10 @@ function mez_permissions_user_default_permissions() {
   // Exported permission: administer comments.
   $permissions['administer comments'] = array(
     'name' => 'administer comments',
-    'roles' => array(),
-    'module' => 'comment',
-  );
-
-  // Exported permission: administer content translations.
-  $permissions['administer content translations'] = array(
-    'name' => 'administer content translations',
     'roles' => array(
-      0 => 'editor',
+      0 => 'site admin',
     ),
-    'module' => 'i18n_node',
+    'module' => 'comment',
   );
 
   // Exported permission: administer content types.
@@ -96,12 +114,24 @@ function mez_permissions_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: administer entity translation.
+  $permissions['administer entity translation'] = array(
+    'name' => 'administer entity translation',
+    'roles' => array(),
+    'module' => 'entity_translation',
+  );
+
+  // Exported permission: administer file types.
+  $permissions['administer file types'] = array(
+    'name' => 'administer file types',
+    'roles' => array(),
+    'module' => 'file_entity',
+  );
+
   // Exported permission: administer files.
   $permissions['administer files'] = array(
     'name' => 'administer files',
-    'roles' => array(
-      0 => 'editor',
-    ),
+    'roles' => array(),
     'module' => 'file_entity',
   );
 
@@ -110,6 +140,20 @@ function mez_permissions_user_default_permissions() {
     'name' => 'administer nodes',
     'roles' => array(),
     'module' => 'node',
+  );
+
+  // Exported permission: administer permissions.
+  $permissions['administer permissions'] = array(
+    'name' => 'administer permissions',
+    'roles' => array(),
+    'module' => 'user',
+  );
+
+  // Exported permission: administer statistics.
+  $permissions['administer statistics'] = array(
+    'name' => 'administer statistics',
+    'roles' => array(),
+    'module' => 'statistics',
   );
 
   // Exported permission: administer taxonomy.
@@ -126,11 +170,27 @@ function mez_permissions_user_default_permissions() {
     'module' => 'path',
   );
 
+  // Exported permission: administer users.
+  $permissions['administer users'] = array(
+    'name' => 'administer users',
+    'roles' => array(
+      0 => 'site admin',
+    ),
+    'module' => 'user',
+  );
+
   // Exported permission: administer uuid.
   $permissions['administer uuid'] = array(
     'name' => 'administer uuid',
     'roles' => array(),
     'module' => 'uuid',
+  );
+
+  // Exported permission: bypass file access.
+  $permissions['bypass file access'] = array(
+    'name' => 'bypass file access',
+    'roles' => array(),
+    'module' => 'file_entity',
   );
 
   // Exported permission: bypass node access.
@@ -140,11 +200,57 @@ function mez_permissions_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: cancel account.
+  $permissions['cancel account'] = array(
+    'name' => 'cancel account',
+    'roles' => array(),
+    'module' => 'user',
+  );
+
+  // Exported permission: change own username.
+  $permissions['change own username'] = array(
+    'name' => 'change own username',
+    'roles' => array(),
+    'module' => 'user',
+  );
+
+  // Exported permission: create composer content.
+  $permissions['create composer content'] = array(
+    'name' => 'create composer content',
+    'roles' => array(
+      0 => 'editor',
+      1 => 'site admin',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: create concert content.
+  $permissions['create concert content'] = array(
+    'name' => 'create concert content',
+    'roles' => array(
+      0 => 'editor',
+      1 => 'site admin',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: create files.
+  $permissions['create files'] = array(
+    'name' => 'create files',
+    'roles' => array(
+      0 => 'authenticated user',
+      1 => 'editor',
+      2 => 'site admin',
+    ),
+    'module' => 'file_entity',
+  );
+
   // Exported permission: create member content.
   $permissions['create member content'] = array(
     'name' => 'create member content',
     'roles' => array(
       0 => 'editor',
+      1 => 'site admin',
     ),
     'module' => 'node',
   );
@@ -154,6 +260,7 @@ function mez_permissions_user_default_permissions() {
     'name' => 'create news content',
     'roles' => array(
       0 => 'editor',
+      1 => 'site admin',
     ),
     'module' => 'node',
   );
@@ -163,6 +270,17 @@ function mez_permissions_user_default_permissions() {
     'name' => 'create page content',
     'roles' => array(
       0 => 'editor',
+      1 => 'site admin',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: create piece content.
+  $permissions['create piece content'] = array(
+    'name' => 'create piece content',
+    'roles' => array(
+      0 => 'editor',
+      1 => 'site admin',
     ),
     'module' => 'node',
   );
@@ -170,8 +288,41 @@ function mez_permissions_user_default_permissions() {
   // Exported permission: create url aliases.
   $permissions['create url aliases'] = array(
     'name' => 'create url aliases',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'editor',
+      1 => 'site admin',
+    ),
     'module' => 'path',
+  );
+
+  // Exported permission: delete any composer content.
+  $permissions['delete any composer content'] = array(
+    'name' => 'delete any composer content',
+    'roles' => array(
+      0 => 'editor',
+      1 => 'site admin',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: delete any concert content.
+  $permissions['delete any concert content'] = array(
+    'name' => 'delete any concert content',
+    'roles' => array(
+      0 => 'editor',
+      1 => 'site admin',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: delete any files.
+  $permissions['delete any files'] = array(
+    'name' => 'delete any files',
+    'roles' => array(
+      0 => 'editor',
+      1 => 'site admin',
+    ),
+    'module' => 'file_entity',
   );
 
   // Exported permission: delete any member content.
@@ -179,6 +330,7 @@ function mez_permissions_user_default_permissions() {
     'name' => 'delete any member content',
     'roles' => array(
       0 => 'editor',
+      1 => 'site admin',
     ),
     'module' => 'node',
   );
@@ -188,6 +340,7 @@ function mez_permissions_user_default_permissions() {
     'name' => 'delete any news content',
     'roles' => array(
       0 => 'editor',
+      1 => 'site admin',
     ),
     'module' => 'node',
   );
@@ -197,8 +350,42 @@ function mez_permissions_user_default_permissions() {
     'name' => 'delete any page content',
     'roles' => array(
       0 => 'editor',
+      1 => 'site admin',
     ),
     'module' => 'node',
+  );
+
+  // Exported permission: delete any piece content.
+  $permissions['delete any piece content'] = array(
+    'name' => 'delete any piece content',
+    'roles' => array(
+      0 => 'editor',
+      1 => 'site admin',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: delete own composer content.
+  $permissions['delete own composer content'] = array(
+    'name' => 'delete own composer content',
+    'roles' => array(),
+    'module' => 'node',
+  );
+
+  // Exported permission: delete own concert content.
+  $permissions['delete own concert content'] = array(
+    'name' => 'delete own concert content',
+    'roles' => array(),
+    'module' => 'node',
+  );
+
+  // Exported permission: delete own files.
+  $permissions['delete own files'] = array(
+    'name' => 'delete own files',
+    'roles' => array(
+      0 => 'editor',
+    ),
+    'module' => 'file_entity',
   );
 
   // Exported permission: delete own member content.
@@ -222,11 +409,19 @@ function mez_permissions_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: delete own piece content.
+  $permissions['delete own piece content'] = array(
+    'name' => 'delete own piece content',
+    'roles' => array(),
+    'module' => 'node',
+  );
+
   // Exported permission: delete revisions.
   $permissions['delete revisions'] = array(
     'name' => 'delete revisions',
     'roles' => array(
       0 => 'editor',
+      1 => 'site admin',
     ),
     'module' => 'node',
   );
@@ -241,15 +436,49 @@ function mez_permissions_user_default_permissions() {
   // Exported permission: delete terms in 2.
   $permissions['delete terms in 2'] = array(
     'name' => 'delete terms in 2',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'site admin',
+    ),
     'module' => 'taxonomy',
   );
 
   // Exported permission: delete terms in 3.
   $permissions['delete terms in 3'] = array(
     'name' => 'delete terms in 3',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'site admin',
+    ),
     'module' => 'taxonomy',
+  );
+
+  // Exported permission: edit any composer content.
+  $permissions['edit any composer content'] = array(
+    'name' => 'edit any composer content',
+    'roles' => array(
+      0 => 'editor',
+      1 => 'site admin',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: edit any concert content.
+  $permissions['edit any concert content'] = array(
+    'name' => 'edit any concert content',
+    'roles' => array(
+      0 => 'editor',
+      1 => 'site admin',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: edit any files.
+  $permissions['edit any files'] = array(
+    'name' => 'edit any files',
+    'roles' => array(
+      0 => 'editor',
+      1 => 'site admin',
+    ),
+    'module' => 'file_entity',
   );
 
   // Exported permission: edit any member content.
@@ -257,6 +486,7 @@ function mez_permissions_user_default_permissions() {
     'name' => 'edit any member content',
     'roles' => array(
       0 => 'editor',
+      1 => 'site admin',
     ),
     'module' => 'node',
   );
@@ -266,6 +496,7 @@ function mez_permissions_user_default_permissions() {
     'name' => 'edit any news content',
     'roles' => array(
       0 => 'editor',
+      1 => 'site admin',
     ),
     'module' => 'node',
   );
@@ -275,24 +506,53 @@ function mez_permissions_user_default_permissions() {
     'name' => 'edit any page content',
     'roles' => array(
       0 => 'editor',
+      1 => 'site admin',
     ),
     'module' => 'node',
   );
 
-  // Exported permission: edit file.
-  $permissions['edit file'] = array(
-    'name' => 'edit file',
+  // Exported permission: edit any piece content.
+  $permissions['edit any piece content'] = array(
+    'name' => 'edit any piece content',
     'roles' => array(
       0 => 'editor',
+      1 => 'site admin',
     ),
-    'module' => 'file_entity',
+    'module' => 'node',
   );
 
   // Exported permission: edit own comments.
   $permissions['edit own comments'] = array(
     'name' => 'edit own comments',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'authenticated user',
+    ),
     'module' => 'comment',
+  );
+
+  // Exported permission: edit own composer content.
+  $permissions['edit own composer content'] = array(
+    'name' => 'edit own composer content',
+    'roles' => array(),
+    'module' => 'node',
+  );
+
+  // Exported permission: edit own concert content.
+  $permissions['edit own concert content'] = array(
+    'name' => 'edit own concert content',
+    'roles' => array(),
+    'module' => 'node',
+  );
+
+  // Exported permission: edit own files.
+  $permissions['edit own files'] = array(
+    'name' => 'edit own files',
+    'roles' => array(
+      0 => 'authenticated user',
+      1 => 'editor',
+      2 => 'site admin',
+    ),
+    'module' => 'file_entity',
   );
 
   // Exported permission: edit own member content.
@@ -316,6 +576,13 @@ function mez_permissions_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: edit own piece content.
+  $permissions['edit own piece content'] = array(
+    'name' => 'edit own piece content',
+    'roles' => array(),
+    'module' => 'node',
+  );
+
   // Exported permission: edit terms in 1.
   $permissions['edit terms in 1'] = array(
     'name' => 'edit terms in 1',
@@ -328,6 +595,7 @@ function mez_permissions_user_default_permissions() {
     'name' => 'edit terms in 2',
     'roles' => array(
       0 => 'editor',
+      1 => 'site admin',
     ),
     'module' => 'taxonomy',
   );
@@ -337,6 +605,7 @@ function mez_permissions_user_default_permissions() {
     'name' => 'edit terms in 3',
     'roles' => array(
       0 => 'editor',
+      1 => 'site admin',
     ),
     'module' => 'taxonomy',
   );
@@ -345,7 +614,9 @@ function mez_permissions_user_default_permissions() {
   $permissions['import media'] = array(
     'name' => 'import media',
     'roles' => array(
-      0 => 'editor',
+      0 => 'authenticated user',
+      1 => 'editor',
+      2 => 'site admin',
     ),
     'module' => 'media',
   );
@@ -364,15 +635,60 @@ function mez_permissions_user_default_permissions() {
     'name' => 'revert revisions',
     'roles' => array(
       0 => 'editor',
+      1 => 'site admin',
     ),
     'module' => 'node',
+  );
+
+  // Exported permission: select account cancellation method.
+  $permissions['select account cancellation method'] = array(
+    'name' => 'select account cancellation method',
+    'roles' => array(),
+    'module' => 'user',
   );
 
   // Exported permission: skip comment approval.
   $permissions['skip comment approval'] = array(
     'name' => 'skip comment approval',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'site admin',
+    ),
     'module' => 'comment',
+  );
+
+  // Exported permission: toggle field translatability.
+  $permissions['toggle field translatability'] = array(
+    'name' => 'toggle field translatability',
+    'roles' => array(),
+    'module' => 'entity_translation',
+  );
+
+  // Exported permission: translate any entity.
+  $permissions['translate any entity'] = array(
+    'name' => 'translate any entity',
+    'roles' => array(
+      0 => 'editor',
+    ),
+    'module' => 'entity_translation',
+  );
+
+  // Exported permission: translate content.
+  $permissions['translate content'] = array(
+    'name' => 'translate content',
+    'roles' => array(
+      0 => 'editor',
+      1 => 'site admin',
+    ),
+    'module' => 'translation',
+  );
+
+  // Exported permission: translate node entities.
+  $permissions['translate node entities'] = array(
+    'name' => 'translate node entities',
+    'roles' => array(
+      0 => 'editor',
+    ),
+    'module' => 'entity_translation',
   );
 
   // Exported permission: view date repeats.
@@ -382,13 +698,29 @@ function mez_permissions_user_default_permissions() {
     'module' => 'date_repeat_field',
   );
 
-  // Exported permission: view file.
-  $permissions['view file'] = array(
-    'name' => 'view file',
+  // Exported permission: view files.
+  $permissions['view files'] = array(
+    'name' => 'view files',
     'roles' => array(
       0 => 'anonymous user',
       1 => 'authenticated user',
     ),
+    'module' => 'file_entity',
+  );
+
+  // Exported permission: view own files.
+  $permissions['view own files'] = array(
+    'name' => 'view own files',
+    'roles' => array(
+      0 => 'authenticated user',
+    ),
+    'module' => 'file_entity',
+  );
+
+  // Exported permission: view own private files.
+  $permissions['view own private files'] = array(
+    'name' => 'view own private files',
+    'roles' => array(),
     'module' => 'file_entity',
   );
 
@@ -397,8 +729,19 @@ function mez_permissions_user_default_permissions() {
     'name' => 'view own unpublished content',
     'roles' => array(
       0 => 'editor',
+      1 => 'site admin',
     ),
     'module' => 'node',
+  );
+
+  // Exported permission: view post access counter.
+  $permissions['view post access counter'] = array(
+    'name' => 'view post access counter',
+    'roles' => array(
+      0 => 'anonymous user',
+      1 => 'authenticated user',
+    ),
+    'module' => 'statistics',
   );
 
   // Exported permission: view revisions.
@@ -406,6 +749,7 @@ function mez_permissions_user_default_permissions() {
     'name' => 'view revisions',
     'roles' => array(
       0 => 'editor',
+      1 => 'site admin',
     ),
     'module' => 'node',
   );
