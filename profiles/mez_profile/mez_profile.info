@@ -49,6 +49,10 @@ dependencies[] = entity_token
 dependencies[] = entityreference
 dependencies[] = wysiwyg
 dependencies[] = title
+dependencies[] = mediaelement
+dependencies[] = multiform
+dependencies[] = media_colorbox
+dependencies[] = media_multiselect
 
 ; Dependencies of own features, to get around http://drupal.org/node/677200
 dependencies[] = date_popup
