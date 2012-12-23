@@ -238,9 +238,8 @@ function mez_permissions_user_default_permissions() {
   $permissions['create files'] = array(
     'name' => 'create files',
     'roles' => array(
-      0 => 'authenticated user',
-      1 => 'editor',
-      2 => 'site admin',
+      0 => 'editor',
+      1 => 'site admin',
     ),
     'module' => 'file_entity',
   );
@@ -548,9 +547,8 @@ function mez_permissions_user_default_permissions() {
   $permissions['edit own files'] = array(
     'name' => 'edit own files',
     'roles' => array(
-      0 => 'authenticated user',
-      1 => 'editor',
-      2 => 'site admin',
+      0 => 'editor',
+      1 => 'site admin',
     ),
     'module' => 'file_entity',
   );
