@@ -1,0 +1,13 @@
+diff --git a/media_colorbox.module b/media_colorbox.module
+index f9b4684..c8bc705 100644
+--- a/media_colorbox.module
++++ b/media_colorbox.module
+@@ -38,7 +38,7 @@ function media_colorbox_menu() {
+     'page callback' => 'media_colorbox_callback',
+     'page arguments' => array(1, 2, 3),
+     'access callback' => 'file_entity_access',
+-    'access arguments' => array('view'),
++    'access arguments' => array('view', 1),
+     'type' => MENU_CALLBACK,
+     'file' => 'media_colorbox.pages.inc',
+   );
