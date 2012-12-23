@@ -337,6 +337,12 @@ function mez_cts_field_default_fields() {
       'deleted' => '0',
       'description' => 'Tags separated by commas.',
       'display' => array(
+        'colorbox' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'above',
           'module' => 'i18n_taxonomy',
@@ -427,6 +433,12 @@ function mez_cts_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'colorbox' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'above',
           'module' => 'date',
@@ -545,12 +557,25 @@ function mez_cts_field_default_fields() {
       'deleted' => '0',
       'description' => 'Tags separated by commas.',
       'display' => array(
-        'default' => array(
+        'colorbox' => array(
           'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'default' => array(
+          'label' => 'hidden',
           'module' => 'i18n_taxonomy',
           'settings' => array(),
           'type' => 'i18n_taxonomy_term_reference_link',
-          'weight' => 0,
+          'weight' => '1',
+        ),
+        'full' => array(
+          'label' => 'hidden',
+          'module' => 'i18n_taxonomy',
+          'settings' => array(),
+          'type' => 'i18n_taxonomy_term_reference_link',
+          'weight' => '0',
         ),
         'media_link' => array(
           'label' => 'above',
@@ -635,8 +660,14 @@ function mez_cts_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
-        'default' => array(
+        'colorbox' => array(
           'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'default' => array(
+          'label' => 'hidden',
           'module' => 'date',
           'settings' => array(
             'format_type' => 'long',
@@ -647,13 +678,21 @@ function mez_cts_field_default_fields() {
             'show_repeat_rule' => 'show',
           ),
           'type' => 'date_default',
-          'weight' => 1,
+          'weight' => '2',
         ),
         'full' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
+          'label' => 'hidden',
+          'module' => 'date',
+          'settings' => array(
+            'format_type' => 'long',
+            'fromto' => 'both',
+            'multiple_from' => '',
+            'multiple_number' => '',
+            'multiple_to' => '',
+            'show_repeat_rule' => 'show',
+          ),
+          'type' => 'date_default',
+          'weight' => '0',
         ),
         'media_link' => array(
           'label' => 'above',
@@ -685,8 +724,8 @@ function mez_cts_field_default_fields() {
       'label' => 'Time',
       'required' => 0,
       'settings' => array(
-        'default_value' => 'now',
-        'default_value2' => 'same',
+        'default_value' => 'blank',
+        'default_value2' => 'blank',
         'default_value_code' => '',
         'default_value_code2' => '',
         'entity_translation_sync' => FALSE,
@@ -696,7 +735,7 @@ function mez_cts_field_default_fields() {
         'active' => 1,
         'module' => 'date',
         'settings' => array(
-          'display_all_day' => 0,
+          'display_all_day' => 1,
           'increment' => '15',
           'input_format' => 'Y-m-d H:i:s',
           'input_format_custom' => '',
@@ -753,6 +792,12 @@ function mez_cts_field_default_fields() {
       'deleted' => '0',
       'description' => 'Tags separated by commas.',
       'display' => array(
+        'colorbox' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'above',
           'module' => 'i18n_taxonomy',
@@ -843,6 +888,12 @@ function mez_cts_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'colorbox' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'above',
           'module' => 'date',
@@ -919,6 +970,286 @@ function mez_cts_field_default_fields() {
     ),
   );
 
+  // Exported field: 'file-document-field_tags'.
+  $fields['file-document-field_tags'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '-1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_tags',
+      'foreign keys' => array(
+        'tid' => array(
+          'columns' => array(
+            'tid' => 'tid',
+          ),
+          'table' => 'taxonomy_term_data',
+        ),
+      ),
+      'indexes' => array(
+        'tid' => array(
+          0 => 'tid',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'taxonomy',
+      'settings' => array(
+        'allowed_values' => array(
+          0 => array(
+            'vocabulary' => 'media',
+            'parent' => '0',
+          ),
+        ),
+        'entity_translation_sync' => FALSE,
+        'options_list_callback' => 'i18n_taxonomy_allowed_values',
+      ),
+      'translatable' => '0',
+      'type' => 'taxonomy_term_reference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'document',
+      'cardinality' => -1,
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'colorbox' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'default' => array(
+          'label' => 'above',
+          'module' => 'i18n_taxonomy',
+          'settings' => array(),
+          'type' => 'i18n_taxonomy_term_reference_link',
+          'weight' => '0',
+        ),
+        'full' => array(
+          'label' => 'above',
+          'module' => 'i18n_taxonomy',
+          'settings' => array(),
+          'type' => 'i18n_taxonomy_term_reference_link',
+          'weight' => '0',
+        ),
+        'preview' => array(
+          'label' => 'hidden',
+          'module' => 'i18n_taxonomy',
+          'settings' => array(),
+          'type' => 'i18n_taxonomy_term_reference_link',
+          'weight' => '0',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'file',
+      'field_name' => 'field_tags',
+      'label' => 'Tags',
+      'required' => FALSE,
+      'settings' => array(
+        'allowed_values' => array(
+          0 => array(
+            'vocabulary' => 'tags',
+            'parent' => 0,
+          ),
+        ),
+        'entity_translation_sync' => FALSE,
+        'user_register_form' => FALSE,
+      ),
+      'type' => 'taxonomy_term_reference',
+      'widget' => array(
+        'module' => 'taxonomy',
+        'settings' => array(
+          'autocomplete_path' => 'taxonomy/autocomplete',
+          'size' => 60,
+        ),
+        'type' => 'taxonomy_autocomplete',
+        'weight' => 6,
+      ),
+    ),
+  );
+
+  // Exported field: 'file-image-field_file_image_alt_text'.
+  $fields['file-image-field_file_image_alt_text'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_file_image_alt_text',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(
+        'entity_translation_sync' => FALSE,
+        'max_length' => '255',
+      ),
+      'translatable' => '0',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'image',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'colorbox' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'default' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '3',
+        ),
+        'full' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
+        'preview' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'file',
+      'field_name' => 'field_file_image_alt_text',
+      'label' => 'Alt Text',
+      'required' => 0,
+      'settings' => array(
+        'entity_translation_sync' => FALSE,
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '60',
+        ),
+        'type' => 'text_textfield',
+        'weight' => '2',
+      ),
+    ),
+  );
+
+  // Exported field: 'file-image-field_file_image_title_text'.
+  $fields['file-image-field_file_image_title_text'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_file_image_title_text',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(
+        'entity_translation_sync' => FALSE,
+        'max_length' => '255',
+      ),
+      'translatable' => '0',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'image',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'Title text attribute',
+      'display' => array(
+        'colorbox' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'default' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '4',
+        ),
+        'full' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
+        'preview' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'file',
+      'field_name' => 'field_file_image_title_text',
+      'label' => 'Title Text',
+      'required' => 0,
+      'settings' => array(
+        'entity_translation_sync' => FALSE,
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '60',
+        ),
+        'type' => 'text_textfield',
+        'weight' => '3',
+      ),
+    ),
+  );
+
   // Exported field: 'file-image-field_tags'.
   $fields['file-image-field_tags'] = array(
     'field_config' => array(
@@ -961,12 +1292,25 @@ function mez_cts_field_default_fields() {
       'deleted' => '0',
       'description' => 'Tags separated by commas.',
       'display' => array(
-        'default' => array(
+        'colorbox' => array(
           'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'default' => array(
+          'label' => 'hidden',
           'module' => 'i18n_taxonomy',
           'settings' => array(),
           'type' => 'i18n_taxonomy_term_reference_link',
-          'weight' => 0,
+          'weight' => '1',
+        ),
+        'full' => array(
+          'label' => 'hidden',
+          'module' => 'i18n_taxonomy',
+          'settings' => array(),
+          'type' => 'i18n_taxonomy_term_reference_link',
+          'weight' => '0',
         ),
         'media_link' => array(
           'label' => 'above',
@@ -1009,7 +1353,7 @@ function mez_cts_field_default_fields() {
           'size' => 60,
         ),
         'type' => 'taxonomy_autocomplete',
-        'weight' => '-3',
+        'weight' => '4',
       ),
     ),
   );
@@ -1051,8 +1395,14 @@ function mez_cts_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
-        'default' => array(
+        'colorbox' => array(
           'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'default' => array(
+          'label' => 'hidden',
           'module' => 'date',
           'settings' => array(
             'format_type' => 'long',
@@ -1063,13 +1413,21 @@ function mez_cts_field_default_fields() {
             'show_repeat_rule' => 'show',
           ),
           'type' => 'date_default',
-          'weight' => 1,
+          'weight' => '2',
         ),
         'full' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
+          'label' => 'hidden',
+          'module' => 'date',
+          'settings' => array(
+            'format_type' => 'long',
+            'fromto' => 'both',
+            'multiple_from' => '',
+            'multiple_number' => '',
+            'multiple_to' => '',
+            'show_repeat_rule' => 'show',
+          ),
+          'type' => 'date_default',
+          'weight' => '0',
         ),
         'media_link' => array(
           'label' => 'above',
@@ -1122,7 +1480,7 @@ function mez_cts_field_default_fields() {
           'year_range' => '1880:+3',
         ),
         'type' => 'date_popup',
-        'weight' => '-2',
+        'weight' => '5',
       ),
     ),
   );
@@ -1169,6 +1527,12 @@ function mez_cts_field_default_fields() {
       'deleted' => '0',
       'description' => 'Tags separated by commas.',
       'display' => array(
+        'colorbox' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'above',
           'module' => 'i18n_taxonomy',
@@ -1259,6 +1623,12 @@ function mez_cts_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'colorbox' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'above',
           'module' => 'date',
@@ -1377,12 +1747,25 @@ function mez_cts_field_default_fields() {
       'deleted' => '0',
       'description' => 'Tags separated by commas. ',
       'display' => array(
-        'default' => array(
+        'colorbox' => array(
           'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'default' => array(
+          'label' => 'hidden',
           'module' => 'i18n_taxonomy',
           'settings' => array(),
           'type' => 'i18n_taxonomy_term_reference_link',
-          'weight' => 0,
+          'weight' => '2',
+        ),
+        'full' => array(
+          'label' => 'hidden',
+          'module' => 'i18n_taxonomy',
+          'settings' => array(),
+          'type' => 'i18n_taxonomy_term_reference_link',
+          'weight' => '0',
         ),
         'media_link' => array(
           'label' => 'above',
@@ -1467,8 +1850,14 @@ function mez_cts_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
-        'default' => array(
+        'colorbox' => array(
           'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'default' => array(
+          'label' => 'hidden',
           'module' => 'date',
           'settings' => array(
             'format_type' => 'long',
@@ -1479,13 +1868,21 @@ function mez_cts_field_default_fields() {
             'show_repeat_rule' => 'show',
           ),
           'type' => 'date_default',
-          'weight' => 1,
+          'weight' => '1',
         ),
         'full' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
+          'label' => 'hidden',
+          'module' => 'date',
+          'settings' => array(
+            'format_type' => 'long',
+            'fromto' => 'both',
+            'multiple_from' => '',
+            'multiple_number' => '',
+            'multiple_to' => '',
+            'show_repeat_rule' => 'show',
+          ),
+          'type' => 'date_default',
+          'weight' => '0',
         ),
         'media_link' => array(
           'label' => 'above',
@@ -1517,8 +1914,8 @@ function mez_cts_field_default_fields() {
       'label' => 'Time',
       'required' => 0,
       'settings' => array(
-        'default_value' => 'now',
-        'default_value2' => 'same',
+        'default_value' => 'blank',
+        'default_value2' => 'blank',
         'default_value_code' => '',
         'default_value_code2' => '',
         'entity_translation_sync' => FALSE,
@@ -1528,7 +1925,7 @@ function mez_cts_field_default_fields() {
         'active' => 1,
         'module' => 'date',
         'settings' => array(
-          'display_all_day' => 0,
+          'display_all_day' => 1,
           'increment' => '15',
           'input_format' => 'Y-m-d H:i:s',
           'input_format_custom' => '',
@@ -1640,7 +2037,7 @@ function mez_cts_field_default_fields() {
         'entity_translation_sync' => FALSE,
         'max_length' => '255',
       ),
-      'translatable' => '0',
+      'translatable' => '1',
       'type' => 'text',
     ),
     'field_instance' => array(
@@ -1710,7 +2107,7 @@ function mez_cts_field_default_fields() {
         'entity_translation_sync' => FALSE,
         'max_length' => '255',
       ),
-      'translatable' => '0',
+      'translatable' => '1',
       'type' => 'text',
     ),
     'field_instance' => array(
@@ -1749,6 +2146,85 @@ function mez_cts_field_default_fields() {
         ),
         'type' => 'text_textfield',
         'weight' => '35',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-composer-title_field'.
+  $fields['node-composer-title_field'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'title_field',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(
+        'entity_translation_sync' => FALSE,
+        'max_length' => '255',
+      ),
+      'translatable' => '1',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'composer',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'A field replacing node title.',
+      'display' => array(
+        'default' => array(
+          'label' => 'hidden',
+          'module' => 'title',
+          'settings' => array(
+            'title_class' => '',
+            'title_link' => 'content',
+            'title_style' => 'span',
+          ),
+          'type' => 'title_linked',
+          'weight' => '0',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'title_field',
+      'label' => 'Cím',
+      'required' => 0,
+      'settings' => array(
+        'entity_translation_sync' => FALSE,
+        'hide_label' => array(
+          'entity' => 'entity',
+          'page' => 'page',
+        ),
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '60',
+        ),
+        'type' => 'text_textfield',
+        'weight' => -5,
       ),
     ),
   );
@@ -1793,12 +2269,19 @@ function mez_cts_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
-          'module' => 'file_entity',
+          'label' => 'hidden',
+          'module' => 'media_colorbox',
           'settings' => array(
-            'file_view_mode' => 'default',
+            'audio_playlist' => 1,
+            'colorbox_caption' => 'title',
+            'colorbox_gallery' => 'page',
+            'colorbox_gallery_custom' => '',
+            'colorbox_view_mode' => 'full',
+            'file_view_mode' => 'preview',
+            'fixed_height' => '',
+            'fixed_width' => '',
           ),
-          'type' => 'file_rendered',
+          'type' => 'media_colorbox',
           'weight' => '3',
         ),
         'teaser' => array(
@@ -1814,7 +2297,7 @@ function mez_cts_field_default_fields() {
       'required' => 0,
       'settings' => array(
         'description_field' => 0,
-        'entity_translation_sync' => FALSE,
+        'entity_translation_sync' => 0,
         'file_directory' => 'concert/media/[current-user:uuid]',
         'file_extensions' => 'txt pdf doc odt jpg gif png bmp jpeg mp3 ogg avi mpg mpeg',
         'max_filesize' => '',
@@ -1822,7 +2305,7 @@ function mez_cts_field_default_fields() {
       ),
       'widget' => array(
         'active' => 1,
-        'module' => 'media',
+        'module' => 'media_multiselect',
         'settings' => array(
           'allowed_schemes' => array(
             'private' => 0,
@@ -1844,7 +2327,7 @@ function mez_cts_field_default_fields() {
           ),
           'progress_indicator' => 'throbber',
         ),
-        'type' => 'media_generic',
+        'type' => 'media_multiselect',
         'weight' => '3',
       ),
     ),
@@ -1978,7 +2461,7 @@ function mez_cts_field_default_fields() {
       'required' => 0,
       'settings' => array(
         'default_value' => 'blank',
-        'default_value2' => 'same',
+        'default_value2' => 'blank',
         'default_value_code' => '',
         'default_value_code2' => '',
         'entity_translation_sync' => FALSE,
@@ -1988,7 +2471,7 @@ function mez_cts_field_default_fields() {
         'active' => 1,
         'module' => 'date',
         'settings' => array(
-          'display_all_day' => 0,
+          'display_all_day' => 1,
           'increment' => '15',
           'input_format' => 'Y-m-d H:i:s',
           'input_format_custom' => '',
@@ -2060,7 +2543,7 @@ function mez_cts_field_default_fields() {
       'entity_type' => 'node',
       'field_name' => 'title_field',
       'label' => 'Cím',
-      'required' => 1,
+      'required' => 0,
       'settings' => array(
         'entity_translation_sync' => FALSE,
         'hide_label' => array(
@@ -3120,6 +3603,79 @@ function mez_cts_field_default_fields() {
     ),
   );
 
+  // Exported field: 'node-member-title_field'.
+  $fields['node-member-title_field'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'title_field',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(
+        'entity_translation_sync' => FALSE,
+        'max_length' => '255',
+      ),
+      'translatable' => '1',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'member',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'A field replacing node title.',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 14,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'title_field',
+      'label' => 'Cím',
+      'required' => TRUE,
+      'settings' => array(
+        'entity_translation_sync' => FALSE,
+        'hide_label' => array(
+          'entity' => 0,
+          'page' => 0,
+        ),
+        'text_processing' => 0,
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'module' => 'text',
+        'settings' => array(
+          'size' => 60,
+        ),
+        'type' => 'text_textfield',
+        'weight' => -5,
+      ),
+    ),
+  );
+
   // Exported field: 'node-news-body'.
   $fields['node-news-body'] = array(
     'field_config' => array(
@@ -3818,8 +4374,13 @@ function mez_cts_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'hidden',
-          'settings' => array(),
-          'type' => 'hidden',
+          'module' => 'title',
+          'settings' => array(
+            'title_class' => '',
+            'title_link' => 'content',
+            'title_style' => 'span',
+          ),
+          'type' => 'title_linked',
           'weight' => '0',
         ),
         'teaser' => array(
@@ -3837,7 +4398,7 @@ function mez_cts_field_default_fields() {
         'entity_translation_sync' => FALSE,
         'hide_label' => array(
           'entity' => 'entity',
-          'page' => 0,
+          'page' => 'page',
         ),
         'text_processing' => '0',
         'user_register_form' => FALSE,
@@ -3854,10 +4415,283 @@ function mez_cts_field_default_fields() {
     ),
   );
 
+  // Exported field: 'taxonomy_term-instruments-description_field'.
+  $fields['taxonomy_term-instruments-description_field'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'description_field',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(
+        'entity_translation_sync' => FALSE,
+      ),
+      'translatable' => '1',
+      'type' => 'text_with_summary',
+    ),
+    'field_instance' => array(
+      'bundle' => 'instruments',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'A field replacing taxonomy term description.',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 1,
+        ),
+      ),
+      'entity_type' => 'taxonomy_term',
+      'field_name' => 'description_field',
+      'label' => 'Leírás',
+      'required' => FALSE,
+      'settings' => array(
+        'display_summary' => 0,
+        'entity_translation_sync' => FALSE,
+        'hide_label' => array(
+          'entity' => 'entity',
+          'page' => 'page',
+        ),
+        'text_processing' => 1,
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'module' => 'text',
+        'settings' => array(
+          'rows' => 20,
+          'summary_rows' => 5,
+        ),
+        'type' => 'text_textarea_with_summary',
+        'weight' => -5,
+      ),
+    ),
+  );
+
+  // Exported field: 'taxonomy_term-instruments-name_field'.
+  $fields['taxonomy_term-instruments-name_field'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'name_field',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(
+        'entity_translation_sync' => FALSE,
+        'max_length' => 255,
+      ),
+      'translatable' => '1',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'instruments',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'A field replacing taxonomy term name.',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'taxonomy_term',
+      'field_name' => 'name_field',
+      'label' => 'Név',
+      'required' => TRUE,
+      'settings' => array(
+        'entity_translation_sync' => FALSE,
+        'hide_label' => array(
+          'entity' => 'entity',
+          'page' => 'page',
+        ),
+        'text_processing' => 0,
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'module' => 'text',
+        'settings' => array(
+          'size' => 60,
+        ),
+        'type' => 'text_textfield',
+        'weight' => -5,
+      ),
+    ),
+  );
+
+  // Exported field: 'taxonomy_term-media-description_field'.
+  $fields['taxonomy_term-media-description_field'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'description_field',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(
+        'entity_translation_sync' => FALSE,
+      ),
+      'translatable' => '1',
+      'type' => 'text_with_summary',
+    ),
+    'field_instance' => array(
+      'bundle' => 'media',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'A field replacing taxonomy term description.',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 1,
+        ),
+      ),
+      'entity_type' => 'taxonomy_term',
+      'field_name' => 'description_field',
+      'label' => 'Leírás',
+      'required' => FALSE,
+      'settings' => array(
+        'display_summary' => 0,
+        'entity_translation_sync' => FALSE,
+        'hide_label' => array(
+          'entity' => 'entity',
+          'page' => 'page',
+        ),
+        'text_processing' => 1,
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'module' => 'text',
+        'settings' => array(
+          'rows' => 20,
+          'summary_rows' => 5,
+        ),
+        'type' => 'text_textarea_with_summary',
+        'weight' => -5,
+      ),
+    ),
+  );
+
+  // Exported field: 'taxonomy_term-media-name_field'.
+  $fields['taxonomy_term-media-name_field'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'name_field',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(
+        'entity_translation_sync' => FALSE,
+        'max_length' => 255,
+      ),
+      'translatable' => '1',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'media',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'A field replacing taxonomy term name.',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'taxonomy_term',
+      'field_name' => 'name_field',
+      'label' => 'Név',
+      'required' => TRUE,
+      'settings' => array(
+        'entity_translation_sync' => FALSE,
+        'hide_label' => array(
+          'entity' => 'entity',
+          'page' => 'page',
+        ),
+        'text_processing' => 0,
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'module' => 'text',
+        'settings' => array(
+          'size' => 60,
+        ),
+        'type' => 'text_textfield',
+        'weight' => -5,
+      ),
+    ),
+  );
+
   // Translatables
   // Included for use with string extractors like potx.
   t('A field replacing node title.');
+  t('A field replacing taxonomy term description.');
+  t('A field replacing taxonomy term name.');
   t('Address');
+  t('Alt Text');
   t('Body');
   t('City');
   t('Comma separator');
@@ -3868,6 +4702,7 @@ function mez_cts_field_default_fields() {
   t('Given name');
   t('Image');
   t('Instrument');
+  t('Leírás');
   t('Media');
   t('Member\'s picture');
   t('Membership dates');
@@ -3881,6 +4716,7 @@ function mez_cts_field_default_fields() {
 <li>1st symphony (Titan) - 2nd movement (</li>
 <li>Romeo and Juliet - Dance of the Knights</li>
 </ul>');
+  t('Név');
   t('Occupation');
   t('Orchestra email list');
   t('Performer');
@@ -3897,6 +4733,8 @@ function mez_cts_field_default_fields() {
   t('The family name of the composer like \'Bach\'. This will be used to sort the piece. ');
   t('The given name(s) of the composer. Each name (like Johann and Sebastian) should go into a different textbox. ');
   t('Time');
+  t('Title Text');
+  t('Title text attribute');
   t('Workplace phone');
   t('Zip code');
 
