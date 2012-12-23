@@ -798,8 +798,8 @@ system/ajax/*';
   $strongarm->name = 'entity_translation_entity_types';
   $strongarm->value = array(
     'node' => 'node',
-    'taxonomy_term' => 'taxonomy_term',
     'file' => 'file',
+    'taxonomy_term' => 0,
     'comment' => 0,
     'user' => 0,
   );
@@ -944,6 +944,19 @@ system/ajax/*';
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'entity_translation_settings_node__composer';
+  $strongarm->value = array(
+    'default_language' => 'und',
+    'hide_language_selector' => 0,
+    'exclude_language_none' => 0,
+    'lock_language' => 0,
+    'shared_fields_original_only' => 0,
+  );
+  $export['entity_translation_settings_node__composer'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'entity_translation_settings_node__concert';
   $strongarm->value = array(
     'default_language' => 'hu',
@@ -1005,32 +1018,6 @@ system/ajax/*';
     'shared_fields_original_only' => 1,
   );
   $export['entity_translation_settings_node__piece'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'entity_translation_settings_taxonomy_term__instruments';
-  $strongarm->value = array(
-    'default_language' => 'hu',
-    'hide_language_selector' => 0,
-    'exclude_language_none' => 0,
-    'lock_language' => 0,
-    'shared_fields_original_only' => 0,
-  );
-  $export['entity_translation_settings_taxonomy_term__instruments'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'entity_translation_settings_taxonomy_term__media';
-  $strongarm->value = array(
-    'default_language' => 'hu',
-    'hide_language_selector' => 0,
-    'exclude_language_none' => 0,
-    'lock_language' => 0,
-    'shared_fields_original_only' => 0,
-  );
-  $export['entity_translation_settings_taxonomy_term__media'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -1939,11 +1926,11 @@ system/ajax/*';
   $strongarm->name = 'title_node';
   $strongarm->value = array(
     'auto_attach' => array(
-      'title' => 0,
+      'title' => 'title',
     ),
     'hide_label' => array(
-      'page' => 0,
-      'entity' => 0,
+      'page' => 'page',
+      'entity' => 'entity',
     ),
   );
   $export['title_node'] = $strongarm;
@@ -1954,12 +1941,12 @@ system/ajax/*';
   $strongarm->name = 'title_taxonomy_term';
   $strongarm->value = array(
     'auto_attach' => array(
-      'name' => 'name',
-      'description' => 'description',
+      'name' => 0,
+      'description' => 0,
     ),
     'hide_label' => array(
-      'page' => 'page',
-      'entity' => 'entity',
+      'page' => 0,
+      'entity' => 0,
     ),
   );
   $export['title_taxonomy_term'] = $strongarm;
