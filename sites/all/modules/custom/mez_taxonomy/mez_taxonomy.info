@@ -1,0 +1,7 @@
+name = MEZ taxonomy
+description = General settings and functions for taxonomies in the MEZ project  
+core = 7.x
+package = MEZ
+
+project = "mez_taxonomy"
+version = "7.x-1.0"

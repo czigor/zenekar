@@ -66,7 +66,7 @@ dependencies[] = date_repeat
 dependencies[] = field_collection_table
 
 ; Own modules (all of them should be dependencies of at least one own feature)
-dependencies[] = mez_instruments
+dependencies[] = mez_taxonomy
 
 ; Own features are installed explicitly in the last installation step.
 

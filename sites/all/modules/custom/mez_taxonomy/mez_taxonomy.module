@@ -2,21 +2,35 @@
 
 /**
  * @file
- * Generate Instruments vocabulary
+ * Taxonomy related stuff
  *
  */
 
 /**
  * Implements hook_menu().
  */
-function mez_instruments_menu() {
+function mez_taxonomy_menu() {
   $items = array();
+  $items['admin/config/mez'] = array(
+    'title' => 'MEZ',
+    'description' => 'Settings for MEZ.',
+    'position' => 'left',
+    'page callback' => 'system_admin_menu_block_page',
+    'access arguments' => array('administer site configuration'),
+    'file' => 'system.admin.inc',
+    'file path' => drupal_get_path('module', 'system'),
+  );
   $items['admin/config/mez/create_instruments_vocabulary'] = array(
     'title' => 'MEZ instruments vocabulary creation',
     'page callback' => 'drupal_get_form',
     'page arguments' => array('mez_create_instruments_taxonomy_form'),
     'access arguments' => array('administer taxonomy'),
-    'type' => MENU_NORMAL_ITEM,
+  );
+  $items['admin/config/mez/create_access_vocabulary'] = array(
+    'title' => 'MEZ access vocabulary creation',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('mez_create_access_taxonomy_form'),
+    'access arguments' => array('administer taxonomy'),
   );
   return $items;
 }
@@ -154,5 +168,65 @@ function mez_create_instruments_taxonomy_form_submit($form, $form_state) {
     );
     $instrument_obj = (object) $instrument;
     taxonomy_term_save($instrument_obj);
+  }
+}
+
+/**
+ * Form to create Instruments vocabualry
+ */
+function mez_create_access_taxonomy_form() {
+  $form = array();
+  $access_vocab = taxonomy_vocabulary_machine_name_load('file_access');
+  if (!$access_vocab) {
+    $form['help-text'] = array(
+      '#markup' => t('You can create the Access vocabulary by clicking the Submit button.'),
+      '#prefix' => '<div>',
+      '#suffix' => '</div>',
+    );
+    $form['submit'] = array(
+      '#type' => 'submit',
+      '#value' => t('Submit'),
+    );
+  }
+  else {
+    $form['help-text'] = array(
+      '#markup' => t('The access vocabulary already exists.'),
+      '#prefix' => '<div>',
+      '#suffix' => '</div>',
+    );
+  }
+  return $form;
+}
+
+/*
+ * Submit handler for the mez__create_instruments_taxonomy_form.
+*
+* No & for $form_state as this function gets called directly with NULL
+* passed in.
+*/
+function mez_create_access_taxonomy_form_submit($form, $form_state) {
+  $accesses = taxonomy_vocabulary_machine_name_load('file_access');
+  if (!$accesses) {
+    $vocabulary = array(
+      'name' => 'File Access',
+      'machine_name' => 'file_access',
+      'description' => 'Vocabulary to regulate access of files.',
+      'hierarchy' => 0,
+      'i18n_mode' => 1,
+    );
+    $accesses = (object) $vocabulary;
+    taxonomy_vocabulary_save($accesses);
+  }
+  $access_terms = array(
+    'members', 'editors', 'site admins',
+  );
+  foreach ($access_terms as $key => $term) {
+    $access = array(
+      'name' => $term,
+      'vid' => $accesses ->vid,
+      'weight' => $key,
+    );
+    $access_obj = (object) $access;
+    taxonomy_term_save($access_obj);
   }
 }

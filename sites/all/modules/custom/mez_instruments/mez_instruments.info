@@ -1,7 +1,0 @@
-name = MEZ instruments
-description = General settings and functions for the MEZ Instruments project  
-core = 7.x
-package = MEZ
-
-project = "mez_instruments"
-version = "7.x-1.0"
