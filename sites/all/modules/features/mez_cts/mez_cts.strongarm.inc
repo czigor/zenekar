@@ -1088,7 +1088,17 @@ system/ajax/*';
       ),
     ),
     'extra_fields' => array(
-      'form' => array(),
+      'form' => array(
+        'filename' => array(
+          'weight' => '-10',
+        ),
+        'preview' => array(
+          'weight' => '-5',
+        ),
+        'language' => array(
+          'weight' => '5',
+        ),
+      ),
       'display' => array(
         'file' => array(
           'default' => array(
@@ -1178,7 +1188,17 @@ system/ajax/*';
       ),
     ),
     'extra_fields' => array(
-      'form' => array(),
+      'form' => array(
+        'filename' => array(
+          'weight' => '-10',
+        ),
+        'preview' => array(
+          'weight' => '-5',
+        ),
+        'language' => array(
+          'weight' => '5',
+        ),
+      ),
       'display' => array(
         'file' => array(
           'default' => array(
