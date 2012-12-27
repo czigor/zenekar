@@ -139,6 +139,7 @@ function mez_profile_install_enable_features(&$install_state) {
     'mez_settings',
     'mez_cts',
     'mez_permissions',
+    'mez_views',
   );
   features_install_modules($modules);
   features_revert();

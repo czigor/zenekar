@@ -39,7 +39,6 @@ dependencies[] = date_all_day
 dependencies[] = date_api
 dependencies[] = date_views
 dependencies[] = link
-dependencies[] = simplenews
 dependencies[] = media
 dependencies[] = media_internet
 dependencies[] = media_youtube
@@ -53,6 +52,7 @@ dependencies[] = mediaelement
 dependencies[] = multiform
 dependencies[] = media_colorbox
 dependencies[] = media_multiselect
+dependencies[] = plupload
 
 ; Dependencies of own features, to get around http://drupal.org/node/677200
 dependencies[] = date_popup
@@ -64,6 +64,7 @@ dependencies[] = l10n_update
 dependencies[] = date_repeat_field
 dependencies[] = date_repeat
 dependencies[] = field_collection_table
+dependencies[] = fe_paths
 
 ; Own modules (all of them should be dependencies of at least one own feature)
 dependencies[] = mez_taxonomy
