@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the MEZ views feature.
+ */
+
+include_once 'mez_views.features.inc';
