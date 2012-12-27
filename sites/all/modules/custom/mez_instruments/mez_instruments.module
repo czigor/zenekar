@@ -63,7 +63,6 @@ function mez_create_instruments_taxonomy_form_submit($form, $form_state) {
       'machine_name' => 'instruments',
       'description' => 'Instruments',
       'hierarchy' => 1,
-      'module' => 'mez',
       'i18n_mode' => 1,
     );
     $instruments = (object) $vocabulary;
