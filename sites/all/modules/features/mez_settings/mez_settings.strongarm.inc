@@ -13,6 +13,70 @@ function mez_settings_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'fep_audio';
+  $strongarm->value = array(
+    'public' => array(
+      'path' => '[file:mime]',
+      'filename' => '[file:name-only-original].[file:extension-original]',
+    ),
+    'private' => array(
+      'path' => '[file:mime]',
+      'filename' => '[file:name-only-original].[file:extension-original]',
+    ),
+  );
+  $export['fep_audio'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'fep_document';
+  $strongarm->value = array(
+    'public' => array(
+      'path' => '[file:mime]',
+      'filename' => '[file:name-only-original].[file:extension-original]',
+    ),
+    'private' => array(
+      'path' => '[file:mime]',
+      'filename' => '[file:name-only-original].[file:extension-original]',
+    ),
+  );
+  $export['fep_document'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'fep_image';
+  $strongarm->value = array(
+    'public' => array(
+      'path' => '[file:mime]',
+      'filename' => '[file:name-only-original].[file:extension-original]',
+    ),
+    'private' => array(
+      'path' => '[file:mime]',
+      'filename' => '[file:name-only-original].[file:extension-original]',
+    ),
+  );
+  $export['fep_image'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'fep_video';
+  $strongarm->value = array(
+    'public' => array(
+      'path' => '[file:mime]',
+      'filename' => '[file:name-only-original].[file:extension-original]',
+    ),
+    'private' => array(
+      'path' => '[file:mime]',
+      'filename' => '[file:name-only-original].[file:extension-original]',
+    ),
+  );
+  $export['fep_video'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'i18n_string_allowed_formats';
   $strongarm->value = array(
     'wysiwyg' => 'wysiwyg',
