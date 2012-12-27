@@ -138,13 +138,13 @@ function mez_profile_install() {
   );
   system_date_format_save($format);
   $type = array(
-    'type' => 'csakev',
+    'type' => 'only_year',
     'title' => t('Year'),
     'locked' => 0,
     'is_new' => TRUE,
   );
   system_date_format_type_save($type);
-  variable_set('date_format_csakev', 'Y');
+  variable_set('date_format_only_year', 'Y');
 
   $format = array(
     'format' => 'Y. F j.',
@@ -154,20 +154,20 @@ function mez_profile_install() {
   );
   system_date_format_save($format);
   $type = array(
-    'type' => 'csaknap',
+    'type' => 'only_day',
     'title' => t('Day'),
     'locked' => 0,
     'is_new' => TRUE,
   );
   system_date_format_type_save($type);
-  variable_set('date_format_csaknap', 'Y. F j.');
+  variable_set('date_format_only_day', 'Y. F j.');
   variable_set('date_first_day', 1);
 
   // Set up some core variables.
   variable_set('cron_safe_threshold', 3600);
   // TODO: These should be better set by some drupal_execute_form() or
   // something, since the directories would get created that way.
-  variable_set('file_default_scheme', 'public');
+  variable_set('file_default_scheme', 'private');
   variable_set('file_public_path', 'sites/default/files');
   variable_set('file_temporary_path', '../tmp');
   variable_set('file_private_path', '../priv');
