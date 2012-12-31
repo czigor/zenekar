@@ -3031,6 +3031,261 @@ function mez_cts_field_default_fields() {
     ),
   );
 
+  // Exported field: 'node-concert-field_location'.
+  $fields['node-concert-field_location'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_location',
+      'foreign keys' => array(),
+      'indexes' => array(
+        'lid' => array(
+          0 => 'lid',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'location_cck',
+      'settings' => array(
+        'entity_translation_sync' => FALSE,
+        'gmap_macro' => '[gmap ]',
+        'gmap_marker' => 'drupal',
+        'location_settings' => array(
+          'display' => array(
+            'hide' => array(
+              'additional' => 0,
+              'city' => 0,
+              'coords' => 0,
+              'country' => 0,
+              'country_name' => 0,
+              'locpick' => 0,
+              'map_link' => 0,
+              'name' => 0,
+              'postal_code' => 0,
+              'province' => 0,
+              'province_name' => 0,
+              'street' => 0,
+            ),
+          ),
+          'form' => array(
+            'fields' => array(
+              'additional' => array(
+                'collect' => '1',
+                'default' => '',
+                'weight' => '6',
+              ),
+              'city' => array(
+                'collect' => '1',
+                'default' => '',
+                'weight' => '8',
+              ),
+              'country' => array(
+                'collect' => '1',
+                'default' => 'hu',
+                'weight' => '14',
+              ),
+              'locpick' => array(
+                'collect' => '1',
+                'weight' => '20',
+              ),
+              'name' => array(
+                'collect' => '1',
+                'default' => '',
+                'weight' => '2',
+              ),
+              'postal_code' => array(
+                'collect' => '0',
+                'default' => '',
+                'weight' => '12',
+              ),
+              'province' => array(
+                'collect' => '1',
+                'default' => '',
+                'weight' => '10',
+                'widget' => 'autocomplete',
+              ),
+              'street' => array(
+                'collect' => '1',
+                'default' => '',
+                'weight' => '4',
+              ),
+            ),
+          ),
+        ),
+      ),
+      'translatable' => '0',
+      'type' => 'location',
+    ),
+    'field_instance' => array(
+      'bundle' => 'concert',
+      'default_value' => array(
+        0 => array(
+          'location_settings' => array(
+            'display' => array(
+              'hide' => array(
+                'additional' => 0,
+                'city' => 0,
+                'coords' => 0,
+                'country' => 0,
+                'country_name' => 0,
+                'locpick' => 0,
+                'map_link' => 0,
+                'name' => 0,
+                'postal_code' => 0,
+                'province' => 0,
+                'province_name' => 0,
+                'street' => 0,
+              ),
+            ),
+            'form' => array(
+              'fields' => array(
+                'additional' => array(
+                  '#parents' => array(
+                    0 => 'field_location',
+                    1 => 'und',
+                    2 => 0,
+                  ),
+                  'collect' => '1',
+                  'default' => '',
+                  'weight' => '6',
+                ),
+                'city' => array(
+                  '#parents' => array(
+                    0 => 'field_location',
+                    1 => 'und',
+                    2 => 0,
+                  ),
+                  'collect' => '1',
+                  'default' => '',
+                  'weight' => '8',
+                ),
+                'country' => array(
+                  '#parents' => array(
+                    0 => 'field_location',
+                    1 => 'und',
+                    2 => 0,
+                  ),
+                  'collect' => '1',
+                  'default' => 'hu',
+                  'weight' => '14',
+                ),
+                'delete_location' => array(
+                  'default' => FALSE,
+                  'nodiff' => TRUE,
+                ),
+                'is_primary' => array(
+                  'default' => 0,
+                ),
+                'latitude' => array(
+                  'default' => 0,
+                ),
+                'lid' => array(
+                  'default' => FALSE,
+                ),
+                'locpick' => array(
+                  '#parents' => array(
+                    0 => 'field_location',
+                    1 => 'und',
+                    2 => 0,
+                  ),
+                  'collect' => '1',
+                  'default' => FALSE,
+                  'nodiff' => TRUE,
+                  'weight' => '20',
+                ),
+                'longitude' => array(
+                  'default' => 0,
+                ),
+                'name' => array(
+                  '#parents' => array(
+                    0 => 'field_location',
+                    1 => 'und',
+                    2 => 0,
+                  ),
+                  'collect' => '1',
+                  'default' => '',
+                  'weight' => '2',
+                ),
+                'postal_code' => array(
+                  'collect' => '0',
+                  'default' => '',
+                  'weight' => '12',
+                ),
+                'province' => array(
+                  '#parents' => array(
+                    0 => 'field_location',
+                    1 => 'und',
+                    2 => 0,
+                  ),
+                  'collect' => '1',
+                  'default' => '',
+                  'weight' => '10',
+                  'widget' => 'autocomplete',
+                ),
+                'source' => array(
+                  'default' => 0,
+                ),
+                'street' => array(
+                  '#parents' => array(
+                    0 => 'field_location',
+                    1 => 'und',
+                    2 => 0,
+                  ),
+                  'collect' => '1',
+                  'default' => '',
+                  'weight' => '4',
+                ),
+              ),
+            ),
+          ),
+          'name' => 'BME K épület aula',
+          'street' => '',
+          'additional' => '',
+          'city' => 'Budapest',
+          'province' => '',
+          'country' => 'hu',
+          'locpick' => array(
+            'user_latitude' => '47.481458893110606',
+            'user_longitude' => '19.055614471435547',
+          ),
+        ),
+      ),
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'location_cck',
+          'settings' => array(),
+          'type' => 'location_default',
+          'weight' => 4,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_location',
+      'label' => 'Location',
+      'required' => 0,
+      'settings' => array(
+        'entity_translation_sync' => FALSE,
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 0,
+        'module' => 'location_cck',
+        'settings' => array(),
+        'type' => 'location',
+        'weight' => '6',
+      ),
+    ),
+  );
+
   // Exported field: 'node-concert-field_media'.
   $fields['node-concert-field_media'] = array(
     'field_config' => array(
@@ -3055,8 +3310,8 @@ function mez_cts_field_default_fields() {
       'locked' => '0',
       'module' => 'file',
       'settings' => array(
-        'display_default' => 0,
-        'display_field' => 0,
+        'display_default' => 1,
+        'display_field' => 1,
         'entity_translation_sync' => array(
           0 => 'fid',
         ),
@@ -3112,7 +3367,7 @@ function mez_cts_field_default_fields() {
           'allowed_schemes' => array(
             'private' => 0,
             'public' => 'public',
-            'youtube' => 'youtube',
+            'youtube' => 0,
           ),
           'allowed_types' => array(
             'audio' => 'audio',
@@ -3363,7 +3618,7 @@ function mez_cts_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => -5,
+        'weight' => '-5',
       ),
     ),
   );
@@ -4580,8 +4835,8 @@ function mez_cts_field_default_fields() {
       'locked' => '0',
       'module' => 'file',
       'settings' => array(
-        'display_default' => 0,
-        'display_field' => 0,
+        'display_default' => 1,
+        'display_field' => 1,
         'entity_translation_sync' => array(
           0 => 'fid',
         ),
@@ -4831,8 +5086,8 @@ function mez_cts_field_default_fields() {
       'locked' => '0',
       'module' => 'file',
       'settings' => array(
-        'display_default' => 0,
-        'display_field' => 0,
+        'display_default' => 1,
+        'display_field' => 1,
         'entity_translation_sync' => array(
           0 => 'fid',
         ),
@@ -5645,6 +5900,7 @@ function mez_cts_field_default_fields() {
   t('Image');
   t('Instrument');
   t('Leírás');
+  t('Location');
   t('Media');
   t('Media folder');
   t('Member\'s picture');
