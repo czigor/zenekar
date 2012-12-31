@@ -133,8 +133,8 @@ function fe_paths_entity_presave($entity, $type) {
     if (empty($entity->origname)) {
       $entity->origname = $entity->filename;
     }
-    if (!isset($entity->fe_paths_processed)) {
-      drupal_register_shutdown_function('fe_paths_file_process', $entity, $entity, $type);
+    if (!isset($entity->fe_paths_processed) && isset($entity->fid)) {
+      drupal_register_shutdown_function('fe_paths_file_process', $entity->fid, $entity, $type);
       $entity->fe_paths_processed = TRUE;
     }
   }
@@ -145,7 +145,7 @@ function fe_paths_entity_presave($entity, $type) {
     // Get all fields of the saved entity.
     $bundle = NULL;
 
-    if (isset($entity_info['entity keys']['bundle'])) {
+    if (!empty($entity_info['entity keys']['bundle'])) {
       $bundle = $entity->{$entity_info['entity keys']['bundle']};
     }
     else {
@@ -162,7 +162,7 @@ function fe_paths_entity_presave($entity, $type) {
         foreach ($files as $file) {
           // Just for testing, in _registershutdown hard to debug.
           //fe_paths_file_process(file_load($file['fid']), $entity, $type);
-          drupal_register_shutdown_function('fe_paths_file_process', file_load($file['fid']), $entity, $type, $field['field_name']);
+          drupal_register_shutdown_function('fe_paths_file_process', $file['fid'], $entity, $type, $field['field_name']);
         }
       }
       // Searching in textfields for possibly embed files by media wysiwsg.
@@ -173,7 +173,7 @@ function fe_paths_entity_presave($entity, $type) {
             $tag = str_replace(array('[[', ']]'), '', $tag);
             $tag_info = drupal_json_decode($tag);
             if (isset($tag_info['fid'])) {
-              drupal_register_shutdown_function('fe_paths_file_process', file_load($tag_info['fid']), $entity, $type, $field['field_name']);
+              drupal_register_shutdown_function('fe_paths_file_process', $tag_info['fid'], $entity, $type, $field['field_name']);
             }
           }
         }
@@ -202,8 +202,9 @@ function fe_paths_file_delete($file) {
  * @see fe_paths_file_presave()
  * @see fe_paths_file_process()
  */
-function fe_paths_file_process($file, $entity, $type, $field_name = NULL) {
-  if (fe_paths_file_process_available($file)) {
+function fe_paths_file_process($fid, $entity, $type, $field_name = NULL) {
+  $file = file_load($fid);
+  if ($file !== FALSE && fe_paths_file_process_available($file)) {
     $configs = fe_paths_config_load_multiple();
     fe_paths_add_global_settings_to_config($configs, $file);
     $entity_info = entity_get_info($type);

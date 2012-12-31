@@ -26,6 +26,7 @@ class FileEntityPathsHelper extends DrupalWebTestCase {
       'create fe_paths_test_2 content',
       'administer files',
       'administer_fe_paths',
+      'administer users'
     ));
     $this->drupalLogin($web_user);
     $this->setDefaultVariables(array('image', 'text'));
@@ -90,7 +91,7 @@ class FileEntityPathsHelper extends DrupalWebTestCase {
   protected function generateRandomConfig($file_path, $file_name, $weight = 0) {
     return (object) array(
       'machine_name' => strtolower($this->randomName(8)),
-      'label' => $this->randomName(8),
+      'label' => $this->randomString(8),
       'path' => $file_path,
       'filename' => $file_name,
       'status' => TRUE,
@@ -259,5 +260,26 @@ class FileEntityPathsGlobalSettingsTestCase extends FileEntityPathsHelper {
   }
 }
 
-class FileEntityPathsSpecialConfigTestCase extends FileEntityPathsHelper {
+class FileEntityPathsSpecialUsageTestCase extends FileEntityPathsHelper {
+  public static function getInfo() {
+    return array(
+      'name' => 'File Entity Paths usage tests',
+      'description' => 'Other test cases, usually based on drupal.org issue queue.',
+      'group' => 'File Entity Paths',
+      'dependencies' => array('file_entity'),
+    );
+  }
+
+  protected function testFileEntityPathsUserAdd() {
+    $edit = array(
+      'name' => $this->randomName(),
+      'mail' => $this->randomName() . '@example.com',
+      'pass[pass1]' => $pass = $this->randomString(),
+      'pass[pass2]' => $pass,
+      'notify' => FALSE,
+    );
+    $this->drupalPost('admin/people/create', $edit, t('Create new account'));
+    $this->drupalGet('admin/people');
+    $this->assertText($edit['name'], 'User found in list of users. Issue: <a href="http://drupal.org/node/1806472">Fatal error when user entity is saving.</a>');
+  }
 }

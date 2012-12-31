@@ -136,11 +136,14 @@ function fe_paths_requirements($phase) {
   if ($phase == 'update' || $phase == 'install') {
     $return = array();
     $t = get_t();
-    $files = system_rebuild_module_data();
+    // Cannot use system_rebuild_module() as this might be called when there
+    // is no database set up yet (if fe_paths is an install profile dependency).
+    // See http://drupal.org/node/1875470.
+    $info = drupal_parse_info_file(drupal_get_path('module', 'file_entity') . '/file_entity.info');
     // Check file entity dependency. The version checking was removed from
     // .info, because drupal.org testbot doesn't handle >=7.x-2.0-unstable6
     // style dependecy.
-    $file_entity = drupal_check_incompatibility(drupal_parse_dependency('file_entity (>=7.x-2.0-unstable6)'), str_replace(DRUPAL_CORE_COMPATIBILITY . '-', '', $files['file_entity']->info['version']));
+    $file_entity = drupal_check_incompatibility(drupal_parse_dependency('file_entity (>=7.x-2.0-unstable6)'), str_replace(DRUPAL_CORE_COMPATIBILITY . '-', '', $info['version']));
     if (!is_null($file_entity)) {
       $return['fe_paths_file_entity'] = array(
         'title' => $t('File Entity Paths incompatible dependency.'),
@@ -149,8 +152,9 @@ function fe_paths_requirements($phase) {
         'severity' => REQUIREMENT_ERROR,
       );
     }
-    // filefield_paths and fe_paths can't work together, no let install the module
-    if (module_exists('filefield_paths') || drupal_get_installed_schema_version('filefield_paths') != SCHEMA_UNINSTALLED) {
+    // filefield_paths and fe_paths can't work together, do not let install the module.
+    // db_set_active() checks if a database has been set up at all.   
+    if (module_exists('filefield_paths') || (db_set_active() && drupal_get_installed_schema_version('filefield_paths') != SCHEMA_UNINSTALLED)) {
       $return['fe_paths_ffp'] = array(
         'title' => $t('File Entity Paths status.'),
         'value' => '',
