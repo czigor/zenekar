@@ -65,6 +65,8 @@ dependencies[] = date_repeat_field
 dependencies[] = date_repeat
 dependencies[] = field_collection_table
 dependencies[] = fe_paths
+dependencies[] = location_cck
+dependencies[] = gmap_location
 
 ; Own modules (all of them should be dependencies of at least one own feature)
 dependencies[] = mez_taxonomy
