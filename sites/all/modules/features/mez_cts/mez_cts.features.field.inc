@@ -632,38 +632,44 @@ function mez_cts_field_default_fields() {
       'entity_types' => array(),
       'field_name' => 'field_file_access',
       'foreign keys' => array(
-        'tid' => array(
+        'rid' => array(
           'columns' => array(
-            'tid' => 'tid',
+            'rid' => 'rid',
           ),
-          'table' => 'taxonomy_term_data',
+          'table' => 'role',
         ),
       ),
       'indexes' => array(
-        'tid' => array(
-          0 => 'tid',
+        'rid' => array(
+          0 => 'rid',
         ),
       ),
       'locked' => '0',
-      'module' => 'taxonomy',
+      'module' => 'rolereference',
       'settings' => array(
-        'allowed_values' => array(
-          0 => array(
-            'vocabulary' => 'file_access',
-            'parent' => '0',
-          ),
-        ),
         'entity_translation_sync' => FALSE,
-        'options_list_callback' => 'i18n_taxonomy_allowed_values',
+        'referenceable_roles' => array(
+          1 => '1',
+          2 => '2',
+          3 => '3',
+          4 => '4',
+        ),
       ),
       'translatable' => '0',
-      'type' => 'taxonomy_term_reference',
+      'type' => 'rolereference',
     ),
     'field_instance' => array(
       'bundle' => 'audio',
-      'default_value' => NULL,
+      'default_value' => array(
+        0 => array(
+          'rid' => '1',
+        ),
+        1 => array(
+          'rid' => '2',
+        ),
+      ),
       'deleted' => '0',
-      'description' => 'Select who can view this file. If none selected, everyone can view it. ',
+      'description' => '',
       'display' => array(
         'colorbox' => array(
           'label' => 'above',
@@ -673,10 +679,10 @@ function mez_cts_field_default_fields() {
         ),
         'default' => array(
           'label' => 'above',
-          'module' => 'i18n_taxonomy',
+          'module' => 'rolereference',
           'settings' => array(),
-          'type' => 'i18n_taxonomy_term_reference_link',
-          'weight' => 3,
+          'type' => 'rolereference_default',
+          'weight' => 5,
         ),
         'full' => array(
           'label' => 'above',
@@ -710,7 +716,99 @@ function mez_cts_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_buttons',
-        'weight' => '9',
+        'weight' => '13',
+      ),
+    ),
+  );
+
+  // Exported field: 'file-audio-field_media_folder'.
+  $fields['file-audio-field_media_folder'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_media_folder',
+      'foreign keys' => array(
+        'tid' => array(
+          'columns' => array(
+            'tid' => 'tid',
+          ),
+          'table' => 'taxonomy_term_data',
+        ),
+      ),
+      'indexes' => array(
+        'tid' => array(
+          0 => 'tid',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'taxonomy',
+      'settings' => array(
+        'allowed_values' => array(
+          0 => array(
+            'vocabulary' => 'media',
+            'parent' => '0',
+          ),
+        ),
+        'entity_translation_sync' => FALSE,
+        'options_list_callback' => 'i18n_taxonomy_allowed_values',
+      ),
+      'translatable' => '0',
+      'type' => 'taxonomy_term_reference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'audio',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'The media folder this file belongs to. ',
+      'display' => array(
+        'colorbox' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'default' => array(
+          'label' => 'above',
+          'module' => 'i18n_taxonomy',
+          'settings' => array(),
+          'type' => 'i18n_taxonomy_term_reference_link',
+          'weight' => 4,
+        ),
+        'full' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'preview' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'file',
+      'field_name' => 'field_media_folder',
+      'label' => 'Media folder',
+      'required' => 0,
+      'settings' => array(
+        'entity_translation_sync' => FALSE,
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(),
+        'type' => 'options_select',
+        'weight' => '11',
       ),
     ),
   );
@@ -1159,38 +1257,44 @@ function mez_cts_field_default_fields() {
       'entity_types' => array(),
       'field_name' => 'field_file_access',
       'foreign keys' => array(
-        'tid' => array(
+        'rid' => array(
           'columns' => array(
-            'tid' => 'tid',
+            'rid' => 'rid',
           ),
-          'table' => 'taxonomy_term_data',
+          'table' => 'role',
         ),
       ),
       'indexes' => array(
-        'tid' => array(
-          0 => 'tid',
+        'rid' => array(
+          0 => 'rid',
         ),
       ),
       'locked' => '0',
-      'module' => 'taxonomy',
+      'module' => 'rolereference',
       'settings' => array(
-        'allowed_values' => array(
-          0 => array(
-            'vocabulary' => 'file_access',
-            'parent' => '0',
-          ),
-        ),
         'entity_translation_sync' => FALSE,
-        'options_list_callback' => 'i18n_taxonomy_allowed_values',
+        'referenceable_roles' => array(
+          1 => '1',
+          2 => '2',
+          3 => '3',
+          4 => '4',
+        ),
       ),
       'translatable' => '0',
-      'type' => 'taxonomy_term_reference',
+      'type' => 'rolereference',
     ),
     'field_instance' => array(
       'bundle' => 'document',
-      'default_value' => NULL,
+      'default_value' => array(
+        0 => array(
+          'rid' => '1',
+        ),
+        1 => array(
+          'rid' => '2',
+        ),
+      ),
       'deleted' => '0',
-      'description' => 'Select who can view this file. If none selected, everyone can view it. ',
+      'description' => '',
       'display' => array(
         'colorbox' => array(
           'label' => 'above',
@@ -1200,10 +1304,10 @@ function mez_cts_field_default_fields() {
         ),
         'default' => array(
           'label' => 'above',
-          'module' => 'i18n_taxonomy',
+          'module' => 'rolereference',
           'settings' => array(),
-          'type' => 'i18n_taxonomy_term_reference_link',
-          'weight' => 2,
+          'type' => 'rolereference_default',
+          'weight' => 4,
         ),
         'preview' => array(
           'label' => 'above',
@@ -1231,7 +1335,93 @@ function mez_cts_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_buttons',
-        'weight' => '9',
+        'weight' => '13',
+      ),
+    ),
+  );
+
+  // Exported field: 'file-document-field_media_folder'.
+  $fields['file-document-field_media_folder'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_media_folder',
+      'foreign keys' => array(
+        'tid' => array(
+          'columns' => array(
+            'tid' => 'tid',
+          ),
+          'table' => 'taxonomy_term_data',
+        ),
+      ),
+      'indexes' => array(
+        'tid' => array(
+          0 => 'tid',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'taxonomy',
+      'settings' => array(
+        'allowed_values' => array(
+          0 => array(
+            'vocabulary' => 'media',
+            'parent' => '0',
+          ),
+        ),
+        'entity_translation_sync' => FALSE,
+        'options_list_callback' => 'i18n_taxonomy_allowed_values',
+      ),
+      'translatable' => '0',
+      'type' => 'taxonomy_term_reference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'document',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'The media folder this file belongs to. ',
+      'display' => array(
+        'colorbox' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'default' => array(
+          'label' => 'above',
+          'module' => 'i18n_taxonomy',
+          'settings' => array(),
+          'type' => 'i18n_taxonomy_term_reference_link',
+          'weight' => 3,
+        ),
+        'preview' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'file',
+      'field_name' => 'field_media_folder',
+      'label' => 'Media folder',
+      'required' => 0,
+      'settings' => array(
+        'entity_translation_sync' => FALSE,
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(),
+        'type' => 'options_select',
+        'weight' => '11',
       ),
     ),
   );
@@ -1456,38 +1646,44 @@ function mez_cts_field_default_fields() {
       'entity_types' => array(),
       'field_name' => 'field_file_access',
       'foreign keys' => array(
-        'tid' => array(
+        'rid' => array(
           'columns' => array(
-            'tid' => 'tid',
+            'rid' => 'rid',
           ),
-          'table' => 'taxonomy_term_data',
+          'table' => 'role',
         ),
       ),
       'indexes' => array(
-        'tid' => array(
-          0 => 'tid',
+        'rid' => array(
+          0 => 'rid',
         ),
       ),
       'locked' => '0',
-      'module' => 'taxonomy',
+      'module' => 'rolereference',
       'settings' => array(
-        'allowed_values' => array(
-          0 => array(
-            'vocabulary' => 'file_access',
-            'parent' => '0',
-          ),
-        ),
         'entity_translation_sync' => FALSE,
-        'options_list_callback' => 'i18n_taxonomy_allowed_values',
+        'referenceable_roles' => array(
+          1 => '1',
+          2 => '2',
+          3 => '3',
+          4 => '4',
+        ),
       ),
       'translatable' => '0',
-      'type' => 'taxonomy_term_reference',
+      'type' => 'rolereference',
     ),
     'field_instance' => array(
       'bundle' => 'image',
-      'default_value' => NULL,
+      'default_value' => array(
+        0 => array(
+          'rid' => '1',
+        ),
+        1 => array(
+          'rid' => '2',
+        ),
+      ),
       'deleted' => '0',
-      'description' => 'Select who can view this file. If none selected, everyone can view it. ',
+      'description' => '',
       'display' => array(
         'colorbox' => array(
           'label' => 'above',
@@ -1497,10 +1693,10 @@ function mez_cts_field_default_fields() {
         ),
         'default' => array(
           'label' => 'above',
-          'module' => 'i18n_taxonomy',
+          'module' => 'rolereference',
           'settings' => array(),
-          'type' => 'i18n_taxonomy_term_reference_link',
-          'weight' => 6,
+          'type' => 'rolereference_default',
+          'weight' => 8,
         ),
         'full' => array(
           'label' => 'above',
@@ -1534,7 +1730,7 @@ function mez_cts_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_buttons',
-        'weight' => '9',
+        'weight' => '11',
       ),
     ),
   );
@@ -1711,6 +1907,101 @@ function mez_cts_field_default_fields() {
         ),
         'type' => 'text_textfield',
         'weight' => '3',
+      ),
+    ),
+  );
+
+  // Exported field: 'file-image-field_media_folder'.
+  $fields['file-image-field_media_folder'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_media_folder',
+      'foreign keys' => array(
+        'tid' => array(
+          'columns' => array(
+            'tid' => 'tid',
+          ),
+          'table' => 'taxonomy_term_data',
+        ),
+      ),
+      'indexes' => array(
+        'tid' => array(
+          0 => 'tid',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'taxonomy',
+      'settings' => array(
+        'allowed_values' => array(
+          0 => array(
+            'vocabulary' => 'media',
+            'parent' => '0',
+          ),
+        ),
+        'entity_translation_sync' => FALSE,
+        'options_list_callback' => 'i18n_taxonomy_allowed_values',
+      ),
+      'translatable' => '0',
+      'type' => 'taxonomy_term_reference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'image',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'The media folder this file belongs to. ',
+      'display' => array(
+        'colorbox' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'default' => array(
+          'label' => 'above',
+          'module' => 'i18n_taxonomy',
+          'settings' => array(),
+          'type' => 'i18n_taxonomy_term_reference_link',
+          'weight' => 7,
+        ),
+        'full' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'preview' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'file',
+      'field_name' => 'field_media_folder',
+      'label' => 'Media folder',
+      'required' => 0,
+      'settings' => array(
+        'entity_translation_sync' => FALSE,
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(
+          'autocomplete_path' => 'taxonomy/autocomplete',
+          'size' => 60,
+        ),
+        'type' => 'options_select',
+        'weight' => '10',
       ),
     ),
   );
@@ -2159,38 +2450,44 @@ function mez_cts_field_default_fields() {
       'entity_types' => array(),
       'field_name' => 'field_file_access',
       'foreign keys' => array(
-        'tid' => array(
+        'rid' => array(
           'columns' => array(
-            'tid' => 'tid',
+            'rid' => 'rid',
           ),
-          'table' => 'taxonomy_term_data',
+          'table' => 'role',
         ),
       ),
       'indexes' => array(
-        'tid' => array(
-          0 => 'tid',
+        'rid' => array(
+          0 => 'rid',
         ),
       ),
       'locked' => '0',
-      'module' => 'taxonomy',
+      'module' => 'rolereference',
       'settings' => array(
-        'allowed_values' => array(
-          0 => array(
-            'vocabulary' => 'file_access',
-            'parent' => '0',
-          ),
-        ),
         'entity_translation_sync' => FALSE,
-        'options_list_callback' => 'i18n_taxonomy_allowed_values',
+        'referenceable_roles' => array(
+          1 => '1',
+          2 => '2',
+          3 => '3',
+          4 => '4',
+        ),
       ),
       'translatable' => '0',
-      'type' => 'taxonomy_term_reference',
+      'type' => 'rolereference',
     ),
     'field_instance' => array(
       'bundle' => 'video',
-      'default_value' => NULL,
+      'default_value' => array(
+        0 => array(
+          'rid' => '1',
+        ),
+        1 => array(
+          'rid' => '2',
+        ),
+      ),
       'deleted' => '0',
-      'description' => 'Select who can view this file. If none selected, everyone can view it. ',
+      'description' => '',
       'display' => array(
         'colorbox' => array(
           'label' => 'above',
@@ -2200,10 +2497,10 @@ function mez_cts_field_default_fields() {
         ),
         'default' => array(
           'label' => 'above',
-          'module' => 'i18n_taxonomy',
+          'module' => 'rolereference',
           'settings' => array(),
-          'type' => 'i18n_taxonomy_term_reference_link',
-          'weight' => 4,
+          'type' => 'rolereference_default',
+          'weight' => 6,
         ),
         'full' => array(
           'label' => 'above',
@@ -2237,7 +2534,102 @@ function mez_cts_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_buttons',
-        'weight' => '9',
+        'weight' => '13',
+      ),
+    ),
+  );
+
+  // Exported field: 'file-video-field_media_folder'.
+  $fields['file-video-field_media_folder'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_media_folder',
+      'foreign keys' => array(
+        'tid' => array(
+          'columns' => array(
+            'tid' => 'tid',
+          ),
+          'table' => 'taxonomy_term_data',
+        ),
+      ),
+      'indexes' => array(
+        'tid' => array(
+          0 => 'tid',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'taxonomy',
+      'settings' => array(
+        'allowed_values' => array(
+          0 => array(
+            'vocabulary' => 'media',
+            'parent' => '0',
+          ),
+        ),
+        'entity_translation_sync' => FALSE,
+        'options_list_callback' => 'i18n_taxonomy_allowed_values',
+      ),
+      'translatable' => '0',
+      'type' => 'taxonomy_term_reference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'video',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'The media folder this file belongs to. ',
+      'display' => array(
+        'colorbox' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'default' => array(
+          'label' => 'above',
+          'module' => 'i18n_taxonomy',
+          'settings' => array(),
+          'type' => 'i18n_taxonomy_term_reference_link',
+          'weight' => 5,
+        ),
+        'full' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'preview' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'file',
+      'field_name' => 'field_media_folder',
+      'label' => 'Media folder',
+      'required' => 0,
+      'settings' => array(
+        'entity_translation_sync' => FALSE,
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 0,
+        'module' => 'options',
+        'settings' => array(
+          'autocomplete_path' => 'taxonomy/autocomplete',
+          'size' => 60,
+        ),
+        'type' => 'options_select',
+        'weight' => '11',
       ),
     ),
   );
@@ -5254,6 +5646,7 @@ function mez_cts_field_default_fields() {
   t('Instrument');
   t('Leírás');
   t('Media');
+  t('Media folder');
   t('Member\'s picture');
   t('Membership dates');
   t('Mobile');
@@ -5276,13 +5669,13 @@ function mez_cts_field_default_fields() {
   t('Piece title');
   t('Programme');
   t('Remark');
-  t('Select who can view this file. If none selected, everyone can view it. ');
   t('Tags');
   t('Tags separated by commas.');
   t('Tags separated by commas. ');
   t('The family name of the composer is displayed before the given name(s). Check this if you want a comma between them. (So do not check it for Hungarian names.)');
   t('The family name of the composer like \'Bach\'. This will be used to sort the piece. ');
   t('The given name(s) of the composer. Each name (like Johann and Sebastian) should go into a different textbox. ');
+  t('The media folder this file belongs to. ');
   t('Time');
   t('Title Text');
   t('Title text attribute');
