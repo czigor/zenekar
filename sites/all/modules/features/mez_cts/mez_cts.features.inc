@@ -39,14 +39,6 @@ function mez_cts_node_info() {
       'title_label' => t('Cím'),
       'help' => '',
     ),
-    'person' => array(
-      'name' => t('Person'),
-      'base' => 'node_content',
-      'description' => t('Person'),
-      'has_title' => '1',
-      'title_label' => t('Név'),
-      'help' => '',
-    ),
     'news' => array(
       'name' => t('News'),
       'base' => 'node_content',
@@ -61,6 +53,14 @@ function mez_cts_node_info() {
       'description' => '',
       'has_title' => '1',
       'title_label' => t('Cím'),
+      'help' => '',
+    ),
+    'person' => array(
+      'name' => t('Person'),
+      'base' => 'node_content',
+      'description' => t('Person'),
+      'has_title' => '1',
+      'title_label' => t('Név'),
       'help' => '',
     ),
     'piece' => array(
