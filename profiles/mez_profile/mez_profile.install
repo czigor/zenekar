@@ -192,7 +192,6 @@ function mez_profile_install() {
   variable_set('pathauto_ignore_words', '');
   variable_set('pathauto_max_component_length', 100);
   variable_set('pathauto_max_length', 100);
-  variable_set('pathauto_node_pattern', 'tartalom/[node:title]');
   variable_set('pathauto_punctuation_ampersand', 0);
   variable_set('pathauto_punctuation_asterisk', 0);
   variable_set('pathauto_punctuation_at', 0);
@@ -229,19 +228,23 @@ function mez_profile_install() {
   variable_set('pathauto_separator', '-');
   variable_set('pathauto_transliterate', 1);
   variable_set('pathauto_update_action', 2);
-  variable_set('pathauto_user_pattern', 'emberek/[user:name]');
   variable_set('pathauto_verbose', 1);
   variable_set('transliteration_file_lowercase', 1);
   variable_set('transliteration_file_uploads', 1);
 
   // Create new roles.
-  $role_oldaladmin = (object) array(
+  $role = (object) array(
     'name' => 'site admin',
   );
-  user_role_save($role_oldaladmin);
+  user_role_save($role);
 
-  $role_oldaladmin = (object) array(
+  $role = (object) array(
     'name' => 'editor',
   );
-  user_role_save($role_oldaladmin);
+  user_role_save($role);
+  
+  $role = (object) array(
+      'name' => 'member',
+  );
+  user_role_save($role);
 }
