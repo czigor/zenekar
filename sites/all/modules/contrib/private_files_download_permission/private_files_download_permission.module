@@ -1,0 +1,474 @@
+<?php
+
+/**
+ * @file
+ * Handles both module settings and its behaviour.
+ *
+ * Copyright (c) 2011-2012 by Marco Zanon (http://www.marcozanon.com)
+ * Released under GPLv2 license
+ * Idea and code inspired by http://www.beacon9.ca/labs/drupal-7-private-files-module
+ */
+
+/**
+ * Implements hook_permission().
+ */
+function private_files_download_permission_permission() {
+  return array(
+    'administer private files download permission' => array(
+      'title'       => t('Administer Private files download permission'),
+      'description' => t('Access module configuration.'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_menu().
+ */
+function private_files_download_permission_menu() {
+  return array(
+    'admin/config/media/private-files-download-permission' => array(
+      'title'            => 'Private files download permission',
+      'description'      => 'Manage per-directory and per-role download permissions.',
+      'page callback'    => 'private_files_download_permission_list_directories',
+      'access arguments' => array('administer private files download permission'),
+      'type'             => MENU_NORMAL_ITEM,
+    ),
+    'admin/config/media/private-files-download-permission/add' => array(
+      'title'            => 'Add directory',
+      'description'      => 'Add directory to the control list.',
+      'page callback'    => 'private_files_download_permission_add_directory',
+      'access arguments' => array('administer private files download permission'),
+      'type'             => MENU_LOCAL_ACTION,
+    ),
+    'admin/config/media/private-files-download-permission/%/edit' => array(
+      'title'            => 'Edit directory',
+      'description'      => 'Edit directory in the control list.',
+      'page callback'    => 'private_files_download_permission_edit_directory',
+      'page arguments'   => array(4),
+      'access arguments' => array('administer private files download permission'),
+      'type'             => MENU_CALLBACK,
+    ),
+    'admin/config/media/private-files-download-permission/%/remove' => array(
+      'title'            => 'Remove directory',
+      'description'      => 'Remove directory from the control list.',
+      'page callback'    => 'drupal_get_form',
+      'page arguments'   => array('private_files_download_permission_remove_directory', 4),
+      'access arguments' => array('administer private files download permission'),
+      'type'             => MENU_CALLBACK,
+    ),
+  );
+}
+
+/**
+ * Returns a standard array containing all users.
+ */
+function private_files_download_permission_get_users() {
+  // Load users as entity array.
+  $users_2 = entity_load('user');
+  // Return a standard (uid, name) array.
+  $users = array();
+  foreach ($users_2 as $uid => $user_object) {
+    $users[$uid] = (!$user_object->name ? t('anonymous user') : $user_object->name);
+  }
+  return $users;
+}
+
+/**
+ * Returns the list of all directories under control.
+ */
+function private_files_download_permission_get_directory_list() {
+  $directory_list = &drupal_static('private_files_download_permission_directory_list');
+  if (!isset($directory_list)) {
+    // Load directory list.
+    $directory_list = db_select('private_files_download_permission_directory', 't')
+      ->fields('t')
+      ->orderBy('t.path', 'ASC')
+      ->execute()
+      ->fetchAllAssoc('did');
+    // Add user id and role id arrays to each directory.
+    foreach ($directory_list as $directory) {
+      $directory->uid = array();
+      $directory->rid = array();
+    }
+    // Load directory user list.
+    $directory_users = db_select('private_files_download_permission_directory_user', 't')
+      ->fields('t')
+      ->orderBy('t.did', 'ASC')
+      ->execute()
+      ->fetchAll();
+    // Load directory role list.
+    $directory_roles = db_select('private_files_download_permission_directory_role', 't')
+      ->fields('t')
+      ->orderBy('t.did', 'ASC')
+      ->execute()
+      ->fetchAll();
+    // Merge array values.
+    foreach ($directory_users as $directory_user) {
+      $did = $directory_user->did;
+      $uid = $directory_user->uid;
+      $directory_list[$did]->uid[$uid] = array('uid' => $uid);
+    }
+    foreach ($directory_roles as $directory_role) {
+      $did = $directory_role->did;
+      $rid = $directory_role->rid;
+      $directory_list[$did]->rid[$rid] = array('rid' => $rid);
+    }
+  }
+  return $directory_list;
+}
+
+/**
+ * (Page callback.) Displays the main page and lists directories under control.
+ */
+function private_files_download_permission_list_directories() {
+  $output = '';
+  // Check if file system download method is set to private.
+  if ('private' !== file_default_scheme()) {
+    drupal_set_message(t('Your !default_download_method is not set as private. Please keep in mind that these settings only affect private file system downloads.', array('!default_download_method' => l(t('default download method'), 'admin/config/media/file-system'))), 'warning');
+  }
+  // Display the private file system path.
+  $private_path = variable_get('file_private_path');
+  if (!$private_path) {
+    $output .= '<p>' . t('Your private file system path is not set.') . '</p>';
+  }
+  else {
+    $output .= '<p>' . t('Your private file system path is %path.', array('%path' => $private_path)) . '</p>';
+  }
+  // Retrieve directory list and display it as a table.
+  $directory_list = private_files_download_permission_get_directory_list();
+  $users = private_files_download_permission_get_users();
+  $roles = user_roles();
+  $rows = array();
+  foreach ($directory_list as $directory) {
+    // Prepare the 'Enabled users' cell.
+    $enabled_users = array_intersect_key($users, $directory->uid);
+    sort($enabled_users);
+    // Prepare the 'Enabled roles' cell.
+    $enabled_roles = array_intersect_key($roles, $directory->rid);
+    sort($enabled_roles);
+    // Fill table row.
+    $rows[] = array(
+      $directory->path,
+      !empty($enabled_users) ? implode('<br />', $enabled_users) : '',
+      !empty($enabled_roles) ? implode('<br />', $enabled_roles) : '',
+      l(t('Edit'), 'admin/config/media/private-files-download-permission/' . $directory->did . '/edit/'),
+      l(t('Remove'), 'admin/config/media/private-files-download-permission/' . $directory->did . '/remove/'),
+    );
+  }
+  $output .= theme_table(array(
+    'header' => array(
+      t('Directory path'),
+      t('Enabled users'),
+      t('Enabled roles'),
+      array(
+        'data'    => t('Operations'),
+        'colspan' => 2,
+      ),
+    ),
+    'rows'       => $rows,
+    'attributes' => array(),
+    'caption'    => NULL,
+    'colgroups'  => array(),
+    'sticky'     => FALSE,
+    'empty'      => t('The directory list is empty.'),
+  ));
+  // Display output.
+  return $output;
+}
+
+/**
+ * (Form callback.) Displays a form to add/edit a directory.
+ */
+function private_files_download_permission_get_directory_form($form, &$form_state, $did) {
+  $directory_list = private_files_download_permission_get_directory_list();
+  $form = array();
+  // Check that $did is actually a valid directory id, if not blank.
+  if (NULL !== $did) {
+    if (!in_array($did, array_keys($directory_list))) {
+      drupal_set_message(t('You need to provide a valid directory id.'), 'error');
+      return;
+    }
+  }
+  // Prepare default values.
+  $default_path = NULL;
+  $default_users = array();
+  $default_roles = array();
+  if (NULL !== $did) {
+    $default_path = $directory_list[$did]->path;
+    $default_users = array_keys($directory_list[$did]->uid);
+    $default_roles = array_keys($directory_list[$did]->rid);
+  }
+  // Prepare the directory id value to be eventually submitted.
+  $form['did'] = array(
+    '#type'  => 'value',
+    '#value' => $did,
+  );
+  // Prepare the path text field.
+  $form['path'] = array(
+    '#type'          => 'textfield',
+    '#title'         => t('Path'),
+    '#field_prefix'  => variable_get('file_private_path'),
+    '#size'          => 60,
+    '#maxlength'     => 255,
+    '#required'      => TRUE,
+    '#default_value' => $default_path,
+  );
+  // Prepare the user checkbox fieldset.
+  $form['users'] = array(
+    '#type'  => 'fieldset',
+    '#title' => t('Enabled users'),
+  );
+  // Prepare user checkboxes.
+  $users = array_flip(private_files_download_permission_get_users());
+  ksort($users);
+  $users = array_flip($users);
+  foreach ($users as $uid => $user) {
+    $form['users']['user_' . $uid] = array(
+      '#type'          => 'checkbox',
+      '#title'         => check_plain($user),
+      '#default_value' => in_array($uid, $default_users),
+    );
+  }
+  // Prepare the role checkbox fieldset.
+  $form['roles'] = array(
+    '#type'  => 'fieldset',
+    '#title' => t('Enabled roles'),
+  );
+  // Prepare role checkboxes.
+  $roles = array_flip(user_roles());
+  ksort($roles);
+  $roles = array_flip($roles);
+  foreach ($roles as $rid => $role) {
+    $form['roles']['role_' . $rid] = array(
+      '#type'          => 'checkbox',
+      '#title'         => check_plain($role),
+      '#default_value' => in_array($rid, $default_roles),
+    );
+  }
+  // Prepare the submit button.
+  $form['submit'] = array(
+    '#type'  => 'submit',
+    '#value' => t('Save directory to the control list'),
+  );
+  // Return form.
+  return $form;
+}
+
+/**
+ * (Form callback.) Validates the directory form.
+ */
+function private_files_download_permission_get_directory_form_validate($form, &$form_state) {
+  // Retrieve $path (which, being required, is surely not blank).
+  $path = $form_state['values']['path'];
+  // Perform slash validation:
+  if (0 < drupal_strlen($path)) {
+    $first_character = drupal_substr($path, 0, 1);
+    $last_character = drupal_substr($path, -1, 1);
+    // ...there must be a leading slash.
+    if (('/' !== $first_character) && ('\\' !== $first_character)) {
+      form_set_error('path', t('You must add a leading slash.'));
+    }
+    if (1 < drupal_strlen($path)) {
+      // ...there cannot be multiple consecutive slashes.
+      if ((FALSE !== strpos($path, '//')) || (FALSE !== strpos($path, '\\\\'))) {
+        form_set_error('path', t('You cannot use multiple consecutive slashes.'));
+      }
+      // ...there cannot be trailing slashes.
+      if (('/' === $last_character) || ('\\' === $last_character)) {
+        form_set_error('path', t('You cannot use trailing slashes.'));
+      }
+    }
+  }
+}
+
+/**
+ * (Form callback.) Submits the directory form.
+ */
+function private_files_download_permission_get_directory_form_submit($form, &$form_state) {
+  $transaction = db_transaction();
+  try {
+    // Retrieve form values.
+    $did = $form_state['values']['did'];
+    $path = $form_state['values']['path'];
+    $users = array();
+    $roles = array();
+    foreach ($form_state['values'] as $key => $value) {
+      if (0 === strpos($key, 'user_')) {
+        $uid = drupal_substr($key, drupal_strlen('user_'));
+        $users[$uid] = $value;
+      }
+      elseif (0 === strpos($key, 'role_')) {
+        $rid = drupal_substr($key, drupal_strlen('role_'));
+        $roles[$rid] = $value;
+      }
+    }
+    // Write directory record.
+    $directory_record = array(
+      'did'  => $did,
+      'path' => $path,
+    );
+    if (NULL === $did) {
+      drupal_write_record('private_files_download_permission_directory', $directory_record);
+    }
+    else {
+      drupal_write_record('private_files_download_permission_directory', $directory_record, array('did'));
+    }
+    // Retrieve last record id.
+    if (NULL === $did) {
+      $did = $directory_record['did'];
+    }
+    // Delete old user permissions and write new ones.
+    db_delete('private_files_download_permission_directory_user')
+      ->condition('did', $did)
+      ->execute();
+    foreach ($users as $uid => $value) {
+      if (TRUE == $value) {
+        db_insert('private_files_download_permission_directory_user')
+          ->fields(array(
+            'did' => $did,
+            'uid' => $uid,
+            ))
+          ->execute();
+      }
+    }
+    // Delete old role permissions and write new ones.
+    db_delete('private_files_download_permission_directory_role')
+      ->condition('did', $did)
+      ->execute();
+    foreach ($roles as $rid => $value) {
+      if (TRUE == $value) {
+        db_insert('private_files_download_permission_directory_role')
+          ->fields(array(
+            'did' => $did,
+            'rid' => $rid,
+            ))
+          ->execute();
+      }
+    }
+  }
+  catch (Exception $e) {
+    $transaction->rollback();
+    drupal_set_message(t('An error occurred while saving directory to the control list. Please check the log for details.'), 'error');
+  }
+  // Purge directory list from cache.
+  drupal_static_reset('private_files_download_permission_get_directory_list');
+  // Set form redirection.
+  $form_state['redirect'] = 'admin/config/media/private-files-download-permission';
+}
+
+/**
+ * (Page callback.) Adds a directory to the control list.
+ */
+function private_files_download_permission_add_directory() {
+  return drupal_get_form('private_files_download_permission_get_directory_form', NULL);
+}
+
+/**
+ * (Page callback.) Edits a directory in the control list.
+ */
+function private_files_download_permission_edit_directory($did) {
+  return drupal_get_form('private_files_download_permission_get_directory_form', $did);
+}
+
+/**
+ * (Form callback.) Displays a confirmation dialog before removing a directory
+ * from the control list.
+ */
+function private_files_download_permission_remove_directory($form, &$form_state, $did) {
+  $form = array();
+  // Check that $did is actually a valid directory id.
+  $directory_list = private_files_download_permission_get_directory_list();
+  if (!in_array($did, array_keys($directory_list))) {
+    drupal_set_message(t('You need to provide a valid directory id.'), 'error');
+    return;
+  }
+  // Prepare the directory id value to be eventually submitted.
+  $form['did'] = array(
+    '#type'  => 'value',
+    '#value' => $did,
+  );
+  // Display the confirmation form.
+  return confirm_form(
+    $form,
+    t('Are you sure you want to remove @path from the control list?', array('@path' => $directory_list[$did]->path)),
+    'admin/config/media/private-files-download-permission',
+    t('This action cannot be undone.'),
+    t('Remove directory from the control list'),
+    t('Cancel')
+  );
+}
+
+/**
+ * (Form callback.) Removes a directory from the control list.
+ */
+function private_files_download_permission_remove_directory_submit($form, &$form_state) {
+  $transaction = db_transaction();
+  try {
+    // Check that $form_state['values']['did'] is actually a valid directory id.
+    $directory_list = private_files_download_permission_get_directory_list();
+    if (!in_array($form_state['values']['did'], array_keys($directory_list))) {
+      drupal_set_message(t('You need to provide a valid directory id.'), 'error');
+      return;
+    }
+    // Remove users associated to the directory.
+    db_delete('private_files_download_permission_directory_user')
+      ->condition('did', $form_state['values']['did'])
+      ->execute();
+    // Remove roles associated to the directory.
+    db_delete('private_files_download_permission_directory_role')
+      ->condition('did', $form_state['values']['did'])
+      ->execute();
+    // Remove the directory itself.
+    db_delete('private_files_download_permission_directory')
+      ->condition('did', $form_state['values']['did'])
+      ->execute();
+  }
+  catch (Exception $e) {
+    $transaction->rollback();
+    drupal_set_message(t('An error occurred while removing directory from the control list. Please check the log for details.'), 'error');
+  }
+  // Purge directory list from cache.
+  drupal_static_reset('private_files_download_permission_get_directory_list');
+  // Set form redirection.
+  $form_state['redirect'] = 'admin/config/media/private-files-download-permission';
+}
+
+/**
+ * Implements hook_file_download().
+ */
+function private_files_download_permission_file_download($uri) {
+  global $user;
+  // Extract the path from $uri, removing the protocol prefix and the file name.
+  $uri_path = explode('/', $uri);
+  array_shift($uri_path);
+  array_shift($uri_path);
+  array_pop($uri_path);
+  // Add a leading slash to $uri_path.
+  $uri_path = '/' . implode('/', $uri_path);
+  // Find the directory which best matches $uri_path.
+  $best_matching_length = 0;
+  $best_matching_directory = NULL;
+  foreach (private_files_download_permission_get_directory_list() as $directory) {
+    // Search for the best matching substring.
+    $directory_path = $directory->path;
+    if (0 === stripos($uri_path, $directory_path)) {
+      if (drupal_strlen($directory_path) > $best_matching_length) {
+        $best_matching_length = drupal_strlen($directory_path);
+        $best_matching_directory = $directory;
+      }
+    }
+  }
+  // Evaluate user and role permissions and optionally allow access to $uri.
+  if (NULL != $best_matching_directory) {
+    if (in_array($user->uid, array_keys($best_matching_directory->uid))) {
+      return array('Content-Type' => file_get_mimetype($uri));
+    }
+    foreach ($user->roles as $rid => $role) {
+      if (in_array($rid, array_keys($best_matching_directory->rid))) {
+        return array('Content-Type' => file_get_mimetype($uri));
+      }
+    }
+  }
+  // By default, deny access.
+  return -1;
+}
