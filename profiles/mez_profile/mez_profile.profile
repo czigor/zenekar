@@ -158,5 +158,4 @@ function mez_profile_install_enable_features(&$install_state) {
  */
 function mez_profile_install_instruments(&$install_state) {
   mez_create_instruments_taxonomy_form_submit(NULL, NULL);
-  mez_create_access_taxonomy_form_submit(NULL, NULL);
 }
