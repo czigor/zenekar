@@ -234,13 +234,6 @@ function mez_profile_install() {
   variable_set('transliteration_file_lowercase', 1);
   variable_set('transliteration_file_uploads', 1);
 
-  // User notification mails
-  $email_body = "Kedves [user:name]!\n
- MEZ";
-
-  variable_set('user_mail_register_admin_created_body', $email_body);
-  variable_set('user_mail_status_activated_body', $email_body);
-
   // Create new roles.
   $role_oldaladmin = (object) array(
     'name' => 'site admin',
