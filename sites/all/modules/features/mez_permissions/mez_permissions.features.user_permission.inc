@@ -88,16 +88,6 @@ function mez_permissions_user_default_permissions() {
     'module' => 'taxonomy_access_fix',
   );
 
-  // Exported permission: add terms in 3.
-  $permissions['add terms in 3'] = array(
-    'name' => 'add terms in 3',
-    'roles' => array(
-      0 => 'editor',
-      1 => 'site admin',
-    ),
-    'module' => 'taxonomy_access_fix',
-  );
-
   // Exported permission: administer comments.
   $permissions['administer comments'] = array(
     'name' => 'administer comments',
@@ -244,9 +234,9 @@ function mez_permissions_user_default_permissions() {
     'module' => 'file_entity',
   );
 
-  // Exported permission: create member content.
-  $permissions['create member content'] = array(
-    'name' => 'create member content',
+  // Exported permission: create person content.
+  $permissions['create person content'] = array(
+    'name' => 'create person content',
     'roles' => array(
       0 => 'editor',
       1 => 'site admin',
@@ -324,9 +314,9 @@ function mez_permissions_user_default_permissions() {
     'module' => 'file_entity',
   );
 
-  // Exported permission: delete any member content.
-  $permissions['delete any member content'] = array(
-    'name' => 'delete any member content',
+  // Exported permission: delete any person content.
+  $permissions['delete any person content'] = array(
+    'name' => 'delete any person content',
     'roles' => array(
       0 => 'editor',
       1 => 'site admin',
@@ -387,9 +377,9 @@ function mez_permissions_user_default_permissions() {
     'module' => 'file_entity',
   );
 
-  // Exported permission: delete own member content.
-  $permissions['delete own member content'] = array(
-    'name' => 'delete own member content',
+  // Exported permission: delete own person content.
+  $permissions['delete own person content'] = array(
+    'name' => 'delete own person content',
     'roles' => array(),
     'module' => 'node',
   );
@@ -441,15 +431,6 @@ function mez_permissions_user_default_permissions() {
     'module' => 'taxonomy',
   );
 
-  // Exported permission: delete terms in 3.
-  $permissions['delete terms in 3'] = array(
-    'name' => 'delete terms in 3',
-    'roles' => array(
-      0 => 'site admin',
-    ),
-    'module' => 'taxonomy',
-  );
-
   // Exported permission: edit any composer content.
   $permissions['edit any composer content'] = array(
     'name' => 'edit any composer content',
@@ -480,9 +461,9 @@ function mez_permissions_user_default_permissions() {
     'module' => 'file_entity',
   );
 
-  // Exported permission: edit any member content.
-  $permissions['edit any member content'] = array(
-    'name' => 'edit any member content',
+  // Exported permission: edit any person content.
+  $permissions['edit any person content'] = array(
+    'name' => 'edit any person content',
     'roles' => array(
       0 => 'editor',
       1 => 'site admin',
@@ -553,9 +534,9 @@ function mez_permissions_user_default_permissions() {
     'module' => 'file_entity',
   );
 
-  // Exported permission: edit own member content.
-  $permissions['edit own member content'] = array(
-    'name' => 'edit own member content',
+  // Exported permission: edit own person content.
+  $permissions['edit own person content'] = array(
+    'name' => 'edit own person content',
     'roles' => array(),
     'module' => 'node',
   );
@@ -591,16 +572,6 @@ function mez_permissions_user_default_permissions() {
   // Exported permission: edit terms in 2.
   $permissions['edit terms in 2'] = array(
     'name' => 'edit terms in 2',
-    'roles' => array(
-      0 => 'editor',
-      1 => 'site admin',
-    ),
-    'module' => 'taxonomy',
-  );
-
-  // Exported permission: edit terms in 3.
-  $permissions['edit terms in 3'] = array(
-    'name' => 'edit terms in 3',
     'roles' => array(
       0 => 'editor',
       1 => 'site admin',

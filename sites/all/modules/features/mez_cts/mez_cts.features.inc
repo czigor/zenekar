@@ -39,10 +39,10 @@ function mez_cts_node_info() {
       'title_label' => t('Cím'),
       'help' => '',
     ),
-    'member' => array(
-      'name' => t('Member'),
+    'person' => array(
+      'name' => t('Person'),
       'base' => 'node_content',
-      'description' => t('Member of the orchestra'),
+      'description' => t('Person'),
       'has_title' => '1',
       'title_label' => t('Név'),
       'help' => '',

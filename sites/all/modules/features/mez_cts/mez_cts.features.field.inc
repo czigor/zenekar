@@ -116,7 +116,7 @@ function mez_cts_field_default_fields() {
             'type' => 'property',
           ),
           'target_bundles' => array(
-            'member' => 'member',
+            'person' => 'person',
           ),
         ),
         'target_type' => 'node',
@@ -3623,8 +3623,8 @@ function mez_cts_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-member-body'.
-  $fields['node-member-body'] = array(
+  // Exported field: 'node-person-body'.
+  $fields['node-person-body'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
@@ -3655,7 +3655,7 @@ function mez_cts_field_default_fields() {
       'type' => 'text_with_summary',
     ),
     'field_instance' => array(
-      'bundle' => 'member',
+      'bundle' => 'person',
       'default_value' => NULL,
       'deleted' => '0',
       'description' => '',
@@ -3700,8 +3700,8 @@ function mez_cts_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-member-field_address'.
-  $fields['node-member-field_address'] = array(
+  // Exported field: 'node-person-field_address'.
+  $fields['node-person-field_address'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
@@ -3731,7 +3731,7 @@ function mez_cts_field_default_fields() {
       'type' => 'text',
     ),
     'field_instance' => array(
-      'bundle' => 'member',
+      'bundle' => 'person',
       'default_value' => NULL,
       'deleted' => '0',
       'description' => '',
@@ -3771,8 +3771,8 @@ function mez_cts_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-member-field_city'.
-  $fields['node-member-field_city'] = array(
+  // Exported field: 'node-person-field_city'.
+  $fields['node-person-field_city'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
@@ -3802,7 +3802,7 @@ function mez_cts_field_default_fields() {
       'type' => 'text',
     ),
     'field_instance' => array(
-      'bundle' => 'member',
+      'bundle' => 'person',
       'default_value' => NULL,
       'deleted' => '0',
       'description' => '',
@@ -3842,8 +3842,8 @@ function mez_cts_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-member-field_email'.
-  $fields['node-member-field_email'] = array(
+  // Exported field: 'node-person-field_email'.
+  $fields['node-person-field_email'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
@@ -3861,7 +3861,7 @@ function mez_cts_field_default_fields() {
       'type' => 'email',
     ),
     'field_instance' => array(
-      'bundle' => 'member',
+      'bundle' => 'person',
       'default_value' => NULL,
       'deleted' => '0',
       'description' => '',
@@ -3900,8 +3900,8 @@ function mez_cts_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-member-field_email_list'.
-  $fields['node-member-field_email_list'] = array(
+  // Exported field: 'node-person-field_email_list'.
+  $fields['node-person-field_email_list'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
@@ -3928,7 +3928,7 @@ function mez_cts_field_default_fields() {
       'type' => 'list_boolean',
     ),
     'field_instance' => array(
-      'bundle' => 'member',
+      'bundle' => 'person',
       'default_value' => array(
         0 => array(
           'value' => 0,
@@ -3971,8 +3971,8 @@ function mez_cts_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-member-field_image'.
-  $fields['node-member-field_image'] = array(
+  // Exported field: 'node-person-field_image'.
+  $fields['node-person-field_image'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
@@ -4005,9 +4005,9 @@ function mez_cts_field_default_fields() {
       'type' => 'image',
     ),
     'field_instance' => array(
-      'bundle' => 'member',
+      'bundle' => 'person',
       'deleted' => '0',
-      'description' => 'Member\'s picture',
+      'description' => 'Person\'s picture',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -4034,7 +4034,7 @@ function mez_cts_field_default_fields() {
         'alt_field' => 0,
         'default_image' => 0,
         'entity_translation_sync' => FALSE,
-        'file_directory' => 'member/image',
+        'file_directory' => 'person/image',
         'file_extensions' => 'png gif jpg jpeg',
         'max_filesize' => '',
         'max_resolution' => '',
@@ -4072,8 +4072,8 @@ function mez_cts_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-member-field_instrument'.
-  $fields['node-member-field_instrument'] = array(
+  // Exported field: 'node-person-field_instrument'.
+  $fields['node-person-field_instrument'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
@@ -4109,7 +4109,7 @@ function mez_cts_field_default_fields() {
       'type' => 'taxonomy_term_reference',
     ),
     'field_instance' => array(
-      'bundle' => 'member',
+      'bundle' => 'person',
       'default_value' => NULL,
       'deleted' => '0',
       'description' => '',
@@ -4146,14 +4146,14 @@ function mez_cts_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-member-field_member'.
-  $fields['node-member-field_member'] = array(
+  // Exported field: 'node-person-field_membership_dates'.
+  $fields['node-person-field_membership_dates'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_member',
+      'field_name' => 'field_membership_dates',
       'foreign keys' => array(),
       'indexes' => array(),
       'locked' => '0',
@@ -4179,7 +4179,7 @@ function mez_cts_field_default_fields() {
       'type' => 'datetime',
     ),
     'field_instance' => array(
-      'bundle' => 'member',
+      'bundle' => 'person',
       'deleted' => '0',
       'description' => '',
       'display' => array(
@@ -4187,7 +4187,7 @@ function mez_cts_field_default_fields() {
           'label' => 'above',
           'module' => 'date',
           'settings' => array(
-            'format_type' => 'csaknap',
+            'format_type' => 'only_day',
             'fromto' => 'both',
             'multiple_from' => '',
             'multiple_number' => '',
@@ -4205,7 +4205,7 @@ function mez_cts_field_default_fields() {
         ),
       ),
       'entity_type' => 'node',
-      'field_name' => 'field_member',
+      'field_name' => 'field_membership_dates',
       'label' => 'Membership dates',
       'required' => 0,
       'settings' => array(
@@ -4235,8 +4235,8 @@ function mez_cts_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-member-field_mobile'.
-  $fields['node-member-field_mobile'] = array(
+  // Exported field: 'node-person-field_mobile'.
+  $fields['node-person-field_mobile'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
@@ -4266,7 +4266,7 @@ function mez_cts_field_default_fields() {
       'type' => 'text',
     ),
     'field_instance' => array(
-      'bundle' => 'member',
+      'bundle' => 'person',
       'default_value' => NULL,
       'deleted' => '0',
       'description' => '',
@@ -4306,8 +4306,8 @@ function mez_cts_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-member-field_neptun_code'.
-  $fields['node-member-field_neptun_code'] = array(
+  // Exported field: 'node-person-field_neptun_code'.
+  $fields['node-person-field_neptun_code'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
@@ -4337,7 +4337,7 @@ function mez_cts_field_default_fields() {
       'type' => 'text',
     ),
     'field_instance' => array(
-      'bundle' => 'member',
+      'bundle' => 'person',
       'default_value' => NULL,
       'deleted' => '0',
       'description' => '',
@@ -4377,8 +4377,8 @@ function mez_cts_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-member-field_occupation'.
-  $fields['node-member-field_occupation'] = array(
+  // Exported field: 'node-person-field_occupation'.
+  $fields['node-person-field_occupation'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
@@ -4408,7 +4408,7 @@ function mez_cts_field_default_fields() {
       'type' => 'text',
     ),
     'field_instance' => array(
-      'bundle' => 'member',
+      'bundle' => 'person',
       'default_value' => NULL,
       'deleted' => '0',
       'description' => '',
@@ -4448,8 +4448,8 @@ function mez_cts_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-member-field_phone'.
-  $fields['node-member-field_phone'] = array(
+  // Exported field: 'node-person-field_phone'.
+  $fields['node-person-field_phone'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
@@ -4479,7 +4479,7 @@ function mez_cts_field_default_fields() {
       'type' => 'text',
     ),
     'field_instance' => array(
-      'bundle' => 'member',
+      'bundle' => 'person',
       'default_value' => NULL,
       'deleted' => '0',
       'description' => '',
@@ -4519,8 +4519,8 @@ function mez_cts_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-member-field_wp_phone'.
-  $fields['node-member-field_wp_phone'] = array(
+  // Exported field: 'node-person-field_wp_phone'.
+  $fields['node-person-field_wp_phone'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
@@ -4550,7 +4550,7 @@ function mez_cts_field_default_fields() {
       'type' => 'text',
     ),
     'field_instance' => array(
-      'bundle' => 'member',
+      'bundle' => 'person',
       'default_value' => NULL,
       'deleted' => '0',
       'description' => '',
@@ -4590,8 +4590,8 @@ function mez_cts_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-member-field_zip_code'.
-  $fields['node-member-field_zip_code'] = array(
+  // Exported field: 'node-person-field_zip_code'.
+  $fields['node-person-field_zip_code'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
@@ -4621,7 +4621,7 @@ function mez_cts_field_default_fields() {
       'type' => 'text',
     ),
     'field_instance' => array(
-      'bundle' => 'member',
+      'bundle' => 'person',
       'default_value' => NULL,
       'deleted' => '0',
       'description' => '',
@@ -4661,8 +4661,8 @@ function mez_cts_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-member-title_field'.
-  $fields['node-member-title_field'] = array(
+  // Exported field: 'node-person-title_field'.
+  $fields['node-person-title_field'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
@@ -4692,7 +4692,7 @@ function mez_cts_field_default_fields() {
       'type' => 'text',
     ),
     'field_instance' => array(
-      'bundle' => 'member',
+      'bundle' => 'person',
       'default_value' => NULL,
       'deleted' => '0',
       'description' => 'A field replacing node title.',
@@ -5903,7 +5903,7 @@ function mez_cts_field_default_fields() {
   t('Location');
   t('Media');
   t('Media folder');
-  t('Member\'s picture');
+  t('Person\'s picture');
   t('Membership dates');
   t('Mobile');
   t('Média');

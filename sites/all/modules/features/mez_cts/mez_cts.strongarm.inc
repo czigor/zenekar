@@ -27,9 +27,9 @@ function mez_cts_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'additional_settings__active_tab_member';
+  $strongarm->name = 'additional_settings__active_tab_person';
   $strongarm->value = 'edit-menu';
-  $export['additional_settings__active_tab_member'] = $strongarm;
+  $export['additional_settings__active_tab_person'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -347,9 +347,9 @@ system/ajax/*';
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'comment_anonymous_member';
+  $strongarm->name = 'comment_anonymous_person';
   $strongarm->value = 0;
-  $export['comment_anonymous_member'] = $strongarm;
+  $export['comment_anonymous_person'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -403,9 +403,9 @@ system/ajax/*';
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'comment_default_mode_member';
+  $strongarm->name = 'comment_default_mode_person';
   $strongarm->value = 1;
-  $export['comment_default_mode_member'] = $strongarm;
+  $export['comment_default_mode_person'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -445,9 +445,9 @@ system/ajax/*';
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'comment_default_per_page_member';
+  $strongarm->name = 'comment_default_per_page_person';
   $strongarm->value = '50';
-  $export['comment_default_per_page_member'] = $strongarm;
+  $export['comment_default_per_page_person'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -487,9 +487,9 @@ system/ajax/*';
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'comment_form_location_member';
+  $strongarm->name = 'comment_form_location_person';
   $strongarm->value = 1;
-  $export['comment_form_location_member'] = $strongarm;
+  $export['comment_form_location_person'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -515,9 +515,9 @@ system/ajax/*';
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'comment_member';
+  $strongarm->name = 'comment_person';
   $strongarm->value = '1';
-  $export['comment_member'] = $strongarm;
+  $export['comment_person'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -557,9 +557,9 @@ system/ajax/*';
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'comment_preview_member';
+  $strongarm->name = 'comment_preview_person';
   $strongarm->value = '1';
-  $export['comment_preview_member'] = $strongarm;
+  $export['comment_preview_person'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -599,9 +599,9 @@ system/ajax/*';
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'comment_subject_field_member';
+  $strongarm->name = 'comment_subject_field_person';
   $strongarm->value = 1;
-  $export['comment_subject_field_member'] = $strongarm;
+  $export['comment_subject_field_person'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -641,9 +641,9 @@ system/ajax/*';
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'diff_enable_revisions_page_node_member';
+  $strongarm->name = 'diff_enable_revisions_page_node_person';
   $strongarm->value = 1;
-  $export['diff_enable_revisions_page_node_member'] = $strongarm;
+  $export['diff_enable_revisions_page_node_person'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -683,9 +683,9 @@ system/ajax/*';
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'diff_show_preview_changes_node_member';
+  $strongarm->name = 'diff_show_preview_changes_node_person';
   $strongarm->value = 1;
-  $export['diff_show_preview_changes_node_member'] = $strongarm;
+  $export['diff_show_preview_changes_node_person'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -725,9 +725,9 @@ system/ajax/*';
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'diff_view_mode_preview_node_member';
+  $strongarm->name = 'diff_view_mode_preview_node_person';
   $strongarm->value = 'full';
-  $export['diff_view_mode_preview_node_member'] = $strongarm;
+  $export['diff_view_mode_preview_node_person'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -767,9 +767,9 @@ system/ajax/*';
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'entity_translation_comment_filter_member';
+  $strongarm->name = 'entity_translation_comment_filter_person';
   $strongarm->value = 0;
-  $export['entity_translation_comment_filter_member'] = $strongarm;
+  $export['entity_translation_comment_filter_person'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -822,9 +822,9 @@ system/ajax/*';
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'entity_translation_hide_translation_links_member';
+  $strongarm->name = 'entity_translation_hide_translation_links_person';
   $strongarm->value = 0;
-  $export['entity_translation_hide_translation_links_member'] = $strongarm;
+  $export['entity_translation_hide_translation_links_person'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -864,9 +864,9 @@ system/ajax/*';
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'entity_translation_node_metadata_member';
+  $strongarm->name = 'entity_translation_node_metadata_person';
   $strongarm->value = '0';
-  $export['entity_translation_node_metadata_member'] = $strongarm;
+  $export['entity_translation_node_metadata_person'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -970,7 +970,7 @@ system/ajax/*';
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'entity_translation_settings_node__member';
+  $strongarm->name = 'entity_translation_settings_node__person';
   $strongarm->value = array(
     'default_language' => 'und',
     'hide_language_selector' => 0,
@@ -978,7 +978,7 @@ system/ajax/*';
     'lock_language' => 0,
     'shared_fields_original_only' => 0,
   );
-  $export['entity_translation_settings_node__member'] = $strongarm;
+  $export['entity_translation_settings_node__person'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -1318,7 +1318,7 @@ system/ajax/*';
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'field_bundle_settings_node__member';
+  $strongarm->name = 'field_bundle_settings_node__person';
   $strongarm->value = array(
     'view_modes' => array(
       'teaser' => array(
@@ -1361,7 +1361,7 @@ system/ajax/*';
       'display' => array(),
     ),
   );
-  $export['field_bundle_settings_node__member'] = $strongarm;
+  $export['field_bundle_settings_node__person'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -1525,9 +1525,9 @@ system/ajax/*';
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'language_content_type_member';
+  $strongarm->name = 'language_content_type_person';
   $strongarm->value = '4';
-  $export['language_content_type_member'] = $strongarm;
+  $export['language_content_type_person'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -1720,9 +1720,9 @@ system/ajax/*';
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'menu_options_member';
+  $strongarm->name = 'menu_options_person';
   $strongarm->value = array();
-  $export['menu_options_member'] = $strongarm;
+  $export['menu_options_person'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -1762,9 +1762,9 @@ system/ajax/*';
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'menu_parent_member';
+  $strongarm->name = 'menu_parent_person';
   $strongarm->value = 'main-menu:0';
-  $export['menu_parent_member'] = $strongarm;
+  $export['menu_parent_person'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -1808,11 +1808,11 @@ system/ajax/*';
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'node_options_member';
+  $strongarm->name = 'node_options_person';
   $strongarm->value = array(
     0 => 'status',
   );
-  $export['node_options_member'] = $strongarm;
+  $export['node_options_person'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -1858,9 +1858,9 @@ system/ajax/*';
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'node_preview_member';
+  $strongarm->name = 'node_preview_person';
   $strongarm->value = '1';
-  $export['node_preview_member'] = $strongarm;
+  $export['node_preview_person'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -1900,9 +1900,9 @@ system/ajax/*';
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'node_submitted_member';
+  $strongarm->name = 'node_submitted_person';
   $strongarm->value = 0;
-  $export['node_submitted_member'] = $strongarm;
+  $export['node_submitted_person'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
