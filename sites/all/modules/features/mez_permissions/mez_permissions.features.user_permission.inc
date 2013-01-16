@@ -45,8 +45,7 @@ function mez_permissions_user_default_permissions() {
   $permissions['access statistics'] = array(
     'name' => 'access statistics',
     'roles' => array(
-      0 => 'anonymous user',
-      1 => 'authenticated user',
+      0 => 'authenticated user',
     ),
     'module' => 'statistics',
   );
@@ -234,16 +233,6 @@ function mez_permissions_user_default_permissions() {
     'module' => 'file_entity',
   );
 
-  // Exported permission: create person content.
-  $permissions['create person content'] = array(
-    'name' => 'create person content',
-    'roles' => array(
-      0 => 'editor',
-      1 => 'site admin',
-    ),
-    'module' => 'node',
-  );
-
   // Exported permission: create news content.
   $permissions['create news content'] = array(
     'name' => 'create news content',
@@ -257,6 +246,16 @@ function mez_permissions_user_default_permissions() {
   // Exported permission: create page content.
   $permissions['create page content'] = array(
     'name' => 'create page content',
+    'roles' => array(
+      0 => 'editor',
+      1 => 'site admin',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: create person content.
+  $permissions['create person content'] = array(
+    'name' => 'create person content',
     'roles' => array(
       0 => 'editor',
       1 => 'site admin',
@@ -314,16 +313,6 @@ function mez_permissions_user_default_permissions() {
     'module' => 'file_entity',
   );
 
-  // Exported permission: delete any person content.
-  $permissions['delete any person content'] = array(
-    'name' => 'delete any person content',
-    'roles' => array(
-      0 => 'editor',
-      1 => 'site admin',
-    ),
-    'module' => 'node',
-  );
-
   // Exported permission: delete any news content.
   $permissions['delete any news content'] = array(
     'name' => 'delete any news content',
@@ -337,6 +326,16 @@ function mez_permissions_user_default_permissions() {
   // Exported permission: delete any page content.
   $permissions['delete any page content'] = array(
     'name' => 'delete any page content',
+    'roles' => array(
+      0 => 'editor',
+      1 => 'site admin',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: delete any person content.
+  $permissions['delete any person content'] = array(
+    'name' => 'delete any person content',
     'roles' => array(
       0 => 'editor',
       1 => 'site admin',
@@ -377,13 +376,6 @@ function mez_permissions_user_default_permissions() {
     'module' => 'file_entity',
   );
 
-  // Exported permission: delete own person content.
-  $permissions['delete own person content'] = array(
-    'name' => 'delete own person content',
-    'roles' => array(),
-    'module' => 'node',
-  );
-
   // Exported permission: delete own news content.
   $permissions['delete own news content'] = array(
     'name' => 'delete own news content',
@@ -394,6 +386,13 @@ function mez_permissions_user_default_permissions() {
   // Exported permission: delete own page content.
   $permissions['delete own page content'] = array(
     'name' => 'delete own page content',
+    'roles' => array(),
+    'module' => 'node',
+  );
+
+  // Exported permission: delete own person content.
+  $permissions['delete own person content'] = array(
+    'name' => 'delete own person content',
     'roles' => array(),
     'module' => 'node',
   );
@@ -461,16 +460,6 @@ function mez_permissions_user_default_permissions() {
     'module' => 'file_entity',
   );
 
-  // Exported permission: edit any person content.
-  $permissions['edit any person content'] = array(
-    'name' => 'edit any person content',
-    'roles' => array(
-      0 => 'editor',
-      1 => 'site admin',
-    ),
-    'module' => 'node',
-  );
-
   // Exported permission: edit any news content.
   $permissions['edit any news content'] = array(
     'name' => 'edit any news content',
@@ -484,6 +473,16 @@ function mez_permissions_user_default_permissions() {
   // Exported permission: edit any page content.
   $permissions['edit any page content'] = array(
     'name' => 'edit any page content',
+    'roles' => array(
+      0 => 'editor',
+      1 => 'site admin',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: edit any person content.
+  $permissions['edit any person content'] = array(
+    'name' => 'edit any person content',
     'roles' => array(
       0 => 'editor',
       1 => 'site admin',
@@ -534,13 +533,6 @@ function mez_permissions_user_default_permissions() {
     'module' => 'file_entity',
   );
 
-  // Exported permission: edit own person content.
-  $permissions['edit own person content'] = array(
-    'name' => 'edit own person content',
-    'roles' => array(),
-    'module' => 'node',
-  );
-
   // Exported permission: edit own news content.
   $permissions['edit own news content'] = array(
     'name' => 'edit own news content',
@@ -551,6 +543,13 @@ function mez_permissions_user_default_permissions() {
   // Exported permission: edit own page content.
   $permissions['edit own page content'] = array(
     'name' => 'edit own page content',
+    'roles' => array(),
+    'module' => 'node',
+  );
+
+  // Exported permission: edit own person content.
+  $permissions['edit own person content'] = array(
+    'name' => 'edit own person content',
     'roles' => array(),
     'module' => 'node',
   );
@@ -707,8 +706,7 @@ function mez_permissions_user_default_permissions() {
   $permissions['view post access counter'] = array(
     'name' => 'view post access counter',
     'roles' => array(
-      0 => 'anonymous user',
-      1 => 'authenticated user',
+      0 => 'authenticated user',
     ),
     'module' => 'statistics',
   );
