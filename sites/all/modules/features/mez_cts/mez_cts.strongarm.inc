@@ -947,7 +947,7 @@ system/ajax/*';
   $strongarm->name = 'entity_translation_settings_node__composer';
   $strongarm->value = array(
     'default_language' => 'und',
-    'hide_language_selector' => 0,
+    'hide_language_selector' => 1,
     'exclude_language_none' => 0,
     'lock_language' => 0,
     'shared_fields_original_only' => 0,
@@ -960,7 +960,7 @@ system/ajax/*';
   $strongarm->name = 'entity_translation_settings_node__concert';
   $strongarm->value = array(
     'default_language' => 'hu',
-    'hide_language_selector' => 0,
+    'hide_language_selector' => 1,
     'exclude_language_none' => 0,
     'lock_language' => 0,
     'shared_fields_original_only' => 1,
@@ -973,7 +973,7 @@ system/ajax/*';
   $strongarm->name = 'entity_translation_settings_node__news';
   $strongarm->value = array(
     'default_language' => 'hu',
-    'hide_language_selector' => 0,
+    'hide_language_selector' => 1,
     'exclude_language_none' => 0,
     'lock_language' => 0,
     'shared_fields_original_only' => 1,
@@ -986,7 +986,7 @@ system/ajax/*';
   $strongarm->name = 'entity_translation_settings_node__page';
   $strongarm->value = array(
     'default_language' => 'hu',
-    'hide_language_selector' => 0,
+    'hide_language_selector' => 1,
     'exclude_language_none' => 0,
     'lock_language' => 0,
     'shared_fields_original_only' => 1,
@@ -999,7 +999,7 @@ system/ajax/*';
   $strongarm->name = 'entity_translation_settings_node__person';
   $strongarm->value = array(
     'default_language' => 'und',
-    'hide_language_selector' => 0,
+    'hide_language_selector' => 1,
     'exclude_language_none' => 0,
     'lock_language' => 0,
     'shared_fields_original_only' => 0,
@@ -1012,7 +1012,7 @@ system/ajax/*';
   $strongarm->name = 'entity_translation_settings_node__piece';
   $strongarm->value = array(
     'default_language' => 'hu',
-    'hide_language_selector' => 0,
+    'hide_language_selector' => 1,
     'exclude_language_none' => 0,
     'lock_language' => 0,
     'shared_fields_original_only' => 1,
