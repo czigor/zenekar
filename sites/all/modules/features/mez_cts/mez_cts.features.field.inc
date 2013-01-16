@@ -3991,7 +3991,7 @@ function mez_cts_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'file',
           'settings' => array(),
           'type' => 'file_default',
@@ -4032,7 +4032,7 @@ function mez_cts_field_default_fields() {
             'video' => 'video',
           ),
           'browser_plugins' => array(
-            'media_default--media_browser_1' => 0,
+            'media_default--media_browser_1' => 'media_default--media_browser_1',
             'media_default--media_browser_my_files' => 0,
             'media_internet' => 'media_internet',
             'upload' => 'upload',
@@ -4103,23 +4103,24 @@ function mez_cts_field_default_fields() {
       'entity_type' => 'node',
       'field_name' => 'title_field',
       'label' => 'Cím',
-      'required' => TRUE,
+      'required' => 1,
       'settings' => array(
         'entity_translation_sync' => FALSE,
         'hide_label' => array(
-          'entity' => FALSE,
-          'page' => FALSE,
+          'entity' => 0,
+          'page' => 'page',
         ),
-        'text_processing' => 0,
+        'text_processing' => '0',
         'user_register_form' => FALSE,
       ),
       'widget' => array(
+        'active' => 1,
         'module' => 'text',
         'settings' => array(
-          'size' => 60,
+          'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => -5,
+        'weight' => '-5',
       ),
     ),
   );
