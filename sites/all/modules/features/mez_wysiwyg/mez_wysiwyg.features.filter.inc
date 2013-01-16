@@ -22,7 +22,7 @@ function mez_wysiwyg_filter_default_formats() {
         'weight' => '-10',
         'status' => '1',
         'settings' => array(
-          'allowed_html' => '<a> <em> <strong> <ul> <ol> <li> <strike> <p>',
+          'allowed_html' => '<a> <em> <strong> <ul> <ol> <li> <strike> <p> <br>',
           'filter_html_help' => 1,
           'filter_html_nofollow' => 1,
         ),
