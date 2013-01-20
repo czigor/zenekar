@@ -167,7 +167,7 @@ function mez_profile_install() {
   variable_set('cron_safe_threshold', 3600);
   // TODO: These should be better set by some drupal_execute_form() or
   // something, since the directories would get created that way.
-  variable_set('file_default_scheme', 'private');
+  variable_set('file_default_scheme', 'public');
   variable_set('file_public_path', 'sites/default/files');
   variable_set('file_temporary_path', '../tmp');
   variable_set('file_private_path', '../priv');

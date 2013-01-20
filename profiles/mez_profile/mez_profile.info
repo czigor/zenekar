@@ -54,6 +54,10 @@ dependencies[] = media_colorbox
 dependencies[] = media_multiselect
 dependencies[] = plupload
 dependencies[] = private_files_download_permission
+dependencies[] = panels
+dependencies[] = page_manager
+dependencies[] = views_content
+dependencies[] = ds_extras
 
 ; Dependencies of own features, to get around http://drupal.org/node/677200
 dependencies[] = date_popup
