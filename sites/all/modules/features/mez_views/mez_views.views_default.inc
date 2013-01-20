@@ -221,9 +221,10 @@ function mez_views_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'News';
+  $handler->display->display_options['title'] = 'Fresh News';
+  $handler->display->display_options['use_more'] = TRUE;
   $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['use_more_text'] = 'tovább';
+  $handler->display->display_options['use_more_text'] = 'Older news';
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
@@ -233,15 +234,9 @@ function mez_views_views_default_views() {
   $handler->display->display_options['exposed_form']['options']['exposed_sorts_label'] = 'Rendezés';
   $handler->display->display_options['exposed_form']['options']['sort_asc_label'] = 'Növekvő';
   $handler->display->display_options['exposed_form']['options']['sort_desc_label'] = 'Csökkenő';
-  $handler->display->display_options['pager']['type'] = 'full';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '10';
-  $handler->display->display_options['pager']['options']['expose']['items_per_page_label'] = 'Elemek száma oldalanként';
-  $handler->display->display_options['pager']['options']['expose']['items_per_page_options_all_label'] = '- Mind -';
-  $handler->display->display_options['pager']['options']['expose']['offset_label'] = 'Eltolás';
-  $handler->display->display_options['pager']['options']['tags']['first'] = '« első';
-  $handler->display->display_options['pager']['options']['tags']['previous'] = '‹ előző';
-  $handler->display->display_options['pager']['options']['tags']['next'] = 'következő ›';
-  $handler->display->display_options['pager']['options']['tags']['last'] = 'utolsó »';
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '3';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'node';
   /* Mező: Tartalom: Cím */
@@ -263,28 +258,34 @@ function mez_views_views_default_views() {
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Szűrési feltétel: Tartalom: Típus */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'news' => 'news',
+  );
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['path'] = 'news';
+
+  /* Display: Blokk */
+  $handler = $view->new_display('block', 'Blokk', 'block_1');
+  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $translatables['news'] = array(
     t('Master'),
-    t('News'),
-    t('tovább'),
+    t('Fresh News'),
+    t('Older news'),
     t('Alkalmazás'),
     t('Alaphelyzet'),
     t('Rendezés'),
     t('Növekvő'),
     t('Csökkenő'),
-    t('Elemek száma oldalanként'),
-    t('- Mind -'),
-    t('Eltolás'),
-    t('« első'),
-    t('‹ előző'),
-    t('következő ›'),
-    t('utolsó »'),
     t('Page'),
+    t('tovább'),
+    t('Blokk'),
   );
   $export['news'] = $view;
 
