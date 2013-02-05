@@ -868,8 +868,8 @@ system/ajax/*';
   $strongarm->name = 'entity_translation_entity_types';
   $strongarm->value = array(
     'node' => 'node',
-    'taxonomy_term' => 'taxonomy_term',
     'file' => 'file',
+    'taxonomy_term' => 0,
     'comment' => 0,
     'user' => 0,
   );
@@ -1088,26 +1088,6 @@ system/ajax/*';
     'shared_fields_original_only' => 1,
   );
   $export['entity_translation_settings_node__piece'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'entity_translation_settings_taxonomy_term__instruments';
-  $strongarm->value = array(
-    'default_language' => 'en',
-    'hide_language_selector' => 1,
-    'exclude_language_none' => 0,
-    'lock_language' => 0,
-    'shared_fields_original_only' => 0,
-  );
-  $export['entity_translation_settings_taxonomy_term__instruments'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'entity_translation_shared_labels';
-  $strongarm->value = 1;
-  $export['entity_translation_shared_labels'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -1538,7 +1518,7 @@ system/ajax/*';
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '7',
+          'weight' => '6',
         ),
         'language' => array(
           'weight' => '9',
@@ -1889,7 +1869,6 @@ system/ajax/*';
   $strongarm->name = 'node_options_composer';
   $strongarm->value = array(
     0 => 'status',
-    1 => 'revision',
   );
   $export['node_options_composer'] = $strongarm;
 
@@ -1899,7 +1878,6 @@ system/ajax/*';
   $strongarm->name = 'node_options_concert';
   $strongarm->value = array(
     0 => 'status',
-    1 => 'revision',
   );
   $export['node_options_concert'] = $strongarm;
 
@@ -1909,7 +1887,6 @@ system/ajax/*';
   $strongarm->name = 'node_options_news';
   $strongarm->value = array(
     0 => 'status',
-    1 => 'revision',
   );
   $export['node_options_news'] = $strongarm;
 
@@ -1919,7 +1896,6 @@ system/ajax/*';
   $strongarm->name = 'node_options_page';
   $strongarm->value = array(
     0 => 'status',
-    1 => 'revision',
   );
   $export['node_options_page'] = $strongarm;
 
@@ -1929,7 +1905,6 @@ system/ajax/*';
   $strongarm->name = 'node_options_person';
   $strongarm->value = array(
     0 => 'status',
-    1 => 'revision',
   );
   $export['node_options_person'] = $strongarm;
 
@@ -1939,7 +1914,6 @@ system/ajax/*';
   $strongarm->name = 'node_options_piece';
   $strongarm->value = array(
     0 => 'status',
-    1 => 'revision',
   );
   $export['node_options_piece'] = $strongarm;
 
@@ -2063,7 +2037,7 @@ system/ajax/*';
   $strongarm->name = 'title_taxonomy_term';
   $strongarm->value = array(
     'auto_attach' => array(
-      'name' => 'name',
+      'name' => 0,
       'description' => 0,
     ),
     'hide_label' => array(

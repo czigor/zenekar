@@ -10,6 +10,74 @@
 function mez_cts_field_default_fields() {
   $fields = array();
 
+  // Exported field: 'field_collection_item-field_performers-field_instrument'.
+  $fields['field_collection_item-field_performers-field_instrument'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_instrument',
+      'foreign keys' => array(
+        'tid' => array(
+          'columns' => array(
+            'tid' => 'tid',
+          ),
+          'table' => 'taxonomy_term_data',
+        ),
+      ),
+      'indexes' => array(
+        'tid' => array(
+          0 => 'tid',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'taxonomy',
+      'settings' => array(
+        'allowed_values' => array(
+          0 => array(
+            'vocabulary' => 'instruments',
+            'parent' => '0',
+          ),
+        ),
+        'entity_translation_sync' => FALSE,
+        'options_list_callback' => 'i18n_taxonomy_allowed_values',
+      ),
+      'translatable' => '0',
+      'type' => 'taxonomy_term_reference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'field_performers',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'hidden',
+          'module' => 'i18n_taxonomy',
+          'settings' => array(),
+          'type' => 'i18n_taxonomy_term_reference_plain',
+          'weight' => '1',
+        ),
+      ),
+      'entity_type' => 'field_collection_item',
+      'field_name' => 'field_instrument',
+      'label' => 'Instrument',
+      'required' => 0,
+      'settings' => array(
+        'entity_translation_sync' => FALSE,
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(),
+        'type' => 'options_select',
+        'weight' => '3',
+      ),
+    ),
+  );
+
   // Exported field: 'field_collection_item-field_performers-field_performer'.
   $fields['field_collection_item-field_performers-field_performer'] = array(
     'field_config' => array(
@@ -259,7 +327,7 @@ function mez_cts_field_default_fields() {
           ),
         ),
         'entity_translation_sync' => FALSE,
-        'options_list_callback' => NULL,
+        'options_list_callback' => 'i18n_taxonomy_allowed_values',
       ),
       'translatable' => '0',
       'type' => 'taxonomy_term_reference',
@@ -278,9 +346,9 @@ function mez_cts_field_default_fields() {
         ),
         'default' => array(
           'label' => 'above',
-          'module' => 'taxonomy',
+          'module' => 'i18n_taxonomy',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
+          'type' => 'i18n_taxonomy_term_reference_link',
           'weight' => 0,
         ),
         'media_link' => array(
@@ -684,7 +752,7 @@ function mez_cts_field_default_fields() {
           ),
         ),
         'entity_translation_sync' => FALSE,
-        'options_list_callback' => NULL,
+        'options_list_callback' => 'i18n_taxonomy_allowed_values',
       ),
       'translatable' => '0',
       'type' => 'taxonomy_term_reference',
@@ -703,9 +771,9 @@ function mez_cts_field_default_fields() {
         ),
         'default' => array(
           'label' => 'above',
-          'module' => 'taxonomy',
+          'module' => 'i18n_taxonomy',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
+          'type' => 'i18n_taxonomy_term_reference_link',
           'weight' => 4,
         ),
         'full' => array(
@@ -776,7 +844,7 @@ function mez_cts_field_default_fields() {
           ),
         ),
         'entity_translation_sync' => FALSE,
-        'options_list_callback' => NULL,
+        'options_list_callback' => 'i18n_taxonomy_allowed_values',
       ),
       'translatable' => '0',
       'type' => 'taxonomy_term_reference',
@@ -795,16 +863,16 @@ function mez_cts_field_default_fields() {
         ),
         'default' => array(
           'label' => 'hidden',
-          'module' => 'taxonomy',
+          'module' => 'i18n_taxonomy',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
+          'type' => 'i18n_taxonomy_term_reference_link',
           'weight' => '1',
         ),
         'full' => array(
           'label' => 'hidden',
-          'module' => 'taxonomy',
+          'module' => 'i18n_taxonomy',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
+          'type' => 'i18n_taxonomy_term_reference_link',
           'weight' => '0',
         ),
         'media_link' => array(
@@ -884,7 +952,7 @@ function mez_cts_field_default_fields() {
           ),
         ),
         'entity_translation_sync' => FALSE,
-        'options_list_callback' => NULL,
+        'options_list_callback' => 'i18n_taxonomy_allowed_values',
       ),
       'translatable' => '0',
       'type' => 'taxonomy_term_reference',
@@ -903,9 +971,9 @@ function mez_cts_field_default_fields() {
         ),
         'default' => array(
           'label' => 'above',
-          'module' => 'taxonomy',
+          'module' => 'i18n_taxonomy',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
+          'type' => 'i18n_taxonomy_term_reference_link',
           'weight' => 0,
         ),
         'media_link' => array(
@@ -1303,7 +1371,7 @@ function mez_cts_field_default_fields() {
           ),
         ),
         'entity_translation_sync' => FALSE,
-        'options_list_callback' => NULL,
+        'options_list_callback' => 'i18n_taxonomy_allowed_values',
       ),
       'translatable' => '0',
       'type' => 'taxonomy_term_reference',
@@ -1322,9 +1390,9 @@ function mez_cts_field_default_fields() {
         ),
         'default' => array(
           'label' => 'above',
-          'module' => 'taxonomy',
+          'module' => 'i18n_taxonomy',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
+          'type' => 'i18n_taxonomy_term_reference_link',
           'weight' => 3,
         ),
         'preview' => array(
@@ -1389,7 +1457,7 @@ function mez_cts_field_default_fields() {
           ),
         ),
         'entity_translation_sync' => FALSE,
-        'options_list_callback' => NULL,
+        'options_list_callback' => 'i18n_taxonomy_allowed_values',
       ),
       'translatable' => '0',
       'type' => 'taxonomy_term_reference',
@@ -1409,23 +1477,23 @@ function mez_cts_field_default_fields() {
         ),
         'default' => array(
           'label' => 'above',
-          'module' => 'taxonomy',
+          'module' => 'i18n_taxonomy',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
+          'type' => 'i18n_taxonomy_term_reference_link',
           'weight' => '0',
         ),
         'full' => array(
           'label' => 'above',
-          'module' => 'taxonomy',
+          'module' => 'i18n_taxonomy',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
+          'type' => 'i18n_taxonomy_term_reference_link',
           'weight' => '0',
         ),
         'preview' => array(
           'label' => 'hidden',
-          'module' => 'taxonomy',
+          'module' => 'i18n_taxonomy',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
+          'type' => 'i18n_taxonomy_term_reference_link',
           'weight' => '0',
         ),
         'teaser' => array(
@@ -1874,7 +1942,7 @@ function mez_cts_field_default_fields() {
           ),
         ),
         'entity_translation_sync' => FALSE,
-        'options_list_callback' => NULL,
+        'options_list_callback' => 'i18n_taxonomy_allowed_values',
       ),
       'translatable' => '0',
       'type' => 'taxonomy_term_reference',
@@ -1893,9 +1961,9 @@ function mez_cts_field_default_fields() {
         ),
         'default' => array(
           'label' => 'above',
-          'module' => 'taxonomy',
+          'module' => 'i18n_taxonomy',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
+          'type' => 'i18n_taxonomy_term_reference_link',
           'weight' => 7,
         ),
         'full' => array(
@@ -1969,7 +2037,7 @@ function mez_cts_field_default_fields() {
           ),
         ),
         'entity_translation_sync' => FALSE,
-        'options_list_callback' => NULL,
+        'options_list_callback' => 'i18n_taxonomy_allowed_values',
       ),
       'translatable' => '0',
       'type' => 'taxonomy_term_reference',
@@ -1988,16 +2056,16 @@ function mez_cts_field_default_fields() {
         ),
         'default' => array(
           'label' => 'hidden',
-          'module' => 'taxonomy',
+          'module' => 'i18n_taxonomy',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
+          'type' => 'i18n_taxonomy_term_reference_link',
           'weight' => '1',
         ),
         'full' => array(
           'label' => 'hidden',
-          'module' => 'taxonomy',
+          'module' => 'i18n_taxonomy',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
+          'type' => 'i18n_taxonomy_term_reference_link',
           'weight' => '0',
         ),
         'media_link' => array(
@@ -2077,7 +2145,7 @@ function mez_cts_field_default_fields() {
           ),
         ),
         'entity_translation_sync' => FALSE,
-        'options_list_callback' => NULL,
+        'options_list_callback' => 'i18n_taxonomy_allowed_values',
       ),
       'translatable' => '0',
       'type' => 'taxonomy_term_reference',
@@ -2096,9 +2164,9 @@ function mez_cts_field_default_fields() {
         ),
         'default' => array(
           'label' => 'above',
-          'module' => 'taxonomy',
+          'module' => 'i18n_taxonomy',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
+          'type' => 'i18n_taxonomy_term_reference_link',
           'weight' => 0,
         ),
         'media_link' => array(
@@ -2502,7 +2570,7 @@ function mez_cts_field_default_fields() {
           ),
         ),
         'entity_translation_sync' => FALSE,
-        'options_list_callback' => NULL,
+        'options_list_callback' => 'i18n_taxonomy_allowed_values',
       ),
       'translatable' => '0',
       'type' => 'taxonomy_term_reference',
@@ -2521,9 +2589,9 @@ function mez_cts_field_default_fields() {
         ),
         'default' => array(
           'label' => 'above',
-          'module' => 'taxonomy',
+          'module' => 'i18n_taxonomy',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
+          'type' => 'i18n_taxonomy_term_reference_link',
           'weight' => 5,
         ),
         'full' => array(
@@ -2597,7 +2665,7 @@ function mez_cts_field_default_fields() {
           ),
         ),
         'entity_translation_sync' => FALSE,
-        'options_list_callback' => NULL,
+        'options_list_callback' => 'i18n_taxonomy_allowed_values',
       ),
       'translatable' => '0',
       'type' => 'taxonomy_term_reference',
@@ -2616,16 +2684,16 @@ function mez_cts_field_default_fields() {
         ),
         'default' => array(
           'label' => 'hidden',
-          'module' => 'taxonomy',
+          'module' => 'i18n_taxonomy',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
+          'type' => 'i18n_taxonomy_term_reference_link',
           'weight' => '2',
         ),
         'full' => array(
           'label' => 'hidden',
-          'module' => 'taxonomy',
+          'module' => 'i18n_taxonomy',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
+          'type' => 'i18n_taxonomy_term_reference_link',
           'weight' => '0',
         ),
         'media_link' => array(
@@ -4159,7 +4227,7 @@ function mez_cts_field_default_fields() {
           'summary_rows' => 5,
         ),
         'type' => 'text_textarea_with_summary',
-        'weight' => '15',
+        'weight' => '16',
       ),
     ),
   );
@@ -4288,7 +4356,7 @@ function mez_cts_field_default_fields() {
           'size' => '40',
         ),
         'type' => 'email_textfield',
-        'weight' => '14',
+        'weight' => '15',
       ),
     ),
   );
@@ -4359,7 +4427,7 @@ function mez_cts_field_default_fields() {
           'display_label' => 1,
         ),
         'type' => 'options_onoff',
-        'weight' => '6',
+        'weight' => '5',
       ),
     ),
   );
@@ -4469,7 +4537,7 @@ function mez_cts_field_default_fields() {
   $fields['node-person-field_instrument'] = array(
     'field_config' => array(
       'active' => '1',
-      'cardinality' => '-1',
+      'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_instrument',
@@ -4496,6 +4564,7 @@ function mez_cts_field_default_fields() {
           ),
         ),
         'entity_translation_sync' => FALSE,
+        'options_list_callback' => 'i18n_taxonomy_allowed_values',
       ),
       'translatable' => '0',
       'type' => 'taxonomy_term_reference',
@@ -4507,11 +4576,11 @@ function mez_cts_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
-          'module' => 'taxonomy',
+          'label' => 'inline',
+          'module' => 'i18n_taxonomy',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
-          'weight' => 15,
+          'type' => 'i18n_taxonomy_term_reference_plain',
+          'weight' => '1',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -4520,7 +4589,6 @@ function mez_cts_field_default_fields() {
           'weight' => 0,
         ),
       ),
-      'ds_extras_field_template' => '',
       'entity_type' => 'node',
       'field_name' => 'field_instrument',
       'label' => 'Instrument',
@@ -4533,8 +4601,8 @@ function mez_cts_field_default_fields() {
         'active' => 1,
         'module' => 'options',
         'settings' => array(),
-        'type' => 'options_buttons',
-        'weight' => '5',
+        'type' => 'options_select',
+        'weight' => '7',
       ),
     ),
   );
@@ -4765,7 +4833,7 @@ function mez_cts_field_default_fields() {
           'size' => '20',
         ),
         'type' => 'text_textfield',
-        'weight' => '12',
+        'weight' => '13',
       ),
     ),
   );
@@ -4836,7 +4904,7 @@ function mez_cts_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '9',
+        'weight' => '10',
       ),
     ),
   );
@@ -5031,7 +5099,7 @@ function mez_cts_field_default_fields() {
         'module' => 'location_cck',
         'settings' => array(),
         'type' => 'location',
-        'weight' => '10',
+        'weight' => '11',
       ),
     ),
   );
@@ -5102,7 +5170,7 @@ function mez_cts_field_default_fields() {
           'size' => '20',
         ),
         'type' => 'text_textfield',
-        'weight' => '11',
+        'weight' => '12',
       ),
     ),
   );
@@ -5173,7 +5241,7 @@ function mez_cts_field_default_fields() {
           'size' => '20',
         ),
         'type' => 'text_textfield',
-        'weight' => '13',
+        'weight' => '14',
       ),
     ),
   );
@@ -5247,7 +5315,7 @@ function mez_cts_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '0',
+        'weight' => 0,
       ),
     ),
   );

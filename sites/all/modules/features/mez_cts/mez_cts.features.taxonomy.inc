@@ -14,8 +14,10 @@ function mez_cts_taxonomy_default_vocabularies() {
       'machine_name' => 'instruments',
       'description' => 'Instruments',
       'hierarchy' => '1',
-      'module' => 'taxonomy',
+      'module' => 'mez',
       'weight' => '0',
+      'language' => 'und',
+      'i18n_mode' => '1',
     ),
     'media' => array(
       'name' => 'Media tags',
@@ -24,6 +26,8 @@ function mez_cts_taxonomy_default_vocabularies() {
       'hierarchy' => '0',
       'module' => 'taxonomy',
       'weight' => '0',
+      'language' => 'und',
+      'i18n_mode' => '4',
     ),
   );
 }
