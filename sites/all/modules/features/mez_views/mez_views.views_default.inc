@@ -271,9 +271,10 @@ function mez_views_views_default_views() {
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['path'] = 'news';
 
-  /* Display: Blokk */
-  $handler = $view->new_display('block', 'Blokk', 'block_1');
+  /* Display: Tartalomtábla */
+  $handler = $view->new_display('panel_pane', 'Tartalomtábla', 'panel_pane_1');
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['pane_category']['name'] = 'Nézettáblák';
   $translatables['news'] = array(
     t('Master'),
     t('Fresh News'),
@@ -285,7 +286,8 @@ function mez_views_views_default_views() {
     t('Csökkenő'),
     t('Page'),
     t('tovább'),
-    t('Blokk'),
+    t('Tartalomtábla'),
+    t('Nézettáblák'),
   );
   $export['news'] = $view;
 
