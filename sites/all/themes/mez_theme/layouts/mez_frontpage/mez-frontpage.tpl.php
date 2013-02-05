@@ -18,29 +18,25 @@
  *   - $content['footer']: Content in the footer row.
  */
 ?>
-<?php // if (!empty($css_id)) { print "id=\"$css_id\""; } ?>
 <div id="page" class="panel-2col-stacked-custom clearfix panel-display">
 
-  <?php // TRADITIONAL HEADER (with logo, signup links, search, etc). ?>
-  <header id="header" role="banner">
-    <div class="toprow">
-      <div class="inset clearfix">
+<header id="header">
+  <div class="toprow">
+    <div class="inset clearfix">
+      <?php if ($content['top']): ?>
+        <?php print $content['top']; ?>
+      <?php endif; ?>
 
-        <?php // THIS IS THE PANELS HEADER CONTENT OUTPUT. // ?>
-        <?php if ($content['header_content']): ?>
-          <?php print $content['header_content']; ?>
-        <?php endif; ?>
+    </div><!-- /.inset -->
+  </div><!-- /.toprow -->
 
-      </div><!-- /.inset -->
-    </div><!-- /.toprow -->
-
-    <div id="header-menu" class="clearfix">
-      <div class="inset">
-        <?php if ($content['menu']): ?>
-          <?php print $content['menu']; ?>
-        <?php endif; ?>
-      </div><!-- /.inset -->
-    </div><!-- /#header-menu -->
+  <div id="menu" class="clearfix">
+    <div class="inset">
+      <?php if ($content['mymenu']): ?>
+        <?php print $content['mymenu']; ?>
+      <?php endif; ?>
+    </div><!-- /.inset -->
+  </div><!-- /#menu -->
 
     <div class="decor"></div>
   </header>
@@ -53,24 +49,24 @@
       </div>
     <?php endif; ?>
 
-    <?php if ($content['main_1']): ?>
+    <?php if ($content['top_main']): ?>
       <div id="main-1" class="panel-panel">
-        <?php print $content['main_1']; ?>
-      </div>
-    <?php endif; ?>
-    
-    <?php if ($content['main_2']): ?>
-      <div id="main-2" class="panel-panel">
-        <?php print $content['main_2']; ?>
+        <?php print $content['top_main']; ?>
       </div>
     <?php endif; ?>
 
-    <?php if ($content['footer']): ?>
-      <div id="footer" class="panel-col-footer panel-panel">
-        <?php print $content['footer']; ?>
-      </div><!-- /#footer -->
+    <?php if ($content['top_main']): ?>
+      <div id="main-2" class="panel-panel">
+        <?php print $content['top_main']; ?>
+      </div>
     <?php endif; ?>
 
   </div><!-- /#main -->
+
+  <?php if ($content['bottom']): ?>
+    <div id="footer" class="panel-col-footer panel-panel">
+      <?php print $content['bottom']; ?>
+    </div><!-- /#footer -->
+  <?php endif; ?>
 
 </div><!-- /#page -->

@@ -15,7 +15,7 @@ function mez_frontpage_default_page_manager_pages() {
   $page->task = 'page';
   $page->admin_title = 'Frontpage';
   $page->admin_description = '';
-  $page->path = '/front';
+  $page->path = 'front';
   $page->access = array();
   $page->menu = array();
   $page->arguments = array();
@@ -33,7 +33,7 @@ function mez_frontpage_default_page_manager_pages() {
   $handler->weight = 0;
   $handler->conf = array(
     'title' => 'Frontpage',
-    'no_blocks' => 0,
+    'no_blocks' => 1,
     'pipeline' => 'standard',
     'body_classes_to_remove' => '',
     'body_classes_to_add' => '',
@@ -54,13 +54,36 @@ function mez_frontpage_default_page_manager_pages() {
       'main_1' => NULL,
       'main_2' => NULL,
       'footer' => NULL,
+      'top' => NULL,
+      'mymenu' => NULL,
+      'top_main' => NULL,
+      'bottom_main' => NULL,
+      'bottom' => NULL,
     ),
   );
   $display->cache = array();
   $display->title = '';
   $display->content = array();
   $display->panels = array();
-  $display->hide_title = PANELS_TITLE_FIXED;
+    $pane = new stdClass();
+    $pane->pid = 'new-1';
+    $pane->panel = 'news';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'news-panel_pane_1';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array();
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $display->content['new-1'] = $pane;
+    $display->panels['news'][0] = 'new-1';
+  $display->hide_title = PANELS_TITLE_NONE;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
   $page->default_handlers[$handler->name] = $handler;
