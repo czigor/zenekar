@@ -84,10 +84,13 @@ function mez_create_instruments_taxonomy_form_submit($form, $form_state) {
   $instrument_terms = array(
     'string', 'wind', 'percussion', 'conductor'
   );
+  $instrument_terms_hu = array(
+    'vonós', 'fúvós', 'ütő', 'karmester'
+  );
   foreach ($instrument_terms as $key => $term) {
     $instrument = array(
       'name' => $term,
-      'name_field' => array('en' => array(array('value' => $term))),
+      'name_field' => array('en' => array(array('value' => $term)), 'hu' => array(array('value' => $instrument_terms_hu[$key]))),
       'vid' => $instruments->vid,
       'weight' => $key,
     );
@@ -100,10 +103,13 @@ function mez_create_instruments_taxonomy_form_submit($form, $form_state) {
   $instrument_terms = array(
     'violin', 'viola', 'vionloncello', 'double bass',
   );
+  $instrument_terms_hu = array(
+    'hegedű', 'brácsa', 'cselló', 'bőgő',
+  );
   foreach ($instrument_terms as $key => $term) {
     $instrument = array(
       'name' => $term,
-      'name_field' => array('en' => array(array('value' => $term))),
+      'name_field' => array('en' => array(array('value' => $term)), 'hu' => array(array('value' => $instrument_terms_hu[$key]))),
       'vid' => $instruments->vid,
       'weight' => $key,
       'parent' => $tid,
@@ -117,10 +123,13 @@ function mez_create_instruments_taxonomy_form_submit($form, $form_state) {
   $instrument_terms = array(
     '1st violin', '2nd violin',
   );
+    $instrument_terms_hu = array(
+    '1. hegedű', '2. hegedű',
+  );
   foreach ($instrument_terms as $key => $term) {
     $instrument = array(
       'name' => $term,
-      'name_field' => array('en' => array(array('value' => $term))),
+      'name_field' => array('en' => array(array('value' => $term)), 'hu' => array(array('value' => $instrument_terms_hu[$key]))),
       'vid' => $instruments->vid,
       'weight' => $key,
       'parent' => $tid,
@@ -134,10 +143,13 @@ function mez_create_instruments_taxonomy_form_submit($form, $form_state) {
   $instrument_terms = array(
     'wood', 'brass',
   );
+  $instrument_terms_hu = array(
+    'fafúvós', 'rézfúvós',
+  );
   foreach ($instrument_terms as $key => $term) {
     $instrument = array(
       'name' => $term,
-      'name_field' => array('en' => array(array('value' => $term))),
+      'name_field' => array('en' => array(array('value' => $term)), 'hu' => array(array('value' => $instrument_terms_hu[$key]))),
       'vid' => $instruments->vid,
       'weight' => $key,
       'parent' => $tid,
@@ -151,10 +163,13 @@ function mez_create_instruments_taxonomy_form_submit($form, $form_state) {
   $instrument_terms = array(
     'flute', 'oboe', 'clarinet', 'bassoon',
   );
+  $instrument_terms_hu = array(
+    'fuvola', 'oboa', 'klarinét', 'fagott',
+  );
   foreach ($instrument_terms as $key => $term) {
     $instrument = array(
       'name' => $term,
-      'name_field' => array('en' => array(array('value' => $term))),
+      'name_field' => array('en' => array(array('value' => $term)), 'hu' => array(array('value' => $instrument_terms_hu[$key]))),
       'vid' => $instruments->vid,
       'weight' => $key,
       'parent' => $tid,
@@ -168,10 +183,13 @@ function mez_create_instruments_taxonomy_form_submit($form, $form_state) {
   $instrument_terms = array(
     'horn', 'trumpet', 'trombone', 'tuba',
   );
+  $instrument_terms_hu = array(
+    'kürt', 'trombita', 'harsona', 'tuba',
+  );
   foreach ($instrument_terms as $key => $term) {
     $instrument = array(
       'name' => $term,
-      'name_field' => array('en' => array(array('value' => $term))),
+      'name_field' => array('en' => array(array('value' => $term)), 'hu' => array(array('value' => $instrument_terms_hu[$key]))),
       'vid' => $instruments->vid,
       'weight' => $key,
       'parent' => $tid,
