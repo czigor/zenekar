@@ -13,6 +13,13 @@ function mez_settings_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'admin_theme';
+  $strongarm->value = 'seven';
+  $export['admin_theme'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'fep_audio';
   $strongarm->value = array(
     'public' => array(
@@ -765,6 +772,13 @@ function mez_settings_strongarm() {
   $strongarm->name = 'statistics_flush_accesslog_timer';
   $strongarm->value = '0';
   $export['statistics_flush_accesslog_timer'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'theme_default';
+  $strongarm->value = 'mez_theme';
+  $export['theme_default'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
