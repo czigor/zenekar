@@ -1,6 +1,9 @@
-// ColorBox v1.3.20.2 - jQuery lightbox plugin
-// (c) 2012 Jack Moore - jacklmoore.com
-// License: http://www.opensource.org/licenses/mit-license.php
+/*
+	jQuery ColorBox v1.3.29
+	(c) 2013 Jack Moore - jacklmoore.com/colorbox
+	updated: 2013-01-24
+	license: http://www.opensource.org/licenses/mit-license.php
+*/
 (function ($, document, window) {
 	var
 	// Default settings object.
@@ -28,6 +31,7 @@
 		rel: false,
 		opacity: 0.9,
 		preloading: true,
+		className: false,
 
 		current: "image {current} of {total}",
 		previous: "previous",
@@ -75,7 +79,7 @@
 	event_purge = prefix + '_purge',
 	
 	// Special Handling for IE
-	isIE = !$.support.opacity && !$.support.style, // IE7 & IE8
+	isIE = !$.support.leadingWhitespace, // IE6 to IE8
 	isIE6 = isIE && !window.XMLHttpRequest, // IE6
 	event_ie6 = prefix + '_IE6',
 
@@ -116,6 +120,7 @@
 	loadingTimer,
 	publicMethod,
 	div = "div",
+	className,
 	init;
 
 	// ****************
@@ -187,7 +192,8 @@
 	}
 
 	function trigger(event, callback) {
-		$.event.trigger(event);
+		$(document).trigger(event);
+		$('*', $box).trigger(event);
 		if (callback) {
 			callback.call(element);
 		}
@@ -279,13 +285,16 @@
 				$box.show();
 				
 				if (settings.returnFocus) {
-					$(element).blur().one(event_closed, function () {
-						$(this).focus();
+					$(element).blur();
+					$(document).one(event_closed, function () {
+						$(element).focus();
 					});
 				}
 				
-				// +settings.opacity avoids a problem in IE when using non-zero-prefixed-string-values, like '.5'
-				$overlay.css({"opacity": +settings.opacity, "cursor": settings.overlayClose ? "pointer" : "auto"}).show();
+				$overlay.css({
+					opacity: parseFloat(settings.opacity),
+					cursor: settings.overlayClose ? "pointer" : "auto"
+				}).show();
 				
 				// Opens inital empty ColorBox prior to content being loaded.
 				settings.w = setSize(settings.initialWidth, 'x');
@@ -358,18 +367,29 @@
 
 	// Add ColorBox's event bindings
 	function addBindings() {
+		function clickHandler(e) {
+			// ignore non-left-mouse-clicks and clicks modified with ctrl / command, shift, or alt.
+			// See: http://jacklmoore.com/notes/click-events/
+			if (!(e.which > 1 || e.shiftKey || e.altKey || e.metaKey)) {
+				e.preventDefault();
+				launch(this);
+			}
+		}
+
 		if ($box) {
 			if (!init) {
 				init = true;
-
+				
+				// Show colorbox so the sizes can be calculated in older versions of jQuery
+				$box.css({visibility:'hidden', display:'block'});
+				
 				// Cache values needed for size calculations
 				interfaceHeight = $topBorder.height() + $bottomBorder.height() + $content.outerHeight(true) - $content.height();//Subtraction needed for IE6
 				interfaceWidth = $leftBorder.width() + $rightBorder.width() + $content.outerWidth(true) - $content.width();
 				loadedHeight = $loaded.outerHeight(true);
 				loadedWidth = $loaded.outerWidth(true);
-				
-				// Setting padding to remove the need to do size conversions during the animation step.
-				$box.css({"padding-bottom": interfaceHeight, "padding-right": interfaceWidth});
+
+				$box.css({visibility:'visible', display:'none'});
 
 				// Anonymous functions here keep the public method from being cached, thereby allowing them to be redefined on the fly.
 				$next.click(function () {
@@ -405,14 +425,11 @@
 					}
 				});
 
-				$(document).delegate('.'+boxElement, 'click', function(e) {
-					// ignore non-left-mouse-clicks and clicks modified with ctrl / command, shift, or alt.
-					// See: http://jacklmoore.com/notes/click-events/
-					if (!(e.which > 1 || e.shiftKey || e.altKey || e.metaKey)) {
-						e.preventDefault();
-						launch(this);
-					}
-				});
+				if ($.isFunction($.fn.on)) {
+					$(document).on('click.'+prefix, '.'+boxElement, clickHandler);
+				} else { // For jQuery 1.3.x -> 1.6.x
+					$('.'+boxElement).live('click.'+prefix, clickHandler);
+				}
 			}
 			return true;
 		}
@@ -442,13 +459,11 @@
 		appendHTML();
 
 		if (addBindings()) {
-			if (!$this[0]) {
-				if ($this.selector) { // if a selector was given and it didn't match any elements, go ahead and exit.
-					return $this;
-				}
-				// if no selector was given (ie. $.colorbox()), create a temporary element to work with
+			if ($.isFunction($this)) { // assume a call to $.colorbox
 				$this = $('<a/>');
-				options.open = true; // assume an immediate open
+				options.open = true;
+			} else if (!$this[0]) { // colorbox being applied to empty collection
+				return $this;
 			}
 			
 			if (callback) {
@@ -522,11 +537,12 @@
 		$wrap[0].style.width = $wrap[0].style.height = "9999px";
 		
 		function modalDimensions(that) {
-			$topBorder[0].style.width = $bottomBorder[0].style.width = $content[0].style.width = that.style.width;
-			$content[0].style.height = $leftBorder[0].style.height = $rightBorder[0].style.height = that.style.height;
+			$topBorder[0].style.width = $bottomBorder[0].style.width = $content[0].style.width = (parseInt(that.style.width,10) - interfaceWidth)+'px';
+			$content[0].style.height = $leftBorder[0].style.height = $rightBorder[0].style.height = (parseInt(that.style.height,10) - interfaceHeight)+'px';
 		}
 
-		css = {width: settings.w + loadedWidth, height: settings.h + loadedHeight, top: top, left: left};
+		css = {width: settings.w + loadedWidth + interfaceWidth, height: settings.h + loadedHeight + interfaceHeight, top: top, left: left};
+
 		if(speed===0){ // temporary workaround to side-step jQuery-UI 1.8 bug (http://bugs.jquery.com/ticket/12273)
 			$box.css(css);
 		}
@@ -592,7 +608,8 @@
 		
 		var callback, speed = settings.transition === "none" ? 0 : settings.speed;
 		
-		$loaded.remove();
+		$loaded.empty().remove(); // Using empty first may prevent some IE7 issues.
+
 		$loaded = $tag(div, 'LoadedContent').append(object);
 		
 		function getWidth() {
@@ -618,27 +635,14 @@
 		//$(photo).css({'float': 'none', marginLeft: 'auto', marginRight: 'auto'});
 		
 		$(photo).css({'float': 'none'});
-		
-		// Hides SELECT elements in IE6 because they would otherwise sit on top of the overlay.
-		if (isIE6) {
-			$('select').not($box.find('select')).filter(function () {
-				return this.style.visibility !== 'hidden';
-			}).css({'visibility': 'hidden'}).one(event_cleanup, function () {
-				this.style.visibility = 'inherit';
-			});
-		}
+
 		
 		callback = function () {
-			var preload,
-				i,
-				total = $related.length,
+			var total = $related.length,
 				iframe,
 				frameBorder = 'frameBorder',
 				allowTransparency = 'allowTransparency',
-				complete,
-				src,
-				img,
-				data;
+				complete;
 			
 			if (!open) {
 				return;
@@ -652,8 +656,7 @@
 			
 			complete = function () {
 				clearTimeout(loadingTimer);
-				// Detaching forces Andriod stock browser to redraw the area underneat the loading overlay.  Hiding alone isn't enough.
-				$loadingOverlay.detach().hide();
+				$loadingOverlay.remove();
 				trigger(event_complete, settings.onComplete);
 			};
 			
@@ -680,13 +683,12 @@
 				
 				// Preloads images within a rel group
 				if (settings.preloading) {
-					preload = [
-						getIndex(-1),
-						getIndex(1)
-					];
-					while (i = $related[preload.pop()]) {
-						data = $.data(i, colorbox);
-						
+					$.each([getIndex(-1), getIndex(1)], function(){
+						var src,
+							img,
+							i = $related[this],
+							data = $.data(i, colorbox);
+
 						if (data && data.href) {
 							src = data.href;
 							if ($.isFunction(src)) {
@@ -700,7 +702,7 @@
 							img = new Image();
 							img.src = src;
 						}
-					}
+					});
 				}
 			} else {
 				$groupControls.hide();
@@ -731,11 +733,12 @@
 						mozallowfullscreen : true
 					})
 					.one('load', complete)
-					.one(event_purge, function () {
-						iframe.src = "//about:blank";
-					})
 					.appendTo($loaded);
 				
+				$(document).one(event_purge, function () {
+					iframe.src = "//about:blank";
+				});
+
 				if (settings.fastIframe) {
 					$(iframe).trigger('load');
 				}
@@ -760,7 +763,7 @@
 	};
 
 	publicMethod.load = function (launched) {
-		var href, setResize, prep = publicMethod.prep;
+		var href, setResize, prep = publicMethod.prep, $inline;
 		
 		active = true;
 		
@@ -771,6 +774,14 @@
 		if (!launched) {
 			makeSettings();
 		}
+
+		if (className) {
+			$box.add($overlay).removeClass(className);
+		}
+		if (settings.className) {
+			$box.add($overlay).addClass(settings.className);
+		}
+		className = settings.className;
 		
 		trigger(event_purge);
 		
@@ -802,15 +813,18 @@
 		href = settings.href;
 		
 		loadingTimer = setTimeout(function () {
-			$loadingOverlay.show().appendTo($content);
+			$loadingOverlay.appendTo($content);
 		}, 100);
 		
 		if (settings.inline) {
 			// Inserts an empty placeholder where inline content is being pulled from.
 			// An event is bound to put inline content back when ColorBox closes or loads new content.
-			$tag(div).hide().insertBefore($(href)[0]).one(event_purge, function () {
-				$(this).replaceWith($loaded.children());
+			$inline = $tag(div).hide().insertBefore($(href)[0]);
+
+			$(document).one(event_purge, function () {
+				$inline.replaceWith($loaded.children());
 			});
+
 			prep($(href));
 		} else if (settings.iframe) {
 			// IFrame element won't be added to the DOM until it is ready to be displayed,
@@ -821,14 +835,13 @@
 		} else if (isImage(href)) {
 			$(photo = new Image())
 			.addClass(prefix + 'Photo')
-			.error(function () {
+			.bind('error',function () {
 				settings.title = false;
 				prep($tag(div, 'Error').html(settings.imgError));
 			})
-			.load(function () {
+			.one('load', function () {
 				var percent;
-				photo.onload = null; //stops animated gifs from firing the onload repeatedly.
-				
+
 				if (settings.scalePhotos) {
 					setResize = function () {
 						photo.height -= photo.height * percent;
@@ -909,7 +922,7 @@
 				
 				trigger(event_purge);
 				
-				$loaded.remove();
+				$loaded.empty().remove(); // Using empty first may prevent some IE7 issues.
 				
 				setTimeout(function () {
 					closing = false;
