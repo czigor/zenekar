@@ -36,23 +36,19 @@ $zen-auto-include-item-base: false;
 // $zen-auto-include-flow-item-base: false;
 
 
-/*
- * Center the page.
- */
 
-#page,
-.region-bottom {
-  /* For screen sizes larger than 1200px, prevent excessively long lines of text
-     by setting a max-width. */
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 1200px;
-}
 
 /*
  * Apply the shared properties of grid items in a single, efficient ruleset.
  */
 // See the note about $zen-auto-include-item-base above.
+
+#header .inset,
+#main {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1010px; // We have the 15px paddings on each side.
+}
 
 #header,
 #content,

@@ -18,7 +18,7 @@
  *   - $content['footer']: Content in the footer row.
  */
 ?>
-<div id="page" class="panel-2col-stacked-custom clearfix panel-display">
+<div id="page" class="panel-mez-frontpage clearfix panel-display">
 
 <header id="header">
   <div class="toprow">

@@ -46,6 +46,51 @@ body {
  */
 
 #header {
+  background-color: #000;
+  
+  .pane-page-site-name {
+    color: #d99216;
+    text-transform:uppercase;
+    top: 80px;
+    font-size: 30px;
+    position: relative;
+    left: -40px;
+  }
+  .pane-locale-language {
+    position: relative;
+    top: -30px;
+    left: 400px;
+    ul {
+      list-style-type: none;
+      li {
+        display: inline;
+        a {
+          color: #fff;
+          text-decoration: none;
+          text-transform: lowercase;
+        }
+        a:hover {
+          color: #d99216;
+        }
+      }
+      li.first {
+        border-right: 1px solid white;
+        padding-right: 5px;
+      }
+      li.active a {
+        color: #d99216;
+      }
+    }
+  }
+  .pane-custom-search-blocks-1 {
+    .form-item-custom-search-types {
+      display: none;
+    }
+    .form-item-custom-search-blocks-form-1 {
+      left: 400px;
+      position: relative;
+    }
+  }
 }
 
 #logo { /* Wrapping link for logo */
