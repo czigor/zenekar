@@ -755,6 +755,20 @@ function mez_settings_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'site_frontpage';
+  $strongarm->value = 'front';
+  $export['site_frontpage'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'site_name';
+  $strongarm->value = 'Műegyetemi Zenekar';
+  $export['site_name'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'statistics_count_content_views';
   $strongarm->value = 1;
   $export['statistics_count_content_views'] = $strongarm;
@@ -794,7 +808,7 @@ function mez_settings_strongarm() {
     'toggle_main_menu' => 1,
     'toggle_secondary_menu' => 1,
     'default_logo' => 0,
-    'logo_path' => 'sites/all/themes/mez_theme/images/mez_logo.gif',
+    'logo_path' => 'sites/all/themes/mez_theme/images/mez_logo.jpg',
     'logo_upload' => '',
     'default_favicon' => 0,
     'favicon_path' => 'sites/all/themes/mez_theme/images/mez_favicon.gif',
@@ -865,6 +879,34 @@ function mez_settings_strongarm() {
   $strongarm->name = 'user_signatures';
   $strongarm->value = 0;
   $export['user_signatures'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'variable_module_list';
+  $strongarm->value = array(
+    'i18n' => array(
+      0 => 'i18n_language_list',
+    ),
+    'i18n_string' => array(
+      0 => 'i18n_string_translate_langcode_en',
+      1 => 'i18n_string_translate_langcode_hu',
+      2 => 'i18n_string_allowed_formats',
+      3 => 'i18n_string_source_language',
+      4 => 'i18n_string_debug',
+    ),
+  );
+  $export['variable_module_list'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'variable_realm_list_language';
+  $strongarm->value = array(
+    0 => 'site_name',
+    1 => 'site_slogan',
+  );
+  $export['variable_realm_list_language'] = $strongarm;
 
   return $export;
 }
