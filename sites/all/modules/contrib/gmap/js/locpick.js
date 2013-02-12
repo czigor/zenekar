@@ -11,8 +11,8 @@ Drupal.gmap.addHandler('gmap', function (elem) {
   var obj = this;
 
   var binding = obj.bind("locpickchange", function () {
-    if (obj.locpick_point && obj.locpick_coord) {
-      obj.locpick_point.setPosition(obj.locpick_coord);
+    if (obj.locpick_coord) {
+      google.maps.event.trigger(obj.map, "click", { 'latLng': obj.locpick_coord });
     }
   });
 
@@ -33,7 +33,7 @@ Drupal.gmap.addHandler('gmap', function (elem) {
         if (event) {
           if (!obj.locpick_point) {
             obj.locpick_point = new google.maps.Marker({
-              position: event.latLng, 
+              position: event.latLng,
               map: obj.map,
               draggable: true
             });

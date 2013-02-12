@@ -18,23 +18,23 @@ function gmap_admin_settings($form, &$form_state) {
   );
 
   if (!module_exists('keys_api') && !module_exists('keys')) {
-    $form['initialization']['googlemap_api_key'] = array(
+    $form['initialization']['gmap_api_key'] = array(
       '#type' => 'textfield',
-      '#default_value' => variable_get('googlemap_api_key', ''),
+      '#default_value' => variable_get('gmap_api_key', ''),
       '#size' => 50,
       '#maxlength' => 255,
     );
   }
   else {
-    $form['initialization']['googlemap_api_key'] = array(
+    $form['initialization']['gmap_api_key'] = array(
       '#type' => 'item',
-      '#title' => t('Google Maps API Key'),
+      '#title' => t('Your Google maps API Version 3 key'),
       '#value' => t('Managed by <a href="@url">Keys</a>.', array('@url' => url('admin/settings/keys'))),
     );
   }
 
-  $form['initialization']['googlemap_api_key']['#title'] = t('Google Maps API Key');
-  $form['initialization']['googlemap_api_key']['#description'] = t('Your personal Googlemaps API key.  If you want to use an API key, you can get one at <a href="http://code.google.com/apis/maps/signup.html">Google Map API website</a>.');
+  $form['initialization']['gmap_api_key']['#title'] = t('Google Maps API Key');
+  $form['initialization']['gmap_api_key']['#description'] = t('This key is currently not required by Google.  Entering a Key will allow you to track map usage in Google.  If you want to use an API key, you can get one at <a href="http://code.google.com/apis/maps/signup.html">Google Map API website</a>.');
 
 if (file_default_scheme() != 'public') {
   $form['initialization']['gmap_private_markerfile'] = array(
