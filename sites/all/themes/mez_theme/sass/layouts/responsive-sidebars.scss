@@ -36,7 +36,9 @@ $zen-auto-include-item-base: false;
 // $zen-auto-include-flow-item-base: false;
 
 
-
+// Default main-level layout.
+$zen-column-count: 24;
+$zen-gutter-width:  30px;
 
 /*
  * Apply the shared properties of grid items in a single, efficient ruleset.

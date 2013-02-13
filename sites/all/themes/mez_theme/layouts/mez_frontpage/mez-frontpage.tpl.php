@@ -23,10 +23,16 @@
 <header id="header">
   <div class="toprow">
     <div class="inset clearfix">
-      <?php if ($content['top']): ?>
-        <?php print $content['top']; ?>
-      <?php endif; ?>
-
+      <div class="top">
+        <?php if ($content['top']): ?>
+          <?php print $content['top']; ?>
+        <?php endif; ?>
+      </div>
+      <div class="top-right">
+        <?php if ($content['top_right']): ?>
+          <?php print $content['top_right']; ?>
+        <?php endif; ?>
+      </div>
     </div><!-- /.inset -->
   </div><!-- /.toprow -->
 

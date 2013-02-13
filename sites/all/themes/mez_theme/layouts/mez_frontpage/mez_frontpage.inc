@@ -9,6 +9,7 @@ $plugin = array(
   'css' => 'mez_frontpage.css',
   'regions' => array(
     'top' => t('Top'),
+    'top_right' => t('Top-right'),
     'mymenu' => t('My menu'),
     'news' => t('News'),
     'top_main' => t('Main 1'),
