@@ -753,20 +753,6 @@ system/ajax/*';
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'ds_extras_field_permissions';
-  $strongarm->value = 1;
-  $export['ds_extras_field_permissions'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'ds_extras_field_template';
-  $strongarm->value = 1;
-  $export['ds_extras_field_template'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'ds_extras_fields_extra';
   $strongarm->value = 1;
   $export['ds_extras_fields_extra'] = $strongarm;
@@ -777,6 +763,20 @@ system/ajax/*';
   $strongarm->name = 'ds_extras_fields_extra_list';
   $strongarm->value = '';
   $export['ds_extras_fields_extra_list'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'ds_extras_field_permissions';
+  $strongarm->value = 1;
+  $export['ds_extras_field_permissions'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'ds_extras_field_template';
+  $strongarm->value = 1;
+  $export['ds_extras_field_template'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -1456,7 +1456,7 @@ system/ajax/*';
         'custom_settings' => TRUE,
       ),
       'full' => array(
-        'custom_settings' => FALSE,
+        'custom_settings' => TRUE,
       ),
       'rss' => array(
         'custom_settings' => FALSE,
@@ -1474,6 +1474,15 @@ system/ajax/*';
         'custom_settings' => FALSE,
       ),
       'token' => array(
+        'custom_settings' => FALSE,
+      ),
+      'search_index' => array(
+        'custom_settings' => FALSE,
+      ),
+      'search_result' => array(
+        'custom_settings' => FALSE,
+      ),
+      'revision' => array(
         'custom_settings' => FALSE,
       ),
     ),
@@ -1642,16 +1651,16 @@ system/ajax/*';
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'location_default_country';
-  $strongarm->value = 'hu';
-  $export['location_default_country'] = $strongarm;
+  $strongarm->name = 'location_defaultnum_concert';
+  $strongarm->value = '1';
+  $export['location_defaultnum_concert'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'location_defaultnum_concert';
-  $strongarm->value = '1';
-  $export['location_defaultnum_concert'] = $strongarm;
+  $strongarm->name = 'location_default_country';
+  $strongarm->value = 'hu';
+  $export['location_default_country'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -1781,16 +1790,16 @@ system/ajax/*';
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'location_use_province_abbreviation';
-  $strongarm->value = '1';
-  $export['location_use_province_abbreviation'] = $strongarm;
+  $strongarm->name = 'location_usegmap';
+  $strongarm->value = 1;
+  $export['location_usegmap'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'location_usegmap';
-  $strongarm->value = 1;
-  $export['location_usegmap'] = $strongarm;
+  $strongarm->name = 'location_use_province_abbreviation';
+  $strongarm->value = '1';
+  $export['location_use_province_abbreviation'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */

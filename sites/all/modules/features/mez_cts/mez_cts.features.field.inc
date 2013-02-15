@@ -3948,6 +3948,13 @@ function mez_cts_field_default_fields() {
           'type' => 'text_default',
           'weight' => '1',
         ),
+        'full' => array(
+          'label' => 'hidden',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => '1',
+        ),
         'teaser' => array(
           'label' => 'hidden',
           'module' => 'text',
@@ -4021,6 +4028,13 @@ function mez_cts_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
+          'label' => 'hidden',
+          'module' => 'file',
+          'settings' => array(),
+          'type' => 'file_default',
+          'weight' => '2',
+        ),
+        'full' => array(
           'label' => 'hidden',
           'module' => 'file',
           'settings' => array(),
@@ -4113,6 +4127,17 @@ function mez_cts_field_default_fields() {
       'description' => 'A field replacing node title.',
       'display' => array(
         'default' => array(
+          'label' => 'hidden',
+          'module' => 'title',
+          'settings' => array(
+            'title_class' => '',
+            'title_link' => 'content',
+            'title_style' => 'span',
+          ),
+          'type' => 'title_linked',
+          'weight' => '0',
+        ),
+        'full' => array(
           'label' => 'hidden',
           'module' => 'title',
           'settings' => array(
