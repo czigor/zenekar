@@ -115,7 +115,7 @@ function mez_nodes_default_page_manager_handlers() {
     $pane->configuration = array(
       'links' => 1,
       'no_extras' => 1,
-      'override_title' => 0,
+      'override_title' => 1,
       'override_title_text' => '',
       'identifier' => '',
       'link' => 1,
