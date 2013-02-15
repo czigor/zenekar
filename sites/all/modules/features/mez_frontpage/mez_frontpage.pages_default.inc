@@ -59,6 +59,7 @@ function mez_frontpage_default_page_manager_pages() {
       'top_main' => NULL,
       'bottom_main' => NULL,
       'bottom' => NULL,
+      'top_right' => NULL,
     ),
   );
   $display->cache = array();
@@ -121,7 +122,7 @@ function mez_frontpage_default_page_manager_pages() {
     $display->panels['top'][1] = 'new-3';
     $pane = new stdClass();
     $pane->pid = 'new-4';
-    $pane->panel = 'top';
+    $pane->panel = 'top_right';
     $pane->type = 'block';
     $pane->subtype = 'locale-language';
     $pane->shown = TRUE;
@@ -136,13 +137,13 @@ function mez_frontpage_default_page_manager_pages() {
     );
     $pane->css = array();
     $pane->extras = array();
-    $pane->position = 2;
+    $pane->position = 0;
     $pane->locks = array();
     $display->content['new-4'] = $pane;
-    $display->panels['top'][2] = 'new-4';
+    $display->panels['top_right'][0] = 'new-4';
     $pane = new stdClass();
     $pane->pid = 'new-5';
-    $pane->panel = 'top';
+    $pane->panel = 'top_right';
     $pane->type = 'block';
     $pane->subtype = 'custom_search_blocks-1';
     $pane->shown = TRUE;
@@ -157,10 +158,10 @@ function mez_frontpage_default_page_manager_pages() {
     );
     $pane->css = array();
     $pane->extras = array();
-    $pane->position = 3;
+    $pane->position = 1;
     $pane->locks = array();
     $display->content['new-5'] = $pane;
-    $display->panels['top'][3] = 'new-5';
+    $display->panels['top_right'][1] = 'new-5';
   $display->hide_title = PANELS_TITLE_NONE;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
