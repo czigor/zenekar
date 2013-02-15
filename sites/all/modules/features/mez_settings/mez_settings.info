@@ -15,6 +15,7 @@ dependencies[] = statistics
 dependencies[] = strongarm
 dependencies[] = transliteration
 dependencies[] = variable_realm
+dependencies[] = i18n_variable
 features[ctools][] = strongarm:strongarm:1
 features[features_api][] = api:1
 features[image][] = colorbox

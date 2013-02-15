@@ -27,6 +27,7 @@ dependencies[] = rolereference
 dependencies[] = strongarm
 dependencies[] = taxonomy
 dependencies[] = title
+dependencies[] = panels
 features[ctools][] = ds:ds:1
 features[ctools][] = file_entity:file_default_displays:1
 features[ctools][] = strongarm:strongarm:1
