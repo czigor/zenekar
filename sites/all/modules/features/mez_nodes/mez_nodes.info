@@ -1,0 +1,11 @@
+name = MEZ nodes
+description = MEZ node page
+core = 7.x
+package = Features
+version = 7.x-1.0-20130215dev1
+project = mez_nodes
+dependencies[] = ctools
+dependencies[] = page_manager
+features[ctools][] = page_manager:pages_default:1
+features[features_api][] = api:1
+features[page_manager_handlers][] = node_view_panel_context
