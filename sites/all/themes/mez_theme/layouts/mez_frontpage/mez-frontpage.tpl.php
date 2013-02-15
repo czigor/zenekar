@@ -61,9 +61,9 @@
       </div>
     <?php endif; ?>
 
-    <?php if ($content['top_main']): ?>
+    <?php if ($content['bottom_main']): ?>
       <div id="main-2" class="panel-panel">
-        <?php print $content['top_main']; ?>
+        <?php print $content['bottom_main']; ?>
       </div>
     <?php endif; ?>
 
