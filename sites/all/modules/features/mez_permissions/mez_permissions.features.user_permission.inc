@@ -141,6 +141,13 @@ function mez_permissions_user_default_permissions() {
     'module' => 'user',
   );
 
+  // Exported permission: administer search.
+  $permissions['administer search'] = array(
+    'name' => 'administer search',
+    'roles' => array(),
+    'module' => 'search',
+  );
+
   // Exported permission: administer statistics.
   $permissions['administer statistics'] = array(
     'name' => 'administer statistics',
@@ -616,6 +623,16 @@ function mez_permissions_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: search content.
+  $permissions['search content'] = array(
+    'name' => 'search content',
+    'roles' => array(
+      0 => 'anonymous user',
+      1 => 'authenticated user',
+    ),
+    'module' => 'search',
+  );
+
   // Exported permission: select account cancellation method.
   $permissions['select account cancellation method'] = array(
     'name' => 'select account cancellation method',
@@ -674,6 +691,16 @@ function mez_permissions_user_default_permissions() {
       0 => 'editor',
     ),
     'module' => 'entity_translation',
+  );
+
+  // Exported permission: use advanced search.
+  $permissions['use advanced search'] = array(
+    'name' => 'use advanced search',
+    'roles' => array(
+      0 => 'anonymous user',
+      1 => 'authenticated user',
+    ),
+    'module' => 'search',
   );
 
   // Exported permission: view date repeats.
