@@ -73,7 +73,10 @@ function mez_permissions_user_default_permissions() {
   // Exported permission: add terms in 1.
   $permissions['add terms in 1'] = array(
     'name' => 'add terms in 1',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'editor',
+      1 => 'site admin',
+    ),
     'module' => 'taxonomy_access_fix',
   );
 
@@ -417,7 +420,9 @@ function mez_permissions_user_default_permissions() {
   // Exported permission: delete terms in 1.
   $permissions['delete terms in 1'] = array(
     'name' => 'delete terms in 1',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'site admin',
+    ),
     'module' => 'taxonomy',
   );
 
@@ -564,7 +569,10 @@ function mez_permissions_user_default_permissions() {
   // Exported permission: edit terms in 1.
   $permissions['edit terms in 1'] = array(
     'name' => 'edit terms in 1',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'editor',
+      1 => 'site admin',
+    ),
     'module' => 'taxonomy',
   );
 
@@ -653,6 +661,15 @@ function mez_permissions_user_default_permissions() {
   // Exported permission: translate node entities.
   $permissions['translate node entities'] = array(
     'name' => 'translate node entities',
+    'roles' => array(
+      0 => 'editor',
+    ),
+    'module' => 'entity_translation',
+  );
+
+  // Exported permission: translate taxonomy_term entities.
+  $permissions['translate taxonomy_term entities'] = array(
+    'name' => 'translate taxonomy_term entities',
     'roles' => array(
       0 => 'editor',
     ),
