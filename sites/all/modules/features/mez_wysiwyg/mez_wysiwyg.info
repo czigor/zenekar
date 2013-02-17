@@ -14,6 +14,7 @@ dependencies[] = wysiwyg
 features[ctools][] = strongarm:strongarm:1
 features[features_api][] = api:1
 features[filter][] = wysiwyg
+features[user_permission][] = use text format wysiwyg
 features[variable][] = media__file_extensions
 features[variable][] = media__wysiwyg_allowed_types
 features[variable][] = media__wysiwyg_browser_plugins
