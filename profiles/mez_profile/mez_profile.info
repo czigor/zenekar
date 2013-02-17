@@ -74,6 +74,7 @@ dependencies[] = location_cck
 dependencies[] = gmap_location
 dependencies[] = i18n_variable
 dependencies[] = panels
+dependencies[] = field_permissions
 
 ; Own modules (all of them should be dependencies of at least one own feature)
 dependencies[] = mez_taxonomy
