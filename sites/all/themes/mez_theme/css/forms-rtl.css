@@ -5,7 +5,7 @@
 /*
  * Drupal's default login form block
  */
-/* line 13, ../sass/forms-rtl.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/forms-rtl\.scss}line{font-family:\0000313}}
 #user-login-form {
   text-align: right;
   /*
@@ -15,7 +15,7 @@
    * styling of list items.
    */
 }
-/* line 24, ../sass/forms-rtl.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/forms-rtl\.scss}line{font-family:\0000324}}
 html.js #user-login-form li.openid-link,
 #user-login-form li.openid-link {
   /* The "Log in using OpenID" link. */
@@ -30,7 +30,7 @@ html.js #user-login-form li.openid-link,
  * We overrode these styles in html-elements.css, but restore them for the admin
  * section of the site.
  */
-/* line 38, ../sass/forms-rtl.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/forms-rtl\.scss}line{font-family:\0000338}}
 form th {
   text-align: right;
   padding-left: 1em;

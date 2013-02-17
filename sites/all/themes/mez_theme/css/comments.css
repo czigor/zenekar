@@ -2,108 +2,108 @@
  * @file
  * Comment Styling
  */
-/* line 9, ../sass/comments.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/comments\.scss}line{font-family:\000039}}
 .comments {
   /* Wrapper for the list of comments and its title */
   margin: 1.5em 0;
 }
-/* line 12, ../sass/comments.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/comments\.scss}line{font-family:\0000312}}
 .comments h2.title {
   /* Heading for the list of comments */
 }
-/* line 15, ../sass/comments.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/comments\.scss}line{font-family:\0000315}}
 .comments h2.comment-form {
   /* Heading for the comment form */
 }
 
-/* line 19, ../sass/comments.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/comments\.scss}line{font-family:\0000319}}
 .comment {
   /* Wrapper for a single comment */
 }
-/* line 21, ../sass/comments.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/comments\.scss}line{font-family:\0000321}}
 .comment.comment-preview {
   /* Preview of the comment before submitting new or updated comment */
   background-color: #ffffea;
   /* Drupal core will use a #ffffea background. See #1110842 */
 }
-/* line 25, ../sass/comments.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/comments\.scss}line{font-family:\0000325}}
 .comment.new {
   /* A new comment since the user last viewed the page. */
 }
-/* line 28, ../sass/comments.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/comments\.scss}line{font-family:\0000328}}
 .comment.first {
   /* The first comment in the list of comments */
 }
-/* line 31, ../sass/comments.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/comments\.scss}line{font-family:\0000331}}
 .comment.last {
   /* The last comment in the list of comments */
 }
-/* line 34, ../sass/comments.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/comments\.scss}line{font-family:\0000334}}
 .comment.odd {
   /* An odd-numbered comment in the list of comments */
 }
-/* line 37, ../sass/comments.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/comments\.scss}line{font-family:\0000337}}
 .comment.even {
   /* An even-numbered comment in the list of comments */
 }
-/* line 40, ../sass/comments.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/comments\.scss}line{font-family:\0000340}}
 .comment.comment-by-anonymous {
   /* A comment created by an anonymous user */
 }
-/* line 43, ../sass/comments.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/comments\.scss}line{font-family:\0000343}}
 .comment.comment-by-node-author {
   /* A comment created by the node's author */
 }
-/* line 46, ../sass/comments.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/comments\.scss}line{font-family:\0000346}}
 .comment.comment-by-viewer {
   /* A comment created by the current user */
 }
-/* line 49, ../sass/comments.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/comments\.scss}line{font-family:\0000349}}
 .comment h3.comment-title {
   /* Comment title */
 }
-/* line 52, ../sass/comments.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/comments\.scss}line{font-family:\0000352}}
 .comment .new {
   /* "New" marker for comments that are new for the current user */
   color: #c00;
 }
-/* line 56, ../sass/comments.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/comments\.scss}line{font-family:\0000356}}
 .comment .user-picture {
   /* The picture of the comment author */
 }
-/* line 59, ../sass/comments.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/comments\.scss}line{font-family:\0000359}}
 .comment .submitted {
   /* The "posted by" information */
 }
-/* line 62, ../sass/comments.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/comments\.scss}line{font-family:\0000362}}
 .comment .permalink {
   /* Comment's permalink wrapper */
   text-transform: uppercase;
   font-size: 75%;
 }
-/* line 67, ../sass/comments.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/comments\.scss}line{font-family:\0000367}}
 .comment .user-signature {
   /* The user's signature */
 }
-/* line 70, ../sass/comments.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/comments\.scss}line{font-family:\0000370}}
 .comment ul.links {
   /* Comment links. See also the ul.links declaration in the pages.css. */
 }
 
-/* line 74, ../sass/comments.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/comments\.scss}line{font-family:\0000374}}
 .indented {
   /* Nested comments are indented */
   margin-left: 30px;
   /* Drupal core uses a 25px left margin */
 }
 
-/* line 78, ../sass/comments.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/comments\.scss}line{font-family:\0000378}}
 .comment-unpublished {
   /* Unpublished comments */
   /* background-color: #fff4f4; */
   /* Drupal core uses a #fff4f4 background */
 }
-/* line 81, ../sass/comments.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/comments\.scss}line{font-family:\0000381}}
 .comment-unpublished p.unpublished {
   /* The word "Unpublished" displayed underneath the content. */
   height: 0;

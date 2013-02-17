@@ -9,7 +9,7 @@
 /*
  * Body
  */
-/* line 17, ../sass/pages.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/pages\.scss}line{font-family:\0000317}}
 body {
   margin: 0;
   padding: 0;
@@ -19,11 +19,11 @@ body {
  * The skip-link link will be completely hidden until a user tabs to the link.
  * See the element-focusable rule in system.base.css.
  */
-/* line 30, ../sass/pages.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/pages\.scss}line{font-family:\0000330}}
 #skip-link {
   margin: 0;
 }
-/* line 34, ../sass/pages.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/pages\.scss}line{font-family:\0000334}}
 #skip-link a,
 #skip-link a:visited {
   display: block;
@@ -37,18 +37,18 @@ body {
 /*
  * Header
  */
-/* line 48, ../sass/pages.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/pages\.scss}line{font-family:\0000348}}
 #header {
   background-color: #000;
 }
-/* line 52, ../sass/pages.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/pages\.scss}line{font-family:\0000352}}
 #header .top .pane-page-logo {
   display: inline-block;
   float: left;
   margin-bottom: -80px;
   margin-right: -40px;
 }
-/* line 59, ../sass/pages.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/pages\.scss}line{font-family:\0000359}}
 #header .top .pane-page-site-name {
   margin-top: 80px;
   display: inline-block;
@@ -58,54 +58,54 @@ body {
   font-size: 25px;
   max-width: 320px;
 }
-/* line 69, ../sass/pages.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/pages\.scss}line{font-family:\0000369}}
 #header .top-right {
   float: right;
 }
-/* line 71, ../sass/pages.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/pages\.scss}line{font-family:\0000371}}
 #header .top-right .pane-locale-language {
   float: right;
   display: inline-block;
 }
-/* line 75, ../sass/pages.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/pages\.scss}line{font-family:\0000374}}
 #header .top-right .pane-locale-language ul {
   padding: 0px;
   list-style-type: none;
 }
-/* line 78, ../sass/pages.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/pages\.scss}line{font-family:\0000377}}
 #header .top-right .pane-locale-language ul li {
   display: inline;
 }
-/* line 80, ../sass/pages.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/pages\.scss}line{font-family:\0000379}}
 #header .top-right .pane-locale-language ul li a {
   color: #fff;
   text-decoration: none;
   text-transform: lowercase;
 }
-/* line 85, ../sass/pages.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/pages\.scss}line{font-family:\0000384}}
 #header .top-right .pane-locale-language ul li a:hover {
   color: #d99216;
 }
-/* line 89, ../sass/pages.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/pages\.scss}line{font-family:\0000388}}
 #header .top-right .pane-locale-language ul li.first {
   border-right: 1px solid white;
   padding-right: 5px;
 }
-/* line 93, ../sass/pages.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/pages\.scss}line{font-family:\0000392}}
 #header .top-right .pane-locale-language ul li.active a {
   color: #d99216;
 }
-/* line 98, ../sass/pages.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/pages\.scss}line{font-family:\0000397}}
 #header .top-right .pane-custom-search-blocks-1 {
   float: right;
   display: inline-block;
 }
-/* line 102, ../sass/pages.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/pages\.scss}line{font-family:\00003100}}
 #header .top-right .pane-custom-search-blocks-1 .form-item-custom-search-types {
   display: none;
 }
 
-/* line 111, ../sass/pages.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/pages\.scss}line{font-family:\00003109}}
 #logo {
   /* Wrapping link for logo */
   float: left;
@@ -113,44 +113,44 @@ body {
   margin: 0;
   padding: 0;
 }
-/* line 116, ../sass/pages.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/pages\.scss}line{font-family:\00003114}}
 #logo img {
   vertical-align: bottom;
 }
 
-/* line 121, ../sass/pages.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/pages\.scss}line{font-family:\00003119}}
 #name-and-slogan {
   /* Wrapper for website name and slogan */
   float: left;
 }
 
-/* line 125, ../sass/pages.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/pages\.scss}line{font-family:\00003123}}
 #site-name {
   /* The name of the website */
   margin: 0;
   font-size: 2em;
   line-height: 1.5em;
 }
-/* line 131, ../sass/pages.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/pages\.scss}line{font-family:\00003129}}
 #site-name a:link,
 #site-name a:visited {
   color: #000;
   text-decoration: none;
 }
-/* line 137, ../sass/pages.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/pages\.scss}line{font-family:\00003135}}
 #site-name a:hover,
 #site-name a:focus {
   text-decoration: underline;
 }
 
-/* line 142, ../sass/pages.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/pages\.scss}line{font-family:\00003140}}
 #site-slogan {
   /* The slogan (or tagline) of a website */
   margin: 0;
   font-size: 1em;
 }
 
-/* line 147, ../sass/pages.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/pages\.scss}line{font-family:\00003145}}
 .region-header {
   /* Wrapper for any blocks placed in the header region */
   clear: both;
@@ -163,16 +163,16 @@ body {
 /*
  * Content
  */
-/* line 168, ../sass/pages.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/pages\.scss}line{font-family:\00003166}}
 .breadcrumb {
   /* The path to the current page in the form of a list of links */
 }
-/* line 169, ../sass/pages.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/pages\.scss}line{font-family:\00003167}}
 .breadcrumb ol {
   margin: 0;
   padding: 0;
 }
-/* line 173, ../sass/pages.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/pages\.scss}line{font-family:\00003171}}
 .breadcrumb li {
   display: inline;
   list-style-type: none;
@@ -180,7 +180,7 @@ body {
   padding: 0;
 }
 
-/* line 186, ../sass/pages.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/pages\.scss}line{font-family:\00003184}}
 h1.title,
 h2.node-title,
 h2.block-title,
@@ -191,37 +191,37 @@ h3.title {
   margin: 0;
 }
 
-/* line 190, ../sass/pages.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/pages\.scss}line{font-family:\00003188}}
 tr.even {
   /* Some tables have rows marked even or odd. */
   /* background-color: #eee; */
   /* Drupal core uses a #eee background */
 }
 
-/* line 194, ../sass/pages.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/pages\.scss}line{font-family:\00003192}}
 tr.odd {
   /* background-color: #eee; */
   /* Drupal core uses a #eee background */
 }
 
-/* line 198, ../sass/pages.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/pages\.scss}line{font-family:\00003196}}
 div.messages {
   /* Important messages (status, warning, and error) for the user. See also the declarations in messages.css. */
   margin: 1.5em 0;
   /* Drupal core uses "6px 0" margin */
 }
-/* line 201, ../sass/pages.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/pages\.scss}line{font-family:\00003199}}
 div.messages ul {
   margin-top: 0;
   margin-bottom: 0;
 }
 
-/* line 207, ../sass/pages.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/pages\.scss}line{font-family:\00003205}}
 div.status {
   /* Normal priority messages */
 }
 
-/* line 211, ../sass/pages.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/pages\.scss}line{font-family:\00003209}}
 div.warning,
 tr.warning {
   /* Medium priority messages */
@@ -229,53 +229,53 @@ tr.warning {
   /* Drupal core uses: 1px solid #f0c020 */
 }
 
-/* line 216, ../sass/pages.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/pages\.scss}line{font-family:\00003214}}
 div.error,
 tr.error {
   /* High priority messages. See also the .error declaration below. */
 }
 
-/* line 219, ../sass/pages.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/pages\.scss}line{font-family:\00003217}}
 .error {
   /* Errors that are separate from div.messages status messages. */
   /* color: #e55; */
   /* Drupal core uses a #e55 background */
 }
 
-/* line 223, ../sass/pages.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/pages\.scss}line{font-family:\00003221}}
 .warning {
   /* Warnings that are separate from div.messages status messages. */
   /* color: #e09010; */
   /* Drupal core uses a #e09010 background */
 }
 
-/* line 227, ../sass/pages.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/pages\.scss}line{font-family:\00003225}}
 .tabs {
   /* See also the tabs.css file. */
 }
 
-/* line 230, ../sass/pages.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/pages\.scss}line{font-family:\00003228}}
 .region-help {
   /* Help text on a page */
 }
 
-/* line 233, ../sass/pages.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/pages\.scss}line{font-family:\00003231}}
 .more-help-link {
   /* Link to more help */
 }
 
-/* line 236, ../sass/pages.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/pages\.scss}line{font-family:\00003234}}
 .region-content {
   /* Wrapper for the actual page content */
 }
 
-/* line 239, ../sass/pages.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/pages\.scss}line{font-family:\00003237}}
 ul.inline {
   /* List of links generated by theme_links() */
   display: inline;
   padding: 0;
 }
-/* line 243, ../sass/pages.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/pages\.scss}line{font-family:\00003241}}
 ul.inline li {
   display: inline;
   list-style-type: none;
@@ -283,30 +283,30 @@ ul.inline li {
   /* LTR */
 }
 
-/* line 249, ../sass/pages.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/pages\.scss}line{font-family:\00003247}}
 span.field-label {
   /* The inline field label used by the Fences module */
   padding: 0 1em 0 0;
   /* LTR */
 }
 
-/* line 253, ../sass/pages.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/pages\.scss}line{font-family:\00003251}}
 .item-list .pager {
   /* A list of page numbers when more than 1 page of content is available */
   padding: 0;
 }
-/* line 256, ../sass/pages.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/pages\.scss}line{font-family:\00003254}}
 .item-list .pager li {
   /* Each page number in the pager list */
   padding: 0 0.5em;
 }
 
-/* line 261, ../sass/pages.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/pages\.scss}line{font-family:\00003259}}
 .feed-icon {
   /* The link to the RSS or Atom feed for the current list of content */
 }
 
-/* line 264, ../sass/pages.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/pages\.scss}line{font-family:\00003262}}
 .more-link {
   /* Aggregator, blog, and forum more link */
 }
@@ -329,7 +329,7 @@ span.field-label {
 /*
  * Page bottom
  */
-/* line 298, ../sass/pages.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/pages\.scss}line{font-family:\00003296}}
 .region-bottom {
   /* Wrapper for any blocks placed in the page bottom region */
 }
