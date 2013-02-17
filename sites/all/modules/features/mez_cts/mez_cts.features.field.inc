@@ -4336,90 +4336,6 @@ function mez_cts_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-person-body'.
-  $fields['node-person-body'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(
-        0 => 'node',
-      ),
-      'field_name' => 'body',
-      'foreign keys' => array(
-        'format' => array(
-          'columns' => array(
-            'format' => 'format',
-          ),
-          'table' => 'filter_format',
-        ),
-      ),
-      'indexes' => array(
-        'format' => array(
-          0 => 'format',
-        ),
-      ),
-      'locked' => '0',
-      'module' => 'text',
-      'settings' => array(
-        'entity_translation_sync' => FALSE,
-      ),
-      'translatable' => '1',
-      'type' => 'text_with_summary',
-    ),
-    'field_instance' => array(
-      'bundle' => 'person',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'hidden',
-          'module' => 'text',
-          'settings' => array(),
-          'type' => 'text_default',
-          'weight' => '13',
-        ),
-        'full' => array(
-          'label' => 'hidden',
-          'module' => 'text',
-          'settings' => array(),
-          'type' => 'text_default',
-          'weight' => '14',
-        ),
-        'teaser' => array(
-          'label' => 'hidden',
-          'module' => 'text',
-          'settings' => array(
-            'trim_length' => 600,
-          ),
-          'type' => 'text_summary_or_trimmed',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'body',
-      'label' => 'Remark',
-      'required' => 0,
-      'settings' => array(
-        'display_summary' => 1,
-        'entity_translation_sync' => FALSE,
-        'text_processing' => '1',
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'text',
-        'settings' => array(
-          'rows' => '5',
-          'summary_rows' => 5,
-        ),
-        'type' => 'text_textarea_with_summary',
-        'weight' => '16',
-      ),
-    ),
-  );
-
   // Exported field: 'node-person-field_active'.
   $fields['node-person-field_active'] = array(
     'field_config' => array(
@@ -4428,6 +4344,9 @@ function mez_cts_field_default_fields() {
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_active',
+      'field_permissions' => array(
+        'type' => '2',
+      ),
       'foreign keys' => array(),
       'indexes' => array(
         'value' => array(
@@ -4506,6 +4425,9 @@ function mez_cts_field_default_fields() {
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_email',
+      'field_permissions' => array(
+        'type' => '2',
+      ),
       'foreign keys' => array(),
       'indexes' => array(),
       'locked' => '0',
@@ -4571,6 +4493,9 @@ function mez_cts_field_default_fields() {
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_email_list',
+      'field_permissions' => array(
+        'type' => '2',
+      ),
       'foreign keys' => array(),
       'indexes' => array(
         'value' => array(
@@ -4841,6 +4766,9 @@ function mez_cts_field_default_fields() {
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_member',
+      'field_permissions' => array(
+        'type' => '2',
+      ),
       'foreign keys' => array(),
       'indexes' => array(
         'value' => array(
@@ -4919,6 +4847,9 @@ function mez_cts_field_default_fields() {
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_membership_dates',
+      'field_permissions' => array(
+        'type' => '2',
+      ),
       'foreign keys' => array(),
       'indexes' => array(),
       'locked' => '0',
@@ -5022,6 +4953,9 @@ function mez_cts_field_default_fields() {
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_mobile',
+      'field_permissions' => array(
+        'type' => '2',
+      ),
       'foreign keys' => array(
         'format' => array(
           'columns' => array(
@@ -5100,6 +5034,9 @@ function mez_cts_field_default_fields() {
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_neptun_code',
+      'field_permissions' => array(
+        'type' => '2',
+      ),
       'foreign keys' => array(
         'format' => array(
           'columns' => array(
@@ -5178,6 +5115,9 @@ function mez_cts_field_default_fields() {
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_occupation',
+      'field_permissions' => array(
+        'type' => '2',
+      ),
       'foreign keys' => array(
         'format' => array(
           'columns' => array(
@@ -5256,6 +5196,9 @@ function mez_cts_field_default_fields() {
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_person_address',
+      'field_permissions' => array(
+        'type' => '2',
+      ),
       'foreign keys' => array(),
       'indexes' => array(
         'lid' => array(
@@ -5379,6 +5322,87 @@ function mez_cts_field_default_fields() {
     ),
   );
 
+  // Exported field: 'node-person-field_person_body'.
+  $fields['node-person-field_person_body'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_person_body',
+      'field_permissions' => array(
+        'type' => '2',
+      ),
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(
+        'entity_translation_sync' => FALSE,
+      ),
+      'translatable' => '1',
+      'type' => 'text_with_summary',
+    ),
+    'field_instance' => array(
+      'bundle' => 'person',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 15,
+        ),
+        'full' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_person_body',
+      'label' => 'Remark',
+      'required' => 0,
+      'settings' => array(
+        'display_summary' => 0,
+        'entity_translation_sync' => FALSE,
+        'text_processing' => '1',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'rows' => '20',
+          'summary_rows' => 5,
+        ),
+        'type' => 'text_textarea_with_summary',
+        'weight' => '16',
+      ),
+    ),
+  );
+
   // Exported field: 'node-person-field_phone'.
   $fields['node-person-field_phone'] = array(
     'field_config' => array(
@@ -5387,6 +5411,9 @@ function mez_cts_field_default_fields() {
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_phone',
+      'field_permissions' => array(
+        'type' => '2',
+      ),
       'foreign keys' => array(
         'format' => array(
           'columns' => array(
@@ -5465,6 +5492,9 @@ function mez_cts_field_default_fields() {
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_wp_phone',
+      'field_permissions' => array(
+        'type' => '2',
+      ),
       'foreign keys' => array(
         'format' => array(
           'columns' => array(
@@ -5611,7 +5641,7 @@ function mez_cts_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => 0,
+        'weight' => '0',
       ),
     ),
   );
