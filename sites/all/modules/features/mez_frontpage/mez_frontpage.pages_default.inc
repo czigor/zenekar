@@ -68,6 +68,74 @@ function mez_frontpage_default_page_manager_pages() {
   $display->panels = array();
     $pane = new stdClass();
     $pane->pid = 'new-1';
+    $pane->panel = 'bottom';
+    $pane->type = 'block';
+    $pane->subtype = 'system-navigation';
+    $pane->shown = TRUE;
+    $pane->access = array(
+      'plugins' => array(
+        0 => array(
+          'name' => 'role',
+          'settings' => array(
+            'rids' => array(
+              0 => 2,
+            ),
+          ),
+          'context' => 'logged-in-user',
+          'not' => FALSE,
+        ),
+      ),
+    );
+    $pane->configuration = array(
+      'override_title' => 0,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $display->content['new-1'] = $pane;
+    $display->panels['bottom'][0] = 'new-1';
+    $pane = new stdClass();
+    $pane->pid = 'new-2';
+    $pane->panel = 'bottom';
+    $pane->type = 'block';
+    $pane->subtype = 'system-user-menu';
+    $pane->shown = TRUE;
+    $pane->access = array(
+      'plugins' => array(
+        0 => array(
+          'name' => 'role',
+          'settings' => array(
+            'rids' => array(
+              0 => 2,
+            ),
+          ),
+          'context' => 'logged-in-user',
+          'not' => FALSE,
+        ),
+      ),
+    );
+    $pane->configuration = array(
+      'override_title' => 0,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 1;
+    $pane->locks = array();
+    $display->content['new-2'] = $pane;
+    $display->panels['bottom'][1] = 'new-2';
+    $pane = new stdClass();
+    $pane->pid = 'new-3';
     $pane->panel = 'mymenu';
     $pane->type = 'block';
     $pane->subtype = 'system-main-menu';
@@ -85,10 +153,10 @@ function mez_frontpage_default_page_manager_pages() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-1'] = $pane;
-    $display->panels['mymenu'][0] = 'new-1';
+    $display->content['new-3'] = $pane;
+    $display->panels['mymenu'][0] = 'new-3';
     $pane = new stdClass();
-    $pane->pid = 'new-2';
+    $pane->pid = 'new-4';
     $pane->panel = 'news';
     $pane->type = 'node';
     $pane->subtype = 'node';
@@ -112,10 +180,10 @@ function mez_frontpage_default_page_manager_pages() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-2'] = $pane;
-    $display->panels['news'][0] = 'new-2';
+    $display->content['new-4'] = $pane;
+    $display->panels['news'][0] = 'new-4';
     $pane = new stdClass();
-    $pane->pid = 'new-3';
+    $pane->pid = 'new-5';
     $pane->panel = 'news';
     $pane->type = 'views';
     $pane->subtype = 'news';
@@ -143,10 +211,10 @@ function mez_frontpage_default_page_manager_pages() {
     $pane->extras = array();
     $pane->position = 1;
     $pane->locks = array();
-    $display->content['new-3'] = $pane;
-    $display->panels['news'][1] = 'new-3';
+    $display->content['new-5'] = $pane;
+    $display->panels['news'][1] = 'new-5';
     $pane = new stdClass();
-    $pane->pid = 'new-4';
+    $pane->pid = 'new-6';
     $pane->panel = 'top';
     $pane->type = 'page_logo';
     $pane->subtype = 'page_logo';
@@ -161,10 +229,10 @@ function mez_frontpage_default_page_manager_pages() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-4'] = $pane;
-    $display->panels['top'][0] = 'new-4';
+    $display->content['new-6'] = $pane;
+    $display->panels['top'][0] = 'new-6';
     $pane = new stdClass();
-    $pane->pid = 'new-5';
+    $pane->pid = 'new-7';
     $pane->panel = 'top';
     $pane->type = 'page_site_name';
     $pane->subtype = 'page_site_name';
@@ -179,10 +247,10 @@ function mez_frontpage_default_page_manager_pages() {
     $pane->extras = array();
     $pane->position = 1;
     $pane->locks = array();
-    $display->content['new-5'] = $pane;
-    $display->panels['top'][1] = 'new-5';
+    $display->content['new-7'] = $pane;
+    $display->panels['top'][1] = 'new-7';
     $pane = new stdClass();
-    $pane->pid = 'new-6';
+    $pane->pid = 'new-8';
     $pane->panel = 'top_right';
     $pane->type = 'block';
     $pane->subtype = 'locale-language';
@@ -200,10 +268,10 @@ function mez_frontpage_default_page_manager_pages() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-6'] = $pane;
-    $display->panels['top_right'][0] = 'new-6';
+    $display->content['new-8'] = $pane;
+    $display->panels['top_right'][0] = 'new-8';
     $pane = new stdClass();
-    $pane->pid = 'new-7';
+    $pane->pid = 'new-9';
     $pane->panel = 'top_right';
     $pane->type = 'block';
     $pane->subtype = 'custom_search_blocks-1';
@@ -221,8 +289,8 @@ function mez_frontpage_default_page_manager_pages() {
     $pane->extras = array();
     $pane->position = 1;
     $pane->locks = array();
-    $display->content['new-7'] = $pane;
-    $display->panels['top_right'][1] = 'new-7';
+    $display->content['new-9'] = $pane;
+    $display->panels['top_right'][1] = 'new-9';
   $display->hide_title = PANELS_TITLE_NONE;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
