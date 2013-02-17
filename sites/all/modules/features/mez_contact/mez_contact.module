@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the MEZ contact feature.
+ */
+
+include_once 'mez_contact.features.inc';
