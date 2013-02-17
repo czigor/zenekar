@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the MEZ users feature.
+ */
+
+include_once 'mez_users.features.inc';
