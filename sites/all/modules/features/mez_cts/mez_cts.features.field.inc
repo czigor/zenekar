@@ -14,10 +14,13 @@ function mez_cts_field_default_fields() {
   $fields['field_collection_item-field_performers-field_instrument'] = array(
     'field_config' => array(
       'active' => '1',
-      'cardinality' => '1',
+      'cardinality' => '-1',
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_instrument',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
       'foreign keys' => array(
         'tid' => array(
           'columns' => array(
@@ -2845,7 +2848,7 @@ function mez_cts_field_default_fields() {
         'entity_translation_sync' => FALSE,
         'max_length' => '255',
       ),
-      'translatable' => '1',
+      'translatable' => '0',
       'type' => 'text',
     ),
     'field_instance' => array(
@@ -2902,6 +2905,9 @@ function mez_cts_field_default_fields() {
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_given_name',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
       'foreign keys' => array(
         'format' => array(
           'columns' => array(
@@ -2921,7 +2927,7 @@ function mez_cts_field_default_fields() {
         'entity_translation_sync' => FALSE,
         'max_length' => '255',
       ),
-      'translatable' => '1',
+      'translatable' => '0',
       'type' => 'text',
     ),
     'field_instance' => array(
@@ -2978,6 +2984,9 @@ function mez_cts_field_default_fields() {
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'title_field',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
       'foreign keys' => array(
         'format' => array(
           'columns' => array(
@@ -3004,7 +3013,7 @@ function mez_cts_field_default_fields() {
       'bundle' => 'composer',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => 'A field replacing node title.',
+      'description' => '',
       'display' => array(
         'default' => array(
           'label' => 'hidden',
@@ -3407,6 +3416,9 @@ function mez_cts_field_default_fields() {
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_media',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
       'foreign keys' => array(
         'fid' => array(
           'columns' => array(
@@ -3430,7 +3442,7 @@ function mez_cts_field_default_fields() {
         ),
         'uri_scheme' => 'public',
       ),
-      'translatable' => '1',
+      'translatable' => '0',
       'type' => 'file',
     ),
     'field_instance' => array(
@@ -3483,7 +3495,7 @@ function mez_cts_field_default_fields() {
       'required' => 0,
       'settings' => array(
         'description_field' => 0,
-        'entity_translation_sync' => 0,
+        'entity_translation_sync' => FALSE,
         'file_directory' => 'concert/media/[current-user:uuid]',
         'file_extensions' => 'txt pdf doc odt jpg gif png bmp jpeg mp3 ogg avi mpg mpeg',
         'max_filesize' => '',
@@ -3709,6 +3721,9 @@ function mez_cts_field_default_fields() {
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'title_field',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
       'foreign keys' => array(
         'format' => array(
           'columns' => array(
@@ -3879,6 +3894,9 @@ function mez_cts_field_default_fields() {
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_media',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
       'foreign keys' => array(
         'fid' => array(
           'columns' => array(
@@ -3902,7 +3920,7 @@ function mez_cts_field_default_fields() {
         ),
         'uri_scheme' => 'public',
       ),
-      'translatable' => '1',
+      'translatable' => '0',
       'type' => 'file',
     ),
     'field_instance' => array(
@@ -3981,6 +3999,9 @@ function mez_cts_field_default_fields() {
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'title_field',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
       'foreign keys' => array(
         'format' => array(
           'columns' => array(
@@ -4007,7 +4028,7 @@ function mez_cts_field_default_fields() {
       'bundle' => 'news',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => 'A field replacing node title.',
+      'description' => '',
       'display' => array(
         'default' => array(
           'label' => 'hidden',
@@ -4156,6 +4177,9 @@ function mez_cts_field_default_fields() {
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_media',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
       'foreign keys' => array(
         'fid' => array(
           'columns' => array(
@@ -4179,7 +4203,7 @@ function mez_cts_field_default_fields() {
         ),
         'uri_scheme' => 'public',
       ),
-      'translatable' => '1',
+      'translatable' => '0',
       'type' => 'file',
     ),
     'field_instance' => array(
@@ -4258,6 +4282,9 @@ function mez_cts_field_default_fields() {
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'title_field',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
       'foreign keys' => array(
         'format' => array(
           'columns' => array(
@@ -4284,7 +4311,7 @@ function mez_cts_field_default_fields() {
       'bundle' => 'page',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => 'A field replacing node title.',
+      'description' => '',
       'display' => array(
         'default' => array(
           'label' => 'hidden',
@@ -4681,10 +4708,13 @@ function mez_cts_field_default_fields() {
   $fields['node-person-field_instrument'] = array(
     'field_config' => array(
       'active' => '1',
-      'cardinality' => '1',
+      'cardinality' => '-1',
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_instrument',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
       'foreign keys' => array(
         'tid' => array(
           'columns' => array(
@@ -5137,7 +5167,7 @@ function mez_cts_field_default_fields() {
         'entity_translation_sync' => FALSE,
         'max_length' => '255',
       ),
-      'translatable' => '0',
+      'translatable' => '1',
       'type' => 'text',
     ),
     'field_instance' => array(
@@ -5573,6 +5603,9 @@ function mez_cts_field_default_fields() {
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'title_field',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
       'foreign keys' => array(
         'format' => array(
           'columns' => array(
@@ -5599,7 +5632,7 @@ function mez_cts_field_default_fields() {
       'bundle' => 'person',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => 'A field replacing node title.',
+      'description' => '',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -5623,7 +5656,7 @@ function mez_cts_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'title_field',
-      'label' => 'Cím',
+      'label' => 'Name',
       'required' => 1,
       'settings' => array(
         'entity_translation_sync' => FALSE,
@@ -5641,7 +5674,7 @@ function mez_cts_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '0',
+        'weight' => 0,
       ),
     ),
   );
@@ -5833,6 +5866,9 @@ function mez_cts_field_default_fields() {
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'title_field',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
       'foreign keys' => array(
         'format' => array(
           'columns' => array(
@@ -5859,7 +5895,7 @@ function mez_cts_field_default_fields() {
       'bundle' => 'piece',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => 'A field replacing node title.',
+      'description' => '',
       'display' => array(
         'default' => array(
           'label' => 'hidden',
@@ -6318,7 +6354,6 @@ function mez_cts_field_default_fields() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('A field replacing node title.');
   t('A field replacing taxonomy term description.');
   t('A field replacing taxonomy term name.');
   t('Access');
@@ -6346,6 +6381,7 @@ function mez_cts_field_default_fields() {
   t('Membership dates');
   t('Mobile');
   t('Média');
+  t('Name');
   t('Neptun code');
   t('No roman numbers should be used. If only some movements of the composition were played add each movement separately. Guideline examples: 
 <ul>
