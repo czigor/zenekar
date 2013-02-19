@@ -106,45 +106,40 @@ li a.active {
  * MEZ navigation menu
  */
 #menu{
-	width: 100%;
-	background-color: #d99216;
-	padding:{
-		left: 15px;
-		right: 15px;
-	}
-	ul{
-		margin:{
-			bottom: 0;
-		}
-		li{
-			list-style-type: none;
-			list-style-image: none;
-			/*padding: 10px;*/
-			float: left;
-			border:{
-				right: 1px solid black;
-			}
-			&.first{
-				border:{
-					left: 1px solid black;
-				}
-			}
-/*			&.last{
-				clear: both;
-			}*/
-			&.active-trail{
-				background-color: black;
-			}
-			a{
-				padding: 10px;
-				color: black;
-				text-decoration: none;
-				display: block;
-				&.active{
-					color: white;
-				}
-					
-			}
-		}
-	}
+  width: 100%;
+  background-color: #d99216;
+  padding:{
+    left: 15px;
+    right: 15px;
+  }
+  ul{
+    margin:{
+      bottom: 0;
+    }
+    li{
+      list-style-type: none;
+      list-style-image: none;
+      float: left;
+      border:{
+        right: 1px solid black;
+      }
+      &.first{
+        border:{
+          left: 1px solid black;
+        }
+      }
+      &.active-trail{
+        background-color: black;
+      }
+      a{
+        padding: 10px;
+        color: black;
+        text-decoration: none;
+        display: block;
+        &.active{
+          color: white;
+        }
+      }
+    }
+  }
 }
