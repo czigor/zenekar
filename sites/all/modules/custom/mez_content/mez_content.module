@@ -1,0 +1,20 @@
+<?php
+
+/**
+ * @file
+ * Content related stuff
+ *
+ */
+
+/**
+ * Implements hook_form_alter().
+ */
+function mez_content_form_alter(&$form, $form_state) {
+  global $user;
+  if (in_array($form['#id'], array('composer-node-form', 'piece-node-form'))) {
+    // In the case of these two nodes ANT is used.
+    $form['title_field']['#access'] = ($user->uid == 1);
+  }
+  $form['revision_information']['#access'] = ($user->uid == 1);
+  $form['additional_settings']['#access'] = ($user->uid == 1);
+}

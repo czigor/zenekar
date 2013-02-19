@@ -1,0 +1,7 @@
+name = MEZ content
+description = General settings and functions for content in the MEZ project  
+core = 7.x
+package = MEZ
+
+project = "mez_content"
+version = "7.x-1.0"
