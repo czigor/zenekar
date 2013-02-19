@@ -3495,7 +3495,7 @@ function mez_cts_field_default_fields() {
       'required' => 0,
       'settings' => array(
         'description_field' => 0,
-        'entity_translation_sync' => FALSE,
+        'entity_translation_sync' => 0,
         'file_directory' => 'concert/media/[current-user:uuid]',
         'file_extensions' => 'txt pdf doc odt jpg gif png bmp jpeg mp3 ogg avi mpg mpeg',
         'max_filesize' => '',
@@ -4873,7 +4873,7 @@ function mez_cts_field_default_fields() {
   $fields['node-person-field_membership_dates'] = array(
     'field_config' => array(
       'active' => '1',
-      'cardinality' => '1',
+      'cardinality' => '-1',
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_membership_dates',
