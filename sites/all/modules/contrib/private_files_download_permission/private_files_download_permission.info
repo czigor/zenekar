@@ -3,9 +3,9 @@ description = Allows by-user and by-role downloads from private file system dire
 core = 7.x
 package = Access control
 
-; Information added by drupal.org packaging script on 2012-11-03
-version = "7.x-2.1"
+; Information added by drupal.org packaging script on 2013-02-17
+version = "7.x-2.2"
 core = "7.x"
 project = "private_files_download_permission"
-datestamp = "1351976838"
+datestamp = "1361109628"
 

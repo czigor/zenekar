@@ -14,6 +14,10 @@
  */
 function private_files_download_permission_permission() {
   return array(
+    'bypass private files download permission' => array(
+      'title'       => t('Bypass Private files download permission'),
+      'description' => t('Download from private directories regardless of permission restrictions.'),
+    ),
     'administer private files download permission' => array(
       'title'       => t('Administer Private files download permission'),
       'description' => t('Access module configuration.'),
@@ -63,12 +67,16 @@ function private_files_download_permission_menu() {
  * Returns a standard array containing all users.
  */
 function private_files_download_permission_get_users() {
-  // Load users as entity array.
-  $users_2 = entity_load('user');
+  // Load user list from database.
+  $user_list = db_select('users', 't')
+    ->fields('t')
+    ->orderBy('t.name', 'ASC')
+    ->execute()
+    ->fetchAllAssoc('uid');
   // Return a standard (uid, name) array.
   $users = array();
-  foreach ($users_2 as $uid => $user_object) {
-    $users[$uid] = (!$user_object->name ? t('anonymous user') : $user_object->name);
+  foreach ($user_list as $uid => $user) {
+    $users[$uid] = (!$user->name ? t('anonymous user') : $user->name);
   }
   return $users;
 }
@@ -155,7 +163,7 @@ function private_files_download_permission_list_directories() {
       l(t('Remove'), 'admin/config/media/private-files-download-permission/' . $directory->did . '/remove/'),
     );
   }
-  $output .= theme_table(array(
+  $output .= theme('table', array(
     'header' => array(
       t('Directory path'),
       t('Enabled users'),
@@ -215,8 +223,10 @@ function private_files_download_permission_get_directory_form($form, &$form_stat
   );
   // Prepare the user checkbox fieldset.
   $form['users'] = array(
-    '#type'  => 'fieldset',
-    '#title' => t('Enabled users'),
+    '#type'        => 'fieldset',
+    '#title'       => t('Enabled users'),
+    '#collapsible' => TRUE,
+    '#collapsed'   => TRUE,
   );
   // Prepare user checkboxes.
   $users = array_flip(private_files_download_permission_get_users());
@@ -226,13 +236,15 @@ function private_files_download_permission_get_directory_form($form, &$form_stat
     $form['users']['user_' . $uid] = array(
       '#type'          => 'checkbox',
       '#title'         => check_plain($user),
-      '#default_value' => in_array($uid, $default_users),
+      '#default_value' => ((NULL === $did) && (1 === $uid) ? TRUE : in_array($uid, $default_users)),
     );
   }
   // Prepare the role checkbox fieldset.
   $form['roles'] = array(
-    '#type'  => 'fieldset',
-    '#title' => t('Enabled roles'),
+    '#type'        => 'fieldset',
+    '#title'       => t('Enabled roles'),
+    '#collapsible' => TRUE,
+    '#collapsed'   => TRUE,
   );
   // Prepare role checkboxes.
   $roles = array_flip(user_roles());
@@ -438,34 +450,40 @@ function private_files_download_permission_remove_directory_submit($form, &$form
  */
 function private_files_download_permission_file_download($uri) {
   global $user;
-  // Extract the path from $uri, removing the protocol prefix and the file name.
-  $uri_path = explode('/', $uri);
-  array_shift($uri_path);
-  array_shift($uri_path);
-  array_pop($uri_path);
-  // Add a leading slash to $uri_path.
-  $uri_path = '/' . implode('/', $uri_path);
-  // Find the directory which best matches $uri_path.
-  $best_matching_length = 0;
-  $best_matching_directory = NULL;
-  foreach (private_files_download_permission_get_directory_list() as $directory) {
-    // Search for the best matching substring.
-    $directory_path = $directory->path;
-    if (0 === stripos($uri_path, $directory_path)) {
-      if (drupal_strlen($directory_path) > $best_matching_length) {
-        $best_matching_length = drupal_strlen($directory_path);
-        $best_matching_directory = $directory;
+  // Check if user may bypass permission restrictions.
+  if (user_access('bypass private files download permission')) {
+    return array('Content-Type' => file_get_mimetype($uri));
+  }
+  else {
+    // Extract the path from $uri, removing the protocol prefix and the file name.
+    $uri_path = explode('/', $uri);
+    array_shift($uri_path);
+    array_shift($uri_path);
+    array_pop($uri_path);
+    // Add a leading slash to $uri_path.
+    $uri_path = '/' . implode('/', $uri_path);
+    // Find the directory which best matches $uri_path.
+    $best_matching_length = 0;
+    $best_matching_directory = NULL;
+    foreach (private_files_download_permission_get_directory_list() as $directory) {
+      // Search for the best matching substring.
+      $directory_path = $directory->path;
+      if (0 === stripos($uri_path, $directory_path)) {
+        if (drupal_strlen($directory_path) > $best_matching_length) {
+          $best_matching_length = drupal_strlen($directory_path);
+          $best_matching_directory = $directory;
+        }
       }
     }
-  }
-  // Evaluate user and role permissions and optionally allow access to $uri.
-  if (NULL != $best_matching_directory) {
-    if (in_array($user->uid, array_keys($best_matching_directory->uid))) {
-      return array('Content-Type' => file_get_mimetype($uri));
-    }
-    foreach ($user->roles as $rid => $role) {
-      if (in_array($rid, array_keys($best_matching_directory->rid))) {
+    // Evaluate user and role permissions and optionally allow access to $uri.
+    if (NULL != $best_matching_directory) {
+      if (in_array($user->uid, array_keys($best_matching_directory->uid))) {
         return array('Content-Type' => file_get_mimetype($uri));
+      }
+      foreach ($user->roles as $rid => $role) {
+        if (in_array($rid, array_keys($best_matching_directory->rid))) {
+          return array('Content-Type' => file_get_mimetype($uri));
+        }
       }
     }
   }
