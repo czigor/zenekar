@@ -36,7 +36,7 @@ function mez_cts_node_info() {
       'base' => 'node_content',
       'description' => '',
       'has_title' => '1',
-      'title_label' => t('Cím'),
+      'title_label' => t('Name'),
       'help' => '',
     ),
     'concert' => array(
@@ -52,7 +52,7 @@ function mez_cts_node_info() {
       'base' => 'node_content',
       'description' => '',
       'has_title' => '1',
-      'title_label' => t('Cím'),
+      'title_label' => t('Title'),
       'help' => '',
     ),
     'page' => array(

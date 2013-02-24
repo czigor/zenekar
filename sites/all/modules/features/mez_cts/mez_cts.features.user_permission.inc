@@ -74,16 +74,6 @@ function mez_cts_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
-  // Exported permission: create field_mobile.
-  $permissions['create field_mobile'] = array(
-    'name' => 'create field_mobile',
-    'roles' => array(
-      0 => 'editor',
-      1 => 'site admin',
-    ),
-    'module' => 'field_permissions',
-  );
-
   // Exported permission: create field_neptun_code.
   $permissions['create field_neptun_code'] = array(
     'name' => 'create field_neptun_code',
@@ -127,16 +117,6 @@ function mez_cts_user_default_permissions() {
   // Exported permission: create field_phone.
   $permissions['create field_phone'] = array(
     'name' => 'create field_phone',
-    'roles' => array(
-      0 => 'editor',
-      1 => 'site admin',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: create field_wp_phone.
-  $permissions['create field_wp_phone'] = array(
-    'name' => 'create field_wp_phone',
     'roles' => array(
       0 => 'editor',
       1 => 'site admin',
@@ -194,16 +174,6 @@ function mez_cts_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
-  // Exported permission: edit field_mobile.
-  $permissions['edit field_mobile'] = array(
-    'name' => 'edit field_mobile',
-    'roles' => array(
-      0 => 'editor',
-      1 => 'site admin',
-    ),
-    'module' => 'field_permissions',
-  );
-
   // Exported permission: edit field_neptun_code.
   $permissions['edit field_neptun_code'] = array(
     'name' => 'edit field_neptun_code',
@@ -254,16 +224,6 @@ function mez_cts_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
-  // Exported permission: edit field_wp_phone.
-  $permissions['edit field_wp_phone'] = array(
-    'name' => 'edit field_wp_phone',
-    'roles' => array(
-      0 => 'editor',
-      1 => 'site admin',
-    ),
-    'module' => 'field_permissions',
-  );
-
   // Exported permission: edit own field_active.
   $permissions['edit own field_active'] = array(
     'name' => 'edit own field_active',
@@ -298,15 +258,6 @@ function mez_cts_user_default_permissions() {
   $permissions['edit own field_membership_dates'] = array(
     'name' => 'edit own field_membership_dates',
     'roles' => array(),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: edit own field_mobile.
-  $permissions['edit own field_mobile'] = array(
-    'name' => 'edit own field_mobile',
-    'roles' => array(
-      0 => 'member',
-    ),
     'module' => 'field_permissions',
   );
 
@@ -347,15 +298,6 @@ function mez_cts_user_default_permissions() {
   // Exported permission: edit own field_phone.
   $permissions['edit own field_phone'] = array(
     'name' => 'edit own field_phone',
-    'roles' => array(
-      0 => 'member',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: edit own field_wp_phone.
-  $permissions['edit own field_wp_phone'] = array(
-    'name' => 'edit own field_wp_phone',
     'roles' => array(
       0 => 'member',
     ),
@@ -409,17 +351,6 @@ function mez_cts_user_default_permissions() {
   // Exported permission: view field_membership_dates.
   $permissions['view field_membership_dates'] = array(
     'name' => 'view field_membership_dates',
-    'roles' => array(
-      0 => 'editor',
-      1 => 'member',
-      2 => 'site admin',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: view field_mobile.
-  $permissions['view field_mobile'] = array(
-    'name' => 'view field_mobile',
     'roles' => array(
       0 => 'editor',
       1 => 'member',
@@ -483,17 +414,6 @@ function mez_cts_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
-  // Exported permission: view field_wp_phone.
-  $permissions['view field_wp_phone'] = array(
-    'name' => 'view field_wp_phone',
-    'roles' => array(
-      0 => 'editor',
-      1 => 'member',
-      2 => 'site admin',
-    ),
-    'module' => 'field_permissions',
-  );
-
   // Exported permission: view own field_active.
   $permissions['view own field_active'] = array(
     'name' => 'view own field_active',
@@ -529,13 +449,6 @@ function mez_cts_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
-  // Exported permission: view own field_mobile.
-  $permissions['view own field_mobile'] = array(
-    'name' => 'view own field_mobile',
-    'roles' => array(),
-    'module' => 'field_permissions',
-  );
-
   // Exported permission: view own field_neptun_code.
   $permissions['view own field_neptun_code'] = array(
     'name' => 'view own field_neptun_code',
@@ -567,13 +480,6 @@ function mez_cts_user_default_permissions() {
   // Exported permission: view own field_phone.
   $permissions['view own field_phone'] = array(
     'name' => 'view own field_phone',
-    'roles' => array(),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: view own field_wp_phone.
-  $permissions['view own field_wp_phone'] = array(
-    'name' => 'view own field_wp_phone',
     'roles' => array(),
     'module' => 'field_permissions',
   );

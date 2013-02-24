@@ -3040,9 +3040,10 @@ function mez_cts_field_default_fields() {
           'weight' => 0,
         ),
       ),
+      'ds_extras_field_template' => '',
       'entity_type' => 'node',
       'field_name' => 'title_field',
-      'label' => 'Cím',
+      'label' => 'Name',
       'required' => 0,
       'settings' => array(
         'entity_translation_sync' => FALSE,
@@ -3489,13 +3490,14 @@ function mez_cts_field_default_fields() {
           'weight' => 0,
         ),
       ),
+      'ds_extras_field_template' => '',
       'entity_type' => 'node',
       'field_name' => 'field_media',
-      'label' => 'Média',
+      'label' => 'Media',
       'required' => 0,
       'settings' => array(
         'description_field' => 0,
-        'entity_translation_sync' => 0,
+        'entity_translation_sync' => FALSE,
         'file_directory' => 'concert/media/[current-user:uuid]',
         'file_extensions' => 'txt pdf doc odt jpg gif png bmp jpeg mp3 ogg avi mpg mpeg',
         'max_filesize' => '',
@@ -3777,9 +3779,10 @@ function mez_cts_field_default_fields() {
           'weight' => 0,
         ),
       ),
+      'ds_extras_field_template' => '',
       'entity_type' => 'node',
       'field_name' => 'title_field',
-      'label' => 'Cím',
+      'label' => 'Title',
       'required' => 0,
       'settings' => array(
         'entity_translation_sync' => FALSE,
@@ -4060,9 +4063,10 @@ function mez_cts_field_default_fields() {
           'weight' => '0',
         ),
       ),
+      'ds_extras_field_template' => '',
       'entity_type' => 'node',
       'field_name' => 'title_field',
-      'label' => 'Cím',
+      'label' => 'Title',
       'required' => 1,
       'settings' => array(
         'entity_translation_sync' => FALSE,
@@ -4770,6 +4774,7 @@ function mez_cts_field_default_fields() {
           'weight' => 0,
         ),
       ),
+      'ds_extras_field_template' => '',
       'entity_type' => 'node',
       'field_name' => 'field_instrument',
       'label' => 'Instrument',
@@ -4971,87 +4976,6 @@ function mez_cts_field_default_fields() {
         ),
         'type' => 'date_popup',
         'weight' => '4',
-      ),
-    ),
-  );
-
-  // Exported field: 'node-person-field_mobile'.
-  $fields['node-person-field_mobile'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_mobile',
-      'field_permissions' => array(
-        'type' => '2',
-      ),
-      'foreign keys' => array(
-        'format' => array(
-          'columns' => array(
-            'format' => 'format',
-          ),
-          'table' => 'filter_format',
-        ),
-      ),
-      'indexes' => array(
-        'format' => array(
-          0 => 'format',
-        ),
-      ),
-      'locked' => '0',
-      'module' => 'text',
-      'settings' => array(
-        'entity_translation_sync' => FALSE,
-        'max_length' => '255',
-      ),
-      'translatable' => '0',
-      'type' => 'text',
-    ),
-    'field_instance' => array(
-      'bundle' => 'person',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'inline',
-          'module' => 'text',
-          'settings' => array(),
-          'type' => 'text_default',
-          'weight' => '10',
-        ),
-        'full' => array(
-          'label' => 'inline',
-          'module' => 'text',
-          'settings' => array(),
-          'type' => 'text_default',
-          'weight' => '11',
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_mobile',
-      'label' => 'Mobile',
-      'required' => 0,
-      'settings' => array(
-        'entity_translation_sync' => FALSE,
-        'text_processing' => '0',
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'text',
-        'settings' => array(
-          'size' => '20',
-        ),
-        'type' => 'text_textfield',
-        'weight' => '13',
       ),
     ),
   );
@@ -5437,7 +5361,7 @@ function mez_cts_field_default_fields() {
   $fields['node-person-field_phone'] = array(
     'field_config' => array(
       'active' => '1',
-      'cardinality' => '1',
+      'cardinality' => '-1',
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_phone',
@@ -5493,6 +5417,7 @@ function mez_cts_field_default_fields() {
           'weight' => 0,
         ),
       ),
+      'ds_extras_field_template' => '',
       'entity_type' => 'node',
       'field_name' => 'field_phone',
       'label' => 'Phone',
@@ -5510,87 +5435,6 @@ function mez_cts_field_default_fields() {
         ),
         'type' => 'text_textfield',
         'weight' => '12',
-      ),
-    ),
-  );
-
-  // Exported field: 'node-person-field_wp_phone'.
-  $fields['node-person-field_wp_phone'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_wp_phone',
-      'field_permissions' => array(
-        'type' => '2',
-      ),
-      'foreign keys' => array(
-        'format' => array(
-          'columns' => array(
-            'format' => 'format',
-          ),
-          'table' => 'filter_format',
-        ),
-      ),
-      'indexes' => array(
-        'format' => array(
-          0 => 'format',
-        ),
-      ),
-      'locked' => '0',
-      'module' => 'text',
-      'settings' => array(
-        'entity_translation_sync' => FALSE,
-        'max_length' => '255',
-      ),
-      'translatable' => '0',
-      'type' => 'text',
-    ),
-    'field_instance' => array(
-      'bundle' => 'person',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'inline',
-          'module' => 'text',
-          'settings' => array(),
-          'type' => 'text_default',
-          'weight' => '11',
-        ),
-        'full' => array(
-          'label' => 'inline',
-          'module' => 'text',
-          'settings' => array(),
-          'type' => 'text_default',
-          'weight' => '12',
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_wp_phone',
-      'label' => 'Workplace phone',
-      'required' => 0,
-      'settings' => array(
-        'entity_translation_sync' => FALSE,
-        'text_processing' => '0',
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'text',
-        'settings' => array(
-          'size' => '20',
-        ),
-        'type' => 'text_textfield',
-        'weight' => '14',
       ),
     ),
   );
@@ -5779,6 +5623,9 @@ function mez_cts_field_default_fields() {
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_piece_title',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
       'foreign keys' => array(
         'format' => array(
           'columns' => array(
@@ -5806,8 +5653,7 @@ function mez_cts_field_default_fields() {
       'default_value' => NULL,
       'deleted' => '0',
       'description' => 'No roman numbers should be used. If only some movements of the composition were played add each movement separately. Guideline examples: 
-<ul>
-<li>3rd symphony</li>
+<ul><li>3rd symphony</li>
 <li>5th symphony - 1st movement</li>
 <li>1st symphony (Titan) - 2nd movement (</li>
 <li>Romeo and Juliet - Dance of the Knights</li>
@@ -5837,6 +5683,7 @@ function mez_cts_field_default_fields() {
           'weight' => 0,
         ),
       ),
+      'ds_extras_field_template' => '',
       'entity_type' => 'node',
       'field_name' => 'field_piece_title',
       'label' => 'Piece title',
@@ -5922,9 +5769,10 @@ function mez_cts_field_default_fields() {
           'weight' => 0,
         ),
       ),
+      'ds_extras_field_template' => '',
       'entity_type' => 'node',
       'field_name' => 'title_field',
-      'label' => 'Cím',
+      'label' => 'Title',
       'required' => 0,
       'settings' => array(
         'entity_translation_sync' => FALSE,
@@ -6379,13 +6227,10 @@ function mez_cts_field_default_fields() {
   t('Media folder');
   t('Member');
   t('Membership dates');
-  t('Mobile');
-  t('Média');
   t('Name');
   t('Neptun code');
   t('No roman numbers should be used. If only some movements of the composition were played add each movement separately. Guideline examples: 
-<ul>
-<li>3rd symphony</li>
+<ul><li>3rd symphony</li>
 <li>5th symphony - 1st movement</li>
 <li>1st symphony (Titan) - 2nd movement (</li>
 <li>Romeo and Juliet - Dance of the Knights</li>
@@ -6410,9 +6255,9 @@ function mez_cts_field_default_fields() {
   t('The media folder this file belongs to. ');
   t('This person is an active member of the orchestra');
   t('Time');
+  t('Title');
   t('Title Text');
   t('Title text attribute');
-  t('Workplace phone');
 
   return $fields;
 }
