@@ -130,7 +130,10 @@ function mez_permissions_user_default_permissions() {
   // Exported permission: administer nodes.
   $permissions['administer nodes'] = array(
     'name' => 'administer nodes',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'editor',
+      1 => 'site admin',
+    ),
     'module' => 'node',
   );
 

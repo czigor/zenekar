@@ -15,6 +15,8 @@ function mez_content_form_alter(&$form, $form_state) {
     // In the case of these two nodes ANT is used.
     $form['title_field']['#access'] = ($user->uid == 1);
   }
-  $form['revision_information']['#access'] = ($user->uid == 1);
-  $form['additional_settings']['#access'] = ($user->uid == 1);
+  $node_forms = array('composer-node-form,', 'piece-node-form', 'news-node-form', 'concert-node-form', 'page-node-form', 'person-node-form');
+  if (in_array($form['#id'], $node_forms)) {
+    $form['revision_information']['#access'] = ($user->uid == 1);
+  }
 }
