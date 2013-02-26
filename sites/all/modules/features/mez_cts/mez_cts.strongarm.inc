@@ -964,8 +964,8 @@ system/ajax/*';
   $strongarm->api_version = 1;
   $strongarm->name = 'entity_translation_settings_file__audio';
   $strongarm->value = array(
-    'default_language' => 'hu',
-    'hide_language_selector' => 0,
+    'default_language' => 'xx-et-current',
+    'hide_language_selector' => 1,
     'exclude_language_none' => 0,
     'lock_language' => 0,
     'shared_fields_original_only' => 0,
@@ -977,8 +977,8 @@ system/ajax/*';
   $strongarm->api_version = 1;
   $strongarm->name = 'entity_translation_settings_file__document';
   $strongarm->value = array(
-    'default_language' => 'hu',
-    'hide_language_selector' => 0,
+    'default_language' => 'xx-et-current',
+    'hide_language_selector' => 1,
     'exclude_language_none' => 0,
     'lock_language' => 0,
     'shared_fields_original_only' => 0,
@@ -990,8 +990,8 @@ system/ajax/*';
   $strongarm->api_version = 1;
   $strongarm->name = 'entity_translation_settings_file__image';
   $strongarm->value = array(
-    'default_language' => 'hu',
-    'hide_language_selector' => 0,
+    'default_language' => 'xx-et-current',
+    'hide_language_selector' => 1,
     'exclude_language_none' => 0,
     'lock_language' => 0,
     'shared_fields_original_only' => 0,
@@ -1003,8 +1003,8 @@ system/ajax/*';
   $strongarm->api_version = 1;
   $strongarm->name = 'entity_translation_settings_file__video';
   $strongarm->value = array(
-    'default_language' => 'hu',
-    'hide_language_selector' => 0,
+    'default_language' => 'xx-et-current',
+    'hide_language_selector' => 1,
     'exclude_language_none' => 0,
     'lock_language' => 0,
     'shared_fields_original_only' => 0,
@@ -1105,6 +1105,26 @@ system/ajax/*';
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'entity_translation_settings_taxonomy_term__media';
+  $strongarm->value = array(
+    'default_language' => 'xx-et-default',
+    'hide_language_selector' => 1,
+    'exclude_language_none' => 0,
+    'lock_language' => 0,
+    'shared_fields_original_only' => 0,
+  );
+  $export['entity_translation_settings_taxonomy_term__media'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'entity_translation_shared_labels';
+  $strongarm->value = 1;
+  $export['entity_translation_shared_labels'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'field_bundle_settings_field_collection_item__field_performers';
   $strongarm->value = array(
     'view_modes' => array(
@@ -1201,6 +1221,29 @@ system/ajax/*';
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'field_bundle_settings_file__document';
+  $strongarm->value = array(
+    'view_modes' => array(),
+    'extra_fields' => array(
+      'form' => array(
+        'filename' => array(
+          'weight' => '-10',
+        ),
+        'preview' => array(
+          'weight' => '-5',
+        ),
+        'language' => array(
+          'weight' => '5',
+        ),
+      ),
+      'display' => array(),
+    ),
+  );
+  $export['field_bundle_settings_file__document'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'field_bundle_settings_file__image';
   $strongarm->value = array(
     'view_modes' => array(
@@ -1289,6 +1332,10 @@ system/ajax/*';
             'visible' => TRUE,
           ),
           'full' => array(
+            'weight' => '0',
+            'visible' => TRUE,
+          ),
+          'teaser' => array(
             'weight' => '0',
             'visible' => TRUE,
           ),

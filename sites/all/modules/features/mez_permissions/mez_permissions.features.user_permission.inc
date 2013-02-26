@@ -63,9 +63,8 @@ function mez_permissions_user_default_permissions() {
   $permissions['add media from remote sources'] = array(
     'name' => 'add media from remote sources',
     'roles' => array(
-      0 => 'authenticated user',
-      1 => 'editor',
-      2 => 'site admin',
+      0 => 'editor',
+      1 => 'site admin',
     ),
     'module' => 'media_internet',
   );
@@ -88,6 +87,34 @@ function mez_permissions_user_default_permissions() {
       1 => 'site admin',
     ),
     'module' => 'taxonomy_access_fix',
+  );
+
+  // Exported permission: admin_classes.
+  $permissions['admin_classes'] = array(
+    'name' => 'admin_classes',
+    'roles' => array(),
+    'module' => 'ds_ui',
+  );
+
+  // Exported permission: admin_display_suite.
+  $permissions['admin_display_suite'] = array(
+    'name' => 'admin_display_suite',
+    'roles' => array(),
+    'module' => 'ds',
+  );
+
+  // Exported permission: admin_fields.
+  $permissions['admin_fields'] = array(
+    'name' => 'admin_fields',
+    'roles' => array(),
+    'module' => 'ds_ui',
+  );
+
+  // Exported permission: admin_view_modes.
+  $permissions['admin_view_modes'] = array(
+    'name' => 'admin_view_modes',
+    'roles' => array(),
+    'module' => 'ds_ui',
   );
 
   // Exported permission: administer comments.
@@ -123,7 +150,10 @@ function mez_permissions_user_default_permissions() {
   // Exported permission: administer files.
   $permissions['administer files'] = array(
     'name' => 'administer files',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'editor',
+      1 => 'site admin',
+    ),
     'module' => 'file_entity',
   );
 
@@ -652,6 +682,13 @@ function mez_permissions_user_default_permissions() {
     'module' => 'comment',
   );
 
+  // Exported permission: submit latitude/longitude.
+  $permissions['submit latitude/longitude'] = array(
+    'name' => 'submit latitude/longitude',
+    'roles' => array(),
+    'module' => 'location',
+  );
+
   // Exported permission: toggle field translatability.
   $permissions['toggle field translatability'] = array(
     'name' => 'toggle field translatability',
@@ -676,6 +713,20 @@ function mez_permissions_user_default_permissions() {
       1 => 'site admin',
     ),
     'module' => 'translation',
+  );
+
+  // Exported permission: translate file entities.
+  $permissions['translate file entities'] = array(
+    'name' => 'translate file entities',
+    'roles' => array(),
+    'module' => 'entity_translation',
+  );
+
+  // Exported permission: translate interface.
+  $permissions['translate interface'] = array(
+    'name' => 'translate interface',
+    'roles' => array(),
+    'module' => 'locale',
   );
 
   // Exported permission: translate node entities.
@@ -706,6 +757,27 @@ function mez_permissions_user_default_permissions() {
     'module' => 'search',
   );
 
+  // Exported permission: view author on comment.
+  $permissions['view author on comment'] = array(
+    'name' => 'view author on comment',
+    'roles' => array(),
+    'module' => 'ds_extras',
+  );
+
+  // Exported permission: view author on node.
+  $permissions['view author on node'] = array(
+    'name' => 'view author on node',
+    'roles' => array(),
+    'module' => 'ds_extras',
+  );
+
+  // Exported permission: view comments on node.
+  $permissions['view comments on node'] = array(
+    'name' => 'view comments on node',
+    'roles' => array(),
+    'module' => 'ds_extras',
+  );
+
   // Exported permission: view date repeats.
   $permissions['view date repeats'] = array(
     'name' => 'view date repeats',
@@ -721,6 +793,55 @@ function mez_permissions_user_default_permissions() {
       1 => 'authenticated user',
     ),
     'module' => 'file_entity',
+  );
+
+  // Exported permission: view links on comment.
+  $permissions['view links on comment'] = array(
+    'name' => 'view links on comment',
+    'roles' => array(),
+    'module' => 'ds_extras',
+  );
+
+  // Exported permission: view links on node.
+  $permissions['view links on node'] = array(
+    'name' => 'view links on node',
+    'roles' => array(),
+    'module' => 'ds_extras',
+  );
+
+  // Exported permission: view location directory.
+  $permissions['view location directory'] = array(
+    'name' => 'view location directory',
+    'roles' => array(),
+    'module' => 'location',
+  );
+
+  // Exported permission: view more_link on taxonomy_term.
+  $permissions['view more_link on taxonomy_term'] = array(
+    'name' => 'view more_link on taxonomy_term',
+    'roles' => array(),
+    'module' => 'ds_extras',
+  );
+
+  // Exported permission: view name on user.
+  $permissions['view name on user'] = array(
+    'name' => 'view name on user',
+    'roles' => array(),
+    'module' => 'ds_extras',
+  );
+
+  // Exported permission: view node location table.
+  $permissions['view node location table'] = array(
+    'name' => 'view node location table',
+    'roles' => array(),
+    'module' => 'location',
+  );
+
+  // Exported permission: view node_link on node.
+  $permissions['view node_link on node'] = array(
+    'name' => 'view node_link on node',
+    'roles' => array(),
+    'module' => 'ds_extras',
   );
 
   // Exported permission: view own files.
@@ -749,6 +870,13 @@ function mez_permissions_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: view permalink on comment.
+  $permissions['view permalink on comment'] = array(
+    'name' => 'view permalink on comment',
+    'roles' => array(),
+    'module' => 'ds_extras',
+  );
+
   // Exported permission: view post access counter.
   $permissions['view post access counter'] = array(
     'name' => 'view post access counter',
@@ -756,6 +884,20 @@ function mez_permissions_user_default_permissions() {
       0 => 'authenticated user',
     ),
     'module' => 'statistics',
+  );
+
+  // Exported permission: view post_date on comment.
+  $permissions['view post_date on comment'] = array(
+    'name' => 'view post_date on comment',
+    'roles' => array(),
+    'module' => 'ds_extras',
+  );
+
+  // Exported permission: view post_date on node.
+  $permissions['view post_date on node'] = array(
+    'name' => 'view post_date on node',
+    'roles' => array(),
+    'module' => 'ds_extras',
   );
 
   // Exported permission: view revisions.
@@ -766,6 +908,62 @@ function mez_permissions_user_default_permissions() {
       1 => 'site admin',
     ),
     'module' => 'node',
+  );
+
+  // Exported permission: view search_info on node.
+  $permissions['view search_info on node'] = array(
+    'name' => 'view search_info on node',
+    'roles' => array(),
+    'module' => 'ds_extras',
+  );
+
+  // Exported permission: view search_snippet on node.
+  $permissions['view search_snippet on node'] = array(
+    'name' => 'view search_snippet on node',
+    'roles' => array(),
+    'module' => 'ds_extras',
+  );
+
+  // Exported permission: view submitted on comment.
+  $permissions['view submitted on comment'] = array(
+    'name' => 'view submitted on comment',
+    'roles' => array(),
+    'module' => 'ds_extras',
+  );
+
+  // Exported permission: view submitted_by on node.
+  $permissions['view submitted_by on node'] = array(
+    'name' => 'view submitted_by on node',
+    'roles' => array(),
+    'module' => 'ds_extras',
+  );
+
+  // Exported permission: view title on comment.
+  $permissions['view title on comment'] = array(
+    'name' => 'view title on comment',
+    'roles' => array(),
+    'module' => 'ds_extras',
+  );
+
+  // Exported permission: view title on node.
+  $permissions['view title on node'] = array(
+    'name' => 'view title on node',
+    'roles' => array(),
+    'module' => 'ds_extras',
+  );
+
+  // Exported permission: view title on taxonomy_term.
+  $permissions['view title on taxonomy_term'] = array(
+    'name' => 'view title on taxonomy_term',
+    'roles' => array(),
+    'module' => 'ds_extras',
+  );
+
+  // Exported permission: view user location table.
+  $permissions['view user location table'] = array(
+    'name' => 'view user location table',
+    'roles' => array(),
+    'module' => 'location',
   );
 
   return $permissions;

@@ -724,98 +724,6 @@ function mez_cts_field_default_fields() {
     ),
   );
 
-  // Exported field: 'file-audio-field_media_folder'.
-  $fields['file-audio-field_media_folder'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_media_folder',
-      'foreign keys' => array(
-        'tid' => array(
-          'columns' => array(
-            'tid' => 'tid',
-          ),
-          'table' => 'taxonomy_term_data',
-        ),
-      ),
-      'indexes' => array(
-        'tid' => array(
-          0 => 'tid',
-        ),
-      ),
-      'locked' => '0',
-      'module' => 'taxonomy',
-      'settings' => array(
-        'allowed_values' => array(
-          0 => array(
-            'vocabulary' => 'media',
-            'parent' => '0',
-          ),
-        ),
-        'entity_translation_sync' => FALSE,
-        'options_list_callback' => NULL,
-      ),
-      'translatable' => '0',
-      'type' => 'taxonomy_term_reference',
-    ),
-    'field_instance' => array(
-      'bundle' => 'audio',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => 'The media folder this file belongs to. ',
-      'display' => array(
-        'colorbox' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'default' => array(
-          'label' => 'above',
-          'module' => 'taxonomy',
-          'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
-          'weight' => 4,
-        ),
-        'full' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'preview' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'file',
-      'field_name' => 'field_media_folder',
-      'label' => 'Media folder',
-      'required' => 0,
-      'settings' => array(
-        'entity_translation_sync' => FALSE,
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'options',
-        'settings' => array(),
-        'type' => 'options_select',
-        'weight' => '11',
-      ),
-    ),
-  );
-
   // Exported field: 'file-audio-field_tags'.
   $fields['file-audio-field_tags'] = array(
     'field_config' => array(
@@ -1343,92 +1251,6 @@ function mez_cts_field_default_fields() {
     ),
   );
 
-  // Exported field: 'file-document-field_media_folder'.
-  $fields['file-document-field_media_folder'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_media_folder',
-      'foreign keys' => array(
-        'tid' => array(
-          'columns' => array(
-            'tid' => 'tid',
-          ),
-          'table' => 'taxonomy_term_data',
-        ),
-      ),
-      'indexes' => array(
-        'tid' => array(
-          0 => 'tid',
-        ),
-      ),
-      'locked' => '0',
-      'module' => 'taxonomy',
-      'settings' => array(
-        'allowed_values' => array(
-          0 => array(
-            'vocabulary' => 'media',
-            'parent' => '0',
-          ),
-        ),
-        'entity_translation_sync' => FALSE,
-        'options_list_callback' => NULL,
-      ),
-      'translatable' => '0',
-      'type' => 'taxonomy_term_reference',
-    ),
-    'field_instance' => array(
-      'bundle' => 'document',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => 'The media folder this file belongs to. ',
-      'display' => array(
-        'colorbox' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'default' => array(
-          'label' => 'above',
-          'module' => 'taxonomy',
-          'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
-          'weight' => 3,
-        ),
-        'preview' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'file',
-      'field_name' => 'field_media_folder',
-      'label' => 'Media folder',
-      'required' => 0,
-      'settings' => array(
-        'entity_translation_sync' => FALSE,
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'options',
-        'settings' => array(),
-        'type' => 'options_select',
-        'weight' => '11',
-      ),
-    ),
-  );
-
   // Exported field: 'file-document-field_tags'.
   $fields['file-document-field_tags'] = array(
     'field_config' => array(
@@ -1914,101 +1736,6 @@ function mez_cts_field_default_fields() {
     ),
   );
 
-  // Exported field: 'file-image-field_media_folder'.
-  $fields['file-image-field_media_folder'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_media_folder',
-      'foreign keys' => array(
-        'tid' => array(
-          'columns' => array(
-            'tid' => 'tid',
-          ),
-          'table' => 'taxonomy_term_data',
-        ),
-      ),
-      'indexes' => array(
-        'tid' => array(
-          0 => 'tid',
-        ),
-      ),
-      'locked' => '0',
-      'module' => 'taxonomy',
-      'settings' => array(
-        'allowed_values' => array(
-          0 => array(
-            'vocabulary' => 'media',
-            'parent' => '0',
-          ),
-        ),
-        'entity_translation_sync' => FALSE,
-        'options_list_callback' => NULL,
-      ),
-      'translatable' => '0',
-      'type' => 'taxonomy_term_reference',
-    ),
-    'field_instance' => array(
-      'bundle' => 'image',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => 'The media folder this file belongs to. ',
-      'display' => array(
-        'colorbox' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'default' => array(
-          'label' => 'above',
-          'module' => 'taxonomy',
-          'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
-          'weight' => 7,
-        ),
-        'full' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'preview' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'file',
-      'field_name' => 'field_media_folder',
-      'label' => 'Media folder',
-      'required' => 0,
-      'settings' => array(
-        'entity_translation_sync' => FALSE,
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'options',
-        'settings' => array(
-          'autocomplete_path' => 'taxonomy/autocomplete',
-          'size' => 60,
-        ),
-        'type' => 'options_select',
-        'weight' => '10',
-      ),
-    ),
-  );
-
   // Exported field: 'file-image-field_tags'.
   $fields['file-image-field_tags'] = array(
     'field_config' => array(
@@ -2395,10 +2122,18 @@ function mez_cts_field_default_fields() {
           'weight' => 3,
         ),
         'full' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
+          'label' => 'hidden',
+          'module' => 'date',
+          'settings' => array(
+            'format_type' => 'only_day',
+            'fromto' => 'both',
+            'multiple_from' => '',
+            'multiple_number' => '',
+            'multiple_to' => '',
+            'show_repeat_rule' => 'show',
+          ),
+          'type' => 'date_default',
+          'weight' => '2',
         ),
         'preview' => array(
           'label' => 'above',
@@ -2410,7 +2145,7 @@ function mez_cts_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
       ),
       'entity_type' => 'file',
@@ -2509,7 +2244,7 @@ function mez_cts_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '4',
         ),
         'preview' => array(
           'label' => 'above',
@@ -2521,7 +2256,7 @@ function mez_cts_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
       ),
       'entity_type' => 'file',
@@ -2538,101 +2273,6 @@ function mez_cts_field_default_fields() {
         'settings' => array(),
         'type' => 'options_buttons',
         'weight' => '13',
-      ),
-    ),
-  );
-
-  // Exported field: 'file-video-field_media_folder'.
-  $fields['file-video-field_media_folder'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_media_folder',
-      'foreign keys' => array(
-        'tid' => array(
-          'columns' => array(
-            'tid' => 'tid',
-          ),
-          'table' => 'taxonomy_term_data',
-        ),
-      ),
-      'indexes' => array(
-        'tid' => array(
-          0 => 'tid',
-        ),
-      ),
-      'locked' => '0',
-      'module' => 'taxonomy',
-      'settings' => array(
-        'allowed_values' => array(
-          0 => array(
-            'vocabulary' => 'media',
-            'parent' => '0',
-          ),
-        ),
-        'entity_translation_sync' => FALSE,
-        'options_list_callback' => NULL,
-      ),
-      'translatable' => '0',
-      'type' => 'taxonomy_term_reference',
-    ),
-    'field_instance' => array(
-      'bundle' => 'video',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => 'The media folder this file belongs to. ',
-      'display' => array(
-        'colorbox' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'default' => array(
-          'label' => 'above',
-          'module' => 'taxonomy',
-          'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
-          'weight' => 5,
-        ),
-        'full' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'preview' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'file',
-      'field_name' => 'field_media_folder',
-      'label' => 'Media folder',
-      'required' => 0,
-      'settings' => array(
-        'entity_translation_sync' => FALSE,
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 0,
-        'module' => 'options',
-        'settings' => array(
-          'autocomplete_path' => 'taxonomy/autocomplete',
-          'size' => 60,
-        ),
-        'type' => 'options_select',
-        'weight' => '11',
       ),
     ),
   );
@@ -2697,7 +2337,7 @@ function mez_cts_field_default_fields() {
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
-          'weight' => '0',
+          'weight' => '3',
         ),
         'media_link' => array(
           'label' => 'above',
@@ -2721,7 +2361,7 @@ function mez_cts_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
       ),
       'entity_type' => 'file',
@@ -5803,6 +5443,9 @@ function mez_cts_field_default_fields() {
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'description_field',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
       'foreign keys' => array(
         'format' => array(
           'columns' => array(
@@ -5938,6 +5581,9 @@ function mez_cts_field_default_fields() {
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'description_field',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
       'foreign keys' => array(
         'format' => array(
           'columns' => array(
@@ -6073,6 +5719,9 @@ function mez_cts_field_default_fields() {
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'description_field',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
       'foreign keys' => array(
         'format' => array(
           'columns' => array(
@@ -6224,7 +5873,6 @@ function mez_cts_field_default_fields() {
   t('Leírás');
   t('Location');
   t('Media');
-  t('Media folder');
   t('Member');
   t('Membership dates');
   t('Name');
@@ -6252,7 +5900,6 @@ function mez_cts_field_default_fields() {
   t('The family name of the composer is displayed before the given name(s). Check this if you want a comma between them. (So do not check it for Hungarian names.)');
   t('The family name of the composer like \'Bach\'. This will be used to sort the piece. ');
   t('The given name(s) of the composer. Each name (like Johann and Sebastian) should go into a different textbox. ');
-  t('The media folder this file belongs to. ');
   t('This person is an active member of the orchestra');
   t('Time');
   t('Title');
