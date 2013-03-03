@@ -49,7 +49,7 @@ function mez_cts_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'additional_settings__active_tab_piece';
-  $strongarm->value = 'edit-workflow';
+  $strongarm->value = 'edit-auto-nodetitle';
   $export['additional_settings__active_tab_piece'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -94,7 +94,7 @@ return "[node:field-family-name]" . $comma . "$given_name";
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'ant_pattern_piece';
-  $strongarm->value = '[node:field-composer:title]: [node:field_piece_title]';
+  $strongarm->value = '';
   $export['ant_pattern_piece'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -122,7 +122,7 @@ return "[node:field-family-name]" . $comma . "$given_name";
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'ant_piece';
-  $strongarm->value = '1';
+  $strongarm->value = '0';
   $export['ant_piece'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -1714,6 +1714,13 @@ system/ajax/*';
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'i18n_node_extended_piece';
+  $strongarm->value = 1;
+  $export['i18n_node_extended_piece'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'i18n_node_options_composer';
   $strongarm->value = array();
   $export['i18n_node_options_composer'] = $strongarm;
@@ -1724,6 +1731,13 @@ system/ajax/*';
   $strongarm->name = 'i18n_node_options_news';
   $strongarm->value = array();
   $export['i18n_node_options_news'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'i18n_node_options_piece';
+  $strongarm->value = array();
+  $export['i18n_node_options_piece'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
