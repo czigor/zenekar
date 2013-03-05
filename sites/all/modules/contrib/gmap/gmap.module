@@ -332,24 +332,24 @@ function _gmap_base_js() {
     $query['language'] = 'zh-CN';
     $ret[url(gmap_views_protocol() . '://ditu.google.cn/maps/'.$file, array('query' => $query))] = array(
       'type' => 'external',
-      'weight' => 2
+      'weight' => 2,
     );
   }
   elseif ($query['language'] == 'zh-hant') {
     $query['language'] = 'zh-TW';
     $ret[url(gmap_views_protocol() . '://maps.googleapis.com/maps/'.$file, array('query' => $query))] = array(
       'type' => 'external',
-      'weight' => 2
+      'weight' => 2,
     );
   }
   else {
     $ret[url(gmap_views_protocol() . '://maps.googleapis.com/maps/'.$file, array('query' => $query))] = array(
       'type' => 'external',
-      'weight' => 2
+      'weight' => 2,
     );
   }
 
-  $ret[file_create_url('public://js/gmap_markers.js')] = array(
+  $ret[variable_get('file_public_path', conf_path() . '/files') . '/js/gmap_marker.js'] = array(
     'type' => 'external',
     'weight' => 2,
   );
@@ -606,6 +606,10 @@ function gmap_menu() {
  * Regenerate the markerdata file.
  */
 function gmap_regenerate_markers() {
+  // This often fails in cli mode, so bail.
+  if (drupal_is_cli()) {
+    return;
+  }
   $contents = '';
 
   $contents .= "// GMap marker image data.\n";

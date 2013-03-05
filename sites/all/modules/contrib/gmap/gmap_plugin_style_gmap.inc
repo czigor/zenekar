@@ -50,10 +50,10 @@ class gmap_plugin_style_gmap extends views_plugin_style {
 
     $options['tooltipenabled'] = array('default' => 0);
     $options['tooltipfield'] = array('default' => '');
-    
+
     $options['bubbletextenabled'] = array('default' => 0);
     $options['bubbletextfield'] = array('default' => '');
-    
+
     return $options;
   }
 
@@ -109,7 +109,7 @@ class gmap_plugin_style_gmap extends views_plugin_style {
     else if ($this->options['datasource'] == 'fields') {
       $lat_field_obj = $this->view->display_handler->get_handler('field', $this->options['latfield']);
       $lon_field_obj = $this->view->display_handler->get_handler('field', $this->options['lonfield']);
-      $lat_field = $lat_fied_obj->field_alias;
+      $lat_field = $lat_field_obj->field_alias;
       $lon_field = $lon_field_obj->field_alias;
     }
 
@@ -118,7 +118,7 @@ class gmap_plugin_style_gmap extends views_plugin_style {
       $marker_field_obj = $this->view->display_handler->get_handler('field', $this->options['markerfield']);
       $marker_field = 'field_' . $marker_field_obj->field;
     }
-    
+
     // Determine rmt field.
     if ($this->options['enablermt']) {
       $rmt_field_obj = $this->view->display_handler->get_handler('field', $this->options['rmtfield']);
@@ -137,10 +137,10 @@ class gmap_plugin_style_gmap extends views_plugin_style {
 
     // Group the rows according to the grouping field, if specified.
     $sets = $this->render_grouping($this->view->result, $this->options['grouping']);
-    
-    // Let's make sure the individual fields are rendered 
+
+    // Let's make sure the individual fields are rendered
     $this->render_fields($this->view->result);
-    
+
     // Render each group separately and concatenate.  Plugins may override this
     // method if they wish some other way of handling grouping.
     $output = '';
@@ -180,7 +180,7 @@ class gmap_plugin_style_gmap extends views_plugin_style {
           $lon = (float)$row->{$lon_field};
         }
         else if ($this->options['datasource'] == 'geofield') {
-          $geofield_name = 'field_' . $this->options['geofield'];
+          $geofield_name = 'field_' . $this->options['markerfield'];
           $geofield = isset($row->{$geofield_name}[0]['raw']) ? $row->{$geofield_name}[0]['raw'] : NULL;
           if ($geofield) {
             $lat = (float)$geofield[$lat_field];
@@ -243,9 +243,9 @@ class gmap_plugin_style_gmap extends views_plugin_style {
           if ($this->options['tooltipenabled'] && !empty($this->rendered_fields[$row_index][$this->options['tooltipfield']])) {
             $tooltip = $this->rendered_fields[$row_index][$this->options['tooltipfield']];
           }
-          
+
           $bubbletext = NULL;
-          if ($this->options['bubbletextenabled'] && !empty($bubbletext_field_alias) && !empty($row->{$bubbletext_field_alias})) {
+          if ($this->options['bubbletextenabled'] && !empty($this->options['bubbletextfield']) && !empty($this->rendered_fields[$row_index][$this->options['bubbletextfield']])) {
             $bubbletext = $this->rendered_fields[$row_index][$this->options['bubbletextfield']];
           }
           elseif ($this->options['bubbletextenabled'] && $bubbletext_field_obj->real_field == 'nothing'){
@@ -533,7 +533,7 @@ class gmap_plugin_style_gmap extends views_plugin_style {
       '#process' => array('ctools_dependent_process'),
       '#dependency' => array('edit-style-options-bubbletextenabled' => array(TRUE)),
     );
-    
+
   }
 
   /**
