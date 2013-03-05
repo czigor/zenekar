@@ -1193,10 +1193,10 @@ system/ajax/*';
     'extra_fields' => array(
       'form' => array(
         'filename' => array(
-          'weight' => '-10',
+          'weight' => '1',
         ),
         'preview' => array(
-          'weight' => '-5',
+          'weight' => '2',
         ),
         'language' => array(
           'weight' => '5',
@@ -1227,10 +1227,10 @@ system/ajax/*';
     'extra_fields' => array(
       'form' => array(
         'filename' => array(
-          'weight' => '-10',
+          'weight' => '1',
         ),
         'preview' => array(
-          'weight' => '-5',
+          'weight' => '2',
         ),
         'language' => array(
           'weight' => '5',
@@ -1266,10 +1266,10 @@ system/ajax/*';
     'extra_fields' => array(
       'form' => array(
         'filename' => array(
-          'weight' => '0',
+          'weight' => '1',
         ),
         'preview' => array(
-          'weight' => '1',
+          'weight' => '2',
         ),
         'language' => array(
           'weight' => '6',
@@ -1282,7 +1282,7 @@ system/ajax/*';
             'visible' => TRUE,
           ),
           'full' => array(
-            'weight' => '0',
+            'weight' => '1',
             'visible' => TRUE,
           ),
         ),
@@ -1316,10 +1316,10 @@ system/ajax/*';
     'extra_fields' => array(
       'form' => array(
         'filename' => array(
-          'weight' => '-10',
+          'weight' => '1',
         ),
         'preview' => array(
-          'weight' => '-5',
+          'weight' => '2',
         ),
         'language' => array(
           'weight' => '5',
@@ -1328,15 +1328,19 @@ system/ajax/*';
       'display' => array(
         'file' => array(
           'default' => array(
-            'weight' => '0',
+            'weight' => '1',
             'visible' => TRUE,
           ),
           'full' => array(
-            'weight' => '0',
+            'weight' => '1',
             'visible' => TRUE,
           ),
           'teaser' => array(
             'weight' => '0',
+            'visible' => TRUE,
+          ),
+          'preview' => array(
+            'weight' => '1',
             'visible' => TRUE,
           ),
         ),

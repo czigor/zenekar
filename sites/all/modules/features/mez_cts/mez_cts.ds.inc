@@ -119,13 +119,15 @@ function mez_cts_ds_layout_settings_info() {
   $ds_layout->settings = array(
     'regions' => array(
       'ds_content' => array(
-        0 => 'file',
-        1 => 'description_field',
-        2 => 'field_day_date',
-        3 => 'field_tags',
+        0 => 'title_field',
+        1 => 'file',
+        2 => 'description_field',
+        3 => 'field_day_date',
+        4 => 'field_tags',
       ),
     ),
     'fields' => array(
+      'title_field' => 'ds_content',
       'file' => 'ds_content',
       'description_field' => 'ds_content',
       'field_day_date' => 'ds_content',
