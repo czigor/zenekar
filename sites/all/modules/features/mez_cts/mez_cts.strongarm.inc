@@ -1511,7 +1511,7 @@ system/ajax/*';
           'weight' => '-5',
         ),
         'path' => array(
-          'weight' => '30',
+          'weight' => '1',
         ),
       ),
       'display' => array(),

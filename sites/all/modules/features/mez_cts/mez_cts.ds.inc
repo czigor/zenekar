@@ -248,6 +248,7 @@ function mez_cts_ds_layout_settings_info() {
         2 => 'body',
         3 => 'field_media',
         4 => 'comments',
+        5 => 'field_tags',
       ),
     ),
     'fields' => array(
@@ -256,6 +257,7 @@ function mez_cts_ds_layout_settings_info() {
       'body' => 'ds_content',
       'field_media' => 'ds_content',
       'comments' => 'ds_content',
+      'field_tags' => 'ds_content',
     ),
     'classes' => array(),
     'wrappers' => array(
