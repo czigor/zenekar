@@ -685,7 +685,9 @@ function mez_permissions_user_default_permissions() {
   // Exported permission: submit latitude/longitude.
   $permissions['submit latitude/longitude'] = array(
     'name' => 'submit latitude/longitude',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'editor',
+    ),
     'module' => 'location',
   );
 
@@ -827,7 +829,9 @@ function mez_permissions_user_default_permissions() {
   // Exported permission: view location directory.
   $permissions['view location directory'] = array(
     'name' => 'view location directory',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'editor',
+    ),
     'module' => 'location',
   );
 
@@ -854,7 +858,9 @@ function mez_permissions_user_default_permissions() {
   // Exported permission: view node location table.
   $permissions['view node location table'] = array(
     'name' => 'view node location table',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'editor',
+    ),
     'module' => 'location',
   );
 
@@ -1016,7 +1022,9 @@ function mez_permissions_user_default_permissions() {
   // Exported permission: view user location table.
   $permissions['view user location table'] = array(
     'name' => 'view user location table',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'editor',
+    ),
     'module' => 'location',
   );
 
