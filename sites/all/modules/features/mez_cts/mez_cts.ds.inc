@@ -81,6 +81,9 @@ function mez_cts_ds_field_settings_info() {
       'weight' => '1',
       'label' => 'hidden',
       'format' => 'ds_post_date_only_day',
+      'formatter_settings' => array(
+        'ft' => array(),
+      ),
     ),
   );
   $export['node|news|teaser'] = $ds_fieldsetting;

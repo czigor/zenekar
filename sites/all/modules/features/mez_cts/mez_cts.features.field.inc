@@ -4394,7 +4394,7 @@ function mez_cts_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
       ),
       'ds_extras_field_template' => '',
