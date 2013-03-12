@@ -155,16 +155,24 @@ body {
  */
 
 a:link {
+  color: #000;
+  text-decoration: underline;
 }
 
 a:visited {
+  color: #000;
+  text-decoration: underline;
 }
 
 a:hover,
 a:focus {
+  color: #000;
+  text-decoration: none;
 }
 
 a:active {
+  color: #000;
+  text-decoration: underline;
 }
 
 /*
@@ -211,9 +219,7 @@ h1 {
 }
 
 h2 {
-  @include adjust-font-size-to( $h2-font-size );
-  @include leader(1, $h2-font-size);
-  @include trailer(1, $h2-font-size);
+//  font-weight: normal;
 }
 
 h3 {

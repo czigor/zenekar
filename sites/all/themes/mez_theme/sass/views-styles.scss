@@ -43,3 +43,13 @@
     }
   }
 }
+
+.view-news {
+  .views-row {
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+  }
+  .views-row:not(.views-row-last) {
+    border-bottom: 1px solid grey;
+  }
+}

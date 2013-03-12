@@ -7,6 +7,13 @@
 
 @import "base";
 
+@mixin title-field {
+  font-size: 1.5em;
+}
+
+@mixin field-name-post-date {
+  font-size: 0.7em;
+}
 
 .node { /* Node wrapper */
 
@@ -29,6 +36,21 @@
   ul.links { /* Node links. See also the ul.links declaration in the pages.css. */
   }
 
+  &.node-teaser, &.view-mode-full {
+    .field-name-title-field {
+      @include title-field;
+    }
+    .field-name-post-date {
+      @include field-name-post-date; 
+    }
+  }
+  &.node-teaser {
+    .field-name-node-link {
+      float: right;
+      font-size: 0.7em;
+    }
+  }
+  
 }
 
 .node-promoted { /* A node that has been promoted to the front page */
@@ -60,5 +82,12 @@
 
   p.unpublished { /* The word "Unpublished" displayed underneath the content. */
     @include unpublished-div;
+  }
+}
+
+.file {
+  .field-name-title-field {
+    @include title-field;
+    margin-bottom: 10px;
   }
 }

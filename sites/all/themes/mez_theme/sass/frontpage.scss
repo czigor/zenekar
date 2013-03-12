@@ -1,0 +1,28 @@
+/**
+ * @file
+ * Frontpage Styling
+ */
+
+#news {
+  float: left;
+  h2 {
+    font-style: italic;
+    text-align: center;
+  }
+  .panel-separator, .panel-pane {
+    float: left;
+    font-size: 0.95em;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  .pane-news {
+    max-width: 360px;
+    background-color: #bbb;
+    padding: 10px;
+    border-radius: 20px;
+    
+  }
+  .pane-orchestra-video-panel-pane-1 {
+//    float: right;
+  }
+}
