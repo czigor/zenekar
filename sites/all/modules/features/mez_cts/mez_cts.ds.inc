@@ -72,15 +72,15 @@ function mez_cts_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'news';
   $ds_fieldsetting->view_mode = 'teaser';
   $ds_fieldsetting->settings = array(
-    'node_link' => array(
-      'weight' => '3',
-      'label' => 'hidden',
-      'format' => 'default',
-    ),
     'post_date' => array(
       'weight' => '1',
       'label' => 'hidden',
       'format' => 'ds_post_date_only_day',
+      'formatter_settings' => array(
+        'ft' => array(),
+      ),
+    ),
+    'body' => array(
       'formatter_settings' => array(
         'ft' => array(),
       ),
@@ -285,14 +285,12 @@ function mez_cts_ds_layout_settings_info() {
         0 => 'title_field',
         1 => 'post_date',
         2 => 'body',
-        3 => 'node_link',
       ),
     ),
     'fields' => array(
       'title_field' => 'ds_content',
       'post_date' => 'ds_content',
       'body' => 'ds_content',
-      'node_link' => 'ds_content',
     ),
     'classes' => array(),
     'wrappers' => array(

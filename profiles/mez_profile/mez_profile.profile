@@ -98,14 +98,14 @@ function mez_profile_install_import_translation(&$install_state) {
   $install_locale = $install_state['parameters']['locale'];
   locale_add_language($install_locale, NULL, NULL, LANGUAGE_LTR, '', '', TRUE, TRUE);
   module_enable(array('l10n_update'));
-  
+
   db_update('languages')
     ->fields(array(
       'prefix' => 'en',
     ))
     ->condition('language', 'en')
     ->execute();
-  
+
   // Build batch with l10n_update module.
   $history = l10n_update_get_history();
   module_load_include('check.inc', 'l10n_update');
@@ -143,6 +143,7 @@ function mez_profile_install_enable_features(&$install_state) {
     'mez_frontpage',
     'mez_users',
     'mez_contact',
+    'mez_existing_pages',
   );
   features_install_modules($modules);
   features_revert();
@@ -153,7 +154,7 @@ function mez_profile_install_enable_features(&$install_state) {
 
 /**
  * Installation step callback.
- * 
+ *
  * Creates the Instruments taxonomy terms.
  *
  * @param $install_state
