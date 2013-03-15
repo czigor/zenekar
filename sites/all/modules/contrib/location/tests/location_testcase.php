@@ -7,18 +7,29 @@
 
 class LocationTestCase extends DrupalWebTestCase {
 
+//
+//  function setUp() {
+//    parent::setUp('location', 'devel');
+//    module_enable(array('location_node'));
+//    $web_admin = $this->drupalCreateUser(array_keys(module_invoke_all('permission')));
+//    $this->drupalLogin($web_admin);
+//  }
+
   /**
    * Custom assertion -- will check each element of an array against a reference value.
    */
-  function assertArrayEpsilon($result, $expected, $epsilon, $message = '', $group = 'Other') {
+  protected function assertArrayEpsilon($result, $expected, $epsilon, $message = '', $group = 'Other') {
     foreach ($expected as $k => $test) {
       $lower = $test - $epsilon;
       $upper = $test + $epsilon;
       if ($result[$k] < $lower || $result[$k] > $upper) {
-        $this->_assert('fail', $message ? $message : t('Value deviates by @amt, which is more than @maxdev.', array('@amt' => abs($test - $result[$k]), '@maxdev' => $epsilon)), $group);
+        $this->assert('fail', $message ? $message : t('Value deviates by @amt, which is more than @maxdev.', array(
+          '@amt' => abs($test - $result[$k]),
+          '@maxdev' => $epsilon
+        )), $group);
       }
       else {
-        $this->_assert('pass', $message ? $message : t('Value within expected margin.'), $group);
+        $this->assert('pass', $message ? $message : t('Value within expected margin.'), $group);
       }
     }
   }
@@ -27,7 +38,7 @@ class LocationTestCase extends DrupalWebTestCase {
    * Get a set of location field defaults.
    * This will also enable collection on all parts of the location field.
    */
-  function getLocationFieldDefaults() {
+  protected function getLocationFieldDefaults() {
     // Get the (settable) defaults.
     $defaults = array();
     $d = location_invoke_locationapi($location, 'defaults');
@@ -48,7 +59,7 @@ class LocationTestCase extends DrupalWebTestCase {
   /**
    * Flatten a post settings array because drupalPost isn't smart enough to.
    */
-  function flattenPostData(&$edit) {
+  protected function flattenPostData(&$edit) {
     do {
       $edit_flattened = TRUE;
       foreach ($edit as $k => $v) {
@@ -63,11 +74,10 @@ class LocationTestCase extends DrupalWebTestCase {
     } while (!$edit_flattened);
   }
 
-  function addLocationContentType(&$settings, $add = array()) {
+  protected function addLocationContentType(&$settings, $add = array()) {
     // find a non-existent random type name.
-    do {
-      $name = strtolower($this->randomName(3, 'type_'));
-    } while (node_get_types('type', $name));
+
+    $name = strtolower($this->randomName(8));
 
     // Get the (settable) defaults.
     $defaults = $this->getLocationFieldDefaults();
@@ -91,35 +101,35 @@ class LocationTestCase extends DrupalWebTestCase {
     $add = array('location_settings' => $add);
     $this->flattenPostData($add);
     $settings = array_merge($settings, $add);
-    $this->drupalPost('admin/content/types/add', $settings, 'Save content type');
+    $this->drupalPost('admin/structure/types/add', $settings, 'Save content type');
     $this->refreshVariables();
-    $settings = variable_get('location_settings_node_'. $name, array());
+    $settings = variable_get('location_settings_node_' . $name, array());
     return $name;
   }
 
   /**
    * Delete a node.
    */
-  function deleteNode($nid) {
+  protected function deleteNode($nid) {
     // Implemention taken from node_delete, with some assumptions regarding
     // function_exists removed.
-
-    $node = node_load($nid);
-    db_query('DELETE FROM {node} WHERE nid = %d', $node->nid);
-    db_query('DELETE FROM {node_revisions} WHERE nid = %d', $node->nid);
-
-    // Call the node-specific callback (if any):
-    node_invoke($node, 'delete');
-    node_invoke_nodeapi($node, 'delete');
-
-    // Clear the page and block caches.
-    cache_clear_all();
+    node_delete($nid);
+//    $node = node_load($nid);
+//    db_query('DELETE FROM {node} WHERE nid = %d', $node->nid);
+//    db_query('DELETE FROM {node_revisions} WHERE nid = %d', $node->nid);
+//
+//    // Call the node-specific callback (if any):
+//    node_invoke($node, 'delete');
+//    node_invoke_nodeapi($node, 'delete');
+//
+//    // Clear the page and block caches.
+//    cache_clear_all();
   }
 
   /**
    * Order locations in a node by LID for testing repeatability purposes.
    */
-  function reorderLocations(&$node, $field = 'locations') {
+  protected function reorderLocations(&$node, $field = 'locations') {
     $locations = array();
     foreach ($node->{$field} as $location) {
       if ($location['lid']) {
@@ -146,11 +156,11 @@ class LocationTestCase extends DrupalWebTestCase {
    *   node properties, for example 'body' => 'Hello, world!'.
    * @return object Created node object.
    */
-  function drupalCreateNodeViaForm($values = array()) {
+  protected function drupalCreateNodeViaForm($values = array()) {
     $defaults = array(
       'type' => 'page',
       'title' => $this->randomName(8),
-     );
+    );
 
     $edit = ($values + $defaults);
 
@@ -164,10 +174,13 @@ class LocationTestCase extends DrupalWebTestCase {
     $type = $edit['type'];
     unset($edit['type']); // Only used in URL.
     $this->flattenPostData($edit); // Added by me.
-    $this->drupalPost('node/add/'. str_replace('_', '-', $type), $edit, t('Save'));
+    $this->drupalPost('node/add/' . str_replace('_', '-', $type), $edit, t('Save'));
 
     $node = node_load(array('title' => $edit['title']));
-    $this->assertRaw(t('@type %title has been created.', array('@type' => node_get_types('name', $node), '%title' => $edit['title'])), t('Node created successfully.'));
+    $this->assertRaw(t('@type %title has been created.', array(
+      '@type' => node_get_types('name', $node),
+      '%title' => $edit['title']
+    )), t('Node created successfully.'));
 
     return $node;
   }

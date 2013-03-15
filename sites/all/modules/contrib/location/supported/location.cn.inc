@@ -38,9 +38,38 @@ function location_province_list_cn() {
     '91' => "Xianggang",
     '92' => "Aomen",
     '97' => "Chongqing",
-    '98' => "Gaoxiong",
-    '99' => "Taibei",
   );
+}
+
+function location_map_link_cn_providers() {
+  return array(
+    'google' => array(
+      'name' => 'Google Maps',
+      'url' => 'http://maps.google.com.hk',
+      'tos' => 'http://www.google.com.hk/help/terms_maps.html',
+    ),
+  );
+}
+
+function location_map_link_cn_default_providers() {
+  return array('google');
+}
+
+function location_map_link_cn_google($location = array()) {
+  $query_params = array();
+
+  foreach (array('street', 'city', 'postal_code', 'country') as $field) {
+    if (isset($location[$field])) {
+      $query_params[] = $location[$field];
+    }
+  }
+
+  if (count($query_params)) {
+    return ('http://maps.google.com.hk?q='. urlencode(implode(', ', $query_params)));
+  }
+  else {
+    return NULL;
+  }
 }
 
 /**
