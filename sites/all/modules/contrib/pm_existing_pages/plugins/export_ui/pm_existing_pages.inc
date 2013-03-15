@@ -158,15 +158,11 @@ function pm_existing_pages_determine_path($lf, $path) {
   $parts = explode('/', $path);
   foreach ($lf as $position => $function) {
     if ($parts[$position] == '%') {
-      // Menu tail.
-      if (is_array($function) && key($function) == 'menu_tail_load') {
-        $parts[$position] = '%menu_tail';
-      }
-      elseif (is_array($function) && key($function) == 'views_arg_load') {
-        $parts[$position] = '%views_arg';
+      if (is_array($function)) {
+        $function = key($function);
       }
       // Normal load objects.
-      elseif (is_string($function) && substr($function, -5) == '_load') {
+      if (is_string($function) && substr($function, -5) == '_load') {
         $parts[$position] = '%' . str_replace('_load', '', $function);
       }
     }

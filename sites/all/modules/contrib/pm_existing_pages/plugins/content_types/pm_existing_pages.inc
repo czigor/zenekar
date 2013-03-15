@@ -14,6 +14,7 @@ $plugin = array(
   'single' => TRUE,
   'defaults' => array(
     'task_id',
+    'pane_title_from_menu',
   ),
   'category' => t('Existing pages'),
   'all contexts' => TRUE,
@@ -45,9 +46,14 @@ function pm_existing_pages_pm_existing_pages_content_type_render($subtype, $conf
   }
   $content = call_user_func_array($function, $menu_args);
 
+  $title = check_plain($task->label);
+  if (isset($conf['pane_title_from_menu']) && !empty($conf['pane_title_from_menu']) && isset($pm_args['t']) && !empty($pm_args['t'])) {
+    $title = check_plain($pm_args['t']);
+  }
+
   $block = new stdClass();
   $block->module = 'pm_existing_pages';
-  $block->title = check_plain($task->label);
+  $block->title = $title;
   $block->content = $content;
 
   return $block;
@@ -72,6 +78,13 @@ function pm_existing_pages_pm_existing_pages_content_type_edit_form($form, &$for
     '#default_value' => isset($form_state['conf']['task_id']) ? $form_state['conf']['task_id'] : '',
   );
 
+  $form['pane_title_from_menu'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Use the menu title for the pane title'),
+    '#description' => t('This is handy in case you have multiple different menu callbacks in one existing page configuration.'),
+    '#default_value' => isset($form_state['conf']['pane_title_from_menu']) ? $form_state['conf']['pane_title_from_menu'] : '',
+  );
+
   return $form;
 }
 
@@ -80,6 +93,7 @@ function pm_existing_pages_pm_existing_pages_content_type_edit_form($form, &$for
  */
 function pm_existing_pages_pm_existing_pages_content_type_edit_form_submit($form, &$form_state) {
   $form_state['conf']['task_id'] = $form_state['values']['task_id'];
+  $form_state['conf']['pane_title_from_menu'] = $form_state['values']['pane_title_from_menu'];
 }
 
 /**

@@ -71,6 +71,7 @@ function pm_existing_pages_pm_existing_pages_menu_alter(&$items, $task) {
         'f' => isset($items[$path]['file']) ? $items[$path]['file'] : '',
         'fp' => isset($items[$path]['file path']) ? $items[$path]['file path'] : '',
         'm' => isset($items[$path]['module']) ? $items[$path]['module'] : '',
+        't' => isset($items[$path]['title']) ? $items[$path]['title'] : '',
       );
       $page_arguments = isset($items[$path]['page arguments']) ? $items[$path]['page arguments'] : array();
       $page_arguments[] = $pm_args;
