@@ -13,6 +13,7 @@
 
 @mixin field-name-post-date {
   font-size: 0.7em;
+  font-style: italic;
 }
 
 .node { /* Node wrapper */
@@ -89,5 +90,8 @@
   .field-name-title-field {
     @include title-field;
     margin-bottom: 10px;
+  }
+  .field-name-field-day-date {
+    @include field-name-post-date;
   }
 }

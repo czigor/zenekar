@@ -114,6 +114,32 @@ function mez_cts_ds_layout_settings_info() {
 
   $ds_layout = new stdClass();
   $ds_layout->api_version = 1;
+  $ds_layout->id = 'file|video|default';
+  $ds_layout->entity_type = 'file';
+  $ds_layout->bundle = 'video';
+  $ds_layout->view_mode = 'default';
+  $ds_layout->layout = 'ds_1col';
+  $ds_layout->settings = array(
+    'regions' => array(
+      'ds_content' => array(
+        0 => 'title_field',
+      ),
+    ),
+    'fields' => array(
+      'title_field' => 'ds_content',
+    ),
+    'classes' => array(),
+    'wrappers' => array(
+      'ds_content' => 'div',
+    ),
+    'layout_wrapper' => 'div',
+    'layout_attributes' => '',
+    'layout_attributes_merge' => 1,
+  );
+  $export['file|video|default'] = $ds_layout;
+
+  $ds_layout = new stdClass();
+  $ds_layout->api_version = 1;
   $ds_layout->id = 'file|video|full';
   $ds_layout->entity_type = 'file';
   $ds_layout->bundle = 'video';
@@ -156,10 +182,14 @@ function mez_cts_ds_layout_settings_info() {
   $ds_layout->settings = array(
     'regions' => array(
       'ds_content' => array(
-        0 => 'file',
+        0 => 'title_field',
+        1 => 'field_day_date',
+        2 => 'file',
       ),
     ),
     'fields' => array(
+      'title_field' => 'ds_content',
+      'field_day_date' => 'ds_content',
       'file' => 'ds_content',
     ),
     'classes' => array(),
@@ -437,6 +467,24 @@ function mez_cts_ds_layout_settings_info() {
     'layout_attributes_merge' => 0,
   );
   $export['node|person|full'] = $ds_layout;
+
+  return $export;
+}
+
+/**
+ * Implements hook_ds_view_modes_info().
+ */
+function mez_cts_ds_view_modes_info() {
+  $export = array();
+
+  $ds_view_mode = new stdClass();
+  $ds_view_mode->api_version = 1;
+  $ds_view_mode->view_mode = 'short_teaser';
+  $ds_view_mode->label = 'Short teaser';
+  $ds_view_mode->entities = array(
+    'file' => 'file',
+  );
+  $export['short_teaser'] = $ds_view_mode;
 
   return $export;
 }

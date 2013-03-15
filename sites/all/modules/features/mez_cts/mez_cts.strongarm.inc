@@ -1312,6 +1312,9 @@ system/ajax/*';
       'token' => array(
         'custom_settings' => FALSE,
       ),
+      'short_teaser' => array(
+        'custom_settings' => TRUE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
@@ -1328,20 +1331,24 @@ system/ajax/*';
       'display' => array(
         'file' => array(
           'default' => array(
-            'weight' => '1',
-            'visible' => TRUE,
+            'weight' => '4',
+            'visible' => FALSE,
           ),
           'full' => array(
             'weight' => '1',
             'visible' => TRUE,
           ),
           'teaser' => array(
-            'weight' => '0',
+            'weight' => '2',
             'visible' => TRUE,
           ),
           'preview' => array(
             'weight' => '1',
             'visible' => TRUE,
+          ),
+          'short_teaser' => array(
+            'weight' => '4',
+            'visible' => FALSE,
           ),
         ),
       ),

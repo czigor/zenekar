@@ -66,7 +66,39 @@ admin/structure/pages/existing-pages/list/%ctools_export_ui/disable
 admin/structure/pages/existing-pages/list/%ctools_export_ui/edit
 admin/structure/pages/existing-pages/list/%ctools_export_ui/enable
 admin/structure/pages/existing-pages/list/%ctools_export_ui/export
-admin/structure/pages/existing-pages/list/%ctools_export_ui/revert';
+admin/structure/pages/existing-pages/list/%ctools_export_ui/revert
+admin/structure/file-types
+admin/structure/file-types/manage/%file_type
+admin/structure/file-types/manage/%file_type/edit
+admin/structure/file-types/manage/%file_type/fields
+admin/structure/file-types/manage/%file_type/fields/%field_ui_menu
+admin/structure/file-types/manage/%file_type/fields/%field_ui_menu/delete
+admin/structure/file-types/manage/%file_type/fields/%field_ui_menu/edit
+admin/structure/file-types/manage/%file_type/fields/%field_ui_menu/translate
+admin/structure/file-types/manage/%file_type/fields/%field_ui_menu/field-settings
+admin/structure/file-types/manage/%file_type/fields/%field_ui_menu/translate/%i18n_language
+admin/structure/file-types/manage/%file_type/fields/%field_ui_menu/widget-type
+file/%file/delete
+file/%file/devel
+file/%file/devel/load
+file/%file/devel/render
+file/%file/devel/token
+file/%file/edit
+admin/structure/ds/view_modes
+admin/structure/ds/view_modes/manage
+admin/structure/ds/view_modes/revert
+admin/structure/ds/view_modes/delete
+admin/structure/ds
+admin/structure/ds/%ctools_js/add_field/%
+admin/structure/ds/classes
+admin/structure/ds/fields
+admin/structure/ds/fields/delete
+admin/structure/ds/fields/manage
+admin/structure/ds/fields/manage_block
+admin/structure/ds/fields/manage_ctools
+admin/structure/ds/fields/manage_ctools/content
+devel/php
+devel/phpinfo';
   $export['existing_page'] = $pm_existing_page;
 
   return $export;

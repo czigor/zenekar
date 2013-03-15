@@ -3,26 +3,40 @@
  * Frontpage Styling
  */
 
-#news {
+@mixin front-pane {
   float: left;
+  font-size: 0.9em;
+  margin-left: 10px;
+  margin-right: 10px;
   h2 {
-    font-style: italic;
-    text-align: center;
+    font-size: 0.75em;
+    font-weight: normal;
+    text-align: left;
+    text-transform: uppercase;
   }
-  .panel-separator, .panel-pane {
+}
+
+body.front {
+  #news {
     float: left;
-    font-size: 0.95em;
-    margin-left: 10px;
-    margin-right: 10px;
+    .pane-news {
+      max-width: 360px;
+      background-color: #bbb;
+      padding: 10px;
+      border-radius: 20px;
+      .field-name-body {
+      }
+    }
+    .panel-separator, .panel-pane {
+      @include front-pane;
+    }
   }
-  .pane-news {
-    max-width: 360px;
-    background-color: #bbb;
-    padding: 10px;
-    border-radius: 20px;
-    
-  }
-  .pane-orchestra-video-panel-pane-1 {
-//    float: right;
+  #main-1 {
+    .pane-videos-panel-pane-1 {
+      max-width: 300px;
+    }
+    .panel-separator, .panel-pane {
+      @include front-pane;
+    }
   }
 }
