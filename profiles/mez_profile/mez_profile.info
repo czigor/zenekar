@@ -58,6 +58,7 @@ dependencies[] = page_manager
 dependencies[] = views_content
 dependencies[] = ds_extras
 dependencies[] = custom_search_blocks
+dependencies[] = mez_files
 
 ; Dependencies of own features, to get around http://drupal.org/node/677200
 dependencies[] = date_popup

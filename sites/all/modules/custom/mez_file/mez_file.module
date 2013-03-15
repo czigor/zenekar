@@ -1,0 +1,17 @@
+<?php
+
+/**
+ * @file
+ * File related stuff
+ *
+ */
+
+/**
+ * Set file timestamp.
+ */
+function mez_file_timestamp($fid, $timestamp) {
+  db_update('file_managed')
+    ->condition('fid', $fid)
+    ->fields(array('timestamp' => $timestamp))
+    ->execute();
+}
