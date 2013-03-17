@@ -26,5 +26,5 @@ function mez_frontpage_ctools_plugin_api() {
  * Implements hook_views_api().
  */
 function mez_frontpage_views_api() {
-  return array("version" => "3.0");
+  return array("api" => "3.0");
 }
