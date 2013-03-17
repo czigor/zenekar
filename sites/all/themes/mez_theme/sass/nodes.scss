@@ -95,3 +95,9 @@
     @include field-name-post-date;
   }
 }
+
+.field-name-field-media .field-item {
+  display: inline-block;
+  float:left;
+  margin-right: 10px;
+}

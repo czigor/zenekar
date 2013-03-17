@@ -115,3 +115,10 @@
   font-size: 0.7em;
   font-style: italic;
 }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/nodes\.scss}line{font-family:\0000399}}
+.field-name-field-media .field-item {
+  display: inline-block;
+  float: left;
+  margin-right: 10px;
+}
