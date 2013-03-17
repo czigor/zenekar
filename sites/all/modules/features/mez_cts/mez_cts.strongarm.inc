@@ -1262,6 +1262,12 @@ system/ajax/*';
       'token' => array(
         'custom_settings' => FALSE,
       ),
+      'news' => array(
+        'custom_settings' => TRUE,
+      ),
+      'short_teaser' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
@@ -1282,7 +1288,11 @@ system/ajax/*';
             'visible' => TRUE,
           ),
           'full' => array(
-            'weight' => '1',
+            'weight' => '0',
+            'visible' => TRUE,
+          ),
+          'news' => array(
+            'weight' => '0',
             'visible' => TRUE,
           ),
         ),
@@ -1335,7 +1345,7 @@ system/ajax/*';
             'visible' => FALSE,
           ),
           'full' => array(
-            'weight' => '1',
+            'weight' => '2',
             'visible' => TRUE,
           ),
           'teaser' => array(

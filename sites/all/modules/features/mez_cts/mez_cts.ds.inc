@@ -52,11 +52,6 @@ function mez_cts_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'news';
   $ds_fieldsetting->view_mode = 'full';
   $ds_fieldsetting->settings = array(
-    'comments' => array(
-      'weight' => '4',
-      'label' => 'hidden',
-      'format' => 'default',
-    ),
     'post_date' => array(
       'weight' => '1',
       'label' => 'hidden',
@@ -114,6 +109,32 @@ function mez_cts_ds_layout_settings_info() {
 
   $ds_layout = new stdClass();
   $ds_layout->api_version = 1;
+  $ds_layout->id = 'file|image|news';
+  $ds_layout->entity_type = 'file';
+  $ds_layout->bundle = 'image';
+  $ds_layout->view_mode = 'news';
+  $ds_layout->layout = 'ds_1col';
+  $ds_layout->settings = array(
+    'regions' => array(
+      'ds_content' => array(
+        0 => 'file',
+      ),
+    ),
+    'fields' => array(
+      'file' => 'ds_content',
+    ),
+    'classes' => array(),
+    'wrappers' => array(
+      'ds_content' => 'div',
+    ),
+    'layout_wrapper' => 'div',
+    'layout_attributes' => '',
+    'layout_attributes_merge' => 1,
+  );
+  $export['file|image|news'] = $ds_layout;
+
+  $ds_layout = new stdClass();
+  $ds_layout->api_version = 1;
   $ds_layout->id = 'file|video|default';
   $ds_layout->entity_type = 'file';
   $ds_layout->bundle = 'video';
@@ -149,17 +170,17 @@ function mez_cts_ds_layout_settings_info() {
     'regions' => array(
       'ds_content' => array(
         0 => 'title_field',
-        1 => 'file',
-        2 => 'description_field',
-        3 => 'field_day_date',
+        1 => 'field_day_date',
+        2 => 'file',
+        3 => 'description_field',
         4 => 'field_tags',
       ),
     ),
     'fields' => array(
       'title_field' => 'ds_content',
+      'field_day_date' => 'ds_content',
       'file' => 'ds_content',
       'description_field' => 'ds_content',
-      'field_day_date' => 'ds_content',
       'field_tags' => 'ds_content',
     ),
     'classes' => array(),
@@ -280,8 +301,7 @@ function mez_cts_ds_layout_settings_info() {
         1 => 'post_date',
         2 => 'body',
         3 => 'field_media',
-        4 => 'comments',
-        5 => 'field_tags',
+        4 => 'field_tags',
       ),
     ),
     'fields' => array(
@@ -289,7 +309,6 @@ function mez_cts_ds_layout_settings_info() {
       'post_date' => 'ds_content',
       'body' => 'ds_content',
       'field_media' => 'ds_content',
-      'comments' => 'ds_content',
       'field_tags' => 'ds_content',
     ),
     'classes' => array(),
@@ -476,6 +495,15 @@ function mez_cts_ds_layout_settings_info() {
  */
 function mez_cts_ds_view_modes_info() {
   $export = array();
+
+  $ds_view_mode = new stdClass();
+  $ds_view_mode->api_version = 1;
+  $ds_view_mode->view_mode = 'news';
+  $ds_view_mode->label = 'News';
+  $ds_view_mode->entities = array(
+    'file' => 'file',
+  );
+  $export['news'] = $ds_view_mode;
 
   $ds_view_mode = new stdClass();
   $ds_view_mode->api_version = 1;

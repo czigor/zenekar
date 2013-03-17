@@ -28,8 +28,8 @@ function mez_cts_user_default_permissions() {
   $permissions['create field_active'] = array(
     'name' => 'create field_active',
     'roles' => array(
-      0 => 'editor',
-      1 => 'site admin',
+      'editor' => 'editor',
+      'site admin' => 'site admin',
     ),
     'module' => 'field_permissions',
   );
@@ -38,8 +38,8 @@ function mez_cts_user_default_permissions() {
   $permissions['create field_email'] = array(
     'name' => 'create field_email',
     'roles' => array(
-      0 => 'editor',
-      1 => 'site admin',
+      'editor' => 'editor',
+      'site admin' => 'site admin',
     ),
     'module' => 'field_permissions',
   );
@@ -48,8 +48,8 @@ function mez_cts_user_default_permissions() {
   $permissions['create field_email_list'] = array(
     'name' => 'create field_email_list',
     'roles' => array(
-      0 => 'editor',
-      1 => 'site admin',
+      'editor' => 'editor',
+      'site admin' => 'site admin',
     ),
     'module' => 'field_permissions',
   );
@@ -58,8 +58,8 @@ function mez_cts_user_default_permissions() {
   $permissions['create field_member'] = array(
     'name' => 'create field_member',
     'roles' => array(
-      0 => 'editor',
-      1 => 'site admin',
+      'editor' => 'editor',
+      'site admin' => 'site admin',
     ),
     'module' => 'field_permissions',
   );
@@ -68,8 +68,8 @@ function mez_cts_user_default_permissions() {
   $permissions['create field_membership_dates'] = array(
     'name' => 'create field_membership_dates',
     'roles' => array(
-      0 => 'editor',
-      1 => 'site admin',
+      'editor' => 'editor',
+      'site admin' => 'site admin',
     ),
     'module' => 'field_permissions',
   );
@@ -78,8 +78,8 @@ function mez_cts_user_default_permissions() {
   $permissions['create field_neptun_code'] = array(
     'name' => 'create field_neptun_code',
     'roles' => array(
-      0 => 'editor',
-      1 => 'site admin',
+      'editor' => 'editor',
+      'site admin' => 'site admin',
     ),
     'module' => 'field_permissions',
   );
@@ -88,8 +88,8 @@ function mez_cts_user_default_permissions() {
   $permissions['create field_occupation'] = array(
     'name' => 'create field_occupation',
     'roles' => array(
-      0 => 'editor',
-      1 => 'site admin',
+      'editor' => 'editor',
+      'site admin' => 'site admin',
     ),
     'module' => 'field_permissions',
   );
@@ -98,8 +98,8 @@ function mez_cts_user_default_permissions() {
   $permissions['create field_person_address'] = array(
     'name' => 'create field_person_address',
     'roles' => array(
-      0 => 'editor',
-      1 => 'site admin',
+      'editor' => 'editor',
+      'site admin' => 'site admin',
     ),
     'module' => 'field_permissions',
   );
@@ -108,8 +108,8 @@ function mez_cts_user_default_permissions() {
   $permissions['create field_person_body'] = array(
     'name' => 'create field_person_body',
     'roles' => array(
-      0 => 'editor',
-      1 => 'site admin',
+      'editor' => 'editor',
+      'site admin' => 'site admin',
     ),
     'module' => 'field_permissions',
   );
@@ -118,8 +118,8 @@ function mez_cts_user_default_permissions() {
   $permissions['create field_phone'] = array(
     'name' => 'create field_phone',
     'roles' => array(
-      0 => 'editor',
-      1 => 'site admin',
+      'editor' => 'editor',
+      'site admin' => 'site admin',
     ),
     'module' => 'field_permissions',
   );
@@ -128,8 +128,8 @@ function mez_cts_user_default_permissions() {
   $permissions['edit field_active'] = array(
     'name' => 'edit field_active',
     'roles' => array(
-      0 => 'editor',
-      1 => 'site admin',
+      'editor' => 'editor',
+      'site admin' => 'site admin',
     ),
     'module' => 'field_permissions',
   );
@@ -138,8 +138,8 @@ function mez_cts_user_default_permissions() {
   $permissions['edit field_email'] = array(
     'name' => 'edit field_email',
     'roles' => array(
-      0 => 'editor',
-      1 => 'site admin',
+      'editor' => 'editor',
+      'site admin' => 'site admin',
     ),
     'module' => 'field_permissions',
   );
@@ -148,8 +148,8 @@ function mez_cts_user_default_permissions() {
   $permissions['edit field_email_list'] = array(
     'name' => 'edit field_email_list',
     'roles' => array(
-      0 => 'editor',
-      1 => 'site admin',
+      'editor' => 'editor',
+      'site admin' => 'site admin',
     ),
     'module' => 'field_permissions',
   );
@@ -158,8 +158,8 @@ function mez_cts_user_default_permissions() {
   $permissions['edit field_member'] = array(
     'name' => 'edit field_member',
     'roles' => array(
-      0 => 'editor',
-      1 => 'site admin',
+      'editor' => 'editor',
+      'site admin' => 'site admin',
     ),
     'module' => 'field_permissions',
   );
@@ -168,8 +168,8 @@ function mez_cts_user_default_permissions() {
   $permissions['edit field_membership_dates'] = array(
     'name' => 'edit field_membership_dates',
     'roles' => array(
-      0 => 'editor',
-      1 => 'site admin',
+      'editor' => 'editor',
+      'site admin' => 'site admin',
     ),
     'module' => 'field_permissions',
   );
@@ -178,8 +178,8 @@ function mez_cts_user_default_permissions() {
   $permissions['edit field_neptun_code'] = array(
     'name' => 'edit field_neptun_code',
     'roles' => array(
-      0 => 'editor',
-      1 => 'site admin',
+      'editor' => 'editor',
+      'site admin' => 'site admin',
     ),
     'module' => 'field_permissions',
   );
@@ -188,8 +188,8 @@ function mez_cts_user_default_permissions() {
   $permissions['edit field_occupation'] = array(
     'name' => 'edit field_occupation',
     'roles' => array(
-      0 => 'editor',
-      1 => 'site admin',
+      'editor' => 'editor',
+      'site admin' => 'site admin',
     ),
     'module' => 'field_permissions',
   );
@@ -198,8 +198,8 @@ function mez_cts_user_default_permissions() {
   $permissions['edit field_person_address'] = array(
     'name' => 'edit field_person_address',
     'roles' => array(
-      0 => 'editor',
-      1 => 'site admin',
+      'editor' => 'editor',
+      'site admin' => 'site admin',
     ),
     'module' => 'field_permissions',
   );
@@ -208,8 +208,8 @@ function mez_cts_user_default_permissions() {
   $permissions['edit field_person_body'] = array(
     'name' => 'edit field_person_body',
     'roles' => array(
-      0 => 'editor',
-      1 => 'site admin',
+      'editor' => 'editor',
+      'site admin' => 'site admin',
     ),
     'module' => 'field_permissions',
   );
@@ -218,8 +218,8 @@ function mez_cts_user_default_permissions() {
   $permissions['edit field_phone'] = array(
     'name' => 'edit field_phone',
     'roles' => array(
-      0 => 'editor',
-      1 => 'site admin',
+      'editor' => 'editor',
+      'site admin' => 'site admin',
     ),
     'module' => 'field_permissions',
   );
@@ -235,7 +235,7 @@ function mez_cts_user_default_permissions() {
   $permissions['edit own field_email'] = array(
     'name' => 'edit own field_email',
     'roles' => array(
-      0 => 'member',
+      'member' => 'member',
     ),
     'module' => 'field_permissions',
   );
@@ -265,7 +265,7 @@ function mez_cts_user_default_permissions() {
   $permissions['edit own field_neptun_code'] = array(
     'name' => 'edit own field_neptun_code',
     'roles' => array(
-      0 => 'member',
+      'member' => 'member',
     ),
     'module' => 'field_permissions',
   );
@@ -274,7 +274,7 @@ function mez_cts_user_default_permissions() {
   $permissions['edit own field_occupation'] = array(
     'name' => 'edit own field_occupation',
     'roles' => array(
-      0 => 'member',
+      'member' => 'member',
     ),
     'module' => 'field_permissions',
   );
@@ -283,7 +283,7 @@ function mez_cts_user_default_permissions() {
   $permissions['edit own field_person_address'] = array(
     'name' => 'edit own field_person_address',
     'roles' => array(
-      0 => 'member',
+      'member' => 'member',
     ),
     'module' => 'field_permissions',
   );
@@ -299,7 +299,7 @@ function mez_cts_user_default_permissions() {
   $permissions['edit own field_phone'] = array(
     'name' => 'edit own field_phone',
     'roles' => array(
-      0 => 'member',
+      'member' => 'member',
     ),
     'module' => 'field_permissions',
   );
@@ -308,9 +308,9 @@ function mez_cts_user_default_permissions() {
   $permissions['view field_active'] = array(
     'name' => 'view field_active',
     'roles' => array(
-      0 => 'editor',
-      1 => 'member',
-      2 => 'site admin',
+      'editor' => 'editor',
+      'member' => 'member',
+      'site admin' => 'site admin',
     ),
     'module' => 'field_permissions',
   );
@@ -319,9 +319,9 @@ function mez_cts_user_default_permissions() {
   $permissions['view field_email'] = array(
     'name' => 'view field_email',
     'roles' => array(
-      0 => 'editor',
-      1 => 'member',
-      2 => 'site admin',
+      'editor' => 'editor',
+      'member' => 'member',
+      'site admin' => 'site admin',
     ),
     'module' => 'field_permissions',
   );
@@ -330,9 +330,9 @@ function mez_cts_user_default_permissions() {
   $permissions['view field_email_list'] = array(
     'name' => 'view field_email_list',
     'roles' => array(
-      0 => 'editor',
-      1 => 'member',
-      2 => 'site admin',
+      'editor' => 'editor',
+      'member' => 'member',
+      'site admin' => 'site admin',
     ),
     'module' => 'field_permissions',
   );
@@ -341,9 +341,9 @@ function mez_cts_user_default_permissions() {
   $permissions['view field_member'] = array(
     'name' => 'view field_member',
     'roles' => array(
-      0 => 'editor',
-      1 => 'member',
-      2 => 'site admin',
+      'editor' => 'editor',
+      'member' => 'member',
+      'site admin' => 'site admin',
     ),
     'module' => 'field_permissions',
   );
@@ -352,9 +352,9 @@ function mez_cts_user_default_permissions() {
   $permissions['view field_membership_dates'] = array(
     'name' => 'view field_membership_dates',
     'roles' => array(
-      0 => 'editor',
-      1 => 'member',
-      2 => 'site admin',
+      'editor' => 'editor',
+      'member' => 'member',
+      'site admin' => 'site admin',
     ),
     'module' => 'field_permissions',
   );
@@ -363,9 +363,9 @@ function mez_cts_user_default_permissions() {
   $permissions['view field_neptun_code'] = array(
     'name' => 'view field_neptun_code',
     'roles' => array(
-      0 => 'editor',
-      1 => 'member',
-      2 => 'site admin',
+      'editor' => 'editor',
+      'member' => 'member',
+      'site admin' => 'site admin',
     ),
     'module' => 'field_permissions',
   );
@@ -374,9 +374,9 @@ function mez_cts_user_default_permissions() {
   $permissions['view field_occupation'] = array(
     'name' => 'view field_occupation',
     'roles' => array(
-      0 => 'editor',
-      1 => 'member',
-      2 => 'site admin',
+      'editor' => 'editor',
+      'member' => 'member',
+      'site admin' => 'site admin',
     ),
     'module' => 'field_permissions',
   );
@@ -385,9 +385,9 @@ function mez_cts_user_default_permissions() {
   $permissions['view field_person_address'] = array(
     'name' => 'view field_person_address',
     'roles' => array(
-      0 => 'editor',
-      1 => 'member',
-      2 => 'site admin',
+      'editor' => 'editor',
+      'member' => 'member',
+      'site admin' => 'site admin',
     ),
     'module' => 'field_permissions',
   );
@@ -396,9 +396,9 @@ function mez_cts_user_default_permissions() {
   $permissions['view field_person_body'] = array(
     'name' => 'view field_person_body',
     'roles' => array(
-      0 => 'editor',
-      1 => 'member',
-      2 => 'site admin',
+      'editor' => 'editor',
+      'member' => 'member',
+      'site admin' => 'site admin',
     ),
     'module' => 'field_permissions',
   );
@@ -407,9 +407,9 @@ function mez_cts_user_default_permissions() {
   $permissions['view field_phone'] = array(
     'name' => 'view field_phone',
     'roles' => array(
-      0 => 'editor',
-      1 => 'member',
-      2 => 'site admin',
+      'editor' => 'editor',
+      'member' => 'member',
+      'site admin' => 'site admin',
     ),
     'module' => 'field_permissions',
   );

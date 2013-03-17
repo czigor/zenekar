@@ -1785,7 +1785,13 @@ function mez_cts_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '2',
+          'weight' => '1',
+        ),
+        'news' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '3',
         ),
         'preview' => array(
           'label' => 'above',
@@ -1893,7 +1899,13 @@ function mez_cts_field_default_fields() {
             'show_repeat_rule' => 'show',
           ),
           'type' => 'date_default',
-          'weight' => '3',
+          'weight' => '2',
+        ),
+        'news' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '1',
         ),
         'preview' => array(
           'label' => 'above',
@@ -2006,6 +2018,12 @@ function mez_cts_field_default_fields() {
           'type' => 'hidden',
           'weight' => '5',
         ),
+        'news' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '2',
+        ),
         'preview' => array(
           'label' => 'above',
           'settings' => array(),
@@ -2091,6 +2109,12 @@ function mez_cts_field_default_fields() {
           'type' => 'hidden',
           'weight' => '6',
         ),
+        'news' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '4',
+        ),
         'preview' => array(
           'label' => 'above',
           'settings' => array(),
@@ -2175,10 +2199,15 @@ function mez_cts_field_default_fields() {
         ),
         'full' => array(
           'label' => 'hidden',
-          'module' => 'text',
           'settings' => array(),
-          'type' => 'text_plain',
-          'weight' => '0',
+          'type' => 'hidden',
+          'weight' => '4',
+        ),
+        'news' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '6',
         ),
         'preview' => array(
           'label' => 'above',
@@ -2277,7 +2306,7 @@ function mez_cts_field_default_fields() {
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_plain',
-          'weight' => '4',
+          'weight' => '3',
         ),
         'media_link' => array(
           'label' => 'above',
@@ -2290,6 +2319,12 @@ function mez_cts_field_default_fields() {
           'settings' => array(),
           'type' => 'hidden',
           'weight' => 0,
+        ),
+        'news' => array(
+          'label' => 'hidden',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '5',
         ),
         'preview' => array(
           'label' => 'above',
@@ -2603,7 +2638,7 @@ function mez_cts_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '2',
+          'weight' => '3',
         ),
         'preview' => array(
           'label' => 'above',
@@ -2709,7 +2744,7 @@ function mez_cts_field_default_fields() {
             'show_repeat_rule' => 'show',
           ),
           'type' => 'date_default',
-          'weight' => '3',
+          'weight' => '1',
         ),
         'preview' => array(
           'label' => 'hidden',
@@ -4319,9 +4354,18 @@ function mez_cts_field_default_fields() {
         ),
         'full' => array(
           'label' => 'hidden',
-          'module' => 'file',
-          'settings' => array(),
-          'type' => 'file_table',
+          'module' => 'media_colorbox',
+          'settings' => array(
+            'audio_playlist' => 0,
+            'colorbox_caption' => 'none',
+            'colorbox_gallery' => 'post',
+            'colorbox_gallery_custom' => '',
+            'colorbox_view_mode' => 'full',
+            'file_view_mode' => 'news',
+            'fixed_height' => '',
+            'fixed_width' => '',
+          ),
+          'type' => 'media_colorbox',
           'weight' => '3',
         ),
         'teaser' => array(
@@ -4430,7 +4474,7 @@ function mez_cts_field_default_fields() {
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_plain',
-          'weight' => '5',
+          'weight' => '4',
         ),
         'teaser' => array(
           'label' => 'above',
