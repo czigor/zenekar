@@ -35,7 +35,8 @@ function mez_existing_pages_default_page_manager_handlers() {
           'settings' => array(
             'visibility_setting' => '1',
             'paths' => 'admin/*
-file/*',
+file/*
+videos',
           ),
           'context' => 'empty',
           'not' => FALSE,

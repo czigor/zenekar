@@ -98,7 +98,8 @@ admin/structure/ds/fields/manage_block
 admin/structure/ds/fields/manage_ctools
 admin/structure/ds/fields/manage_ctools/content
 devel/php
-devel/phpinfo';
+devel/phpinfo
+videos';
   $export['existing_page'] = $pm_existing_page;
 
   return $export;
