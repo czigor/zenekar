@@ -99,7 +99,17 @@ admin/structure/ds/fields/manage_ctools
 admin/structure/ds/fields/manage_ctools/content
 devel/php
 devel/phpinfo
-videos';
+videos
+admin/structure/taxonomy
+admin/structure/taxonomy/%taxonomy_vocabulary_machine_name
+admin/structure/taxonomy/%taxonomy_vocabulary_machine_name/add
+admin/structure/taxonomy/%taxonomy_vocabulary_machine_name/display
+admin/structure/taxonomy/%taxonomy_vocabulary_machine_name/display/default
+admin/structure/taxonomy/%taxonomy_vocabulary_machine_name/display/diff_standard
+admin/structure/taxonomy/%taxonomy_vocabulary_machine_name/display/full
+admin/structure/taxonomy/%taxonomy_vocabulary_machine_name/display/token
+admin/structure/taxonomy/%taxonomy_vocabulary_machine_name/edit
+admin/structure/taxonomy/%taxonomy_vocabulary_machine_name/fields';
   $export['existing_page'] = $pm_existing_page;
 
   return $export;
