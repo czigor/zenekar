@@ -42,7 +42,7 @@ function mez_cts_ds_field_settings_info() {
       'label' => 'hidden',
       'format' => 'default',
     ),
-    'field_programme' => array(
+    'field_media' => array(
       'formatter_settings' => array(
         'ft' => array(),
       ),
@@ -61,6 +61,11 @@ function mez_cts_ds_field_settings_info() {
       'weight' => '1',
       'label' => 'hidden',
       'format' => 'ds_post_date_only_day',
+    ),
+    'field_media' => array(
+      'formatter_settings' => array(
+        'ft' => array(),
+      ),
     ),
   );
   $export['node|news|full'] = $ds_fieldsetting;
@@ -111,32 +116,6 @@ function mez_cts_ds_field_settings_info() {
  */
 function mez_cts_ds_layout_settings_info() {
   $export = array();
-
-  $ds_layout = new stdClass();
-  $ds_layout->api_version = 1;
-  $ds_layout->id = 'file|image|news';
-  $ds_layout->entity_type = 'file';
-  $ds_layout->bundle = 'image';
-  $ds_layout->view_mode = 'news';
-  $ds_layout->layout = 'ds_1col';
-  $ds_layout->settings = array(
-    'regions' => array(
-      'ds_content' => array(
-        0 => 'file',
-      ),
-    ),
-    'fields' => array(
-      'file' => 'ds_content',
-    ),
-    'classes' => array(),
-    'wrappers' => array(
-      'ds_content' => 'div',
-    ),
-    'layout_wrapper' => 'div',
-    'layout_attributes' => '',
-    'layout_attributes_merge' => 1,
-  );
-  $export['file|image|news'] = $ds_layout;
 
   $ds_layout = new stdClass();
   $ds_layout->api_version = 1;
@@ -500,15 +479,6 @@ function mez_cts_ds_layout_settings_info() {
  */
 function mez_cts_ds_view_modes_info() {
   $export = array();
-
-  $ds_view_mode = new stdClass();
-  $ds_view_mode->api_version = 1;
-  $ds_view_mode->view_mode = 'news';
-  $ds_view_mode->label = 'News';
-  $ds_view_mode->entities = array(
-    'file' => 'file',
-  );
-  $export['news'] = $ds_view_mode;
 
   $ds_view_mode = new stdClass();
   $ds_view_mode->api_version = 1;

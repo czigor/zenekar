@@ -1258,7 +1258,7 @@ system/ajax/*';
             'visible' => TRUE,
           ),
           'full' => array(
-            'weight' => '0',
+            'weight' => '1',
             'visible' => TRUE,
           ),
         ),
@@ -1272,7 +1272,29 @@ system/ajax/*';
   $strongarm->api_version = 1;
   $strongarm->name = 'field_bundle_settings_file__document';
   $strongarm->value = array(
-    'view_modes' => array(),
+    'view_modes' => array(
+      'teaser' => array(
+        'custom_settings' => TRUE,
+      ),
+      'full' => array(
+        'custom_settings' => TRUE,
+      ),
+      'preview' => array(
+        'custom_settings' => TRUE,
+      ),
+      'colorbox' => array(
+        'custom_settings' => TRUE,
+      ),
+      'token' => array(
+        'custom_settings' => FALSE,
+      ),
+      'news' => array(
+        'custom_settings' => FALSE,
+      ),
+      'short_teaser' => array(
+        'custom_settings' => FALSE,
+      ),
+    ),
     'extra_fields' => array(
       'form' => array(
         'filename' => array(
@@ -1285,7 +1307,22 @@ system/ajax/*';
           'weight' => '5',
         ),
       ),
-      'display' => array(),
+      'display' => array(
+        'file' => array(
+          'default' => array(
+            'weight' => '0',
+            'visible' => TRUE,
+          ),
+          'full' => array(
+            'weight' => '0',
+            'visible' => TRUE,
+          ),
+          'preview' => array(
+            'weight' => '0',
+            'visible' => TRUE,
+          ),
+        ),
+      ),
     ),
   );
   $export['field_bundle_settings_file__document'] = $strongarm;
@@ -1312,7 +1349,7 @@ system/ajax/*';
         'custom_settings' => FALSE,
       ),
       'news' => array(
-        'custom_settings' => TRUE,
+        'custom_settings' => FALSE,
       ),
       'short_teaser' => array(
         'custom_settings' => FALSE,
@@ -1374,6 +1411,9 @@ system/ajax/*';
       'short_teaser' => array(
         'custom_settings' => TRUE,
       ),
+      'news' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
@@ -1391,7 +1431,7 @@ system/ajax/*';
         'file' => array(
           'default' => array(
             'weight' => '4',
-            'visible' => FALSE,
+            'visible' => TRUE,
           ),
           'full' => array(
             'weight' => '2',

@@ -189,7 +189,7 @@ function mez_cts_file_default_displays() {
   $file_display->api_version = 1;
   $file_display->name = 'audio__full__file_field_mediaelement_audio';
   $file_display->weight = 0;
-  $file_display->status = TRUE;
+  $file_display->status = FALSE;
   $file_display->settings = array(
     'controls' => 1,
     'width' => '300',
@@ -237,7 +237,7 @@ function mez_cts_file_default_displays() {
   $file_display->api_version = 1;
   $file_display->name = 'audio__preview__file_field_file_rendered';
   $file_display->weight = 0;
-  $file_display->status = TRUE;
+  $file_display->status = FALSE;
   $file_display->settings = array(
     'file_view_mode' => 'full',
   );
@@ -282,14 +282,14 @@ function mez_cts_file_default_displays() {
   $file_display->weight = 0;
   $file_display->status = FALSE;
   $file_display->settings = array(
-    'file_view_mode' => 'default',
-    'colorbox_view_mode' => 'default',
+    'file_view_mode' => 'news',
+    'colorbox_view_mode' => 'full',
     'fixed_width' => '',
     'fixed_height' => '',
     'colorbox_gallery' => 'post',
     'colorbox_gallery_custom' => '',
     'colorbox_caption' => 'title',
-    'audio_playlist' => 0,
+    'audio_playlist' => 1,
   );
   $export['audio__preview__file_field_media_colorbox'] = $file_display;
 
@@ -305,7 +305,7 @@ function mez_cts_file_default_displays() {
   $file_display->api_version = 1;
   $file_display->name = 'audio__preview__file_field_mediaelement_audio';
   $file_display->weight = 0;
-  $file_display->status = FALSE;
+  $file_display->status = TRUE;
   $file_display->settings = array(
     'controls' => 1,
     'width' => '300',
@@ -581,11 +581,11 @@ function mez_cts_file_default_displays() {
   $file_display->settings = array(
     'file_view_mode' => 'preview',
     'colorbox_view_mode' => 'full',
-    'fixed_width' => '800',
-    'fixed_height' => '600',
+    'fixed_width' => '',
+    'fixed_height' => '',
     'colorbox_gallery' => 'post',
     'colorbox_gallery_custom' => '',
-    'colorbox_caption' => 'title',
+    'colorbox_caption' => 'mediafield',
     'audio_playlist' => 0,
   );
   $export['image__colorbox__file_field_media_colorbox'] = $file_display;
@@ -632,9 +632,9 @@ function mez_cts_file_default_displays() {
   $file_display->weight = 0;
   $file_display->status = FALSE;
   $file_display->settings = array(
-    'image_style' => '',
-    'alt' => '[file:field_file_image_alt_text]',
-    'title' => '[file:field_file_image_title_text]',
+    'image_style' => 'square_thumbnail',
+    'alt' => '[file:title-field]',
+    'title' => '[file:title-field]',
   );
   $export['image__colorbox__file_image'] = $file_display;
 
@@ -876,13 +876,13 @@ function mez_cts_file_default_displays() {
   $file_display->weight = 0;
   $file_display->status = FALSE;
   $file_display->settings = array(
-    'file_view_mode' => 'default',
-    'colorbox_view_mode' => 'default',
+    'file_view_mode' => 'preview',
+    'colorbox_view_mode' => 'full',
     'fixed_width' => '',
     'fixed_height' => '',
     'colorbox_gallery' => 'post',
     'colorbox_gallery_custom' => '',
-    'colorbox_caption' => 'title',
+    'colorbox_caption' => 'mediafield',
     'audio_playlist' => 0,
   );
   $export['image__news__file_field_media_colorbox'] = $file_display;
@@ -938,10 +938,12 @@ function mez_cts_file_default_displays() {
   $file_display = new stdClass();
   $file_display->api_version = 1;
   $file_display->name = 'image__preview__file_image';
-  $file_display->weight = 5;
+  $file_display->weight = -45;
   $file_display->status = TRUE;
   $file_display->settings = array(
     'image_style' => 'square_thumbnail',
+    'alt' => '[file:field_file_image_alt_text]',
+    'title' => '[file:field_file_image_title_text]',
   );
   $export['image__preview__file_image'] = $file_display;
 

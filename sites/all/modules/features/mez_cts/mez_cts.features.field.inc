@@ -597,10 +597,11 @@ function mez_cts_field_default_fields() {
           'weight' => 6,
         ),
         'full' => array(
-          'label' => 'above',
+          'label' => 'hidden',
+          'module' => 'text',
           'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
+          'type' => 'text_default',
+          'weight' => '3',
         ),
         'preview' => array(
           'label' => 'above',
@@ -697,10 +698,18 @@ function mez_cts_field_default_fields() {
           'weight' => 2,
         ),
         'full' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
+          'label' => 'hidden',
+          'module' => 'date',
+          'settings' => array(
+            'format_type' => 'only_day',
+            'fromto' => 'both',
+            'multiple_from' => '',
+            'multiple_number' => '',
+            'multiple_to' => '',
+            'show_repeat_rule' => 'show',
+          ),
+          'type' => 'date_default',
+          'weight' => '2',
         ),
         'preview' => array(
           'label' => 'above',
@@ -811,7 +820,7 @@ function mez_cts_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '5',
         ),
         'preview' => array(
           'label' => 'above',
@@ -907,7 +916,7 @@ function mez_cts_field_default_fields() {
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
-          'weight' => '0',
+          'weight' => '4',
         ),
         'media_link' => array(
           'label' => 'above',
@@ -1008,10 +1017,11 @@ function mez_cts_field_default_fields() {
           'weight' => 7,
         ),
         'full' => array(
-          'label' => 'above',
+          'label' => 'hidden',
+          'module' => 'text',
           'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
+          'type' => 'text_plain',
+          'weight' => '0',
         ),
         'preview' => array(
           'label' => 'above',
@@ -1320,13 +1330,20 @@ function mez_cts_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 5,
+          'weight' => '5',
+        ),
+        'full' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => '5',
         ),
         'preview' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '2',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1414,7 +1431,7 @@ function mez_cts_field_default_fields() {
             'show_repeat_rule' => 'show',
           ),
           'type' => 'date_default',
-          'weight' => 1,
+          'weight' => '1',
         ),
         'full' => array(
           'label' => 'above',
@@ -1426,7 +1443,7 @@ function mez_cts_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '4',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1525,13 +1542,20 @@ function mez_cts_field_default_fields() {
           'module' => 'rolereference',
           'settings' => array(),
           'type' => 'rolereference_default',
-          'weight' => 4,
+          'weight' => '4',
+        ),
+        'full' => array(
+          'label' => 'above',
+          'module' => 'rolereference',
+          'settings' => array(),
+          'type' => 'rolereference_default',
+          'weight' => '4',
         ),
         'preview' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '3',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1626,10 +1650,9 @@ function mez_cts_field_default_fields() {
         ),
         'preview' => array(
           'label' => 'hidden',
-          'module' => 'taxonomy',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
-          'weight' => '0',
+          'type' => 'hidden',
+          'weight' => '5',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1715,13 +1738,20 @@ function mez_cts_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 6,
+          'weight' => '6',
+        ),
+        'full' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => '6',
         ),
         'preview' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '1',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2652,8 +2682,9 @@ function mez_cts_field_default_fields() {
         ),
         'default' => array(
           'label' => 'hidden',
+          'module' => 'text',
           'settings' => array(),
-          'type' => 'hidden',
+          'type' => 'text_default',
           'weight' => '2',
         ),
         'full' => array(
@@ -2751,8 +2782,16 @@ function mez_cts_field_default_fields() {
         ),
         'default' => array(
           'label' => 'hidden',
-          'settings' => array(),
-          'type' => 'hidden',
+          'module' => 'date',
+          'settings' => array(
+            'format_type' => 'long',
+            'fromto' => 'both',
+            'multiple_from' => '',
+            'multiple_number' => '',
+            'multiple_to' => '',
+            'show_repeat_rule' => 'show',
+          ),
+          'type' => 'date_default',
           'weight' => '1',
         ),
         'full' => array(
@@ -2883,8 +2922,9 @@ function mez_cts_field_default_fields() {
         ),
         'default' => array(
           'label' => 'hidden',
+          'module' => 'rolereference',
           'settings' => array(),
-          'type' => 'hidden',
+          'type' => 'rolereference_default',
           'weight' => '5',
         ),
         'full' => array(
@@ -2983,8 +3023,9 @@ function mez_cts_field_default_fields() {
         ),
         'default' => array(
           'label' => 'hidden',
+          'module' => 'taxonomy',
           'settings' => array(),
-          'type' => 'hidden',
+          'type' => 'taxonomy_term_reference_link',
           'weight' => '3',
         ),
         'full' => array(
@@ -3731,18 +3772,11 @@ function mez_cts_field_default_fields() {
         ),
         'full' => array(
           'label' => 'hidden',
-          'module' => 'media_colorbox',
+          'module' => 'file_entity',
           'settings' => array(
-            'audio_playlist' => 1,
-            'colorbox_caption' => 'title',
-            'colorbox_gallery' => 'page',
-            'colorbox_gallery_custom' => '',
-            'colorbox_view_mode' => 'full',
             'file_view_mode' => 'preview',
-            'fixed_height' => '',
-            'fixed_width' => '',
           ),
-          'type' => 'media_colorbox',
+          'type' => 'file_rendered',
           'weight' => '4',
         ),
         'teaser' => array(
@@ -4434,18 +4468,11 @@ function mez_cts_field_default_fields() {
         ),
         'full' => array(
           'label' => 'hidden',
-          'module' => 'media_colorbox',
+          'module' => 'file_entity',
           'settings' => array(
-            'audio_playlist' => 0,
-            'colorbox_caption' => 'none',
-            'colorbox_gallery' => 'post',
-            'colorbox_gallery_custom' => '',
-            'colorbox_view_mode' => 'full',
-            'file_view_mode' => 'news',
-            'fixed_height' => '',
-            'fixed_width' => '',
+            'file_view_mode' => 'colorbox',
           ),
-          'type' => 'media_colorbox',
+          'type' => 'file_rendered',
           'weight' => '3',
         ),
         'teaser' => array(
