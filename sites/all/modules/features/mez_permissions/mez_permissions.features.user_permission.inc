@@ -14,7 +14,7 @@ function mez_permissions_user_default_permissions() {
   $permissions['access comments'] = array(
     'name' => 'access comments',
     'roles' => array(
-      0 => 'authenticated user',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'comment',
   );
@@ -23,10 +23,10 @@ function mez_permissions_user_default_permissions() {
   $permissions['access content'] = array(
     'name' => 'access content',
     'roles' => array(
-      0 => 'anonymous user',
-      1 => 'authenticated user',
-      2 => 'editor',
-      3 => 'site admin',
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
+      'editor' => 'editor',
+      'site admin' => 'site admin',
     ),
     'module' => 'node',
   );
@@ -35,8 +35,8 @@ function mez_permissions_user_default_permissions() {
   $permissions['access content overview'] = array(
     'name' => 'access content overview',
     'roles' => array(
-      0 => 'editor',
-      1 => 'site admin',
+      'editor' => 'editor',
+      'site admin' => 'site admin',
     ),
     'module' => 'node',
   );
@@ -45,7 +45,7 @@ function mez_permissions_user_default_permissions() {
   $permissions['access statistics'] = array(
     'name' => 'access statistics',
     'roles' => array(
-      0 => 'authenticated user',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'statistics',
   );
@@ -54,7 +54,7 @@ function mez_permissions_user_default_permissions() {
   $permissions['access user profiles'] = array(
     'name' => 'access user profiles',
     'roles' => array(
-      0 => 'site admin',
+      'site admin' => 'site admin',
     ),
     'module' => 'user',
   );
@@ -63,8 +63,8 @@ function mez_permissions_user_default_permissions() {
   $permissions['add media from remote sources'] = array(
     'name' => 'add media from remote sources',
     'roles' => array(
-      0 => 'editor',
-      1 => 'site admin',
+      'editor' => 'editor',
+      'site admin' => 'site admin',
     ),
     'module' => 'media_internet',
   );
@@ -73,8 +73,8 @@ function mez_permissions_user_default_permissions() {
   $permissions['add terms in 1'] = array(
     'name' => 'add terms in 1',
     'roles' => array(
-      0 => 'editor',
-      1 => 'site admin',
+      'editor' => 'editor',
+      'site admin' => 'site admin',
     ),
     'module' => 'taxonomy_access_fix',
   );
@@ -83,8 +83,8 @@ function mez_permissions_user_default_permissions() {
   $permissions['add terms in 2'] = array(
     'name' => 'add terms in 2',
     'roles' => array(
-      0 => 'editor',
-      1 => 'site admin',
+      'editor' => 'editor',
+      'site admin' => 'site admin',
     ),
     'module' => 'taxonomy_access_fix',
   );
@@ -121,7 +121,7 @@ function mez_permissions_user_default_permissions() {
   $permissions['administer comments'] = array(
     'name' => 'administer comments',
     'roles' => array(
-      0 => 'site admin',
+      'site admin' => 'site admin',
     ),
     'module' => 'comment',
   );
@@ -151,8 +151,8 @@ function mez_permissions_user_default_permissions() {
   $permissions['administer files'] = array(
     'name' => 'administer files',
     'roles' => array(
-      0 => 'editor',
-      1 => 'site admin',
+      'editor' => 'editor',
+      'site admin' => 'site admin',
     ),
     'module' => 'file_entity',
   );
@@ -161,8 +161,8 @@ function mez_permissions_user_default_permissions() {
   $permissions['administer nodes'] = array(
     'name' => 'administer nodes',
     'roles' => array(
-      0 => 'editor',
-      1 => 'site admin',
+      'editor' => 'editor',
+      'site admin' => 'site admin',
     ),
     'module' => 'node',
   );
@@ -206,7 +206,7 @@ function mez_permissions_user_default_permissions() {
   $permissions['administer users'] = array(
     'name' => 'administer users',
     'roles' => array(
-      0 => 'site admin',
+      'site admin' => 'site admin',
     ),
     'module' => 'user',
   );
@@ -250,8 +250,8 @@ function mez_permissions_user_default_permissions() {
   $permissions['create composer content'] = array(
     'name' => 'create composer content',
     'roles' => array(
-      0 => 'editor',
-      1 => 'site admin',
+      'editor' => 'editor',
+      'site admin' => 'site admin',
     ),
     'module' => 'node',
   );
@@ -260,8 +260,8 @@ function mez_permissions_user_default_permissions() {
   $permissions['create concert content'] = array(
     'name' => 'create concert content',
     'roles' => array(
-      0 => 'editor',
-      1 => 'site admin',
+      'editor' => 'editor',
+      'site admin' => 'site admin',
     ),
     'module' => 'node',
   );
@@ -270,8 +270,8 @@ function mez_permissions_user_default_permissions() {
   $permissions['create files'] = array(
     'name' => 'create files',
     'roles' => array(
-      0 => 'editor',
-      1 => 'site admin',
+      'editor' => 'editor',
+      'site admin' => 'site admin',
     ),
     'module' => 'file_entity',
   );
@@ -280,8 +280,8 @@ function mez_permissions_user_default_permissions() {
   $permissions['create news content'] = array(
     'name' => 'create news content',
     'roles' => array(
-      0 => 'editor',
-      1 => 'site admin',
+      'editor' => 'editor',
+      'site admin' => 'site admin',
     ),
     'module' => 'node',
   );
@@ -290,8 +290,8 @@ function mez_permissions_user_default_permissions() {
   $permissions['create page content'] = array(
     'name' => 'create page content',
     'roles' => array(
-      0 => 'editor',
-      1 => 'site admin',
+      'editor' => 'editor',
+      'site admin' => 'site admin',
     ),
     'module' => 'node',
   );
@@ -300,8 +300,8 @@ function mez_permissions_user_default_permissions() {
   $permissions['create person content'] = array(
     'name' => 'create person content',
     'roles' => array(
-      0 => 'editor',
-      1 => 'site admin',
+      'editor' => 'editor',
+      'site admin' => 'site admin',
     ),
     'module' => 'node',
   );
@@ -310,8 +310,8 @@ function mez_permissions_user_default_permissions() {
   $permissions['create piece content'] = array(
     'name' => 'create piece content',
     'roles' => array(
-      0 => 'editor',
-      1 => 'site admin',
+      'editor' => 'editor',
+      'site admin' => 'site admin',
     ),
     'module' => 'node',
   );
@@ -320,8 +320,8 @@ function mez_permissions_user_default_permissions() {
   $permissions['create url aliases'] = array(
     'name' => 'create url aliases',
     'roles' => array(
-      0 => 'editor',
-      1 => 'site admin',
+      'editor' => 'editor',
+      'site admin' => 'site admin',
     ),
     'module' => 'path',
   );
@@ -330,8 +330,8 @@ function mez_permissions_user_default_permissions() {
   $permissions['delete any composer content'] = array(
     'name' => 'delete any composer content',
     'roles' => array(
-      0 => 'editor',
-      1 => 'site admin',
+      'editor' => 'editor',
+      'site admin' => 'site admin',
     ),
     'module' => 'node',
   );
@@ -340,8 +340,8 @@ function mez_permissions_user_default_permissions() {
   $permissions['delete any concert content'] = array(
     'name' => 'delete any concert content',
     'roles' => array(
-      0 => 'editor',
-      1 => 'site admin',
+      'editor' => 'editor',
+      'site admin' => 'site admin',
     ),
     'module' => 'node',
   );
@@ -350,8 +350,8 @@ function mez_permissions_user_default_permissions() {
   $permissions['delete any files'] = array(
     'name' => 'delete any files',
     'roles' => array(
-      0 => 'editor',
-      1 => 'site admin',
+      'editor' => 'editor',
+      'site admin' => 'site admin',
     ),
     'module' => 'file_entity',
   );
@@ -360,8 +360,8 @@ function mez_permissions_user_default_permissions() {
   $permissions['delete any news content'] = array(
     'name' => 'delete any news content',
     'roles' => array(
-      0 => 'editor',
-      1 => 'site admin',
+      'editor' => 'editor',
+      'site admin' => 'site admin',
     ),
     'module' => 'node',
   );
@@ -370,8 +370,8 @@ function mez_permissions_user_default_permissions() {
   $permissions['delete any page content'] = array(
     'name' => 'delete any page content',
     'roles' => array(
-      0 => 'editor',
-      1 => 'site admin',
+      'editor' => 'editor',
+      'site admin' => 'site admin',
     ),
     'module' => 'node',
   );
@@ -380,8 +380,8 @@ function mez_permissions_user_default_permissions() {
   $permissions['delete any person content'] = array(
     'name' => 'delete any person content',
     'roles' => array(
-      0 => 'editor',
-      1 => 'site admin',
+      'editor' => 'editor',
+      'site admin' => 'site admin',
     ),
     'module' => 'node',
   );
@@ -390,8 +390,8 @@ function mez_permissions_user_default_permissions() {
   $permissions['delete any piece content'] = array(
     'name' => 'delete any piece content',
     'roles' => array(
-      0 => 'editor',
-      1 => 'site admin',
+      'editor' => 'editor',
+      'site admin' => 'site admin',
     ),
     'module' => 'node',
   );
@@ -414,7 +414,7 @@ function mez_permissions_user_default_permissions() {
   $permissions['delete own files'] = array(
     'name' => 'delete own files',
     'roles' => array(
-      0 => 'editor',
+      'editor' => 'editor',
     ),
     'module' => 'file_entity',
   );
@@ -451,8 +451,8 @@ function mez_permissions_user_default_permissions() {
   $permissions['delete revisions'] = array(
     'name' => 'delete revisions',
     'roles' => array(
-      0 => 'editor',
-      1 => 'site admin',
+      'editor' => 'editor',
+      'site admin' => 'site admin',
     ),
     'module' => 'node',
   );
@@ -461,7 +461,7 @@ function mez_permissions_user_default_permissions() {
   $permissions['delete terms in 1'] = array(
     'name' => 'delete terms in 1',
     'roles' => array(
-      0 => 'site admin',
+      'site admin' => 'site admin',
     ),
     'module' => 'taxonomy',
   );
@@ -470,7 +470,7 @@ function mez_permissions_user_default_permissions() {
   $permissions['delete terms in 2'] = array(
     'name' => 'delete terms in 2',
     'roles' => array(
-      0 => 'site admin',
+      'site admin' => 'site admin',
     ),
     'module' => 'taxonomy',
   );
@@ -479,8 +479,8 @@ function mez_permissions_user_default_permissions() {
   $permissions['edit any composer content'] = array(
     'name' => 'edit any composer content',
     'roles' => array(
-      0 => 'editor',
-      1 => 'site admin',
+      'editor' => 'editor',
+      'site admin' => 'site admin',
     ),
     'module' => 'node',
   );
@@ -489,8 +489,8 @@ function mez_permissions_user_default_permissions() {
   $permissions['edit any concert content'] = array(
     'name' => 'edit any concert content',
     'roles' => array(
-      0 => 'editor',
-      1 => 'site admin',
+      'editor' => 'editor',
+      'site admin' => 'site admin',
     ),
     'module' => 'node',
   );
@@ -499,8 +499,8 @@ function mez_permissions_user_default_permissions() {
   $permissions['edit any files'] = array(
     'name' => 'edit any files',
     'roles' => array(
-      0 => 'editor',
-      1 => 'site admin',
+      'editor' => 'editor',
+      'site admin' => 'site admin',
     ),
     'module' => 'file_entity',
   );
@@ -509,8 +509,8 @@ function mez_permissions_user_default_permissions() {
   $permissions['edit any news content'] = array(
     'name' => 'edit any news content',
     'roles' => array(
-      0 => 'editor',
-      1 => 'site admin',
+      'editor' => 'editor',
+      'site admin' => 'site admin',
     ),
     'module' => 'node',
   );
@@ -519,8 +519,8 @@ function mez_permissions_user_default_permissions() {
   $permissions['edit any page content'] = array(
     'name' => 'edit any page content',
     'roles' => array(
-      0 => 'editor',
-      1 => 'site admin',
+      'editor' => 'editor',
+      'site admin' => 'site admin',
     ),
     'module' => 'node',
   );
@@ -529,8 +529,8 @@ function mez_permissions_user_default_permissions() {
   $permissions['edit any person content'] = array(
     'name' => 'edit any person content',
     'roles' => array(
-      0 => 'editor',
-      1 => 'site admin',
+      'editor' => 'editor',
+      'site admin' => 'site admin',
     ),
     'module' => 'node',
   );
@@ -539,8 +539,8 @@ function mez_permissions_user_default_permissions() {
   $permissions['edit any piece content'] = array(
     'name' => 'edit any piece content',
     'roles' => array(
-      0 => 'editor',
-      1 => 'site admin',
+      'editor' => 'editor',
+      'site admin' => 'site admin',
     ),
     'module' => 'node',
   );
@@ -549,7 +549,7 @@ function mez_permissions_user_default_permissions() {
   $permissions['edit own comments'] = array(
     'name' => 'edit own comments',
     'roles' => array(
-      0 => 'authenticated user',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'comment',
   );
@@ -572,8 +572,8 @@ function mez_permissions_user_default_permissions() {
   $permissions['edit own files'] = array(
     'name' => 'edit own files',
     'roles' => array(
-      0 => 'editor',
-      1 => 'site admin',
+      'editor' => 'editor',
+      'site admin' => 'site admin',
     ),
     'module' => 'file_entity',
   );
@@ -610,8 +610,8 @@ function mez_permissions_user_default_permissions() {
   $permissions['edit terms in 1'] = array(
     'name' => 'edit terms in 1',
     'roles' => array(
-      0 => 'editor',
-      1 => 'site admin',
+      'editor' => 'editor',
+      'site admin' => 'site admin',
     ),
     'module' => 'taxonomy',
   );
@@ -620,8 +620,8 @@ function mez_permissions_user_default_permissions() {
   $permissions['edit terms in 2'] = array(
     'name' => 'edit terms in 2',
     'roles' => array(
-      0 => 'editor',
-      1 => 'site admin',
+      'editor' => 'editor',
+      'site admin' => 'site admin',
     ),
     'module' => 'taxonomy',
   );
@@ -630,9 +630,9 @@ function mez_permissions_user_default_permissions() {
   $permissions['import media'] = array(
     'name' => 'import media',
     'roles' => array(
-      0 => 'authenticated user',
-      1 => 'editor',
-      2 => 'site admin',
+      'authenticated user' => 'authenticated user',
+      'editor' => 'editor',
+      'site admin' => 'site admin',
     ),
     'module' => 'media',
   );
@@ -641,7 +641,7 @@ function mez_permissions_user_default_permissions() {
   $permissions['post comments'] = array(
     'name' => 'post comments',
     'roles' => array(
-      0 => 'authenticated user',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'comment',
   );
@@ -650,8 +650,8 @@ function mez_permissions_user_default_permissions() {
   $permissions['revert revisions'] = array(
     'name' => 'revert revisions',
     'roles' => array(
-      0 => 'editor',
-      1 => 'site admin',
+      'editor' => 'editor',
+      'site admin' => 'site admin',
     ),
     'module' => 'node',
   );
@@ -660,8 +660,8 @@ function mez_permissions_user_default_permissions() {
   $permissions['search content'] = array(
     'name' => 'search content',
     'roles' => array(
-      0 => 'anonymous user',
-      1 => 'authenticated user',
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'search',
   );
@@ -677,7 +677,7 @@ function mez_permissions_user_default_permissions() {
   $permissions['skip comment approval'] = array(
     'name' => 'skip comment approval',
     'roles' => array(
-      0 => 'site admin',
+      'site admin' => 'site admin',
     ),
     'module' => 'comment',
   );
@@ -686,7 +686,7 @@ function mez_permissions_user_default_permissions() {
   $permissions['submit latitude/longitude'] = array(
     'name' => 'submit latitude/longitude',
     'roles' => array(
-      0 => 'editor',
+      'editor' => 'editor',
     ),
     'module' => 'location',
   );
@@ -702,7 +702,7 @@ function mez_permissions_user_default_permissions() {
   $permissions['translate any entity'] = array(
     'name' => 'translate any entity',
     'roles' => array(
-      0 => 'editor',
+      'editor' => 'editor',
     ),
     'module' => 'entity_translation',
   );
@@ -711,8 +711,8 @@ function mez_permissions_user_default_permissions() {
   $permissions['translate content'] = array(
     'name' => 'translate content',
     'roles' => array(
-      0 => 'editor',
-      1 => 'site admin',
+      'editor' => 'editor',
+      'site admin' => 'site admin',
     ),
     'module' => 'translation',
   );
@@ -735,7 +735,7 @@ function mez_permissions_user_default_permissions() {
   $permissions['translate node entities'] = array(
     'name' => 'translate node entities',
     'roles' => array(
-      0 => 'editor',
+      'editor' => 'editor',
     ),
     'module' => 'entity_translation',
   );
@@ -744,7 +744,7 @@ function mez_permissions_user_default_permissions() {
   $permissions['translate taxonomy_term entities'] = array(
     'name' => 'translate taxonomy_term entities',
     'roles' => array(
-      0 => 'editor',
+      'editor' => 'editor',
     ),
     'module' => 'entity_translation',
   );
@@ -753,8 +753,8 @@ function mez_permissions_user_default_permissions() {
   $permissions['use advanced search'] = array(
     'name' => 'use advanced search',
     'roles' => array(
-      0 => 'anonymous user',
-      1 => 'authenticated user',
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'search',
   );
@@ -763,8 +763,8 @@ function mez_permissions_user_default_permissions() {
   $permissions['view author on comment'] = array(
     'name' => 'view author on comment',
     'roles' => array(
-      0 => 'anonymous user',
-      1 => 'authenticated user',
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'ds_extras',
   );
@@ -773,8 +773,8 @@ function mez_permissions_user_default_permissions() {
   $permissions['view author on node'] = array(
     'name' => 'view author on node',
     'roles' => array(
-      0 => 'anonymous user',
-      1 => 'authenticated user',
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'ds_extras',
   );
@@ -783,8 +783,8 @@ function mez_permissions_user_default_permissions() {
   $permissions['view comments on node'] = array(
     'name' => 'view comments on node',
     'roles' => array(
-      0 => 'anonymous user',
-      1 => 'authenticated user',
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'ds_extras',
   );
@@ -800,8 +800,8 @@ function mez_permissions_user_default_permissions() {
   $permissions['view files'] = array(
     'name' => 'view files',
     'roles' => array(
-      0 => 'anonymous user',
-      1 => 'authenticated user',
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'file_entity',
   );
@@ -810,8 +810,8 @@ function mez_permissions_user_default_permissions() {
   $permissions['view links on comment'] = array(
     'name' => 'view links on comment',
     'roles' => array(
-      0 => 'anonymous user',
-      1 => 'authenticated user',
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'ds_extras',
   );
@@ -820,8 +820,8 @@ function mez_permissions_user_default_permissions() {
   $permissions['view links on node'] = array(
     'name' => 'view links on node',
     'roles' => array(
-      0 => 'anonymous user',
-      1 => 'authenticated user',
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'ds_extras',
   );
@@ -830,7 +830,7 @@ function mez_permissions_user_default_permissions() {
   $permissions['view location directory'] = array(
     'name' => 'view location directory',
     'roles' => array(
-      0 => 'editor',
+      'editor' => 'editor',
     ),
     'module' => 'location',
   );
@@ -839,8 +839,8 @@ function mez_permissions_user_default_permissions() {
   $permissions['view more_link on taxonomy_term'] = array(
     'name' => 'view more_link on taxonomy_term',
     'roles' => array(
-      0 => 'anonymous user',
-      1 => 'authenticated user',
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'ds_extras',
   );
@@ -849,8 +849,8 @@ function mez_permissions_user_default_permissions() {
   $permissions['view name on user'] = array(
     'name' => 'view name on user',
     'roles' => array(
-      0 => 'anonymous user',
-      1 => 'authenticated user',
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'ds_extras',
   );
@@ -859,7 +859,7 @@ function mez_permissions_user_default_permissions() {
   $permissions['view node location table'] = array(
     'name' => 'view node location table',
     'roles' => array(
-      0 => 'editor',
+      'editor' => 'editor',
     ),
     'module' => 'location',
   );
@@ -868,8 +868,8 @@ function mez_permissions_user_default_permissions() {
   $permissions['view node_link on node'] = array(
     'name' => 'view node_link on node',
     'roles' => array(
-      0 => 'anonymous user',
-      1 => 'authenticated user',
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'ds_extras',
   );
@@ -878,7 +878,7 @@ function mez_permissions_user_default_permissions() {
   $permissions['view own files'] = array(
     'name' => 'view own files',
     'roles' => array(
-      0 => 'authenticated user',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'file_entity',
   );
@@ -894,8 +894,8 @@ function mez_permissions_user_default_permissions() {
   $permissions['view own unpublished content'] = array(
     'name' => 'view own unpublished content',
     'roles' => array(
-      0 => 'editor',
-      1 => 'site admin',
+      'editor' => 'editor',
+      'site admin' => 'site admin',
     ),
     'module' => 'node',
   );
@@ -904,8 +904,8 @@ function mez_permissions_user_default_permissions() {
   $permissions['view permalink on comment'] = array(
     'name' => 'view permalink on comment',
     'roles' => array(
-      0 => 'anonymous user',
-      1 => 'authenticated user',
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'ds_extras',
   );
@@ -914,7 +914,7 @@ function mez_permissions_user_default_permissions() {
   $permissions['view post access counter'] = array(
     'name' => 'view post access counter',
     'roles' => array(
-      0 => 'authenticated user',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'statistics',
   );
@@ -923,8 +923,8 @@ function mez_permissions_user_default_permissions() {
   $permissions['view post_date on comment'] = array(
     'name' => 'view post_date on comment',
     'roles' => array(
-      0 => 'anonymous user',
-      1 => 'authenticated user',
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'ds_extras',
   );
@@ -933,8 +933,8 @@ function mez_permissions_user_default_permissions() {
   $permissions['view post_date on node'] = array(
     'name' => 'view post_date on node',
     'roles' => array(
-      0 => 'anonymous user',
-      1 => 'authenticated user',
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'ds_extras',
   );
@@ -943,8 +943,8 @@ function mez_permissions_user_default_permissions() {
   $permissions['view revisions'] = array(
     'name' => 'view revisions',
     'roles' => array(
-      0 => 'editor',
-      1 => 'site admin',
+      'editor' => 'editor',
+      'site admin' => 'site admin',
     ),
     'module' => 'node',
   );
@@ -953,8 +953,8 @@ function mez_permissions_user_default_permissions() {
   $permissions['view search_info on node'] = array(
     'name' => 'view search_info on node',
     'roles' => array(
-      0 => 'anonymous user',
-      1 => 'authenticated user',
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'ds_extras',
   );
@@ -963,8 +963,8 @@ function mez_permissions_user_default_permissions() {
   $permissions['view search_snippet on node'] = array(
     'name' => 'view search_snippet on node',
     'roles' => array(
-      0 => 'anonymous user',
-      1 => 'authenticated user',
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'ds_extras',
   );
@@ -973,8 +973,8 @@ function mez_permissions_user_default_permissions() {
   $permissions['view submitted on comment'] = array(
     'name' => 'view submitted on comment',
     'roles' => array(
-      0 => 'anonymous user',
-      1 => 'authenticated user',
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'ds_extras',
   );
@@ -983,8 +983,8 @@ function mez_permissions_user_default_permissions() {
   $permissions['view submitted_by on node'] = array(
     'name' => 'view submitted_by on node',
     'roles' => array(
-      0 => 'anonymous user',
-      1 => 'authenticated user',
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'ds_extras',
   );
@@ -993,8 +993,8 @@ function mez_permissions_user_default_permissions() {
   $permissions['view title on comment'] = array(
     'name' => 'view title on comment',
     'roles' => array(
-      0 => 'anonymous user',
-      1 => 'authenticated user',
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'ds_extras',
   );
@@ -1003,8 +1003,8 @@ function mez_permissions_user_default_permissions() {
   $permissions['view title on node'] = array(
     'name' => 'view title on node',
     'roles' => array(
-      0 => 'anonymous user',
-      1 => 'authenticated user',
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'ds_extras',
   );
@@ -1013,8 +1013,8 @@ function mez_permissions_user_default_permissions() {
   $permissions['view title on taxonomy_term'] = array(
     'name' => 'view title on taxonomy_term',
     'roles' => array(
-      0 => 'anonymous user',
-      1 => 'authenticated user',
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'ds_extras',
   );
@@ -1023,7 +1023,7 @@ function mez_permissions_user_default_permissions() {
   $permissions['view user location table'] = array(
     'name' => 'view user location table',
     'roles' => array(
-      0 => 'editor',
+      'editor' => 'editor',
     ),
     'module' => 'location',
   );

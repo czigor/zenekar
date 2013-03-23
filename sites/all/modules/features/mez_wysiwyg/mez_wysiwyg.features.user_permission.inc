@@ -14,7 +14,7 @@ function mez_wysiwyg_user_default_permissions() {
   $permissions['use text format wysiwyg'] = array(
     'name' => 'use text format wysiwyg',
     'roles' => array(
-      0 => 'authenticated user',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'filter',
   );
