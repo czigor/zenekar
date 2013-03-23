@@ -687,6 +687,7 @@ function mez_permissions_user_default_permissions() {
     'name' => 'submit latitude/longitude',
     'roles' => array(
       'editor' => 'editor',
+      'site admin' => 'site admin',
     ),
     'module' => 'location',
   );
@@ -831,6 +832,7 @@ function mez_permissions_user_default_permissions() {
     'name' => 'view location directory',
     'roles' => array(
       'editor' => 'editor',
+      'site admin' => 'site admin',
     ),
     'module' => 'location',
   );
@@ -860,6 +862,7 @@ function mez_permissions_user_default_permissions() {
     'name' => 'view node location table',
     'roles' => array(
       'editor' => 'editor',
+      'site admin' => 'site admin',
     ),
     'module' => 'location',
   );
@@ -1024,6 +1027,7 @@ function mez_permissions_user_default_permissions() {
     'name' => 'view user location table',
     'roles' => array(
       'editor' => 'editor',
+      'site admin' => 'site admin',
     ),
     'module' => 'location',
   );
