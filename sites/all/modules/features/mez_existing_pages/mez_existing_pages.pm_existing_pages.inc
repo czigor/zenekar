@@ -109,7 +109,30 @@ admin/structure/taxonomy/%taxonomy_vocabulary_machine_name/display/diff_standard
 admin/structure/taxonomy/%taxonomy_vocabulary_machine_name/display/full
 admin/structure/taxonomy/%taxonomy_vocabulary_machine_name/display/token
 admin/structure/taxonomy/%taxonomy_vocabulary_machine_name/edit
-admin/structure/taxonomy/%taxonomy_vocabulary_machine_name/fields';
+admin/structure/taxonomy/%taxonomy_vocabulary_machine_name/fields
+taxonomy/term/%taxonomy_term
+taxonomy/term/%taxonomy_term/devel
+taxonomy/term/%taxonomy_term/devel/load
+taxonomy/term/%taxonomy_term/devel/load-by-uuid
+taxonomy/term/%taxonomy_term/devel/token
+taxonomy/term/%taxonomy_term/edit/%entity_translation_language
+taxonomy/term/%taxonomy_term/edit/add/%entity_translation_language/%entity_translation_language
+taxonomy/term/%taxonomy_term/edit
+admin/structure/types/add
+admin/structure/types/list
+admin/structure/types/manage/%node_type
+admin/structure/types/manage/%comment_node_type/comment/display
+admin/structure/types/manage/%comment_node_type/comment/display/default
+admin/structure/types/manage/%comment_node_type/comment/display/diff_standard
+admin/structure/types/manage/%comment_node_type/comment/display/full
+admin/structure/types/manage/%comment_node_type/comment/display/token
+admin/structure/types/manage/%comment_node_type/comment/fields/%field_ui_menu
+admin/structure/field-collections/%field_collection_field_name
+admin/structure/field-collections/%field_collection_field_name/fields
+admin/structure/field-collections/%field_collection_field_name/fields/%field_ui_menu
+admin/structure/field-collections/%field_collection_field_name/fields/%field_ui_menu/delete
+admin/structure/field-collections/%field_collection_field_name/fields/%field_ui_menu/edit
+admin/structure/field-collections/%field_collection_field_name/fields/%field_ui_menu/translate';
   $export['existing_page'] = $pm_existing_page;
 
   return $export;
