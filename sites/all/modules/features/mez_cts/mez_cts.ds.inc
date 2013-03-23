@@ -42,6 +42,11 @@ function mez_cts_ds_field_settings_info() {
       'label' => 'hidden',
       'format' => 'default',
     ),
+    'field_programme' => array(
+      'formatter_settings' => array(
+        'ft' => array(),
+      ),
+    ),
   );
   $export['node|concert|full'] = $ds_fieldsetting;
 
@@ -260,20 +265,20 @@ function mez_cts_ds_layout_settings_info() {
     'regions' => array(
       'ds_content' => array(
         0 => 'title_field',
-        1 => 'field_time',
-        2 => 'field_programme',
-        3 => 'field_media',
-        4 => 'field_location',
+        1 => 'field_location_reference',
+        2 => 'field_time',
+        3 => 'field_programme',
+        4 => 'field_media',
         5 => 'body',
         6 => 'comments',
       ),
     ),
     'fields' => array(
       'title_field' => 'ds_content',
+      'field_location_reference' => 'ds_content',
       'field_time' => 'ds_content',
       'field_programme' => 'ds_content',
       'field_media' => 'ds_content',
-      'field_location' => 'ds_content',
       'body' => 'ds_content',
       'comments' => 'ds_content',
     ),

@@ -51,6 +51,14 @@ function mez_cts_node_info() {
       'title_label' => t('Cím'),
       'help' => '',
     ),
+    'location' => array(
+      'name' => t('Location'),
+      'base' => 'node_content',
+      'description' => '',
+      'has_title' => '1',
+      'title_label' => t('Title'),
+      'help' => '',
+    ),
     'news' => array(
       'name' => t('News'),
       'base' => 'node_content',

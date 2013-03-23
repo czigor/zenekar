@@ -189,11 +189,25 @@ function mez_cts_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'hidden',
-          'module' => 'field_collection',
+          'module' => 'field_collection_table',
           'settings' => array(
             'add' => '',
             'delete' => '',
             'description' => 1,
+            'edit' => '',
+            'empty' => TRUE,
+            'view_mode' => 'full',
+          ),
+          'type' => 'field_collection_table_view',
+          'weight' => '1',
+        ),
+        'full' => array(
+          'label' => 'hidden',
+          'module' => 'field_collection',
+          'settings' => array(
+            'add' => '',
+            'delete' => '',
+            'description' => 0,
             'edit' => '',
             'view_mode' => 'full',
           ),
@@ -275,7 +289,16 @@ function mez_cts_field_default_fields() {
           'label' => 'hidden',
           'module' => 'entityreference',
           'settings' => array(
-            'link' => 1,
+            'link' => 0,
+          ),
+          'type' => 'entityreference_label',
+          'weight' => '0',
+        ),
+        'full' => array(
+          'label' => 'hidden',
+          'module' => 'entityreference',
+          'settings' => array(
+            'link' => 0,
           ),
           'type' => 'entityreference_label',
           'weight' => '0',
@@ -3542,258 +3565,96 @@ function mez_cts_field_default_fields() {
           'summary_rows' => 5,
         ),
         'type' => 'text_textarea_with_summary',
-        'weight' => '8',
+        'weight' => '4',
       ),
     ),
   );
 
-  // Exported field: 'node-concert-field_location'.
-  $fields['node-concert-field_location'] = array(
+  // Exported field: 'node-concert-field_location_reference'.
+  $fields['node-concert-field_location_reference'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_location',
-      'foreign keys' => array(),
+      'field_name' => 'field_location_reference',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
+      'foreign keys' => array(
+        'node' => array(
+          'columns' => array(
+            'target_id' => 'nid',
+          ),
+          'table' => 'node',
+        ),
+      ),
       'indexes' => array(
-        'lid' => array(
-          0 => 'lid',
+        'target_id' => array(
+          0 => 'target_id',
         ),
       ),
       'locked' => '0',
-      'module' => 'location_cck',
+      'module' => 'entityreference',
       'settings' => array(
         'entity_translation_sync' => FALSE,
-        'gmap_macro' => '[gmap ]',
-        'gmap_marker' => 'drupal',
-        'location_settings' => array(
-          'display' => array(
-            'hide' => array(
-              'additional' => 0,
-              'city' => 0,
-              'coords' => 0,
-              'country' => 0,
-              'country_name' => 0,
-              'locpick' => 0,
-              'map_link' => 0,
-              'name' => 0,
-              'postal_code' => 0,
-              'province' => 0,
-              'province_name' => 0,
-              'street' => 0,
+        'handler' => 'base',
+        'handler_settings' => array(
+          'behaviors' => array(
+            'views-select-list' => array(
+              'status' => 0,
             ),
           ),
-          'form' => array(
-            'fields' => array(
-              'additional' => array(
-                'collect' => '1',
-                'default' => '',
-                'weight' => '6',
-              ),
-              'city' => array(
-                'collect' => '1',
-                'default' => '',
-                'weight' => '8',
-              ),
-              'country' => array(
-                'collect' => '1',
-                'default' => 'hu',
-                'weight' => '14',
-              ),
-              'locpick' => array(
-                'collect' => '1',
-                'weight' => '20',
-              ),
-              'name' => array(
-                'collect' => '1',
-                'default' => '',
-                'weight' => '2',
-              ),
-              'postal_code' => array(
-                'collect' => '0',
-                'default' => '',
-                'weight' => '12',
-              ),
-              'province' => array(
-                'collect' => '1',
-                'default' => '',
-                'weight' => '10',
-                'widget' => 'autocomplete',
-              ),
-              'street' => array(
-                'collect' => '1',
-                'default' => '',
-                'weight' => '4',
-              ),
-            ),
+          'sort' => array(
+            'direction' => 'ASC',
+            'property' => 'title',
+            'type' => 'property',
+          ),
+          'target_bundles' => array(
+            'location' => 'location',
           ),
         ),
+        'target_type' => 'node',
       ),
       'translatable' => '0',
-      'type' => 'location',
+      'type' => 'entityreference',
     ),
     'field_instance' => array(
       'bundle' => 'concert',
-      'default_value' => array(
-        0 => array(
-          'location_settings' => array(
-            'display' => array(
-              'hide' => array(
-                'additional' => 0,
-                'city' => 0,
-                'coords' => 0,
-                'country' => 0,
-                'country_name' => 0,
-                'locpick' => 0,
-                'map_link' => 0,
-                'name' => 0,
-                'postal_code' => 0,
-                'province' => 0,
-                'province_name' => 0,
-                'street' => 0,
-              ),
-            ),
-            'form' => array(
-              'fields' => array(
-                'additional' => array(
-                  '#parents' => array(
-                    0 => 'field_location',
-                    1 => 'und',
-                    2 => 0,
-                  ),
-                  'collect' => '1',
-                  'default' => '',
-                  'weight' => '6',
-                ),
-                'city' => array(
-                  '#parents' => array(
-                    0 => 'field_location',
-                    1 => 'und',
-                    2 => 0,
-                  ),
-                  'collect' => '1',
-                  'default' => '',
-                  'weight' => '8',
-                ),
-                'country' => array(
-                  '#parents' => array(
-                    0 => 'field_location',
-                    1 => 'und',
-                    2 => 0,
-                  ),
-                  'collect' => '1',
-                  'default' => 'hu',
-                  'weight' => '14',
-                ),
-                'delete_location' => array(
-                  'default' => FALSE,
-                  'nodiff' => TRUE,
-                ),
-                'is_primary' => array(
-                  'default' => 0,
-                ),
-                'latitude' => array(
-                  'default' => 0,
-                ),
-                'lid' => array(
-                  'default' => FALSE,
-                ),
-                'locpick' => array(
-                  '#parents' => array(
-                    0 => 'field_location',
-                    1 => 'und',
-                    2 => 0,
-                  ),
-                  'collect' => '1',
-                  'default' => FALSE,
-                  'nodiff' => TRUE,
-                  'weight' => '20',
-                ),
-                'longitude' => array(
-                  'default' => 0,
-                ),
-                'name' => array(
-                  '#parents' => array(
-                    0 => 'field_location',
-                    1 => 'und',
-                    2 => 0,
-                  ),
-                  'collect' => '1',
-                  'default' => '',
-                  'weight' => '2',
-                ),
-                'postal_code' => array(
-                  'collect' => '0',
-                  'default' => '',
-                  'weight' => '12',
-                ),
-                'province' => array(
-                  '#parents' => array(
-                    0 => 'field_location',
-                    1 => 'und',
-                    2 => 0,
-                  ),
-                  'collect' => '1',
-                  'default' => '',
-                  'weight' => '10',
-                  'widget' => 'autocomplete',
-                ),
-                'source' => array(
-                  'default' => 0,
-                ),
-                'street' => array(
-                  '#parents' => array(
-                    0 => 'field_location',
-                    1 => 'und',
-                    2 => 0,
-                  ),
-                  'collect' => '1',
-                  'default' => '',
-                  'weight' => '4',
-                ),
-              ),
-            ),
-          ),
-          'name' => '',
-          'street' => '',
-          'additional' => '',
-          'city' => 'Budapest',
-          'province' => '',
-          'country' => 'hu',
-          'locpick' => array(
-            'user_latitude' => '47.481458893110606',
-            'user_longitude' => '19.055614471435547',
-          ),
-        ),
-      ),
+      'default_value' => NULL,
       'deleted' => '0',
       'description' => '',
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'location_cck',
-          'settings' => array(),
-          'type' => 'location_default',
-          'weight' => '4',
+          'module' => 'entityreference',
+          'settings' => array(
+            'links' => 1,
+            'view_mode' => 'full',
+          ),
+          'type' => 'entityreference_entity_view',
+          'weight' => '6',
         ),
         'full' => array(
-          'label' => 'above',
-          'module' => 'location_cck',
-          'settings' => array(),
-          'type' => 'location_all',
-          'weight' => '4',
+          'label' => 'hidden',
+          'module' => 'entityreference',
+          'settings' => array(
+            'links' => 1,
+            'view_mode' => 'full',
+          ),
+          'type' => 'entityreference_entity_view',
+          'weight' => '1',
         ),
         'teaser' => array(
-          'label' => 'hidden',
-          'module' => 'location_cck',
+          'label' => 'above',
           'settings' => array(),
-          'type' => 'location_default',
-          'weight' => '2',
+          'type' => 'hidden',
+          'weight' => 0,
         ),
       ),
+      'ds_extras_field_template' => '',
       'entity_type' => 'node',
-      'field_name' => 'field_location',
+      'field_name' => 'field_location_reference',
       'label' => 'Location',
       'required' => 0,
       'settings' => array(
@@ -3801,11 +3662,11 @@ function mez_cts_field_default_fields() {
         'user_register_form' => FALSE,
       ),
       'widget' => array(
-        'active' => 0,
-        'module' => 'location_cck',
+        'active' => 1,
+        'module' => 'options',
         'settings' => array(),
-        'type' => 'location',
-        'weight' => '6',
+        'type' => 'options_select',
+        'weight' => '2',
       ),
     ),
   );
@@ -3882,7 +3743,7 @@ function mez_cts_field_default_fields() {
             'fixed_width' => '',
           ),
           'type' => 'media_colorbox',
-          'weight' => '3',
+          'weight' => '4',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -3899,14 +3760,14 @@ function mez_cts_field_default_fields() {
       'settings' => array(
         'description_field' => 0,
         'entity_translation_sync' => FALSE,
-        'file_directory' => 'concert/media/[current-user:uuid]',
+        'file_directory' => 'concert',
         'file_extensions' => 'txt pdf doc odt jpg gif png bmp jpeg mp3 ogg avi mpg mpeg',
         'max_filesize' => '',
         'user_register_form' => FALSE,
       ),
       'widget' => array(
         'active' => 1,
-        'module' => 'media_multiselect',
+        'module' => 'multiupload_filefield_widget',
         'settings' => array(
           'allowed_schemes' => array(
             'private' => 0,
@@ -3928,8 +3789,8 @@ function mez_cts_field_default_fields() {
           ),
           'progress_indicator' => 'throbber',
         ),
-        'type' => 'media_multiselect',
-        'weight' => '3',
+        'type' => 'file_mfw',
+        'weight' => '5',
       ),
     ),
   );
@@ -3980,13 +3841,13 @@ function mez_cts_field_default_fields() {
           'settings' => array(
             'add' => '',
             'delete' => '',
-            'description' => 1,
+            'description' => 0,
             'edit' => '',
-            'empty' => TRUE,
+            'empty' => 1,
             'view_mode' => 'full',
           ),
           'type' => 'field_collection_table_view',
-          'weight' => '2',
+          'weight' => '3',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -4008,7 +3869,7 @@ function mez_cts_field_default_fields() {
         'module' => 'field_collection_table',
         'settings' => array(),
         'type' => 'field_collection_table',
-        'weight' => '2',
+        'weight' => '3',
       ),
     ),
   );
@@ -4076,7 +3937,7 @@ function mez_cts_field_default_fields() {
             'show_repeat_rule' => 'show',
           ),
           'type' => 'date_default',
-          'weight' => '1',
+          'weight' => '2',
         ),
         'teaser' => array(
           'label' => 'hidden',
@@ -4198,6 +4059,225 @@ function mez_cts_field_default_fields() {
       'field_name' => 'title_field',
       'label' => 'Title',
       'required' => 0,
+      'settings' => array(
+        'entity_translation_sync' => FALSE,
+        'hide_label' => array(
+          'entity' => 'entity',
+          'page' => 'page',
+        ),
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '60',
+        ),
+        'type' => 'text_textfield',
+        'weight' => '0',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-location-field_location'.
+  $fields['node-location-field_location'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_location',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
+      'foreign keys' => array(),
+      'indexes' => array(
+        'lid' => array(
+          0 => 'lid',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'location_cck',
+      'settings' => array(
+        'entity_translation_sync' => FALSE,
+        'gmap_macro' => '[gmap ]',
+        'gmap_marker' => 'drupal',
+        'location_settings' => array(
+          'display' => array(
+            'hide' => array(
+              'additional' => 0,
+              'city' => 0,
+              'coords' => 'coords',
+              'country' => 0,
+              'country_name' => 0,
+              'locpick' => 0,
+              'map_link' => 0,
+              'name' => 0,
+              'postal_code' => 0,
+              'province' => 0,
+              'province_name' => 0,
+              'street' => 0,
+            ),
+          ),
+          'form' => array(
+            'fields' => array(
+              'additional' => array(
+                'collect' => '1',
+                'default' => '',
+                'weight' => '6',
+              ),
+              'city' => array(
+                'collect' => '1',
+                'default' => '',
+                'weight' => '8',
+              ),
+              'country' => array(
+                'collect' => '1',
+                'default' => 'hu',
+                'weight' => '14',
+              ),
+              'locpick' => array(
+                'collect' => '1',
+                'weight' => '20',
+              ),
+              'name' => array(
+                'collect' => '1',
+                'default' => '',
+                'weight' => '2',
+              ),
+              'postal_code' => array(
+                'collect' => '0',
+                'default' => '',
+                'weight' => '12',
+              ),
+              'province' => array(
+                'collect' => '1',
+                'default' => '',
+                'weight' => '10',
+                'widget' => 'autocomplete',
+              ),
+              'street' => array(
+                'collect' => '1',
+                'default' => '',
+                'weight' => '4',
+              ),
+            ),
+          ),
+        ),
+      ),
+      'translatable' => '0',
+      'type' => 'location',
+    ),
+    'field_instance' => array(
+      'bundle' => 'location',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'hidden',
+          'module' => 'location_cck',
+          'settings' => array(),
+          'type' => 'location_all',
+          'weight' => '1',
+        ),
+        'full' => array(
+          'label' => 'hidden',
+          'module' => 'location_cck',
+          'settings' => array(),
+          'type' => 'location_default',
+          'weight' => '0',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'ds_extras_field_template' => '',
+      'entity_type' => 'node',
+      'field_name' => 'field_location',
+      'label' => 'Location',
+      'required' => 1,
+      'settings' => array(
+        'entity_translation_sync' => FALSE,
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 0,
+        'module' => 'location_cck',
+        'settings' => array(),
+        'type' => 'location',
+        'weight' => '32',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-location-title_field'.
+  $fields['node-location-title_field'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'title_field',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(
+        'entity_translation_sync' => FALSE,
+        'max_length' => '255',
+      ),
+      'translatable' => '1',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'location',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
+        'full' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '8',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'ds_extras_field_template' => '',
+      'entity_type' => 'node',
+      'field_name' => 'title_field',
+      'label' => 'Title',
+      'required' => 1,
       'settings' => array(
         'entity_translation_sync' => FALSE,
         'hide_label' => array(
