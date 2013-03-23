@@ -1,0 +1,10 @@
+name = Views sexy exposed
+description = Make dropdown lists in Views exposed filters more usable.
+core = 7.x
+package = Views
+
+dependencies[] = views
+
+files[] = sexy_exposed.module
+files[] = sexy_exposed.views.inc
+files[] = sexy_exposed_exposed_form_plugin.inc
