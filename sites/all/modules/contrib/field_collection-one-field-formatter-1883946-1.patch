@@ -1,0 +1,84 @@
+diff --git a/field_collection.module b/field_collection.module
+index fe9911c..dd18df1 100644
+--- a/field_collection.module
++++ b/field_collection.module
+@@ -731,6 +731,13 @@ function field_collection_field_formatter_info() {
+         'view_mode' => 'full',
+       ),
+     ),
++    'field_collection_one_field' => array(
++      'label' => t('One field only'),
++      'field types' => array('field_collection'),
++      'settings' =>  array(
++        'field_name' => FALSE,
++      ),
++    ),
+   );
+ }
+ 
+@@ -742,6 +749,22 @@ function field_collection_field_formatter_settings_form($field, $instance, $view
+   $settings = $display['settings'];
+   $elements = array();
+ 
++  if ($display['type'] == 'field_collection_one_field') {
++    $available_fields = field_info_instances('field_collection_item', $field['field_name']);
++    $options = array();
++    foreach ($available_fields as $field_def) {
++      $options[$field_def['field_name']] = $field_def['label'];
++    }
++    $elements['field_name'] = array(
++      '#type' => 'select',
++      '#title' => t('Field'),
++      '#default_value' => $settings['field_name'],
++      '#description' => t('Select the field to be displayed.'),
++      '#options' => $options,
++    );
++    return $elements;
++  }
++
+   if ($display['type'] != 'field_collection_fields') {
+     $elements['edit'] = array(
+       '#type' => 'textfield',
+@@ -798,6 +821,11 @@ function field_collection_field_formatter_settings_summary($field, $instance, $v
+   $settings = $display['settings'];
+   $output = array();
+ 
++  if ($display['type'] == 'field_collection_one_field') {
++    $info = field_info_instance('field_collection_item', $settings['field_name'], $field['field_name']);
++    return t('Displayed field: !field', array('!field' => $info['label']));
++  }
++
+   if ($display['type'] !== 'field_collection_fields') {
+     $links = array_filter(array_intersect_key($settings, array_flip(array('add', 'edit', 'delete'))));
+     if ($links) {
+@@ -887,6 +915,30 @@ function field_collection_field_formatter_view($entity_type, $entity, $field, $i
+         }
+       }
+       break;
++
++    case 'field_collection_one_field':
++
++      $view_mode = !empty($display['settings']['view_mode']) ? $display['settings']['view_mode'] : 'full';
++      foreach ($items as $delta => $item) {
++        if ($field_collection = field_collection_field_get_entity($item)) {
++          // It would be better to handle multivalue field_collection fields a
++          // bit more cleanly. This implementation simply and blindly returns
++          // the values as an array of renderable arrays, so they will be
++          // simply printed beside each other. A better approach would be to
++          // find a way to have some separator between them like ', ', but
++          // that's beyond me ATM (and I didn't want to fiddle with
++          // theme_item_list() because that approach didn't fit my use case).
++          if (isset($field_collection->{$settings['field_name']})) {
++            $output = array();
++            foreach ($field_collection->{$settings['field_name']}[LANGUAGE_NONE] as $collection_delta => $collection_item) {
++              $collection_value = field_view_value('field_collection_item', $field_collection, $settings['field_name'], $collection_item, $view_mode);
++              $output[] = $collection_value;
++            }
++            $element[$delta]['entity'] = $output;
++          }
++        }
++      }
++      break;
+   }
+ 
+   return $element;
