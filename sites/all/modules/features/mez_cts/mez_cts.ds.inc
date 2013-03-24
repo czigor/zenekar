@@ -12,6 +12,41 @@ function mez_cts_ds_field_settings_info() {
 
   $ds_fieldsetting = new stdClass();
   $ds_fieldsetting->api_version = 1;
+  $ds_fieldsetting->id = 'field_collection_item|field_programme|default';
+  $ds_fieldsetting->entity_type = 'field_collection_item';
+  $ds_fieldsetting->bundle = 'field_programme';
+  $ds_fieldsetting->view_mode = 'default';
+  $ds_fieldsetting->settings = array(
+    'field_piece' => array(
+      'formatter_settings' => array(
+        'ft' => array(),
+      ),
+    ),
+  );
+  $export['field_collection_item|field_programme|default'] = $ds_fieldsetting;
+
+  $ds_fieldsetting = new stdClass();
+  $ds_fieldsetting->api_version = 1;
+  $ds_fieldsetting->id = 'field_collection_item|field_programme|full';
+  $ds_fieldsetting->entity_type = 'field_collection_item';
+  $ds_fieldsetting->bundle = 'field_programme';
+  $ds_fieldsetting->view_mode = 'full';
+  $ds_fieldsetting->settings = array(
+    'field_performers' => array(
+      'formatter_settings' => array(
+        'ft' => array(),
+      ),
+    ),
+    'field_piece' => array(
+      'formatter_settings' => array(
+        'ft' => array(),
+      ),
+    ),
+  );
+  $export['field_collection_item|field_programme|full'] = $ds_fieldsetting;
+
+  $ds_fieldsetting = new stdClass();
+  $ds_fieldsetting->api_version = 1;
   $ds_fieldsetting->id = 'file|video|full';
   $ds_fieldsetting->entity_type = 'file';
   $ds_fieldsetting->bundle = 'video';
@@ -42,9 +77,25 @@ function mez_cts_ds_field_settings_info() {
       'label' => 'hidden',
       'format' => 'default',
     ),
-    'field_media' => array(
+    'field_programme' => array(
       'formatter_settings' => array(
-        'ft' => array(),
+        'ft' => array(
+          'func' => 'theme_ds_field_expert',
+          'lb-cl' => 'field-label',
+          'ow' => TRUE,
+          'ow-el' => 'div',
+          'ow-cl' => '',
+          'ow-def-cl' => TRUE,
+          'ow-at' => '',
+          'ow-def-at' => FALSE,
+        ),
+      ),
+    ),
+    'field_time' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'lb' => 'Date',
+        ),
       ),
     ),
   );
@@ -85,11 +136,6 @@ function mez_cts_ds_field_settings_info() {
         'ft' => array(),
       ),
     ),
-    'body' => array(
-      'formatter_settings' => array(
-        'ft' => array(),
-      ),
-    ),
   );
   $export['node|news|teaser'] = $ds_fieldsetting;
 
@@ -116,6 +162,184 @@ function mez_cts_ds_field_settings_info() {
  */
 function mez_cts_ds_layout_settings_info() {
   $export = array();
+
+  $ds_layout = new stdClass();
+  $ds_layout->api_version = 1;
+  $ds_layout->id = 'field_collection_item|field_programme|default';
+  $ds_layout->entity_type = 'field_collection_item';
+  $ds_layout->bundle = 'field_programme';
+  $ds_layout->view_mode = 'default';
+  $ds_layout->layout = 'ds_1col';
+  $ds_layout->settings = array(
+    'regions' => array(
+      'ds_content' => array(
+        0 => 'field_piece',
+        1 => 'field_performers',
+      ),
+    ),
+    'fields' => array(
+      'field_piece' => 'ds_content',
+      'field_performers' => 'ds_content',
+    ),
+    'classes' => array(),
+    'wrappers' => array(
+      'ds_content' => 'div',
+    ),
+    'layout_wrapper' => 'div',
+    'layout_attributes' => '',
+    'layout_attributes_merge' => 1,
+  );
+  $export['field_collection_item|field_programme|default'] = $ds_layout;
+
+  $ds_layout = new stdClass();
+  $ds_layout->api_version = 1;
+  $ds_layout->id = 'field_collection_item|field_programme|full';
+  $ds_layout->entity_type = 'field_collection_item';
+  $ds_layout->bundle = 'field_programme';
+  $ds_layout->view_mode = 'full';
+  $ds_layout->layout = 'ds_1col';
+  $ds_layout->settings = array(
+    'regions' => array(
+      'ds_content' => array(
+        0 => 'field_piece',
+        1 => 'field_performers',
+      ),
+    ),
+    'fields' => array(
+      'field_piece' => 'ds_content',
+      'field_performers' => 'ds_content',
+    ),
+    'classes' => array(),
+    'wrappers' => array(
+      'ds_content' => 'div',
+    ),
+    'layout_wrapper' => 'div',
+    'layout_attributes' => '',
+    'layout_attributes_merge' => 1,
+  );
+  $export['field_collection_item|field_programme|full'] = $ds_layout;
+
+  $ds_layout = new stdClass();
+  $ds_layout->api_version = 1;
+  $ds_layout->id = 'file|audio|colorbox';
+  $ds_layout->entity_type = 'file';
+  $ds_layout->bundle = 'audio';
+  $ds_layout->view_mode = 'colorbox';
+  $ds_layout->layout = 'ds_1col';
+  $ds_layout->settings = array(
+    'regions' => array(
+      'ds_content' => array(
+        0 => 'title_field',
+        1 => 'file',
+      ),
+    ),
+    'fields' => array(
+      'title_field' => 'ds_content',
+      'file' => 'ds_content',
+    ),
+    'classes' => array(),
+    'wrappers' => array(
+      'ds_content' => 'div',
+    ),
+    'layout_wrapper' => 'div',
+    'layout_attributes' => '',
+    'layout_attributes_merge' => 1,
+  );
+  $export['file|audio|colorbox'] = $ds_layout;
+
+  $ds_layout = new stdClass();
+  $ds_layout->api_version = 1;
+  $ds_layout->id = 'file|audio|full';
+  $ds_layout->entity_type = 'file';
+  $ds_layout->bundle = 'audio';
+  $ds_layout->view_mode = 'full';
+  $ds_layout->layout = 'ds_1col';
+  $ds_layout->settings = array(
+    'regions' => array(
+      'ds_content' => array(
+        0 => 'title_field',
+        1 => 'field_day_date',
+        2 => 'file',
+        3 => 'description_field',
+        4 => 'field_tags',
+      ),
+    ),
+    'fields' => array(
+      'title_field' => 'ds_content',
+      'field_day_date' => 'ds_content',
+      'file' => 'ds_content',
+      'description_field' => 'ds_content',
+      'field_tags' => 'ds_content',
+    ),
+    'classes' => array(),
+    'wrappers' => array(
+      'ds_content' => 'div',
+    ),
+    'layout_wrapper' => 'div',
+    'layout_attributes' => '',
+    'layout_attributes_merge' => 1,
+  );
+  $export['file|audio|full'] = $ds_layout;
+
+  $ds_layout = new stdClass();
+  $ds_layout->api_version = 1;
+  $ds_layout->id = 'file|audio|preview';
+  $ds_layout->entity_type = 'file';
+  $ds_layout->bundle = 'audio';
+  $ds_layout->view_mode = 'preview';
+  $ds_layout->layout = 'ds_1col';
+  $ds_layout->settings = array(
+    'regions' => array(
+      'ds_content' => array(
+        0 => 'title_field',
+        1 => 'file',
+      ),
+    ),
+    'fields' => array(
+      'title_field' => 'ds_content',
+      'file' => 'ds_content',
+    ),
+    'classes' => array(),
+    'wrappers' => array(
+      'ds_content' => 'div',
+    ),
+    'layout_wrapper' => 'div',
+    'layout_attributes' => '',
+    'layout_attributes_merge' => 1,
+  );
+  $export['file|audio|preview'] = $ds_layout;
+
+  $ds_layout = new stdClass();
+  $ds_layout->api_version = 1;
+  $ds_layout->id = 'file|image|full';
+  $ds_layout->entity_type = 'file';
+  $ds_layout->bundle = 'image';
+  $ds_layout->view_mode = 'full';
+  $ds_layout->layout = 'ds_1col';
+  $ds_layout->settings = array(
+    'regions' => array(
+      'ds_content' => array(
+        0 => 'field_file_image_title_text',
+        1 => 'field_day_date',
+        2 => 'file',
+        3 => 'description_field',
+        4 => 'field_tags',
+      ),
+    ),
+    'fields' => array(
+      'field_file_image_title_text' => 'ds_content',
+      'field_day_date' => 'ds_content',
+      'file' => 'ds_content',
+      'description_field' => 'ds_content',
+      'field_tags' => 'ds_content',
+    ),
+    'classes' => array(),
+    'wrappers' => array(),
+    'layout_wrapper' => 'div',
+    'layout_attributes' => '',
+    'layout_attributes_merge' => TRUE,
+  );
+  $export['file|image|full'] = $ds_layout;
 
   $ds_layout = new stdClass();
   $ds_layout->api_version = 1;
@@ -176,6 +400,32 @@ function mez_cts_ds_layout_settings_info() {
     'layout_attributes_merge' => 1,
   );
   $export['file|video|full'] = $ds_layout;
+
+  $ds_layout = new stdClass();
+  $ds_layout->api_version = 1;
+  $ds_layout->id = 'file|video|preview';
+  $ds_layout->entity_type = 'file';
+  $ds_layout->bundle = 'video';
+  $ds_layout->view_mode = 'preview';
+  $ds_layout->layout = 'ds_1col';
+  $ds_layout->settings = array(
+    'regions' => array(
+      'ds_content' => array(
+        0 => 'file',
+      ),
+    ),
+    'fields' => array(
+      'file' => 'ds_content',
+    ),
+    'classes' => array(),
+    'wrappers' => array(
+      'ds_content' => 'div',
+    ),
+    'layout_wrapper' => 'div',
+    'layout_attributes' => '',
+    'layout_attributes_merge' => 1,
+  );
+  $export['file|video|preview'] = $ds_layout;
 
   $ds_layout = new stdClass();
   $ds_layout->api_version = 1;
@@ -273,6 +523,93 @@ function mez_cts_ds_layout_settings_info() {
 
   $ds_layout = new stdClass();
   $ds_layout->api_version = 1;
+  $ds_layout->id = 'node|concert|short_teaser';
+  $ds_layout->entity_type = 'node';
+  $ds_layout->bundle = 'concert';
+  $ds_layout->view_mode = 'short_teaser';
+  $ds_layout->layout = 'ds_1col';
+  $ds_layout->settings = array(
+    'regions' => array(
+      'ds_content' => array(
+        0 => 'title_field',
+        1 => 'field_time',
+      ),
+    ),
+    'fields' => array(
+      'title_field' => 'ds_content',
+      'field_time' => 'ds_content',
+    ),
+    'classes' => array(),
+    'wrappers' => array(
+      'ds_content' => 'div',
+    ),
+    'layout_wrapper' => 'div',
+    'layout_attributes' => '',
+    'layout_attributes_merge' => 1,
+  );
+  $export['node|concert|short_teaser'] = $ds_layout;
+
+  $ds_layout = new stdClass();
+  $ds_layout->api_version = 1;
+  $ds_layout->id = 'node|concert|teaser';
+  $ds_layout->entity_type = 'node';
+  $ds_layout->bundle = 'concert';
+  $ds_layout->view_mode = 'teaser';
+  $ds_layout->layout = 'ds_1col';
+  $ds_layout->settings = array(
+    'regions' => array(
+      'ds_content' => array(
+        0 => 'title_field',
+        1 => 'field_time',
+        2 => 'field_media',
+      ),
+    ),
+    'fields' => array(
+      'title_field' => 'ds_content',
+      'field_time' => 'ds_content',
+      'field_media' => 'ds_content',
+    ),
+    'limit' => array(
+      'field_media' => '1',
+    ),
+    'classes' => array(),
+    'wrappers' => array(
+      'ds_content' => 'div',
+    ),
+    'layout_wrapper' => 'div',
+    'layout_attributes' => '',
+    'layout_attributes_merge' => 1,
+  );
+  $export['node|concert|teaser'] = $ds_layout;
+
+  $ds_layout = new stdClass();
+  $ds_layout->api_version = 1;
+  $ds_layout->id = 'node|location|full';
+  $ds_layout->entity_type = 'node';
+  $ds_layout->bundle = 'location';
+  $ds_layout->view_mode = 'full';
+  $ds_layout->layout = 'ds_1col';
+  $ds_layout->settings = array(
+    'regions' => array(
+      'ds_content' => array(
+        0 => 'field_location',
+      ),
+    ),
+    'fields' => array(
+      'field_location' => 'ds_content',
+    ),
+    'classes' => array(),
+    'wrappers' => array(
+      'ds_content' => 'div',
+    ),
+    'layout_wrapper' => 'div',
+    'layout_attributes' => '',
+    'layout_attributes_merge' => 0,
+  );
+  $export['node|location|full'] = $ds_layout;
+
+  $ds_layout = new stdClass();
+  $ds_layout->api_version = 1;
   $ds_layout->id = 'node|news|full';
   $ds_layout->entity_type = 'node';
   $ds_layout->bundle = 'news';
@@ -317,13 +654,11 @@ function mez_cts_ds_layout_settings_info() {
       'ds_content' => array(
         0 => 'title_field',
         1 => 'post_date',
-        2 => 'body',
       ),
     ),
     'fields' => array(
       'title_field' => 'ds_content',
       'post_date' => 'ds_content',
-      'body' => 'ds_content',
     ),
     'classes' => array(),
     'wrappers' => array(
@@ -485,6 +820,7 @@ function mez_cts_ds_view_modes_info() {
   $ds_view_mode->view_mode = 'short_teaser';
   $ds_view_mode->label = 'Short teaser';
   $ds_view_mode->entities = array(
+    'node' => 'node',
     'file' => 'file',
   );
   $export['short_teaser'] = $ds_view_mode;

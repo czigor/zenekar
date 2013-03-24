@@ -1258,6 +1258,14 @@ system/ajax/*';
             'visible' => TRUE,
           ),
           'full' => array(
+            'weight' => '2',
+            'visible' => TRUE,
+          ),
+          'preview' => array(
+            'weight' => '1',
+            'visible' => TRUE,
+          ),
+          'colorbox' => array(
             'weight' => '1',
             'visible' => TRUE,
           ),
@@ -1314,11 +1322,11 @@ system/ajax/*';
             'visible' => TRUE,
           ),
           'full' => array(
-            'weight' => '0',
+            'weight' => '2',
             'visible' => TRUE,
           ),
           'preview' => array(
-            'weight' => '0',
+            'weight' => '1',
             'visible' => TRUE,
           ),
         ),
@@ -1374,10 +1382,14 @@ system/ajax/*';
             'visible' => TRUE,
           ),
           'full' => array(
-            'weight' => '0',
+            'weight' => '2',
             'visible' => TRUE,
           ),
           'news' => array(
+            'weight' => '0',
+            'visible' => TRUE,
+          ),
+          'preview' => array(
             'weight' => '0',
             'visible' => TRUE,
           ),
@@ -1442,7 +1454,7 @@ system/ajax/*';
             'visible' => TRUE,
           ),
           'preview' => array(
-            'weight' => '1',
+            'weight' => '0',
             'visible' => TRUE,
           ),
           'short_teaser' => array(
@@ -1548,6 +1560,9 @@ system/ajax/*';
       'revision' => array(
         'custom_settings' => FALSE,
       ),
+      'short_teaser' => array(
+        'custom_settings' => TRUE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
@@ -1568,6 +1583,10 @@ system/ajax/*';
             'visible' => FALSE,
           ),
           'full' => array(
+            'weight' => '0',
+            'visible' => FALSE,
+          ),
+          'short_teaser' => array(
             'weight' => '0',
             'visible' => FALSE,
           ),

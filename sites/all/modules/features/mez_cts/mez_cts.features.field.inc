@@ -59,7 +59,7 @@ function mez_cts_field_default_fields() {
           'label' => 'hidden',
           'module' => 'taxonomy',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
+          'type' => 'taxonomy_term_reference_plain',
           'weight' => '1',
         ),
       ),
@@ -137,7 +137,7 @@ function mez_cts_field_default_fields() {
           'label' => 'hidden',
           'module' => 'entityreference',
           'settings' => array(
-            'link' => 1,
+            'link' => 0,
           ),
           'type' => 'entityreference_label',
           'weight' => '0',
@@ -587,7 +587,7 @@ function mez_cts_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '2',
         ),
         'default' => array(
           'label' => 'above',
@@ -607,7 +607,7 @@ function mez_cts_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '2',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -681,7 +681,7 @@ function mez_cts_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '5',
         ),
         'default' => array(
           'label' => 'above',
@@ -709,13 +709,13 @@ function mez_cts_field_default_fields() {
             'show_repeat_rule' => 'show',
           ),
           'type' => 'date_default',
-          'weight' => '2',
+          'weight' => '1',
         ),
         'preview' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '5',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -807,7 +807,7 @@ function mez_cts_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '4',
         ),
         'default' => array(
           'label' => 'above',
@@ -826,7 +826,7 @@ function mez_cts_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '4',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -902,7 +902,7 @@ function mez_cts_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '3',
         ),
         'default' => array(
           'label' => 'hidden',
@@ -915,7 +915,7 @@ function mez_cts_field_default_fields() {
           'label' => 'hidden',
           'module' => 'taxonomy',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
+          'type' => 'taxonomy_term_reference_plain',
           'weight' => '4',
         ),
         'media_link' => array(
@@ -934,7 +934,7 @@ function mez_cts_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '3',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1004,10 +1004,15 @@ function mez_cts_field_default_fields() {
       'description' => '',
       'display' => array(
         'colorbox' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
+          'label' => 'hidden',
+          'module' => 'title',
+          'settings' => array(
+            'title_class' => '',
+            'title_link' => 'content',
+            'title_style' => 'div',
+          ),
+          'type' => 'title_linked',
+          'weight' => '0',
         ),
         'default' => array(
           'label' => 'above',
@@ -1024,10 +1029,15 @@ function mez_cts_field_default_fields() {
           'weight' => '0',
         ),
         'preview' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
+          'label' => 'hidden',
+          'module' => 'title',
+          'settings' => array(
+            'title_class' => '',
+            'title_link' => '',
+            'title_style' => '',
+          ),
+          'type' => 'title_linked',
+          'weight' => '0',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1333,11 +1343,11 @@ function mez_cts_field_default_fields() {
           'weight' => '5',
         ),
         'full' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '5',
+          'weight' => '3',
         ),
         'preview' => array(
           'label' => 'above',
@@ -1434,10 +1444,18 @@ function mez_cts_field_default_fields() {
           'weight' => '1',
         ),
         'full' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
+          'label' => 'hidden',
+          'module' => 'date',
+          'settings' => array(
+            'format_type' => 'only_day',
+            'fromto' => 'both',
+            'multiple_from' => '',
+            'multiple_number' => '',
+            'multiple_to' => '',
+            'show_repeat_rule' => 'show',
+          ),
+          'type' => 'date_default',
+          'weight' => '1',
         ),
         'preview' => array(
           'label' => 'above',
@@ -1546,10 +1564,9 @@ function mez_cts_field_default_fields() {
         ),
         'full' => array(
           'label' => 'above',
-          'module' => 'rolereference',
           'settings' => array(),
-          'type' => 'rolereference_default',
-          'weight' => '4',
+          'type' => 'hidden',
+          'weight' => '5',
         ),
         'preview' => array(
           'label' => 'above',
@@ -1642,11 +1659,11 @@ function mez_cts_field_default_fields() {
           'weight' => '0',
         ),
         'full' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'taxonomy',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
-          'weight' => '0',
+          'type' => 'taxonomy_term_reference_plain',
+          'weight' => '4',
         ),
         'preview' => array(
           'label' => 'hidden',
@@ -1741,17 +1758,22 @@ function mez_cts_field_default_fields() {
           'weight' => '6',
         ),
         'full' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'text',
           'settings' => array(),
-          'type' => 'text_default',
-          'weight' => '6',
+          'type' => 'text_plain',
+          'weight' => '0',
         ),
         'preview' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '1',
+          'label' => 'hidden',
+          'module' => 'title',
+          'settings' => array(
+            'title_class' => '',
+            'title_link' => 'content',
+            'title_style' => 'div',
+          ),
+          'type' => 'title_linked',
+          'weight' => '0',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1838,7 +1860,7 @@ function mez_cts_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '1',
+          'weight' => '3',
         ),
         'news' => array(
           'label' => 'above',
@@ -1850,7 +1872,7 @@ function mez_cts_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '3',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1944,7 +1966,7 @@ function mez_cts_field_default_fields() {
           'label' => 'hidden',
           'module' => 'date',
           'settings' => array(
-            'format_type' => 'long',
+            'format_type' => 'only_day',
             'fromto' => 'both',
             'multiple_from' => '',
             'multiple_number' => '',
@@ -1952,7 +1974,7 @@ function mez_cts_field_default_fields() {
             'show_repeat_rule' => 'show',
           ),
           'type' => 'date_default',
-          'weight' => '2',
+          'weight' => '1',
         ),
         'news' => array(
           'label' => 'above',
@@ -1964,7 +1986,7 @@ function mez_cts_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '5',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2081,7 +2103,7 @@ function mez_cts_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '4',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2172,7 +2194,7 @@ function mez_cts_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '6',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2252,9 +2274,10 @@ function mez_cts_field_default_fields() {
         ),
         'full' => array(
           'label' => 'hidden',
+          'module' => 'text',
           'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '4',
+          'type' => 'text_plain',
+          'weight' => '0',
         ),
         'news' => array(
           'label' => 'above',
@@ -2263,10 +2286,10 @@ function mez_cts_field_default_fields() {
           'weight' => '6',
         ),
         'preview' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '1',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2359,7 +2382,7 @@ function mez_cts_field_default_fields() {
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_plain',
-          'weight' => '3',
+          'weight' => '4',
         ),
         'media_link' => array(
           'label' => 'above',
@@ -2383,7 +2406,7 @@ function mez_cts_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '2',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -3152,14 +3175,9 @@ function mez_cts_field_default_fields() {
         ),
         'preview' => array(
           'label' => 'hidden',
-          'module' => 'title',
-          'settings' => array(
-            'title_class' => '',
-            'title_link' => 'content',
-            'title_style' => 'div',
-          ),
-          'type' => 'title_linked',
-          'weight' => '0',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '1',
         ),
         'short_teaser' => array(
           'label' => 'hidden',
@@ -3578,14 +3596,17 @@ function mez_cts_field_default_fields() {
           'type' => 'text_default',
           'weight' => '5',
         ),
+        'short_teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '10',
+        ),
         'teaser' => array(
           'label' => 'hidden',
-          'module' => 'text',
-          'settings' => array(
-            'trim_length' => 600,
-          ),
-          'type' => 'text_summary_or_trimmed',
-          'weight' => '3',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '11',
         ),
       ),
       'entity_type' => 'node',
@@ -3677,7 +3698,7 @@ function mez_cts_field_default_fields() {
           'weight' => '6',
         ),
         'full' => array(
-          'label' => 'hidden',
+          'label' => 'above',
           'module' => 'entityreference',
           'settings' => array(
             'links' => 1,
@@ -3686,11 +3707,17 @@ function mez_cts_field_default_fields() {
           'type' => 'entityreference_entity_view',
           'weight' => '1',
         ),
+        'short_teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '11',
+        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '10',
         ),
       ),
       'ds_extras_field_template' => '',
@@ -3752,7 +3779,7 @@ function mez_cts_field_default_fields() {
     'field_instance' => array(
       'bundle' => 'concert',
       'deleted' => '0',
-      'description' => '',
+      'description' => 'Audio media are preferred to be placed last as they occupy wider space and destroy the nice grid. ',
       'display' => array(
         'default' => array(
           'label' => 'hidden',
@@ -3774,16 +3801,25 @@ function mez_cts_field_default_fields() {
           'label' => 'hidden',
           'module' => 'file_entity',
           'settings' => array(
-            'file_view_mode' => 'preview',
+            'file_view_mode' => 'colorbox',
           ),
           'type' => 'file_rendered',
           'weight' => '4',
         ),
-        'teaser' => array(
-          'label' => 'above',
+        'short_teaser' => array(
+          'label' => 'hidden',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '11',
+          'weight' => '8',
+        ),
+        'teaser' => array(
+          'label' => 'hidden',
+          'module' => 'file_entity',
+          'settings' => array(
+            'file_view_mode' => 'preview',
+          ),
+          'type' => 'file_rendered',
+          'weight' => '2',
         ),
       ),
       'ds_extras_field_template' => '',
@@ -3801,7 +3837,7 @@ function mez_cts_field_default_fields() {
       ),
       'widget' => array(
         'active' => 1,
-        'module' => 'multiupload_filefield_widget',
+        'module' => 'media_multiselect',
         'settings' => array(
           'allowed_schemes' => array(
             'private' => 0,
@@ -3823,7 +3859,7 @@ function mez_cts_field_default_fields() {
           ),
           'progress_indicator' => 'throbber',
         ),
-        'type' => 'file_mfw',
+        'type' => 'media_multiselect',
         'weight' => '5',
       ),
     ),
@@ -3871,23 +3907,28 @@ function mez_cts_field_default_fields() {
         ),
         'full' => array(
           'label' => 'above',
-          'module' => 'field_collection_table',
+          'module' => 'field_collection',
           'settings' => array(
             'add' => '',
             'delete' => '',
             'description' => 0,
             'edit' => '',
-            'empty' => 1,
             'view_mode' => 'full',
           ),
-          'type' => 'field_collection_table_view',
+          'type' => 'field_collection_view',
           'weight' => '3',
         ),
-        'teaser' => array(
+        'short_teaser' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '10',
+          'weight' => '9',
+        ),
+        'teaser' => array(
+          'label' => 'hidden',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '9',
         ),
       ),
       'entity_type' => 'node',
@@ -3960,7 +4001,7 @@ function mez_cts_field_default_fields() {
           'weight' => '1',
         ),
         'full' => array(
-          'label' => 'hidden',
+          'label' => 'inline',
           'module' => 'date',
           'settings' => array(
             'format_type' => 'long',
@@ -3972,6 +4013,20 @@ function mez_cts_field_default_fields() {
           ),
           'type' => 'date_default',
           'weight' => '2',
+        ),
+        'short_teaser' => array(
+          'label' => 'hidden',
+          'module' => 'date',
+          'settings' => array(
+            'format_type' => 'long',
+            'fromto' => 'both',
+            'multiple_from' => '',
+            'multiple_number' => '',
+            'multiple_to' => '',
+            'show_repeat_rule' => 'show',
+          ),
+          'type' => 'date_default',
+          'weight' => '1',
         ),
         'teaser' => array(
           'label' => 'hidden',
@@ -4076,6 +4131,17 @@ function mez_cts_field_default_fields() {
           'type' => 'text_plain',
           'weight' => '0',
         ),
+        'short_teaser' => array(
+          'label' => 'hidden',
+          'module' => 'title',
+          'settings' => array(
+            'title_class' => '',
+            'title_link' => 'content',
+            'title_style' => 'span',
+          ),
+          'type' => 'title_linked',
+          'weight' => '0',
+        ),
         'teaser' => array(
           'label' => 'hidden',
           'module' => 'title',
@@ -4149,8 +4215,8 @@ function mez_cts_field_default_fields() {
               'map_link' => 0,
               'name' => 0,
               'postal_code' => 0,
-              'province' => 0,
-              'province_name' => 0,
+              'province' => 'province',
+              'province_name' => 'province_name',
               'street' => 0,
             ),
           ),
@@ -4386,11 +4452,8 @@ function mez_cts_field_default_fields() {
         ),
         'teaser' => array(
           'label' => 'hidden',
-          'module' => 'text',
-          'settings' => array(
-            'trim_length' => '300',
-          ),
-          'type' => 'text_summary_or_trimmed',
+          'settings' => array(),
+          'type' => 'hidden',
           'weight' => '2',
         ),
       ),
@@ -6149,6 +6212,9 @@ function mez_cts_field_default_fields() {
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_composer',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
       'foreign keys' => array(
         'node' => array(
           'columns' => array(
@@ -6170,7 +6236,7 @@ function mez_cts_field_default_fields() {
         'handler_settings' => array(
           'behaviors' => array(
             'views-select-list' => array(
-              'status' => 0,
+              'status' => 1,
             ),
           ),
           'sort' => array(
@@ -6215,6 +6281,7 @@ function mez_cts_field_default_fields() {
           'weight' => 0,
         ),
       ),
+      'ds_extras_field_template' => '',
       'entity_type' => 'node',
       'field_name' => 'field_composer',
       'label' => 'Composer',
@@ -6835,6 +6902,7 @@ function mez_cts_field_default_fields() {
   t('Active');
   t('Address');
   t('Alt Text');
+  t('Audio media are preferred to be placed last as they occupy wider space and destroy the nice grid. ');
   t('Body');
   t('Comma separator');
   t('Composer');
