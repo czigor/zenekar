@@ -22,7 +22,7 @@ function mez_frontpage_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Concerts';
+  $handler->display->display_options['title'] = 'Koncertek';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['use_more_text'] = 'tovább';
   $handler->display->display_options['access']['type'] = 'perm';
@@ -84,6 +84,7 @@ function mez_frontpage_views_default_views() {
   $handler->display->display_options['fields']['field_programme']['id'] = 'field_programme';
   $handler->display->display_options['fields']['field_programme']['table'] = 'field_data_field_programme';
   $handler->display->display_options['fields']['field_programme']['field'] = 'field_programme';
+  $handler->display->display_options['fields']['field_programme']['label'] = 'Műsor';
   $handler->display->display_options['fields']['field_programme']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_programme']['type'] = 'field_collection_one_field';
   $handler->display->display_options['fields']['field_programme']['settings'] = array(
@@ -92,6 +93,11 @@ function mez_frontpage_views_default_views() {
   $handler->display->display_options['fields']['field_programme']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_programme']['multi_type'] = 'ol';
   $handler->display->display_options['fields']['field_programme']['separator'] = '<>';
+  /* Rendezési szempont: Mező: Time -  kezdődátum (field_time) */
+  $handler->display->display_options['sorts']['field_time_value']['id'] = 'field_time_value';
+  $handler->display->display_options['sorts']['field_time_value']['table'] = 'field_data_field_time';
+  $handler->display->display_options['sorts']['field_time_value']['field'] = 'field_time_value';
+  $handler->display->display_options['sorts']['field_time_value']['order'] = 'DESC';
   /* Szűrési feltétel: Tartalom: Közzétéve */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
