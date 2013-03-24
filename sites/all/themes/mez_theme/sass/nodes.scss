@@ -78,6 +78,73 @@
 .node-article { /* Article content node */
 }
 
+.node-concert.view-mode-full {
+  .field-name-field-media {
+    .file-audio {
+      .field-name-title-field {
+        display: inline-block;
+        max-width: 280px;
+      }
+    }
+    .file-document {
+      .field-name-title-field {
+        max-width: 180px;
+        position: absolute;
+        margin: 0 10px;
+      }
+    }
+    .field-name-title-field { 
+      font-size: 0.7em;
+    }
+  }
+  
+  .field-name-field-programme {
+    .field-collection-view.clearfix {
+      &:after {
+         
+      }
+      border: 0;
+      margin: 0;
+      padding: 0;
+      .field-name-field-piece {
+        display: inline-block;
+        float: left;
+        width: 320px;
+      }
+      .field-collection-container {
+        display: inline-block;
+        border: none;
+        margin: 0;
+        .field-name-field-performers {
+          .field-items {
+            .field-item {
+              margin-bottom: 0;
+              .field-name-field-performer {
+                display: inline-block;
+                float: left;
+                margin-right: 10px;
+              }
+              .field-name-field-instrument {
+               display: inline-block;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.node-concert.view-mode-teaser, .node-concert.view-mode-short_teaser {
+  .field-name-field-time {
+    @include field-name-post-date;
+  }
+  .field-name-title-field {
+    @include title-field;
+    margin-bottom: 10px;
+  }
+}
+
 .node-unpublished { /* Unpublished nodes */
   /* background-color: #fff4f4; */ /* Drupal core uses a #fff4f4 background */
 
@@ -101,3 +168,5 @@
   float:left;
   margin-right: 10px;
 }
+
+
