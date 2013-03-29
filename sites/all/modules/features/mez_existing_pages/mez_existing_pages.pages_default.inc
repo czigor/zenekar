@@ -37,7 +37,8 @@ function mez_existing_pages_default_page_manager_handlers() {
             'paths' => 'admin/*
 file/*
 videos
-taxonomy/*',
+taxonomy/*
+news',
           ),
           'context' => 'empty',
           'not' => FALSE,

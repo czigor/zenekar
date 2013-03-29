@@ -132,7 +132,8 @@ admin/structure/field-collections/%field_collection_field_name/fields
 admin/structure/field-collections/%field_collection_field_name/fields/%field_ui_menu
 admin/structure/field-collections/%field_collection_field_name/fields/%field_ui_menu/delete
 admin/structure/field-collections/%field_collection_field_name/fields/%field_ui_menu/edit
-admin/structure/field-collections/%field_collection_field_name/fields/%field_ui_menu/translate';
+admin/structure/field-collections/%field_collection_field_name/fields/%field_ui_menu/translate
+news';
   $export['existing_page'] = $pm_existing_page;
 
   return $export;
