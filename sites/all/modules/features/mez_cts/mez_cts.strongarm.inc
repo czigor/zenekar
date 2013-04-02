@@ -14,7 +14,7 @@ function mez_cts_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'additional_settings__active_tab_composer';
-  $strongarm->value = 'edit-submission';
+  $strongarm->value = 'edit-auto-nodetitle';
   $export['additional_settings__active_tab_composer'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -51,79 +51,6 @@ function mez_cts_strongarm() {
   $strongarm->name = 'additional_settings__active_tab_piece';
   $strongarm->value = 'edit-auto-nodetitle';
   $export['additional_settings__active_tab_piece'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'ant_composer';
-  $strongarm->value = '1';
-  $export['ant_composer'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'ant_news';
-  $strongarm->value = '0';
-  $export['ant_news'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'ant_pattern_composer';
-  $strongarm->value = '<?php
-$bool = reset(field_get_items(\'node\', $node, \'field_comma_separator\'));
-$comma = $bool[\'value\'] ? \', \' : \' \';
-$given_names = field_get_items(\'node\', $node, \'field_given_name\');
-$given_name = \'\';
-foreach ($given_names as $gn) {
-  $given_name .= $gn[\'value\'] . \' \';
-}
-$given_name = trim($given_name);
-return "[node:field-family-name]" . $comma . "$given_name";
-?>';
-  $export['ant_pattern_composer'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'ant_pattern_news';
-  $strongarm->value = '';
-  $export['ant_pattern_news'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'ant_pattern_piece';
-  $strongarm->value = '';
-  $export['ant_pattern_piece'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'ant_php_composer';
-  $strongarm->value = 1;
-  $export['ant_php_composer'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'ant_php_news';
-  $strongarm->value = 0;
-  $export['ant_php_news'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'ant_php_piece';
-  $strongarm->value = 0;
-  $export['ant_php_piece'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'ant_piece';
-  $strongarm->value = '0';
-  $export['ant_piece'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -1065,7 +992,7 @@ system/ajax/*';
   $strongarm->api_version = 1;
   $strongarm->name = 'entity_translation_settings_node__composer';
   $strongarm->value = array(
-    'default_language' => 'und',
+    'default_language' => 'xx-et-current',
     'hide_language_selector' => 0,
     'exclude_language_none' => 0,
     'lock_language' => 0,

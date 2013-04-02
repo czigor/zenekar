@@ -22,7 +22,7 @@ function mez_frontpage_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Koncertek';
+  $handler->display->display_options['title'] = 'Concerts';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['use_more_text'] = 'tovább';
   $handler->display->display_options['access']['type'] = 'perm';
@@ -45,7 +45,7 @@ function mez_frontpage_views_default_views() {
   $handler->display->display_options['pager']['options']['tags']['next'] = 'következő ›';
   $handler->display->display_options['pager']['options']['tags']['last'] = 'utolsó »';
   $handler->display->display_options['style_plugin'] = 'table';
-  /* Mező: Tartalom: Media */
+  /* Field: Content: Media */
   $handler->display->display_options['fields']['field_media']['id'] = 'field_media';
   $handler->display->display_options['fields']['field_media']['table'] = 'field_data_field_media';
   $handler->display->display_options['fields']['field_media']['field'] = 'field_media';
@@ -58,7 +58,7 @@ function mez_frontpage_views_default_views() {
   );
   $handler->display->display_options['fields']['field_media']['delta_limit'] = '1';
   $handler->display->display_options['fields']['field_media']['delta_offset'] = '0';
-  /* Mező: Tartalom: Cím */
+  /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
@@ -66,7 +66,7 @@ function mez_frontpage_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  /* Mező: Mező: Time */
+  /* Field: Field: Time */
   $handler->display->display_options['fields']['field_time']['id'] = 'field_time';
   $handler->display->display_options['fields']['field_time']['table'] = 'field_data_field_time';
   $handler->display->display_options['fields']['field_time']['field'] = 'field_time';
@@ -80,11 +80,10 @@ function mez_frontpage_views_default_views() {
     'multiple_to' => '',
     'show_repeat_rule' => 'show',
   );
-  /* Mező: Tartalom: Programme */
+  /* Field: Content: Programme */
   $handler->display->display_options['fields']['field_programme']['id'] = 'field_programme';
   $handler->display->display_options['fields']['field_programme']['table'] = 'field_data_field_programme';
   $handler->display->display_options['fields']['field_programme']['field'] = 'field_programme';
-  $handler->display->display_options['fields']['field_programme']['label'] = 'Műsor';
   $handler->display->display_options['fields']['field_programme']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_programme']['type'] = 'field_collection_one_field';
   $handler->display->display_options['fields']['field_programme']['settings'] = array(
@@ -93,19 +92,19 @@ function mez_frontpage_views_default_views() {
   $handler->display->display_options['fields']['field_programme']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_programme']['multi_type'] = 'ol';
   $handler->display->display_options['fields']['field_programme']['separator'] = '<>';
-  /* Rendezési szempont: Mező: Time -  kezdődátum (field_time) */
+  /* Sort criterion: Field: Time -  start date (field_time) */
   $handler->display->display_options['sorts']['field_time_value']['id'] = 'field_time_value';
   $handler->display->display_options['sorts']['field_time_value']['table'] = 'field_data_field_time';
   $handler->display->display_options['sorts']['field_time_value']['field'] = 'field_time_value';
   $handler->display->display_options['sorts']['field_time_value']['order'] = 'DESC';
-  /* Szűrési feltétel: Tartalom: Közzétéve */
+  /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Szűrési feltétel: Tartalom: Típus */
+  /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
@@ -130,33 +129,33 @@ function mez_frontpage_views_default_views() {
     ),
   );
   $handler->display->display_options['defaults']['relationships'] = FALSE;
-  /* Kapcsolat: Tartalom: Programme (field_programme) */
+  /* Relationship: Content: Programme (field_programme) */
   $handler->display->display_options['relationships']['field_programme_value']['id'] = 'field_programme_value';
   $handler->display->display_options['relationships']['field_programme_value']['table'] = 'field_data_field_programme';
   $handler->display->display_options['relationships']['field_programme_value']['field'] = 'field_programme_value';
   $handler->display->display_options['relationships']['field_programme_value']['delta'] = '-1';
-  /* Kapcsolat: Entity Reference: Referenced Entity */
+  /* Relationship: Entity Reference: Referenced Entity */
   $handler->display->display_options['relationships']['field_piece_target_id']['id'] = 'field_piece_target_id';
   $handler->display->display_options['relationships']['field_piece_target_id']['table'] = 'field_data_field_piece';
   $handler->display->display_options['relationships']['field_piece_target_id']['field'] = 'field_piece_target_id';
   $handler->display->display_options['relationships']['field_piece_target_id']['relationship'] = 'field_programme_value';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Szűrési feltétel: Tartalom: Közzétéve */
+  /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Szűrési feltétel: Tartalom: Típus */
+  /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
     'concert' => 'concert',
   );
-  /* Szűrési feltétel: Mező: Time -  kezdődátum (field_time) */
+  /* Filter criterion: Field: Time -  start date (field_time) */
   $handler->display->display_options['filters']['field_time_value']['id'] = 'field_time_value';
   $handler->display->display_options['filters']['field_time_value']['table'] = 'field_data_field_time';
   $handler->display->display_options['filters']['field_time_value']['field'] = 'field_time_value';
@@ -174,7 +173,7 @@ function mez_frontpage_views_default_views() {
     5 => 0,
   );
   $handler->display->display_options['filters']['field_time_value']['form_type'] = 'date_text';
-  /* Szűrési feltétel: Tartalom: Composer (field_composer) */
+  /* Filter criterion: Content: Composer (field_composer) */
   $handler->display->display_options['filters']['field_composer_target_id']['id'] = 'field_composer_target_id';
   $handler->display->display_options['filters']['field_composer_target_id']['table'] = 'field_data_field_composer';
   $handler->display->display_options['filters']['field_composer_target_id']['field'] = 'field_composer_target_id';
@@ -262,7 +261,7 @@ function mez_frontpage_views_default_views() {
   $handler->display->display_options['row_options']['advanced'] = 0;
   $handler->display->display_options['row_options']['delta_fieldset']['delta_fields'] = array();
   $handler->display->display_options['row_options']['default_fieldset']['view_mode'] = 'preview';
-  /* Mező: Fájl: Név */
+  /* Field: File: Name */
   $handler->display->display_options['fields']['filename']['id'] = 'filename';
   $handler->display->display_options['fields']['filename']['table'] = 'file_managed';
   $handler->display->display_options['fields']['filename']['field'] = 'filename';
@@ -270,14 +269,14 @@ function mez_frontpage_views_default_views() {
   $handler->display->display_options['fields']['filename']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['filename']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['filename']['link_to_file'] = TRUE;
-  /* Szűrési feltétel: Fájl: Típus */
+  /* Filter criterion: File: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'file_managed';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
     'video' => 'video',
   );
-  /* Szűrési feltétel: Fájl: Fájl azonosító */
+  /* Filter criterion: File: File ID */
   $handler->display->display_options['filters']['fid']['id'] = 'fid';
   $handler->display->display_options['filters']['fid']['table'] = 'file_managed';
   $handler->display->display_options['filters']['fid']['field'] = 'fid';
@@ -328,7 +327,7 @@ function mez_frontpage_views_default_views() {
   $handler->display->display_options['row_options']['alternating_fieldset']['item_0'] = 'preview';
   $handler->display->display_options['row_options']['alternating_fieldset']['item_1'] = 'short_teaser';
   $handler->display->display_options['row_options']['alternating_fieldset']['item_2'] = 'short_teaser';
-  /* Mező: Fájl: Név */
+  /* Field: File: Name */
   $handler->display->display_options['fields']['filename']['id'] = 'filename';
   $handler->display->display_options['fields']['filename']['table'] = 'file_managed';
   $handler->display->display_options['fields']['filename']['field'] = 'filename';
@@ -336,12 +335,12 @@ function mez_frontpage_views_default_views() {
   $handler->display->display_options['fields']['filename']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['filename']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['filename']['link_to_file'] = TRUE;
-  /* Rendezési szempont: Fájl: Dátum (field_day_date) */
+  /* Sort criterion: File: Dátum (field_day_date) */
   $handler->display->display_options['sorts']['field_day_date_value']['id'] = 'field_day_date_value';
   $handler->display->display_options['sorts']['field_day_date_value']['table'] = 'field_data_field_day_date';
   $handler->display->display_options['sorts']['field_day_date_value']['field'] = 'field_day_date_value';
   $handler->display->display_options['sorts']['field_day_date_value']['order'] = 'DESC';
-  /* Szűrési feltétel: Fájl: Típus */
+  /* Filter criterion: File: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'file_managed';
   $handler->display->display_options['filters']['type']['field'] = 'type';
@@ -404,7 +403,7 @@ function mez_frontpage_views_default_views() {
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Szűrési feltétel: Fájl: Típus */
+  /* Filter criterion: File: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'file_managed';
   $handler->display->display_options['filters']['type']['field'] = 'type';
@@ -412,7 +411,7 @@ function mez_frontpage_views_default_views() {
     'video' => 'video',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Szűrési feltétel: Fájl: Dátum (field_day_date) */
+  /* Filter criterion: File: Dátum (field_day_date) */
   $handler->display->display_options['filters']['field_day_date_value']['id'] = 'field_day_date_value';
   $handler->display->display_options['filters']['field_day_date_value']['table'] = 'field_data_field_day_date';
   $handler->display->display_options['filters']['field_day_date_value']['field'] = 'field_day_date_value';
@@ -430,7 +429,7 @@ function mez_frontpage_views_default_views() {
     5 => 0,
   );
   $handler->display->display_options['filters']['field_day_date_value']['form_type'] = 'date_text';
-  /* Szűrési feltétel: Mező: Tags (field_tags) */
+  /* Filter criterion: Field: Tags (field_tags) */
   $handler->display->display_options['filters']['field_tags_tid']['id'] = 'field_tags_tid';
   $handler->display->display_options['filters']['field_tags_tid']['table'] = 'field_data_field_tags';
   $handler->display->display_options['filters']['field_tags_tid']['field'] = 'field_tags_tid';
