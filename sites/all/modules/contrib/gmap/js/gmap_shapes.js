@@ -31,15 +31,16 @@ Drupal.gmap.addHandler('gmap', function (elem) {
       pa = obj.poly.calcPolyPoints(shape.center, radius, shape.numpoints);
     }
     else if (shape.type === 'polygon') {
+      var coords = new Array();
       jQuery.each(shape.points, function (i, n) {
-        pa.push(new GLatLng(n[0], n[1]));
+        coords.push(new google.maps.LatLng(n[0], n[1]));
       });
     }
     else if (shape.type === 'line') {
+      var coords = new Array();
       jQuery.each(shape.points, function (i, n) {
-        pa.push(new GLatLng(n[0], n[1]));
+        coords.push(new google.maps.LatLng(n[0], n[1]));
       });
-      fillstyle = false;
     }
     cargs = [pa];
 
@@ -67,7 +68,7 @@ Drupal.gmap.addHandler('gmap', function (elem) {
       style[3] = '#' + style[3];
       style[4] = style[4] / 100;
     }
-    
+
     if (shape.type == 'encoded_line') {
       shape.color = style[0];
       shape.weight = style[1];
@@ -99,17 +100,27 @@ Drupal.gmap.addHandler('gmap', function (elem) {
       GPolyline.apply(this, args);
     };
     Pl.prototype = new GPolyline();
+
+    var polyObject = {
+      path: coords,
+      strokeColor: style[0],
+      strokeWeight: style[1],
+      strokeOpacity: style[2],
+      fillColor: style[3],
+      fillOpacity: style[4],
+    }
+
     switch (shape.type) {
       case 'circle':
       case 'polygon':
       case 'rpolygon':
-        shape.shape = new Pg(cargs);
+        shape.shape = new google.maps.Polygon(polyObject);
         break;
       case 'line':
-        shape.shape = new Pl(cargs);
+        shape.shape = new google.maps.Polyline(polyObject);
         break;
       case 'encoded_line':
-        shape.shape = GPolyline.fromEncoded(shape);        
+        shape.shape = GPolyline.fromEncoded(shape);
         break;
       case 'encoded_polygon':
         shape.shape = GPolygon.fromEncoded(shape);
@@ -118,17 +129,16 @@ Drupal.gmap.addHandler('gmap', function (elem) {
   });
 
   obj.bind('addshape', function (shape) {
-    if (!obj.vars.shapes) {
-      obj.vars.shapes = [];
-    }
-    obj.vars.shapes.push(shape);
-    obj.map.addOverlay(shape.shape);
+    if ( !obj.map.shapes ) obj.map.shapes = new Array();
+    shape.shape.setMap(obj.map);
+    //obj.map.shapes.push( shape.shape );
 
-    if (obj.vars.behavior.clickableshapes) {
+    /*if (obj.vars.behavior.clickableshapes) {
       GEvent.addListener(shape.shape, 'click', function () {
         obj.change('clickshape', -1, shape);
       });
-    }
+    }*/
+
   });
 
   obj.bind('delshape', function (shape) {
@@ -143,3 +153,7 @@ Drupal.gmap.addHandler('gmap', function (elem) {
     }
   });
 });
+
+/**
+This is a comment
+*/

@@ -259,3 +259,88 @@ class testGmapTaxonomyFormsTestCase extends DrupalWebTestCase {
     return (file_exists("../checkout") || file_exists("../site_under_test"));
   }
 }
+
+/**
+ * WebTest tests for location_gmap_find_address.module.
+ */
+
+class LGFATestCase extends DrupalWebTestCase {
+
+  protected $privileged_user;
+
+  public static function getInfo() {
+    return array(
+      'name' => 'Location Gmap Find Address button checks',
+      'description' => 'Test the Location Gmap Find Address button checks.',
+      'group' => 'GMap',
+    );
+  }
+
+  public function setUp() {
+
+    parent::setUp('location', 'gmap', 'location_cck', 'field_ui', 'location_gmap_find_address');
+  }
+
+  //@todo remove this after http://drupal.org/node/1252310#comment-7109128 fix
+  protected function error($message = '', $group = 'Other', array $caller = NULL) {
+    if ($message == 'Undefined index: location_settings') {
+      // change error (Notice) to debug message
+      return $this->assert('debug', $message, 'Debug', $caller);
+    }
+  return parent::error($message, $group, $caller);
+  }
+
+  public function testGmapSaveConfig() {
+
+    // login with user
+    $this->privileged_user = $this->drupalCreateUser(array(
+      'administer site configuration',
+      'administer content types',
+      'bypass node access',
+    ));
+    $this->drupalLogin($this->privileged_user);
+
+    // array for form
+    $edit = array(
+      'location_usegmap' => 1,
+      'location_default_country' => 'ua',
+    );
+
+    // change location default option
+    $this->drupalPost('admin/config/content/location', $edit, t('Save configuration'));
+    $this->assertText(t('The configuration options have been saved.'));
+
+    // change gmap API key
+    // array for form
+    $edit2 = array(
+      'gmap_api_key' => 'AIzaSyAe2PAkh_qvTq-3WkXQrVwVwh3Lo9FDvkk',
+    );
+
+    $this->drupalPost('admin/config/services/gmap', $edit2, t('Save configuration'));
+    $this->assertText(t('The configuration options have been saved.'));
+
+    // add location field to Basic page type
+    $edit3 = array(
+      'fields[_add_new_field][label]' => 'Location',
+      'fields[_add_new_field][field_name]' => 'location',
+      'fields[_add_new_field][type]' => 'location',
+      'fields[_add_new_field][widget_type]' => 'location',
+    );
+
+    $this->drupalPost('admin/structure/types/manage/page/fields', $edit3, t('Save'));
+    $this->assertText(t('These settings apply to the Location field everywhere it is used. These settings impact the way that data is stored in the database and cannot be changed once data has been created.'));
+
+    // admin/structure/types/manage/page/fields/field_location
+    $edit4 = array(
+      'field_location[und][0][country]' => 'ua',
+      'field[settings][gmap_marker]' => 'small red',
+    );
+
+    $this->drupalPost('admin/structure/types/manage/page/fields/field_location', $edit4, t('Save settings'));
+    $this->assertText(t('Saved Location configuration.'));
+
+    // check $form["#after_build"][] = "location_gmap_find_address_after_build";
+    $this->drupalGet('node/add/page');
+    $this->assertText(t('Find Address on Map'));
+  }
+}

@@ -1,18 +1,16 @@
 name = GMap
-description = Filter to allow insertion of a google map into a node
+description = Views plugins to show Google Maps from entities.
 core = 7.x
 package = Location
 configure = admin/config/services/gmap
-files[] = gmap.module
-files[] = gmap.views.inc
-files[] = gmap-view-gmap.tpl.php
+
 files[] = gmap_plugin_style_gmap.inc
 files[] = gmap_plugin_style_gmapextended.inc
 files[] = tests/gmap.test
 
-; Information added by drupal.org packaging script on 2013-02-25
-version = "7.x-2.4"
+; Information added by drupal.org packaging script on 2013-03-31
+version = "7.x-2.6"
 core = "7.x"
 project = "gmap"
-datestamp = "1361832031"
+datestamp = "1364754012"
 
