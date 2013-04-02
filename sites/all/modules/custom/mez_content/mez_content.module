@@ -62,8 +62,8 @@ function mez_content_composer_form_submit($form, &$form_state) {
     if (!empty($fpt[0]['value'])) {
       $family_name = $form_state['values']['field_family_name'][$lang][0]['value'];
       $given_name = '';
-      foreach ($form_state['values']['field_given_name'][$lang] as $gn) {
-        if (isset($gn['value'])) {
+      foreach ($form_state['values']['field_given_name'][$lang] as $key => $gn) {
+        if (isset($gn['value']) && is_string($gn['value']) && is_numeric($key)) {
           $given_name .= $gn['value'] . ' ';
         }
       }
