@@ -1066,7 +1066,7 @@ system/ajax/*';
   $strongarm->name = 'entity_translation_settings_node__composer';
   $strongarm->value = array(
     'default_language' => 'und',
-    'hide_language_selector' => 1,
+    'hide_language_selector' => 0,
     'exclude_language_none' => 0,
     'lock_language' => 0,
     'shared_fields_original_only' => 0,

@@ -3308,6 +3308,9 @@ function mez_cts_field_default_fields() {
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_family_name',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
       'foreign keys' => array(
         'format' => array(
           'columns' => array(
@@ -3327,7 +3330,7 @@ function mez_cts_field_default_fields() {
         'entity_translation_sync' => FALSE,
         'max_length' => '255',
       ),
-      'translatable' => '0',
+      'translatable' => '1',
       'type' => 'text',
     ),
     'field_instance' => array(
@@ -3355,6 +3358,7 @@ function mez_cts_field_default_fields() {
           'weight' => 0,
         ),
       ),
+      'ds_extras_field_template' => '',
       'entity_type' => 'node',
       'field_name' => 'field_family_name',
       'label' => 'Family name',
@@ -3406,7 +3410,7 @@ function mez_cts_field_default_fields() {
         'entity_translation_sync' => FALSE,
         'max_length' => '255',
       ),
-      'translatable' => '0',
+      'translatable' => '1',
       'type' => 'text',
     ),
     'field_instance' => array(
@@ -3434,6 +3438,7 @@ function mez_cts_field_default_fields() {
           'weight' => 0,
         ),
       ),
+      'ds_extras_field_template' => '',
       'entity_type' => 'node',
       'field_name' => 'field_given_name',
       'label' => 'Given name',
