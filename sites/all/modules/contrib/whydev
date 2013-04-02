@@ -2,5 +2,4 @@ fe_paths http://drupal.org/node/1806472
 link http://drupal.org/node/191428
 pm_existing_pages http://drupal.org/node/1743412
 i18nviews only dev
-features no special reason, tried this first when changing to 2.x
 entityreference http://drupal.org/node/1392702
