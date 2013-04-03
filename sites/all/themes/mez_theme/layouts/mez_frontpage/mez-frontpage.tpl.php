@@ -18,37 +18,7 @@
  *   - $content['footer']: Content in the footer row.
  */
 ?>
-<div id="page" class="panel-mez-frontpage clearfix panel-display">
-
-<header id="header">
-  <div class="toprow">
-    <div class="inset clearfix">
-      <div class="top">
-        <?php if ($content['top']): ?>
-          <?php print $content['top']; ?>
-        <?php endif; ?>
-      </div>
-      <div class="top-right">
-        <?php if ($content['top_right']): ?>
-          <?php print $content['top_right']; ?>
-        <?php endif; ?>
-      </div>
-    </div><!-- /.inset -->
-  </div><!-- /.toprow -->
-
-  <div id="menu" class="clearfix">
-    <div class="inset">
-      <?php if ($content['mymenu']): ?>
-        <?php print $content['mymenu']; ?>
-      <?php endif; ?>
-    </div><!-- /.inset -->
-  </div><!-- /#menu -->
-
-    <div class="decor"></div>
-  </header>
-
   <div id="main">
-
     <?php if ($content['news']): ?>
       <div id="news" class="panel-panel">
         <?php print $content['news']; ?>
@@ -75,4 +45,3 @@
     </div><!-- /#footer -->
   <?php endif; ?>
 
-</div><!-- /#page -->

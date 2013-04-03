@@ -189,6 +189,7 @@ function mez_frontpage_strongarm() {
     'page' => 'page',
     'person' => 'person',
     'piece' => 'piece',
+    'location' => 0,
   );
   $export['custom_search_blocks_1_node_types'] = $strongarm;
 
@@ -199,6 +200,7 @@ function mez_frontpage_strongarm() {
   $strongarm->value = array(
     'composer' => 0,
     'concert' => 0,
+    'location' => 0,
     'news' => 0,
     'page' => 0,
     'person' => 0,
@@ -239,14 +241,6 @@ function mez_frontpage_strongarm() {
       'sort' => '0',
       'region' => 'block',
     ),
-    'taxonomy1' => array(
-      'sort' => '1',
-      'region' => 'block',
-    ),
-    'taxonomy2' => array(
-      'sort' => '2',
-      'region' => 'block',
-    ),
   );
   $export['custom_search_blocks_1_order'] = $strongarm;
 
@@ -255,6 +249,7 @@ function mez_frontpage_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'custom_search_blocks_1_other';
   $strongarm->value = array(
+    'ds_search' => 0,
     'user' => 0,
   );
   $export['custom_search_blocks_1_other'] = $strongarm;
