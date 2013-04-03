@@ -8,7 +8,7 @@ body.front #news {
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/frontpage\.scss}line{font-family:\0000322}}
 body.front #news .pane-news {
-  max-width: 360px;
+  max-width: 300px;
   background-color: #bbb;
   padding: 10px;
   border-radius: 20px;

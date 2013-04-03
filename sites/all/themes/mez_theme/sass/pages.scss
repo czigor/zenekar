@@ -45,71 +45,123 @@ body {
 /*
  * Header
  */
-
 #header {
   background-color: #000;
-  padding: 0!important;
-
+  padding: 0;
+  margin-bottom: 20px;
   .toprow {
-    padding: {
+    padding-left: 15px;
+    padding-right: 15px;
+    .inset {
+      .top {
+        #logo {
+          display: inline-block;
+          float: left;
+          margin-right: -40px;
+          margin-bottom: 20px;
+        }
+  
+        #name-and-slogan #site-name {
+          a span {
+            margin-top: 80px;
+            display: inline-block;
+            float: left;
+            color: #d99216;
+            text-transform: uppercase;
+            font-size: 25px;
+            max-width: 320px;
+            line-height: 1.3em;
+            margin-bottom: 20px;
+          }
+        }
+      }
+      .region-header {
+        float: right;
+        clear: none;
+        max-width: 200px;
+        #block-locale-language {
+          float: right;
+          display: inline-block;
+          margin-bottom: 10px; 
+          ul {
+            padding: 0px;
+            list-style-type: none;
+            li {
+              display: inline;
+              a {
+                color: #fff;
+                text-decoration: none;
+                text-transform: lowercase;
+              }
+              a:hover {
+                color: #d99216;
+              }
+            }
+            li.first {
+              border-right: 1px solid white;
+              padding-right: 5px;
+            }
+            li.active a {
+              color: #d99216;
+            }
+          }
+        }
+        #block-custom-search-blocks-1 {
+          float: right;
+          display: inline-block;
+          margin-bottom: 10px;
+          .form-item-custom-search-types {
+            display: none;
+          }
+          .form-item-custom-search-blocks-form-1 {
+          }
+        }
+      }
+    }
+  }
+    
+  /*
+   * MEZ navigation menu
+   */
+  #navigation {
+    width: 100%;
+    background-color: #d99216;
+    padding:{
       left: 15px;
       right: 15px;
     }
-  }
-
-  .top {
-    .pane-page-logo {
-      display: inline-block;
-      float: left;
-      margin-bottom: -80px;
-      margin-right: -40px;
-    }
-  
-    .pane-page-site-name {
-      margin-top: 80px;
-      display: inline-block;
-      float: left;
-      color: #d99216;
-      text-transform: uppercase;
-      font-size: 25px;
-      max-width: 320px;
-    }
-  }
-  .top-right {
-    float: right;
-    .pane-locale-language {
-      float: right;
-      display: inline-block;
-      ul {
-        padding: 0px;
-        list-style-type: none;
-        li {
-          display: inline;
-          a {
-            color: #fff;
+    position: relative;
+    float: left;
+    #block-system-main-menu {
+      ul{
+        margin:{
+          bottom: 0;
+        }
+        li{
+          list-style-type: none;
+          list-style-image: none;
+          float: left;
+          border:{
+            right: 1px solid black;
+          }
+          &.first{
+            border:{
+              left: 1px solid black;
+            }
+          }
+          &.active-trail{
+            background-color: black;
+          }
+          a{
+            padding: 10px;
+            color: black;
             text-decoration: none;
-            text-transform: lowercase;
+            display: block;
+            &.active{
+              color: white;
+            }
           }
-          a:hover {
-            color: #d99216;
-          }
         }
-        li.first {
-          border-right: 1px solid white;
-          padding-right: 5px;
-        }
-        li.active a {
-          color: #d99216;
-        }
-      }
-    }
-    .pane-custom-search-blocks-1 {
-      float: right;
-      display: inline-block;
-      .form-item-custom-search-types {
-        display: none;
-      }
-      .form-item-custom-search-blocks-form-1 {
       }
     }
   }
