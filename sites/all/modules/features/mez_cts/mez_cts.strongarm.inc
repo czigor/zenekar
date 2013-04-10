@@ -1377,7 +1377,7 @@ system/ajax/*';
             'visible' => TRUE,
           ),
           'teaser' => array(
-            'weight' => '2',
+            'weight' => '0',
             'visible' => TRUE,
           ),
           'preview' => array(

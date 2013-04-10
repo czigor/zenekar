@@ -1896,7 +1896,7 @@ function mez_cts_field_default_field_instances() {
           'show_repeat_rule' => 'show',
         ),
         'type' => 'date_default',
-        'weight' => 1,
+        'weight' => 2,
       ),
     ),
     'entity_type' => 'file',
@@ -2133,7 +2133,7 @@ function mez_cts_field_default_field_instances() {
           'title_style' => 'div',
         ),
         'type' => 'title_linked',
-        'weight' => 0,
+        'weight' => 1,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -2980,7 +2980,7 @@ function mez_cts_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'media',
+      'module' => 'media_multiselect',
       'settings' => array(
         'allowed_schemes' => array(
           'private' => 0,
@@ -3002,7 +3002,7 @@ function mez_cts_field_default_field_instances() {
         ),
         'progress_indicator' => 'throbber',
       ),
-      'type' => 'media_generic',
+      'type' => 'media_multiselect',
       'weight' => 3,
     ),
   );
