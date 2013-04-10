@@ -214,12 +214,14 @@ function mez_frontpage_views_default_views() {
   $handler->display->display_options['row_plugin'] = 'ds';
   $handler->display->display_options['row_options']['load_comments'] = 0;
   $handler->display->display_options['row_options']['alternating'] = 1;
+  $handler->display->display_options['row_options']['grouping'] = 0;
   $handler->display->display_options['row_options']['advanced'] = 0;
   $handler->display->display_options['row_options']['delta_fieldset']['delta_fields'] = array();
+  $handler->display->display_options['row_options']['grouping_fieldset']['group_field'] = 'field_data_field_time|field_time_value';
   $handler->display->display_options['row_options']['default_fieldset']['view_mode'] = 'teaser';
   $handler->display->display_options['row_options']['alternating_fieldset']['alternating'] = TRUE;
   $handler->display->display_options['row_options']['alternating_fieldset']['item_1'] = 'short_teaser';
-  $handler->display->display_options['row_options']['alternating_fieldset']['item_2'] = 'token';
+  $handler->display->display_options['row_options']['alternating_fieldset']['item_2'] = 'short_teaser';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['pane_category']['name'] = 'Nézettáblák';
   $export['concerts'] = $view;

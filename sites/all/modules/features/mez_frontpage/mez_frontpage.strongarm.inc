@@ -832,12 +832,5 @@ function mez_frontpage_strongarm() {
   $strongarm->value = 0;
   $export['custom_search_type_selector_label_visibility'] = $strongarm;
 
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'pm_existing_pages_disabled_existing_page';
-  $strongarm->value = FALSE;
-  $export['pm_existing_pages_disabled_existing_page'] = $strongarm;
-
   return $export;
 }
