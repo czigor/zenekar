@@ -161,7 +161,6 @@ function mez_permissions_user_default_permissions() {
   $permissions['administer nodes'] = array(
     'name' => 'administer nodes',
     'roles' => array(
-      'editor' => 'editor',
       'site admin' => 'site admin',
     ),
     'module' => 'node',
@@ -451,7 +450,6 @@ function mez_permissions_user_default_permissions() {
   $permissions['delete revisions'] = array(
     'name' => 'delete revisions',
     'roles' => array(
-      'editor' => 'editor',
       'site admin' => 'site admin',
     ),
     'module' => 'node',
@@ -650,7 +648,6 @@ function mez_permissions_user_default_permissions() {
   $permissions['revert revisions'] = array(
     'name' => 'revert revisions',
     'roles' => array(
-      'editor' => 'editor',
       'site admin' => 'site admin',
     ),
     'module' => 'node',
