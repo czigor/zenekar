@@ -261,7 +261,8 @@ function mez_cts_ds_layout_settings_info() {
         1 => 'field_day_date',
         2 => 'file',
         3 => 'description_field',
-        4 => 'field_tags',
+        4 => 'field_pieces',
+        5 => 'field_tags',
       ),
     ),
     'fields' => array(
@@ -269,6 +270,7 @@ function mez_cts_ds_layout_settings_info() {
       'field_day_date' => 'ds_content',
       'file' => 'ds_content',
       'description_field' => 'ds_content',
+      'field_pieces' => 'ds_content',
       'field_tags' => 'ds_content',
     ),
     'classes' => array(),
@@ -334,10 +336,12 @@ function mez_cts_ds_layout_settings_info() {
       'field_tags' => 'ds_content',
     ),
     'classes' => array(),
-    'wrappers' => array(),
+    'wrappers' => array(
+      'ds_content' => 'div',
+    ),
     'layout_wrapper' => 'div',
     'layout_attributes' => '',
-    'layout_attributes_merge' => TRUE,
+    'layout_attributes_merge' => 1,
   );
   $export['file|image|full'] = $ds_layout;
 
@@ -381,7 +385,8 @@ function mez_cts_ds_layout_settings_info() {
         1 => 'field_day_date',
         2 => 'file',
         3 => 'description_field',
-        4 => 'field_tags',
+        4 => 'field_pieces',
+        5 => 'field_tags',
       ),
     ),
     'fields' => array(
@@ -389,6 +394,7 @@ function mez_cts_ds_layout_settings_info() {
       'field_day_date' => 'ds_content',
       'file' => 'ds_content',
       'description_field' => 'ds_content',
+      'field_pieces' => 'ds_content',
       'field_tags' => 'ds_content',
     ),
     'classes' => array(),

@@ -500,7 +500,7 @@ function mez_cts_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 5,
+        'weight' => 6,
       ),
       'preview' => array(
         'label' => 'above',
@@ -532,6 +532,68 @@ function mez_cts_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'file-audio-field_pieces'
+  $field_instances['file-audio-field_pieces'] = array(
+    'bundle' => 'audio',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'colorbox' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 8,
+      ),
+      'full' => array(
+        'label' => 'hidden',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 4,
+      ),
+      'preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'file',
+    'field_name' => 'field_pieces',
+    'label' => 'Pieces',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
+      'weight' => 8,
+    ),
+  );
+
   // Exported field_instance: 'file-audio-field_tags'
   $field_instances['file-audio-field_tags'] = array(
     'bundle' => 'audio',
@@ -553,11 +615,11 @@ function mez_cts_field_default_field_instances() {
         'weight' => 1,
       ),
       'full' => array(
-        'label' => 'hidden',
+        'label' => 'inline',
         'module' => 'taxonomy',
         'settings' => array(),
         'type' => 'taxonomy_term_reference_plain',
-        'weight' => 4,
+        'weight' => 5,
       ),
       'media_link' => array(
         'label' => 'above',
@@ -1546,7 +1608,7 @@ function mez_cts_field_default_field_instances() {
         'weight' => 2,
       ),
       'full' => array(
-        'label' => 'hidden',
+        'label' => 'inline',
         'module' => 'taxonomy',
         'settings' => array(),
         'type' => 'taxonomy_term_reference_plain',
@@ -1960,7 +2022,7 @@ function mez_cts_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 5,
+        'weight' => 6,
       ),
       'preview' => array(
         'label' => 'above',
@@ -1998,6 +2060,74 @@ function mez_cts_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'file-video-field_pieces'
+  $field_instances['file-video-field_pieces'] = array(
+    'bundle' => 'video',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'colorbox' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 6,
+      ),
+      'full' => array(
+        'label' => 'hidden',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 4,
+      ),
+      'preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'short_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'file',
+    'field_name' => 'field_pieces',
+    'label' => 'Pieces',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
+      'weight' => 7,
+    ),
+  );
+
   // Exported field_instance: 'file-video-field_tags'
   $field_instances['file-video-field_tags'] = array(
     'bundle' => 'video',
@@ -2019,11 +2149,11 @@ function mez_cts_field_default_field_instances() {
         'weight' => 3,
       ),
       'full' => array(
-        'label' => 'hidden',
+        'label' => 'inline',
         'module' => 'taxonomy',
         'settings' => array(),
         'type' => 'taxonomy_term_reference_plain',
-        'weight' => 4,
+        'weight' => 5,
       ),
       'media_link' => array(
         'label' => 'above',
@@ -2808,7 +2938,7 @@ function mez_cts_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'location_cck',
         'settings' => array(),
-        'type' => 'location_default',
+        'type' => 'location_all',
         'weight' => 0,
       ),
       'teaser' => array(
@@ -4338,6 +4468,7 @@ function mez_cts_field_default_field_instances() {
   t('Phone');
   t('Piece');
   t('Piece title');
+  t('Pieces');
   t('Programme');
   t('Remark');
   t('Tags');

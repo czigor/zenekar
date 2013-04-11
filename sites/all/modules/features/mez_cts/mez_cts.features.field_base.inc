@@ -515,8 +515,8 @@ function mez_cts_field_default_field_bases() {
     'module' => 'location_cck',
     'settings' => array(
       'entity_translation_sync' => FALSE,
-      'gmap_macro' => '[gmap ]',
-      'gmap_marker' => 'drupal',
+      'gmap_macro' => '[gmap zoom=12]',
+      'gmap_marker' => 'orange',
       'location_settings' => array(
         'display' => array(
           'hide' => array(
@@ -1028,6 +1028,9 @@ function mez_cts_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_piece',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
     'foreign keys' => array(
       'node' => array(
         'columns' => array(
@@ -1098,6 +1101,55 @@ function mez_cts_field_default_field_bases() {
     ),
     'translatable' => 1,
     'type' => 'text',
+  );
+
+  // Exported field_base: 'field_pieces'
+  $field_bases['field_pieces'] = array(
+    'active' => 1,
+    'cardinality' => -1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_pieces',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
+    'foreign keys' => array(
+      'node' => array(
+        'columns' => array(
+          'target_id' => 'nid',
+        ),
+        'table' => 'node',
+      ),
+    ),
+    'indexes' => array(
+      'target_id' => array(
+        0 => 'target_id',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'entityreference',
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'handler' => 'base',
+      'handler_settings' => array(
+        'behaviors' => array(
+          'views-select-list' => array(
+            'status' => 0,
+          ),
+        ),
+        'sort' => array(
+          'direction' => 'ASC',
+          'property' => 'title',
+          'type' => 'property',
+        ),
+        'target_bundles' => array(
+          'piece' => 'piece',
+        ),
+      ),
+      'target_type' => 'node',
+    ),
+    'translatable' => 0,
+    'type' => 'entityreference',
   );
 
   // Exported field_base: 'field_programme'
