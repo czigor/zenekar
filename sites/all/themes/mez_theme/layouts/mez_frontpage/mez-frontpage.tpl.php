@@ -19,7 +19,7 @@
  */
 ?>
   <div id="main">
-      <?php if ($content['up']): ?>
+    <?php if ($content['up']): ?>
       <div id="up" class="panel-panel">
         <?php print $content['up']; ?>
       </div>
