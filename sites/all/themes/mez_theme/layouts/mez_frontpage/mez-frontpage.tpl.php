@@ -19,6 +19,12 @@
  */
 ?>
   <div id="main">
+      <?php if ($content['up']): ?>
+      <div id="up" class="panel-panel">
+        <?php print $content['up']; ?>
+      </div>
+    <?php endif; ?>
+
     <?php if ($content['news']): ?>
       <div id="news" class="panel-panel">
         <?php print $content['news']; ?>
