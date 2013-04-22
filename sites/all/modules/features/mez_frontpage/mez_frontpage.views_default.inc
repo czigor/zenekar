@@ -273,11 +273,6 @@ function mez_frontpage_views_default_views() {
   $handler->display->display_options['fields']['filename']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['filename']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['filename']['link_to_file'] = TRUE;
-  /* Rendezési szempont: Fájl: Dátum (field_day_date) */
-  $handler->display->display_options['sorts']['field_day_date_value']['id'] = 'field_day_date_value';
-  $handler->display->display_options['sorts']['field_day_date_value']['table'] = 'field_data_field_day_date';
-  $handler->display->display_options['sorts']['field_day_date_value']['field'] = 'field_day_date_value';
-  $handler->display->display_options['sorts']['field_day_date_value']['order'] = 'DESC';
   /* Szűrési feltétel: Fájl: Típus */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'file_managed';
