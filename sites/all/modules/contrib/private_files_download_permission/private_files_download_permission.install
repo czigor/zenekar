@@ -4,7 +4,7 @@
  * @file
  * Installs, updates and uninstalls module variables and settings.
  *
- * Copyright (c) 2011-2012 by Marco Zanon (http://www.marcozanon.com)
+ * Copyright (c) 2011-2013 by Marco Zanon (http://www.marcozanon.com)
  * Released under GPLv2 license
  * Idea and code inspired by http://www.beacon9.ca/labs/drupal-7-private-files-module
  */
@@ -17,8 +17,9 @@ function private_files_download_permission_schema() {
     'private_files_download_permission_directory' => array(
       'description'  => 'Directories whose permissions are set.',
       'fields'       => array(
-        'did'  => array('type' => 'serial', 'unsigned' => TRUE, 'not null' => TRUE),
-        'path' => array('type' => 'varchar', 'length' => 255, 'not null' => TRUE),
+        'did'    => array('type' => 'serial', 'unsigned' => TRUE, 'not null' => TRUE),
+        'path'   => array('type' => 'varchar', 'length' => 255, 'not null' => TRUE),
+        'bypass' => array('type' => 'int', 'size' => 'tiny', 'not null' => TRUE),
       ),
       'primary key'  => array('did'),
       'foreign keys' => array(),
@@ -104,6 +105,8 @@ function private_files_download_permission_install() {
     $transaction->rollback();
     drupal_set_message(st('An error occurred while installing the module. Please check the log for details.'), 'error');
   }
+  // Set preferences' default values.
+  variable_set('private_files_download_permission_by_user_checks', TRUE);
 }
 
 /**
@@ -225,6 +228,17 @@ function private_files_download_permission_update_7201() {
 }
 
 /**
+ * Prepare the database to handle the "bypass" option. Set preferences' default
+ * values.
+ */
+function private_files_download_permission_update_7203() {
+  // Update table schema.
+  db_add_field('private_files_download_permission_directory', 'bypass', array('type' => 'int', 'size' => 'tiny', 'not null' => TRUE, 'initial' => 0));
+  // Set preferences' default values.
+  variable_set('private_files_download_permission_by_user_checks', TRUE);
+}
+
+/**
  * Implements hook_enable().
  */
 function private_files_download_permission_enable() {
@@ -265,6 +279,8 @@ function private_files_download_permission_uninstall() {
     $transaction->rollback();
     drupal_set_message(st('An error occurred while removing the module. Please check the log for details.'), 'error');
   }
+  // Remove preferences.
+  variable_del('private_files_download_permission_by_user_checks');
   // Purge directory list from cache.
   drupal_static_reset('private_files_download_permission_directory_list');
 }
