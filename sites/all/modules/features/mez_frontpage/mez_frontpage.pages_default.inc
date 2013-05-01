@@ -215,7 +215,6 @@ function mez_frontpage_default_page_manager_pages() {
           'settings' => array(
             'rids' => array(
               0 => 3,
-              1 => 4,
             ),
           ),
           'context' => 'logged-in-user',
