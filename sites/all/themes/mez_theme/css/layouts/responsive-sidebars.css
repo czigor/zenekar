@@ -81,17 +81,17 @@
   .sidebar-first #content {
     /* Span 2 columns, starting in 2nd column from left. */
     float: left;
-    width: 66.667%;
-    margin-left: 33.333%;
+    width: 66.66667%;
+    margin-left: 33.33333%;
     margin-right: -100%;
   }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/layouts\/responsive-sidebars\.scss}line{font-family:\00003103}}
   .sidebar-first .region-sidebar-first {
     /* Span 1 column, starting in 1st column from left. */
     float: left;
-    width: 33.333%;
+    width: 33.33333%;
     margin-left: 0%;
-    margin-right: -33.333%;
+    margin-right: -33.33333%;
   }
 
   /*
@@ -101,16 +101,16 @@
   .sidebar-second #content {
     /* Span 2 columns, starting in 1st column from left. */
     float: left;
-    width: 66.667%;
+    width: 66.66667%;
     margin-left: 0%;
-    margin-right: -66.667%;
+    margin-right: -66.66667%;
   }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/layouts\/responsive-sidebars\.scss}line{font-family:\00003117}}
   .sidebar-second .region-sidebar-second {
     /* Span 1 column, starting in 3rd column from left. */
     float: left;
-    width: 33.333%;
-    margin-left: 66.667%;
+    width: 33.33333%;
+    margin-left: 66.66667%;
     margin-right: -100%;
   }
 
@@ -121,17 +121,17 @@
   .two-sidebars #content {
     /* Span 2 columns, starting in 2nd column from left. */
     float: left;
-    width: 66.667%;
-    margin-left: 33.333%;
+    width: 66.66667%;
+    margin-left: 33.33333%;
     margin-right: -100%;
   }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/layouts\/responsive-sidebars\.scss}line{font-family:\00003131}}
   .two-sidebars .region-sidebar-first {
     /* Span 1 column, starting in 1st column from left. */
     float: left;
-    width: 33.333%;
+    width: 33.33333%;
     margin-left: 0%;
-    margin-right: -33.333%;
+    margin-right: -33.33333%;
   }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/layouts\/responsive-sidebars\.scss}line{font-family:\00003135}}
   .two-sidebars .region-sidebar-second {
@@ -158,25 +158,25 @@
   .two-sidebars .region-sidebar-second .block:nth-child(3n+1) {
     /* Span 1 column, starting in the 1st column from left. */
     float: left;
-    width: 33.333%;
+    width: 33.33333%;
     margin-left: 0%;
-    margin-right: -33.333%;
+    margin-right: -33.33333%;
     clear: left;
   }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/layouts\/responsive-sidebars\.scss}line{font-family:\00003147}}
   .two-sidebars .region-sidebar-second .block:nth-child(3n+2) {
     /* Span 1 column, starting in the 2nd column from left. */
     float: left;
-    width: 33.333%;
-    margin-left: 33.333%;
-    margin-right: -66.667%;
+    width: 33.33333%;
+    margin-left: 33.33333%;
+    margin-right: -66.66667%;
   }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/layouts\/responsive-sidebars\.scss}line{font-family:\00003150}}
   .two-sidebars .region-sidebar-second .block:nth-child(3n) {
     /* Span 1 column, starting in the 3rd column from left. */
     float: left;
-    width: 33.333%;
-    margin-left: 66.667%;
+    width: 33.33333%;
+    margin-left: 66.66667%;
     margin-right: -100%;
   }
 }

@@ -155,7 +155,15 @@ form table .item-list ul {
 /*
  * Drupal core wrongly puts this in system.menus.css. Since we override that, add it back.
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/forms\.scss}line{font-family:\00003149}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/forms\.scss}line{font-family:\00003148}}
 td.menu-disabled {
   background: #ccc;
+}
+
+/**
+ * Fake email field on application form to trick spambots. 
+ */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/forms\.scss}line{font-family:\00003155}}
+form#application-entityform-edit-form .field-name-field-email-again {
+  display: none;
 }

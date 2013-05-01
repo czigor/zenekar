@@ -145,7 +145,13 @@ form {
 /*
  * Drupal core wrongly puts this in system.menus.css. Since we override that, add it back.
  */
-
 td.menu-disabled {
   background: #ccc;
+}
+
+/**
+ * Fake email field on application form to trick spambots. 
+ */
+ form#application-entityform-edit-form .field-name-field-email-again {
+  display: none;
 }

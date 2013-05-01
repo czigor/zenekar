@@ -210,9 +210,9 @@ h1 {
 @media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/normalize\.scss}line{font-family:\00003225}}
 h3 {
   font-size: 1.17em;
-  line-height: 1.282em;
-  margin-top: 1.282em;
-  margin-bottom: 1.282em;
+  line-height: 1.28205em;
+  margin-top: 1.28205em;
+  margin-bottom: 1.28205em;
 }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/normalize\.scss}line{font-family:\00003231}}
@@ -226,9 +226,9 @@ h4 {
 @media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/normalize\.scss}line{font-family:\00003237}}
 h5 {
   font-size: 0.83em;
-  line-height: 1.807em;
-  margin-top: 1.807em;
-  margin-bottom: 1.807em;
+  line-height: 1.80723em;
+  margin-top: 1.80723em;
+  margin-bottom: 1.80723em;
 }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/normalize\.scss}line{font-family:\00003243}}
@@ -489,18 +489,18 @@ fieldset {
   border-color: #c0c0c0;
   margin: 0 2px;
   /* Apply borders and padding that keep the vertical rhythm. */
+  border-top-width: 0.0625em;
   border-top-style: solid;
-  border-top-width: 0.063em;
-  padding-top: 0.462em;
+  padding-top: 0.4625em;
+  border-bottom-width: 0.0625em;
   border-bottom-style: solid;
-  border-bottom-width: 0.063em;
-  padding-bottom: 0.913em;
+  padding-bottom: 0.9125em;
+  border-left-width: 0.0625em;
   border-left-style: solid;
-  border-left-width: 0.063em;
-  padding-left: 0.913em;
+  padding-left: 0.9125em;
+  border-right-width: 0.0625em;
   border-right-style: solid;
-  border-right-width: 0.063em;
-  padding-right: 0.913em;
+  padding-right: 0.9125em;
 }
 
 /*
