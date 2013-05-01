@@ -126,39 +126,60 @@ body {
   #navigation {
     width: 100%;
     background-color: #d99216;
-    padding:{
+    padding: {
       left: 15px;
       right: 15px;
     }
     position: relative;
     float: left;
-    #block-system-main-menu {
-      ul{
-        margin:{
+    #block-nice-menus-1 {
+      ul {
+        margin: {
           bottom: 0;
         }
-        li{
+        li {
           list-style-type: none;
           list-style-image: none;
           float: left;
-          border:{
+          background-image: none;
+          background-color: #d99216;
+          border: {
             right: 1px solid black;
+            top: none;
+            left: none;
+            bottom: none;
           }
-          &.first{
-            border:{
+          &.first {
+            border: {
               left: 1px solid black;
             }
           }
-          &.active-trail{
+          &.active-trail {
             background-color: black;
+            &>a {
+              color: white;
+            }
           }
-          a{
+          a {
             padding: 10px;
             color: black;
             text-decoration: none;
             display: block;
             &.active{
               color: white;
+            }
+          }
+          ul {
+            border: none;
+            top: auto;
+            left: -1px;
+            li, li.first {
+              border: {
+                right: none;
+                top: 1px solid black;
+                left: none;
+                bottom: none;
+              }
             }
           }
         }

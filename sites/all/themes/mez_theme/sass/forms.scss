@@ -150,8 +150,17 @@ td.menu-disabled {
 }
 
 /**
+ * Application form
+ */
+ 
+/**
  * Fake email field on application form to trick spambots. 
  */
- form#application-entityform-edit-form .field-name-field-email-again {
-  display: none;
+ form#application-entityform-edit-form {
+   .field-name-field-email-again {
+     display: none;
+   }
+   .tabledrag-toggle-weight-wrapper {
+     display: none;
+   }
 }
