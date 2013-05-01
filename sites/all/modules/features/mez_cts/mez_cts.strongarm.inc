@@ -847,6 +847,7 @@ system/ajax/*';
     'taxonomy_term' => 'taxonomy_term',
     'file' => 'file',
     'comment' => 0,
+    'entityform' => 0,
     'user' => 0,
   );
   $export['entity_translation_entity_types'] = $strongarm;
