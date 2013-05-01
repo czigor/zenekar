@@ -144,6 +144,7 @@ function mez_profile_install_enable_features(&$install_state) {
     'mez_users',
     'mez_contact',
     'mez_existing_pages',
+    'mez_application',
   );
   features_install_modules($modules);
   features_revert();
