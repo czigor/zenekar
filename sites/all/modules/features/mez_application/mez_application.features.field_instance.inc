@@ -62,7 +62,7 @@ function mez_application_field_default_field_instances() {
     'entity_type' => 'entityform',
     'field_name' => 'field_app_email',
     'label' => 'Email',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
@@ -97,7 +97,7 @@ function mez_application_field_default_field_instances() {
     'entity_type' => 'entityform',
     'field_name' => 'field_app_instrument',
     'label' => 'Instrument',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'entity_translation_sync' => FALSE,
       'text_processing' => 0,
@@ -177,7 +177,7 @@ function mez_application_field_default_field_instances() {
     'label' => 'Birth year',
     'required' => 0,
     'settings' => array(
-      'default_value' => 'now',
+      'default_value' => 'blank',
       'default_value2' => 'same',
       'default_value_code' => '',
       'default_value_code2' => '',
@@ -192,7 +192,7 @@ function mez_application_field_default_field_instances() {
         'increment' => 15,
         'input_format' => 'Y-m-d H:i:s',
         'input_format_custom' => '',
-        'label_position' => 'above',
+        'label_position' => 'none',
         'repeat_collapsed' => 0,
         'text_parts' => array(),
         'year_range' => '-3:+3',
@@ -514,7 +514,7 @@ function mez_application_field_default_field_instances() {
     'entity_type' => 'entityform',
     'field_name' => 'field_own_instrument',
     'label' => 'Do you have an instrument?',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
@@ -730,7 +730,7 @@ function mez_application_field_default_field_instances() {
     'entity_type' => 'entityform',
     'field_name' => 'name_field',
     'label' => 'Név',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'entity_translation_sync' => FALSE,
       'text_processing' => 0,

@@ -11,13 +11,13 @@ function mez_application_default_entityform_type() {
   $items = array();
   $items['application'] = entity_import('entityform_type', '{
     "type" : "application",
-    "label" : "Application",
+    "label" : "Jelentkez\\u00e9s",
     "data" : {
       "draftable" : 0,
       "draft_button_text" : "",
       "draft_save_text" : { "value" : "", "format" : "wysiwyg" },
       "submission_rules" : { "rules_application_submission" : "rules_application_submission" },
-      "validation_rules" : [],
+      "validation_rules" : { "rules_application_validation" : "rules_application_validation" },
       "submit_button_text" : "",
       "submission_page_title" : "Thank you for submitting the application!",
       "submission_text" : {
@@ -41,7 +41,7 @@ function mez_application_default_entityform_type() {
     "paths" : { "submit" : {
         "pid" : "239",
         "source" : "eform\\/submit\\/application",
-        "alias" : "application",
+        "alias" : "jelentkezes",
         "language" : "und"
       }
     }

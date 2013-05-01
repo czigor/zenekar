@@ -33,5 +33,23 @@ function mez_application_default_rules_configuration() {
       ]
     }
   }');
+  $items['rules_application_validation'] = entity_import('rules_config', '{ "rules_application_validation" : {
+      "LABEL" : "Application validation",
+      "PLUGIN" : "rule",
+      "TAGS" : [ "entityform validation" ],
+      "REQUIRES" : [ "rules" ],
+      "USES VARIABLES" : {
+        "entityform" : { "label" : "Submitted Entityform", "type" : "entityform" },
+        "entityform_type" : { "label" : "Entityform Type", "type" : "entityform_type" },
+        "validate_form" : { "label" : "Form Validates", "type" : "boolean", "parameter" : false }
+      },
+      "IF" : [
+        { "entity_has_field" : { "entity" : [ "entityform" ], "field" : "field_email_again" } },
+        { "NOT data_is_empty" : { "data" : [ "entityform:field-email-again" ] } }
+      ],
+      "DO" : [ { "redirect" : { "url" : "jelentkezes" } } ],
+      "PROVIDES VARIABLES" : [ "validate_form" ]
+    }
+  }');
   return $items;
 }
