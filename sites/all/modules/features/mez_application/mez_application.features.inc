@@ -18,7 +18,7 @@ function mez_application_default_entityform_type() {
       "draft_save_text" : { "value" : "", "format" : "wysiwyg" },
       "submission_rules" : { "rules_application_submission" : "rules_application_submission" },
       "validation_rules" : { "rules_application_validation" : "rules_application_validation" },
-      "submit_button_text" : "",
+      "submit_button_text" : "Elk\\u00fcld",
       "submission_page_title" : "Thank you for submitting the application!",
       "submission_text" : {
         "value" : "\\u003Cp\\u003EWe will get back to you shortly.\\u003C\\/p\\u003E",
@@ -39,7 +39,7 @@ function mez_application_default_entityform_type() {
     },
     "weight" : "0",
     "paths" : { "submit" : {
-        "pid" : "239",
+        "pid" : "281",
         "source" : "eform\\/submit\\/application",
         "alias" : "jelentkezes",
         "language" : "und"
