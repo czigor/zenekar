@@ -36,7 +36,9 @@ function mez_cts_field_default_field_instances() {
     'widget' => array(
       'active' => 1,
       'module' => 'options',
-      'settings' => array(),
+      'settings' => array(
+        'apply_chosen' => 0,
+      ),
       'type' => 'options_select',
       'weight' => 3,
     ),
@@ -70,7 +72,9 @@ function mez_cts_field_default_field_instances() {
     'widget' => array(
       'active' => 1,
       'module' => 'options',
-      'settings' => array(),
+      'settings' => array(
+        'apply_chosen' => 0,
+      ),
       'type' => 'options_select',
       'weight' => 1,
     ),
@@ -165,7 +169,9 @@ function mez_cts_field_default_field_instances() {
     'widget' => array(
       'active' => 1,
       'module' => 'options',
-      'settings' => array(),
+      'settings' => array(
+        'apply_chosen' => 0,
+      ),
       'type' => 'options_select',
       'weight' => 1,
     ),
@@ -439,7 +445,9 @@ function mez_cts_field_default_field_instances() {
     'widget' => array(
       'active' => 1,
       'module' => 'options',
-      'settings' => array(),
+      'settings' => array(
+        'apply_chosen' => 0,
+      ),
       'type' => 'options_select',
       'weight' => 10,
     ),
@@ -644,7 +652,9 @@ function mez_cts_field_default_field_instances() {
     'widget' => array(
       'active' => 1,
       'module' => 'options',
-      'settings' => array(),
+      'settings' => array(
+        'apply_chosen' => 0,
+      ),
       'type' => 'options_select',
       'weight' => 12,
     ),
@@ -706,7 +716,9 @@ function mez_cts_field_default_field_instances() {
     'widget' => array(
       'active' => 1,
       'module' => 'options',
-      'settings' => array(),
+      'settings' => array(
+        'apply_chosen' => 0,
+      ),
       'type' => 'options_select',
       'weight' => 8,
     ),
@@ -1123,7 +1135,9 @@ function mez_cts_field_default_field_instances() {
     'widget' => array(
       'active' => 1,
       'module' => 'options',
-      'settings' => array(),
+      'settings' => array(
+        'apply_chosen' => 0,
+      ),
       'type' => 'options_select',
       'weight' => 10,
     ),
@@ -1328,7 +1342,9 @@ function mez_cts_field_default_field_instances() {
     'widget' => array(
       'active' => 1,
       'module' => 'options',
-      'settings' => array(),
+      'settings' => array(
+        'apply_chosen' => 0,
+      ),
       'type' => 'options_select',
       'weight' => 12,
     ),
@@ -1387,7 +1403,9 @@ function mez_cts_field_default_field_instances() {
     'widget' => array(
       'active' => 1,
       'module' => 'options',
-      'settings' => array(),
+      'settings' => array(
+        'apply_chosen' => 0,
+      ),
       'type' => 'options_select',
       'weight' => 8,
     ),
@@ -1648,7 +1666,9 @@ function mez_cts_field_default_field_instances() {
     'widget' => array(
       'active' => 1,
       'module' => 'options',
-      'settings' => array(),
+      'settings' => array(
+        'apply_chosen' => 0,
+      ),
       'type' => 'options_select',
       'weight' => 12,
     ),
@@ -1994,7 +2014,9 @@ function mez_cts_field_default_field_instances() {
     'widget' => array(
       'active' => 1,
       'module' => 'options',
-      'settings' => array(),
+      'settings' => array(
+        'apply_chosen' => 0,
+      ),
       'type' => 'options_select',
       'weight' => 14,
     ),
@@ -2053,7 +2075,9 @@ function mez_cts_field_default_field_instances() {
     'widget' => array(
       'active' => 1,
       'module' => 'options',
-      'settings' => array(),
+      'settings' => array(
+        'apply_chosen' => 0,
+      ),
       'type' => 'options_select',
       'weight' => 11,
     ),
@@ -2417,7 +2441,9 @@ function mez_cts_field_default_field_instances() {
     'widget' => array(
       'active' => 1,
       'module' => 'options',
-      'settings' => array(),
+      'settings' => array(
+        'apply_chosen' => 0,
+      ),
       'type' => 'options_select',
       'weight' => 8,
     ),
@@ -2656,7 +2682,9 @@ function mez_cts_field_default_field_instances() {
     'widget' => array(
       'active' => 1,
       'module' => 'options',
-      'settings' => array(),
+      'settings' => array(
+        'apply_chosen' => 0,
+      ),
       'type' => 'options_select',
       'weight' => 9,
     ),
@@ -2724,7 +2752,9 @@ function mez_cts_field_default_field_instances() {
     'widget' => array(
       'active' => 1,
       'module' => 'options',
-      'settings' => array(),
+      'settings' => array(
+        'apply_chosen' => 0,
+      ),
       'type' => 'options_select',
       'weight' => 7,
     ),
@@ -3108,7 +3138,7 @@ function mez_cts_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 5,
+        'weight' => 4,
       ),
       'short_teaser' => array(
         'label' => 'above',
@@ -3170,7 +3200,7 @@ function mez_cts_field_default_field_instances() {
           'view_mode' => 'full',
         ),
         'type' => 'entityreference_entity_view',
-        'weight' => 1,
+        'weight' => 5,
       ),
       'short_teaser' => array(
         'label' => 'above',
@@ -3197,7 +3227,9 @@ function mez_cts_field_default_field_instances() {
     'widget' => array(
       'active' => 1,
       'module' => 'options',
-      'settings' => array(),
+      'settings' => array(
+        'apply_chosen' => 0,
+      ),
       'type' => 'options_select',
       'weight' => 2,
     ),
@@ -3232,7 +3264,7 @@ function mez_cts_field_default_field_instances() {
           'file_view_mode' => 'colorbox',
         ),
         'type' => 'file_rendered',
-        'weight' => 4,
+        'weight' => 3,
       ),
       'short_teaser' => array(
         'label' => 'hidden',
@@ -3324,7 +3356,7 @@ function mez_cts_field_default_field_instances() {
           'view_mode' => 'full',
         ),
         'type' => 'field_collection_view',
-        'weight' => 3,
+        'weight' => 2,
       ),
       'short_teaser' => array(
         'label' => 'above',
@@ -3377,7 +3409,7 @@ function mez_cts_field_default_field_instances() {
         'weight' => 1,
       ),
       'full' => array(
-        'label' => 'inline',
+        'label' => 'hidden',
         'module' => 'date',
         'settings' => array(
           'format_type' => 'long',
@@ -3388,7 +3420,7 @@ function mez_cts_field_default_field_instances() {
           'show_repeat_rule' => 'show',
         ),
         'type' => 'date_default',
-        'weight' => 2,
+        'weight' => 1,
       ),
       'short_teaser' => array(
         'label' => 'hidden',
@@ -4294,7 +4326,9 @@ function mez_cts_field_default_field_instances() {
     'widget' => array(
       'active' => 1,
       'module' => 'options',
-      'settings' => array(),
+      'settings' => array(
+        'apply_chosen' => 0,
+      ),
       'type' => 'options_select',
       'weight' => 7,
     ),
@@ -4753,7 +4787,9 @@ function mez_cts_field_default_field_instances() {
     'widget' => array(
       'active' => 1,
       'module' => 'options',
-      'settings' => array(),
+      'settings' => array(
+        'apply_chosen' => 0,
+      ),
       'type' => 'options_select',
       'weight' => 3,
     ),
