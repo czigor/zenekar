@@ -797,7 +797,7 @@ function mez_settings_strongarm() {
     'toggle_main_menu' => 1,
     'toggle_secondary_menu' => 1,
     'default_logo' => 0,
-    'logo_path' => 'sites/all/themes/mez_theme/images/mez_logo.jpg',
+    'logo_path' => 'sites/all/themes/mez_theme/images/mez_logo_hu.jpg',
     'logo_upload' => '',
     'default_favicon' => 0,
     'favicon_path' => 'sites/all/themes/mez_theme/images/mez_favicon.gif',
@@ -816,6 +816,7 @@ function mez_settings_strongarm() {
     ),
     'zen_rebuild_registry' => 0,
     'zen_wireframes' => 0,
+    'nice_menus_custom_css' => '',
     'favicon_mimetype' => 'image/gif',
   );
   $export['theme_mez_theme_settings'] = $strongarm;
@@ -894,6 +895,7 @@ function mez_settings_strongarm() {
   $strongarm->value = array(
     0 => 'site_name',
     1 => 'site_slogan',
+    2 => 'theme_[theme]_settings',
   );
   $export['variable_realm_list_language'] = $strongarm;
 
