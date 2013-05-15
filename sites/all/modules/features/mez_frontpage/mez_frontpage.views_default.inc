@@ -273,6 +273,11 @@ function mez_frontpage_views_default_views() {
   $handler->display->display_options['fields']['filename']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['filename']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['filename']['link_to_file'] = TRUE;
+  /* Rendezési szempont: Fájl: Dátum (field_day_date) */
+  $handler->display->display_options['sorts']['field_day_date_value']['id'] = 'field_day_date_value';
+  $handler->display->display_options['sorts']['field_day_date_value']['table'] = 'field_data_field_day_date';
+  $handler->display->display_options['sorts']['field_day_date_value']['field'] = 'field_day_date_value';
+  $handler->display->display_options['sorts']['field_day_date_value']['order'] = 'DESC';
   /* Szűrési feltétel: Fájl: Típus */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'file_managed';
@@ -300,6 +305,21 @@ function mez_frontpage_views_default_views() {
   $handler->display->display_options['exposed_form']['options']['sort_desc_label'] = 'Csökkenő';
   $handler->display->display_options['exposed_form']['options']['sexy'] = array(
     'field_tags_tid' => array(
+      'needs_sexy_love' => 1,
+      'sexy_number' => '0',
+      'sexy_width' => '0',
+    ),
+    'field_concert_target_id' => array(
+      'needs_sexy_love' => 1,
+      'sexy_number' => '0',
+      'sexy_width' => '0',
+    ),
+    'field_pieces_target_id' => array(
+      'needs_sexy_love' => 1,
+      'sexy_number' => '0',
+      'sexy_width' => '0',
+    ),
+    'field_location_reference_target_id' => array(
       'needs_sexy_love' => 1,
       'sexy_number' => '0',
       'sexy_width' => '0',
@@ -344,28 +364,11 @@ function mez_frontpage_views_default_views() {
     'video' => 'video',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Szűrési feltétel: Fájl: Dátum (field_day_date) */
-  $handler->display->display_options['filters']['field_day_date_value']['id'] = 'field_day_date_value';
-  $handler->display->display_options['filters']['field_day_date_value']['table'] = 'field_data_field_day_date';
-  $handler->display->display_options['filters']['field_day_date_value']['field'] = 'field_day_date_value';
-  $handler->display->display_options['filters']['field_day_date_value']['operator'] = 'between';
-  $handler->display->display_options['filters']['field_day_date_value']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_day_date_value']['expose']['operator_id'] = 'field_day_date_value_op';
-  $handler->display->display_options['filters']['field_day_date_value']['expose']['label'] = 'Dátum';
-  $handler->display->display_options['filters']['field_day_date_value']['expose']['operator'] = 'field_day_date_value_op';
-  $handler->display->display_options['filters']['field_day_date_value']['expose']['identifier'] = 'field_day_date_value';
-  $handler->display->display_options['filters']['field_day_date_value']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    3 => 0,
-    4 => 0,
-    5 => 0,
-  );
-  $handler->display->display_options['filters']['field_day_date_value']['form_type'] = 'date_text';
   /* Szűrési feltétel: Mező: Tags (field_tags) */
   $handler->display->display_options['filters']['field_tags_tid']['id'] = 'field_tags_tid';
   $handler->display->display_options['filters']['field_tags_tid']['table'] = 'field_data_field_tags';
   $handler->display->display_options['filters']['field_tags_tid']['field'] = 'field_tags_tid';
+  $handler->display->display_options['filters']['field_tags_tid']['group'] = 1;
   $handler->display->display_options['filters']['field_tags_tid']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_tags_tid']['expose']['operator_id'] = 'field_tags_tid_op';
   $handler->display->display_options['filters']['field_tags_tid']['expose']['label'] = 'Tags';
@@ -381,6 +384,79 @@ function mez_frontpage_views_default_views() {
   );
   $handler->display->display_options['filters']['field_tags_tid']['type'] = 'select';
   $handler->display->display_options['filters']['field_tags_tid']['vocabulary'] = 'media';
+  /* Szűrési feltétel: Fájl: Concert (field_concert) */
+  $handler->display->display_options['filters']['field_concert_target_id']['id'] = 'field_concert_target_id';
+  $handler->display->display_options['filters']['field_concert_target_id']['table'] = 'field_data_field_concert';
+  $handler->display->display_options['filters']['field_concert_target_id']['field'] = 'field_concert_target_id';
+  $handler->display->display_options['filters']['field_concert_target_id']['group'] = 1;
+  $handler->display->display_options['filters']['field_concert_target_id']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_concert_target_id']['expose']['operator_id'] = 'field_concert_target_id_op';
+  $handler->display->display_options['filters']['field_concert_target_id']['expose']['label'] = 'Concert';
+  $handler->display->display_options['filters']['field_concert_target_id']['expose']['operator'] = 'field_concert_target_id_op';
+  $handler->display->display_options['filters']['field_concert_target_id']['expose']['identifier'] = 'field_concert_target_id';
+  $handler->display->display_options['filters']['field_concert_target_id']['expose']['multiple'] = TRUE;
+  $handler->display->display_options['filters']['field_concert_target_id']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+  );
+  /* Szűrési feltétel: Fájl: Pieces (field_pieces) */
+  $handler->display->display_options['filters']['field_pieces_target_id']['id'] = 'field_pieces_target_id';
+  $handler->display->display_options['filters']['field_pieces_target_id']['table'] = 'field_data_field_pieces';
+  $handler->display->display_options['filters']['field_pieces_target_id']['field'] = 'field_pieces_target_id';
+  $handler->display->display_options['filters']['field_pieces_target_id']['group'] = 1;
+  $handler->display->display_options['filters']['field_pieces_target_id']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_pieces_target_id']['expose']['operator_id'] = 'field_pieces_target_id_op';
+  $handler->display->display_options['filters']['field_pieces_target_id']['expose']['label'] = 'Pieces';
+  $handler->display->display_options['filters']['field_pieces_target_id']['expose']['operator'] = 'field_pieces_target_id_op';
+  $handler->display->display_options['filters']['field_pieces_target_id']['expose']['identifier'] = 'field_pieces_target_id';
+  $handler->display->display_options['filters']['field_pieces_target_id']['expose']['multiple'] = TRUE;
+  $handler->display->display_options['filters']['field_pieces_target_id']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+  );
+  /* Szűrési feltétel: Mező: Location (field_location_reference) */
+  $handler->display->display_options['filters']['field_location_reference_target_id']['id'] = 'field_location_reference_target_id';
+  $handler->display->display_options['filters']['field_location_reference_target_id']['table'] = 'field_data_field_location_reference';
+  $handler->display->display_options['filters']['field_location_reference_target_id']['field'] = 'field_location_reference_target_id';
+  $handler->display->display_options['filters']['field_location_reference_target_id']['group'] = 1;
+  $handler->display->display_options['filters']['field_location_reference_target_id']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_location_reference_target_id']['expose']['operator_id'] = 'field_location_reference_target_id_op';
+  $handler->display->display_options['filters']['field_location_reference_target_id']['expose']['label'] = 'Location';
+  $handler->display->display_options['filters']['field_location_reference_target_id']['expose']['operator'] = 'field_location_reference_target_id_op';
+  $handler->display->display_options['filters']['field_location_reference_target_id']['expose']['identifier'] = 'field_location_reference_target_id';
+  $handler->display->display_options['filters']['field_location_reference_target_id']['expose']['multiple'] = TRUE;
+  $handler->display->display_options['filters']['field_location_reference_target_id']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+  );
+  /* Szűrési feltétel: Fájl: Dátum (field_day_date) */
+  $handler->display->display_options['filters']['field_day_date_value']['id'] = 'field_day_date_value';
+  $handler->display->display_options['filters']['field_day_date_value']['table'] = 'field_data_field_day_date';
+  $handler->display->display_options['filters']['field_day_date_value']['field'] = 'field_day_date_value';
+  $handler->display->display_options['filters']['field_day_date_value']['operator'] = 'between';
+  $handler->display->display_options['filters']['field_day_date_value']['group'] = 1;
+  $handler->display->display_options['filters']['field_day_date_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_day_date_value']['expose']['operator_id'] = 'field_day_date_value_op';
+  $handler->display->display_options['filters']['field_day_date_value']['expose']['label'] = 'Dátum';
+  $handler->display->display_options['filters']['field_day_date_value']['expose']['operator'] = 'field_day_date_value_op';
+  $handler->display->display_options['filters']['field_day_date_value']['expose']['identifier'] = 'field_day_date_value';
+  $handler->display->display_options['filters']['field_day_date_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+  );
+  $handler->display->display_options['filters']['field_day_date_value']['form_type'] = 'date_text';
   $handler->display->display_options['path'] = 'videos';
 
   /* Display: Tartalomtábla */
