@@ -152,7 +152,7 @@ function mez_views_views_default_views() {
   $handler->display->display_options['fields']['views_bulk_operations']['field'] = 'views_bulk_operations';
   $handler->display->display_options['fields']['views_bulk_operations']['label'] = '';
   $handler->display->display_options['fields']['views_bulk_operations']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['display_type'] = '0';
+  $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['display_type'] = '1';
   $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['enable_select_all_pages'] = 1;
   $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['force_single'] = 0;
   $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['display_result'] = 1;
@@ -262,6 +262,13 @@ function mez_views_views_default_views() {
   $handler->display->display_options['fields']['timestamp']['table'] = 'file_managed';
   $handler->display->display_options['fields']['timestamp']['field'] = 'timestamp';
   $handler->display->display_options['fields']['timestamp']['date_format'] = 'short';
+  /* Mező: Felhasználó: Név */
+  $handler->display->display_options['fields']['name']['id'] = 'name';
+  $handler->display->display_options['fields']['name']['table'] = 'users';
+  $handler->display->display_options['fields']['name']['field'] = 'name';
+  $handler->display->display_options['fields']['name']['relationship'] = 'uid';
+  $handler->display->display_options['fields']['name']['label'] = 'Szerző';
+  $handler->display->display_options['fields']['name']['link_to_user'] = FALSE;
   /* Mező: Fájl: Dátum */
   $handler->display->display_options['fields']['field_day_date']['id'] = 'field_day_date';
   $handler->display->display_options['fields']['field_day_date']['table'] = 'field_data_field_day_date';
@@ -312,13 +319,6 @@ function mez_views_views_default_views() {
   $handler->display->display_options['fields']['fid_2']['alter']['make_link'] = TRUE;
   $handler->display->display_options['fields']['fid_2']['alter']['path'] = 'file/[fid_2]/translate';
   $handler->display->display_options['fields']['fid_2']['element_label_colon'] = FALSE;
-  /* Mező: Felhasználó: Név */
-  $handler->display->display_options['fields']['name']['id'] = 'name';
-  $handler->display->display_options['fields']['name']['table'] = 'users';
-  $handler->display->display_options['fields']['name']['field'] = 'name';
-  $handler->display->display_options['fields']['name']['relationship'] = 'uid';
-  $handler->display->display_options['fields']['name']['label'] = 'Szerző';
-  $handler->display->display_options['fields']['name']['link_to_user'] = FALSE;
   /* Rendezési szempont: Fájl: Feltöltés dátuma */
   $handler->display->display_options['sorts']['timestamp']['id'] = 'timestamp';
   $handler->display->display_options['sorts']['timestamp']['table'] = 'file_managed';
