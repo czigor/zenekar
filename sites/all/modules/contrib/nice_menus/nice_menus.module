@@ -475,7 +475,7 @@ function theme_nice_menus_build($variables) {
       // Strip funny symbols.
       $class = drupal_html_class('menu-path-' . $class);
       if ($trail && in_array($mlid, $trail)) {
-        $class .= 'active-trail';
+        $class .= ' active-trail';
       }
       // If it has children build a nice little tree under it.
       // Build a nice little tree under it if it has children, and has been set
