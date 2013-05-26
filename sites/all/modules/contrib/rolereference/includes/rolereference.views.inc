@@ -41,6 +41,13 @@ function rolereference_views_plugins() {
         'even empty' => TRUE,
       ),
     ),
+    'argument default' => array(
+      'rolereference_current_roles' => array(
+        'title' => t('User Roles IDs from logged in user'),
+        'path' => drupal_get_path('module', 'rolereference') . '/includes',
+        'handler' => 'rolereference_views_plugin_argument_default_current_user',
+      ),
+    ),
   );
   return $plugins;
 }
