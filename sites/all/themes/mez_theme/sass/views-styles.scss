@@ -58,3 +58,19 @@
   text-transform: uppercase;
   font-size: 0.7em;
 }
+
+/*
+ * Media view
+ */
+ .view-media {
+  .views-field-rendered-entity img {
+     max-width: none;
+   }
+   .views-field-fid {
+     a {
+       display: block;
+     }
+   }
+ }
+ 
+ 
