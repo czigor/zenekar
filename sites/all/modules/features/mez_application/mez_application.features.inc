@@ -39,7 +39,6 @@ function mez_application_default_entityform_type() {
     },
     "weight" : "0",
     "paths" : { "submit" : {
-        "pid" : "281",
         "source" : "eform\\/submit\\/application",
         "alias" : "jelentkezes",
         "language" : "und"
