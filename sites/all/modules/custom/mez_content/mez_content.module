@@ -94,3 +94,24 @@ function mez_204() {
   //return 'a';
   header("HTTP/1.0 204 No Content");
 }
+
+/**
+ * Implements hook_node_validate().
+ */
+function mez_content_node_validate($node, $form, &$form_state) {
+  if ($node->type == 'composer') {
+    $query = new EntityFieldQuery();
+    $composers = $query->entityCondition('entity_type', 'node')
+      ->entityCondition('bundle', 'composer')
+      ->fieldCondition('field_family_name', 'value', $form_state['values']['field_family_name'][LANGUAGE_NONE][0]['value'], '=', 0, $form_state['values']['language']);
+    foreach ($form_state['values']['field_given_name'][LANGUAGE_NONE] as $key => $value) {
+      if (is_numeric($key)) {
+        $composers = $composers->fieldCondition('field_given_name', 'value', $form_state['values']['field_given_name'][LANGUAGE_NONE][$key]['value'], '=', $key, $form_state['values']['language']);
+      }
+    }
+    $composers = $composers->execute();
+    if (!empty($composers['node'])) {
+      form_set_error('field_family_name', t('A composer with this name already exists'));
+    }
+  }
+}
