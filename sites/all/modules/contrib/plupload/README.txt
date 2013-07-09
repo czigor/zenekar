@@ -28,16 +28,20 @@ Plupload from element can be used like this:
 $form['my_element'] = array(
   '#type' => 'plupload',
   '#title' => t('Upload files'),
-  '#description => t('This multi-upload widget uses Plupload library.'),
+  '#description' => t('This multi-upload widget uses Plupload library.'),
+  '#submit_element' => '#id-of-your-submit-element',
   '#upload_validators' => array(
     'file_validate_extensions' => array('jpg jpeg gif png txt doc xls pdf ppt pps odt ods odp'),
-    'my_custom_file_validator => array('some validation criteria'),
+    'my_custom_file_validator' => array('some validation criteria'),
   );
   '#plupload_settings' => array(
     'runtimes' => 'html5',
-    'chunk_size => '1mb',
+    'chunk_size' => '1mb',
   ),
 );
+
+- #submit_element - optionally specify which submit element plupload shall use
+  to submit the form. See: http://drupal.org/node/1935256
 
 - #upload_validators - an array of validation function/validation criteria pairs, that
   will be passed to file_validate().

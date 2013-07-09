@@ -14,8 +14,8 @@ function plupload_requirements($phase) {
 
   if ($phase == 'runtime') {
     $requirements['plupload'] = array(
-      'title' => $$t('Plupload library'),
-      'value' => $$t('Unknown'),
+      'title' => $t('Plupload library'),
+      'value' => $t('Unknown'),
     );
     $requirements['plupload']['severity'] = REQUIREMENT_OK;
     $libraries = plupload_library();

@@ -81,7 +81,7 @@ Drupal.behaviors.pluploadform = {
   
             //Only allow the submit to proceed if there are files and they've all
             //completed uploading.
-            //@todo Implement a setting for whether the field is required, rather
+            //TODO: Implement a setting for whether the field is required, rather
             //than assuming that all are.
             if (uploader.state == plupload.STARTED) {
               errors += Drupal.t("Please wait while your files are being uploaded.");              
@@ -110,7 +110,13 @@ Drupal.behaviors.pluploadform = {
                     for (var attr in originalFormAttributes) {
                       $form.attr(attr, originalFormAttributes[attr]);
                     }
-                    $form.submit();
+                    // Click a specific element if one is specified.
+                    if (settings.plupload[id].submit_element) {
+                      $(settings.plupload[id].submit_element).click();
+                    }
+                    else {
+                      $form.submit();
+                    }
                     return true;
                   }
                 }

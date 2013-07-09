@@ -223,15 +223,18 @@ function plupload_element_process($element) {
  */
 function plupload_element_validate($element, &$form_state) {
   foreach ($element['#value'] as $file_info) {
-    // @todo Here we create a $file object for a file that doesn't exist yet,
-    //   because saving the file to its destination is done in a submit handler.
-    //   Need more investigation into what else is needed for it to be okay to
-    //   call file_validate(). For example, file_validate_size() will not have
-    //   access to a meaningful $file->filesize unless we set that here. For
-    //   now, we can at least rely on file_validate_extensions() running
-    //   successfully.
+    // Here we create a $file object for a file that doesn't exist yet,
+    // because saving the file to its destination is done in a submit handler.
+    // Using tmp path will give validators access to the actual file on disk and
+    // filesize information. We manually modify filename and mime to allow
+    // extension checks.
+    $file = plupload_file_uri_to_object($file_info['tmppath']);
+
     $destination = variable_get('file_default_scheme', 'public') . '://' . $file_info['name'];
-    $file = plupload_file_uri_to_object($destination);
+    $destination = file_stream_wrapper_uri_normalize($destination);
+    $file->filename = basename($destination);
+    $file->filemime = file_get_mimetype($destination);
+
     foreach (file_validate($file, $element['#upload_validators']) as $error_message) {
       $message = t('The specified file %name could not be uploaded.', array('%name' => $file->filename));
       form_error($element, $message . ' ' . $error_message);
@@ -257,6 +260,11 @@ function plupload_element_pre_render($element) {
       'title' => t('Allowed files'),
       'extensions' => str_replace(' ', ',', $element['#upload_validators']['file_validate_extensions'][0]),
     );
+  }
+
+  // Add a specific submit element that we want to click if one is specified.
+  if (!empty($element['#submit_element'])) {
+    $settings['submit_element'] = $element['#submit_element'];
   }
 
   if (empty($element['#description'])) {
