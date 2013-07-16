@@ -3175,6 +3175,60 @@ function mez_cts_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-concert-field_concert_hall'
+  $field_instances['node-concert-field_concert_hall'] = array(
+    'bundle' => 'concert',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'mez_ticket_hacks',
+        'settings' => array(),
+        'type' => 'mez_concert_hall',
+        'weight' => 7,
+      ),
+      'full' => array(
+        'label' => 'hidden',
+        'module' => 'mez_ticket_hacks',
+        'settings' => array(),
+        'type' => 'mez_concert_hall',
+        'weight' => 6,
+      ),
+      'short_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_concert_hall',
+    'label' => 'Concert hall',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'apply_chosen' => 0,
+      ),
+      'type' => 'options_select',
+      'weight' => 8,
+    ),
+  );
+
   // Exported field_instance: 'node-concert-field_location_reference'
   $field_instances['node-concert-field_location_reference'] = array(
     'bundle' => 'concert',
@@ -3385,6 +3439,64 @@ function mez_cts_field_default_field_instances() {
       'settings' => array(),
       'type' => 'field_collection_table',
       'weight' => 3,
+    ),
+  );
+
+  // Exported field_instance: 'node-concert-field_ticket_selling'
+  $field_instances['node-concert-field_ticket_selling'] = array(
+    'bundle' => 'concert',
+    'default_value' => array(
+      0 => array(
+        'value' => 'off',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'off: No ticket selling.
+admin: Ticket selling is only visible for admin.
+on: Webshop is visible for public.',
+    'display' => array(
+      'default' => array(
+        'label' => 'inline',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 8,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 13,
+      ),
+      'short_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_ticket_selling',
+    'label' => 'Ticket selling',
+    'required' => 1,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'apply_chosen' => 0,
+      ),
+      'type' => 'options_select',
+      'weight' => 9,
     ),
   );
 
@@ -5074,6 +5186,7 @@ function mez_cts_field_default_field_instances() {
   t('Comma separator');
   t('Composer');
   t('Concert');
+  t('Concert hall');
   t('Cím');
   t('Date');
   t('Description');
@@ -5117,10 +5230,14 @@ function mez_cts_field_default_field_instances() {
   t('The family name of the composer like \'Bach\'. This will be used to sort the piece. ');
   t('The given name(s) of the composer. Each name (like Johann and Sebastian) should go into a different textbox. ');
   t('This person is an active member of the orchestra');
+  t('Ticket selling');
   t('Time');
   t('Title');
   t('Title Text');
   t('Title text attribute');
+  t('off: No ticket selling.
+admin: Ticket selling is only visible for admin.
+on: Webshop is visible for public.');
 
   return $field_instances;
 }
