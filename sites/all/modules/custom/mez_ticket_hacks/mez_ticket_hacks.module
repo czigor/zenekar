@@ -1,0 +1,124 @@
+<?php
+
+/**
+ * @file
+ * Ticket related stuff
+ *
+ */
+
+/**
+ * Implements hook_permission().
+ */
+function mez_ticket_hacks_permission() {
+  return array(
+    'administer mez ticket selling' => array(
+      'title' => t('Administer ticket selling'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_field_formatter_info().
+ */
+function mez_ticket_hacks_field_formatter_info() {
+  return array(
+    'mez_concert_hall' => array(
+      'label' => t('MEZ concert hall'),
+      'field types' => array('entityreference'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_field_formatter_view().
+ */
+function mez_ticket_hacks_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
+  $element = array();
+  $settings = $display['settings'];
+  switch ($display['type']) {
+    case 'mez_concert_hall' :
+      $ticket_selling = field_get_items('node', $entity, 'field_ticket_selling');
+      global $user;
+      switch ($ticket_selling[0]['value']) {
+        case 'off' :
+          return array();
+          break;
+
+        case 'admin' :
+        case 'on' :
+          if (user_access('administer mez ticket selling') || ($ticket_selling[0]['value'] == 'on')) {
+            $vars = array(
+              'concert_nid' => $entity->nid,
+              'concert_hall_nid' => $items[0]['target_id'],
+            );
+            $markup = theme('mez_concert_hall', $vars);
+            $element[0] = array('#markup' => $markup);
+          }
+
+          break;
+      }
+      break;
+  }
+  return $element;
+}
+
+/**
+ * Implements hook_theme().
+ */
+function mez_ticket_hacks_theme() {
+  return array(
+    'mez_concert_hall' => array(
+      'variables' => array(
+        'concert_nid' => NULL,
+        'concert_hall_nid' => NULL,
+       ),
+      'template' => 'mez_concert_hall',
+      'path' => drupal_get_path('theme', 'mez_theme') . '/templates',
+    ),
+  );
+}
+/**
+ * Preprocess function for mez_concert_hall.
+ */
+function mez_ticket_hacks_preprocess_mez_concert_hall(&$vars) {
+  // Seats
+  $query = new EntityFieldQuery();
+  $result = $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'seat')
+    ->propertyCondition('status', 1)
+    ->fieldCondition('field_concert_hall', 'target_id', $vars['concert_hall_nid'])
+    ->execute();
+  $seat_nids = array_keys($result['node']);
+
+  // Tickets
+  $query = new EntityFieldQuery();
+  $result = $query->entityCondition('entity_type', 'commerce_product')
+    ->entityCondition('bundle', 'ticket')
+    ->propertyCondition('status', 1)
+    ->fieldCondition('field_concert', 'target_id', $vars['concert_nid'])
+    ->fieldCondition('field_seat', 'target_id', $seat_nids)
+    ->execute();
+
+  $ticket_pids = array_keys($result['commerce_product']);
+
+  $tickets = commerce_product_load_multiple($ticket_pids);
+  $vars['seats'] = array();
+  foreach ($tickets as $ticket) {
+    $ticket_w = entity_metadata_wrapper('commerce_product', $ticket);
+    $xcoord = $ticket_w->field_seat->field_x_coordinate->value();
+    $ycoord = $ticket_w->field_seat->field_y_coordinate->value();
+    $status = $ticket_w->field_ticket_status->value();
+    if (!empty($xcoord) && !empty($ycoord)) {
+      $vars['seats'][$ticket->product_id] = array(
+        'xcoord' => $xcoord,
+        'ycoord' => $ycoord,
+        'status' => $status,
+      );
+    }
+  }
+
+  // Concert hall specific markup.
+  $function = 'concert_hall_' . $vars['concert_hall_nid'];
+  ctools_include($function, 'mez_ticket_hacks', 'concert_halls');
+  $vars['concert_hall_details'] = $function($vars['concert_hall_nid']);
+}
