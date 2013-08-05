@@ -123,6 +123,16 @@ interface EntityTranslationHandlerInterface {
   public function setEntity($entity);
 
   /**
+   * Checks that the wrapped entity matches the give entity
+   *
+   * @param $entity_type
+   *   The type of the entity to be matched.
+   * @param $entity
+   *   The entity to be matched.
+   */
+  public function isWrappedEntity($entity_type, $entity);
+
+  /**
    * Sets the translation update status.
    *
    * @param $outdated
@@ -329,7 +339,9 @@ class EntityTranslationDefaultHandler implements EntityTranslationHandlerInterfa
     $this->pathScheme = 'default';
     $this->routerMap = array();
 
-    $this->initPathVariables();
+    if (entity_translation_enabled($entity_type)) {
+      $this->initPathVariables();
+    }
   }
 
   /**
@@ -337,7 +349,13 @@ class EntityTranslationDefaultHandler implements EntityTranslationHandlerInterfa
    */
   public static function loadMultiple($entity_type, $entities) {
     $entity_info = entity_get_info($entity_type);
-    $translations_key = $entity_info['entity keys']['translations'];
+    if (isset($entity_info['entity keys']['translations'])){
+      $translations_key = $entity_info['entity keys']['translations'];
+    }
+    else {
+      // If no translations key is defined we cannot proceed.
+      return;
+    }
 
     foreach ($entities as $id => $entity) {
       $entities[$id]->{$translations_key} = self::emptyTranslations();
@@ -383,8 +401,8 @@ class EntityTranslationDefaultHandler implements EntityTranslationHandlerInterfa
     if (isset($this->entityId)) {
       $this->loadMultiple($this->entityType, array($this->entityId => $this->entity));
     }
-    else {
-      $this->entity->{$this->getTranslationsKey()} = $this->emptyTranslations();
+    elseif ($translations_key = $this->getTranslationsKey()) {
+      $this->entity->{$translations_key} = $this->emptyTranslations();
     }
   }
 
@@ -435,8 +453,6 @@ class EntityTranslationDefaultHandler implements EntityTranslationHandlerInterfa
     // data structure level from CRUD operations. Hence hooks must be fired
     // after changes are actually persisted.
     if (!empty($translations->hook)) {
-      // Provide Rules events integration if available.
-      $invoke_all = module_exists('rules') ? 'rules_invoke_all' : 'module_invoke_all';
 
       // Hook info is keyed by language code so that subsequent operations at
       // data structure level do not cause multiple hooks for the same data to
@@ -446,7 +462,13 @@ class EntityTranslationDefaultHandler implements EntityTranslationHandlerInterfa
       foreach ($translations->hook as $langcode => $info) {
         $translation = isset($translations->data[$langcode]) ? $translations->data[$langcode] : $langcode;
         $data = isset($info['data']) ? $info['data'] : NULL;
-        $invoke_all('entity_translation_' . $info['hook'], $this->entityType, $this->entity, $translation, $data);
+        module_invoke_all('entity_translation_' . $info['hook'], $this->entityType, $this->entity, $translation, $data);
+        // Provide Rules events integration if available.
+        if (module_exists('rules')) {
+          // Pass the entity as a wrapped one since rules can't do it for us
+          // when using the variable type 'entity'.
+          rules_invoke_event('entity_translation_' . $info['hook'], $this->entityType, entity_metadata_wrapper($this->entityType, $this->entity), $translation, $data);
+        }
       }
 
       // Avoid firing hooks more than once for the same changes.
@@ -458,15 +480,15 @@ class EntityTranslationDefaultHandler implements EntityTranslationHandlerInterfa
    * @see EntityTranslationHandlerInterface::getTranslations()
    */
   public function getTranslations() {
-    $translations_key = $this->getTranslationsKey();
-
-    // Lazy load translations if for some reason the wrapped entity did not go
-    // through hook_entity_load().
-    if (!isset($this->entity->{$translations_key})) {
-      $this->loadTranslations();
+    if ($translations_key = $this->getTranslationsKey()) {
+      // Lazy load translations if for some reason the wrapped entity did not go
+      // through hook_entity_load().
+      if (!isset($this->entity->{$translations_key})) {
+        $this->loadTranslations();
+      }
+      return $this->entity->{$translations_key};
     }
-
-    return $this->entity->{$translations_key};
+    return self::emptyTranslations();
   }
 
   /**
@@ -515,8 +537,11 @@ class EntityTranslationDefaultHandler implements EntityTranslationHandlerInterfa
    */
   public function removeTranslation($langcode) {
     $translations_key = $this->getTranslationsKey();
-    $hook_info = array('hook' => 'delete');
+    if (empty($translations_key)) {
+      return;
+    }
 
+    $hook_info = array('hook' => 'delete');
     if (!empty($langcode)) {
       unset($this->entity->{$translations_key}->data[$langcode]);
       // Keep track that the current translation has been removed.
@@ -545,6 +570,9 @@ class EntityTranslationDefaultHandler implements EntityTranslationHandlerInterfa
         }
       }
     }
+
+    // Clear the cache for this entity.
+    entity_get_controller($this->entityType)->resetCache(array($this->getEntityId()));
   }
 
   /**
@@ -712,12 +740,20 @@ class EntityTranslationDefaultHandler implements EntityTranslationHandlerInterfa
 
     // Ensure translations data is populated.
     $translations_key = $this->getTranslationsKey();
-    if (!isset($this->entity->{$translations_key})) {
+    if ($translations_key && !isset($this->entity->{$translations_key})) {
       $this->entity->{$translations_key} = self::emptyTranslations();
     }
 
     // Update bundle and entity id properties.
     list($this->entityId, , $this->bundle) = entity_extract_ids($this->entityType, $this->entity);
+  }
+
+  /**
+   * @see EntityTranslationHandlerInterface::isWrappedEntity()
+   */
+  public function isWrappedEntity($entity_type, $entity) {
+    list($id,,) = entity_extract_ids($entity_type, $entity);
+    return $entity_type == $this->entityType && $id == $this->entityId;
   }
 
   /**
@@ -1145,34 +1181,41 @@ class EntityTranslationDefaultHandler implements EntityTranslationHandlerInterfa
    * @see EntityTranslationHandlerInterface::entityFormLanguageWidget()
    */
   public function entityFormLanguageWidget(&$form, &$form_state) {
-    $settings = entity_translation_settings($this->entityType, $this->bundle);
-    $translations = $this->getTranslations();
-    $is_new = $this->isNewEntity();
-    $is_translation = !$is_new && !empty($form_state['entity_translation']['is_translation']);
-    $languages = entity_translation_languages($this->entityType, $this->entity);
-    $options = count($translations->data) > 1 || !empty($settings['exclude_language_none']) ? array() : array(LANGUAGE_NONE => t('Language neutral'));
+    if (entity_translation_enabled($this->entityType, $this->bundle)) {
+      $is_new = $this->isNewEntity();
+      $is_translation = !$is_new && !empty($form_state['entity_translation']['is_translation']);
+      $translations = $this->getTranslations();
+      $settings = entity_translation_settings($this->entityType, $this->bundle);
+      $languages = entity_translation_languages($this->entityType, $this->entity);
+      $options = count($translations->data) > 1 || !empty($settings['exclude_language_none']) ? array() : array(LANGUAGE_NONE => t('Language neutral'));
 
-    foreach ($languages as $langcode => $language) {
-      // Disable languages for existing translations, so it is not possible to
-      // switch this entity to some language which is already in the translation
-      // set.
-      if (!isset($translations->data[$langcode]) || empty($translations->data[$langcode]['source'])) {
-        $options[$langcode] = t($language->name);
+      foreach ($languages as $langcode => $language) {
+        // Disable languages for existing translations, so it is not possible to
+        // switch this entity to some language which is already in the translation
+        // set.
+        if (!isset($translations->data[$langcode]) || empty($translations->data[$langcode]['source'])) {
+          $options[$langcode] = t($language->name);
+        }
+      }
+
+      $langcode = $is_new ? $this->getDefaultLanguage() : $this->getLanguage();
+      $language_key = $this->getLanguageKey();
+
+      $form[$language_key] = array(
+        '#type' => 'select',
+        '#title' => t('Language'),
+        '#default_value' => $langcode,
+        '#options' => $options,
+        '#access' => empty($settings['hide_language_selector']),
+        '#disabled' => $is_translation || (!$is_new && !empty($settings['lock_language'])),
+        '#multilingual' => TRUE,
+      );
+
+      if ($is_translation) {
+        // @todo Consider supporting the ability to change translation language.
+        $form[$language_key]['#title'] = t('Original language');
       }
     }
-
-    $langcode = $is_new ? $this->getDefaultLanguage() : $this->getLanguage();
-    $language_key = $this->getLanguageKey();
-
-    $form[$language_key] = array(
-      '#type' => 'select',
-      '#title' => t('Language'),
-      '#default_value' => $langcode,
-      '#options' => $options,
-      '#access' => empty($settings['hide_language_selector']),
-      '#disabled' => $is_translation || (!$is_new && !empty($settings['lock_language'])),
-      '#multilingual' => TRUE,
-    );
 
     if (!empty($form['actions']['submit']['#submit'])) {
       $submit = &$form['actions']['submit']['#submit'];
@@ -1182,11 +1225,6 @@ class EntityTranslationDefaultHandler implements EntityTranslationHandlerInterfa
         $form['#submit'] = array();
       }
       $submit = &$form['#submit'];
-    }
-
-    if ($is_translation) {
-      // @todo Consider supporting the ability to change translation language.
-      $form[$language_key]['#title'] = t('Original language');
     }
 
     array_unshift($submit, 'entity_translation_language_widget_submit');
@@ -1263,7 +1301,7 @@ class EntityTranslationDefaultHandler implements EntityTranslationHandlerInterfa
     $values += array(
       'status' => TRUE,
       'retranslate' => 0,
-      'name' => $GLOBALS['user']->name,
+      'name' => isset($GLOBALS['user']->name) ? $GLOBALS['user']->name : '',
     );
 
     if (!isset($translations->data[$form_langcode])) {
@@ -1288,7 +1326,7 @@ class EntityTranslationDefaultHandler implements EntityTranslationHandlerInterfa
     }
 
     $translation['status'] = intval($values['status']);
-    $translation['uid'] = user_load_by_name($values['name'])->uid;
+    $translation['uid'] = $values['name'] ? user_load_by_name($values['name'])->uid : 0;
     $translation['created'] = empty($values['created']) ? REQUEST_TIME : strtotime($values['created']);
     $this->setTranslation($translation);
 
@@ -1384,7 +1422,7 @@ class EntityTranslationDefaultHandler implements EntityTranslationHandlerInterfa
    * Returns the translation object key for the wrapped entity type.
    */
   protected function getTranslationsKey() {
-    return $this->entityInfo['entity keys']['translations'];
+    return isset($this->entityInfo['entity keys']['translations']) ? $this->entityInfo['entity keys']['translations'] : FALSE;
   }
 
   /**
