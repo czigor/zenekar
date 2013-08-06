@@ -37,6 +37,9 @@ function mez_ticket_hacks_field_formatter_view($entity_type, $entity, $field, $i
   $settings = $display['settings'];
   switch ($display['type']) {
     case 'mez_concert_hall' :
+      $path = drupal_get_path('theme', 'mez_theme') . '/css/tickets.css';
+      drupal_add_css($path);
+      drupal_add_js('misc/ajax.js');
       $ticket_selling = field_get_items('node', $entity, 'field_ticket_selling');
       global $user;
       switch ($ticket_selling[0]['value']) {
@@ -109,11 +112,20 @@ function mez_ticket_hacks_preprocess_mez_concert_hall(&$vars) {
     $ycoord = $ticket_w->field_seat->field_y_coordinate->value();
     $status = $ticket_w->field_ticket_status->value();
     if (!empty($xcoord) && !empty($ycoord)) {
+      $text = '<span class="inner" title="' . $ticket_w->field_seat->title_field->value() . '"></span>';
       $vars['seats'][$ticket->product_id] = array(
         'xcoord' => $xcoord,
         'ycoord' => $ycoord,
         'status' => $status,
       );
+      switch ($status) {
+        case 'free' :
+          $vars['seats'][$ticket->product_id]['link'] = l($text, 'mez-ticket-to-basket/nojs/' . $ticket->product_id, array('attributes' => array('class' => array('use-ajax')), 'html' => TRUE));
+          break;
+
+        default :
+          $vars['seats'][$ticket->product_id]['link'] = $text;
+      }
     }
   }
 
@@ -121,4 +133,36 @@ function mez_ticket_hacks_preprocess_mez_concert_hall(&$vars) {
   $function = 'concert_hall_' . $vars['concert_hall_nid'];
   ctools_include($function, 'mez_ticket_hacks', 'concert_halls');
   $vars['concert_hall_details'] = $function($vars['concert_hall_nid']);
+}
+
+/**
+ * Implements hook_menu().
+ */
+function mez_ticket_hacks_menu() {
+  $items = array();
+  $items['mez-ticket-to-basket/%/%commerce_product'] = array(
+    'page callback' => 'mez_ticket_to_basket',
+    'page arguments' => array(1, 2),
+    'access callback' => 'user_access',
+    'access arguments' => 'access checkout',
+    'type' => MENU_CALLBACK,
+  );
+  return $items;
+}
+
+/**
+ * AJAX callback
+ */
+function mez_ticket_to_basket($type = 'ajax', $product) {
+  if ($type == 'ajax') {
+    commerce_cart_product_add_by_id($product->product_id);
+    $output = commerce_cart_block_view('cart');
+    $commands = array();
+    $commands[] = ajax_command_html('#block-commerce-cart-cart', $output);
+    $page = array('#type' => 'ajax_commands', '#ajax_commands' => $commands);
+
+    $product->field_ticket_status[LANGUAGE_NONE][0]['value'] = 'reserved';
+    commerce_product_save($product);
+    ajax_deliver($page);
+  }
 }

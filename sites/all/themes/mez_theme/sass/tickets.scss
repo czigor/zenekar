@@ -1,0 +1,30 @@
+/**
+ * @file
+ * Ticket selling
+ */
+
+@import "base";
+
+
+/*
+ * Ticket
+ */
+
+.mez-concert-hall {
+  .mez-ticket span.inner {
+    width: 10px;
+    height: 10px;
+    display: block;
+    margin: 0;
+    padding: 0;
+  }
+  .mez-ticket.sold span.inner {
+    background-color: red;
+  }
+  .mez-ticket.free span.inner {
+    background-color: green;
+  }
+  .mez-ticket.reserved span.inner {
+    background-color: yellow;
+  }
+}
