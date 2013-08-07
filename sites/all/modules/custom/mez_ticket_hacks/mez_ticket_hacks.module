@@ -143,8 +143,7 @@ function mez_ticket_hacks_menu() {
   $items['mez-ticket-to-basket/%/%commerce_product'] = array(
     'page callback' => 'mez_ticket_to_basket',
     'page arguments' => array(1, 2),
-    'access callback' => 'user_access',
-    'access arguments' => 'access checkout',
+    'access arguments' => array('access checkout'),
     'type' => MENU_CALLBACK,
   );
   return $items;
@@ -156,13 +155,22 @@ function mez_ticket_hacks_menu() {
 function mez_ticket_to_basket($type = 'ajax', $product) {
   if ($type == 'ajax') {
     commerce_cart_product_add_by_id($product->product_id);
-    $output = commerce_cart_block_view('cart');
-    $commands = array();
-    $commands[] = ajax_command_html('#block-commerce-cart-cart', $output);
-    $page = array('#type' => 'ajax_commands', '#ajax_commands' => $commands);
+    $markup = commerce_cart_block_view('cart');
 
-    $product->field_ticket_status[LANGUAGE_NONE][0]['value'] = 'reserved';
-    commerce_product_save($product);
+    $commands = array();
+    $commands[] = ajax_command_html('.block-commerce-cart .cart-empty-block', $markup['content']);
+    $commands[] = ajax_command_html('.block-commerce-cart .cart-contents', $markup['content']);
+    $page = array('#type' => 'ajax', '#commands' => $commands);
     ajax_deliver($page);
   }
+}
+
+function mez_ticket_hacks_commerce_cart_product_remove($order, $product, $quantity, $line_item) {
+  $product->field_ticket_status[LANGUAGE_NONE][0]['value'] = 'free';
+  commerce_product_save($product);
+}
+
+function mez_ticket_hacks_commerce_cart_product_add($order, $product, $quantity, $line_item) {
+  $product->field_ticket_status[LANGUAGE_NONE][0]['value'] = 'reserved';
+  commerce_product_save($product);
 }
