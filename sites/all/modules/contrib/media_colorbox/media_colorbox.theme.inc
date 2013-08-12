@@ -68,11 +68,14 @@ function theme_media_colorbox($variables) {
 
   //load file and render for select view mode
   if($file_id!=NULL){
-   $file = file_load($file_id);
-   $fview = file_view($file, $settings['file_view_mode'], $variables['langcode']);
-   $text = drupal_render($fview);
+    $file = file_load($file_id);
+    $fview = file_view($file, $settings['file_view_mode'], $variables['langcode']);
+    if ($file->type=='image'){
+      $variables['path'] = file_create_url($file->uri);
+    }
+    $text = drupal_render($fview);
   }elseif(isset($variables['item'])) {
-   $text=drupal_render($variables['item']);
+    $text=drupal_render($variables['item']);
   }
   //strip anchor tags as rendered output will be wrapped by another anchor tag
   //fix for issue #1477662
