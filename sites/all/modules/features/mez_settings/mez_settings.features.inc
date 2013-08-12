@@ -7,8 +7,7 @@
 /**
  * Implements hook_ctools_plugin_api().
  */
-function mez_settings_ctools_plugin_api() {
-  list($module, $api) = func_get_args();
+function mez_settings_ctools_plugin_api($module = NULL, $api = NULL) {
   if ($module == "strongarm" && $api == "strongarm") {
     return array("version" => "1");
   }
@@ -41,6 +40,7 @@ function mez_settings_image_default_styles() {
         'weight' => 1,
       ),
     ),
+    'label' => 'colorbox',
   );
 
   return $styles;
