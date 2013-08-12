@@ -437,8 +437,8 @@ function file_prepare_directory(&$directory, $options = FILE_MODIFY_PERMISSIONS)
   if (!is_dir($directory)) {
     // Let mkdir() recursively create directories and use the default directory
     // permissions.
-    if ($options & FILE_CREATE_DIRECTORY) {
-      return @drupal_mkdir($directory, NULL, TRUE);
+    if (($options & FILE_CREATE_DIRECTORY) && @drupal_mkdir($directory, NULL, TRUE)) {
+      return drupal_chmod($directory);
     }
     return FALSE;
   }
@@ -2199,29 +2199,21 @@ function drupal_unlink($uri, $context = NULL) {
 }
 
 /**
- * Returns the absolute local filesystem path of a stream URI.
+ * Resolves the absolute filepath of a local URI or filepath.
  *
- * This function was originally written to ease the conversion of 6.x code to
- * use 7.x stream wrappers. However, it assumes that every URI may be resolved
- * to an absolute local filesystem path, and this assumption fails when stream
- * wrappers are used to support remote file storage. Remote stream wrappers
- * may implement the realpath method by always returning FALSE. The use of
- * drupal_realpath() is discouraged, and is slowly being removed from core
- * functions where possible.
+ * The use of drupal_realpath() is discouraged, because it does not work for
+ * remote URIs. Except in rare cases, URIs should not be manually resolved.
  *
  * Only use this function if you know that the stream wrapper in the URI uses
  * the local file system, and you need to pass an absolute path to a function
  * that is incompatible with stream URIs.
  *
- * @param $uri
- *   A stream wrapper URI or a filesystem path, possibly including one or more
- *   symbolic links.
+ * @param string $uri
+ *   A stream wrapper URI or a filepath, possibly including one or more symbolic
+ *   links.
  *
- * @return
- *   The absolute local filesystem path (with no symbolic links), or FALSE on
- *   failure.
- *
- * @todo This function is deprecated, and should be removed wherever possible.
+ * @return string|false
+ *   The absolute local filepath (with no symbolic links), or FALSE on failure.
  *
  * @see DrupalStreamWrapperInterface::realpath()
  * @see http://php.net/manual/function.realpath.php
@@ -2304,21 +2296,19 @@ function drupal_basename($uri, $suffix = NULL) {
 }
 
 /**
- * Creates a directory, optionally creating missing components in the path to
- * the directory.
+ * Creates a directory using Drupal's default mode.
  *
- * When PHP's mkdir() creates a directory, the requested mode is affected by the
- * process's umask. This function overrides the umask and sets the mode
- * explicitly for all directory components created.
+ * PHP's mkdir() does not respect Drupal's default permissions mode. If a mode
+ * is not provided, this function will make sure that Drupal's is used.
+ *
+ * Compatibility: normal paths and stream wrappers.
  *
  * @param $uri
  *   A URI or pathname.
  * @param $mode
- *   Mode given to created directories. Defaults to the directory mode
- *   configured in the Drupal installation. It must have a leading zero.
+ *   By default the Drupal mode is used.
  * @param $recursive
- *   Create directories recursively, defaults to FALSE. Cannot work with a mode
- *   which denies writing or execution to the owner of the process.
+ *   Default to FALSE.
  * @param $context
  *   Refer to http://php.net/manual/en/ref.stream.php
  *
@@ -2334,55 +2324,7 @@ function drupal_mkdir($uri, $mode = NULL, $recursive = FALSE, $context = NULL) {
     $mode = variable_get('file_chmod_directory', 0775);
   }
 
-  // If the URI has a scheme, don't override the umask - schemes can handle this
-  // issue in their own implementation.
-  if (file_uri_scheme($uri)) {
-    return _drupal_mkdir_call($uri, $mode, $recursive, $context);
-  }
-
-  // If recursive, create each missing component of the parent directory
-  // individually and set the mode explicitly to override the umask.
-  if ($recursive) {
-    // Ensure the path is using DIRECTORY_SEPARATOR.
-    $uri = str_replace('/', DIRECTORY_SEPARATOR, $uri);
-    // Determine the components of the path.
-    $components = explode(DIRECTORY_SEPARATOR, $uri);
-    array_pop($components);
-    $recursive_path = '';
-    foreach ($components as $component) {
-      $recursive_path .= $component;
-
-      if (!file_exists($recursive_path)) {
-        if (!_drupal_mkdir_call($recursive_path, $mode, FALSE, $context)) {
-          return FALSE;
-        }
-        // Not necessary to use drupal_chmod() as there is no scheme.
-        if (!chmod($recursive_path, $mode)) {
-          return FALSE;
-        }
-      }
-
-      $recursive_path .= DIRECTORY_SEPARATOR;
-    }
-  }
-
-  // Do not check if the top-level directory already exists, as this condition
-  // must cause this function to fail.
-  if (!_drupal_mkdir_call($uri, $mode, FALSE, $context)) {
-    return FALSE;
-  }
-  // Not necessary to use drupal_chmod() as there is no scheme.
-  return chmod($uri, $mode);
-}
-
-/**
- * Helper function. Ensures we don't pass a NULL as a context resource to
- * mkdir().
- *
- * @see drupal_mkdir()
- */
-function _drupal_mkdir_call($uri, $mode, $recursive, $context) {
-  if (is_null($context)) {
+  if (!isset($context)) {
     return mkdir($uri, $mode, $recursive);
   }
   else {

@@ -142,7 +142,7 @@ function media_colorbox_field_formatter_settings_form($field, $instance, $view_m
     
     if($display['type'] == 'colorbox_link'){
       //had an issue when using this formatter in a View, results in a Fatal error: undefined function field_ui_formatter_options()
-      if (!function_exists(field_ui_formatter_options)) {
+      if (!function_exists('field_ui_formatter_options')) {
         module_load_include('inc', 'field_ui', 'field_ui.admin');
       } 
       if($field['type'] == 'text'){
