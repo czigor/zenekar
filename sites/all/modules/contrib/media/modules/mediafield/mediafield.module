@@ -137,7 +137,9 @@ function mediafield_field_formatter_view($entity_type, $entity, $field, $instanc
   }
 
   if (!empty($files)) {
-    $element = file_view_multiple($files, $display['settings']['file_view_mode'], 0, $langcode);
+    $output = file_view_multiple($files, $display['settings']['file_view_mode'], 0, $langcode);
+    // Remove the first level from the output array.
+    $element = reset($output);
   }
 
   return $element;
