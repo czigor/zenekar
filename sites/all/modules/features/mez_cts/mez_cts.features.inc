@@ -23,6 +23,38 @@ function mez_cts_ctools_plugin_api($module = NULL, $api = NULL) {
 }
 
 /**
+ * Implements hook_image_default_styles().
+ */
+function mez_cts_image_default_styles() {
+  $styles = array();
+
+  // Exported image style: square_thumbnail.
+  $styles['square_thumbnail'] = array(
+    'name' => 'square_thumbnail',
+    'label' => 'Square thumbnail',
+    'effects' => array(
+      1 => array(
+        'label' => 'Arányos átméretezés és méretre vágás',
+        'help' => 'Az arányos átméretezés és kivágás megtartja a képarányt és azt követően kivágja a képet a hosszabbik oldal alapján. Ez a legáltalánosabban használt hatás négyzet alakú bélyegképek létrehozására anélkül, hogy a kép el lenne nyújtva.',
+        'effect callback' => 'image_scale_and_crop_effect',
+        'dimensions callback' => 'image_resize_dimensions',
+        'form callback' => 'image_resize_form',
+        'summary theme' => 'image_resize_summary',
+        'module' => 'image',
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 180,
+          'height' => 180,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+
+  return $styles;
+}
+
+/**
  * Implements hook_node_info().
  */
 function mez_cts_node_info() {
