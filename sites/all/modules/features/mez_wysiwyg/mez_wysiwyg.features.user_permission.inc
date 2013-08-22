@@ -10,7 +10,7 @@
 function mez_wysiwyg_user_default_permissions() {
   $permissions = array();
 
-  // Exported permission: use text format wysiwyg.
+  // Exported permission: 'use text format wysiwyg'.
   $permissions['use text format wysiwyg'] = array(
     'name' => 'use text format wysiwyg',
     'roles' => array(
