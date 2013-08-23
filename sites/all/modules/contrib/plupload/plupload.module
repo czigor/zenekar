@@ -116,6 +116,10 @@ function plupload_element_info() {
  */
 function plupload_element_value(&$element, $input = FALSE, $form_state = NULL) {
   $id = $element['#id'];
+  // If a unique identifier added with '--', we need to exclude it
+  if(preg_match('/(.*)(--[0-9]+)$/', $id, $reg)) {
+    $id = $reg[1];
+  }
   $files = array();
   foreach ($form_state['input'] as $key => $value) {
     if (preg_match('/' . $id . '_([0-9]+)_(.*)/', $key, $reg)) {

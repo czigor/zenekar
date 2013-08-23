@@ -1,5 +1,9 @@
 CHANGELOG for Plupload integration for Drupal 7
 
+Plupload integration 7.x-1.3
+=================================
+- #2063161 by mfgering | Amon_Re: Fixed Multi Upload with plupload broken when using Drupal 7.23.
+
 Plupload integration 7.x-1.2
 =================================
 - #1999264 by slashrsm: up_arrow.png and up_arrow_disabled.png are very large.
