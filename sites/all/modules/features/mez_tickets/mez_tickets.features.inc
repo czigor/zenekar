@@ -23,8 +23,7 @@ function mez_tickets_commerce_product_default_types() {
 /**
  * Implements hook_ctools_plugin_api().
  */
-function mez_tickets_ctools_plugin_api() {
-  list($module, $api) = func_get_args();
+function mez_tickets_ctools_plugin_api($module = NULL, $api = NULL) {
   if ($module == "strongarm" && $api == "strongarm") {
     return array("version" => "1");
   }
@@ -40,7 +39,7 @@ function mez_tickets_node_info() {
       'base' => 'node_content',
       'description' => '',
       'has_title' => '1',
-      'title_label' => t('Title'),
+      'title_label' => t('Cím'),
       'help' => '',
     ),
     'seat' => array(
@@ -48,7 +47,7 @@ function mez_tickets_node_info() {
       'base' => 'node_content',
       'description' => t('A seat in a concert hall'),
       'has_title' => '1',
-      'title_label' => t('Title'),
+      'title_label' => t('Cím'),
       'help' => '',
     ),
   );

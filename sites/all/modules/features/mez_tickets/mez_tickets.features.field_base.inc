@@ -10,6 +10,31 @@
 function mez_tickets_field_default_field_bases() {
   $field_bases = array();
 
+  // Exported field_base: 'commerce_price'
+  $field_bases['commerce_price'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(
+      0 => 'commerce_product',
+    ),
+    'field_name' => 'commerce_price',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'currency_price' => array(
+        0 => 'amount',
+        1 => 'currency_code',
+      ),
+    ),
+    'locked' => 1,
+    'module' => 'commerce_price',
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+    ),
+    'translatable' => 0,
+    'type' => 'commerce_price',
+  );
+
   // Exported field_base: 'field_concert_hall'
   $field_bases['field_concert_hall'] = array(
     'active' => 1,
@@ -80,8 +105,8 @@ function mez_tickets_field_default_field_bases() {
     'settings' => array(
       'allowed_values' => array(
         'orchestra' => 'orchestra',
-        'side balcony' => 'side balcony',
-        'middle balcony' => 'middle balcony',
+        'balcony' => 'side balcony',
+        'dress circle' => 'dress circle',
         'organ gallery' => 'organ gallery',
       ),
       'allowed_values_function' => '',
@@ -192,6 +217,33 @@ function mez_tickets_field_default_field_bases() {
         23 => 23,
         24 => 24,
         25 => 25,
+        'A' => 'A',
+        'B' => 'B',
+        'C' => 'C',
+        'D' => 'D',
+        'E' => 'E',
+        'F' => 'F',
+        'G' => 'G',
+        'I' => 'I',
+        'II' => 'II',
+        'III' => 'III',
+        'IV' => 'IV',
+        'V' => 'V',
+        'VI' => 'VI',
+        'VII' => 'VII',
+        'VIII' => 'VIII',
+        'IX' => 'IX',
+        'X' => 'X',
+        'XI' => 'XI',
+        'XII' => 'XII',
+        'XIII' => 'XIII',
+        'XIV' => 'XIV',
+        'XV' => 'XV',
+        'XVI' => 'XVI',
+        'XVII' => 'XVII',
+        'XVIII' => 'XVIII',
+        'XIX' => 'XIX',
+        'XX' => 'XX',
       ),
       'allowed_values_function' => '',
       'entity_translation_sync' => FALSE,
@@ -221,8 +273,8 @@ function mez_tickets_field_default_field_bases() {
     'settings' => array(
       'allowed_values' => array(
         'left' => 'left',
-        'middle left' => 'middle left',
-        'middle right' => 'middle right',
+        'centre left' => 'centre left',
+        'centre right' => 'centre right',
         'right' => 'right',
       ),
       'allowed_values_function' => '',
