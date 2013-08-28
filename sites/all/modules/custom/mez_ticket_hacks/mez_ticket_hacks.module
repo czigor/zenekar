@@ -42,10 +42,6 @@ function mez_ticket_hacks_field_formatter_view($entity_type, $entity, $field, $i
       $ticket_selling = field_get_items('node', $entity, 'field_ticket_selling');
       global $user;
       switch ($ticket_selling[0]['value']) {
-        case 'off' :
-          return array();
-          break;
-
         case 'admin' :
         case 'on' :
           if (user_access('administer mez ticket selling') || ($ticket_selling[0]['value'] == 'on')) {
@@ -57,6 +53,8 @@ function mez_ticket_hacks_field_formatter_view($entity_type, $entity, $field, $i
             $element[0] = array('#markup' => $markup);
           }
           break;
+        default :
+          return array();
       }
       break;
   }
@@ -234,12 +232,20 @@ function mez_ticket_from_cart($type = 'ajax', $ticket) {
     commerce_cart_order_product_line_item_delete($order, $line_item_id);
     $markup = commerce_cart_block_view('cart');
 
+
     $commands = array();
+    $ajax_settings = array(
+      'progress' => array('type' =>  'none'),
+    );
     // Replace cart block.
     $commands[] = ajax_command_html('.block-commerce-cart .cart-empty-block', $markup['content']);
+    $commands[0]['progress'] =  array('type' =>  'none');
     $commands[] = ajax_command_html('.block-commerce-cart .cart-contents', $markup['content']);
+    $commands[1]['progress'] =  array('type' =>  'none');
     // Replace ticket
     $commands[] = ajax_command_replace('#mez-ticket-' . $ticket->product_id, theme('mez_ticket', array('ticket' => $ticket)));
+    $commands[2]['progress'] =  array('type' =>  'none');
+    $commands[] = ajax_command_prepend(NULL, theme('status_messages'));
 
     $page = array('#type' => 'ajax', '#commands' => $commands);
     ajax_deliver($page);
@@ -258,4 +264,57 @@ function mez_ticket_hacks_commerce_cart_product_remove($order, $product, $quanti
  */
 function mez_ticket_hacks_commerce_cart_product_add($order, $product, $quantity, $line_item) {
   drupal_static_reset('_mez_tickets_in_cart');
+}
+
+/**
+ * Implements hook_node_presave().
+ */
+function mez_ticket_hacks_node_presave($node) {
+  if ($node->type == 'seat') {
+    // Set seat node title to [concert_hall]-[floor] [side] [row]/[number].
+    $title = array();
+    foreach (array_keys(language_list()) as $lang) {
+      $title[$lang][0]['value'] = '';
+    }
+    $concert_hall_nid = field_get_items('node', $node, 'field_concert_hall');
+    if ($concert_hall_nid) {
+      $concert_hall = node_load($concert_hall_nid[0]['target_id']);
+      foreach (array_keys(language_list()) as $lang) {
+        $title_field = field_get_items('node', $concert_hall, 'title_field', $lang);
+        if ($title_field) {
+          $title[$lang][0]['value'] .= $title_field[0]['value'] . '-';
+        }
+      }
+    }
+
+    foreach (array_keys(language_list()) as $lang) {
+      $floor = field_get_items('node', $node, 'field_seat_floor');
+      if ($floor) {
+        $title[$lang][0]['value'] .= i18n_string('field:field_seat_floor:#allowed_values:' . $floor[0]['value'], $floor[0]['value'], array('langcode' => $lang)) . ' ';
+      }
+      $side = field_get_items('node', $node, 'field_seat_side');
+      if ($side) {
+        $title[$lang][0]['value'] .= i18n_string('field:field_seat_side:#allowed_values:' . $side[0]['value'], $side[0]['value'], array('langcode' => $lang)) . ', ';
+      }
+      $row = field_get_items('node', $node, 'field_seat_row');
+      if ($row) {
+        $title[$lang][0]['value'] .= $row[0]['value'] . '/';
+      }
+      $number = field_get_items('node', $node, 'field_seat_number');
+      if ($number) {
+        $title[$lang][0]['value'] .= $number[0]['value'];
+      }
+    }
+    $node->title_field = $title;
+    global $language;
+    $node->title = $title[$language->language][0]['value'];
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function mez_ticket_hacks_form_seat_node_form_alter(&$form, &$form_state) {
+  $form['title_field'][0]['#required'] = FALSE;
+  $form['title_field']['#access'] = FALSE;
 }
