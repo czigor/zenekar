@@ -27,7 +27,9 @@ function mez_cts_user_default_permissions() {
   // Exported permission: 'create concert_hall content'.
   $permissions['create concert_hall content'] = array(
     'name' => 'create concert_hall content',
-    'roles' => array(),
+    'roles' => array(
+      'site admin' => 'site admin',
+    ),
     'module' => 'node',
   );
 
@@ -144,7 +146,9 @@ function mez_cts_user_default_permissions() {
   // Exported permission: 'delete any concert_hall content'.
   $permissions['delete any concert_hall content'] = array(
     'name' => 'delete any concert_hall content',
-    'roles' => array(),
+    'roles' => array(
+      'site admin' => 'site admin',
+    ),
     'module' => 'node',
   );
 
@@ -175,7 +179,9 @@ function mez_cts_user_default_permissions() {
   // Exported permission: 'edit any concert_hall content'.
   $permissions['edit any concert_hall content'] = array(
     'name' => 'edit any concert_hall content',
-    'roles' => array(),
+    'roles' => array(
+      'site admin' => 'site admin',
+    ),
     'module' => 'node',
   );
 
