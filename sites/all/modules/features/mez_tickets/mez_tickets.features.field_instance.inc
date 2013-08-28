@@ -117,6 +117,195 @@ function mez_tickets_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'commerce_product-ticket-commerce_stock'
+  $field_instances['commerce_product-ticket-commerce_stock'] = array(
+    'bundle' => 'ticket',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => NULL,
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'number',
+        'settings' => array(
+          'decimal_separator' => '.',
+          'prefix_suffix' => TRUE,
+          'scale' => 2,
+          'thousand_separator' => ' ',
+        ),
+        'type' => 'number_decimal',
+        'weight' => 4,
+      ),
+      'line_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'commerce_product',
+    'field_name' => 'commerce_stock',
+    'label' => 'Stock',
+    'required' => TRUE,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'max' => '',
+      'min' => '',
+      'prefix' => '',
+      'suffix' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'module' => 'number',
+      'settings' => array(),
+      'type' => 'number',
+      'weight' => 41,
+    ),
+  );
+
+  // Exported field_instance: 'commerce_product-ticket-field_concert'
+  $field_instances['commerce_product-ticket-field_concert'] = array(
+    'bundle' => 'ticket',
+    'commerce_cart_settings' => array(
+      'attribute_field' => 0,
+      'attribute_widget' => 'select',
+    ),
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 1,
+      ),
+      'line_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'commerce_product',
+    'field_name' => 'field_concert',
+    'label' => 'Concert',
+    'required' => 1,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'apply_chosen' => 0,
+      ),
+      'type' => 'options_select',
+      'weight' => 37,
+    ),
+  );
+
+  // Exported field_instance: 'commerce_product-ticket-field_seat'
+  $field_instances['commerce_product-ticket-field_seat'] = array(
+    'bundle' => 'ticket',
+    'commerce_cart_settings' => array(
+      'attribute_field' => 0,
+      'attribute_widget' => 'select',
+    ),
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 2,
+      ),
+      'line_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'commerce_product',
+    'field_name' => 'field_seat',
+    'label' => 'Seat',
+    'required' => 1,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'apply_chosen' => 0,
+      ),
+      'type' => 'options_select',
+      'weight' => 39,
+    ),
+  );
+
+  // Exported field_instance: 'commerce_product-ticket-field_ticket_status'
+  $field_instances['commerce_product-ticket-field_ticket_status'] = array(
+    'bundle' => 'ticket',
+    'commerce_cart_settings' => array(
+      'attribute_field' => 0,
+      'attribute_widget' => 'select',
+    ),
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 3,
+      ),
+      'line_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'commerce_product',
+    'field_name' => 'field_ticket_status',
+    'label' => 'Status',
+    'required' => 1,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'apply_chosen' => 0,
+      ),
+      'type' => 'options_select',
+      'weight' => 40,
+    ),
+  );
+
   // Exported field_instance: 'node-concert_hall-field_image'
   $field_instances['node-concert_hall-field_image'] = array(
     'bundle' => 'concert_hall',
@@ -560,14 +749,18 @@ function mez_tickets_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('Concert');
   t('Concert hall');
   t('Cím');
   t('Floor');
   t('Image');
   t('Price');
   t('Row');
+  t('Seat');
   t('Seat number');
   t('Side');
+  t('Status');
+  t('Stock');
   t('Title');
   t('X coordinate');
   t('Y coordinate');
