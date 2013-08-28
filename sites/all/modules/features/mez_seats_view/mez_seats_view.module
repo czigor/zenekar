@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the MEZ seats view feature.
+ */
+
+include_once 'mez_seats_view.features.inc';
