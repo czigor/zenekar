@@ -318,3 +318,132 @@ function mez_ticket_hacks_form_seat_node_form_alter(&$form, &$form_state) {
   $form['title_field'][0]['#required'] = FALSE;
   $form['title_field']['#access'] = FALSE;
 }
+
+/**
+ * Implements hook_commerce_product_presave().
+ */
+function  mez_ticket_hacks_commerce_product_presave($product) {
+  $seat_nid = field_get_items('commerce_product', $product, 'field_seat');
+  $concert_nid = field_get_items('commerce_product', $product, 'field_concert');
+  $product->sku = $concert_nid . '-' . $seat_nid;
+  $product->title = $product->sku;
+}
+
+/**
+ * Implements hook_action_info().
+ */
+function mez_ticket_hacks_action_info() {
+  return array(
+    'mez_ticket_from_seat' => array(
+      'type' => 'node',
+      'label' => t('Create ticket from seat'),
+      'configurable' => TRUE,
+    ),
+  );
+}
+
+/**
+ * Implements hook_action_form().
+ *
+ * Adds configuration fields for setting the student's new payment date.
+ */
+function mez_ticket_from_seat_form($context) {
+  $query = new EntityFieldQuery();
+  $result = $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'concert')
+    ->propertyCondition('status', 1)
+    ->fieldCondition('field_ticket_selling', 'value', 'off', '<>')
+    ->execute();
+  if (!empty($result['node'])) {
+    $concert_nids = array_keys($result['node']);
+    $concerts = node_load_multiple($concert_nids);
+
+    $concert_options = array();
+    foreach ($concerts as $concert) {
+      $title = field_get_items('node', $concert, 'title_field');
+      $concert_options[$concert->nid] = $title[0]['value'];
+    }
+
+    $form = array();
+    $form['mez_ticket_concert'] = array(
+      '#type' => 'select',
+      '#title' => t('Concert'),
+      '#description' => t('Concerts having ticket selling different from "off".'),
+      '#required' => TRUE,
+      '#options' => $concert_options,
+    );
+
+    $form['mez_ticket_price'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Price (HUF)'),
+      '#element_validate' => array('element_validate_integer_positive'),
+    );
+  }
+  else {
+    $form['mez_noconcert'] = array(
+      '#markup' => t('There are no concerts having ticket selling different from "off".')
+    );
+  }
+  return $form;
+}
+
+/**
+ * Implements hook_submit().
+ */
+function mez_ticket_from_seat_submit($form, $form_state) {
+  if (!empty($form_state['values']['mez_noconcert'])) {
+    drupal_goto('seats');
+  }
+  return array(
+    'concert' => $form_state['values']['mez_ticket_concert'],
+    'price' => $form_state['values']['mez_ticket_price'],
+  );
+}
+
+/**
+ * Action callback.
+ */
+function mez_ticket_from_seat($node, $context) {
+  if (!isset($node->type) || $node->type != 'seat' ) {
+    return;
+  }
+
+  // Check if this seat belongs to the concert hall of the concert at all.
+  $seat_concert_hall = field_get_items('node', $node, 'field_concert_hall');
+  $concert = node_load($context['concert']);
+  $concert_concert_hall = field_get_items('node', $concert, 'field_concert_hall');
+  if ($seat_concert_hall[0]['target_id'] != $concert_concert_hall[0]['target_id']) {
+    $seat_title = field_get_items('node', $node, 'title_field');
+    drupal_set_message(t('Seat @seat does not belong to the concert hall of the selected concert.', array('@seat' => $seat_title)));
+    return;
+  }
+
+  // Check if we have a ticket already with this seat and concert.
+  // TODO: For some reason this EFQ returns deleted products too.
+  $query = new EntityFieldQuery();
+  $result = $query->entityCondition('entity_type', 'commerce_product')
+    ->entityCondition('bundle', 'ticket')
+    ->fieldCondition('field_concert', 'target_id', $context['concert'])
+    ->fieldCondition('field_seat', 'target_id', $node->nid)
+    ->execute();
+  if (!empty($result['commerce_product'])) {
+    dpm($result);
+    $seat_title = field_get_items('node', $node, 'title_field');
+    $concert = node_load($context['concert']);
+    $concert_title = field_get_items('node', $concert, 'title_field');
+    drupal_set_message(t('A ticket already exists for @concert concert and seat @seat.', array('@seat' => $seat_title, '@concert' => $concert_title)));
+    return;
+  }
+
+  // Else create the ticket.
+  $ticket = commerce_product_new('ticket');
+  $ticket->sku = $context['concert'] . '-' . $node->nid;
+  $ticket->title = $values['sku'];
+  $ticket->field_concert[LANGUAGE_NONE][0]['target_id'] = $context['concert'];
+  $ticket->commerce_price[LANGUAGE_NONE][0]['amount'] = $context['price'];
+  $ticket->commerce_price[LANGUAGE_NONE][0]['currency_code'] = 'HUF';
+  $ticket->commerce_stock[LANGUAGE_NONE][0]['value'] = 1.00;
+  $ticket->field_seat[LANGUAGE_NONE][0]['target_id'] = $node->nid;
+  commerce_product_save($ticket);
+  drupal_set_message(t('Ticket @title has been created.', array('@title' => $values['title'],)));
+}
