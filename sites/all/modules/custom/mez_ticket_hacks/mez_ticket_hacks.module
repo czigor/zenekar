@@ -76,6 +76,7 @@ function mez_ticket_hacks_theme() {
     ),
     'mez_ticket' => array(
       'variables' => array(
+        'seat' => NULL,
         'ticket' => NULL,
       ),
     ),
@@ -87,8 +88,8 @@ function mez_ticket_hacks_theme() {
  */
 function theme_mez_ticket($vars) {
   if (!empty($vars['xcoord']) && !empty($vars['ycoord'])) {
-    $markup = '<div id="mez-ticket-' . $vars['ticket']->product_id . '" class="mez-ticket ' . $vars['status'] . '" style="position:absolute; top:' . $vars['xcoord'] . 'px; left: ' . $vars['ycoord'] . 'px;">';
-    $text = '<span class="inner" title="' . $vars['ticket']->title . '"></span>';
+    $markup = '<div id="mez-ticket-' . $vars['seat_nid'] . '" class="mez-ticket ' . $vars['status'] . '" style="position:absolute; top:' . $vars['ycoord'] . 'px; left: ' . $vars['xcoord'] . 'px;">';
+    $text = '<span class="inner" title="' . $vars['title'] . '"></span>';
     switch ($vars['status']) {
       case 'free' :
         $markup .= l($text, 'mez-ticket-to-cart/nojs/' . $vars['ticket']->product_id, array('attributes' => array('class' => array('use-ajax')), 'html' => TRUE));
@@ -133,8 +134,15 @@ function mez_ticket_hacks_preprocess_mez_concert_hall(&$vars) {
     $tickets = commerce_product_load_multiple($ticket_pids);
     $vars['seats'] = array();
     foreach ($tickets as $ticket) {
-      $vars['seats'][$ticket->product_id] = theme('mez_ticket', array('ticket' => $ticket));
+      $seat_nid = field_get_items('commerce_product', $ticket, 'field_seat');
+      $vars['seats'][$seat_nid[0]['target_id']] = theme('mez_ticket', array('ticket' => $ticket));
+      $key = array_search($seat_nid[0]['target_id'], $seat_nids);
+      unset($seat_nids[$key]);
     }
+  }
+  $seats = node_load_multiple($seat_nids);
+  foreach ($seats as $seat) {
+    $vars['seats'][$seat->nid] = theme('mez_ticket', array('seat' => $seat));
   }
 
   // Concert hall specific markup.
@@ -147,14 +155,30 @@ function mez_ticket_hacks_preprocess_mez_concert_hall(&$vars) {
  * Preprocess function for mez_ticket.
  */
 function mez_ticket_hacks_preprocess_mez_ticket(&$vars) {
-  // Tickets in the cart differs for all users.
-  $tickets_in_cart = _mez_tickets_in_cart();
-  $ticket_w = entity_metadata_wrapper('commerce_product', $vars['ticket']);
-  $vars['xcoord'] = $ticket_w->field_seat->field_x_coordinate->value();
-  $vars['ycoord'] = $ticket_w->field_seat->field_y_coordinate->value();
-  $vars['status'] = $ticket_w->field_ticket_status->value();
-  if ($vars['status'] == 'free') {
-    $vars['status'] = in_array($vars['ticket']->product_id, $tickets_in_cart) ? 'reserved' : 'free';
+  $compression = 1.4;
+  if (isset($vars['ticket'])) {
+    // Tickets in the cart differs for all users.
+    $tickets_in_cart = _mez_tickets_in_cart();
+    $ticket_w = entity_metadata_wrapper('commerce_product', $vars['ticket']);
+    $vars['xcoord'] = $ticket_w->field_seat->field_x_coordinate->value() / $compression;
+    $vars['ycoord'] = $ticket_w->field_seat->field_y_coordinate->value() / $compression;
+    $vars['title'] = $ticket_w->field_seat->title->value();
+
+    $vars['seat_nid'] = $ticket_w->field_seat->nid->value();
+    $vars['status'] = ($ticket_w->commerce_stock->value() > 0 ? 'free' : 'sold');
+    if ($vars['status'] == 'free') {
+      $vars['status'] = in_array($vars['ticket']->product_id, $tickets_in_cart) ? 'reserved' : 'free';
+    }
+  }
+  else {
+    $seat = $vars['seat'];
+    $xcoord = field_get_items('node', $seat, 'field_x_coordinate');
+    $vars['xcoord'] = $xcoord[0]['value'] / $compression;
+    $ycoord = field_get_items('node', $seat, 'field_y_coordinate');
+    $vars['ycoord'] = $ycoord[0]['value'] / $compression;
+    $vars['status'] = 'sold';
+    $vars['title'] = $seat->title;
+    $vars['seat_nid'] = $seat->nid;
   }
 }
 
@@ -212,7 +236,8 @@ function mez_ticket_to_cart($type = 'ajax', $ticket) {
     $commands[] = ajax_command_html('.block-commerce-cart .cart-empty-block', $markup['content']);
     $commands[] = ajax_command_html('.block-commerce-cart .cart-contents', $markup['content']);
     // Replace ticket
-    $commands[] = ajax_command_replace('#mez-ticket-' . $ticket->product_id, theme('mez_ticket', array('ticket' => $ticket)));
+    $seat_nid = field_get_items('commerce_product', $ticket, 'field_seat');
+    $commands[] = ajax_command_replace('#mez-ticket-' . $seat_nid[0]['target_id'], theme('mez_ticket', array('ticket' => $ticket)));
 
     $page = array('#type' => 'ajax', '#commands' => $commands);
     ajax_deliver($page);
@@ -243,7 +268,8 @@ function mez_ticket_from_cart($type = 'ajax', $ticket) {
     $commands[] = ajax_command_html('.block-commerce-cart .cart-contents', $markup['content']);
     $commands[1]['progress'] =  array('type' =>  'none');
     // Replace ticket
-    $commands[] = ajax_command_replace('#mez-ticket-' . $ticket->product_id, theme('mez_ticket', array('ticket' => $ticket)));
+    $seat_nid = field_get_items('commerce_product', $ticket, 'field_seat');
+    $commands[] = ajax_command_replace('#mez-ticket-' . $seat_nid[0]['target_id'], theme('mez_ticket', array('ticket' => $ticket)));
     $commands[2]['progress'] =  array('type' =>  'none');
     $commands[] = ajax_command_prepend(NULL, theme('status_messages'));
 
@@ -325,7 +351,7 @@ function mez_ticket_hacks_form_seat_node_form_alter(&$form, &$form_state) {
 function  mez_ticket_hacks_commerce_product_presave($product) {
   $seat_nid = field_get_items('commerce_product', $product, 'field_seat');
   $concert_nid = field_get_items('commerce_product', $product, 'field_concert');
-  $product->sku = $concert_nid . '-' . $seat_nid;
+  $product->sku = $concert_nid[0]['target_id'] . '-' . $seat_nid[0]['target_id'];
   $product->title = $product->sku;
 }
 
@@ -427,7 +453,6 @@ function mez_ticket_from_seat($node, $context) {
     ->fieldCondition('field_seat', 'target_id', $node->nid)
     ->execute();
   if (!empty($result['commerce_product'])) {
-    dpm($result);
     $seat_title = field_get_items('node', $node, 'title_field');
     $concert = node_load($context['concert']);
     $concert_title = field_get_items('node', $concert, 'title_field');
@@ -438,12 +463,15 @@ function mez_ticket_from_seat($node, $context) {
   // Else create the ticket.
   $ticket = commerce_product_new('ticket');
   $ticket->sku = $context['concert'] . '-' . $node->nid;
-  $ticket->title = $values['sku'];
+  $ticket->title = $ticket->sku;
   $ticket->field_concert[LANGUAGE_NONE][0]['target_id'] = $context['concert'];
-  $ticket->commerce_price[LANGUAGE_NONE][0]['amount'] = $context['price'];
-  $ticket->commerce_price[LANGUAGE_NONE][0]['currency_code'] = 'HUF';
+  $ticket->commerce_price[LANGUAGE_NONE][0] = array(
+    'amount' => $context['price'],
+    'currency_code' => 'HUF',
+    //'data' => array(),
+  );
   $ticket->commerce_stock[LANGUAGE_NONE][0]['value'] = 1.00;
   $ticket->field_seat[LANGUAGE_NONE][0]['target_id'] = $node->nid;
   commerce_product_save($ticket);
-  drupal_set_message(t('Ticket @title has been created.', array('@title' => $values['title'],)));
+  drupal_set_message(t('Ticket @title has been created.', array('@title' => $ticket->title)));
 }

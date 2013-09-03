@@ -12,11 +12,12 @@
 
 .mez-concert-hall {
   .mez-ticket span.inner {
-    width: 10px;
-    height: 10px;
+    width: 9px;
+    height: 9px;
     display: block;
     margin: 0;
     padding: 0;
+    border-radius:4px;
   }
   .mez-ticket.sold span.inner {
     background-color: red;
