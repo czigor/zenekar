@@ -82,6 +82,13 @@ function mez_seats_view_views_default_views() {
         'url' => '',
       ),
     ),
+    'action::mez_ticket_from_seat' => array(
+      'selected' => 1,
+      'postpone_processing' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+    ),
     'action::views_bulk_operations_delete_item' => array(
       'selected' => 1,
       'postpone_processing' => 0,
