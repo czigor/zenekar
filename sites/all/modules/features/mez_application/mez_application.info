@@ -1,8 +1,7 @@
 name = MEZ Application
 core = 7.x
 package = Features
-php = 5.2.4
-version = 7.x-1.0-20130618dev1
+version = 7.x-1.0-20130911dev1
 project = mez_application
 dependencies[] = date
 dependencies[] = email

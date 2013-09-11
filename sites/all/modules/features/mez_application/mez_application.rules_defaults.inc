@@ -24,7 +24,7 @@ function mez_application_default_rules_configuration() {
       ],
       "DO" : [
         { "mail" : {
-            "to" : "pechan.rudolf@upcmail.hu, morocz.veronika@gmail.com, koteles.geza@gmail.com, czovekandras@gmail.com, outdare@citromail.hu",
+            "to" : "pechan.rudolf@upcmail.hu, morocz.veronika@gmail.com, koteles.geza@gmail.com, czovekandras@gmail.com, outdare@citromail.hu, davidagota@gmail.com",
             "subject" : "Zenekari jelentkez\\u00e9s",
             "message" : "[entityform:entityform-submittd-data]",
             "language" : [ "entityform-type:type" ]
