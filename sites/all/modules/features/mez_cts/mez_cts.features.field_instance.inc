@@ -3175,60 +3175,6 @@ function mez_cts_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-concert-field_concert_hall'
-  $field_instances['node-concert-field_concert_hall'] = array(
-    'bundle' => 'concert',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'hidden',
-        'module' => 'mez_ticket_hacks',
-        'settings' => array(),
-        'type' => 'mez_concert_hall',
-        'weight' => 7,
-      ),
-      'full' => array(
-        'label' => 'hidden',
-        'module' => 'mez_ticket_hacks',
-        'settings' => array(),
-        'type' => 'mez_concert_hall',
-        'weight' => 6,
-      ),
-      'short_teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'ds_extras_field_template' => '',
-    'entity_type' => 'node',
-    'field_name' => 'field_concert_hall',
-    'label' => 'Concert hall',
-    'required' => 0,
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(
-        'apply_chosen' => 0,
-      ),
-      'type' => 'options_select',
-      'weight' => 8,
-    ),
-  );
-
   // Exported field_instance: 'node-concert-field_location_reference'
   $field_instances['node-concert-field_location_reference'] = array(
     'bundle' => 'concert',
@@ -3248,12 +3194,9 @@ function mez_cts_field_default_field_instances() {
       ),
       'full' => array(
         'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'links' => 1,
-          'view_mode' => 'full',
-        ),
-        'type' => 'entityreference_entity_view',
+        'module' => 'mez_ticket_hacks',
+        'settings' => array(),
+        'type' => 'mez_concert_hall',
         'weight' => 5,
       ),
       'short_teaser' => array(
@@ -5240,7 +5183,6 @@ on: Webshop is visible for public.',
   t('Comma separator');
   t('Composer');
   t('Concert');
-  t('Concert hall');
   t('Cím');
   t('Date');
   t('Description');

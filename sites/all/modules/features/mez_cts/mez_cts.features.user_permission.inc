@@ -24,15 +24,6 @@ function mez_cts_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
-  // Exported permission: 'create concert_hall content'.
-  $permissions['create concert_hall content'] = array(
-    'name' => 'create concert_hall content',
-    'roles' => array(
-      'site admin' => 'site admin',
-    ),
-    'module' => 'node',
-  );
-
   // Exported permission: 'create field_active'.
   $permissions['create field_active'] = array(
     'name' => 'create field_active',
@@ -143,15 +134,6 @@ function mez_cts_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: 'delete any concert_hall content'.
-  $permissions['delete any concert_hall content'] = array(
-    'name' => 'delete any concert_hall content',
-    'roles' => array(
-      'site admin' => 'site admin',
-    ),
-    'module' => 'node',
-  );
-
   // Exported permission: 'delete any location content'.
   $permissions['delete any location content'] = array(
     'name' => 'delete any location content',
@@ -162,26 +144,10 @@ function mez_cts_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: 'delete own concert_hall content'.
-  $permissions['delete own concert_hall content'] = array(
-    'name' => 'delete own concert_hall content',
-    'roles' => array(),
-    'module' => 'node',
-  );
-
   // Exported permission: 'delete own location content'.
   $permissions['delete own location content'] = array(
     'name' => 'delete own location content',
     'roles' => array(),
-    'module' => 'node',
-  );
-
-  // Exported permission: 'edit any concert_hall content'.
-  $permissions['edit any concert_hall content'] = array(
-    'name' => 'edit any concert_hall content',
-    'roles' => array(
-      'site admin' => 'site admin',
-    ),
     'module' => 'node',
   );
 
@@ -293,13 +259,6 @@ function mez_cts_user_default_permissions() {
       'site admin' => 'site admin',
     ),
     'module' => 'field_permissions',
-  );
-
-  // Exported permission: 'edit own concert_hall content'.
-  $permissions['edit own concert_hall content'] = array(
-    'name' => 'edit own concert_hall content',
-    'roles' => array(),
-    'module' => 'node',
   );
 
   // Exported permission: 'edit own field_active'.

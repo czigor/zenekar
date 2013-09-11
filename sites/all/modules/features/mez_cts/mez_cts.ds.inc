@@ -522,8 +522,7 @@ function mez_cts_ds_layout_settings_info() {
         3 => 'field_media',
         4 => 'body',
         5 => 'field_location_reference',
-        6 => 'field_concert_hall',
-        7 => 'comments',
+        6 => 'comments',
       ),
     ),
     'fields' => array(
@@ -533,7 +532,6 @@ function mez_cts_ds_layout_settings_info() {
       'field_media' => 'ds_content',
       'body' => 'ds_content',
       'field_location_reference' => 'ds_content',
-      'field_concert_hall' => 'ds_content',
       'comments' => 'ds_content',
     ),
     'classes' => array(),
@@ -543,6 +541,8 @@ function mez_cts_ds_layout_settings_info() {
     'layout_wrapper' => 'div',
     'layout_attributes' => '',
     'layout_attributes_merge' => 0,
+    'layout_link_attribute' => '',
+    'layout_link_custom' => '',
   );
   $export['node|concert|full'] = $ds_layout;
 
