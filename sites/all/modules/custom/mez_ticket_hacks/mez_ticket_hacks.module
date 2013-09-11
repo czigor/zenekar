@@ -49,12 +49,17 @@ function mez_ticket_hacks_field_formatter_view($entity_type, $entity, $field, $i
               'concert_nid' => $entity->nid,
               'concert_hall_nid' => $items[0]['target_id'],
             );
-            $markup = theme('mez_concert_hall', $vars);
+            $concert_hall = node_load($vars['concert_hall_nid']);
+            $concert_hall_render_array = node_view($concert_hall, 'full');
+            $markup = drupal_render($concert_hall_render_array) . theme('mez_concert_hall', $vars);
             $element[0] = array('#markup' => $markup);
           }
           break;
         default :
-          return array();
+          $location = node_load($items[0]['target_id']);
+          $location_render_array = node_view($location, 'full');
+          $markup = drupal_render($location_render_array);
+          $element[0] = array('#markup' => $markup);
       }
       break;
   }
@@ -155,11 +160,17 @@ function mez_ticket_hacks_preprocess_mez_concert_hall(&$vars) {
  * Preprocess function for mez_ticket.
  */
 function mez_ticket_hacks_preprocess_mez_ticket(&$vars) {
-  $compression = 1.4;
   if (isset($vars['ticket'])) {
     // Tickets in the cart differs for all users.
     $tickets_in_cart = _mez_tickets_in_cart();
     $ticket_w = entity_metadata_wrapper('commerce_product', $vars['ticket']);
+    $compression = &drupal_static('mez_compression');
+    if (!isset($compression)) {
+      $compression = $ticket_w->field_seat->field_concert_hall->field_ticket_map_compression->value();
+      if (empty($compression)) {
+        $compression = 1;
+      }
+    }
     $vars['xcoord'] = $ticket_w->field_seat->field_x_coordinate->value() / $compression;
     $vars['ycoord'] = $ticket_w->field_seat->field_y_coordinate->value() / $compression;
     $vars['title'] = $ticket_w->field_seat->title->value();
@@ -172,6 +183,14 @@ function mez_ticket_hacks_preprocess_mez_ticket(&$vars) {
   }
   else {
     $seat = $vars['seat'];
+    $compression = &drupal_static('mez_compression');
+    if (!isset($compression)) {
+      $seat_w = entity_metadata_wrapper('node', $vars['seat']);
+      $compression = $seat_w->field_concert_hall->field_ticket_map_compression->value();
+      if (empty($compression)) {
+        $compression = 1;
+      }
+    }
     $xcoord = field_get_items('node', $seat, 'field_x_coordinate');
     $vars['xcoord'] = $xcoord[0]['value'] / $compression;
     $ycoord = field_get_items('node', $seat, 'field_y_coordinate');
@@ -437,7 +456,7 @@ function mez_ticket_from_seat($node, $context) {
   // Check if this seat belongs to the concert hall of the concert at all.
   $seat_concert_hall = field_get_items('node', $node, 'field_concert_hall');
   $concert = node_load($context['concert']);
-  $concert_concert_hall = field_get_items('node', $concert, 'field_concert_hall');
+  $concert_concert_hall = field_get_items('node', $concert, 'field_location_reference');
   if ($seat_concert_hall[0]['target_id'] != $concert_concert_hall[0]['target_id']) {
     $seat_title = field_get_items('node', $node, 'title_field');
     drupal_set_message(t('Seat @seat does not belong to the concert hall of the selected concert.', array('@seat' => $seat_title)));
