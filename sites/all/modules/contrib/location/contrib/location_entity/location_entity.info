@@ -7,9 +7,9 @@ dependencies[] = location
 
 files[] = location_entity.module
 
-; Information added by drupal.org packaging script on 2013-09-03
-version = "7.x-3.0-rc4"
+; Information added by drupal.org packaging script on 2013-09-10
+version = "7.x-3.0-rc5"
 core = "7.x"
 project = "location"
-datestamp = "1378207011"
+datestamp = "1378834936"
 

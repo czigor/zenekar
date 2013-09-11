@@ -98,7 +98,7 @@ function mez_tickets_field_default_field_bases() {
           'type' => 'field',
         ),
         'target_bundles' => array(
-          'concert_hall' => 'concert_hall',
+          'location' => 'location',
         ),
       ),
       'target_type' => 'node',

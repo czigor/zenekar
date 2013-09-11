@@ -306,101 +306,6 @@ function mez_tickets_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-concert_hall-field_image'
-  $field_instances['node-concert_hall-field_image'] = array(
-    'bundle' => 'concert_hall',
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'image',
-        'settings' => array(
-          'image_link' => '',
-          'image_style' => '',
-        ),
-        'type' => 'image',
-        'weight' => 1,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'ds_extras_field_template' => '',
-    'entity_type' => 'node',
-    'field_name' => 'field_image',
-    'label' => 'Image',
-    'required' => 0,
-    'settings' => array(
-      'alt_field' => 0,
-      'default_image' => 0,
-      'entity_translation_sync' => FALSE,
-      'file_directory' => 'concert_hall/image',
-      'file_extensions' => 'png gif jpg jpeg',
-      'max_filesize' => '',
-      'max_resolution' => '',
-      'min_resolution' => '',
-      'title_field' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'image',
-      'settings' => array(
-        'preview_image_style' => 'thumbnail',
-        'progress_indicator' => 'throbber',
-      ),
-      'type' => 'image_image',
-      'weight' => 32,
-    ),
-  );
-
-  // Exported field_instance: 'node-concert_hall-title_field'
-  $field_instances['node-concert_hall-title_field'] = array(
-    'bundle' => 'concert_hall',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'title_field',
-    'label' => 'Title',
-    'required' => TRUE,
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'hide_label' => array(
-        'entity' => 'entity',
-        'page' => 'page',
-      ),
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => -5,
-    ),
-  );
-
   // Exported field_instance: 'node-seat-field_concert_hall'
   $field_instances['node-seat-field_concert_hall'] = array(
     'bundle' => 'seat',
@@ -753,7 +658,6 @@ function mez_tickets_field_default_field_instances() {
   t('Concert hall');
   t('Cím');
   t('Floor');
-  t('Image');
   t('Price');
   t('Row');
   t('Seat');
@@ -761,7 +665,6 @@ function mez_tickets_field_default_field_instances() {
   t('Side');
   t('Status');
   t('Stock');
-  t('Title');
   t('X coordinate');
   t('Y coordinate');
 

@@ -3712,6 +3712,60 @@ on: Webshop is visible for public.',
     ),
   );
 
+  // Exported field_instance: 'node-location-field_ticket_map_compression'
+  $field_instances['node-location-field_ticket_map_compression'] = array(
+    'bundle' => 'location',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'The ticket map is compressed by this factor.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'number',
+        'settings' => array(
+          'decimal_separator' => '.',
+          'prefix_suffix' => TRUE,
+          'scale' => 2,
+          'thousand_separator' => ' ',
+        ),
+        'type' => 'number_decimal',
+        'weight' => 2,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_ticket_map_compression',
+    'label' => 'Ticket map compression',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'max' => '',
+      'min' => 0.001,
+      'prefix' => '',
+      'suffix' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'number',
+      'settings' => array(),
+      'type' => 'number',
+      'weight' => 33,
+    ),
+  );
+
   // Exported field_instance: 'node-location-title_field'
   $field_instances['node-location-title_field'] = array(
     'bundle' => 'location',
@@ -5229,7 +5283,9 @@ on: Webshop is visible for public.',
   t('The family name of the composer is displayed before the given name(s). Check this if you want a comma between them. (So do not check it for Hungarian names.)');
   t('The family name of the composer like \'Bach\'. This will be used to sort the piece. ');
   t('The given name(s) of the composer. Each name (like Johann and Sebastian) should go into a different textbox. ');
+  t('The ticket map is compressed by this factor.');
   t('This person is an active member of the orchestra');
+  t('Ticket map compression');
   t('Ticket selling');
   t('Time');
   t('Title');
