@@ -34,20 +34,12 @@ function mez_tickets_ctools_plugin_api($module = NULL, $api = NULL) {
  */
 function mez_tickets_node_info() {
   $items = array(
-    'concert_hall' => array(
-      'name' => t('Concert hall'),
-      'base' => 'node_content',
-      'description' => '',
-      'has_title' => '1',
-      'title_label' => t('Title'),
-      'help' => '',
-    ),
     'seat' => array(
       'name' => t('Seat'),
       'base' => 'node_content',
       'description' => t('A seat in a concert hall'),
       'has_title' => '1',
-      'title_label' => t('Title'),
+      'title_label' => t('Cím'),
       'help' => '',
     ),
   );
