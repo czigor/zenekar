@@ -9,7 +9,6 @@
  */
 function shield_uninstall() {
   variable_del('shield_allow_cli');
-  variable_del('shield_allow_cron');
   variable_del('shield_enabled');
   variable_del('shield_user');
   variable_del('shield_pass');

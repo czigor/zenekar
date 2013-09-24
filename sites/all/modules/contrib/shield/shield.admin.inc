@@ -33,13 +33,6 @@ function shield_admin_settings($form, &$form_state) {
     '#default_value' => variable_get('shield_allow_cli', 1),
   );
 
-  $form['general']['shield_allow_cron'] = array(
-    '#type' => 'checkbox',
-    '#title' => t('Allow browser and crontab to run <code>@basepathcron.php</code>', array('@basepath' => base_path())),
-    '#description' => t('You will not be able to run cron from the command line or crontab without this option selected.'),
-    '#default_value' => variable_get('shield_allow_cron', 1),
-  );
-
   $methods = array(1 => t('Shield all except the following paths (exclude)'), 2 => t('Shield no paths except the following (include)'));
   $form['general']['shield_method'] = array(
     '#type' => 'radios',
@@ -52,7 +45,7 @@ function shield_admin_settings($form, &$form_state) {
   $form['general']['shield_paths'] = array(
     '#type' => 'textarea',
     '#title' => t('Paths'),
-    '#description' => t('According to the Shield method selected above, these paths will be either excluded from, or included in Shield protection. Leave this blank and select "exclude" to protect all paths.'),
+    '#description' => t('According to the Shield method selected above, these paths will be either excluded from, or included in Shield protection. Leave this blank and select "exclude" to protect all paths. You can also use paths which do not hit index.php but bootstrapped, for example cron.php.'),
     '#default_value' => variable_get('shield_paths', ''),
   );
 
@@ -65,7 +58,7 @@ function shield_admin_settings($form, &$form_state) {
     '#type' => 'textfield',
     '#title' => t('User'),
     '#default_value' => variable_get('shield_user', ''),
-    '#description' => t('Live it blank to disable authentication.')
+    '#description' => t('Live it blank to disable authentication.'),
   );
 
   $form['credentials']['shield_pass'] = array(
