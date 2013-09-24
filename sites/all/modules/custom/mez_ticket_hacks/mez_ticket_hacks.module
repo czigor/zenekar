@@ -85,6 +85,13 @@ function mez_ticket_hacks_theme() {
         'ticket' => NULL,
       ),
     ),
+    'mez_ticket_pdf' => array(
+      'variables' => array(
+        'ticket' => NULL
+      ),
+      'template' => 'mez_ticket_pdf',
+      'path' => drupal_get_path('theme', 'mez_theme') . '/templates/pdf',
+    ),
   );
 }
 
@@ -464,7 +471,6 @@ function mez_ticket_from_seat($node, $context) {
   }
 
   // Check if we have a ticket already with this seat and concert.
-  // TODO: For some reason this EFQ returns deleted products too.
   $query = new EntityFieldQuery();
   $result = $query->entityCondition('entity_type', 'commerce_product')
     ->entityCondition('bundle', 'ticket')
@@ -487,10 +493,21 @@ function mez_ticket_from_seat($node, $context) {
   $ticket->commerce_price[LANGUAGE_NONE][0] = array(
     'amount' => $context['price'],
     'currency_code' => 'HUF',
-    //'data' => array(),
   );
   $ticket->commerce_stock[LANGUAGE_NONE][0]['value'] = 1.00;
   $ticket->field_seat[LANGUAGE_NONE][0]['target_id'] = $node->nid;
   commerce_product_save($ticket);
   drupal_set_message(t('Ticket @title has been created.', array('@title' => $ticket->title)));
+}
+
+/**
+ * Implements hook_cron().
+ */
+function mez_ticket_hacks_crons() {
+  // If a line item has not been modified for 2 hours, delete it.
+  $result = $query->entityCondition('entity_type', 'commerce_line_item')
+    ->entityCondition('bundle', 'ticket')
+    ->fieldCondition('field_concert', 'target_id', $context['concert'])
+    ->fieldCondition('field_seat', 'target_id', $node->nid)
+    ->execute();
 }
