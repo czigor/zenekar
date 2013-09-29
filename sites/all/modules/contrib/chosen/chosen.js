@@ -10,13 +10,6 @@
       var multiple = Drupal.settings.chosen.multiple;
       var maxSelectedOptions = Drupal.settings.chosen.max_selected_options;
       var options = {};
-      options.disable_search = Drupal.settings.chosen.disable_search;
-      options.disable_search_threshold = settings.chosen.disable_search_threshold;
-      options.search_contains = settings.chosen.search_contains;
-      options.placeholder_text_multiple = settings.chosen.placeholder_text_multiple;
-      options.placeholder_text_single = settings.chosen.placeholder_text_single;
-      options.no_results_text = settings.chosen.no_results_text;
-      options.inherit_select_classes = true;
 
       // Prepare selector and add unwantend selectors.
       var selector = settings.chosen.selector;
@@ -26,13 +19,22 @@
         .not('#field-ui-field-overview-form select, #field-ui-display-overview-form select') //disable chosen on field ui
         .each(function() {
           var name = $(this).attr('name');
+          options = {};
+          options.disable_search = Drupal.settings.chosen.disable_search;
+          options.disable_search_threshold = settings.chosen.disable_search_threshold;
+          options.search_contains = settings.chosen.search_contains;
+          options.placeholder_text_multiple = settings.chosen.placeholder_text_multiple;
+          options.placeholder_text_single = settings.chosen.placeholder_text_single;
+          options.no_results_text = settings.chosen.no_results_text;
+          options.inherit_select_classes = true;
+
           minOptions = minOptionsSingle;
-          if (multiple[name] != false) {
+          if (multiple[name] !== false) {
             minOptions = minOptionsMultiple;
           }
 
-          if (maxSelectedOptions[name] != false) {
-            options.max_selected_options = maxSelectedOptions[name];
+          if (maxSelectedOptions[name] !== false) {
+           options.max_selected_options = maxSelectedOptions[name];
           }
 
           if ($(this).find('option').size() >= minOptions || minOptions == 'Always Apply') {
