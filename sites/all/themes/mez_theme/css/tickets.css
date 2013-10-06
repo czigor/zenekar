@@ -52,3 +52,9 @@ body.node-type-concert .ds-2col-stacked .group-right {
   margin-bottom: 10px;
   padding-bottom: 10px;
 }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/tickets\.scss}line{font-family:\0000360}}
+.mez_concert_bank_information {
+  font-size: 0.6em;
+  text-align: right;
+}
