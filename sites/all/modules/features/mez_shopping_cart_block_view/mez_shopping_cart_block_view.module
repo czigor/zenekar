@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the MEZ shopping cart block view feature.
+ */
+
+include_once 'mez_shopping_cart_block_view.features.inc';

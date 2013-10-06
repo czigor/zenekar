@@ -1,0 +1,10 @@
+name = MEZ shopping cart block view
+core = 7.x
+package = Features
+version = 7.x-1.0-20131006dev1
+project = mez_shopping_cart_block_view
+dependencies[] = views
+features[ctools][] = views:views_default:3.0
+features[features_api][] = api:2
+features[views_view][] = mez_shopping_cart_block
+features_exclude[dependencies][ctools] = ctools
