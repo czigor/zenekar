@@ -42,3 +42,17 @@ body.node-type-concert {
     }
   }
 }
+
+.view-mez-shopping-cart-block {
+  .views-field-commerce-total {
+    text-align: right;
+  }
+  .views-row-even {
+    background-color: #D99216;
+  }
+  .views-row-last {
+    border-bottom: 1px solid black;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+  }
+}

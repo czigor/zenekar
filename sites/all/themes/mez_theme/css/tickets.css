@@ -37,3 +37,18 @@ body.node-type-concert .ds-2col-stacked .group-right {
   width: auto;
   float: left;
 }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/tickets\.scss}line{font-family:\0000347}}
+.view-mez-shopping-cart-block .views-field-commerce-total {
+  text-align: right;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/tickets\.scss}line{font-family:\0000350}}
+.view-mez-shopping-cart-block .views-row-even {
+  background-color: #D99216;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/tickets\.scss}line{font-family:\0000353}}
+.view-mez-shopping-cart-block .views-row-last {
+  border-bottom: 1px solid black;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+}
