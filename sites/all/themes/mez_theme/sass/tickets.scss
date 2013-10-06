@@ -29,3 +29,16 @@
     background-color: yellow;
   }
 }
+
+body.node-type-concert {
+  .ds-2col-stacked {
+    .group-left {
+      width: 190px;
+      margin-right: 10px
+    }
+    .group-right {
+      width: auto;
+      float: left;
+    }
+  }
+}

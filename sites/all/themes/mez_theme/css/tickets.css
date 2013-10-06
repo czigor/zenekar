@@ -26,3 +26,14 @@
 .mez-concert-hall .mez-ticket.reserved span.inner {
   background-color: yellow;
 }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/tickets\.scss}line{font-family:\0000335}}
+body.node-type-concert .ds-2col-stacked .group-left {
+  width: 190px;
+  margin-right: 10px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/tickets\.scss}line{font-family:\0000339}}
+body.node-type-concert .ds-2col-stacked .group-right {
+  width: auto;
+  float: left;
+}
