@@ -73,7 +73,7 @@ function mez_cts_ds_field_settings_info() {
   $ds_fieldsetting->view_mode = 'full';
   $ds_fieldsetting->settings = array(
     'comments' => array(
-      'weight' => '7',
+      'weight' => '10',
       'label' => 'hidden',
       'format' => 'default',
     ),
@@ -512,31 +512,46 @@ function mez_cts_ds_layout_settings_info() {
   $ds_layout->entity_type = 'node';
   $ds_layout->bundle = 'concert';
   $ds_layout->view_mode = 'full';
-  $ds_layout->layout = 'ds_1col';
+  $ds_layout->layout = 'ds_2col_stacked';
   $ds_layout->settings = array(
     'regions' => array(
-      'ds_content' => array(
-        0 => 'title_field',
-        1 => 'field_time',
-        2 => 'field_programme',
-        3 => 'field_media',
-        4 => 'body',
-        5 => 'field_location_reference',
-        6 => 'comments',
+      'left' => array(
+        0 => 'mez_concert_shopping_cart',
+        1 => 'mez_concert_bank_information',
+        2 => 'mez_concert_bank_logo',
+        3 => 'mez_concert_bankcard_logos',
+      ),
+      'right' => array(
+        4 => 'title_field',
+        5 => 'field_time',
+        6 => 'field_programme',
+        7 => 'field_media',
+        8 => 'body',
+        9 => 'field_location_reference',
+        10 => 'comments',
+        11 => 'field_ticket_selling',
       ),
     ),
     'fields' => array(
-      'title_field' => 'ds_content',
-      'field_time' => 'ds_content',
-      'field_programme' => 'ds_content',
-      'field_media' => 'ds_content',
-      'body' => 'ds_content',
-      'field_location_reference' => 'ds_content',
-      'comments' => 'ds_content',
+      'mez_concert_shopping_cart' => 'left',
+      'mez_concert_bank_information' => 'left',
+      'mez_concert_bank_logo' => 'left',
+      'mez_concert_bankcard_logos' => 'left',
+      'title_field' => 'right',
+      'field_time' => 'right',
+      'field_programme' => 'right',
+      'field_media' => 'right',
+      'body' => 'right',
+      'field_location_reference' => 'right',
+      'comments' => 'right',
+      'field_ticket_selling' => 'right',
     ),
     'classes' => array(),
     'wrappers' => array(
-      'ds_content' => 'div',
+      'header' => 'div',
+      'left' => 'div',
+      'right' => 'div',
+      'footer' => 'div',
     ),
     'layout_wrapper' => 'div',
     'layout_attributes' => '',

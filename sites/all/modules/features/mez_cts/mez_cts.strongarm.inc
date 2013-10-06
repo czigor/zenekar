@@ -1547,6 +1547,36 @@ system/ajax/*';
             'visible' => FALSE,
           ),
         ),
+        'mez_concert_shopping_cart' => array(
+          'full' => array(
+            'weight' => '0',
+            'visible' => TRUE,
+          ),
+        ),
+        'mez_concert_bank_information' => array(
+          'full' => array(
+            'weight' => '1',
+            'visible' => TRUE,
+          ),
+        ),
+        'mez_concert_bank_logos' => array(
+          'full' => array(
+            'weight' => '',
+            'visible' => TRUE,
+          ),
+        ),
+        'mez_concert_bankcard_logos' => array(
+          'full' => array(
+            'weight' => '3',
+            'visible' => TRUE,
+          ),
+        ),
+        'mez_concert_bank_logo' => array(
+          'full' => array(
+            'weight' => '2',
+            'visible' => TRUE,
+          ),
+        ),
       ),
     ),
   );
