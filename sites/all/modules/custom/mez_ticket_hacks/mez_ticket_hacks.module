@@ -260,8 +260,8 @@ function mez_ticket_to_cart($type = 'ajax', $ticket) {
 
     $commands = array();
     // Replace cart block
-    $commands[] = ajax_command_html('.block-commerce-cart .cart-empty-block', $markup['content']);
-    $commands[] = ajax_command_html('.block-commerce-cart .cart-contents', $markup['content']);
+    $commands[] = ajax_command_html('.mez_concert_shopping_cart .cart-empty-block', $markup['content']);
+    $commands[] = ajax_command_html('.mez_concert_shopping_cart .cart-contents', $markup['content']);
     // Replace ticket
     $seat_nid = field_get_items('commerce_product', $ticket, 'field_seat');
     $commands[] = ajax_command_replace('#mez-ticket-' . $seat_nid[0]['target_id'], theme('mez_ticket', array('ticket' => $ticket)));
@@ -290,9 +290,9 @@ function mez_ticket_from_cart($type = 'ajax', $ticket) {
       'progress' => array('type' =>  'none'),
     );
     // Replace cart block.
-    $commands[] = ajax_command_html('.block-commerce-cart .cart-empty-block', $markup['content']);
+    $commands[] = ajax_command_html('.mez_concert_shopping_cart .cart-empty-block', $markup['content']);
     $commands[0]['progress'] =  array('type' =>  'none');
-    $commands[] = ajax_command_html('.block-commerce-cart .cart-contents', $markup['content']);
+    $commands[] = ajax_command_html('.mez_concert_shopping_cart .cart-contents', $markup['content']);
     $commands[1]['progress'] =  array('type' =>  'none');
     // Replace ticket
     $seat_nid = field_get_items('commerce_product', $ticket, 'field_seat');
@@ -561,17 +561,7 @@ function mez_ticket_hacks_entity_view_alter(&$build, $type) {
           if (isset($build['#node']) && !mez_ticket_plan_visible($build['#node'])) {
             return ;
           }
-          $ticket_selling = field_get_items('node', $build['#node'], 'field_ticket_selling');
-          global $user;
-          switch ($ticket_selling[0]['value']) {
-            case 'off' :
-              return;
-            case 'admin' :
-              if (!user_access('administer mez ticket selling')) {
-                return;
-              }
-              break;
-          }
+
           $cart = commerce_cart_block_view('cart');
           $title = $cart['subject'];
 
@@ -630,4 +620,8 @@ function mez_ticket_hacks_entity_view_alter(&$build, $type) {
       }
     }
   }
+}
+
+function mez_ticket_hacks_preprocess_commerce_cart_block(&$vars) {
+  $vars['contents_view'] = commerce_embed_view('mez_shopping_cart_block', 'defaults', array($vars['order']->order_id), $_GET['q']);
 }
