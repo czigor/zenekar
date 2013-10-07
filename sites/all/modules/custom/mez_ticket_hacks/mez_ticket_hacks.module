@@ -555,16 +555,13 @@ function mez_ticket_hacks_entity_view_alter(&$build, $type) {
         $fields_to_display = array_keys($bundle['layouts'][$build['#view_mode']]['settings']['fields']);
         global $user;
 
-
         // Shopping cart
         if (in_array('mez_concert_shopping_cart', $fields_to_display) && $type == 'node') {
           if (isset($build['#node']) && !mez_ticket_plan_visible($build['#node'])) {
             return ;
           }
-
           $cart = commerce_cart_block_view('cart');
           $title = $cart['subject'];
-
           $build['mez_concert_shopping_cart'] = array(
             '#markup' => '<h2 class="shopping-cart-title">' . $title . '</h2>' . $cart['content'],
             '#prefix' => '<div class="mez_concert_shopping_cart">',
@@ -622,6 +619,29 @@ function mez_ticket_hacks_entity_view_alter(&$build, $type) {
   }
 }
 
+/**
+ * Preprocess fucntion for the Shopping cart block.
+ */
 function mez_ticket_hacks_preprocess_commerce_cart_block(&$vars) {
   $vars['contents_view'] = commerce_embed_view('mez_shopping_cart_block', 'defaults', array($vars['order']->order_id), $_GET['q']);
+}
+
+
+/**
+ * Implements hook_mail().
+ */
+function mez_ticket_hacks_mail_alter(&$message) {
+  switch ($message['id']) {
+    case 'cib_commerce_payment_finished' :
+      if (isset($params['subject'])) {
+        $message['subject'] = $params['subject'];
+      }
+      if (isset($params['body'])) {
+        $message['body'][] = $params['body'];
+      }
+      if (isset($params['attachment'])) {
+        $message['params']['attachments'][] = $params['attachment'];
+      }
+      break;
+  }
 }
