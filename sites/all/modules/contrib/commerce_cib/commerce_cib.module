@@ -1,0 +1,529 @@
+<?php
+
+/**
+ * @file
+ * Commerce Payment method for CIB bank.
+ */
+
+// Default value for transaction timeouts in seconds.
+define('UC_CIB_TXN_TIMEOUT', 700);
+
+/**
+ * Implements hook_menu().
+ */
+function commerce_cib_menu() {
+  $items['commerce_cib_finish/%commerce_order'] = array(
+    'page callback' => 'commerce_cib_finish_step',
+    'page arguments' => array(1),
+    'type' => MENU_CALLBACK,
+    'access arguments' => array('access checkout'),
+  );
+  return $items;
+}
+
+/**
+ * Implements hook_commerce_payment_method_info().
+ */
+function commerce_cib_commerce_payment_method_info() {
+  $payment_methods = array();
+
+  $payment_methods['cib'] = array(
+    'base' => 'commerce_cib',
+    'title' => t('CIB bank'),
+    'short_title' => t('CIB'),
+    'display_title' => t('CIB bank'),
+    'terminal' => FALSE,
+    'offsite' => TRUE,
+    'offsite_autoredirect' => TRUE,
+    'description' => t('Integrates with CIB bank payment service.'),
+  );
+  return $payment_methods;
+}
+
+/**
+ * Implements hook_theme().
+ */
+function commerce_cib_theme() {
+  return array(
+    'commerce_cib_finish' => array(
+      'variables' => array(
+        'messages' => NULL,
+      ),
+    ),
+  );
+}
+
+/**
+ * Returns the default settings for the CIB payment method.
+ */
+function commerce_cib_default_settings() {
+  return array(
+    'pid' => '',
+    'cur' => 'HUF',
+    'env' => 'testing',
+    'des' => '',
+  );
+}
+
+function commerce_cib_settings_form($settings = array()) {
+  $settings = (array) $settings + commerce_cib_default_settings();
+
+  $form = array();
+  $form['pid'] = array(
+    '#type' => 'textfield',
+    '#title' => t('CIB Shop ID'),
+    '#description' => t('The shop ID received from CIB in email. Has the format "ABC0001".'),
+    '#default_value' => $settings['pid'],
+    '#required' => TRUE,
+  );
+
+  $form['cur'] = array(
+    '#type' => 'radios',
+    '#title' => t('Currency'),
+    '#description' => t('The currency of the payment.'),
+    '#options' => array(
+      'EUR' => 'EUR',
+      'HUF' => 'HUF',
+    ),
+    '#default_value' => $settings['cur'],
+    '#required' => TRUE,
+  );
+
+  $form['env'] = array(
+    '#type' => 'radios',
+    '#title' => t('Environment'),
+    '#options' => array(
+      'testing' => t('Testing'),
+      'live' => t('Live')
+    ),
+    '#description' => t('This should be checked if you are using the testing interface of CIB. Uncheck on a live site.'),
+    '#default_value' => $settings['env'],
+    '#required' => TRUE,
+  );
+
+  $form['des'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Keyfile path'),
+    '#description' => t('The absolute path of the des keyfile used for encryption.'),
+    '#default_value' => $settings['des'],
+    '#required' => TRUE,
+  );
+
+  return $form;
+}
+
+function commerce_cib_redirect_form($form, &$form_state, $order, $payment_method) {
+  $initialized = FALSE;
+  $tries = 0;
+  while (!$initialized && $tries++ < 10) {
+    $trid = date("is", time());
+    for ($i=1; $i <= 12; $i++) {
+      $trid .= rand(1,9);
+    }
+    // Let's initialize the transaction
+    $amo = field_get_items('commerce_order', $order, 'commerce_order_total');
+    $amo = $amo[0]['amount'];
+
+    $eki_user = db_select('commerce_cib_transactions', 'cct')
+      ->fields('cct', array('eki_user'))
+      ->condition('cct.email', $order->mail)
+      ->execute()
+      ->fetchField();
+    if (empty($eki_user)) {
+      $last_eki_user = db_select('commerce_cib_transactions', 'cct')
+      ->fields('cct', array('eki_user'))
+      ->orderBy('cct.eki_user', 'DESC')
+      ->execute()
+      ->fetchField();
+      $no = substr($last_eki_user, 3) + 1;
+      $eki_user = 'MEZ' . strpad($no, 8, '0', STR_PAD_LEFT);
+    }
+
+    $cleartext = 'CRYPTO=1&MSGT=10&PID=' . $payment_method['settings']['pid'] . '&TRID=' . $trid . '&UID=' . $eki_user . '&LANG=HU&TS=' . date("YmdHis", time()) . '&AUTH=0&AMO=' . $amo . '&CUR=' . $payment_method['settings']['cur'] . '&URL=http://' . $_SERVER['SERVER_NAME'] . '/commerce_cib_finish/' . $order->order_id;
+    $crypto = ekiEncodeUrl($cleartext, $payment_method['settings']['des']);
+    $url = commerce_cib_env_url($payment_method['settings']['env']) . '?'. $crypto;
+
+    $record = array(
+      'order_id' => $order->order_id,
+      'email' => $order->mail,
+      'eki_user' => $eki_user,
+      'trid' => $trid,
+      'amount' => $amo,
+      'currency' => $payment_method['settings']['cur'],
+      'msgt' => 10,
+      'rc' => '',
+      'rt' => '',
+      'anum' => '',
+      'start' => REQUEST_TIME,
+      'end' => 0,
+      'history' => '',
+    );
+    commerce_cib_save_transaction('commerce_cib_transactions', $record, 'insert');
+    $answer = drupal_http_request($url);
+    if ($answer->code == 200) {
+      $cleartext2 = ekiDecodeUrl($answer->data, $payment_method['settings']['des']);
+      parse_str($cleartext2, $query);
+      if ($query['RC'] == '00') {
+        $initialized = TRUE;
+      }
+    }
+  }
+
+  if ($initialized) {
+    $url = commerce_cib_env_url($payment_method['settings']['env']);
+    $cleartext = 'MSGT=20&PID=' . $payment_method['settings']['pid'] . '&TRID=' . $trid;
+    $crypto = ekiEncodeUrl($cleartext, $payment_method['settings']['des']);
+    parse_str($crypto, $query);
+
+    header('Location: ' . commerce_cib_env_customer_url($payment_method['settings']['env']) . '?' . $crypto);
+    exit();
+  }
+  elseif ($query['RC'] == 01) {
+  }
+}
+
+/**
+ * Save or update a transaction.
+ */
+function commerce_cib_save_transaction(&$record, $mode = 'insert') {
+  switch ($mode) {
+    case 'update':
+      $update = 'id';
+      break;
+    case 'insert':
+      $update = array();
+      break;
+  }
+  return drupal_write_record('commerce_cib_transactions', $record, $update);
+}
+
+/**
+ * Menu callback for CIB redirecting to our site.
+ */
+function commerce_cib_finish_step($order) {
+  $payment_method = commerce_payment_method_instance_load('cib|rules_cib_bank');
+  // Getting answer from the CIB payment gateway.
+  $crypto = 'DATA=' . $_GET['DATA'] . '&PID=' . $_GET['PID'] . '&CRYPTO=1';
+  $cleartext2 = ekiDecodeUrl($crypto, $payment_method['settings']['des']);
+  parse_str($cleartext2, $query);
+
+  // Closing the transaction.
+  $amo = field_get_items('commerce_order', $order, 'commerce_order_total');
+  $amo = $amo[0]['amount'];
+  $cleartext = 'CRYPTO=1&MSGT=32&PID=' . $payment_method['settings']['pid'] . '&TRID=' . $query['TRID'] . '&AMO=' . $amo;
+  $crypto = ekiEncodeUrl($cleartext, $payment_method['settings']['des']);
+  $url = commerce_cib_env_url($payment_method['settings']['env']) . '?'. $crypto;
+  $answer = drupal_http_request($url);
+  if ($answer->code == 200) {
+    $cleartext2 = ekiDecodeUrl($answer->data, $payment_method['settings']['des']);
+    dpm($cleartext2);
+    dpm($answer);
+    parse_str($cleartext2, $query);
+    $message = commerce_cib_get_errmsg($query['RC']);
+
+    $msgs = array(
+      t('The transaction id is: @trid.',  array('@trid' => $query['TRID'])),
+      t('The response code is: @rc.',  array('@rc' => $query['RC'])),
+      t('The response message is: @rt.',  array('@rt' => $query['RT'])),
+    );
+    if ($query['RC'] == '00') {
+      $msgs[] = t('The permission number is: @anum.',  array('@anum' => $query['ANUM']));
+      $msgs[] = t('The paid amount is: @amo Ft.',  array('@amo' => $query['AMO']));
+      $msgs[] = t('Thank you for buying tickets to our concert!');
+    }
+    else {
+      $msgs[] = t('Something went wrong. Please try again!');
+    }
+    $message .= theme('item_list', array('items' => $msgs));
+
+    global $language;
+
+    $params = array();
+    $params['RC'] = $query['RC'];
+    $params['body'] = t('Dear customer,\n');
+    foreach ($msgs as $msg) {
+      $params['body'] .= $msg . "\n";
+    }
+    drupal_mail('commerce_cib', 'payment_finished', $order->mail, $language, $params);
+
+    if ($query['RC'] == '00') {
+
+    }
+    else {
+      commerce_order_status_update($order, 'checkout_checkout');
+      $message .= l(t('Go back to the checkout page'), 'checkout');
+    }
+  }
+  return theme('commerce_cib_finish', array('messages' => $message));
+}
+
+function commerce_cib_mail($key, &$message, $params) {
+  switch ($key) {
+    case 'payment_finished' :
+      if (isset($params['subject'])) {
+        $message['subject'] = $params['subject'];
+      }
+      if (isset($params['body'])) {
+        $message['body'][] = $params['body'];
+      }
+      break;
+  }
+}
+
+/**
+ * Generate messages from return codes.
+ */
+function commerce_cib_get_errmsg($rc) {
+  $message = '';
+
+  switch ($rc) {
+    case '00':
+      $message = t('The transaction was successful.');
+      break;
+
+    case '03':
+    case '09':
+    case '12':
+    case '13':
+    case '20':
+    case '21':
+    case '22':
+    case '30':
+    case '34':
+    case '36':
+    case '42':
+    case '52':
+    case '54':
+    case '55':
+    case '56':
+    case '87':
+    case '88':
+    case '90':
+      $message = t('Your card information appears to be invalid. Please check that:');
+      $list = array(
+        t('you have entered the correct card number,'),
+        t('you have entered the expiry date of your card,'),
+        t('your card has not expired yet,'),
+        t('in case of an EC/MC card you have entered the CVC code (three digits on the back of your card near the signature zone)'),
+        t('your card is allowed for transactions on the internet'),
+        t('in case of a Visa card you have entered the CVV code (three digits on the back of your card).'),
+      );
+      break;
+
+    case '14':
+    case '15':
+    case '16':
+    case '17':
+    case '23':
+    case '24':
+    case '29':
+    case '32':
+    case '35':
+    case '45':
+    case '69':
+    case '70':
+    case '72':
+    case '74':
+    case '75':
+    case '76':
+    case '77':
+    case '78':
+      $message = t('Your order could not be fulfilled. Please check that:');
+      $list = array(
+        t('you have sufficient funds available on your card,'),
+        t("you haven't exceeded your allowed limit."),
+      );
+      break;
+
+    case '08':
+    case '10':
+    case '19':
+    case '27':
+    case '31':
+    case '60':
+    case '64':
+    case '65':
+    case '71':
+    case '86':
+    case '93':
+    case 'A2':
+    case 'A9':
+      $list = array(
+        t('The connection was probably lost somewhere during the transaction.'),
+      );
+      break;
+
+    case '50':
+    case 'TO':
+      $list = array(
+        t('The transaction has timed out.'),
+      );
+      break;
+
+    case 'C2':
+      $list = array(
+        t('You have canceled the transaction. You can try completing the order again by <a href="!url">starting over here</a>.', array('!url' => url('cart'))),
+      );
+      break;
+
+    default:
+      $list = array(
+        t('An unknown error has occurred with the transaction.'),
+      );
+      break;
+  }
+  if (isset($list) && is_array($list)) {
+    $message .= theme('item_list', array('items' => $list));
+  }
+  return (!empty($message)) ? $message : FALSE;
+}
+
+/**
+ * CIB market url.
+ *
+ * @param string $env 'live'or something else
+ *
+ *  Return live or test CIB market url.
+ */
+function commerce_cib_env_url($env) {
+  if ($env == 'live') {
+    return 'http://eki.cib.hu:8090/market.saki';
+  }
+  return 'http://ekit.cib.hu:8090/market.saki';
+}
+
+/**
+ * CIB customer url
+ *
+ * @param string $env 'live'or something else
+ *
+ *  Return live or test CIB customer url.
+ */
+function commerce_cib_env_customer_url($env) {
+  if ($env == 'live') {
+    return 'https://eki.cib.hu/customer.saki';
+  }
+  return 'https://ekit.cib.hu/customer.saki';
+}
+
+/**
+ * Encryption using the saki protocoll.
+ *
+ * @param $plaintext: The string to encrypt.
+ * @param $keyfile: The keyfile path needed for the encryption.
+ *
+ * @return The encrypted message.
+ */
+function ekiEncodeUrl($plaintext, $keyfile) {
+  $f = fopen($keyfile,"r");
+  $keyinfo = fread($f, 38);
+  fclose($f);
+  $k1 = substr($keyinfo, 14, 8);
+  $k2 = substr($keyinfo, 22, 8);
+  $iv = substr($keyinfo, 30, 8);
+  $key = $k1 . $k2 . $k1;
+  $arr = explode("&", $plaintext);
+  $outs = "";
+  $pid = "";
+  for ($i = 0; $i < count($arr); $i++) {
+    if (strtoupper($arr[$i]) != "CRYPTO=1") {
+      $outs .= "&" . $arr[$i];
+    }
+    if (substr(strtoupper($arr[$i]), 0, 4)=="PID=") {
+      $pid=substr(strtoupper($arr[$i]), 4, 7);
+    }
+  }
+  $outs = substr($outs, 1);
+  $outs = rawurlencode($outs);
+  $outs = str_replace("%3D", "=", $outs);
+  $outs = str_replace("%26", "&", $outs);
+  $crc = str_pad(dechex(crc32($outs)), 8, "0", STR_PAD_LEFT);
+  for ($i=0; $i<4; $i++) {
+    $outs .= chr(base_convert(substr($crc, $i*2, 2), 16, 10));
+  }
+  $pad = 8 - (strlen($outs) % 8);
+  for ($i = 0; $i < $pad; $i++) {
+    $outs .= chr($pad);
+  }
+  $td = mcrypt_module_open("tripledes", "", "cbc", "");
+  mcrypt_generic_init($td, $key, $iv);
+  $outs = mcrypt_generic($td, $outs);
+  mcrypt_module_close($td);
+  $pad = 3 - (strlen($outs) % 3);
+  for ($i = 0; $i < $pad; $i++)
+    $outs .= chr($pad);
+  $outs = base64_encode($outs);
+  $outs = rawurlencode($outs);
+  $outs = "PID=" . $pid . "&CRYPTO=1&DATA=" . $outs;
+  return $outs;
+}
+
+/**
+ * Decryption using the saki protocoll.
+ *
+ * @param $plaintext: The string to decrypt.
+ * @param $keyfile: The keyfile path needed for the encryption.
+ *
+ * @return The decrypted message or an empty string in case of crc error.
+ */
+function ekiDecodeUrl($crypto, $keyfile) {
+  $f = fopen($keyfile, "r");
+  $keyinfo = fread($f, 38);
+  fclose($f);
+  $k1 = substr($keyinfo, 14, 8);
+  $k2 = substr($keyinfo, 22, 8);
+  $iv = substr($keyinfo, 30, 8);
+  $key = $k1 . $k2 . $k1;
+  $arr = explode("&", $crypto);
+  $outs = "";
+  $pid = "";
+  for ($i=0; $i < count($arr); $i++) {
+    if (substr(strtoupper($arr[$i]), 0, 5) == "DATA=") {
+      $outs = substr($arr[$i], 5);
+    }
+    if (substr(strtoupper($arr[$i]), 0, 4) == "PID=") {
+      $pid = substr(strtoupper($arr[$i]), 4, 7);
+    }
+  }
+  $outs = rawurldecode($outs);
+  $outs = base64_decode($outs);
+  $lastc = ord($outs[strlen($outs) - 1]);
+  $validpad = 1;
+  for ($i = 0; $i < $lastc; $i++) {
+    if (ord(substr($outs, strlen($outs) - 1 - $i, 1)) != $lastc) {
+      $validpad = 0;
+    }
+  }
+  if ($validpad==1) {
+    $outs = substr($outs, 0, strlen($outs) - $lastc);
+  }
+  $td = mcrypt_module_open("tripledes", "", "cbc", "");
+  mcrypt_generic_init($td, $key, $iv);
+  $outs = mdecrypt_generic($td, $outs);
+  mcrypt_module_close($td);
+  $lastc = ord($outs[strlen($outs) - 1]);
+  $validpad = 1;
+  for ($i = 0; $i < $lastc; $i++) {
+    if (ord(substr($outs, strlen($outs) - 1 - $i, 1)) != $lastc) {
+    $validpad = 0;
+    }
+  }
+  if ($validpad == 1) {
+    $outs = substr($outs, 0, strlen($outs) - $lastc);
+  }
+  $crc = substr($outs, strlen($outs) - 4);
+  $crch = "";
+  for ($i = 0; $i < 4; $i++) {
+    $crch .= str_pad(dechex(ord($crc[$i])), 2, "0", STR_PAD_LEFT);
+  }
+  $outs = substr($outs, 0, strlen($outs) - 4);
+  $crc = str_pad(dechex(crc32($outs)), 8, "0", STR_PAD_LEFT);
+  if ($crch != $crc) {
+    return "";
+  }
+  $outs = str_replace("&", "%26", $outs);
+  $outs = str_replace("=", "%3D", $outs);
+  $outs = rawurldecode($outs);
+  $outs = "CRYPTO=1&" . $outs;
+  return $outs;
+}
