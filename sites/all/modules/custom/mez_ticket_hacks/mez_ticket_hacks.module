@@ -131,6 +131,9 @@ function mez_ticket_hacks_preprocess_mez_concert_hall(&$vars) {
     ->propertyCondition('status', 1)
     ->fieldCondition('field_concert_hall', 'target_id', $vars['concert_hall_nid'])
     ->execute();
+  if (!isset($result['node'])) {
+    return;
+  }
   $seat_nids = array_keys($result['node']);
 
   // Tickets
@@ -626,9 +629,8 @@ function mez_ticket_hacks_preprocess_commerce_cart_block(&$vars) {
   $vars['contents_view'] = commerce_embed_view('mez_shopping_cart_block', 'defaults', array($vars['order']->order_id), $_GET['q']);
 }
 
-
 /**
- * Implements hook_mail().
+ * Implements hook_mail_alter().
  */
 function mez_ticket_hacks_mail_alter(&$message) {
   switch ($message['id']) {
