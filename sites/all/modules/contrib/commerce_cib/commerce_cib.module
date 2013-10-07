@@ -136,7 +136,7 @@ function commerce_cib_redirect_form($form, &$form_state, $order, $payment_method
       ->execute()
       ->fetchField();
       $no = substr($last_eki_user, 3) + 1;
-      $eki_user = 'MEZ' . strpad($no, 8, '0', STR_PAD_LEFT);
+      $eki_user = 'MEZ' . str_pad($no, 8, '0', STR_PAD_LEFT);
     }
 
     $cleartext = 'CRYPTO=1&MSGT=10&PID=' . $payment_method['settings']['pid'] . '&TRID=' . $trid . '&UID=' . $eki_user . '&LANG=HU&TS=' . date("YmdHis", time()) . '&AUTH=0&AMO=' . $amo . '&CUR=' . $payment_method['settings']['cur'] . '&URL=http://' . $_SERVER['SERVER_NAME'] . '/commerce_cib_finish/' . $order->order_id;
