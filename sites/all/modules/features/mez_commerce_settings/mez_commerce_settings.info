@@ -1,0 +1,16 @@
+name = MEZ Commerce settings
+core = 7.x
+package = Features
+version = 7.x-1.0-20131007dev1
+project = mez_commerce_settings
+dependencies[] = commerce_payment
+dependencies[] = ctools
+dependencies[] = entity
+dependencies[] = rules
+dependencies[] = strongarm
+features[ctools][] = strongarm:strongarm:1
+features[features_api][] = api:2
+features[rules_config][] = rules_cib_bank
+features[variable][] = commerce_order_account_pane_auth_display
+features[variable][] = commerce_order_account_pane_mail_double_entry
+features[variable][] = commerce_payment_pane_require_method
