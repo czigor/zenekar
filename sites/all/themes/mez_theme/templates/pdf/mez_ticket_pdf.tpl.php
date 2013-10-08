@@ -6,14 +6,9 @@
 \usepackage[a4paper]{geometry}
 \usepackage[abs]{overpic}
 
-
-\setlength{\TPHorizModule}{1mm}
-\setlength{\TPVertModule}{\TPHorizModule}
-\textblockorigin{0mm}{0mm}
-
 % One ticket for the 2013. 11. 03. concert.
 \newcommand{\mezticket}[2]{
-  \begin{overpic}[unit=1mm, width=180mm]{../../images/20131103_pecs.jpg}
+  \begin{overpic}[unit=1mm, width=180mm]{20131103_pecs.jpg}
   \put(18,13.5){\scriptsize #1}
   \put(28,8){\scriptsize #2}
 
@@ -29,7 +24,7 @@
 \setlength{\marginparwidth}{0pt}
 \setlength{\parindent}{0cm}
 <?php foreach ($tickets as $ticket) :?>
-\mezticket{<?php print $ticket['seat'] ?>}{<?php print $ticket['price']?> Ft}
+  \mezticket{<?php print $ticket['seat'] ?>}{<?php print $ticket['price']?> Ft}
 <?php endforeach;?>
 
 \end{document}
