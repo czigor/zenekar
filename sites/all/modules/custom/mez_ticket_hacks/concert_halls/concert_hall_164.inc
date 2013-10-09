@@ -20,8 +20,8 @@ function concert_hall_164($concert_hall_nid) {
 
   $return['title'] = $concert_hall->title;
   $return['xsize'] = 760 / $compression;
-  $return['ysize'] = 960 / $compression;
-  $return['markup'] = '<div style="position:absolute; top:' . 30 / $compression . 'px; left:' . 100 / $compression . 'px;">1</div>';
+  $return['ysize'] = 1200 / $compression;
+  $return['markup'] = '<div style="position:absolute; top:' . 100 / $compression . 'px; left:' . 400 / $compression . 'px;">' . t('STAGE') . '</div>';
 
   return $return;
 }

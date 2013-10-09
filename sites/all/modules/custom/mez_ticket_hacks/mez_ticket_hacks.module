@@ -38,6 +38,9 @@ function mez_ticket_hacks_field_formatter_view($entity_type, $entity, $field, $i
     case 'mez_concert_hall' :
       $path = drupal_get_path('theme', 'mez_theme') . '/css/tickets.css';
       drupal_add_css($path);
+      $path = drupal_get_path('module', 'mez_ticket_hacks') . '/js/mez_concert_hall.js';
+      drupal_add_js($path);
+
       drupal_add_js('misc/ajax.js');
       if (mez_ticket_plan_visible($entity)) {
         $concert_hall = field_get_items('node', $entity, 'field_location_reference');

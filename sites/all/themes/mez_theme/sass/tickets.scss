@@ -6,11 +6,17 @@
 @import "base";
 
 
-/*
+/**
  * Ticket
  */
+.mez-concert-hall-field {
+  text-decoration: underline;
+  color: #D99216;
+}
 
 .mez-concert-hall {
+  display: none;
+  height: 500px;
   .mez-ticket span.inner {
     width: 9px;
     height: 9px;
@@ -26,7 +32,7 @@
     background-color: green;
   }
   .mez-ticket.reserved span.inner {
-    background-color: yellow;
+    background-color: #D99216;
   }
 }
 
