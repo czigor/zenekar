@@ -73,7 +73,7 @@ function mez_cts_ds_field_settings_info() {
   $ds_fieldsetting->view_mode = 'full';
   $ds_fieldsetting->settings = array(
     'comments' => array(
-      'weight' => '10',
+      'weight' => '8',
       'label' => 'hidden',
       'format' => 'default',
     ),
@@ -517,26 +517,22 @@ function mez_cts_ds_layout_settings_info() {
     'regions' => array(
       'left' => array(
         0 => 'mez_concert_shopping_cart',
-        1 => 'mez_concert_bank_information',
-        2 => 'mez_concert_bank_logo',
-        3 => 'mez_concert_bankcard_logos',
+        1 => 'mez_concert_bank_info',
       ),
       'right' => array(
-        4 => 'title_field',
-        5 => 'field_time',
-        6 => 'field_programme',
-        7 => 'field_media',
-        8 => 'body',
-        9 => 'field_location_reference',
-        10 => 'comments',
-        11 => 'field_ticket_selling',
+        2 => 'title_field',
+        3 => 'field_time',
+        4 => 'field_programme',
+        5 => 'field_media',
+        6 => 'body',
+        7 => 'field_location_reference',
+        8 => 'comments',
+        9 => 'field_ticket_selling',
       ),
     ),
     'fields' => array(
       'mez_concert_shopping_cart' => 'left',
-      'mez_concert_bank_information' => 'left',
-      'mez_concert_bank_logo' => 'left',
-      'mez_concert_bankcard_logos' => 'left',
+      'mez_concert_bank_info' => 'left',
       'title_field' => 'right',
       'field_time' => 'right',
       'field_programme' => 'right',

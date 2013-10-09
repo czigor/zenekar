@@ -1577,6 +1577,12 @@ system/ajax/*';
             'visible' => TRUE,
           ),
         ),
+        'mez_concert_bank_info' => array(
+          'full' => array(
+            'weight' => '1',
+            'visible' => TRUE,
+          ),
+        ),
       ),
     ),
   );
