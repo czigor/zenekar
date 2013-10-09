@@ -96,7 +96,6 @@ function commerce_cib_settings_form($settings = array()) {
       'testing' => t('Testing'),
       'live' => t('Live')
     ),
-    '#description' => t('This should be checked if you are using the testing interface of CIB. Uncheck on a live site.'),
     '#default_value' => $settings['env'],
     '#required' => TRUE,
   );
