@@ -272,6 +272,7 @@ function commerce_cib_finish_step($order, $payment_instance) {
         $msgs[] = t('The permission number is: @anum.',  array('@anum' => $query['ANUM']));
         $msgs[] = t('The paid amount is: @amo Ft.',  array('@amo' => $query['AMO']));
         $msgs[] = t('Thank you for buying tickets to our concert!');
+
       }
       else {
         $msgs[] = t('Something went wrong. Please try again!');
@@ -281,8 +282,9 @@ function commerce_cib_finish_step($order, $payment_instance) {
 
       $params = array();
       $params['RC'] = $query['RC'];
+      $params['payment_methid'] = $payment_method;
       $params['order'] = $order;
-      $params['subject'] = t('Budapest Technical University Orchestra ticket purchase');
+      $params['subject'] = variable_get('site_name') . t(' purchase');
       $params['body'] = t('Dear customer,' . "\n");
       foreach ($msgs as $msg) {
         $params['body'] .= $msg . "\n";
@@ -295,6 +297,7 @@ function commerce_cib_finish_step($order, $payment_instance) {
       }
       else {
         commerce_payment_redirect_pane_next_page($order);
+        $msgs[] = l(t('Go to the home page'), '');
       }
 
     }
@@ -420,7 +423,7 @@ function commerce_cib_handle_timeouts() {
       '!err_msg' => commerce_cib_get_errmsg($tt['rc']),
     );
     $params['body'] = t("Dear Customer,\nYou are receiving this email because your email address (!email)\nwas given in an order at !site with transaction ID !trid.\n\nWe apologize but your transaction did not get through. The error was the following:\n!err_msg\n\nImportant\n\nIf your card is processed during the transaction, the payment processor is automatically reversing your transaction within 10 minutes.\n\nThe products are kept in your shopping cart at !site. \n We apologize for the inconvenience.\n\n-- !site team", $variables, array('langcode' => 'hu'));
-    $params['subject'] = t('Technical University Orchestra transaction timeout', array(), array('langcode' => 'hu'));
+    $params['subject'] = t('http://!site transaction timeout', array('!site' => $variables['!site']), array('langcode' => 'hu'));
     // Send the notification email.
     if ($mail = drupal_mail('commerce_cib', 'timeout', $order->mail, $languages['hu'], $params)) {
       watchdog('commerce_cib', t('Transaction notification email sent to !mail', array('!mail' => $order->mail)));
