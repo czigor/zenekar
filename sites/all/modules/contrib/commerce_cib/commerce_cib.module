@@ -163,6 +163,7 @@ function commerce_cib_redirect_form($form, &$form_state, $order, $payment_method
       'AMO' => $amo,
       'CUR' => $payment_method['settings']['cur'],
       'URL' => 'http://' . $_SERVER['SERVER_NAME'] . '/commerce_cib_finish/' . $order->order_id . '/' . $payment_instance[1],
+      'PID' => $payment_method['settings']['pid'],
     );
     $url = commerce_cib_create_url($query10, $payment_method['settings']);
     $answer = drupal_http_request($url);
@@ -203,7 +204,7 @@ function commerce_cib_redirect_form($form, &$form_state, $order, $payment_method
   }
   else  {
     drupal_set_message(t('Transaction initialization failed.'), 'warning');
-    drupal_goto('/');
+    drupal_goto('');
   }
 }
 
