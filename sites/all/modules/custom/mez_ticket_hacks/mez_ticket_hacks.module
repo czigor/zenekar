@@ -327,20 +327,10 @@ function mez_ticket_hacks_commerce_cart_product_add($order, $product, $quantity,
  */
 function mez_ticket_hacks_node_presave($node) {
   if ($node->type == 'seat') {
-    // Set seat node title to [concert_hall]-[floor] [side] [row]/[number].
+    // Set seat node title to [floor] [side] [row]/[number].
     $title = array();
     foreach (array_keys(language_list()) as $lang) {
       $title[$lang][0]['value'] = '';
-    }
-    $concert_hall_nid = field_get_items('node', $node, 'field_concert_hall');
-    if ($concert_hall_nid) {
-      $concert_hall = node_load($concert_hall_nid[0]['target_id']);
-      foreach (array_keys(language_list()) as $lang) {
-        $title_field = field_get_items('node', $concert_hall, 'title_field', $lang);
-        if ($title_field) {
-          $title[$lang][0]['value'] .= $title_field[0]['value'] . '-';
-        }
-      }
     }
 
     foreach (array_keys(language_list()) as $lang) {
@@ -527,20 +517,10 @@ function mez_ticket_hacks_field_extra_fields() {
         'description' => t('Shopping cart for ticket selling'),
         'weight' => -4,
       ),
-      'mez_concert_bank_information' => array(
+      'mez_concert_bank_info' => array(
         'label' => t('Bank information'),
-        'description' => t('CIB Bank payment information'),
+        'description' => t('CIB Bank information'),
         'weight' => -6,
-      ),
-      'mez_concert_bankcard_logos' => array(
-        'label' => t('Bankcard logos'),
-        'description' => t('CIB Bank payment bank card logos'),
-        'weight' => -8,
-      ),
-      'mez_concert_bank_logo' => array(
-        'label' => t('Bank logo'),
-        'description' => t('CIB Bank payment bank logo'),
-        'weight' => -8,
       ),
     ),
   );
@@ -573,47 +553,14 @@ function mez_ticket_hacks_entity_view_alter(&$build, $type) {
         }
 
         // Bank information
-        if (in_array('mez_concert_bank_information', $fields_to_display) && $type == 'node') {
+        if (in_array('mez_concert_bank_info', $fields_to_display) && $type == 'node') {
           if (isset($build['#node']) && !mez_ticket_plan_visible($build['#node'])) {
             return ;
           }
-          $build['mez_concert_bank_information'] = array(
-            '#markup' => l(t('Payment information'), 'node/165'),
-            '#prefix' => '<div class="mez_concert_bank_information">',
-            '#suffix' => '</div>',
-          );
-        }
-
-        // Bankcard logos,
-        if (in_array('mez_concert_bankcard_logos', $fields_to_display) && $type == 'node') {
-          if (isset($build['#node']) && !mez_ticket_plan_visible($build['#node'])) {
-            return ;
-          }
-          $variables = array(
-            'path' => drupal_get_path('module', 'mez_ticket_hacks') . '/images/bankcard_logos_30px.gif',
-            'alt' => t('Accepted cards'),
-            'title' => t('Accepted cards'),
-          );
-          $build['mez_concert_bankcard_logos'] = array(
-            '#markup' => theme('image', $variables),
-            '#prefix' => '<div class="mez_concert_bankcard_logos">',
-            '#suffix' => '</div>',
-          );
-        }
-
-        // CIB Bank logo
-        if (in_array('mez_concert_bank_logo', $fields_to_display) && $type == 'node') {
-          if (isset($build['#node']) && !mez_ticket_plan_visible($build['#node'])) {
-            return ;
-          }
-          $variables = array(
-            'path' => drupal_get_path('module', 'mez_ticket_hacks') . '/images/CIB_logo_30px.gif',
-            'alt' => t('Bank card payment provider: CIB Bank Inc.'),
-            'title' => t('Bank card payment provider: CIB Bank Inc.'),
-          );
-          $build['mez_concert_bank_logo'] = array(
-            '#markup' => theme('image', $variables),
-            '#prefix' => '<div class="mez_concert_bank_logo">',
+          $block = mez_ticket_hacks_block_view('cib_infos');
+          $build['mez_concert_bank_info'] = array(
+            '#markup' => drupal_render($block),
+            '#prefix' => '<div class="mez_concert_bank_info">',
             '#suffix' => '</div>',
           );
         }
@@ -673,4 +620,61 @@ function mez_ticket_hacks_mail_alter(&$message) {
       }
       break;
   }
+}
+
+/**
+ * Implements hook_block_info().
+ */
+function mez_ticket_hacks_block_info() {
+   $blocks['cib_infos'] = array(
+    'info' => t('CIB Bank logos and info'),
+  );
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function mez_ticket_hacks_block_view($delta) {
+  $block = array();
+
+  switch ($delta) {
+    case 'cib_infos':
+      $path = drupal_get_path('theme', 'mez_theme') . '/css/tickets.css';
+
+      $content = array();
+      $variables = array(
+        'path' => drupal_get_path('module', 'mez_ticket_hacks') . '/images/CIB_logo_30px.gif',
+        'alt' => t('Bank card payment provider: CIB Bank Inc.'),
+        'title' => t('Bank card payment provider: CIB Bank Inc.'),
+      );
+      $content['mez_concert_bank_logo'] = array(
+        '#markup' => theme('image', $variables),
+        '#prefix' => '<div class="mez_concert_bank_logo">',
+        '#suffix' => '</div>',
+        '#weight' => -10,
+      );
+      $variables = array(
+        'path' => drupal_get_path('module', 'mez_ticket_hacks') . '/images/bankcard_logos_30px.gif',
+        'alt' => t('Accepted cards'),
+        'title' => t('Accepted cards'),
+      );
+      $content['mez_concert_bankcard_logos'] = array(
+        '#markup' => theme('image', $variables),
+        '#prefix' => '<div class="mez_concert_bankcard_logos">',
+        '#suffix' => '</div>',
+        '#weight' => -5,
+      );
+      $content['mez_concert_bank_information'] = array(
+        '#markup' => l(t('Payment information'), 'node/166') . ' ' . l(t('Bank information'), 'node/165'),
+        '#prefix' => '<div class="mez_concert_bank_information">',
+        '#suffix' => '</div>',
+        '#weight' => 0,
+      );
+
+      $block['subject'] = NULL;
+      $block['content'] = $content;
+      break;
+  }
+  return $block;
 }
