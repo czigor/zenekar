@@ -647,7 +647,7 @@ function mez_ticket_hacks_mail_alter(&$message) {
             'price' => $price,
           );
         }
-        $tex = theme('mez_ticket_pdf', array('tickets' => $tickets));
+        $tex = theme('mez_ticket_pdf', array('tickets' => $tickets, 'env' => $message['params']['payment_method']['settings']['env']));
 
         $filesdir = drupal_realpath('private://');
         $filename = 'mez_concert_tickets_' . date("YmdHis", time());

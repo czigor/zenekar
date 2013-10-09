@@ -11,7 +11,9 @@
   \begin{overpic}[unit=1mm, width=180mm]{20131103_pecs.jpg}
   \put(18,13.5){\scriptsize #1}
   \put(28,8){\scriptsize #2}
-
+  <?php if($env != 'live') :?>
+    \put(10, 10){\Huge TESZTJEGY TESZTJEGY TESZTJEGY}
+  <?php endif;?>>
   \put(62,13){ #1}
   \put(73,7.6){ #2}
 \end{overpic}

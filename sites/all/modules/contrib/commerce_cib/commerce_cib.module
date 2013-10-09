@@ -282,7 +282,7 @@ function commerce_cib_finish_step($order, $payment_instance) {
 
       $params = array();
       $params['RC'] = $query['RC'];
-      $params['payment_methid'] = $payment_method;
+      $params['payment_method'] = $payment_method;
       $params['order'] = $order;
       $params['subject'] = variable_get('site_name') . t(' purchase');
       $params['body'] = t('Dear customer,' . "\n");
