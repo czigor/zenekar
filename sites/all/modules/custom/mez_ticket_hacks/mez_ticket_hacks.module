@@ -608,8 +608,8 @@ function mez_ticket_hacks_entity_view_alter(&$build, $type) {
           }
           $variables = array(
             'path' => drupal_get_path('module', 'mez_ticket_hacks') . '/images/CIB_logo_30px.gif',
-            'alt' => t('Bank card pament provider: CIB Bank Inc.'),
-            'title' => t('Bank card pament provider: CIB Bank Inc.'),
+            'alt' => t('Bank card payment provider: CIB Bank Inc.'),
+            'title' => t('Bank card payment provider: CIB Bank Inc.'),
           );
           $build['mez_concert_bank_logo'] = array(
             '#markup' => theme('image', $variables),
