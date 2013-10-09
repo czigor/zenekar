@@ -3138,7 +3138,7 @@ function mez_cts_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 6,
+        'weight' => 7,
       ),
       'short_teaser' => array(
         'label' => 'above',
@@ -3200,7 +3200,7 @@ function mez_cts_field_default_field_instances() {
           'view_mode' => 'full',
         ),
         'type' => 'entityreference_entity_view',
-        'weight' => 7,
+        'weight' => 8,
       ),
       'short_teaser' => array(
         'label' => 'above',
@@ -3264,7 +3264,7 @@ function mez_cts_field_default_field_instances() {
           'file_view_mode' => 'colorbox',
         ),
         'type' => 'file_rendered',
-        'weight' => 5,
+        'weight' => 6,
       ),
       'short_teaser' => array(
         'label' => 'hidden',
@@ -3356,7 +3356,7 @@ function mez_cts_field_default_field_instances() {
           'view_mode' => 'full',
         ),
         'type' => 'field_collection_view',
-        'weight' => 4,
+        'weight' => 5,
       ),
       'short_teaser' => array(
         'label' => 'above',
@@ -3412,7 +3412,7 @@ on: Webshop is visible for public.',
         'module' => 'mez_ticket_hacks',
         'settings' => array(),
         'type' => 'mez_concert_hall',
-        'weight' => 9,
+        'weight' => 4,
       ),
       'short_teaser' => array(
         'label' => 'above',
