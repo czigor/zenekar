@@ -1,0 +1,16 @@
+name = MEZ shopping cart views
+core = 7.x
+package = MEZ
+version = 7.x-1.0-20131010dev1
+project = mez_shopping_cart_views
+dependencies[] = commerce_cart_view_override
+dependencies[] = strongarm
+dependencies[] = views
+features[ctools][] = strongarm:strongarm:1
+features[ctools][] = views:views_default:3.0
+features[features_api][] = api:2
+features[variable][] = commerce_cart_contents_pane_view
+features[variable][] = commerce_cart_view_override_page_view
+features[views_view][] = commerce_cart_form_mez
+features[views_view][] = mez_shopping_cart_summary
+features_exclude[dependencies][ctools] = ctools
