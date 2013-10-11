@@ -75,3 +75,8 @@
 .view-media .views-field-fid a {
   display: block;
 }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/views-styles\.scss}line{font-family:\0000378}}
+.view-mez-shopping-cart-summary td.views-field-title-field {
+  padding-right: 20px;
+}
