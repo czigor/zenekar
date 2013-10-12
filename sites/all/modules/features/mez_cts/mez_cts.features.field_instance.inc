@@ -3243,27 +3243,16 @@ function mez_cts_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'hidden',
-        'module' => 'media_colorbox',
-        'settings' => array(
-          'audio_playlist' => 1,
-          'colorbox_caption' => 'title',
-          'colorbox_gallery' => 'page',
-          'colorbox_gallery_custom' => '',
-          'colorbox_view_mode' => 'full',
-          'file_view_mode' => 'preview',
-          'fixed_height' => '',
-          'fixed_width' => '',
-        ),
-        'type' => 'media_colorbox',
+        'module' => 'mez_concert',
+        'settings' => array(),
+        'type' => 'mez_media',
         'weight' => 3,
       ),
       'full' => array(
         'label' => 'hidden',
-        'module' => 'file_entity',
-        'settings' => array(
-          'file_view_mode' => 'colorbox',
-        ),
-        'type' => 'file_rendered',
+        'module' => 'mez_concert',
+        'settings' => array(),
+        'type' => 'mez_media',
         'weight' => 6,
       ),
       'short_teaser' => array(
