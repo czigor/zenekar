@@ -1,0 +1,7 @@
+name = MEZ Concert
+description = General settings and functions for concerts  
+core = 7.x
+package = MEZ
+
+project = "mez_concert"
+version = "7.x-1.0"

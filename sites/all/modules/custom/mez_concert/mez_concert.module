@@ -1,0 +1,47 @@
+<?php
+
+/**
+ * @file
+ * Concert related stuff
+ *
+ */
+
+/**
+ * Implements hook_field_formatter_info().
+ */
+function mez_concert_field_formatter_info() {
+  return array(
+    'mez_media' => array(
+      'label' => t('MEZ media'),
+      'field types' => array('file'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_field_formatter_view().
+ */
+function mez_concert_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
+  $element = array();
+  $settings = $display['settings'];
+  switch ($display['type']) {
+    case 'mez_media' :
+      $element[0] = array(
+        array(
+          '#markup' => views_embed_view('mez_image', 'default', $entity->nid),
+        ),
+        array(
+          '#markup' => views_embed_view('mez_document', 'default', $entity->nid),
+        ),
+        array(
+          '#markup' => views_embed_view('mez_audio', 'default', $entity->nid),
+        ),
+        array(
+          '#markup' => views_embed_view('mez_video', 'default', $entity->nid),
+        ),
+      );
+
+      break;
+  }
+  return $element;
+}
