@@ -54,6 +54,10 @@ function mez_media_views_views_default_views() {
   $handler->display->display_options['fields']['rendered_entity']['display'] = 'view';
   $handler->display->display_options['fields']['rendered_entity']['view_mode'] = 'colorbox';
   $handler->display->display_options['fields']['rendered_entity']['bypass_access'] = 0;
+  /* Rendezési szempont: Tartalom: Media (field_media:delta) */
+  $handler->display->display_options['sorts']['delta']['id'] = 'delta';
+  $handler->display->display_options['sorts']['delta']['table'] = 'field_data_field_media';
+  $handler->display->display_options['sorts']['delta']['field'] = 'delta';
   /* Szövegkörnyezeti szűrő: Tartalom: Tartalom azonosító */
   $handler->display->display_options['arguments']['nid']['id'] = 'nid';
   $handler->display->display_options['arguments']['nid']['table'] = 'node';
@@ -133,6 +137,10 @@ function mez_media_views_views_default_views() {
   $handler->display->display_options['fields']['rendered_entity']['display'] = 'view';
   $handler->display->display_options['fields']['rendered_entity']['view_mode'] = 'colorbox';
   $handler->display->display_options['fields']['rendered_entity']['bypass_access'] = 0;
+  /* Rendezési szempont: Tartalom: Media (field_media:delta) */
+  $handler->display->display_options['sorts']['delta']['id'] = 'delta';
+  $handler->display->display_options['sorts']['delta']['table'] = 'field_data_field_media';
+  $handler->display->display_options['sorts']['delta']['field'] = 'delta';
   /* Szövegkörnyezeti szűrő: Tartalom: Tartalom azonosító */
   $handler->display->display_options['arguments']['nid']['id'] = 'nid';
   $handler->display->display_options['arguments']['nid']['table'] = 'node';
@@ -209,6 +217,10 @@ function mez_media_views_views_default_views() {
   $handler->display->display_options['fields']['rendered']['label'] = '';
   $handler->display->display_options['fields']['rendered']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['rendered']['file_view_mode'] = 'colorbox';
+  /* Rendezési szempont: Tartalom: Media (field_media:delta) */
+  $handler->display->display_options['sorts']['delta']['id'] = 'delta';
+  $handler->display->display_options['sorts']['delta']['table'] = 'field_data_field_media';
+  $handler->display->display_options['sorts']['delta']['field'] = 'delta';
   /* Szövegkörnyezeti szűrő: Tartalom: Tartalom azonosító */
   $handler->display->display_options['arguments']['nid']['id'] = 'nid';
   $handler->display->display_options['arguments']['nid']['table'] = 'node';
@@ -288,6 +300,10 @@ function mez_media_views_views_default_views() {
   $handler->display->display_options['fields']['rendered_entity']['display'] = 'view';
   $handler->display->display_options['fields']['rendered_entity']['view_mode'] = 'colorbox';
   $handler->display->display_options['fields']['rendered_entity']['bypass_access'] = 0;
+  /* Rendezési szempont: Tartalom: Media (field_media:delta) */
+  $handler->display->display_options['sorts']['delta']['id'] = 'delta';
+  $handler->display->display_options['sorts']['delta']['table'] = 'field_data_field_media';
+  $handler->display->display_options['sorts']['delta']['field'] = 'delta';
   /* Szövegkörnyezeti szűrő: Tartalom: Tartalom azonosító */
   $handler->display->display_options['arguments']['nid']['id'] = 'nid';
   $handler->display->display_options['arguments']['nid']['table'] = 'node';

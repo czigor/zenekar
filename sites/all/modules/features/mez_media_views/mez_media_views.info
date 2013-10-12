@@ -1,7 +1,7 @@
 name = MEZ Media views
 core = 7.x
 package = Features
-version = 7.x-1.0-20131012dev1
+version = 7.x-1.0-20131012dev2
 project = mez_media_views
 dependencies[] = views
 features[ctools][] = views:views_default:3.0
