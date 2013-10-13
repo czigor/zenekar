@@ -1,8 +1,8 @@
 name = MEZ cts
 description = Content types for mez
 core = 7.x
-package = Features
-version = 7.x-1.0-20131012dev1
+package = MEZ
+version = 7.x-1.0-20131013dev1
 project = mez_cts
 dependencies[] = ctools
 dependencies[] = date

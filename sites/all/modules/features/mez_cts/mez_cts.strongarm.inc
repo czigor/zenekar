@@ -1556,6 +1556,14 @@ system/ajax/*';
             'weight' => '-4',
             'visible' => TRUE,
           ),
+          'teaser' => array(
+            'weight' => '-4',
+            'visible' => FALSE,
+          ),
+          'short_teaser' => array(
+            'weight' => '-4',
+            'visible' => FALSE,
+          ),
         ),
         'mez_concert_bank_information' => array(
           'full' => array(
@@ -1589,6 +1597,14 @@ system/ajax/*';
           'default' => array(
             'weight' => '-6',
             'visible' => TRUE,
+          ),
+          'teaser' => array(
+            'weight' => '-6',
+            'visible' => FALSE,
+          ),
+          'short_teaser' => array(
+            'weight' => '-6',
+            'visible' => FALSE,
           ),
         ),
       ),
