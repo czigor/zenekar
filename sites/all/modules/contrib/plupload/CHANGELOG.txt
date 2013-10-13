@@ -1,5 +1,10 @@
 CHANGELOG for Plupload integration for Drupal 7
 
+Plupload integration 7.x-1.4
+=================================
+- #2065927 by vladan.me: Added Plupload events support.
+- #2081263 by hgneng: Fixed Check transliteration setting before apply transliteration action.
+
 Plupload integration 7.x-1.3
 =================================
 - #2063161 by mfgering | Amon_Re: Fixed Multi Upload with plupload broken when using Drupal 7.23.

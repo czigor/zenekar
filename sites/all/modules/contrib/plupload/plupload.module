@@ -193,7 +193,7 @@ function plupload_element_value(&$element, $input = FALSE, $form_state = NULL) {
         $files[$i]['tmppath'] = variable_get('plupload_temporary_uri', 'temporary://') . $value;
       }
       elseif ($key == 'name') {
-        if (module_exists('transliteration')) {
+        if (module_exists('transliteration') && variable_get('transliteration_file_uploads', TRUE)) {
           $value = transliteration_clean_filename($value);
         }
       }
@@ -265,10 +265,24 @@ function plupload_element_pre_render($element) {
       'extensions' => str_replace(' ', ',', $element['#upload_validators']['file_validate_extensions'][0]),
     );
   }
-
+  // Check for autoupload and autosubmit settings and add appropriate callback.
+  if (!empty($element['#autoupload'])) {
+    $settings['init']['FilesAdded'] = 'Drupal.plupload.filesAddedCallback';
+    if (!empty($element['#autosubmit'])) {
+      $settings['init']['UploadComplete'] = 'Drupal.plupload.uploadCompleteCallback';
+    }
+  }
   // Add a specific submit element that we want to click if one is specified.
   if (!empty($element['#submit_element'])) {
     $settings['submit_element'] = $element['#submit_element'];
+  }
+  // Check if there are event callbacks and append them to current ones, if any.
+  if (!empty($element['#event_callbacks'])) {
+    // array_merge() only accepts parameters of type array.
+    if (!isset($settings['init'])) {
+      $settings['init'] = array();
+    }
+    $settings['init'] = array_merge($settings['init'], $element['#event_callbacks']);
   }
 
   if (empty($element['#description'])) {
