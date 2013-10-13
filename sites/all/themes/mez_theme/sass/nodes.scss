@@ -145,6 +145,12 @@
   }
   .field-name-title-field {
     @include title-field;
+    .concert-title-ticket-selling a {
+      //color: b;
+      font-size: 0.8em;
+      background-color: $mez-color;
+      padding: 1px 5px 1px 5px;
+    }
   }
 }
 
