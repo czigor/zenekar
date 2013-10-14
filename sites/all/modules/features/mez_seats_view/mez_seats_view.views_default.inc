@@ -87,13 +87,6 @@ function mez_seats_view_views_default_views() {
         'url' => '',
       ),
     ),
-    'action::mez_ticket_from_seat' => array(
-      'selected' => 1,
-      'postpone_processing' => 0,
-      'skip_confirmation' => 0,
-      'override_label' => 0,
-      'label' => '',
-    ),
     'action::views_bulk_operations_delete_item' => array(
       'selected' => 1,
       'postpone_processing' => 0,
@@ -125,6 +118,9 @@ function mez_seats_view_views_default_views() {
         'show_all_tokens' => 1,
         'display_values' => array(
           'seat::field_concert_hall' => 'seat::field_concert_hall',
+          'seat::field_seat_floor' => 'seat::field_seat_floor',
+          'seat::field_seat_row' => 'seat::field_seat_row',
+          'seat::field_seat_side' => 'seat::field_seat_side',
         ),
       ),
     ),
@@ -193,6 +189,13 @@ function mez_seats_view_views_default_views() {
     ),
     'action::views_bulk_operations_script_action' => array(
       'selected' => 0,
+      'postpone_processing' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+    ),
+    'action::mez_ticket_from_seat' => array(
+      'selected' => 1,
       'postpone_processing' => 0,
       'skip_confirmation' => 0,
       'override_label' => 0,
