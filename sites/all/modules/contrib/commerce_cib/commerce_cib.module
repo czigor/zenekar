@@ -149,8 +149,8 @@ function commerce_cib_redirect_form($form, &$form_state, $order, $payment_method
     for ($i=1; $i <= 12; $i++) {
       $trid .= rand(1,9);
     }
-    // Let's initialize the transaction
 
+    // Let's initialize the transaction
     $query10 = array(
       'CRYPTO' => 1,
       'MSGT' => 10,
@@ -231,7 +231,6 @@ function commerce_cib_finish_step($order, $payment_instance) {
   $crypto = 'DATA=' . $_GET['DATA'] . '&PID=' . $_GET['PID'] . '&CRYPTO=1';
   $cleartext2 = ekiDecodeUrl($crypto, $payment_method['settings']['des']);
   parse_str($cleartext2, $query);
-
   $transaction = _commerce_cib_get_transaction($query['TRID']);
   if ($query['MSGT'] == '21' && $transaction['order_id'] == $order->order_id) {
 
@@ -249,65 +248,79 @@ function commerce_cib_finish_step($order, $payment_instance) {
     $url = commerce_cib_create_url($query32, $payment_method['settings']);
     $answer = drupal_http_request($url);
     if ($answer->code == 200) {
-      $cleartext2 = ekiDecodeUrl($answer->data, $payment_method['settings']['des']);
-      parse_str($cleartext2, $query);
-      $msgs = array();
-      $msgs[] = commerce_cib_get_errmsg($query['RC']);
-      $transaction['msgt'] = $query['MSGT'];
-      $transaction['rc'] = $query['RC'];
-      $transaction['rt'] = iconv('ISO-8859-2//TRANSLIT', 'UTF-8', $query['RT']);
-      $transaction['anum'] = $query['ANUM'];
-      $transaction['end'] = time();
-      $transaction['msgt'] = $query['MSGT'];
-      commerce_cib_save_transaction($transaction, 'update');
-
-      $msgs = array_merge($msgs, array(
-        t('The transaction id is: @trid.',  array('@trid' => $query['TRID'])),
-        t('The response code is: @rc.',  array('@rc' => $query['RC'])),
-        t('The response message is: @rt.',  array('@rt' => iconv('ISO-8859-2//TRANSLIT', 'UTF-8', $query['RT']))),
-        t('An email has been sent to @mail with the details.', array('@mail' => $order->mail)),
-      ));
-      if ($query['RC'] == '00') {
-        $msgs[] = t('The permission number is: @anum.',  array('@anum' => $query['ANUM']));
-        $msgs[] = t('The paid amount is: @amo Ft.',  array('@amo' => $query['AMO']));
-        $msgs[] = t('Thank you for buying tickets to our concert!');
-
-      }
-      else {
-        $msgs[] = t('Something went wrong. Please try again!');
-      }
-
-      global $language;
-
-      $params = array();
-      $params['RC'] = $query['RC'];
-      $params['payment_method'] = $payment_method;
-      $params['order'] = $order;
-      $params['subject'] = variable_get('site_name') . t(' purchase');
-      $params['body'] = t('Dear customer,' . "\n");
-      foreach ($msgs as $msg) {
-        $params['body'] .= $msg . "\n";
-      }
-      drupal_mail('commerce_cib', 'payment_finished', $order->mail, $language, $params);
-
-      if ($query['RC'] != '00') {
-        commerce_order_status_update($order, 'checkout_checkout');
-        $msgs[] = l(t('Go back to the checkout page'), 'checkout');
-      }
-      else {
-        commerce_payment_redirect_pane_next_page($order);
-        $msgs[] = l(t('Go to the home page'), '');
-      }
-
+      $msgs = commerce_cib_analyse_message($answer, $payment_method, $order);
     }
-    else {
-      $msgs = _commerce_cib_default_finish_message($order);
+    elseif ($answer->code == 500) {
+      $query33 = array(
+        'CRYPTO' => 1,
+        'MSGT' => 33,
+        'PID' => $payment_method['settings']['pid'],
+        'TRID' => $query['TRID'],
+        'AMO' => $amo,
+      );
+      $url = commerce_cib_create_url($query33, $payment_method['settings']);
+      $answer = drupal_http_request($url);
+      if ($answer->code == 200) {
+        $msgs = commerce_cib_analyse_message($answer, $payment_method, $order);
+      }
     }
   }
   else {
     $msgs = _commerce_cib_default_finish_message($order);
   }
   return theme('commerce_cib_finish', array('messages' => $msgs));
+}
+
+function commerce_cib_analyse_message($answer, $payment_method, $order) {
+  $cleartext2 = ekiDecodeUrl($answer->data, $payment_method['settings']['des']);
+  parse_str($cleartext2, $query);
+  $msgs = array();
+  $msgs[] = commerce_cib_get_errmsg($query['RC']);
+  $transaction = _commerce_cib_get_transaction($query['TRID']);
+  $transaction['msgt'] = $query['MSGT'];
+  $transaction['rc'] = $query['RC'];
+  $transaction['rt'] = iconv('ISO-8859-2//TRANSLIT', 'UTF-8', $query['RT']);
+  $transaction['anum'] = $query['ANUM'];
+  $transaction['end'] = time();
+  $transaction['msgt'] = $query['MSGT'];
+  commerce_cib_save_transaction($transaction, 'update');
+
+  $msgs = array_merge($msgs, array(
+    t('The transaction id is: @trid.',  array('@trid' => $query['TRID'])),
+    t('The response code is: @rc.',  array('@rc' => $query['RC'])),
+    t('The response message is: @rt.',  array('@rt' => iconv('ISO-8859-2//TRANSLIT', 'UTF-8', $query['RT']))),
+    t('An email has been sent to @mail with the details.', array('@mail' => $order->mail)),
+  ));
+  if ($query['RC'] == '00') {
+    $msgs[] = t('The permission number is: @anum.',  array('@anum' => $query['ANUM']));
+    $msgs[] = t('The paid amount is: @amo Ft.',  array('@amo' => $query['AMO']));
+    $msgs[] = t('Thank you for buying tickets to our concert!');
+  }
+  else {
+    $msgs[] = t('Something went wrong. Please try again!');
+  }
+  global $language;
+
+  $params = array();
+  $params['RC'] = $query['RC'];
+  $params['payment_method'] = $payment_method;
+  $params['order'] = $order;
+  $params['subject'] = variable_get('site_name') . t(' purchase');
+  $params['body'] = t('Dear customer,' . "\n");
+  foreach ($msgs as $msg) {
+    $params['body'] .= $msg . "\n";
+  }
+  drupal_mail('commerce_cib', 'payment_finished', $order->mail, $language, $params);
+
+  if ($query['RC'] != '00') {
+    commerce_order_status_update($order, 'checkout_checkout');
+    $msgs[] = l(t('Go back to the checkout page'), 'checkout');
+  }
+  else {
+    commerce_payment_redirect_pane_next_page($order);
+    $msgs[] = l(t('Go to the home page'), '');
+  }
+  return $msgs;
 }
 
 /**
