@@ -187,7 +187,7 @@ function mez_ticket_hacks_preprocess_mez_ticket(&$vars) {
     }
     $vars['xcoord'] = $ticket_w->field_seat->field_x_coordinate->value() / $compression;
     $vars['ycoord'] = $ticket_w->field_seat->field_y_coordinate->value() / $compression;
-    $vars['title'] = $ticket_w->field_seat->title->value();
+    $vars['title'] = $ticket_w->field_seat->title->value() . ' ' . $ticket_w->commerce_price->amount->value() . ' Ft';
 
     $vars['seat_nid'] = $ticket_w->field_seat->nid->value();
     $vars['status'] = ($ticket_w->commerce_stock->value() > 0 ? 'free' : 'sold');
