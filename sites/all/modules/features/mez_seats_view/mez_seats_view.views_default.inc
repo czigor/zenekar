@@ -51,6 +51,11 @@ function mez_seats_view_views_default_views() {
       'sexy_number' => '0',
       'sexy_width' => '0',
     ),
+    'field_seat_row_value' => array(
+      'needs_sexy_love' => 1,
+      'sexy_number' => '0',
+      'sexy_width' => '0',
+    ),
   );
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '100';
@@ -286,9 +291,105 @@ function mez_seats_view_views_default_views() {
     4 => 0,
     5 => 0,
   );
+  /* Szűrési feltétel: Tartalom: Row (field_seat_row) */
+  $handler->display->display_options['filters']['field_seat_row_value']['id'] = 'field_seat_row_value';
+  $handler->display->display_options['filters']['field_seat_row_value']['table'] = 'field_data_field_seat_row';
+  $handler->display->display_options['filters']['field_seat_row_value']['field'] = 'field_seat_row_value';
+  $handler->display->display_options['filters']['field_seat_row_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_seat_row_value']['expose']['operator_id'] = 'field_seat_row_value_op';
+  $handler->display->display_options['filters']['field_seat_row_value']['expose']['label'] = 'Row (field_seat_row)';
+  $handler->display->display_options['filters']['field_seat_row_value']['expose']['operator'] = 'field_seat_row_value_op';
+  $handler->display->display_options['filters']['field_seat_row_value']['expose']['identifier'] = 'field_seat_row_value';
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Szűrési feltétel: Tartalom: Közzétéve */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Szűrési feltétel: Tartalom: Típus */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'seat' => 'seat',
+  );
+  $handler->display->display_options['filters']['type']['group'] = 1;
+  /* Szűrési feltétel: Tartalom: Concert hall (field_concert_hall) */
+  $handler->display->display_options['filters']['field_concert_hall_target_id']['id'] = 'field_concert_hall_target_id';
+  $handler->display->display_options['filters']['field_concert_hall_target_id']['table'] = 'field_data_field_concert_hall';
+  $handler->display->display_options['filters']['field_concert_hall_target_id']['field'] = 'field_concert_hall_target_id';
+  $handler->display->display_options['filters']['field_concert_hall_target_id']['group'] = 1;
+  $handler->display->display_options['filters']['field_concert_hall_target_id']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_concert_hall_target_id']['expose']['operator_id'] = 'field_concert_hall_target_id_op';
+  $handler->display->display_options['filters']['field_concert_hall_target_id']['expose']['label'] = 'Concert hall';
+  $handler->display->display_options['filters']['field_concert_hall_target_id']['expose']['operator'] = 'field_concert_hall_target_id_op';
+  $handler->display->display_options['filters']['field_concert_hall_target_id']['expose']['identifier'] = 'field_concert_hall_target_id';
+  $handler->display->display_options['filters']['field_concert_hall_target_id']['expose']['multiple'] = TRUE;
+  $handler->display->display_options['filters']['field_concert_hall_target_id']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+  );
+  /* Szűrési feltétel: Tartalom: Floor (field_seat_floor) (translated) */
+  $handler->display->display_options['filters']['field_seat_floor_value_i18n']['id'] = 'field_seat_floor_value_i18n';
+  $handler->display->display_options['filters']['field_seat_floor_value_i18n']['table'] = 'field_data_field_seat_floor';
+  $handler->display->display_options['filters']['field_seat_floor_value_i18n']['field'] = 'field_seat_floor_value_i18n';
+  $handler->display->display_options['filters']['field_seat_floor_value_i18n']['group'] = 1;
+  $handler->display->display_options['filters']['field_seat_floor_value_i18n']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_seat_floor_value_i18n']['expose']['operator_id'] = 'field_seat_floor_value_i18n_op';
+  $handler->display->display_options['filters']['field_seat_floor_value_i18n']['expose']['label'] = 'Floor';
+  $handler->display->display_options['filters']['field_seat_floor_value_i18n']['expose']['operator'] = 'field_seat_floor_value_i18n_op';
+  $handler->display->display_options['filters']['field_seat_floor_value_i18n']['expose']['identifier'] = 'field_seat_floor_value_i18n';
+  $handler->display->display_options['filters']['field_seat_floor_value_i18n']['expose']['multiple'] = TRUE;
+  $handler->display->display_options['filters']['field_seat_floor_value_i18n']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+  );
+  /* Szűrési feltétel: Tartalom: Side (field_seat_side) (translated) */
+  $handler->display->display_options['filters']['field_seat_side_value_i18n']['id'] = 'field_seat_side_value_i18n';
+  $handler->display->display_options['filters']['field_seat_side_value_i18n']['table'] = 'field_data_field_seat_side';
+  $handler->display->display_options['filters']['field_seat_side_value_i18n']['field'] = 'field_seat_side_value_i18n';
+  $handler->display->display_options['filters']['field_seat_side_value_i18n']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_seat_side_value_i18n']['expose']['operator_id'] = 'field_seat_side_value_i18n_op';
+  $handler->display->display_options['filters']['field_seat_side_value_i18n']['expose']['label'] = 'Side';
+  $handler->display->display_options['filters']['field_seat_side_value_i18n']['expose']['operator'] = 'field_seat_side_value_i18n_op';
+  $handler->display->display_options['filters']['field_seat_side_value_i18n']['expose']['identifier'] = 'field_seat_side_value_i18n';
+  $handler->display->display_options['filters']['field_seat_side_value_i18n']['expose']['multiple'] = TRUE;
+  $handler->display->display_options['filters']['field_seat_side_value_i18n']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+  );
+  /* Szűrési feltétel: Tartalom: Row (field_seat_row) */
+  $handler->display->display_options['filters']['field_seat_row_value']['id'] = 'field_seat_row_value';
+  $handler->display->display_options['filters']['field_seat_row_value']['table'] = 'field_data_field_seat_row';
+  $handler->display->display_options['filters']['field_seat_row_value']['field'] = 'field_seat_row_value';
+  $handler->display->display_options['filters']['field_seat_row_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_seat_row_value']['expose']['operator_id'] = 'field_seat_row_value_op';
+  $handler->display->display_options['filters']['field_seat_row_value']['expose']['label'] = 'Row';
+  $handler->display->display_options['filters']['field_seat_row_value']['expose']['operator'] = 'field_seat_row_value_op';
+  $handler->display->display_options['filters']['field_seat_row_value']['expose']['identifier'] = 'field_seat_row_value';
+  $handler->display->display_options['filters']['field_seat_row_value']['expose']['multiple'] = TRUE;
+  $handler->display->display_options['filters']['field_seat_row_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+  );
   $handler->display->display_options['path'] = 'seats';
   $export['seats'] = $view;
 
