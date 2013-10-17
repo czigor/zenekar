@@ -197,7 +197,7 @@ function commerce_cib_redirect_form($form, &$form_state, $order, $payment_method
       'PID' => $payment_method['settings']['pid'],
       'TRID' => $trid,
     );
-    $url = commerce_cib_create_url($query20, $payment_method['settings']);
+    $url = commerce_cib_create_url($query20, $payment_method['settings'], 'customer');
     header('Location: ' . $url);
     exit();
   }
@@ -368,14 +368,15 @@ function _commerce_cib_get_transaction($trid) {
  *
  * @return string The encoded URL.
  */
-function commerce_cib_create_url($query, $settings) {
+function commerce_cib_create_url($query, $settings, $market_customer = 'market') {
   $cleartext = '';
   foreach ($query as $key => $value) {
     $cleartext .= $key . '=' . $value . '&';
   }
   $cleartext = substr($cleartext, 0, -1);
   $crypto = ekiEncodeUrl($cleartext, $settings['des']);
-  $url = commerce_cib_env_url($settings['env']) . '?'. $crypto;
+  $function = ($market_customer == 'market') ? 'commerce_cib_env_url' : 'commerce_cib_env_customer_url'; 
+  $url = $function($settings['env']) . '?'. $crypto;
   return $url;
 }
 
