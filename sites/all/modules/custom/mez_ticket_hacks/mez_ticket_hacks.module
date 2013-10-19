@@ -681,3 +681,46 @@ function mez_ticket_hacks_block_view($delta) {
   }
   return $block;
 }
+
+/**
+ * Implements hook_commerce_cib_redirect().
+ */
+function mez_ticket_hacks_commerce_cib_redirect($order) {
+  $order_w = entity_metadata_wrapper('commerce_order', $order);
+  $already_ordered = array();
+  // Checking if a selected ticket has not been selected by someone else
+  // at the same time.
+  // Act only if that someone else has already proceeded at least to the
+  // checkout_payment phase.
+  foreach ($order_w->commerce_line_items as $line_item_w) {
+    $query = db_select('field_data_commerce_product', 'fdcp')
+      ->fields('fdcp', array('entity_id'))
+      ->condition('fdcp.entity_type', 'commerce_line_item')
+      ->condition('fdcp.bundle', 'product')
+      ->condition('fdcp.entity_id', $line_item_w->line_item_id->value(), '!=')
+      ->condition('fdcp.commerce_product_product_id', $line_item_w->commerce_product->product_id->value());
+    $line_items_alias = $query->innerJoin('field_data_commerce_line_items', 'fdcli', '%alias.commerce_line_items_line_item_id = fdcp.entity_id');
+    $order_alias = $query->innerJoin('commerce_order', 'co', "%alias.order_id = {$line_items_alias}.entity_id");
+    $line_items = $query->condition("{$line_items_alias}.entity_type", 'commerce_order')
+      ->condition("{$line_items_alias}.bundle", 'commerce_order')
+      ->condition("{$order_alias}.status", array('checkout_payment', 'pending', 'processing', 'completed'))
+      ->execute()
+      ->fetchAll();
+    if (!empty($line_items)) {
+      $already_ordered[] = $line_item_w;
+    }
+  }
+  if (!empty($already_ordered)) {
+    commerce_order_status_update($order, 'cart');
+    $message = t('Sorry, some tickets have just been or are just being purchased by someone else. For this reaseon the following tickets have been removed from your cart:');
+    $ticket_list = array();
+    foreach ($already_ordered as $line_item_w) {
+      $ticket_list[] = $line_item_w->commerce_product->field_seat->title_field->value() . "\n";
+      commerce_cart_order_product_line_item_delete($order, $line_item_w->line_item_id->value());
+    }
+    $message .= theme('item_list', array('items' => $ticket_list));
+    $message .= t('Please start over choosing tickets!') . "\n";
+    drupal_set_message($message, 'status');
+    drupal_goto('node/' . $order_w->commerce_line_items[0]->commerce_product->field_concert->nid->value());
+  }
+}

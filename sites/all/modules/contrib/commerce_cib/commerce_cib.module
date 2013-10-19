@@ -118,6 +118,10 @@ function commerce_cib_redirect_form($form, &$form_state, $order, $payment_method
   $amo = field_get_items('commerce_order', $order, 'commerce_order_total');
   $amo = $amo[0]['amount'];
 
+  //Last chance to prevent redirection to CIB.
+  // Useful to check if an out-of-stock event occurs.
+  module_invoke_all('commerce_cib_redirect', $order);
+
   // Identify eki user based on email.
   $eki_user = db_select('commerce_cib_transactions', 'cct')
   ->fields('cct', array('eki_user'))
@@ -375,7 +379,7 @@ function commerce_cib_create_url($query, $settings, $market_customer = 'market')
   }
   $cleartext = substr($cleartext, 0, -1);
   $crypto = ekiEncodeUrl($cleartext, $settings['des']);
-  $function = ($market_customer == 'market') ? 'commerce_cib_env_url' : 'commerce_cib_env_customer_url'; 
+  $function = ($market_customer == 'market') ? 'commerce_cib_env_url' : 'commerce_cib_env_customer_url';
   $url = $function($settings['env']) . '?'. $crypto;
   return $url;
 }
