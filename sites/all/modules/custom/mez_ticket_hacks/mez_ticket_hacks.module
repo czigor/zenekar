@@ -712,7 +712,7 @@ function mez_ticket_hacks_commerce_cib_redirect($order) {
   }
   if (!empty($already_ordered)) {
     commerce_order_status_update($order, 'cart');
-    $message = t('Sorry, some tickets have just been or are just being purchased by someone else. For this reaseon the following tickets have been removed from your cart:');
+    $message = t('Sorry, some tickets have just been or are just being purchased by someone else. For this reason the following tickets have been removed from your cart:');
     $ticket_list = array();
     foreach ($already_ordered as $line_item_w) {
       $ticket_list[] = $line_item_w->commerce_product->field_seat->title_field->value() . "\n";
