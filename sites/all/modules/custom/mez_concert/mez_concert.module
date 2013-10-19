@@ -77,3 +77,10 @@ function mez_concert_field_formatter_view($entity_type, $entity, $field, $instan
   }
   return $element;
 }
+
+function mez_concert_node_view($node) {
+  if ($node->type == 'concert') {
+    $path = drupal_get_path('module', 'mez_concert') . '/js/mez_concert.js';
+    drupal_add_js($path);
+  }
+}
