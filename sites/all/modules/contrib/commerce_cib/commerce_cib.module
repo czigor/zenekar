@@ -61,10 +61,14 @@ function commerce_cib_default_settings() {
     'pid' => '',
     'cur' => 'HUF',
     'env' => 'testing',
-    'des' => '',
+    'des-test' => '',
+    'des-live' => '',
   );
 }
 
+/**
+ * Payment settings form.
+ */
 function commerce_cib_settings_form($settings = array()) {
   $settings = (array) $settings + commerce_cib_default_settings();
 
@@ -100,11 +104,18 @@ function commerce_cib_settings_form($settings = array()) {
     '#required' => TRUE,
   );
 
-  $form['des'] = array(
+  $form['des-test'] = array(
     '#type' => 'textfield',
-    '#title' => t('Keyfile path'),
-    '#description' => t('The absolute path of the des keyfile used for encryption.'),
-    '#default_value' => $settings['des'],
+    '#title' => t('Test keyfile path'),
+    '#description' => t('The absolute path of the des keyfile used for encryption on the dev site.'),
+    '#default_value' => $settings['des-test'],
+    '#required' => TRUE,
+  );
+  $form['des-live'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Live keyfile path'),
+    '#description' => t('The absolute path of the des keyfile used for encryption on the live site.'),
+    '#default_value' => $settings['des-live'],
     '#required' => TRUE,
   );
 
@@ -121,7 +132,7 @@ function commerce_cib_redirect_form($form, &$form_state, $order, $payment_method
   //Last chance to prevent redirection to CIB.
   // Useful to check if an out-of-stock event occurs.
   module_invoke_all('commerce_cib_redirect', $order);
-
+  $des = ($payment_method['settings']['env'] == 'live') ? $payment_method['settings']['des-live'] : $payment_method['settings']['des-test'];
   // Identify eki user based on email.
   $eki_user = db_select('commerce_cib_transactions', 'cct')
   ->fields('cct', array('eki_user'))
@@ -171,7 +182,7 @@ function commerce_cib_redirect_form($form, &$form_state, $order, $payment_method
     $url = commerce_cib_create_url($query10, $payment_method['settings']);
     $answer = drupal_http_request($url);
     if ($answer->code == 200) {
-      $cleartext2 = ekiDecodeUrl($answer->data, $payment_method['settings']['des']);
+      $cleartext2 = ekiDecodeUrl($answer->data, $des);
       parse_str($cleartext2, $query);
       if ($query['RC'] == '00') {
         $initialized = TRUE;
@@ -231,9 +242,10 @@ function commerce_cib_save_transaction(&$record, $mode = 'insert') {
  */
 function commerce_cib_finish_step($order, $payment_instance) {
   $payment_method = commerce_payment_method_instance_load('cib|' . $payment_instance);
+  $des = ($payment_method['settings']['env'] == 'live') ? $payment_method['settings']['des-live'] : $payment_method['settings']['des-test'];
   // Getting answer from the CIB payment gateway.
   $crypto = 'DATA=' . $_GET['DATA'] . '&PID=' . $_GET['PID'] . '&CRYPTO=1';
-  $cleartext2 = ekiDecodeUrl($crypto, $payment_method['settings']['des']);
+  $cleartext2 = ekiDecodeUrl($crypto, $des);
   parse_str($cleartext2, $query);
   $transaction = _commerce_cib_get_transaction($query['TRID']);
   if ($query['MSGT'] == '21' && $transaction['order_id'] == $order->order_id) {
@@ -276,7 +288,8 @@ function commerce_cib_finish_step($order, $payment_instance) {
 }
 
 function commerce_cib_analyse_message($answer, $payment_method, $order) {
-  $cleartext2 = ekiDecodeUrl($answer->data, $payment_method['settings']['des']);
+  $des = ($payment_method['settings']['env'] == 'live') ? $payment_method['settings']['des-live'] : $payment_method['settings']['des-test'];
+  $cleartext2 = ekiDecodeUrl($answer->data, $des);
   parse_str($cleartext2, $query);
   $msgs = array();
   $msgs[] = commerce_cib_get_errmsg($query['RC']);
@@ -378,7 +391,8 @@ function commerce_cib_create_url($query, $settings, $market_customer = 'market')
     $cleartext .= $key . '=' . $value . '&';
   }
   $cleartext = substr($cleartext, 0, -1);
-  $crypto = ekiEncodeUrl($cleartext, $settings['des']);
+  $des = ($settings['env'] == 'live') ? $settings['des-live'] : $settings['des-test'];
+  $crypto = ekiEncodeUrl($cleartext, $des);
   $function = ($market_customer == 'market') ? 'commerce_cib_env_url' : 'commerce_cib_env_customer_url';
   $url = $function($settings['env']) . '?'. $crypto;
   return $url;
@@ -473,8 +487,9 @@ function _commerce_cib_transaction_investigate(&$transaction) {
   );
   $url = commerce_cib_create_url($query33, $payment_method['settings']);
   $answer = drupal_http_request($url);
+  $des = ($payment_method['settings']['env'] == 'live') ? $payment_method['settings']['des-live'] : $payment_method['settings']['des-test'];
   if ($answer->code == 200) {
-    $cleartext2 = ekiDecodeUrl($answer->data, $payment_method['settings']['des']);
+    $cleartext2 = ekiDecodeUrl($answer->data, $des);
     parse_str($cleartext2, $query);
     if (($query['TRID'] == $transaction['trid']) && ($query['MSGT'] == 31)) {
       $transaction['msgt'] = $query['MSGT'];
@@ -491,7 +506,7 @@ function _commerce_cib_transaction_investigate(&$transaction) {
       $url = commerce_cib_create_url($query37, $payment_method['settings']);
       $answer = drupal_http_request($url);
       if ($answer->code == 200) {
-        $cleartext2 = ekiDecodeUrl($answer->data, $payment_method['settings']['des']);
+        $cleartext2 = ekiDecodeUrl($answer->data, $des);
         parse_str($cleartext2, $query);
         if (($query['TRID'] == $transaction['trid']) && ($query['MSGT'] == 38)) {
           $transaction['history'] = $query['HISTORY'];
