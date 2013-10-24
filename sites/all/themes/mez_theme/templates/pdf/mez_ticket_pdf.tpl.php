@@ -8,7 +8,7 @@
 
 % One ticket for the 2013. 11. 03. concert.
 \newcommand{\mezticket}[2]{
-  \begin{overpic}[unit=1mm, width=180mm]{<?php print drupal_realpath('sites/all/themes/mez_theme/images');?>/mez_ticket_166.jpg}
+  \begin{overpic}[unit=1mm, width=180mm]{<?php print drupal_realpath('sites/all/themes/mez_theme/images');?>/mez_ticket_1182.jpg}
   \put(18,13.5){\scriptsize #1}
   \put(28,8){\scriptsize #2}
   <?php if($env != 'live') :?>
