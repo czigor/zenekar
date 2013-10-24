@@ -617,7 +617,8 @@ function mez_ticket_hacks_mail_alter(&$message) {
         }
         $tex = theme('mez_ticket_pdf', array('tickets' => $tickets, 'env' => $message['params']['payment_method']['settings']['env']));
 
-        $dir = 'private://mez-tickets/' . $order_w->commerce_line_items[0]->commerce_product->field_concert->nid->value();
+        $concert_nid =  $order_w->commerce_line_items[0]->commerce_product->field_concert->nid->value();
+        $dir = 'private://mez-tickets/' . $message['params']['payment_method']['settings']['env'] . '/' . $concert_nid;
         if (file_prepare_directory($dir, FILE_CREATE_DIRECTORY)) {
           $filesdir = drupal_realpath($dir);
           $filename = 'mez_concert_tickets_' . date("YmdHis", time());
