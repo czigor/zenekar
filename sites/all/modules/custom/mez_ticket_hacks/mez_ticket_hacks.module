@@ -617,14 +617,20 @@ function mez_ticket_hacks_mail_alter(&$message) {
         }
         $tex = theme('mez_ticket_pdf', array('tickets' => $tickets, 'env' => $message['params']['payment_method']['settings']['env']));
 
-        $filesdir = drupal_realpath('private://');
-        $filename = 'mez_concert_tickets_' . date("YmdHis", time());
-        $texfile = file_save_data($tex, "private://$filename.tex");
+        $dir = 'private://mez-tickets/' . $order_w->commerce_line_items[0]->commerce_product->field_concert->nid->value();
+        if (file_prepare_directory($dir, FILE_CREATE_DIRECTORY)) {
+          $filesdir = drupal_realpath($dir);
+          $filename = 'mez_concert_tickets_' . date("YmdHis", time());
+          $texfile = file_save_data($tex, $dir . "/$filename.tex");
 
-        $output = array();
-        $return_val = 0;
-        $cmd = "cd $filesdir;/usr/bin/pdflatex $filename";
-        exec($cmd, $output, $return_val);
+          $output = array();
+          $return_val = 0;
+          $cmd = "cd $filesdir;/usr/bin/pdflatex $filename";
+          exec($cmd, $output, $return_val);
+        }
+        else {
+          $return_val = 1;
+        }
         if ($return_val) {
           drupal_set_message(t('Command: %command<br />return status: %return<br />%output', array('%command' => $cmd, '%return' => $return_val, '%output' => implode('<br />', $output))), 'error');
           $message['body'] .= t('Ticket pdf generation has failed. Please contact the site administrator to get your ticket!');
@@ -632,8 +638,8 @@ function mez_ticket_hacks_mail_alter(&$message) {
         }
         else {
           $attachment = array(
-            'filecontent' => file_get_contents('private://' . $filename . '.pdf'),
-            'filename' => $filename . '.pdf',// You can change the name and extension of the file you need to send.
+            'filecontent' => file_get_contents($dir . '/' . $filename . '.pdf'),
+            'filename' => $filename . '.pdf',
             'filemime' => 'application/pdf',
           );
           $message['params']['attachments'][] = $attachment;
