@@ -22,6 +22,13 @@ function concert_hall_164($concert_hall_nid) {
   $return['xsize'] = 760 / $compression;
   $return['ysize'] = 1200 / $compression;
   $return['markup'] = '<div style="position:absolute; top:' . 100 / $compression . 'px; left:' . 400 / $compression . 'px;">' . t('STAGE') . '</div>';
+  $return['markup'] .= '<div style="position:absolute; top:' . 0 . 'px; left:' . 0 . 'px;">
+    <div class="mez-legend">
+      <div class="mez-ticket free"><span class="inner"></span>' . t('available') . '</div>
+      <div class="mez-ticket reserved"><span class="inner"></span>' . t('my reservation') . '</div>
+      <div class="mez-ticket sold"><span class="inner"></span>' . t('not available') . '</div>
+    </div>
+  </div>';
 
   return $return;
 }

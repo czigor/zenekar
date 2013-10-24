@@ -37,34 +37,41 @@
 .mez-concert-hall .mez-ticket.reserved span.inner {
   background-color: #D99216;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/tickets\.scss}line{font-family:\0000337}}
+.mez-concert-hall .mez-legend .mez-ticket .inner {
+  float: left;
+  position: relative;
+  top: 8px;
+  margin-right: 10px;
+}
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/tickets\.scss}line{font-family:\0000341}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/tickets\.scss}line{font-family:\0000347}}
 body.node-type-concert .ds-2col-stacked .group-left {
   width: 190px;
   margin-right: 10px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/tickets\.scss}line{font-family:\0000345}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/tickets\.scss}line{font-family:\0000351}}
 body.node-type-concert .ds-2col-stacked .group-right {
   width: auto;
   float: left;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/tickets\.scss}line{font-family:\0000353}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/tickets\.scss}line{font-family:\0000359}}
 .view-mez-shopping-cart-block .views-field-commerce-total {
   text-align: right;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/tickets\.scss}line{font-family:\0000356}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/tickets\.scss}line{font-family:\0000362}}
 .view-mez-shopping-cart-block .views-row-even {
   background-color: #D99216;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/tickets\.scss}line{font-family:\0000359}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/tickets\.scss}line{font-family:\0000365}}
 .view-mez-shopping-cart-block .views-row-last {
   border-bottom: 1px solid black;
   margin-bottom: 10px;
   padding-bottom: 10px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/tickets\.scss}line{font-family:\0000366}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/tickets\.scss}line{font-family:\0000372}}
 .mez_concert_bank_information {
   font-size: 0.6em;
   text-align: right;
