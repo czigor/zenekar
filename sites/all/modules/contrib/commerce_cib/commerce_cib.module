@@ -263,9 +263,11 @@ function commerce_cib_finish_step($order, $payment_instance) {
 
     $url = commerce_cib_create_url($query32, $payment_method['settings']);
     $answer = drupal_http_request($url);
+    // Everything seems to be allright so far.
     if ($answer->code == 200) {
       $msgs = commerce_cib_analyse_message($answer, $payment_method, $order);
     }
+    // Handle timeout.
     elseif ($answer->code == 500) {
       $query33 = array(
         'CRYPTO' => 1,
@@ -287,6 +289,9 @@ function commerce_cib_finish_step($order, $payment_instance) {
   return theme('commerce_cib_finish', array('messages' => $msgs));
 }
 
+/**
+ * Analyse answer to a 32 and 33 message.
+ */
 function commerce_cib_analyse_message($answer, $payment_method, $order) {
   $des = ($payment_method['settings']['env'] == 'live') ? $payment_method['settings']['des-live'] : $payment_method['settings']['des-test'];
   $cleartext2 = ekiDecodeUrl($answer->data, $des);
