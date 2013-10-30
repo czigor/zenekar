@@ -48,11 +48,11 @@
 @media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/tickets\.scss}line{font-family:\0000347}}
 body.node-type-concert .ds-2col-stacked .group-left {
   width: 190px;
-  margin-right: 10px;
+  margin-right: 20px;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/tickets\.scss}line{font-family:\0000351}}
 body.node-type-concert .ds-2col-stacked .group-right {
-  width: auto;
+  width: 760px;
   float: left;
 }
 
