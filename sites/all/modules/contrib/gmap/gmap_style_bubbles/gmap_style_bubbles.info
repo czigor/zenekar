@@ -1,11 +1,12 @@
-name = GMap Location
-description = Display location.module information on Google Maps
+name = Gmap Style Bubbles
+description = A module that lets you add more styles to your gmap popup bubbles.
 package = Location
 core = 7.x
-configure = admin/config/services/gmap_location
-files[] = gmap_location.module
+
+project = gmap_style_bubbles
 dependencies[] = gmap
-dependencies[] = location
+dependencies[] = libraries (2.x)
+
 
 ; Information added by drupal.org packaging script on 2013-10-24
 version = "7.x-2.8"
