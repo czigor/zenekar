@@ -22,6 +22,6 @@ class entityform_handler_delete_link_field extends entityform_handler_link_field
     $text = !empty($this->options['text']) ? $this->options['text'] : t('delete');
     $entityform_id = $values->{$this->aliases['entityform_id']};
 
-    return l($text, 'entityform/' . $entityform_id . '/delete');
+    return l($text, 'entityform/' . $entityform_id . '/delete', array('query' => array('destination' => request_path())));
   }
 }
