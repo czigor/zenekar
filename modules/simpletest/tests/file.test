@@ -108,7 +108,6 @@ class FileTestCase extends DrupalWebTestCase {
 
     // Mask out all but the last three octets.
     $actual_mode = fileperms($filepath) & 0777;
-    $expected_mode = $expected_mode & 0777;
 
     // PHP on Windows has limited support for file permissions. Usually each of
     // "user", "group" and "other" use one octal digit (3 bits) to represent the
@@ -144,7 +143,6 @@ class FileTestCase extends DrupalWebTestCase {
 
     // Mask out all but the last three octets.
     $actual_mode = fileperms($directory) & 0777;
-    $expected_mode = $expected_mode & 0777;
 
     // PHP on Windows has limited support for file permissions. Usually each of
     // "user", "group" and "other" use one octal digit (3 bits) to represent the
@@ -914,39 +912,6 @@ class FileDirectoryTest extends FileTestCase {
   }
 
   /**
-   * Test local directory handling functions.
-   */
-  function testFileCheckLocalDirectoryHandling() {
-    $directory = conf_path() . '/files';
-
-    // Check a new recursively created local directory for correct file system
-    // permissions.
-    $parent = $this->randomName();
-    $child = $this->randomName();
-
-    // Files directory already exists.
-    $this->assertTrue(is_dir($directory), t('Files directory already exists.'), 'File');
-    // Make files directory writable only.
-    $old_mode = fileperms($directory);
-
-    // Create the directories.
-    $parent_path = $directory . DIRECTORY_SEPARATOR . $parent;
-    $child_path = $parent_path . DIRECTORY_SEPARATOR . $child;
-    $this->assertTrue(drupal_mkdir($child_path, 0775, TRUE), t('No error reported when creating new local directories.'), 'File');
-
-    // Ensure new directories also exist.
-    $this->assertTrue(is_dir($parent_path), t('New parent directory actually exists.'), 'File');
-    $this->assertTrue(is_dir($child_path), t('New child directory actually exists.'), 'File');
-
-    // Check that new directory permissions were set properly.
-    $this->assertDirectoryPermissions($parent_path, 0775);
-    $this->assertDirectoryPermissions($child_path, 0775);
-
-    // Check that existing directory permissions were not modified.
-    $this->assertDirectoryPermissions($directory, $old_mode);
-  }
-
-  /**
    * Test directory handling functions.
    */
   function testFileCheckDirectoryHandling() {
@@ -987,7 +952,7 @@ class FileDirectoryTest extends FileTestCase {
     $this->assertTrue(is_file(file_default_scheme() . '://.htaccess'), 'Successfully re-created the .htaccess file in the files directory.', 'File');
     // Verify contents of .htaccess file.
     $file = file_get_contents(file_default_scheme() . '://.htaccess');
-    $this->assertEqual($file, "SetHandler Drupal_Security_Do_Not_Remove_See_SA_2006_006\nOptions None\nOptions +FollowSymLinks", 'The .htaccess file contains the proper content.', 'File');
+    $this->assertEqual($file, file_htaccess_lines(FALSE), 'The .htaccess file contains the proper content.', 'File');
   }
 
   /**
