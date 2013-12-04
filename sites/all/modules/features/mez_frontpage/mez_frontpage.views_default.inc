@@ -135,7 +135,7 @@ function mez_frontpage_views_default_views() {
   $handler->display->display_options['relationships']['field_programme_value']['table'] = 'field_data_field_programme';
   $handler->display->display_options['relationships']['field_programme_value']['field'] = 'field_programme_value';
   $handler->display->display_options['relationships']['field_programme_value']['delta'] = '-1';
-  /* Kapcsolat: Entity Reference: Referenced Entity */
+  /* Kapcsolat: Entity Reference: Hivatkozott entitás */
   $handler->display->display_options['relationships']['field_piece_target_id']['id'] = 'field_piece_target_id';
   $handler->display->display_options['relationships']['field_piece_target_id']['table'] = 'field_data_field_piece';
   $handler->display->display_options['relationships']['field_piece_target_id']['field'] = 'field_piece_target_id';
@@ -272,7 +272,6 @@ function mez_frontpage_views_default_views() {
   $handler->display->display_options['fields']['filename']['label'] = '';
   $handler->display->display_options['fields']['filename']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['filename']['alter']['ellipsis'] = FALSE;
-  $handler->display->display_options['fields']['filename']['link_to_file'] = TRUE;
   /* Rendezési szempont: Fájl: Dátum (field_day_date) */
   $handler->display->display_options['sorts']['field_day_date_value']['id'] = 'field_day_date_value';
   $handler->display->display_options['sorts']['field_day_date_value']['table'] = 'field_data_field_day_date';
@@ -384,7 +383,7 @@ function mez_frontpage_views_default_views() {
   );
   $handler->display->display_options['filters']['field_tags_tid']['type'] = 'select';
   $handler->display->display_options['filters']['field_tags_tid']['vocabulary'] = 'media';
-  /* Szűrési feltétel: Fájl: Concert (field_concert) */
+  /* Szűrési feltétel: Mező: Concert (field_concert) */
   $handler->display->display_options['filters']['field_concert_target_id']['id'] = 'field_concert_target_id';
   $handler->display->display_options['filters']['field_concert_target_id']['table'] = 'field_data_field_concert';
   $handler->display->display_options['filters']['field_concert_target_id']['field'] = 'field_concert_target_id';
