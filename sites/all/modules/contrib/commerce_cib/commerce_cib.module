@@ -12,9 +12,9 @@ define('COMMERCE_CIB_TIMEOUT', 700);
  * Implements hook_menu().
  */
 function commerce_cib_menu() {
-  $items['commerce_cib_finish/%commerce_order/%'] = array(
+  $items['commerce_cib_finish/%commerce_order'] = array(
     'page callback' => 'commerce_cib_finish_step',
-    'page arguments' => array(1,2),
+    'page arguments' => array(1),
     'type' => MENU_CALLBACK,
     'access arguments' => array('access checkout'),
   );
@@ -38,19 +38,6 @@ function commerce_cib_commerce_payment_method_info() {
     'description' => t('Integrates with CIB bank payment service.'),
   );
   return $payment_methods;
-}
-
-/**
- * Implements hook_theme().
- */
-function commerce_cib_theme() {
-  return array(
-    'commerce_cib_finish' => array(
-      'variables' => array(
-        'messages' => NULL,
-      ),
-    ),
-  );
 }
 
 /**
@@ -129,22 +116,22 @@ function commerce_cib_redirect_form($form, &$form_state, $order, $payment_method
   $amo = field_get_items('commerce_order', $order, 'commerce_order_total');
   $amo = $amo[0]['amount'];
 
-  //Last chance to prevent redirection to CIB.
+  // Last chance to prevent redirection to CIB.
   // Useful to check if an out-of-stock event occurs.
-  module_invoke_all('commerce_cib_redirect', $order);
+  rules_invoke_event('commerce_cib_pre_redirect', $order);
   $des = ($payment_method['settings']['env'] == 'live') ? $payment_method['settings']['des-live'] : $payment_method['settings']['des-test'];
   // Identify eki user based on email.
   $eki_user = db_select('commerce_cib_transactions', 'cct')
-  ->fields('cct', array('eki_user'))
-  ->condition('cct.email', $order->mail)
-  ->execute()
-  ->fetchField();
-  if (empty($eki_user)) {
-    $last_eki_user = db_select('commerce_cib_transactions', 'cct')
     ->fields('cct', array('eki_user'))
-    ->orderBy('cct.eki_user', 'DESC')
+    ->condition('cct.email', $order->mail)
     ->execute()
     ->fetchField();
+  if (empty($eki_user)) {
+    $last_eki_user = db_select('commerce_cib_transactions', 'cct')
+      ->fields('cct', array('eki_user'))
+      ->orderBy('cct.eki_user', 'DESC')
+      ->execute()
+      ->fetchField();
     if (empty($last_eki_user)) {
       $no = 1;
     }
@@ -153,11 +140,9 @@ function commerce_cib_redirect_form($form, &$form_state, $order, $payment_method
     }
     $eki_user = 'MEZ' . str_pad($no, 8, '0', STR_PAD_LEFT);
   }
-  $payment_instance = explode('|', $payment_method['instance_id']);
 
   $initialized = FALSE;
   $tries = 0;
-
 
   while (!$initialized && $tries++ < 10) {
     $trid = date("is", time());
@@ -176,14 +161,14 @@ function commerce_cib_redirect_form($form, &$form_state, $order, $payment_method
       'AUTH' => 0,
       'AMO' => $amo,
       'CUR' => $payment_method['settings']['cur'],
-      'URL' => 'http://' . $_SERVER['SERVER_NAME'] . '/commerce_cib_finish/' . $order->order_id . '/' . $payment_instance[1],
+      'URL' => 'http://' . $_SERVER['SERVER_NAME'] . '/commerce_cib_finish/' . $order->order_id,
       'PID' => $payment_method['settings']['pid'],
     );
     $url = commerce_cib_create_url($query10, $payment_method['settings']);
     $answer = drupal_http_request($url);
     if ($answer->code == 200) {
-      $cleartext2 = ekiDecodeUrl($answer->data, $des);
-      parse_str($cleartext2, $query);
+      $cleartext = ekiDecodeUrl($answer->data, $des);
+      parse_str($cleartext, $query);
       if ($query['RC'] == '00') {
         $initialized = TRUE;
       }
@@ -217,8 +202,7 @@ function commerce_cib_redirect_form($form, &$form_state, $order, $payment_method
     exit();
   }
   else  {
-    drupal_set_message(t('Transaction initialization failed.'), 'warning');
-    drupal_goto('');
+    rules_invoke_event('commerce_cib_initialization_fails', $order);
   }
 }
 
@@ -240,13 +224,13 @@ function commerce_cib_save_transaction(&$record, $mode = 'insert') {
 /**
  * Menu callback for CIB redirecting to our site.
  */
-function commerce_cib_finish_step($order, $payment_instance) {
-  $payment_method = commerce_payment_method_instance_load('cib|' . $payment_instance);
+function commerce_cib_finish_step($order) {
+  $payment_method = commerce_payment_method_instance_load($order->data['payment_method']);
   $des = ($payment_method['settings']['env'] == 'live') ? $payment_method['settings']['des-live'] : $payment_method['settings']['des-test'];
   // Getting answer from the CIB payment gateway.
   $crypto = 'DATA=' . $_GET['DATA'] . '&PID=' . $_GET['PID'] . '&CRYPTO=1';
-  $cleartext2 = ekiDecodeUrl($crypto, $des);
-  parse_str($cleartext2, $query);
+  $cleartext = ekiDecodeUrl($crypto, $des);
+  parse_str($cleartext, $query);
   $transaction = _commerce_cib_get_transaction($query['TRID']);
   if ($query['MSGT'] == '21' && $transaction['order_id'] == $order->order_id) {
 
@@ -265,7 +249,7 @@ function commerce_cib_finish_step($order, $payment_instance) {
     $answer = drupal_http_request($url);
     // Everything seems to be allright so far.
     if ($answer->code == 200) {
-      $msgs = commerce_cib_analyse_message($answer, $payment_method, $order);
+      commerce_cib_analyse_message($answer, $payment_method, $order);
     }
     // Handle timeout.
     elseif ($answer->code == 500) {
@@ -279,14 +263,14 @@ function commerce_cib_finish_step($order, $payment_instance) {
       $url = commerce_cib_create_url($query33, $payment_method['settings']);
       $answer = drupal_http_request($url);
       if ($answer->code == 200) {
-        $msgs = commerce_cib_analyse_message($answer, $payment_method, $order);
+        commerce_cib_analyse_message($answer, $payment_method, $order);
       }
     }
   }
   else {
-    $msgs = _commerce_cib_default_finish_message($order);
+    rules_invoke_event('commerce_cib_no_communication', $order);
   }
-  return theme('commerce_cib_finish', array('messages' => $msgs));
+  return '';
 }
 
 /**
@@ -296,78 +280,27 @@ function commerce_cib_analyse_message($answer, $payment_method, $order) {
   $des = ($payment_method['settings']['env'] == 'live') ? $payment_method['settings']['des-live'] : $payment_method['settings']['des-test'];
   $cleartext2 = ekiDecodeUrl($answer->data, $des);
   parse_str($cleartext2, $query);
-  $msgs = array();
-  $msgs[] = commerce_cib_get_errmsg($query['RC']);
   $transaction = _commerce_cib_get_transaction($query['TRID']);
   $transaction['msgt'] = $query['MSGT'];
   $transaction['rc'] = $query['RC'];
   $transaction['rt'] = iconv('ISO-8859-2//TRANSLIT', 'UTF-8', $query['RT']);
   $transaction['anum'] = $query['ANUM'];
   $transaction['end'] = time();
-  $transaction['msgt'] = $query['MSGT'];
   commerce_cib_save_transaction($transaction, 'update');
 
-  $msgs = array_merge($msgs, array(
-    t('The transaction id is: @trid.',  array('@trid' => $query['TRID'])),
-    t('The response code is: @rc.',  array('@rc' => $query['RC'])),
-    t('The response message is: @rt.',  array('@rt' => iconv('ISO-8859-2//TRANSLIT', 'UTF-8', $query['RT']))),
-    t('An email has been sent to @mail with the details.', array('@mail' => $order->mail)),
-  ));
+  $order->commerce_cib['trid'] = $query['TRID'];
+  $order->commerce_cib['rc'] = $query['RC'];
+  $order->commerce_cib['rt'] = iconv('ISO-8859-2//TRANSLIT', 'UTF-8', $query['RT']);
+  $order->commerce_cib['msg'] = commerce_cib_get_errmsg($query['RC']);
+  $order->commerce_cib['anum'] = $query['ANUM'];
+  $order->commerce_cib['amo'] = $query['AMO'];
+
   if ($query['RC'] == '00') {
-    $msgs[] = t('The permission number is: @anum.',  array('@anum' => $query['ANUM']));
-    $msgs[] = t('The paid amount is: @amo Ft.',  array('@amo' => $query['AMO']));
-    $msgs[] = t('Thank you for buying tickets to our concert!');
-  }
-  else {
-    $msgs[] = t('Something went wrong. Please try again!');
-  }
-  global $language;
-
-  $params = array();
-  $params['RC'] = $query['RC'];
-  $params['payment_method'] = $payment_method;
-  $params['order'] = $order;
-  $params['subject'] = variable_get('site_name') . t(' purchase');
-  $params['body'] = t("Dear customer,\n");
-  foreach ($msgs as $msg) {
-    $params['body'] .= $msg . "\n";
-  }
-  drupal_mail('commerce_cib', 'payment_finished', $order->mail, $language, $params);
-
-  if ($query['RC'] != '00') {
-    commerce_order_status_update($order, 'checkout_checkout');
-    $msgs[] = l(t('Go back to the checkout page'), 'checkout');
-  }
-  else {
     commerce_payment_redirect_pane_next_page($order);
-    $msgs[] = l(t('Go to the home page'), '');
   }
-  return $msgs;
-}
-
-/**
- * Default failure message for the finish page.
- *
- * @param object $order The order object
- *
- */
-function _commerce_cib_default_finish_message($order) {
-  $msgs = array();
-  $msgs[] = t('Sorry, we could not communicate with CIB. Please try again later!');
-  commerce_order_status_update($order, 'checkout_checkout');
-  $msgs[] = l(t('Go back to the checkout page'), 'checkout');
-  return $msgs;
-}
-
-/**
- * Theme function for the finish page.
- */
-function theme_commerce_cib_finish($vars) {
-  $return = '';
-  foreach ($vars['messages'] as $msg) {
-    $return .= $msg . '<br/>';
+  else {
+    rules_invoke_event('commerce_cib_transaction_fails', $order);
   }
-  return $return;
 }
 
 /**
@@ -387,6 +320,7 @@ function _commerce_cib_get_transaction($trid) {
  *
  * @param array $query An array with the URL query keys and values.
  * @param array $settings The $payment_method['settings'] array.
+ * @param string $market_customer Whether the market or customer url should be returned.
  *
  * @return string The encoded URL.
  */
@@ -403,22 +337,6 @@ function commerce_cib_create_url($query, $settings, $market_customer = 'market')
   return $url;
 }
 
-/**
- * Implements hook_mail().
- */
-function commerce_cib_mail($key, &$message, $params) {
-  switch ($key) {
-    case 'payment_finished' :
-    case 'timeout' :
-      if (isset($params['subject'])) {
-        $message['subject'] = $params['subject'];
-      }
-      if (isset($params['body'])) {
-        $message['body'][] = $params['body'];
-      }
-      break;
-  }
-}
 /**
  * Implements hook_cron().
  */
@@ -446,7 +364,12 @@ function commerce_cib_handle_timeouts() {
     $order = commerce_order_load($tt['order_id']);
     // Get transaction error codes and history.
     _commerce_cib_transaction_investigate($tt);
-    watchdog('commerce_cib', t('Transaction query returned: RC=!rc, RT=!rt, HISTORY=!history, ANUM=!anum, TRID=!trid', array('!rc' => $tt['rc'], '!rt' => $tt['rt'], '!history' => $tt['history'], '!anum' => ($tt['anum']) ? $tt['anum'] : 'n/a', '!trid' => $tt['trid'])));
+    $order->commerce_cib['trid'] = $tt['trid'];
+    $order->commerce_cib['rc'] = $tt['rc'];
+    $order->commerce_cib['rt'] = $tt['rt'];
+    $order->commerce_cib['history'] = $tt['history'];
+    $order->commerce_cib['anum'] = $tt['anum'];
+    watchdog('commerce_cib', 'Transaction query returned: RC=!rc, RT=!rt, HISTORY=!history, ANUM=!anum, TRID=!trid', array('!rc' => $tt['rc'], '!rt' => $tt['rt'], '!history' => $tt['history'], '!anum' => ($tt['anum']) ? $tt['anum'] : 'n/a', '!trid' => $tt['trid']));
 
     // Prepare variables for the notification email.
     // @todo: language should be determined by a more sane way.
@@ -458,13 +381,8 @@ function commerce_cib_handle_timeouts() {
       '!trid' => $tt['trid'],
       '!err_msg' => commerce_cib_get_errmsg($tt['rc']),
     );
-    $params['body'] = t("Dear Customer,\nYou are receiving this email because your email address (!email)\nwas given in an order at !site with transaction ID !trid.\n\nWe apologize but your transaction did not get through. The error was the following:\n!err_msg\n\nImportant\n\nIf your card is processed during the transaction, the payment processor is automatically reversing your transaction within 10 minutes.\n\nThe products are kept in your shopping cart at !site. \n We apologize for the inconvenience.\n\n-- !site team", $variables, array('langcode' => 'hu'));
-    $params['subject'] = t('http://!site transaction timeout', array('!site' => $variables['!site']), array('langcode' => 'hu'));
-    // Send the notification email.
-    if ($mail = drupal_mail('commerce_cib', 'timeout', $order->mail, $languages['hu'], $params)) {
-      watchdog('commerce_cib', t('Transaction notification email sent to !mail', array('!mail' => $order->mail)));
-    }
     commerce_order_status_update($order, 'canceled');
+    rules_invoke_event('commerce_cib_timeout', $order);
   }
 }
 
