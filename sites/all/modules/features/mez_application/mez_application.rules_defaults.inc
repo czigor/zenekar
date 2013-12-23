@@ -12,8 +12,9 @@ function mez_application_default_rules_configuration() {
   $items['rules_application_submission'] = entity_import('rules_config', '{ "rules_application_submission" : {
       "LABEL" : "Application submission",
       "PLUGIN" : "rule",
+      "OWNER" : "rules",
       "TAGS" : [ "entityform submission" ],
-      "REQUIRES" : [ "rules" ],
+      "REQUIRES" : [ "rules", "rules_i18n" ],
       "USES VARIABLES" : {
         "entityform" : { "label" : "Submitted Entityform", "type" : "entityform" },
         "entityform_type" : { "label" : "Entityform Type", "type" : "entityform_type" }
@@ -36,6 +37,7 @@ function mez_application_default_rules_configuration() {
   $items['rules_application_validation'] = entity_import('rules_config', '{ "rules_application_validation" : {
       "LABEL" : "Application validation",
       "PLUGIN" : "rule",
+      "OWNER" : "rules",
       "TAGS" : [ "entityform validation" ],
       "REQUIRES" : [ "rules" ],
       "USES VARIABLES" : {
