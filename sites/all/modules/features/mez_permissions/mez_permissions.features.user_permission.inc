@@ -10,6 +10,26 @@
 function mez_permissions_user_default_permissions() {
   $permissions = array();
 
+  // Exported permission: 'access administration menu'.
+  $permissions['access administration menu'] = array(
+    'name' => 'access administration menu',
+    'roles' => array(
+      'editor' => 'editor',
+      'site admin' => 'site admin',
+    ),
+    'module' => 'admin_menu',
+  );
+
+  // Exported permission: 'access administration pages'.
+  $permissions['access administration pages'] = array(
+    'name' => 'access administration pages',
+    'roles' => array(
+      'editor' => 'editor',
+      'site admin' => 'site admin',
+    ),
+    'module' => 'system',
+  );
+
   // Exported permission: 'access comments'.
   $permissions['access comments'] = array(
     'name' => 'access comments',
@@ -19,26 +39,18 @@ function mez_permissions_user_default_permissions() {
     'module' => 'comment',
   );
 
-  // Exported permission: 'access content'.
-  $permissions['access content'] = array(
-    'name' => 'access content',
-    'roles' => array(
-      'anonymous user' => 'anonymous user',
-      'authenticated user' => 'authenticated user',
-      'editor' => 'editor',
-      'site admin' => 'site admin',
-    ),
-    'module' => 'node',
+  // Exported permission: 'access site in maintenance mode'.
+  $permissions['access site in maintenance mode'] = array(
+    'name' => 'access site in maintenance mode',
+    'roles' => array(),
+    'module' => 'system',
   );
 
-  // Exported permission: 'access content overview'.
-  $permissions['access content overview'] = array(
-    'name' => 'access content overview',
-    'roles' => array(
-      'editor' => 'editor',
-      'site admin' => 'site admin',
-    ),
-    'module' => 'node',
+  // Exported permission: 'access site reports'.
+  $permissions['access site reports'] = array(
+    'name' => 'access site reports',
+    'roles' => array(),
+    'module' => 'system',
   );
 
   // Exported permission: 'access statistics'.
@@ -50,71 +62,18 @@ function mez_permissions_user_default_permissions() {
     'module' => 'statistics',
   );
 
-  // Exported permission: 'access user profiles'.
-  $permissions['access user profiles'] = array(
-    'name' => 'access user profiles',
-    'roles' => array(
-      'site admin' => 'site admin',
-    ),
-    'module' => 'user',
-  );
-
-  // Exported permission: 'add media from remote sources'.
-  $permissions['add media from remote sources'] = array(
-    'name' => 'add media from remote sources',
-    'roles' => array(
-      'editor' => 'editor',
-      'site admin' => 'site admin',
-    ),
-    'module' => 'media_internet',
-  );
-
-  // Exported permission: 'add terms in 1'.
-  $permissions['add terms in 1'] = array(
-    'name' => 'add terms in 1',
-    'roles' => array(
-      'editor' => 'editor',
-      'site admin' => 'site admin',
-    ),
-    'module' => 'taxonomy_access_fix',
-  );
-
-  // Exported permission: 'add terms in 2'.
-  $permissions['add terms in 2'] = array(
-    'name' => 'add terms in 2',
-    'roles' => array(
-      'editor' => 'editor',
-      'site admin' => 'site admin',
-    ),
-    'module' => 'taxonomy_access_fix',
-  );
-
-  // Exported permission: 'admin_classes'.
-  $permissions['admin_classes'] = array(
-    'name' => 'admin_classes',
+  // Exported permission: 'administer actions'.
+  $permissions['administer actions'] = array(
+    'name' => 'administer actions',
     'roles' => array(),
-    'module' => 'ds_ui',
+    'module' => 'system',
   );
 
-  // Exported permission: 'admin_display_suite'.
-  $permissions['admin_display_suite'] = array(
-    'name' => 'admin_display_suite',
+  // Exported permission: 'administer blocks'.
+  $permissions['administer blocks'] = array(
+    'name' => 'administer blocks',
     'roles' => array(),
-    'module' => 'ds',
-  );
-
-  // Exported permission: 'admin_fields'.
-  $permissions['admin_fields'] = array(
-    'name' => 'admin_fields',
-    'roles' => array(),
-    'module' => 'ds_ui',
-  );
-
-  // Exported permission: 'admin_view_modes'.
-  $permissions['admin_view_modes'] = array(
-    'name' => 'admin_view_modes',
-    'roles' => array(),
-    'module' => 'ds_ui',
+    'module' => 'block',
   );
 
   // Exported permission: 'administer comments'.
@@ -126,58 +85,46 @@ function mez_permissions_user_default_permissions() {
     'module' => 'comment',
   );
 
-  // Exported permission: 'administer content types'.
-  $permissions['administer content types'] = array(
-    'name' => 'administer content types',
+  // Exported permission: 'administer image styles'.
+  $permissions['administer image styles'] = array(
+    'name' => 'administer image styles',
     'roles' => array(),
-    'module' => 'node',
+    'module' => 'image',
   );
 
-  // Exported permission: 'administer entity translation'.
-  $permissions['administer entity translation'] = array(
-    'name' => 'administer entity translation',
+  // Exported permission: 'administer languages'.
+  $permissions['administer languages'] = array(
+    'name' => 'administer languages',
     'roles' => array(),
-    'module' => 'entity_translation',
+    'module' => 'locale',
   );
 
-  // Exported permission: 'administer file types'.
-  $permissions['administer file types'] = array(
-    'name' => 'administer file types',
+  // Exported permission: 'administer modules'.
+  $permissions['administer modules'] = array(
+    'name' => 'administer modules',
     'roles' => array(),
-    'module' => 'file_entity',
+    'module' => 'system',
   );
 
-  // Exported permission: 'administer files'.
-  $permissions['administer files'] = array(
-    'name' => 'administer files',
-    'roles' => array(
-      'editor' => 'editor',
-      'site admin' => 'site admin',
-    ),
-    'module' => 'file_entity',
-  );
-
-  // Exported permission: 'administer nodes'.
-  $permissions['administer nodes'] = array(
-    'name' => 'administer nodes',
-    'roles' => array(
-      'site admin' => 'site admin',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: 'administer permissions'.
-  $permissions['administer permissions'] = array(
-    'name' => 'administer permissions',
+  // Exported permission: 'administer pathauto'.
+  $permissions['administer pathauto'] = array(
+    'name' => 'administer pathauto',
     'roles' => array(),
-    'module' => 'user',
+    'module' => 'pathauto',
   );
 
-  // Exported permission: 'administer search'.
-  $permissions['administer search'] = array(
-    'name' => 'administer search',
+  // Exported permission: 'administer site configuration'.
+  $permissions['administer site configuration'] = array(
+    'name' => 'administer site configuration',
     'roles' => array(),
-    'module' => 'search',
+    'module' => 'system',
+  );
+
+  // Exported permission: 'administer software updates'.
+  $permissions['administer software updates'] = array(
+    'name' => 'administer software updates',
+    'roles' => array(),
+    'module' => 'system',
   );
 
   // Exported permission: 'administer statistics'.
@@ -194,6 +141,13 @@ function mez_permissions_user_default_permissions() {
     'module' => 'taxonomy',
   );
 
+  // Exported permission: 'administer themes'.
+  $permissions['administer themes'] = array(
+    'name' => 'administer themes',
+    'roles' => array(),
+    'module' => 'system',
+  );
+
   // Exported permission: 'administer url aliases'.
   $permissions['administer url aliases'] = array(
     'name' => 'administer url aliases',
@@ -201,118 +155,11 @@ function mez_permissions_user_default_permissions() {
     'module' => 'path',
   );
 
-  // Exported permission: 'administer users'.
-  $permissions['administer users'] = array(
-    'name' => 'administer users',
-    'roles' => array(
-      'site admin' => 'site admin',
-    ),
-    'module' => 'user',
-  );
-
-  // Exported permission: 'administer uuid'.
-  $permissions['administer uuid'] = array(
-    'name' => 'administer uuid',
+  // Exported permission: 'block IP addresses'.
+  $permissions['block IP addresses'] = array(
+    'name' => 'block IP addresses',
     'roles' => array(),
-    'module' => 'uuid',
-  );
-
-  // Exported permission: 'bypass file access'.
-  $permissions['bypass file access'] = array(
-    'name' => 'bypass file access',
-    'roles' => array(),
-    'module' => 'file_entity',
-  );
-
-  // Exported permission: 'bypass node access'.
-  $permissions['bypass node access'] = array(
-    'name' => 'bypass node access',
-    'roles' => array(),
-    'module' => 'node',
-  );
-
-  // Exported permission: 'cancel account'.
-  $permissions['cancel account'] = array(
-    'name' => 'cancel account',
-    'roles' => array(),
-    'module' => 'user',
-  );
-
-  // Exported permission: 'change own username'.
-  $permissions['change own username'] = array(
-    'name' => 'change own username',
-    'roles' => array(),
-    'module' => 'user',
-  );
-
-  // Exported permission: 'create composer content'.
-  $permissions['create composer content'] = array(
-    'name' => 'create composer content',
-    'roles' => array(
-      'editor' => 'editor',
-      'site admin' => 'site admin',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: 'create concert content'.
-  $permissions['create concert content'] = array(
-    'name' => 'create concert content',
-    'roles' => array(
-      'editor' => 'editor',
-      'site admin' => 'site admin',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: 'create files'.
-  $permissions['create files'] = array(
-    'name' => 'create files',
-    'roles' => array(
-      'editor' => 'editor',
-      'site admin' => 'site admin',
-    ),
-    'module' => 'file_entity',
-  );
-
-  // Exported permission: 'create news content'.
-  $permissions['create news content'] = array(
-    'name' => 'create news content',
-    'roles' => array(
-      'editor' => 'editor',
-      'site admin' => 'site admin',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: 'create page content'.
-  $permissions['create page content'] = array(
-    'name' => 'create page content',
-    'roles' => array(
-      'editor' => 'editor',
-      'site admin' => 'site admin',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: 'create person content'.
-  $permissions['create person content'] = array(
-    'name' => 'create person content',
-    'roles' => array(
-      'editor' => 'editor',
-      'site admin' => 'site admin',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: 'create piece content'.
-  $permissions['create piece content'] = array(
-    'name' => 'create piece content',
-    'roles' => array(
-      'editor' => 'editor',
-      'site admin' => 'site admin',
-    ),
-    'module' => 'node',
+    'module' => 'system',
   );
 
   // Exported permission: 'create url aliases'.
@@ -325,387 +172,11 @@ function mez_permissions_user_default_permissions() {
     'module' => 'path',
   );
 
-  // Exported permission: 'delete any audio files'.
-  $permissions['delete any audio files'] = array(
-    'name' => 'delete any audio files',
-    'roles' => array(
-      'editor' => 'editor',
-      'site admin' => 'site admin',
-    ),
-    'module' => 'file_entity',
-  );
-
-  // Exported permission: 'delete any composer content'.
-  $permissions['delete any composer content'] = array(
-    'name' => 'delete any composer content',
-    'roles' => array(
-      'editor' => 'editor',
-      'site admin' => 'site admin',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: 'delete any concert content'.
-  $permissions['delete any concert content'] = array(
-    'name' => 'delete any concert content',
-    'roles' => array(
-      'editor' => 'editor',
-      'site admin' => 'site admin',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: 'delete any document files'.
-  $permissions['delete any document files'] = array(
-    'name' => 'delete any document files',
-    'roles' => array(
-      'editor' => 'editor',
-      'site admin' => 'site admin',
-    ),
-    'module' => 'file_entity',
-  );
-
-  // Exported permission: 'delete any image files'.
-  $permissions['delete any image files'] = array(
-    'name' => 'delete any image files',
-    'roles' => array(
-      'editor' => 'editor',
-      'site admin' => 'site admin',
-    ),
-    'module' => 'file_entity',
-  );
-
-  // Exported permission: 'delete any news content'.
-  $permissions['delete any news content'] = array(
-    'name' => 'delete any news content',
-    'roles' => array(
-      'editor' => 'editor',
-      'site admin' => 'site admin',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: 'delete any page content'.
-  $permissions['delete any page content'] = array(
-    'name' => 'delete any page content',
-    'roles' => array(
-      'editor' => 'editor',
-      'site admin' => 'site admin',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: 'delete any person content'.
-  $permissions['delete any person content'] = array(
-    'name' => 'delete any person content',
-    'roles' => array(
-      'editor' => 'editor',
-      'site admin' => 'site admin',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: 'delete any piece content'.
-  $permissions['delete any piece content'] = array(
-    'name' => 'delete any piece content',
-    'roles' => array(
-      'editor' => 'editor',
-      'site admin' => 'site admin',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: 'delete any video files'.
-  $permissions['delete any video files'] = array(
-    'name' => 'delete any video files',
-    'roles' => array(
-      'editor' => 'editor',
-      'site admin' => 'site admin',
-    ),
-    'module' => 'file_entity',
-  );
-
-  // Exported permission: 'delete own audio files'.
-  $permissions['delete own audio files'] = array(
-    'name' => 'delete own audio files',
-    'roles' => array(
-      'editor' => 'editor',
-    ),
-    'module' => 'file_entity',
-  );
-
-  // Exported permission: 'delete own composer content'.
-  $permissions['delete own composer content'] = array(
-    'name' => 'delete own composer content',
+  // Exported permission: 'display drupal links'.
+  $permissions['display drupal links'] = array(
+    'name' => 'display drupal links',
     'roles' => array(),
-    'module' => 'node',
-  );
-
-  // Exported permission: 'delete own concert content'.
-  $permissions['delete own concert content'] = array(
-    'name' => 'delete own concert content',
-    'roles' => array(),
-    'module' => 'node',
-  );
-
-  // Exported permission: 'delete own document files'.
-  $permissions['delete own document files'] = array(
-    'name' => 'delete own document files',
-    'roles' => array(
-      'editor' => 'editor',
-    ),
-    'module' => 'file_entity',
-  );
-
-  // Exported permission: 'delete own image files'.
-  $permissions['delete own image files'] = array(
-    'name' => 'delete own image files',
-    'roles' => array(
-      'editor' => 'editor',
-    ),
-    'module' => 'file_entity',
-  );
-
-  // Exported permission: 'delete own news content'.
-  $permissions['delete own news content'] = array(
-    'name' => 'delete own news content',
-    'roles' => array(),
-    'module' => 'node',
-  );
-
-  // Exported permission: 'delete own page content'.
-  $permissions['delete own page content'] = array(
-    'name' => 'delete own page content',
-    'roles' => array(),
-    'module' => 'node',
-  );
-
-  // Exported permission: 'delete own person content'.
-  $permissions['delete own person content'] = array(
-    'name' => 'delete own person content',
-    'roles' => array(),
-    'module' => 'node',
-  );
-
-  // Exported permission: 'delete own piece content'.
-  $permissions['delete own piece content'] = array(
-    'name' => 'delete own piece content',
-    'roles' => array(),
-    'module' => 'node',
-  );
-
-  // Exported permission: 'delete own video files'.
-  $permissions['delete own video files'] = array(
-    'name' => 'delete own video files',
-    'roles' => array(
-      'editor' => 'editor',
-    ),
-    'module' => 'file_entity',
-  );
-
-  // Exported permission: 'delete revisions'.
-  $permissions['delete revisions'] = array(
-    'name' => 'delete revisions',
-    'roles' => array(
-      'site admin' => 'site admin',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: 'delete terms in instruments'.
-  $permissions['delete terms in instruments'] = array(
-    'name' => 'delete terms in instruments',
-    'roles' => array(
-      'site admin' => 'site admin',
-    ),
-    'module' => 'taxonomy',
-  );
-
-  // Exported permission: 'delete terms in media'.
-  $permissions['delete terms in media'] = array(
-    'name' => 'delete terms in media',
-    'roles' => array(
-      'site admin' => 'site admin',
-    ),
-    'module' => 'taxonomy',
-  );
-
-  // Exported permission: 'download any audio files'.
-  $permissions['download any audio files'] = array(
-    'name' => 'download any audio files',
-    'roles' => array(),
-    'module' => 'file_entity',
-  );
-
-  // Exported permission: 'download any document files'.
-  $permissions['download any document files'] = array(
-    'name' => 'download any document files',
-    'roles' => array(),
-    'module' => 'file_entity',
-  );
-
-  // Exported permission: 'download any image files'.
-  $permissions['download any image files'] = array(
-    'name' => 'download any image files',
-    'roles' => array(),
-    'module' => 'file_entity',
-  );
-
-  // Exported permission: 'download any video files'.
-  $permissions['download any video files'] = array(
-    'name' => 'download any video files',
-    'roles' => array(),
-    'module' => 'file_entity',
-  );
-
-  // Exported permission: 'download own audio files'.
-  $permissions['download own audio files'] = array(
-    'name' => 'download own audio files',
-    'roles' => array(
-      'editor' => 'editor',
-      'site admin' => 'site admin',
-    ),
-    'module' => 'file_entity',
-  );
-
-  // Exported permission: 'download own document files'.
-  $permissions['download own document files'] = array(
-    'name' => 'download own document files',
-    'roles' => array(
-      'editor' => 'editor',
-      'site admin' => 'site admin',
-    ),
-    'module' => 'file_entity',
-  );
-
-  // Exported permission: 'download own image files'.
-  $permissions['download own image files'] = array(
-    'name' => 'download own image files',
-    'roles' => array(
-      'editor' => 'editor',
-      'site admin' => 'site admin',
-    ),
-    'module' => 'file_entity',
-  );
-
-  // Exported permission: 'download own video files'.
-  $permissions['download own video files'] = array(
-    'name' => 'download own video files',
-    'roles' => array(
-      'editor' => 'editor',
-      'site admin' => 'site admin',
-    ),
-    'module' => 'file_entity',
-  );
-
-  // Exported permission: 'edit any audio files'.
-  $permissions['edit any audio files'] = array(
-    'name' => 'edit any audio files',
-    'roles' => array(
-      'editor' => 'editor',
-      'site admin' => 'site admin',
-    ),
-    'module' => 'file_entity',
-  );
-
-  // Exported permission: 'edit any composer content'.
-  $permissions['edit any composer content'] = array(
-    'name' => 'edit any composer content',
-    'roles' => array(
-      'editor' => 'editor',
-      'site admin' => 'site admin',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: 'edit any concert content'.
-  $permissions['edit any concert content'] = array(
-    'name' => 'edit any concert content',
-    'roles' => array(
-      'editor' => 'editor',
-      'site admin' => 'site admin',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: 'edit any document files'.
-  $permissions['edit any document files'] = array(
-    'name' => 'edit any document files',
-    'roles' => array(
-      'editor' => 'editor',
-      'site admin' => 'site admin',
-    ),
-    'module' => 'file_entity',
-  );
-
-  // Exported permission: 'edit any image files'.
-  $permissions['edit any image files'] = array(
-    'name' => 'edit any image files',
-    'roles' => array(
-      'editor' => 'editor',
-      'site admin' => 'site admin',
-    ),
-    'module' => 'file_entity',
-  );
-
-  // Exported permission: 'edit any news content'.
-  $permissions['edit any news content'] = array(
-    'name' => 'edit any news content',
-    'roles' => array(
-      'editor' => 'editor',
-      'site admin' => 'site admin',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: 'edit any page content'.
-  $permissions['edit any page content'] = array(
-    'name' => 'edit any page content',
-    'roles' => array(
-      'editor' => 'editor',
-      'site admin' => 'site admin',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: 'edit any person content'.
-  $permissions['edit any person content'] = array(
-    'name' => 'edit any person content',
-    'roles' => array(
-      'editor' => 'editor',
-      'site admin' => 'site admin',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: 'edit any piece content'.
-  $permissions['edit any piece content'] = array(
-    'name' => 'edit any piece content',
-    'roles' => array(
-      'editor' => 'editor',
-      'site admin' => 'site admin',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: 'edit any video files'.
-  $permissions['edit any video files'] = array(
-    'name' => 'edit any video files',
-    'roles' => array(
-      'editor' => 'editor',
-      'site admin' => 'site admin',
-    ),
-    'module' => 'file_entity',
-  );
-
-  // Exported permission: 'edit own audio files'.
-  $permissions['edit own audio files'] = array(
-    'name' => 'edit own audio files',
-    'roles' => array(
-      'editor' => 'editor',
-      'site admin' => 'site admin',
-    ),
-    'module' => 'file_entity',
+    'module' => 'admin_menu',
   );
 
   // Exported permission: 'edit own comments'.
@@ -717,107 +188,18 @@ function mez_permissions_user_default_permissions() {
     'module' => 'comment',
   );
 
-  // Exported permission: 'edit own composer content'.
-  $permissions['edit own composer content'] = array(
-    'name' => 'edit own composer content',
+  // Exported permission: 'flush caches'.
+  $permissions['flush caches'] = array(
+    'name' => 'flush caches',
     'roles' => array(),
-    'module' => 'node',
+    'module' => 'admin_menu',
   );
 
-  // Exported permission: 'edit own concert content'.
-  $permissions['edit own concert content'] = array(
-    'name' => 'edit own concert content',
+  // Exported permission: 'notify of path changes'.
+  $permissions['notify of path changes'] = array(
+    'name' => 'notify of path changes',
     'roles' => array(),
-    'module' => 'node',
-  );
-
-  // Exported permission: 'edit own document files'.
-  $permissions['edit own document files'] = array(
-    'name' => 'edit own document files',
-    'roles' => array(
-      'editor' => 'editor',
-      'site admin' => 'site admin',
-    ),
-    'module' => 'file_entity',
-  );
-
-  // Exported permission: 'edit own image files'.
-  $permissions['edit own image files'] = array(
-    'name' => 'edit own image files',
-    'roles' => array(
-      'editor' => 'editor',
-      'site admin' => 'site admin',
-    ),
-    'module' => 'file_entity',
-  );
-
-  // Exported permission: 'edit own news content'.
-  $permissions['edit own news content'] = array(
-    'name' => 'edit own news content',
-    'roles' => array(),
-    'module' => 'node',
-  );
-
-  // Exported permission: 'edit own page content'.
-  $permissions['edit own page content'] = array(
-    'name' => 'edit own page content',
-    'roles' => array(),
-    'module' => 'node',
-  );
-
-  // Exported permission: 'edit own person content'.
-  $permissions['edit own person content'] = array(
-    'name' => 'edit own person content',
-    'roles' => array(),
-    'module' => 'node',
-  );
-
-  // Exported permission: 'edit own piece content'.
-  $permissions['edit own piece content'] = array(
-    'name' => 'edit own piece content',
-    'roles' => array(),
-    'module' => 'node',
-  );
-
-  // Exported permission: 'edit own video files'.
-  $permissions['edit own video files'] = array(
-    'name' => 'edit own video files',
-    'roles' => array(
-      'editor' => 'editor',
-      'site admin' => 'site admin',
-    ),
-    'module' => 'file_entity',
-  );
-
-  // Exported permission: 'edit terms in instruments'.
-  $permissions['edit terms in instruments'] = array(
-    'name' => 'edit terms in instruments',
-    'roles' => array(
-      'editor' => 'editor',
-      'site admin' => 'site admin',
-    ),
-    'module' => 'taxonomy',
-  );
-
-  // Exported permission: 'edit terms in media'.
-  $permissions['edit terms in media'] = array(
-    'name' => 'edit terms in media',
-    'roles' => array(
-      'editor' => 'editor',
-      'site admin' => 'site admin',
-    ),
-    'module' => 'taxonomy',
-  );
-
-  // Exported permission: 'import media'.
-  $permissions['import media'] = array(
-    'name' => 'import media',
-    'roles' => array(
-      'authenticated user' => 'authenticated user',
-      'editor' => 'editor',
-      'site admin' => 'site admin',
-    ),
-    'module' => 'media',
+    'module' => 'pathauto',
   );
 
   // Exported permission: 'post comments'.
@@ -827,32 +209,6 @@ function mez_permissions_user_default_permissions() {
       'authenticated user' => 'authenticated user',
     ),
     'module' => 'comment',
-  );
-
-  // Exported permission: 'revert revisions'.
-  $permissions['revert revisions'] = array(
-    'name' => 'revert revisions',
-    'roles' => array(
-      'site admin' => 'site admin',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: 'search content'.
-  $permissions['search content'] = array(
-    'name' => 'search content',
-    'roles' => array(
-      'anonymous user' => 'anonymous user',
-      'authenticated user' => 'authenticated user',
-    ),
-    'module' => 'search',
-  );
-
-  // Exported permission: 'select account cancellation method'.
-  $permissions['select account cancellation method'] = array(
-    'name' => 'select account cancellation method',
-    'roles' => array(),
-    'module' => 'user',
   );
 
   // Exported permission: 'skip comment approval'.
@@ -874,20 +230,11 @@ function mez_permissions_user_default_permissions() {
     'module' => 'location',
   );
 
-  // Exported permission: 'toggle field translatability'.
-  $permissions['toggle field translatability'] = array(
-    'name' => 'toggle field translatability',
+  // Exported permission: 'translate admin strings'.
+  $permissions['translate admin strings'] = array(
+    'name' => 'translate admin strings',
     'roles' => array(),
-    'module' => 'entity_translation',
-  );
-
-  // Exported permission: 'translate any entity'.
-  $permissions['translate any entity'] = array(
-    'name' => 'translate any entity',
-    'roles' => array(
-      'editor' => 'editor',
-    ),
-    'module' => 'entity_translation',
+    'module' => 'i18n_string',
   );
 
   // Exported permission: 'translate content'.
@@ -900,13 +247,6 @@ function mez_permissions_user_default_permissions() {
     'module' => 'translation',
   );
 
-  // Exported permission: 'translate file entities'.
-  $permissions['translate file entities'] = array(
-    'name' => 'translate file entities',
-    'roles' => array(),
-    'module' => 'entity_translation',
-  );
-
   // Exported permission: 'translate interface'.
   $permissions['translate interface'] = array(
     'name' => 'translate interface',
@@ -914,62 +254,11 @@ function mez_permissions_user_default_permissions() {
     'module' => 'locale',
   );
 
-  // Exported permission: 'translate node entities'.
-  $permissions['translate node entities'] = array(
-    'name' => 'translate node entities',
-    'roles' => array(
-      'editor' => 'editor',
-    ),
-    'module' => 'entity_translation',
-  );
-
-  // Exported permission: 'translate taxonomy_term entities'.
-  $permissions['translate taxonomy_term entities'] = array(
-    'name' => 'translate taxonomy_term entities',
-    'roles' => array(
-      'editor' => 'editor',
-    ),
-    'module' => 'entity_translation',
-  );
-
-  // Exported permission: 'use advanced search'.
-  $permissions['use advanced search'] = array(
-    'name' => 'use advanced search',
-    'roles' => array(
-      'anonymous user' => 'anonymous user',
-      'authenticated user' => 'authenticated user',
-    ),
-    'module' => 'search',
-  );
-
-  // Exported permission: 'view author on comment'.
-  $permissions['view author on comment'] = array(
-    'name' => 'view author on comment',
-    'roles' => array(
-      'anonymous user' => 'anonymous user',
-      'authenticated user' => 'authenticated user',
-    ),
-    'module' => 'ds_extras',
-  );
-
-  // Exported permission: 'view author on node'.
-  $permissions['view author on node'] = array(
-    'name' => 'view author on node',
-    'roles' => array(
-      'anonymous user' => 'anonymous user',
-      'authenticated user' => 'authenticated user',
-    ),
-    'module' => 'ds_extras',
-  );
-
-  // Exported permission: 'view comments on node'.
-  $permissions['view comments on node'] = array(
-    'name' => 'view comments on node',
-    'roles' => array(
-      'anonymous user' => 'anonymous user',
-      'authenticated user' => 'authenticated user',
-    ),
-    'module' => 'ds_extras',
+  // Exported permission: 'translate user-defined strings'.
+  $permissions['translate user-defined strings'] = array(
+    'name' => 'translate user-defined strings',
+    'roles' => array(),
+    'module' => 'i18n_string',
   );
 
   // Exported permission: 'view date repeats'.
@@ -977,36 +266,6 @@ function mez_permissions_user_default_permissions() {
     'name' => 'view date repeats',
     'roles' => array(),
     'module' => 'date_repeat_field',
-  );
-
-  // Exported permission: 'view files'.
-  $permissions['view files'] = array(
-    'name' => 'view files',
-    'roles' => array(
-      'anonymous user' => 'anonymous user',
-      'authenticated user' => 'authenticated user',
-    ),
-    'module' => 'file_entity',
-  );
-
-  // Exported permission: 'view links on comment'.
-  $permissions['view links on comment'] = array(
-    'name' => 'view links on comment',
-    'roles' => array(
-      'anonymous user' => 'anonymous user',
-      'authenticated user' => 'authenticated user',
-    ),
-    'module' => 'ds_extras',
-  );
-
-  // Exported permission: 'view links on node'.
-  $permissions['view links on node'] = array(
-    'name' => 'view links on node',
-    'roles' => array(
-      'anonymous user' => 'anonymous user',
-      'authenticated user' => 'authenticated user',
-    ),
-    'module' => 'ds_extras',
   );
 
   // Exported permission: 'view location directory'.
@@ -1019,26 +278,6 @@ function mez_permissions_user_default_permissions() {
     'module' => 'location',
   );
 
-  // Exported permission: 'view more_link on taxonomy_term'.
-  $permissions['view more_link on taxonomy_term'] = array(
-    'name' => 'view more_link on taxonomy_term',
-    'roles' => array(
-      'anonymous user' => 'anonymous user',
-      'authenticated user' => 'authenticated user',
-    ),
-    'module' => 'ds_extras',
-  );
-
-  // Exported permission: 'view name on user'.
-  $permissions['view name on user'] = array(
-    'name' => 'view name on user',
-    'roles' => array(
-      'anonymous user' => 'anonymous user',
-      'authenticated user' => 'authenticated user',
-    ),
-    'module' => 'ds_extras',
-  );
-
   // Exported permission: 'view node location table'.
   $permissions['view node location table'] = array(
     'name' => 'view node location table',
@@ -1047,52 +286,6 @@ function mez_permissions_user_default_permissions() {
       'site admin' => 'site admin',
     ),
     'module' => 'location',
-  );
-
-  // Exported permission: 'view node_link on node'.
-  $permissions['view node_link on node'] = array(
-    'name' => 'view node_link on node',
-    'roles' => array(
-      'anonymous user' => 'anonymous user',
-      'authenticated user' => 'authenticated user',
-    ),
-    'module' => 'ds_extras',
-  );
-
-  // Exported permission: 'view own files'.
-  $permissions['view own files'] = array(
-    'name' => 'view own files',
-    'roles' => array(
-      'authenticated user' => 'authenticated user',
-    ),
-    'module' => 'file_entity',
-  );
-
-  // Exported permission: 'view own private files'.
-  $permissions['view own private files'] = array(
-    'name' => 'view own private files',
-    'roles' => array(),
-    'module' => 'file_entity',
-  );
-
-  // Exported permission: 'view own unpublished content'.
-  $permissions['view own unpublished content'] = array(
-    'name' => 'view own unpublished content',
-    'roles' => array(
-      'editor' => 'editor',
-      'site admin' => 'site admin',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: 'view permalink on comment'.
-  $permissions['view permalink on comment'] = array(
-    'name' => 'view permalink on comment',
-    'roles' => array(
-      'anonymous user' => 'anonymous user',
-      'authenticated user' => 'authenticated user',
-    ),
-    'module' => 'ds_extras',
   );
 
   // Exported permission: 'view post access counter'.
@@ -1104,111 +297,11 @@ function mez_permissions_user_default_permissions() {
     'module' => 'statistics',
   );
 
-  // Exported permission: 'view post_date on comment'.
-  $permissions['view post_date on comment'] = array(
-    'name' => 'view post_date on comment',
-    'roles' => array(
-      'anonymous user' => 'anonymous user',
-      'authenticated user' => 'authenticated user',
-    ),
-    'module' => 'ds_extras',
-  );
-
-  // Exported permission: 'view post_date on node'.
-  $permissions['view post_date on node'] = array(
-    'name' => 'view post_date on node',
-    'roles' => array(
-      'anonymous user' => 'anonymous user',
-      'authenticated user' => 'authenticated user',
-    ),
-    'module' => 'ds_extras',
-  );
-
-  // Exported permission: 'view private files'.
-  $permissions['view private files'] = array(
-    'name' => 'view private files',
+  // Exported permission: 'view the administration theme'.
+  $permissions['view the administration theme'] = array(
+    'name' => 'view the administration theme',
     'roles' => array(),
-    'module' => 'file_entity',
-  );
-
-  // Exported permission: 'view revisions'.
-  $permissions['view revisions'] = array(
-    'name' => 'view revisions',
-    'roles' => array(
-      'editor' => 'editor',
-      'site admin' => 'site admin',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: 'view search_info on node'.
-  $permissions['view search_info on node'] = array(
-    'name' => 'view search_info on node',
-    'roles' => array(
-      'anonymous user' => 'anonymous user',
-      'authenticated user' => 'authenticated user',
-    ),
-    'module' => 'ds_extras',
-  );
-
-  // Exported permission: 'view search_snippet on node'.
-  $permissions['view search_snippet on node'] = array(
-    'name' => 'view search_snippet on node',
-    'roles' => array(
-      'anonymous user' => 'anonymous user',
-      'authenticated user' => 'authenticated user',
-    ),
-    'module' => 'ds_extras',
-  );
-
-  // Exported permission: 'view submitted on comment'.
-  $permissions['view submitted on comment'] = array(
-    'name' => 'view submitted on comment',
-    'roles' => array(
-      'anonymous user' => 'anonymous user',
-      'authenticated user' => 'authenticated user',
-    ),
-    'module' => 'ds_extras',
-  );
-
-  // Exported permission: 'view submitted_by on node'.
-  $permissions['view submitted_by on node'] = array(
-    'name' => 'view submitted_by on node',
-    'roles' => array(
-      'anonymous user' => 'anonymous user',
-      'authenticated user' => 'authenticated user',
-    ),
-    'module' => 'ds_extras',
-  );
-
-  // Exported permission: 'view title on comment'.
-  $permissions['view title on comment'] = array(
-    'name' => 'view title on comment',
-    'roles' => array(
-      'anonymous user' => 'anonymous user',
-      'authenticated user' => 'authenticated user',
-    ),
-    'module' => 'ds_extras',
-  );
-
-  // Exported permission: 'view title on node'.
-  $permissions['view title on node'] = array(
-    'name' => 'view title on node',
-    'roles' => array(
-      'anonymous user' => 'anonymous user',
-      'authenticated user' => 'authenticated user',
-    ),
-    'module' => 'ds_extras',
-  );
-
-  // Exported permission: 'view title on taxonomy_term'.
-  $permissions['view title on taxonomy_term'] = array(
-    'name' => 'view title on taxonomy_term',
-    'roles' => array(
-      'anonymous user' => 'anonymous user',
-      'authenticated user' => 'authenticated user',
-    ),
-    'module' => 'ds_extras',
+    'module' => 'system',
   );
 
   // Exported permission: 'view user location table'.
