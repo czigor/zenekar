@@ -1,7 +1,7 @@
 name = MEZ seats view
 core = 7.x
-package = MEZ
-version = 7.x-1.0-20131014dev2
+package = MEZ Commerce
+version = 7.x-1.0-20131223dev1
 project = mez_seats_view
 dependencies[] = sexy_exposed
 dependencies[] = views

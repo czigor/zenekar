@@ -1,7 +1,7 @@
 name = MEZ seat importer
 core = 7.x
-package = Features
-version = 7.x-1.0-20130828dev1
+package = MEZ Commerce
+version = 7.x-1.0-20131223dev1
 project = mez_seat_importer
 dependencies[] = ctools
 dependencies[] = feeds
