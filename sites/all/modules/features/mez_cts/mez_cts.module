@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the MEZ cts feature.
- */
-
-include_once 'mez_cts.features.inc';
