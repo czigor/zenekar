@@ -385,7 +385,10 @@ function  mez_ticket_hacks_commerce_product_presave($product) {
   $seat_nid = field_get_items('commerce_product', $product, 'field_seat');
   $concert_nid = field_get_items('commerce_product', $product, 'field_concert');
   $product->sku = $concert_nid[0]['target_id'] . '-' . $seat_nid[0]['target_id'];
-  $product->title = $product->sku;
+  $seat_w = entity_metadata_wrapper('node', $seat_nid[0]['target_id']);
+  $concert_w = entity_metadata_wrapper('node', $concert_nid[0]['target_id']);
+  // Tickets have only Hungarian titles.
+  $product->title = $concert_w->title->value() . ', ' . $seat_w->field_seat_floor->value() . ', ' . $seat_w->field_seat_side->value() . ' ' . $seat_w->field_seat_row->value() . '. sor ' . $seat_w->field_seat_number->value() . '. szék';;
 }
 
 /**
@@ -494,8 +497,6 @@ function mez_ticket_from_seat($node, $context) {
 
   // Else create the ticket.
   $ticket = commerce_product_new('ticket');
-  $ticket->sku = $context['concert'] . '-' . $node->nid;
-  $ticket->title = $ticket->sku;
   $ticket->field_concert[LANGUAGE_NONE][0]['target_id'] = $context['concert'];
   $ticket->commerce_price[LANGUAGE_NONE][0] = array(
     'amount' => $context['price'],
