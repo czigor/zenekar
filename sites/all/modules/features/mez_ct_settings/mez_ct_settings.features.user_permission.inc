@@ -39,11 +39,73 @@ function mez_ct_settings_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
+  // Exported permission: 'add terms in 1'.
+  $permissions['add terms in 1'] = array(
+    'name' => 'add terms in 1',
+    'roles' => array(
+      'editor' => 'editor',
+      'site admin' => 'site admin',
+    ),
+    'module' => 'taxonomy_access_fix',
+  );
+
+  // Exported permission: 'add terms in 2'.
+  $permissions['add terms in 2'] = array(
+    'name' => 'add terms in 2',
+    'roles' => array(
+      'editor' => 'editor',
+      'site admin' => 'site admin',
+    ),
+    'module' => 'taxonomy_access_fix',
+  );
+
+  // Exported permission: 'admin_classes'.
+  $permissions['admin_classes'] = array(
+    'name' => 'admin_classes',
+    'roles' => array(),
+    'module' => 'ds_ui',
+  );
+
+  // Exported permission: 'admin_display_suite'.
+  $permissions['admin_display_suite'] = array(
+    'name' => 'admin_display_suite',
+    'roles' => array(),
+    'module' => 'ds',
+  );
+
+  // Exported permission: 'admin_fields'.
+  $permissions['admin_fields'] = array(
+    'name' => 'admin_fields',
+    'roles' => array(),
+    'module' => 'ds_ui',
+  );
+
+  // Exported permission: 'admin_view_modes'.
+  $permissions['admin_view_modes'] = array(
+    'name' => 'admin_view_modes',
+    'roles' => array(),
+    'module' => 'ds_ui',
+  );
+
+  // Exported permission: 'administer content translations'.
+  $permissions['administer content translations'] = array(
+    'name' => 'administer content translations',
+    'roles' => array(),
+    'module' => 'i18n_node',
+  );
+
   // Exported permission: 'administer content types'.
   $permissions['administer content types'] = array(
     'name' => 'administer content types',
     'roles' => array(),
     'module' => 'node',
+  );
+
+  // Exported permission: 'administer entity translation'.
+  $permissions['administer entity translation'] = array(
+    'name' => 'administer entity translation',
+    'roles' => array(),
+    'module' => 'entity_translation',
   );
 
   // Exported permission: 'administer field collections'.
@@ -183,6 +245,24 @@ function mez_ct_settings_user_default_permissions() {
       'site admin' => 'site admin',
     ),
     'module' => 'node',
+  );
+
+  // Exported permission: 'delete terms in instruments'.
+  $permissions['delete terms in instruments'] = array(
+    'name' => 'delete terms in instruments',
+    'roles' => array(
+      'site admin' => 'site admin',
+    ),
+    'module' => 'taxonomy',
+  );
+
+  // Exported permission: 'delete terms in media'.
+  $permissions['delete terms in media'] = array(
+    'name' => 'delete terms in media',
+    'roles' => array(
+      'site admin' => 'site admin',
+    ),
+    'module' => 'taxonomy',
   );
 
   // Exported permission: 'edit field_active'.
@@ -365,6 +445,26 @@ function mez_ct_settings_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
+  // Exported permission: 'edit terms in instruments'.
+  $permissions['edit terms in instruments'] = array(
+    'name' => 'edit terms in instruments',
+    'roles' => array(
+      'editor' => 'editor',
+      'site admin' => 'site admin',
+    ),
+    'module' => 'taxonomy',
+  );
+
+  // Exported permission: 'edit terms in media'.
+  $permissions['edit terms in media'] = array(
+    'name' => 'edit terms in media',
+    'roles' => array(
+      'editor' => 'editor',
+      'site admin' => 'site admin',
+    ),
+    'module' => 'taxonomy',
+  );
+
   // Exported permission: 'revert revisions'.
   $permissions['revert revisions'] = array(
     'name' => 'revert revisions',
@@ -372,6 +472,84 @@ function mez_ct_settings_user_default_permissions() {
       'site admin' => 'site admin',
     ),
     'module' => 'node',
+  );
+
+  // Exported permission: 'toggle field translatability'.
+  $permissions['toggle field translatability'] = array(
+    'name' => 'toggle field translatability',
+    'roles' => array(),
+    'module' => 'entity_translation',
+  );
+
+  // Exported permission: 'translate any entity'.
+  $permissions['translate any entity'] = array(
+    'name' => 'translate any entity',
+    'roles' => array(
+      'editor' => 'editor',
+    ),
+    'module' => 'entity_translation',
+  );
+
+  // Exported permission: 'translate file entities'.
+  $permissions['translate file entities'] = array(
+    'name' => 'translate file entities',
+    'roles' => array(),
+    'module' => 'entity_translation',
+  );
+
+  // Exported permission: 'translate node entities'.
+  $permissions['translate node entities'] = array(
+    'name' => 'translate node entities',
+    'roles' => array(
+      'editor' => 'editor',
+    ),
+    'module' => 'entity_translation',
+  );
+
+  // Exported permission: 'translate taxonomy_term entities'.
+  $permissions['translate taxonomy_term entities'] = array(
+    'name' => 'translate taxonomy_term entities',
+    'roles' => array(
+      'editor' => 'editor',
+    ),
+    'module' => 'entity_translation',
+  );
+
+  // Exported permission: 'view author on comment'.
+  $permissions['view author on comment'] = array(
+    'name' => 'view author on comment',
+    'roles' => array(
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'ds_extras',
+  );
+
+  // Exported permission: 'view author on node'.
+  $permissions['view author on node'] = array(
+    'name' => 'view author on node',
+    'roles' => array(
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'ds_extras',
+  );
+
+  // Exported permission: 'view changed_date on node'.
+  $permissions['view changed_date on node'] = array(
+    'name' => 'view changed_date on node',
+    'roles' => array(),
+    'module' => 'ds_extras',
+  );
+
+  // Exported permission: 'view comments on node'.
+  $permissions['view comments on node'] = array(
+    'name' => 'view comments on node',
+    'roles' => array(
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'ds_extras',
   );
 
   // Exported permission: 'view field_active'.
@@ -484,6 +662,56 @@ function mez_ct_settings_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
+  // Exported permission: 'view links on comment'.
+  $permissions['view links on comment'] = array(
+    'name' => 'view links on comment',
+    'roles' => array(
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'ds_extras',
+  );
+
+  // Exported permission: 'view links on node'.
+  $permissions['view links on node'] = array(
+    'name' => 'view links on node',
+    'roles' => array(
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'ds_extras',
+  );
+
+  // Exported permission: 'view more_link on taxonomy_term'.
+  $permissions['view more_link on taxonomy_term'] = array(
+    'name' => 'view more_link on taxonomy_term',
+    'roles' => array(
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'ds_extras',
+  );
+
+  // Exported permission: 'view name on user'.
+  $permissions['view name on user'] = array(
+    'name' => 'view name on user',
+    'roles' => array(
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'ds_extras',
+  );
+
+  // Exported permission: 'view node_link on node'.
+  $permissions['view node_link on node'] = array(
+    'name' => 'view node_link on node',
+    'roles' => array(
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'ds_extras',
+  );
+
   // Exported permission: 'view own field_active'.
   $permissions['view own field_active'] = array(
     'name' => 'view own field_active',
@@ -564,6 +792,36 @@ function mez_ct_settings_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: 'view permalink on comment'.
+  $permissions['view permalink on comment'] = array(
+    'name' => 'view permalink on comment',
+    'roles' => array(
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'ds_extras',
+  );
+
+  // Exported permission: 'view post_date on comment'.
+  $permissions['view post_date on comment'] = array(
+    'name' => 'view post_date on comment',
+    'roles' => array(
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'ds_extras',
+  );
+
+  // Exported permission: 'view post_date on node'.
+  $permissions['view post_date on node'] = array(
+    'name' => 'view post_date on node',
+    'roles' => array(
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'ds_extras',
+  );
+
   // Exported permission: 'view revisions'.
   $permissions['view revisions'] = array(
     'name' => 'view revisions',
@@ -572,6 +830,76 @@ function mez_ct_settings_user_default_permissions() {
       'site admin' => 'site admin',
     ),
     'module' => 'node',
+  );
+
+  // Exported permission: 'view search_info on node'.
+  $permissions['view search_info on node'] = array(
+    'name' => 'view search_info on node',
+    'roles' => array(
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'ds_extras',
+  );
+
+  // Exported permission: 'view search_snippet on node'.
+  $permissions['view search_snippet on node'] = array(
+    'name' => 'view search_snippet on node',
+    'roles' => array(
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'ds_extras',
+  );
+
+  // Exported permission: 'view submitted on comment'.
+  $permissions['view submitted on comment'] = array(
+    'name' => 'view submitted on comment',
+    'roles' => array(
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'ds_extras',
+  );
+
+  // Exported permission: 'view submitted_by on node'.
+  $permissions['view submitted_by on node'] = array(
+    'name' => 'view submitted_by on node',
+    'roles' => array(
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'ds_extras',
+  );
+
+  // Exported permission: 'view title on comment'.
+  $permissions['view title on comment'] = array(
+    'name' => 'view title on comment',
+    'roles' => array(
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'ds_extras',
+  );
+
+  // Exported permission: 'view title on node'.
+  $permissions['view title on node'] = array(
+    'name' => 'view title on node',
+    'roles' => array(
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'ds_extras',
+  );
+
+  // Exported permission: 'view title on taxonomy_term'.
+  $permissions['view title on taxonomy_term'] = array(
+    'name' => 'view title on taxonomy_term',
+    'roles' => array(
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'ds_extras',
   );
 
   return $permissions;
