@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the MEZ Person CT feature.
+ */
+
+include_once 'mez_person_ct.features.inc';

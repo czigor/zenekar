@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the MEZ Location CT feature.
+ */
+
+include_once 'mez_location_ct.features.inc';

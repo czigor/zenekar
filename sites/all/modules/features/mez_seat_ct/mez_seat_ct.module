@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the MEZ Seat CT feature.
+ */
+
+include_once 'mez_seat_ct.features.inc';

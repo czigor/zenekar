@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the MEZ Concert CT feature.
+ */
+
+include_once 'mez_concert_ct.features.inc';

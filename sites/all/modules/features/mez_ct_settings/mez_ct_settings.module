@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the MEZ CT settings feature.
+ */
+
+include_once 'mez_ct_settings.features.inc';
