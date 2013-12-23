@@ -1,6 +1,6 @@
 name = MEZ WYSIWYG
 core = 7.x
-package = Features
+package = MEZ
 version = 7.x-1.0-20130822dev1
 project = mez_wysiwyg
 dependencies[] = ctools
