@@ -9,38 +9,12 @@
  */
 function commerce_cib_rules_default_rules_configuration() {
   $items = array();
-  $items['rules_cib_bank'] = entity_import('rules_config', '{ "rules_cib_bank" : {
-      "LABEL" : "CIB bank",
-      "PLUGIN" : "reaction rule",
-      "ACTIVE" : false,
-      "OWNER" : "rules",
-      "REQUIRES" : [ "commerce_payment" ],
-      "ON" : { "commerce_payment_methods" : [] },
-      "DO" : [
-        { "commerce_payment_enable_cib" : {
-            "commerce_order" : [ "commerce-order" ],
-            "payment_method" : { "value" : {
-                "method_id" : "cib",
-                "settings" : {
-                  "pid" : "XXX0001",
-                  "cur" : "HUF",
-                  "env" : "testing",
-                  "des-test" : "\\/this\\/is\\/the\\/test\\/des\\/file.des",
-                  "des-live" : "\\/this\\/is\\/the\\/live\\/des\\/file.des"
-                }
-              }
-            }
-          }
-        }
-      ]
-    }
-  }');
   $items['rules_cib_bank_transaction_communication_failure'] = entity_import('rules_config', '{ "rules_cib_bank_transaction_communication_failure" : {
       "LABEL" : "CIB bank transaction communication failure",
       "PLUGIN" : "reaction rule",
       "OWNER" : "rules",
       "TAGS" : [ "CIB" ],
-      "REQUIRES" : [ "rules_i18n", "rules", "commerce_order", "commerce_cib" ],
+      "REQUIRES" : [ "rules", "commerce_order", "commerce_cib" ],
       "ON" : { "commerce_cib_no_communication" : [] },
       "DO" : [
         { "drupal_message" : { "message" : "Sorry, we could not communicate with CIB. Please try again later!\\r\\n\\u003Ca href=\\u0022\\/checkout\\u0022\\u003EGo back to the checkout page\\u003C\\/a\\u003E" } },
@@ -53,7 +27,7 @@ function commerce_cib_rules_default_rules_configuration() {
       "PLUGIN" : "reaction rule",
       "OWNER" : "rules",
       "TAGS" : [ "CIB" ],
-      "REQUIRES" : [ "rules", "rules_i18n", "commerce_checkout" ],
+      "REQUIRES" : [ "rules", "commerce_checkout" ],
       "ON" : { "commerce_checkout_complete" : [] },
       "DO" : [
         { "drupal_message" : { "message" : "The transaction id is: [commerce-order:commerce-cib-trid].\\r\\nThe response code is: [commerce-order:commerce-cib-rc] .\\r\\nThe response message is: [commerce-order:commerce-cib-rt].\\r\\nAn email has been sent to [commerce-order:mail] with the details.\\r\\n\\r\\nThe permission number is: [commerce-order:commerce-cib-anum].\\r\\nThe paid amount is: [commerce-order:commerce-cib-amo] HUF." } },
@@ -61,10 +35,28 @@ function commerce_cib_rules_default_rules_configuration() {
             "to" : [ "commerce-order:mail" ],
             "subject" : "Order on [site:name]",
             "message" : "Dear Customer, \\r\\n\\r\\nThe transaction id is: [commerce-order:commerce-cib-trid].\\r\\nThe response code is: [commerce-order:commerce-cib-rc] .\\r\\nThe response message is: [commerce-order:commerce-cib-rt].\\r\\n\\r\\nThe permission number is: [commerce-order:commerce-cib-anum].\\r\\nThe paid amount is: [commerce-order:commerce-cib-amo] HUF.\\r\\n\\r\\nThank you for your purchase!\\r\\n[site:name] team.",
-            "language" : [ "site:current-user:language" ]
+            "language" : [ "" ]
           }
         },
         { "redirect" : { "url" : "[site:url]" } }
+      ]
+    }
+  }');
+  $items['rules_cib_timeouted_transaction'] = entity_import('rules_config', '{ "rules_cib_timeouted_transaction" : {
+      "LABEL" : "CIB timeouted transaction",
+      "PLUGIN" : "reaction rule",
+      "OWNER" : "rules",
+      "TAGS" : [ "CIB" ],
+      "REQUIRES" : [ "rules", "commerce_cib" ],
+      "ON" : { "commerce_cib_timeout" : [] },
+      "DO" : [
+        { "mail" : {
+            "to" : [ "commerce-order:mail" ],
+            "subject" : "[site:name] transaction timeout",
+            "message" : "Dear Customer,\\r\\nYou are receiving this email because your email address ([commerce-order:mail])  was given in an order at [site:url] with transaction ID [commerce-order:trid].\\r\\n\\r\\nWe apologize but your transaction did not get through. The error was the following:\\r\\n[commerce-order:commerce-cib-rc]\\r\\n\\r\\nImportant\\r\\nIf your card is processed during the transaction, the payment processor is automatically reversing your transaction within 10 minutes.\\r\\n\\r\\nThe products are kept in your shopping cart at [site:name]. \\r\\n\\r\\nWe apologize for the inconvenience.\\r\\n\\r\\n-- [site:name]  team\\r\\n-",
+            "language" : [ "" ]
+          }
+        }
       ]
     }
   }');
@@ -73,7 +65,7 @@ function commerce_cib_rules_default_rules_configuration() {
       "PLUGIN" : "reaction rule",
       "OWNER" : "rules",
       "TAGS" : [ "CIB" ],
-      "REQUIRES" : [ "rules_i18n", "rules", "commerce_cib" ],
+      "REQUIRES" : [ "rules", "commerce_cib" ],
       "ON" : { "commerce_cib_initialization_fails" : [] },
       "DO" : [
         { "drupal_message" : { "message" : "Transaction initialization failed.", "type" : "warning" } },
