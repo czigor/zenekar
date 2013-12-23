@@ -1,7 +1,7 @@
 name = MEZ shopping cart views
 core = 7.x
-package = MEZ
-version = 7.x-1.0-20131010dev1
+package = MEZ Commerce
+version = 7.x-1.0-20131223dev1
 project = mez_shopping_cart_views
 dependencies[] = commerce_cart_view_override
 dependencies[] = strongarm

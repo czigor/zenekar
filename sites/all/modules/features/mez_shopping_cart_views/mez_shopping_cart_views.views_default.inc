@@ -22,7 +22,7 @@ function mez_shopping_cart_views_views_default_views() {
 
   /* Display: Defaults */
   $handler = $view->new_display('default', 'Defaults', 'default');
-  $handler->display->display_options['title'] = 'Shopping cart';
+  $handler->display->display_options['title'] = 'Kosár';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['use_more_text'] = 'tovább';
   $handler->display->display_options['access']['type'] = 'none';
@@ -78,7 +78,7 @@ function mez_shopping_cart_views_views_default_views() {
       'separator' => '',
     ),
   );
-  /* Lábléc: Commerce Line Item: Line item summary */
+  /* Lábléc: Commerce tétel: Tételösszesítő */
   $handler->display->display_options['footer']['line_item_summary']['id'] = 'line_item_summary';
   $handler->display->display_options['footer']['line_item_summary']['table'] = 'commerce_line_item';
   $handler->display->display_options['footer']['line_item_summary']['field'] = 'line_item_summary';
@@ -87,19 +87,19 @@ function mez_shopping_cart_views_views_default_views() {
     'quantity' => 0,
     'total' => 'total',
   );
-  /* Kapcsolat: Commerce Order: Referenced line items */
+  /* Kapcsolat: Commerce-rendelés: Referenced line items */
   $handler->display->display_options['relationships']['commerce_line_items_line_item_id']['id'] = 'commerce_line_items_line_item_id';
   $handler->display->display_options['relationships']['commerce_line_items_line_item_id']['table'] = 'field_data_commerce_line_items';
   $handler->display->display_options['relationships']['commerce_line_items_line_item_id']['field'] = 'commerce_line_items_line_item_id';
   $handler->display->display_options['relationships']['commerce_line_items_line_item_id']['required'] = TRUE;
-  /* Kapcsolat: Commerce Line item: Referenced products */
+  /* Kapcsolat: Commerce tétel: Referenced products */
   $handler->display->display_options['relationships']['commerce_product_product_id']['id'] = 'commerce_product_product_id';
   $handler->display->display_options['relationships']['commerce_product_product_id']['table'] = 'field_data_commerce_product';
   $handler->display->display_options['relationships']['commerce_product_product_id']['field'] = 'commerce_product_product_id';
   $handler->display->display_options['relationships']['commerce_product_product_id']['relationship'] = 'commerce_line_items_line_item_id';
   $handler->display->display_options['relationships']['commerce_product_product_id']['label'] = 'product';
   $handler->display->display_options['relationships']['commerce_product_product_id']['required'] = TRUE;
-  /* Kapcsolat: Entity Reference: Referenced Entity */
+  /* Kapcsolat: Entity Reference: Hivatkozott entitás */
   $handler->display->display_options['relationships']['field_seat_target_id']['id'] = 'field_seat_target_id';
   $handler->display->display_options['relationships']['field_seat_target_id']['table'] = 'field_data_field_seat';
   $handler->display->display_options['relationships']['field_seat_target_id']['field'] = 'field_seat_target_id';
@@ -114,7 +114,7 @@ function mez_shopping_cart_views_views_default_views() {
   $handler->display->display_options['fields']['title_field']['label'] = '';
   $handler->display->display_options['fields']['title_field']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title_field']['link_to_entity'] = 0;
-  /* Mező: Commerce Line item: Unit price */
+  /* Mező: Commerce tétel: Unit price */
   $handler->display->display_options['fields']['commerce_unit_price']['id'] = 'commerce_unit_price';
   $handler->display->display_options['fields']['commerce_unit_price']['table'] = 'field_data_commerce_unit_price';
   $handler->display->display_options['fields']['commerce_unit_price']['field'] = 'commerce_unit_price';
@@ -122,18 +122,18 @@ function mez_shopping_cart_views_views_default_views() {
   $handler->display->display_options['fields']['commerce_unit_price']['label'] = 'Price';
   $handler->display->display_options['fields']['commerce_unit_price']['element_class'] = 'price';
   $handler->display->display_options['fields']['commerce_unit_price']['click_sort_column'] = 'amount';
-  /* Mező: Commerce Line Item: Delete button */
+  /* Mező: Commerce tétel: Törlés gomb */
   $handler->display->display_options['fields']['edit_delete']['id'] = 'edit_delete';
   $handler->display->display_options['fields']['edit_delete']['table'] = 'commerce_line_item';
   $handler->display->display_options['fields']['edit_delete']['field'] = 'edit_delete';
   $handler->display->display_options['fields']['edit_delete']['relationship'] = 'commerce_line_items_line_item_id';
   $handler->display->display_options['fields']['edit_delete']['label'] = 'Remove';
-  /* Rendezési szempont: Commerce Line Item: Line item ID */
+  /* Rendezési szempont: Commerce tétel: Tételazonosító */
   $handler->display->display_options['sorts']['line_item_id']['id'] = 'line_item_id';
   $handler->display->display_options['sorts']['line_item_id']['table'] = 'commerce_line_item';
   $handler->display->display_options['sorts']['line_item_id']['field'] = 'line_item_id';
   $handler->display->display_options['sorts']['line_item_id']['relationship'] = 'commerce_line_items_line_item_id';
-  /* Szövegkörnyezeti szűrő: Commerce Order: Order ID */
+  /* Szövegkörnyezeti szűrő: Commerce rendelés: Megrendelés azonosítója */
   $handler->display->display_options['arguments']['order_id']['id'] = 'order_id';
   $handler->display->display_options['arguments']['order_id']['table'] = 'commerce_order';
   $handler->display->display_options['arguments']['order_id']['field'] = 'order_id';
@@ -143,7 +143,7 @@ function mez_shopping_cart_views_views_default_views() {
   $handler->display->display_options['arguments']['order_id']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['order_id']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['order_id']['summary_options']['items_per_page'] = '25';
-  /* Szűrési feltétel: Commerce Line Item: Line item is of a product line item type */
+  /* Szűrési feltétel: Commerce tétel: A tétel termék tételtípusba tartozik */
   $handler->display->display_options['filters']['product_line_item_type']['id'] = 'product_line_item_type';
   $handler->display->display_options['filters']['product_line_item_type']['table'] = 'commerce_line_item';
   $handler->display->display_options['filters']['product_line_item_type']['field'] = 'product_line_item_type';
@@ -164,7 +164,7 @@ function mez_shopping_cart_views_views_default_views() {
 
   /* Display: Defaults */
   $handler = $view->new_display('default', 'Defaults', 'default');
-  $handler->display->display_options['title'] = 'Shopping cart';
+  $handler->display->display_options['title'] = 'Kosár';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['use_more_text'] = 'tovább';
   $handler->display->display_options['access']['type'] = 'none';
@@ -210,23 +210,23 @@ function mez_shopping_cart_views_views_default_views() {
       'separator' => '',
     ),
   );
-  /* Lábléc: Commerce Order: Order total */
+  /* Lábléc: Commerce rendelés: A rendelés végösszege */
   $handler->display->display_options['footer']['order_total']['id'] = 'order_total';
   $handler->display->display_options['footer']['order_total']['table'] = 'commerce_order';
   $handler->display->display_options['footer']['order_total']['field'] = 'order_total';
-  /* Kapcsolat: Commerce Order: Referenced line items */
+  /* Kapcsolat: Commerce-rendelés: Referenced line items */
   $handler->display->display_options['relationships']['commerce_line_items_line_item_id']['id'] = 'commerce_line_items_line_item_id';
   $handler->display->display_options['relationships']['commerce_line_items_line_item_id']['table'] = 'field_data_commerce_line_items';
   $handler->display->display_options['relationships']['commerce_line_items_line_item_id']['field'] = 'commerce_line_items_line_item_id';
   $handler->display->display_options['relationships']['commerce_line_items_line_item_id']['required'] = TRUE;
-  /* Kapcsolat: Commerce Line item: Referenced products */
+  /* Kapcsolat: Commerce tétel: Referenced products */
   $handler->display->display_options['relationships']['commerce_product_product_id']['id'] = 'commerce_product_product_id';
   $handler->display->display_options['relationships']['commerce_product_product_id']['table'] = 'field_data_commerce_product';
   $handler->display->display_options['relationships']['commerce_product_product_id']['field'] = 'commerce_product_product_id';
   $handler->display->display_options['relationships']['commerce_product_product_id']['relationship'] = 'commerce_line_items_line_item_id';
   $handler->display->display_options['relationships']['commerce_product_product_id']['label'] = 'product';
   $handler->display->display_options['relationships']['commerce_product_product_id']['required'] = TRUE;
-  /* Kapcsolat: Entity Reference: Referenced Entity */
+  /* Kapcsolat: Entity Reference: Hivatkozott entitás */
   $handler->display->display_options['relationships']['field_seat_target_id']['id'] = 'field_seat_target_id';
   $handler->display->display_options['relationships']['field_seat_target_id']['table'] = 'field_data_field_seat';
   $handler->display->display_options['relationships']['field_seat_target_id']['field'] = 'field_seat_target_id';
@@ -241,7 +241,7 @@ function mez_shopping_cart_views_views_default_views() {
   $handler->display->display_options['fields']['title_field']['label'] = '';
   $handler->display->display_options['fields']['title_field']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title_field']['link_to_entity'] = 0;
-  /* Mező: Commerce Line item: Unit price */
+  /* Mező: Commerce tétel: Unit price */
   $handler->display->display_options['fields']['commerce_unit_price']['id'] = 'commerce_unit_price';
   $handler->display->display_options['fields']['commerce_unit_price']['table'] = 'field_data_commerce_unit_price';
   $handler->display->display_options['fields']['commerce_unit_price']['field'] = 'commerce_unit_price';
@@ -252,12 +252,12 @@ function mez_shopping_cart_views_views_default_views() {
   $handler->display->display_options['fields']['commerce_unit_price']['settings'] = array(
     'calculation' => FALSE,
   );
-  /* Rendezési szempont: Commerce Line Item: Line item ID */
+  /* Rendezési szempont: Commerce tétel: Tételazonosító */
   $handler->display->display_options['sorts']['line_item_id']['id'] = 'line_item_id';
   $handler->display->display_options['sorts']['line_item_id']['table'] = 'commerce_line_item';
   $handler->display->display_options['sorts']['line_item_id']['field'] = 'line_item_id';
   $handler->display->display_options['sorts']['line_item_id']['relationship'] = 'commerce_line_items_line_item_id';
-  /* Szövegkörnyezeti szűrő: Commerce Order: Order ID */
+  /* Szövegkörnyezeti szűrő: Commerce rendelés: Megrendelés azonosítója */
   $handler->display->display_options['arguments']['order_id']['id'] = 'order_id';
   $handler->display->display_options['arguments']['order_id']['table'] = 'commerce_order';
   $handler->display->display_options['arguments']['order_id']['field'] = 'order_id';
@@ -267,7 +267,7 @@ function mez_shopping_cart_views_views_default_views() {
   $handler->display->display_options['arguments']['order_id']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['order_id']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['order_id']['summary_options']['items_per_page'] = '25';
-  /* Szűrési feltétel: Commerce Line Item: Line item is of a product line item type */
+  /* Szűrési feltétel: Commerce tétel: A tétel termék tételtípusba tartozik */
   $handler->display->display_options['filters']['product_line_item_type']['id'] = 'product_line_item_type';
   $handler->display->display_options['filters']['product_line_item_type']['table'] = 'commerce_line_item';
   $handler->display->display_options['filters']['product_line_item_type']['field'] = 'product_line_item_type';
