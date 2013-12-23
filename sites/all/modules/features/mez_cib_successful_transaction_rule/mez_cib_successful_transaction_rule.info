@@ -1,0 +1,11 @@
+name = MEZ CIB successful transaction rule
+core = 7.x
+package = MEZ Commerce
+version = 7.x-1.0-20131223dev1
+project = mez_cib_successful_transaction_rule
+dependencies[] = commerce_checkout
+dependencies[] = entity
+dependencies[] = mez_ticket_hacks
+dependencies[] = rules
+features[features_api][] = api:2
+features[rules_config][] = rules_cib_successful_transaction

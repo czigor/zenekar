@@ -1,0 +1,12 @@
+name = MEZ unsuccessful ticket pdf generation rule
+core = 7.x
+package = MEZ
+version = 7.x-1.0-20131223dev1
+project = mez_unsuccessful_ticket_pdf_generation_rule
+dependencies[] = commerce_order
+dependencies[] = entity
+dependencies[] = mez_ticket_hacks
+dependencies[] = rules
+dependencies[] = rules_i18n
+features[features_api][] = api:2
+features[rules_config][] = rules_mez_unsuccessful_ticket_pdf_generation

@@ -1,0 +1,13 @@
+name = MEZ ticket pdf sending rule
+core = 7.x
+package = MEZ Commerce
+version = 7.x-1.0-20131223dev1
+project = mez_ticket_pdf_sending_rule
+dependencies[] = commerce_order
+dependencies[] = entity
+dependencies[] = mez_ticket_hacks
+dependencies[] = mimemail
+dependencies[] = rules
+dependencies[] = rules_i18n
+features[features_api][] = api:2
+features[rules_config][] = rules_mez_ticket_pdf_sending
