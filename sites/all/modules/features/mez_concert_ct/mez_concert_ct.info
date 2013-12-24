@@ -1,7 +1,7 @@
 name = MEZ Concert CT
 core = 7.x
 package = MEZ CTs
-version = 7.x-1.0-20131223dev2
+version = 7.x-1.0-20131224dev1
 project = mez_concert_ct
 dependencies[] = ctools
 dependencies[] = date
@@ -27,6 +27,7 @@ dependencies[] = title
 features[ctools][] = ds:ds:1
 features[ctools][] = strongarm:strongarm:1
 features[ds_field_settings][] = node|concert|full
+features[ds_layout_settings][] = field_collection_item|field_programme|full
 features[ds_layout_settings][] = node|concert|full
 features[ds_layout_settings][] = node|concert|short_teaser
 features[ds_layout_settings][] = node|concert|teaser
