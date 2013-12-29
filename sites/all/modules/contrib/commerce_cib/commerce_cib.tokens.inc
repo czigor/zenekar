@@ -86,7 +86,7 @@ function commerce_cib_tokens($type, $tokens, array $data = array(), array $optio
           $replacements[$original] = $order->commerce_cib['amo'];
           break;
 
-        case 'commerce-cib-amo':
+        case 'commerce-cib-env':
           $payment_method = commerce_payment_method_instance_load($order->data['payment_method']);
           $replacements[$original] = $payment_method['settings']['env'];
           break;
