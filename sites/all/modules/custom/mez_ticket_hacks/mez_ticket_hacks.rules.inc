@@ -80,8 +80,17 @@ function mez_create_ticket_pdf_action($order) {
   }
   $tex = theme('mez_ticket_pdf', array('tickets' => $tickets, 'env' => $payment_method['settings']['env']));
 
-  $concert_nid =  $order_w->commerce_line_items[0]->commerce_product->field_concert->nid->value();
-  $dir = 'private://mez-tickets/' . $payment_method['settings']['env'] . '/' . $concert_nid;
+  // Get the destination directory from the pdf sending rule
+  $rule = rules_config_load('rules_mez_ticket_pdf_sending');
+  foreach ($rule->actions() as $action) {
+    if (isset($action->settings['attachments'])) {
+      $pdf_filename = token_replace($action->settings['attachments'], array('commerce_order' => $order));
+      $path_components = explode('/', $pdf_filename);
+      array_pop($path_components);
+      $dir = implode('/', $p);
+    }
+  }
+
   if (file_prepare_directory($dir, FILE_CREATE_DIRECTORY)) {
     $filesdir = drupal_realpath($dir);
     $filename = 'mez_concert_tickets_' . $order->order_id;
