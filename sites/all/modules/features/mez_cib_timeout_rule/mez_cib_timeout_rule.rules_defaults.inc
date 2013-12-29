@@ -13,6 +13,7 @@ function mez_cib_timeout_rule_default_rules_configuration() {
       "LABEL" : "CIB timeout",
       "PLUGIN" : "reaction rule",
       "OWNER" : "rules",
+      "TAGS" : [ "CIB" ],
       "REQUIRES" : [ "rules_i18n", "rules", "commerce_cib" ],
       "ON" : { "commerce_cib_timeout" : [] },
       "DO" : [
