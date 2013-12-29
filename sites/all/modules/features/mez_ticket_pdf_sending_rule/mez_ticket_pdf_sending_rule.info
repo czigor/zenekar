@@ -1,7 +1,7 @@
 name = MEZ ticket pdf sending rule
 core = 7.x
 package = MEZ Commerce
-version = 7.x-1.0-20131223dev1
+version = 7.x-1.0-20131229dev1
 project = mez_ticket_pdf_sending_rule
 dependencies[] = commerce_order
 dependencies[] = entity

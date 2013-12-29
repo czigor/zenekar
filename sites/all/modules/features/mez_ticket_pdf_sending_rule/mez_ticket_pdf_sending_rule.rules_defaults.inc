@@ -35,7 +35,7 @@ function mez_ticket_pdf_sending_rule_default_rules_configuration() {
         }
       ],
       "DO" : [
-        { "drupal_message" : { "message" : "Thank you for your purchase! The transaction was successful.\\r\\n\\r\\nAn email has been sent to [commerce-order:mail] with the details and the tickets. Please print the tickets and bring them to the concert!\\r\\n\\r\\nThe transaction id is [commerce-order:commerce-cib-trid].\\r\\nThe response code is [commerce-order:commerce-cib-rc] .\\r\\nThe response message is [commerce-order:commerce-cib-rt].\\r\\nThe permission number is [commerce-order:commerce-cib-anum].\\r\\nThe paid amount is [commerce-order:commerce-cib-amo] HUF." } },
+        { "drupal_message" : { "message" : "\\u003Cp\\u003EThank you for your purchase! The transaction was successful.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EAn email has been sent to [commerce-order:mail] with the details and the tickets. Please print the tickets and bring them to the concert!\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EThe transaction id is [commerce-order:commerce-cib-trid].\\u003Cbr\\/\\u003E\\r\\nThe response code is [commerce-order:commerce-cib-rc] .\\u003Cbr\\/\\u003E\\r\\nThe response message is: \\u0022[commerce-order:commerce-cib-rt]\\u0022.\\u003Cbr\\/\\u003E\\r\\nThe permission number is [commerce-order:commerce-cib-anum].\\u003Cbr\\/\\u003E\\r\\nThe paid amount is [commerce-order:commerce-cib-amo] HUF.\\u003C\\/p\\u003E" } },
         { "mimemail" : {
             "key" : [ "commerce-order:order-id" ],
             "to" : [ "commerce-order:mail" ],
@@ -44,7 +44,7 @@ function mez_ticket_pdf_sending_rule_default_rules_configuration() {
             "subject" : "MEZ concert tickets",
             "body" : "Dear Customer, \\r\\n\\r\\nYour ticket purchase at [site:name] has been successful. Attached to this mail you can find the tickets. Please print the tickets and bring them to the concert!\\r\\n\\r\\nYour order:\\r\\n[commerce-order:commerce_line_items]\\r\\n\\r\\nThe transaction id is [commerce-order:commerce-cib-trid].\\r\\nThe response code is [commerce-order:commerce-cib-rc] .\\r\\nThe response message is [commerce-order:commerce-cib-rt].\\r\\nThe permission number is [commerce-order:commerce-cib-anum].\\r\\nThe paid amount is [commerce-order:commerce-cib-amo] HUF.\\r\\n\\r\\nThank you for your purchase!\\r\\n[site:name] team.",
             "plaintext" : [ "" ],
-            "attachments" : "[site:private_file_path]\\/mez-tickets\\/[commerce-order:commerce-cib-env]\\/[commerce-order:commerce-line-items:0:commerce-product:field-concert:nid]\\/mez_concert_tickets_[commerce-order:order-id].pdf",
+            "attachments" : "private:\\/\\/mez-tickets\\/[commerce-order:commerce-cib-env]\\/[commerce-order:commerce-line-items:0:commerce-product:field-concert:nid]\\/mez_concert_tickets_[commerce-order:order-id].pdf",
             "language" : [ "site:current-page:language" ]
           }
         },
