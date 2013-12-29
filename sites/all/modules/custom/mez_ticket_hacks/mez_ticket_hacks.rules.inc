@@ -87,7 +87,7 @@ function mez_create_ticket_pdf_action($order) {
       $pdf_filename = token_replace($action->settings['attachments'], array('commerce_order' => $order));
       $path_components = explode('/', $pdf_filename);
       array_pop($path_components);
-      $dir = implode('/', $p);
+      $dir = implode('/', $path_components);
     }
   }
 
