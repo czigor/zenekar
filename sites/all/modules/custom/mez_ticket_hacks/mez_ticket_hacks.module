@@ -654,38 +654,3 @@ function mez_ticket_hacks_block_view($delta) {
   }
   return $block;
 }
-
-/**
- * Implements hook_token_info().
- */
-function mez_ticket_hacks_token_info() {
-  return array(
-    'tokens' => array(
-      'site' => array(
-        'private_file_path' => array(
-          'name' => t("Private file folder path"),
-          'description' => t("Private file folder path variable."),
-        ),
-      ),
-    ),
-  );
-}
-
-/**
- * Implements hook_tokens().
- */
-function mez_ticket_hacks_tokens($type, $tokens, array $data = array(), array $options = array()) {
-  $replacements = array();
-
-  if ($type == 'site') {
-    foreach ($tokens as $name => $original) {
-      switch ($name) {
-        // Private file folder path
-        case 'private_file_path':
-          $replacements[$original] = variable_get('file_private_path', '');
-          break;
-      }
-    }
-  }
-  return $replacements;
-}
