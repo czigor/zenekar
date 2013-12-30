@@ -47,6 +47,8 @@ class EntityformMetadataController extends EntityDefaultMetadataController {
     // @todo This line could be removed depending on this http://drupal.org/node/1931376
     $properties['type']['required'] = TRUE;
 
+    $properties['draft']['setter callback'] = 'entity_property_verbatim_set';
+
     return $info;
   }
 }
