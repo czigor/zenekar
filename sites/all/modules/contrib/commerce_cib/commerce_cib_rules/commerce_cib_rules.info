@@ -14,3 +14,10 @@ features[rules_config][] = rules_cib_succesful_transaction
 features[rules_config][] = rules_cib_timeouted_transaction
 features[rules_config][] = rules_cib_transaction_initialization_failure
 features[rules_config][] = rules_cib_unsuccesful_transaction
+
+; Information added by Drupal.org packaging script on 2013-12-30
+version = "7.x-1.2"
+core = "7.x"
+project = "commerce_cib"
+datestamp = "1388423907"
+
