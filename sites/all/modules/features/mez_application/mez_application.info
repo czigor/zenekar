@@ -1,12 +1,15 @@
 name = MEZ Application
 core = 7.x
 package = MEZ
-version = 7.x-1.0-20131230dev1
+version = 7.x-1.0-20131230dev2
 project = mez_application
 dependencies[] = date
 dependencies[] = email
 dependencies[] = entity
+dependencies[] = entity2text
+dependencies[] = entity_rules
 dependencies[] = entityform
+dependencies[] = entityform_notifications
 dependencies[] = features
 dependencies[] = list
 dependencies[] = location_cck
