@@ -24,6 +24,13 @@ function mez_application_field_default_field_instances() {
         'type' => 'location_default',
         'weight' => 14,
       ),
+      'email' => array(
+        'label' => 'inline',
+        'module' => 'location_cck',
+        'settings' => array(),
+        'type' => 'location_default',
+        'weight' => 14,
+      ),
     ),
     'ds_extras_field_template' => '',
     'entity_type' => 'entityform',
@@ -52,6 +59,13 @@ function mez_application_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
+        'module' => 'email',
+        'settings' => array(),
+        'type' => 'email_default',
+        'weight' => 16,
+      ),
+      'email' => array(
+        'label' => 'inline',
         'module' => 'email',
         'settings' => array(),
         'type' => 'email_default',
@@ -87,6 +101,13 @@ function mez_application_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 2,
+      ),
+      'email' => array(
+        'label' => 'inline',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
@@ -128,6 +149,13 @@ function mez_application_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 17,
       ),
+      'email' => array(
+        'label' => 'inline',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 17,
+      ),
     ),
     'ds_extras_field_template' => '',
     'entity_type' => 'entityform',
@@ -161,6 +189,20 @@ function mez_application_field_default_field_instances() {
         'module' => 'date',
         'settings' => array(
           'format_type' => 'long',
+          'fromto' => 'both',
+          'multiple_from' => '',
+          'multiple_number' => '',
+          'multiple_to' => '',
+          'show_repeat_rule' => 'show',
+        ),
+        'type' => 'date_default',
+        'weight' => 1,
+      ),
+      'email' => array(
+        'label' => 'inline',
+        'module' => 'date',
+        'settings' => array(
+          'format_type' => 'only_year',
           'fromto' => 'both',
           'multiple_from' => '',
           'multiple_number' => '',
@@ -216,6 +258,12 @@ function mez_application_field_default_field_instances() {
         'type' => 'email_default',
         'weight' => 19,
       ),
+      'email' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 19,
+      ),
     ),
     'ds_extras_field_template' => '',
     'entity_type' => 'entityform',
@@ -246,6 +294,18 @@ function mez_application_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
+        'module' => 'number',
+        'settings' => array(
+          'decimal_separator' => '.',
+          'prefix_suffix' => TRUE,
+          'scale' => 0,
+          'thousand_separator' => ' ',
+        ),
+        'type' => 'number_integer',
+        'weight' => 10,
+      ),
+      'email' => array(
+        'label' => 'inline',
         'module' => 'number',
         'settings' => array(
           'decimal_separator' => '.',
@@ -293,6 +353,13 @@ function mez_application_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 13,
       ),
+      'email' => array(
+        'label' => 'inline',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 13,
+      ),
     ),
     'ds_extras_field_template' => '',
     'entity_type' => 'entityform',
@@ -329,6 +396,13 @@ function mez_application_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 7,
       ),
+      'email' => array(
+        'label' => 'inline',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 7,
+      ),
     ),
     'ds_extras_field_template' => '',
     'entity_type' => 'entityform',
@@ -359,6 +433,13 @@ function mez_application_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 8,
+      ),
+      'email' => array(
         'label' => 'above',
         'module' => 'text',
         'settings' => array(),
@@ -401,6 +482,13 @@ function mez_application_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 4,
       ),
+      'email' => array(
+        'label' => 'inline',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 4,
+      ),
     ),
     'ds_extras_field_template' => '',
     'entity_type' => 'entityform',
@@ -432,6 +520,13 @@ function mez_application_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 6,
+      ),
+      'email' => array(
+        'label' => 'inline',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
@@ -473,6 +568,13 @@ function mez_application_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 11,
       ),
+      'email' => array(
+        'label' => 'inline',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 11,
+      ),
     ),
     'ds_extras_field_template' => '',
     'entity_type' => 'entityform',
@@ -509,6 +611,13 @@ function mez_application_field_default_field_instances() {
         'type' => 'list_default',
         'weight' => 3,
       ),
+      'email' => array(
+        'label' => 'inline',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 3,
+      ),
     ),
     'ds_extras_field_template' => '',
     'entity_type' => 'entityform',
@@ -536,6 +645,13 @@ function mez_application_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 9,
+      ),
+      'email' => array(
         'label' => 'above',
         'module' => 'text',
         'settings' => array(),
@@ -578,6 +694,13 @@ function mez_application_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 18,
       ),
+      'email' => array(
+        'label' => 'inline',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 18,
+      ),
     ),
     'ds_extras_field_template' => '',
     'entity_type' => 'entityform',
@@ -608,6 +731,13 @@ function mez_application_field_default_field_instances() {
     'description' => 'university, faculty, department, class',
     'display' => array(
       'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 12,
+      ),
+      'email' => array(
         'label' => 'above',
         'module' => 'text',
         'settings' => array(),
@@ -655,6 +785,18 @@ function mez_application_field_default_field_instances() {
         'type' => 'number_integer',
         'weight' => 5,
       ),
+      'email' => array(
+        'label' => 'inline',
+        'module' => 'number',
+        'settings' => array(
+          'decimal_separator' => '.',
+          'prefix_suffix' => TRUE,
+          'scale' => 0,
+          'thousand_separator' => ' ',
+        ),
+        'type' => 'number_integer',
+        'weight' => 5,
+      ),
     ),
     'ds_extras_field_template' => '',
     'entity_type' => 'entityform',
@@ -692,6 +834,13 @@ function mez_application_field_default_field_instances() {
         'type' => 'location_default',
         'weight' => 15,
       ),
+      'email' => array(
+        'label' => 'inline',
+        'module' => 'location_cck',
+        'settings' => array(),
+        'type' => 'location_default',
+        'weight' => 15,
+      ),
     ),
     'ds_extras_field_template' => '',
     'entity_type' => 'entityform',
@@ -720,6 +869,13 @@ function mez_application_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+      'email' => array(
+        'label' => 'inline',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
