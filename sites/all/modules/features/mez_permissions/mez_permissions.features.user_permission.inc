@@ -179,6 +179,15 @@ function mez_permissions_user_default_permissions() {
     'module' => 'admin_menu',
   );
 
+  // Exported permission: 'edit mimemail user settings'.
+  $permissions['edit mimemail user settings'] = array(
+    'name' => 'edit mimemail user settings',
+    'roles' => array(
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'mimemail',
+  );
+
   // Exported permission: 'edit own comments'.
   $permissions['edit own comments'] = array(
     'name' => 'edit own comments',
@@ -209,6 +218,16 @@ function mez_permissions_user_default_permissions() {
       'authenticated user' => 'authenticated user',
     ),
     'module' => 'comment',
+  );
+
+  // Exported permission: 'send arbitrary files'.
+  $permissions['send arbitrary files'] = array(
+    'name' => 'send arbitrary files',
+    'roles' => array(
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'mimemail',
   );
 
   // Exported permission: 'skip comment approval'.
