@@ -1,7 +1,7 @@
 name = MEZ CIB unsuccessful transaction rule
 core = 7.x
 package = MEZ Commerce
-version = 7.x-1.0-20131229dev1
+version = 7.x-1.0-20131230dev1
 project = mez_cib_unsuccessful_transaction_rule
 dependencies[] = commerce_cib
 dependencies[] = commerce_order
