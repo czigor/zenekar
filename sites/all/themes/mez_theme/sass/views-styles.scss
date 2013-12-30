@@ -72,11 +72,13 @@
      }
    }
  }
- 
- 
- .view-mez-shopping-cart-summary {
+  
+
+.view-mez-shopping-cart-summary {
   td.views-field-title-field {
     padding-right: 20px;
   }
+  .commerce-order-handler-area-order-total .commerce-price-formatted-components {
+    width: 100%;
+  }
 }
- 
