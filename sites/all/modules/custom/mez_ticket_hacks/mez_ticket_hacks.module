@@ -388,7 +388,9 @@ function  mez_ticket_hacks_commerce_product_presave($product) {
   $seat_w = entity_metadata_wrapper('node', $seat_nid[0]['target_id']);
   $concert_w = entity_metadata_wrapper('node', $concert_nid[0]['target_id']);
   // Tickets have only Hungarian titles.
-  $product->title = $concert_w->title->value() . ', ' . $seat_w->field_seat_floor->value() . ', ' . $seat_w->field_seat_side->value() . ' ' . $seat_w->field_seat_row->value() . '. sor ' . $seat_w->field_seat_number->value() . '. szék';;
+  $seat_floor = i18n_string('field:field_seat_floor:#allowed_values:' . $seat_w->field_seat_floor->value(), $seat_w->field_seat_floor->value());
+  $seat_side = i18n_string('field:field_seat_side:#allowed_values:' . $seat_w->field_seat_side->value(), $seat_w->field_seat_side->value());
+  $product->title = $concert_w->language('hu')->title_field->value() . ', ' . $seat_floor . ', ' . $seat_side . ' ' . $seat_w->field_seat_row->value() . '. sor ' . $seat_w->field_seat_number->value() . '. szék';;
 }
 
 /**
@@ -653,4 +655,50 @@ function mez_ticket_hacks_block_view($delta) {
       break;
   }
   return $block;
+}
+
+/**
+ * Implements hook_token_info().
+ */
+function mez_ticket_hacks_token_info() {
+  return array(
+    'tokens' => array(
+      'commerce-order' => array(
+        'summary' => array(
+          'name' => t("Order summary"),
+          'description' => t("The ordered products with price and the total."),
+        ),
+      ),
+    ),
+  );
+}
+
+/**
+ * Implements hook_tokens().
+ */
+function mez_ticket_hacks_tokens($type, $tokens, array $data = array(), array $options = array()) {
+  $replacements = array();
+
+  $sanitize = !empty($options['sanitize']);
+
+  if ($type == 'commerce-order' && !empty($data['commerce-order'])) {
+    $order = $data['commerce-order'];
+
+    foreach ($tokens as $name => $original) {
+      switch ($name) {
+        // Order summary
+        case 'summary':
+          $order_w = entity_metadata_wrapper('commerce_order', $order->order_id);
+          $items = array();
+          foreach ($order_w->commerce_line_items as $li_w) {
+            $items[] = $li_w->commerce_product->title->value() . ' - ' . $li_w->commerce_product->commerce_price->amount->value() . ' ' . $li_w->commerce_product->commerce_price->currency_code->value();
+          }
+          $summary = theme('item_list', array('items' => $items, 'type' => 'ul', 'title' => t('Your order:')));
+          $summary .= t('Total:') . ' ' . $order_w->commerce_order_total->amount->value() . ' ' . $order_w->commerce_order_total->currency_code->value();
+          $replacements[$original] = $summary;
+          break;
+      }
+    }
+  }
+  return $replacements;
 }
