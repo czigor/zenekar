@@ -23,6 +23,12 @@ function mez_document_file_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'colorbox_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 5,
+      ),
       'default' => array(
         'label' => 'above',
         'module' => 'text',
@@ -41,7 +47,7 @@ function mez_document_file_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 2,
+        'weight' => 5,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -86,6 +92,12 @@ function mez_document_file_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'colorbox_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 8,
+      ),
       'default' => array(
         'label' => 'above',
         'module' => 'entityreference',
@@ -105,7 +117,7 @@ function mez_document_file_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 1,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -146,6 +158,12 @@ function mez_document_file_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'colorbox_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 4,
+      ),
       'default' => array(
         'label' => 'above',
         'module' => 'date',
@@ -178,7 +196,7 @@ function mez_document_file_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 4,
+        'weight' => 7,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -230,6 +248,12 @@ function mez_document_file_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'colorbox_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 2,
+      ),
       'default' => array(
         'label' => 'above',
         'module' => 'entityreference',
@@ -249,7 +273,7 @@ function mez_document_file_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 3,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -291,6 +315,12 @@ function mez_document_file_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'colorbox_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 7,
+      ),
       'default' => array(
         'label' => 'above',
         'module' => 'entityreference',
@@ -310,7 +340,7 @@ function mez_document_file_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 4,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -353,6 +383,12 @@ function mez_document_file_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'colorbox_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 3,
+      ),
       'default' => array(
         'label' => 'above',
         'module' => 'taxonomy',
@@ -371,7 +407,7 @@ function mez_document_file_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 5,
+        'weight' => 8,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -419,6 +455,17 @@ function mez_document_file_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'colorbox_preview' => array(
+        'label' => 'hidden',
+        'module' => 'title',
+        'settings' => array(
+          'title_class' => '',
+          'title_link' => 'content',
+          'title_style' => 'div',
+        ),
+        'type' => 'title_linked',
+        'weight' => 0,
+      ),
       'default' => array(
         'label' => 'above',
         'module' => 'text',
@@ -435,14 +482,9 @@ function mez_document_file_field_default_field_instances() {
       ),
       'preview' => array(
         'label' => 'hidden',
-        'module' => 'title',
-        'settings' => array(
-          'title_class' => '',
-          'title_link' => 'content',
-          'title_style' => 'div',
-        ),
-        'type' => 'title_linked',
-        'weight' => 0,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 2,
       ),
       'teaser' => array(
         'label' => 'above',

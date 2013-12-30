@@ -68,7 +68,7 @@ function mez_audio_file_strongarm() {
             'visible' => TRUE,
           ),
           'preview' => array(
-            'weight' => '1',
+            'weight' => '0',
             'visible' => TRUE,
           ),
           'colorbox' => array(

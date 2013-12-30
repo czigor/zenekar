@@ -1,7 +1,7 @@
 name = MEZ Audio file
 core = 7.x
 package = MEZ files
-version = 7.x-1.0-20131224dev1
+version = 7.x-1.0-20131230dev1
 project = mez_audio_file
 dependencies[] = ctools
 dependencies[] = date

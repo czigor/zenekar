@@ -286,7 +286,7 @@ function mez_audio_file_file_default_displays() {
   $file_display->api_version = 1;
   $file_display->name = 'audio__preview__file_field_mediaelement_audio';
   $file_display->weight = 0;
-  $file_display->status = TRUE;
+  $file_display->status = FALSE;
   $file_display->settings = array(
     'controls' => 1,
     'width' => '300',

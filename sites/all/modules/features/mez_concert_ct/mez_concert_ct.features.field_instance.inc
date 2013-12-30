@@ -323,7 +323,7 @@ function mez_concert_ct_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'file_entity',
         'settings' => array(
-          'file_view_mode' => 'preview',
+          'file_view_mode' => 'colorbox_preview',
         ),
         'type' => 'file_rendered',
         'weight' => 2,

@@ -50,6 +50,18 @@ function mez_video_file_strongarm() {
       'news' => array(
         'custom_settings' => FALSE,
       ),
+      'colorbox_preview' => array(
+        'custom_settings' => TRUE,
+      ),
+      'rss' => array(
+        'custom_settings' => FALSE,
+      ),
+      'search_index' => array(
+        'custom_settings' => FALSE,
+      ),
+      'search_result' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
@@ -84,6 +96,10 @@ function mez_video_file_strongarm() {
           'short_teaser' => array(
             'weight' => '4',
             'visible' => FALSE,
+          ),
+          'colorbox_preview' => array(
+            'weight' => '0',
+            'visible' => TRUE,
           ),
         ),
       ),
