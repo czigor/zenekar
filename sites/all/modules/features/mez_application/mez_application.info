@@ -1,7 +1,7 @@
 name = MEZ Application
 core = 7.x
 package = MEZ
-version = 7.x-1.0-20131230dev2
+version = 7.x-1.0-20131230dev3
 project = mez_application
 dependencies[] = date
 dependencies[] = email
@@ -19,6 +19,8 @@ dependencies[] = options
 dependencies[] = rules
 dependencies[] = rules_i18n
 dependencies[] = text
+features[entity_rule_setting][] = 1
+features[entity_rule_setting][] = 2
 features[entityform_type][] = application
 features[features_api][] = api:2
 features[field_base][] = field_address

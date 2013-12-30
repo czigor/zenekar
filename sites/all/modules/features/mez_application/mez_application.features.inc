@@ -5,6 +5,34 @@
  */
 
 /**
+ * Implements hook_default_entity_rule_setting().
+ */
+function mez_application_default_entity_rule_setting() {
+  $items = array();
+  $items['1'] = entity_import('entity_rule_setting', '{
+    "id" : "1",
+    "entity_type" : "entityform",
+    "bundle" : "application",
+    "op" : "validation",
+    "rules_config" : "rules_mez_application_validation",
+    "weight" : "0",
+    "args" : null,
+    "false_msg" : null
+  }');
+  $items['2'] = entity_import('entity_rule_setting', '{
+    "id" : "2",
+    "entity_type" : "entityform",
+    "bundle" : "application",
+    "op" : "entityform_submission",
+    "rules_config" : "rules_mez_application_submission",
+    "weight" : "0",
+    "args" : null,
+    "false_msg" : null
+  }');
+  return $items;
+}
+
+/**
  * Implements hook_default_entityform_type().
  */
 function mez_application_default_entityform_type() {
