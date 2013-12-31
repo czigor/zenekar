@@ -14,36 +14,45 @@
      * @param content
      */
     replaceTokenWithPlaceholder: function(content) {
-      var tagmap = Drupal.media.filter.ensure_tagmap(),
-        matches = content.match(/\[\[.*?\]\]/g),
-        media_definition,
-        id = 0;
+      Drupal.media.filter.ensure_tagmap()
+      var matches = content.match(/\[\[.*?"type":"media".*?\]\]/g);
 
       if (matches) {
-        var i = 1;
-        for (var macro in tagmap) {
-          var index = $.inArray(macro, matches);
-          if (index !== -1) {
-            var media_json = macro.replace('[[', '').replace(']]', '');
+        for (var i = 0; i < matches.length; i++) {
+          var match = matches[i];
 
-            // Make sure that the media JSON is valid.
-            try {
-              media_definition = JSON.parse(media_json);
-            }
-            catch (err) {
-              media_definition = null;
-            }
-            if (media_definition) {
-              // Apply attributes.
-              var element = Drupal.media.filter.create_element(tagmap[macro], media_definition);
-              var markup = Drupal.media.filter.outerHTML(element);
+          // Check if the macro exists in the tagmap. This ensures backwards
+          // compatibility with existing media and is moderately more efficient
+          // than re-building the element.
+          var media = Drupal.settings.tagmap[match];
+          var media_json = match.replace('[[', '').replace(']]', '');
 
-              content = content.replace(macro, Drupal.media.filter.getWrapperStart(i) + markup + Drupal.media.filter.getWrapperEnd(i));
-            }
+          // Ensure that the media JSON is valid.
+          try {
+            var media_definition = JSON.parse(media_json);
           }
-          i++;
+          catch (err) {
+            // @todo: error logging.
+            // Content should be returned to prevent an empty editor.
+            return content;
+          }
+
+          // Re-build the media if the macro has changed from the tagmap.
+          if (!media && media_definition.fid) {
+            Drupal.media.filter.ensureSourceMap();
+            var source = Drupal.settings.mediaSourceMap[media_definition.fid];
+            media = document.createElement(source.tagName);
+            media.src = source.src;
+          }
+
+          // Apply attributes.
+          var element = Drupal.media.filter.create_element(media, media_definition);
+          var markup  = Drupal.media.filter.outerHTML(element);
+
+          content = content.replace(match, markup);
         }
       }
+
       return content;
     },
 
@@ -52,60 +61,42 @@
      * @param content
      */
     replacePlaceholderWithToken: function(content) {
-      var tagmap = Drupal.media.filter.ensure_tagmap();
-      var i = 1;
-      for (var macro in tagmap) {
-        var startTag = Drupal.media.filter.getWrapperStart(i), endTag = Drupal.media.filter.getWrapperEnd(i);
-        var startPos = content.indexOf(startTag), endPos = content.indexOf(endTag);
-        if (startPos !== -1 && endPos !== -1) {
-          // If the placeholder wrappers are empty, remove the macro too.
-          if (endPos - startPos - startTag.length === 0) {
-            macro = '';
-          }
-          content = content.substr(0, startPos) + macro + content.substr(endPos + (new String(endTag)).length);
-        }
-        i++;
-      }
-      return content;
-    },
-
-    getWrapperStart: function(i) {
-      return '<!--MEDIA-WRAPPER-START-' + i + '-->';
-    },
-
-    getWrapperEnd: function(i) {
-      return '<!--MEDIA-WRAPPER-END-' + i + '-->';
-    },
-
-    /**
-     * Register new element and returns the placeholder markup.
-     *
-     * @param formattedMedia a formatted media object as given by the onSubmit
-     * function of the media Style popup.
-     * @param fid the file id.
-     *
-     * @return The registered element.
-     */
-    registerNewElement: function (formattedMedia, fid) {
-      var element = Drupal.media.filter.create_element(formattedMedia.html, {
-        fid: fid,
-        view_mode: formattedMedia.type,
-        attributes: formattedMedia.options
-      });
-
-      var markup = Drupal.media.filter.outerHTML(element),
-        macro = Drupal.media.filter.create_macro(element);
-
-      // Store macro/markup pair in the tagmap.
       Drupal.media.filter.ensure_tagmap();
-      Drupal.settings.tagmap[macro] = markup;
+      var markup = document.createElement('div');
+      $(markup).html(content);
 
-      return element;
+      var matches = markup.querySelectorAll('.media-element');
+
+      var placeholders = [];
+
+      // Rewrite the tagmap in case any of the macros have changed.
+      Drupal.settings.tagmap = {};
+
+      for (var i = 0; i < matches.length; i++) {
+        var macro = Drupal.media.filter.create_macro($(matches[i]));
+
+        // Store the macro => html for more efficient rendering in
+        // replaceTokenWithPlaceholder().
+        Drupal.settings.tagmap[macro] = matches[i];
+
+        placeholders[i] = {
+          match: matches[i],
+          node: document.createTextNode(macro)
+        }
+      }
+
+      // We have to loop through the placeholders separately because
+      // replaceChild will shift off the replacement from the NodeList.
+      for (i in placeholders) {
+        placeholders[i].match.parentNode.replaceChild(placeholders[i].node, placeholders[i].match);
+      }
+
+      return $(markup).html();
     },
 
     /**
-     * Serializes file information as a url-encoded JSON object and stores it as a
-     * data attribute on the html element.
+     * Serializes file information as a url-encoded JSON object and stores it
+     * as a data attribute on the html element.
      *
      * @param html (string)
      *    A html element to be used to represent the inserted media element.
@@ -114,20 +105,33 @@
      */
     create_element: function (html, info) {
       if ($('<div></div>').append(html).text().length === html.length) {
-        // Element is not an html tag. Surround it in a span element
-        // so we can pass the file attributes.
+        // Element is not an html tag. Surround it in a span element so we can
+        // pass the file attributes.
         html = '<span>' + html + '</span>';
       }
       var element = $(html);
 
+      // Parse out link wrappers. They will be re-applied when the image is
+      // rendered on the front-end.
+      if (element.is('a')) {
+        element = element.children();
+      }
+
       // Move attributes from the file info array to the placeholder element.
       if (info.attributes) {
-        $.each(Drupal.media.filter.allowed_attributes(), function(i, a) {
+        $.each(Drupal.settings.media.wysiwyg_allowed_attributes, function(i, a) {
           if (info.attributes[a]) {
             element.attr(a, info.attributes[a]);
           }
         });
         delete(info.attributes);
+
+        // Store information to rebuild the element later, if necessary.
+        Drupal.media.filter.ensureSourceMap();
+        Drupal.settings.mediaSourceMap[info.fid] = {
+          tagName: element[0].tagName,
+          src: element[0].src
+        }
       }
 
       // Important to url-encode the file information as it is being stored in an
@@ -135,7 +139,7 @@
       info.type = info.type || "media";
       element.attr('data-file_info', encodeURI(JSON.stringify(info)));
 
-      // Adding media-element class so we can find markup element later.
+      // Add media-element class so we can find markup element later.
       var classes = ['media-element'];
 
       if(info.view_mode){
@@ -182,7 +186,7 @@
         file_info.attributes = {};
 
         // Extract whitelisted attributes.
-        $.each(Drupal.media.filter.allowed_attributes(), function(i, a) {
+        $.each(Drupal.settings.media.wysiwyg_allowed_attributes, function(i, a) {
           if (value = element.attr(a)) {
             file_info.attributes[a] = value;
           }
@@ -199,7 +203,7 @@
      * @param element (jQuery object)
      */
     outerHTML: function (element) {
-      return $('<div>').append(element.eq(0).clone()).html();
+      return element[0].outerHTML || $('<div>').append(element.eq(0).clone()).html();
     },
 
     /**
@@ -225,9 +229,17 @@
       }
       Drupal.settings.tagmap[macro] = markup;
 
-      // Return the wrapped html code to insert in an editor and use it with
+      // Return the html code to insert in an editor and use it with
       // replacePlaceholderWithToken()
-      return Drupal.media.filter.getWrapperStart(i) + markup + Drupal.media.filter.getWrapperEnd(i);
+      return markup;
+    },
+
+    /**
+     * Ensures the src tracking has been initialized and returns it.
+     */
+    ensureSourceMap: function() {
+      Drupal.settings.mediaSourceMap = Drupal.settings.mediaSourceMap || {};
+      return Drupal.settings.mediaSourceMap;
     },
 
     /**
@@ -236,15 +248,7 @@
     ensure_tagmap: function () {
       Drupal.settings.tagmap = Drupal.settings.tagmap || {};
       return Drupal.settings.tagmap;
-    },
-
-    /**
-     * Ensures the wysiwyg_allowed_attributes and returns it.
-     * In case of an error the default settings are returned.
-     */
-    allowed_attributes: function () {
-      Drupal.settings.wysiwyg_allowed_attributes = Drupal.settings.wysiwyg_allowed_attributes || ['height', 'width', 'hspace', 'vspace', 'border', 'align', 'style', 'alt', 'title', 'class', 'id', 'usemap'];
-      return Drupal.settings.wysiwyg_allowed_attributes;
     }
   }
+
 })(jQuery);
