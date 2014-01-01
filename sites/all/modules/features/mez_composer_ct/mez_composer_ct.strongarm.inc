@@ -144,7 +144,7 @@ return "[node:field-family-name]" . $comma . "$given_name";
   $strongarm->api_version = 1;
   $strongarm->name = 'entity_translation_settings_node__composer';
   $strongarm->value = array(
-    'default_language' => 'xx-et-current',
+    'default_language' => 'und',
     'hide_language_selector' => 0,
     'exclude_language_none' => 0,
     'lock_language' => 0,

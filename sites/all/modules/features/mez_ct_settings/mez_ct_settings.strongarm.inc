@@ -294,6 +294,7 @@ system/ajax/*';
     'taxonomy_term' => 'taxonomy_term',
     'file' => 'file',
     'comment' => 0,
+    'commerce_product' => 0,
     'entityform' => 0,
     'user' => 0,
   );

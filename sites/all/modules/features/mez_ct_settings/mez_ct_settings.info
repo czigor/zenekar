@@ -1,7 +1,7 @@
 name = MEZ CT settings
 core = 7.x
 package = MEZ CTs
-version = 7.x-1.0-20131223dev2
+version = 7.x-1.0-20140101dev1
 project = mez_ct_settings
 dependencies[] = ctools
 dependencies[] = ds
