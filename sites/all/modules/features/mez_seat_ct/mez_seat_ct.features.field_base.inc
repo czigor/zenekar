@@ -81,6 +81,8 @@ function mez_seat_ct_field_default_field_bases() {
       'allowed_values' => array(
         'orchestra' => 'orchestra',
         'balcony' => 'balcony',
+        'side dress circle' => 'side dress circle',
+        'centre dress circle' => 'centre dress circle',
         'dress circle' => 'dress circle',
         'organ gallery' => 'organ gallery',
       ),
