@@ -1,0 +1,952 @@
+concert hall;floor;side;row;number;x;y
+Zeneakadémia;orchestra;left;1;1;233;205
+Zeneakadémia;orchestra;left;1;2;247;205
+Zeneakadémia;orchestra;left;1;3;261;205
+Zeneakadémia;orchestra;left;1;4;275;205
+Zeneakadémia;orchestra;left;1;5;289;205
+Zeneakadémia;orchestra;left;1;6;303;205
+Zeneakadémia;orchestra;left;1;7;317;205
+Zeneakadémia;orchestra;left;1;8;331;205
+Zeneakadémia;orchestra;left;1;9;345;205
+Zeneakadémia;orchestra;left;1;10;359;205
+Zeneakadémia;orchestra;left;1;11;373;205
+Zeneakadémia;orchestra;left;1;12;387;205
+
+Zeneakadémia;orchestra;left;2;1;233;217
+Zeneakadémia;orchestra;left;2;2;247;217
+Zeneakadémia;orchestra;left;2;3;261;217
+Zeneakadémia;orchestra;left;2;4;275;217
+Zeneakadémia;orchestra;left;2;5;289;217
+Zeneakadémia;orchestra;left;2;6;303;217
+Zeneakadémia;orchestra;left;2;7;317;217
+Zeneakadémia;orchestra;left;2;8;331;217
+Zeneakadémia;orchestra;left;2;9;345;217
+Zeneakadémia;orchestra;left;2;10;359;217
+Zeneakadémia;orchestra;left;2;11;373;217
+Zeneakadémia;orchestra;left;2;12;387;217
+
+Zeneakadémia;orchestra;left;3;1;233;229
+Zeneakadémia;orchestra;left;3;2;247;229
+Zeneakadémia;orchestra;left;3;3;261;229
+Zeneakadémia;orchestra;left;3;4;275;229
+Zeneakadémia;orchestra;left;3;5;289;229
+Zeneakadémia;orchestra;left;3;6;303;229
+Zeneakadémia;orchestra;left;3;7;317;229
+Zeneakadémia;orchestra;left;3;8;331;229
+Zeneakadémia;orchestra;left;3;9;345;229
+Zeneakadémia;orchestra;left;3;10;359;229
+Zeneakadémia;orchestra;left;3;11;373;229
+Zeneakadémia;orchestra;left;3;12;387;229
+
+Zeneakadémia;orchestra;left;4;1;233;241
+Zeneakadémia;orchestra;left;4;2;247;241
+Zeneakadémia;orchestra;left;4;3;261;241
+Zeneakadémia;orchestra;left;4;4;275;241
+Zeneakadémia;orchestra;left;4;5;289;241
+Zeneakadémia;orchestra;left;4;6;303;241
+Zeneakadémia;orchestra;left;4;7;317;241
+Zeneakadémia;orchestra;left;4;8;331;241
+Zeneakadémia;orchestra;left;4;9;345;241
+Zeneakadémia;orchestra;left;4;10;359;241
+Zeneakadémia;orchestra;left;4;11;373;241
+Zeneakadémia;orchestra;left;4;12;387;241
+
+Zeneakadémia;orchestra;left;5;1;233;253
+Zeneakadémia;orchestra;left;5;2;247;253
+Zeneakadémia;orchestra;left;5;3;261;253
+Zeneakadémia;orchestra;left;5;4;275;253
+Zeneakadémia;orchestra;left;5;5;289;253
+Zeneakadémia;orchestra;left;5;6;303;253
+Zeneakadémia;orchestra;left;5;7;317;253
+Zeneakadémia;orchestra;left;5;8;331;253
+Zeneakadémia;orchestra;left;5;9;345;253
+Zeneakadémia;orchestra;left;5;10;359;253
+Zeneakadémia;orchestra;left;5;11;373;253
+Zeneakadémia;orchestra;left;5;12;387;253
+
+Zeneakadémia;orchestra;left;6;1;233;265
+Zeneakadémia;orchestra;left;6;2;247;265
+Zeneakadémia;orchestra;left;6;3;261;265
+Zeneakadémia;orchestra;left;6;4;275;265
+Zeneakadémia;orchestra;left;6;5;289;265
+Zeneakadémia;orchestra;left;6;6;303;265
+Zeneakadémia;orchestra;left;6;7;317;265
+Zeneakadémia;orchestra;left;6;8;331;265
+Zeneakadémia;orchestra;left;6;9;345;265
+Zeneakadémia;orchestra;left;6;10;359;265
+Zeneakadémia;orchestra;left;6;11;373;265
+Zeneakadémia;orchestra;left;6;12;387;265
+
+Zeneakadémia;orchestra;left;7;1;233;277
+Zeneakadémia;orchestra;left;7;2;247;277
+Zeneakadémia;orchestra;left;7;3;261;277
+Zeneakadémia;orchestra;left;7;4;275;277
+Zeneakadémia;orchestra;left;7;5;289;277
+Zeneakadémia;orchestra;left;7;6;303;277
+Zeneakadémia;orchestra;left;7;7;317;277
+Zeneakadémia;orchestra;left;7;8;331;277
+Zeneakadémia;orchestra;left;7;9;345;277
+Zeneakadémia;orchestra;left;7;10;359;277
+Zeneakadémia;orchestra;left;7;11;373;277
+Zeneakadémia;orchestra;left;7;12;387;277
+
+Zeneakadémia;orchestra;left;8;1;233;289
+Zeneakadémia;orchestra;left;8;2;247;289
+Zeneakadémia;orchestra;left;8;3;261;289
+Zeneakadémia;orchestra;left;8;4;275;289
+Zeneakadémia;orchestra;left;8;5;289;289
+Zeneakadémia;orchestra;left;8;6;303;289
+Zeneakadémia;orchestra;left;8;7;317;289
+Zeneakadémia;orchestra;left;8;8;331;289
+Zeneakadémia;orchestra;left;8;9;345;289
+Zeneakadémia;orchestra;left;8;10;359;289
+Zeneakadémia;orchestra;left;8;11;373;289
+Zeneakadémia;orchestra;left;8;12;387;289
+
+Zeneakadémia;orchestra;left;9;1;233;301
+Zeneakadémia;orchestra;left;9;2;247;301
+Zeneakadémia;orchestra;left;9;3;261;301
+Zeneakadémia;orchestra;left;9;4;275;301
+Zeneakadémia;orchestra;left;9;5;289;301
+Zeneakadémia;orchestra;left;9;6;303;301
+Zeneakadémia;orchestra;left;9;7;317;301
+Zeneakadémia;orchestra;left;9;8;331;301
+Zeneakadémia;orchestra;left;9;9;345;301
+Zeneakadémia;orchestra;left;9;10;359;301
+Zeneakadémia;orchestra;left;9;11;373;301
+Zeneakadémia;orchestra;left;9;12;387;301
+
+Zeneakadémia;orchestra;left;10;1;233;313
+Zeneakadémia;orchestra;left;10;2;247;313
+Zeneakadémia;orchestra;left;10;3;261;313
+Zeneakadémia;orchestra;left;10;4;275;313
+Zeneakadémia;orchestra;left;10;5;289;313
+Zeneakadémia;orchestra;left;10;6;303;313
+Zeneakadémia;orchestra;left;10;7;317;313
+Zeneakadémia;orchestra;left;10;8;331;313
+Zeneakadémia;orchestra;left;10;9;345;313
+Zeneakadémia;orchestra;left;10;10;359;313
+Zeneakadémia;orchestra;left;10;11;373;313
+Zeneakadémia;orchestra;left;10;12;387;313
+
+Zeneakadémia;orchestra;left;11;1;233;325
+Zeneakadémia;orchestra;left;11;2;247;325
+Zeneakadémia;orchestra;left;11;3;261;325
+Zeneakadémia;orchestra;left;11;4;275;325
+Zeneakadémia;orchestra;left;11;5;289;325
+Zeneakadémia;orchestra;left;11;6;303;325
+Zeneakadémia;orchestra;left;11;7;317;325
+Zeneakadémia;orchestra;left;11;8;331;325
+Zeneakadémia;orchestra;left;11;9;345;325
+Zeneakadémia;orchestra;left;11;10;359;325
+Zeneakadémia;orchestra;left;11;11;373;325
+Zeneakadémia;orchestra;left;11;12;387;325
+
+Zeneakadémia;orchestra;left;12;1;233;337
+Zeneakadémia;orchestra;left;12;2;247;337
+Zeneakadémia;orchestra;left;12;3;261;337
+Zeneakadémia;orchestra;left;12;4;275;337
+Zeneakadémia;orchestra;left;12;5;289;337
+Zeneakadémia;orchestra;left;12;6;303;337
+Zeneakadémia;orchestra;left;12;7;317;337
+Zeneakadémia;orchestra;left;12;8;331;337
+Zeneakadémia;orchestra;left;12;9;345;337
+Zeneakadémia;orchestra;left;12;10;359;337
+Zeneakadémia;orchestra;left;12;11;373;337
+Zeneakadémia;orchestra;left;12;12;387;337
+
+Zeneakadémia;orchestra;left;13;1;233;349
+Zeneakadémia;orchestra;left;13;2;247;349
+Zeneakadémia;orchestra;left;13;3;261;349
+Zeneakadémia;orchestra;left;13;4;275;349
+Zeneakadémia;orchestra;left;13;5;289;349
+Zeneakadémia;orchestra;left;13;6;303;349
+Zeneakadémia;orchestra;left;13;7;317;349
+Zeneakadémia;orchestra;left;13;8;331;349
+Zeneakadémia;orchestra;left;13;9;345;349
+Zeneakadémia;orchestra;left;13;10;359;349
+Zeneakadémia;orchestra;left;13;11;373;349
+Zeneakadémia;orchestra;left;13;12;387;349
+
+Zeneakadémia;orchestra;left;14;1;233;361
+Zeneakadémia;orchestra;left;14;2;247;361
+Zeneakadémia;orchestra;left;14;3;261;361
+Zeneakadémia;orchestra;left;14;4;275;361
+Zeneakadémia;orchestra;left;14;5;289;361
+Zeneakadémia;orchestra;left;14;6;303;361
+Zeneakadémia;orchestra;left;14;7;317;361
+Zeneakadémia;orchestra;left;14;8;331;361
+Zeneakadémia;orchestra;left;14;9;345;361
+Zeneakadémia;orchestra;left;14;10;359;361
+Zeneakadémia;orchestra;left;14;11;373;361
+Zeneakadémia;orchestra;left;14;12;387;361
+
+Zeneakadémia;orchestra;left;15;1;233;373
+Zeneakadémia;orchestra;left;15;2;247;373
+Zeneakadémia;orchestra;left;15;3;261;373
+Zeneakadémia;orchestra;left;15;4;275;373
+Zeneakadémia;orchestra;left;15;5;289;373
+Zeneakadémia;orchestra;left;15;6;303;373
+Zeneakadémia;orchestra;left;15;7;317;373
+Zeneakadémia;orchestra;left;15;8;331;373
+Zeneakadémia;orchestra;left;15;9;345;373
+Zeneakadémia;orchestra;left;15;10;359;373
+Zeneakadémia;orchestra;left;15;11;373;373
+Zeneakadémia;orchestra;left;15;12;387;373
+
+Zeneakadémia;orchestra;left;16;1;233;385
+Zeneakadémia;orchestra;left;16;2;247;385
+Zeneakadémia;orchestra;left;16;3;261;385
+Zeneakadémia;orchestra;left;16;4;275;385
+Zeneakadémia;orchestra;left;16;5;289;385
+Zeneakadémia;orchestra;left;16;6;303;385
+Zeneakadémia;orchestra;left;16;7;317;385
+Zeneakadémia;orchestra;left;16;8;331;385
+Zeneakadémia;orchestra;left;16;9;345;385
+Zeneakadémia;orchestra;left;16;10;359;385
+Zeneakadémia;orchestra;left;16;11;373;385
+Zeneakadémia;orchestra;left;16;12;387;385
+
+Zeneakadémia;orchestra;left;17;1;233;397
+Zeneakadémia;orchestra;left;17;2;247;397
+Zeneakadémia;orchestra;left;17;3;261;397
+Zeneakadémia;orchestra;left;17;4;275;397
+Zeneakadémia;orchestra;left;17;5;289;397
+Zeneakadémia;orchestra;left;17;6;303;397
+Zeneakadémia;orchestra;left;17;7;317;397
+Zeneakadémia;orchestra;left;17;8;331;397
+Zeneakadémia;orchestra;left;17;9;345;397
+Zeneakadémia;orchestra;left;17;10;359;397
+Zeneakadémia;orchestra;left;17;11;373;397
+Zeneakadémia;orchestra;left;17;12;387;397
+
+Zeneakadémia;orchestra;left;18;M1;233;409
+Zeneakadémia;orchestra;left;18;M2;253;409
+Zeneakadémia;orchestra;left;18;M3;273;409
+Zeneakadémia;orchestra;left;18;1;289;409
+Zeneakadémia;orchestra;left;18;2;303;409
+Zeneakadémia;orchestra;left;18;3;317;409
+Zeneakadémia;orchestra;left;18;4;331;409
+Zeneakadémia;orchestra;left;18;5;345;409
+Zeneakadémia;orchestra;left;18;6;359;409
+Zeneakadémia;orchestra;left;18;7;373;409
+Zeneakadémia;orchestra;left;18;8;387;409
+
+Zeneakadémia;orchestra;right;1;12;415;205
+Zeneakadémia;orchestra;right;1;11;429;205
+Zeneakadémia;orchestra;right;1;10;443;205
+Zeneakadémia;orchestra;right;1;9;457;205
+Zeneakadémia;orchestra;right;1;8;471;205
+Zeneakadémia;orchestra;right;1;7;485;205
+Zeneakadémia;orchestra;right;1;6;499;205
+Zeneakadémia;orchestra;right;1;5;513;205
+Zeneakadémia;orchestra;right;1;4;527;205
+Zeneakadémia;orchestra;right;1;3;541;205
+Zeneakadémia;orchestra;right;1;2;555;205
+Zeneakadémia;orchestra;right;1;1;569;205
+
+Zeneakadémia;orchestra;right;2;12;415;217
+Zeneakadémia;orchestra;right;2;11;429;217
+Zeneakadémia;orchestra;right;2;10;443;217
+Zeneakadémia;orchestra;right;2;9;457;217
+Zeneakadémia;orchestra;right;2;8;471;217
+Zeneakadémia;orchestra;right;2;7;485;217
+Zeneakadémia;orchestra;right;2;6;499;217
+Zeneakadémia;orchestra;right;2;5;513;217
+Zeneakadémia;orchestra;right;2;4;527;217
+Zeneakadémia;orchestra;right;2;3;541;217
+Zeneakadémia;orchestra;right;2;2;555;217
+Zeneakadémia;orchestra;right;2;1;569;217
+
+Zeneakadémia;orchestra;right;3;12;415;229
+Zeneakadémia;orchestra;right;3;11;429;229
+Zeneakadémia;orchestra;right;3;10;443;229
+Zeneakadémia;orchestra;right;3;9;457;229
+Zeneakadémia;orchestra;right;3;8;471;229
+Zeneakadémia;orchestra;right;3;7;485;229
+Zeneakadémia;orchestra;right;3;6;499;229
+Zeneakadémia;orchestra;right;3;5;513;229
+Zeneakadémia;orchestra;right;3;4;527;229
+Zeneakadémia;orchestra;right;3;3;541;229
+Zeneakadémia;orchestra;right;3;2;555;229
+Zeneakadémia;orchestra;right;3;1;569;229
+
+Zeneakadémia;orchestra;right;4;12;415;241
+Zeneakadémia;orchestra;right;4;11;429;241
+Zeneakadémia;orchestra;right;4;10;443;241
+Zeneakadémia;orchestra;right;4;9;457;241
+Zeneakadémia;orchestra;right;4;8;471;241
+Zeneakadémia;orchestra;right;4;7;485;241
+Zeneakadémia;orchestra;right;4;6;499;241
+Zeneakadémia;orchestra;right;4;5;513;241
+Zeneakadémia;orchestra;right;4;4;527;241
+Zeneakadémia;orchestra;right;4;3;541;241
+Zeneakadémia;orchestra;right;4;2;555;241
+Zeneakadémia;orchestra;right;4;1;569;241
+
+Zeneakadémia;orchestra;right;5;12;415;253
+Zeneakadémia;orchestra;right;5;11;429;253
+Zeneakadémia;orchestra;right;5;10;443;253
+Zeneakadémia;orchestra;right;5;9;457;253
+Zeneakadémia;orchestra;right;5;8;471;253
+Zeneakadémia;orchestra;right;5;7;485;253
+Zeneakadémia;orchestra;right;5;6;499;253
+Zeneakadémia;orchestra;right;5;5;513;253
+Zeneakadémia;orchestra;right;5;4;527;253
+Zeneakadémia;orchestra;right;5;3;541;253
+Zeneakadémia;orchestra;right;5;2;555;253
+Zeneakadémia;orchestra;right;5;1;569;253
+
+Zeneakadémia;orchestra;right;6;12;415;265
+Zeneakadémia;orchestra;right;6;11;429;265
+Zeneakadémia;orchestra;right;6;10;443;265
+Zeneakadémia;orchestra;right;6;9;457;265
+Zeneakadémia;orchestra;right;6;8;471;265
+Zeneakadémia;orchestra;right;6;7;485;265
+Zeneakadémia;orchestra;right;6;6;499;265
+Zeneakadémia;orchestra;right;6;5;513;265
+Zeneakadémia;orchestra;right;6;4;527;265
+Zeneakadémia;orchestra;right;6;3;541;265
+Zeneakadémia;orchestra;right;6;2;555;265
+Zeneakadémia;orchestra;right;6;1;569;265
+
+Zeneakadémia;orchestra;right;7;12;415;277
+Zeneakadémia;orchestra;right;7;11;429;277
+Zeneakadémia;orchestra;right;7;10;443;277
+Zeneakadémia;orchestra;right;7;9;457;277
+Zeneakadémia;orchestra;right;7;8;471;277
+Zeneakadémia;orchestra;right;7;7;485;277
+Zeneakadémia;orchestra;right;7;6;499;277
+Zeneakadémia;orchestra;right;7;5;513;277
+Zeneakadémia;orchestra;right;7;4;527;277
+Zeneakadémia;orchestra;right;7;3;541;277
+Zeneakadémia;orchestra;right;7;2;555;277
+Zeneakadémia;orchestra;right;7;1;569;277
+
+Zeneakadémia;orchestra;right;8;12;415;289
+Zeneakadémia;orchestra;right;8;11;429;289
+Zeneakadémia;orchestra;right;8;10;443;289
+Zeneakadémia;orchestra;right;8;9;457;289
+Zeneakadémia;orchestra;right;8;8;471;289
+Zeneakadémia;orchestra;right;8;7;485;289
+Zeneakadémia;orchestra;right;8;6;499;289
+Zeneakadémia;orchestra;right;8;5;513;289
+Zeneakadémia;orchestra;right;8;4;527;289
+Zeneakadémia;orchestra;right;8;3;541;289
+Zeneakadémia;orchestra;right;8;2;555;289
+Zeneakadémia;orchestra;right;8;1;569;289
+
+Zeneakadémia;orchestra;right;9;12;415;301
+Zeneakadémia;orchestra;right;9;11;429;301
+Zeneakadémia;orchestra;right;9;10;443;301
+Zeneakadémia;orchestra;right;9;9;457;301
+Zeneakadémia;orchestra;right;9;8;471;301
+Zeneakadémia;orchestra;right;9;7;485;301
+Zeneakadémia;orchestra;right;9;6;499;301
+Zeneakadémia;orchestra;right;9;5;513;301
+Zeneakadémia;orchestra;right;9;4;527;301
+Zeneakadémia;orchestra;right;9;3;541;301
+Zeneakadémia;orchestra;right;9;2;555;301
+Zeneakadémia;orchestra;right;9;1;569;301
+
+Zeneakadémia;orchestra;right;10;12;415;313
+Zeneakadémia;orchestra;right;10;11;429;313
+Zeneakadémia;orchestra;right;10;10;443;313
+Zeneakadémia;orchestra;right;10;9;457;313
+Zeneakadémia;orchestra;right;10;8;471;313
+Zeneakadémia;orchestra;right;10;7;485;313
+Zeneakadémia;orchestra;right;10;6;499;313
+Zeneakadémia;orchestra;right;10;5;513;313
+Zeneakadémia;orchestra;right;10;4;527;313
+Zeneakadémia;orchestra;right;10;3;541;313
+Zeneakadémia;orchestra;right;10;2;555;313
+Zeneakadémia;orchestra;right;10;1;569;313
+
+Zeneakadémia;orchestra;right;11;12;415;325
+Zeneakadémia;orchestra;right;11;11;429;325
+Zeneakadémia;orchestra;right;11;10;443;325
+Zeneakadémia;orchestra;right;11;9;457;325
+Zeneakadémia;orchestra;right;11;8;471;325
+Zeneakadémia;orchestra;right;11;7;485;325
+Zeneakadémia;orchestra;right;11;6;499;325
+Zeneakadémia;orchestra;right;11;5;513;325
+Zeneakadémia;orchestra;right;11;4;527;325
+Zeneakadémia;orchestra;right;11;3;541;325
+Zeneakadémia;orchestra;right;11;2;555;325
+Zeneakadémia;orchestra;right;11;1;569;325
+
+Zeneakadémia;orchestra;right;12;12;415;337
+Zeneakadémia;orchestra;right;12;11;429;337
+Zeneakadémia;orchestra;right;12;10;443;337
+Zeneakadémia;orchestra;right;12;9;457;337
+Zeneakadémia;orchestra;right;12;8;471;337
+Zeneakadémia;orchestra;right;12;7;485;337
+Zeneakadémia;orchestra;right;12;6;499;337
+Zeneakadémia;orchestra;right;12;5;513;337
+Zeneakadémia;orchestra;right;12;4;527;337
+Zeneakadémia;orchestra;right;12;3;541;337
+Zeneakadémia;orchestra;right;12;2;555;337
+Zeneakadémia;orchestra;right;12;1;569;337
+
+Zeneakadémia;orchestra;right;13;12;415;349
+Zeneakadémia;orchestra;right;13;11;429;349
+Zeneakadémia;orchestra;right;13;10;443;349
+Zeneakadémia;orchestra;right;13;9;457;349
+Zeneakadémia;orchestra;right;13;8;471;349
+Zeneakadémia;orchestra;right;13;7;485;349
+Zeneakadémia;orchestra;right;13;6;499;349
+Zeneakadémia;orchestra;right;13;5;513;349
+Zeneakadémia;orchestra;right;13;4;527;349
+Zeneakadémia;orchestra;right;13;3;541;349
+Zeneakadémia;orchestra;right;13;2;555;349
+Zeneakadémia;orchestra;right;13;1;569;349
+
+Zeneakadémia;orchestra;right;14;12;415;361
+Zeneakadémia;orchestra;right;14;11;429;361
+Zeneakadémia;orchestra;right;14;10;443;361
+Zeneakadémia;orchestra;right;14;9;457;361
+Zeneakadémia;orchestra;right;14;8;471;361
+Zeneakadémia;orchestra;right;14;7;485;361
+Zeneakadémia;orchestra;right;14;6;499;361
+Zeneakadémia;orchestra;right;14;5;513;361
+Zeneakadémia;orchestra;right;14;4;527;361
+Zeneakadémia;orchestra;right;14;3;541;361
+Zeneakadémia;orchestra;right;14;2;555;361
+Zeneakadémia;orchestra;right;14;1;569;361
+
+Zeneakadémia;orchestra;right;15;12;415;373
+Zeneakadémia;orchestra;right;15;11;429;373
+Zeneakadémia;orchestra;right;15;10;443;373
+Zeneakadémia;orchestra;right;15;9;457;373
+Zeneakadémia;orchestra;right;15;8;471;373
+Zeneakadémia;orchestra;right;15;7;485;373
+Zeneakadémia;orchestra;right;15;6;499;373
+Zeneakadémia;orchestra;right;15;5;513;373
+Zeneakadémia;orchestra;right;15;4;527;373
+Zeneakadémia;orchestra;right;15;3;541;373
+Zeneakadémia;orchestra;right;15;2;555;373
+Zeneakadémia;orchestra;right;15;1;569;373
+
+Zeneakadémia;orchestra;right;16;12;415;385
+Zeneakadémia;orchestra;right;16;11;429;385
+Zeneakadémia;orchestra;right;16;10;443;385
+Zeneakadémia;orchestra;right;16;9;457;385
+Zeneakadémia;orchestra;right;16;8;471;385
+Zeneakadémia;orchestra;right;16;7;485;385
+Zeneakadémia;orchestra;right;16;6;499;385
+Zeneakadémia;orchestra;right;16;5;513;385
+Zeneakadémia;orchestra;right;16;4;527;385
+Zeneakadémia;orchestra;right;16;3;541;385
+Zeneakadémia;orchestra;right;16;2;555;385
+Zeneakadémia;orchestra;right;16;1;569;385
+
+Zeneakadémia;orchestra;right;17;12;415;397
+Zeneakadémia;orchestra;right;17;11;429;397
+Zeneakadémia;orchestra;right;17;10;443;397
+Zeneakadémia;orchestra;right;17;9;457;397
+Zeneakadémia;orchestra;right;17;8;471;397
+Zeneakadémia;orchestra;right;17;7;485;397
+Zeneakadémia;orchestra;right;17;6;499;397
+Zeneakadémia;orchestra;right;17;5;513;397
+Zeneakadémia;orchestra;right;17;4;527;397
+Zeneakadémia;orchestra;right;17;3;541;397
+Zeneakadémia;orchestra;right;17;2;555;397
+Zeneakadémia;orchestra;right;17;1;569;397
+
+Zeneakadémia;orchestra;right;18;8;415;409
+Zeneakadémia;orchestra;right;18;7;429;409
+Zeneakadémia;orchestra;right;18;6;443;409
+Zeneakadémia;orchestra;right;18;5;457;409
+Zeneakadémia;orchestra;right;18;4;471;409
+Zeneakadémia;orchestra;right;18;3;485;409
+Zeneakadémia;orchestra;right;18;2;499;409
+Zeneakadémia;orchestra;right;18;1;513;409
+Zeneakadémia;orchestra;right;18;M3;527;409
+Zeneakadémia;orchestra;right;18;M2;547;409
+Zeneakadémia;orchestra;right;18;M1;567;409
+
+Zeneakadémia;side dress circle;left;5;1;100;427
+Zeneakadémia;side dress circle;left;5;2;100;415
+Zeneakadémia;side dress circle;left;5;3;100;403
+Zeneakadémia;side dress circle;left;5;4;100;391
+Zeneakadémia;side dress circle;left;5;5;100;379
+Zeneakadémia;side dress circle;left;5;6;100;367
+Zeneakadémia;side dress circle;left;5;7;100;355
+Zeneakadémia;side dress circle;left;5;8;100;343
+Zeneakadémia;side dress circle;left;5;9;100;331
+Zeneakadémia;side dress circle;left;5;10;100;319
+Zeneakadémia;side dress circle;left;5;11;100;307
+Zeneakadémia;side dress circle;left;5;12;100;283
+Zeneakadémia;side dress circle;left;5;13;100;271
+Zeneakadémia;side dress circle;left;5;14;100;259
+Zeneakadémia;side dress circle;left;5;15;100;247
+Zeneakadémia;side dress circle;left;5;16;100;235
+Zeneakadémia;side dress circle;left;5;17;100;223
+Zeneakadémia;side dress circle;left;5;18;100;211
+Zeneakadémia;side dress circle;left;5;19;100;199
+Zeneakadémia;side dress circle;left;5;20;100;187
+Zeneakadémia;side dress circle;left;5;21;100;175
+Zeneakadémia;side dress circle;left;5;22;100;163
+
+Zeneakadémia;side dress circle;left;4;1;120;439
+Zeneakadémia;side dress circle;left;4;2;120;427
+Zeneakadémia;side dress circle;left;4;3;120;415
+Zeneakadémia;side dress circle;left;4;4;120;403
+Zeneakadémia;side dress circle;left;4;5;120;391
+Zeneakadémia;side dress circle;left;4;6;120;379
+Zeneakadémia;side dress circle;left;4;7;120;367
+Zeneakadémia;side dress circle;left;4;8;120;355
+Zeneakadémia;side dress circle;left;4;9;120;343
+Zeneakadémia;side dress circle;left;4;10;120;331
+Zeneakadémia;side dress circle;left;4;11;120;319
+Zeneakadémia;side dress circle;left;4;12;120;307
+Zeneakadémia;side dress circle;left;4;13;120;283
+Zeneakadémia;side dress circle;left;4;14;120;271
+Zeneakadémia;side dress circle;left;4;15;120;259
+Zeneakadémia;side dress circle;left;4;16;120;247
+Zeneakadémia;side dress circle;left;4;17;120;235
+Zeneakadémia;side dress circle;left;4;18;120;223
+Zeneakadémia;side dress circle;left;4;19;120;211
+Zeneakadémia;side dress circle;left;4;20;120;199
+Zeneakadémia;side dress circle;left;4;21;120;187
+Zeneakadémia;side dress circle;left;4;22;120;175
+Zeneakadémia;side dress circle;left;4;23;120;163
+Zeneakadémia;side dress circle;left;4;24;120;151
+
+Zeneakadémia;side dress circle;left;3;1;134;439
+Zeneakadémia;side dress circle;left;3;2;134;427
+Zeneakadémia;side dress circle;left;3;3;134;415
+Zeneakadémia;side dress circle;left;3;4;134;403
+Zeneakadémia;side dress circle;left;3;5;134;391
+Zeneakadémia;side dress circle;left;3;6;134;379
+Zeneakadémia;side dress circle;left;3;7;134;367
+Zeneakadémia;side dress circle;left;3;8;134;355
+Zeneakadémia;side dress circle;left;3;9;134;343
+Zeneakadémia;side dress circle;left;3;10;134;331
+Zeneakadémia;side dress circle;left;3;11;134;319
+Zeneakadémia;side dress circle;left;3;12;134;307
+Zeneakadémia;side dress circle;left;3;13;134;283
+Zeneakadémia;side dress circle;left;3;14;134;271
+Zeneakadémia;side dress circle;left;3;15;134;259
+Zeneakadémia;side dress circle;left;3;16;134;247
+Zeneakadémia;side dress circle;left;3;17;134;235
+Zeneakadémia;side dress circle;left;3;18;134;223
+Zeneakadémia;side dress circle;left;3;19;134;211
+Zeneakadémia;side dress circle;left;3;20;134;199
+Zeneakadémia;side dress circle;left;3;21;134;187
+Zeneakadémia;side dress circle;left;3;22;134;175
+Zeneakadémia;side dress circle;left;3;23;134;163
+Zeneakadémia;side dress circle;left;3;24;134;151
+
+Zeneakadémia;side dress circle;left;2;1;148;439
+Zeneakadémia;side dress circle;left;2;2;148;427
+Zeneakadémia;side dress circle;left;2;3;148;415
+Zeneakadémia;side dress circle;left;2;4;148;403
+Zeneakadémia;side dress circle;left;2;5;148;391
+Zeneakadémia;side dress circle;left;2;6;148;379
+Zeneakadémia;side dress circle;left;2;7;148;367
+Zeneakadémia;side dress circle;left;2;8;148;355
+Zeneakadémia;side dress circle;left;2;9;148;343
+Zeneakadémia;side dress circle;left;2;10;148;331
+Zeneakadémia;side dress circle;left;2;11;148;319
+Zeneakadémia;side dress circle;left;2;12;148;307
+Zeneakadémia;side dress circle;left;2;13;148;283
+Zeneakadémia;side dress circle;left;2;14;148;271
+Zeneakadémia;side dress circle;left;2;15;148;259
+Zeneakadémia;side dress circle;left;2;16;148;247
+Zeneakadémia;side dress circle;left;2;17;148;235
+Zeneakadémia;side dress circle;left;2;18;148;223
+Zeneakadémia;side dress circle;left;2;19;148;211
+Zeneakadémia;side dress circle;left;2;20;148;199
+Zeneakadémia;side dress circle;left;2;21;148;187
+Zeneakadémia;side dress circle;left;2;22;148;175
+Zeneakadémia;side dress circle;left;2;23;148;163
+Zeneakadémia;side dress circle;left;2;24;148;151
+
+Zeneakadémia;side dress circle;left;1;1;162;439
+Zeneakadémia;side dress circle;left;1;2;162;427
+Zeneakadémia;side dress circle;left;1;3;162;415
+Zeneakadémia;side dress circle;left;1;4;162;403
+Zeneakadémia;side dress circle;left;1;5;162;391
+Zeneakadémia;side dress circle;left;1;6;162;379
+Zeneakadémia;side dress circle;left;1;7;162;367
+Zeneakadémia;side dress circle;left;1;8;162;355
+Zeneakadémia;side dress circle;left;1;9;162;343
+Zeneakadémia;side dress circle;left;1;10;162;331
+Zeneakadémia;side dress circle;left;1;11;162;319
+Zeneakadémia;side dress circle;left;1;12;162;307
+Zeneakadémia;side dress circle;left;1;13;162;283
+Zeneakadémia;side dress circle;left;1;14;162;271
+Zeneakadémia;side dress circle;left;1;15;162;259
+Zeneakadémia;side dress circle;left;1;16;162;247
+Zeneakadémia;side dress circle;left;1;17;162;235
+Zeneakadémia;side dress circle;left;1;18;162;223
+Zeneakadémia;side dress circle;left;1;19;162;211
+Zeneakadémia;side dress circle;left;1;20;162;199
+Zeneakadémia;side dress circle;left;1;21;162;187
+Zeneakadémia;side dress circle;left;1;22;162;175
+Zeneakadémia;side dress circle;left;1;23;162;163
+Zeneakadémia;side dress circle;left;1;24;162;151
+
+Zeneakadémia;side dress circle;right;1;1;639;439
+Zeneakadémia;side dress circle;right;1;2;639;427
+Zeneakadémia;side dress circle;right;1;3;639;415
+Zeneakadémia;side dress circle;right;1;4;639;403
+Zeneakadémia;side dress circle;right;1;5;639;391
+Zeneakadémia;side dress circle;right;1;6;639;379
+Zeneakadémia;side dress circle;right;1;7;639;367
+Zeneakadémia;side dress circle;right;1;8;639;355
+Zeneakadémia;side dress circle;right;1;9;639;343
+Zeneakadémia;side dress circle;right;1;10;639;331
+Zeneakadémia;side dress circle;right;1;11;639;319
+Zeneakadémia;side dress circle;right;1;12;639;307
+Zeneakadémia;side dress circle;right;1;13;639;283
+Zeneakadémia;side dress circle;right;1;14;639;271
+Zeneakadémia;side dress circle;right;1;15;639;259
+Zeneakadémia;side dress circle;right;1;16;639;247
+Zeneakadémia;side dress circle;right;1;17;639;235
+Zeneakadémia;side dress circle;right;1;18;639;223
+Zeneakadémia;side dress circle;right;1;19;639;211
+Zeneakadémia;side dress circle;right;1;20;639;199
+Zeneakadémia;side dress circle;right;1;21;639;187
+Zeneakadémia;side dress circle;right;1;22;639;175
+Zeneakadémia;side dress circle;right;1;23;639;163
+Zeneakadémia;side dress circle;right;1;24;639;151
+
+Zeneakadémia;side dress circle;right;2;1;653;439
+Zeneakadémia;side dress circle;right;2;2;653;427
+Zeneakadémia;side dress circle;right;2;3;653;415
+Zeneakadémia;side dress circle;right;2;4;653;403
+Zeneakadémia;side dress circle;right;2;5;653;391
+Zeneakadémia;side dress circle;right;2;6;653;379
+Zeneakadémia;side dress circle;right;2;7;653;367
+Zeneakadémia;side dress circle;right;2;8;653;355
+Zeneakadémia;side dress circle;right;2;9;653;343
+Zeneakadémia;side dress circle;right;2;10;653;331
+Zeneakadémia;side dress circle;right;2;11;653;319
+Zeneakadémia;side dress circle;right;2;12;653;307
+Zeneakadémia;side dress circle;right;2;13;653;283
+Zeneakadémia;side dress circle;right;2;14;653;271
+Zeneakadémia;side dress circle;right;2;15;653;259
+Zeneakadémia;side dress circle;right;2;16;653;247
+Zeneakadémia;side dress circle;right;2;17;653;235
+Zeneakadémia;side dress circle;right;2;18;653;223
+Zeneakadémia;side dress circle;right;2;19;653;211
+Zeneakadémia;side dress circle;right;2;20;653;199
+Zeneakadémia;side dress circle;right;2;21;653;187
+Zeneakadémia;side dress circle;right;2;22;653;175
+Zeneakadémia;side dress circle;right;2;23;653;163
+Zeneakadémia;side dress circle;right;2;24;653;151
+
+Zeneakadémia;side dress circle;right;3;1;667;439
+Zeneakadémia;side dress circle;right;3;2;667;427
+Zeneakadémia;side dress circle;right;3;3;667;415
+Zeneakadémia;side dress circle;right;3;4;667;403
+Zeneakadémia;side dress circle;right;3;5;667;391
+Zeneakadémia;side dress circle;right;3;6;667;379
+Zeneakadémia;side dress circle;right;3;7;667;367
+Zeneakadémia;side dress circle;right;3;8;667;355
+Zeneakadémia;side dress circle;right;3;9;667;343
+Zeneakadémia;side dress circle;right;3;10;667;331
+Zeneakadémia;side dress circle;right;3;11;667;319
+Zeneakadémia;side dress circle;right;3;12;667;307
+Zeneakadémia;side dress circle;right;3;13;667;283
+Zeneakadémia;side dress circle;right;3;14;667;271
+Zeneakadémia;side dress circle;right;3;15;667;259
+Zeneakadémia;side dress circle;right;3;16;667;247
+Zeneakadémia;side dress circle;right;3;17;667;235
+Zeneakadémia;side dress circle;right;3;18;667;223
+Zeneakadémia;side dress circle;right;3;19;667;211
+Zeneakadémia;side dress circle;right;3;20;667;199
+Zeneakadémia;side dress circle;right;3;21;667;187
+Zeneakadémia;side dress circle;right;3;22;667;175
+Zeneakadémia;side dress circle;right;3;23;667;163
+Zeneakadémia;side dress circle;right;3;24;667;151
+
+Zeneakadémia;side dress circle;right;4;1;681;439
+Zeneakadémia;side dress circle;right;4;2;681;427
+Zeneakadémia;side dress circle;right;4;3;681;415
+Zeneakadémia;side dress circle;right;4;4;681;403
+Zeneakadémia;side dress circle;right;4;5;681;391
+Zeneakadémia;side dress circle;right;4;6;681;379
+Zeneakadémia;side dress circle;right;4;7;681;367
+Zeneakadémia;side dress circle;right;4;8;681;355
+Zeneakadémia;side dress circle;right;4;9;681;343
+Zeneakadémia;side dress circle;right;4;10;681;331
+Zeneakadémia;side dress circle;right;4;11;681;319
+Zeneakadémia;side dress circle;right;4;12;681;307
+Zeneakadémia;side dress circle;right;4;13;681;283
+Zeneakadémia;side dress circle;right;4;14;681;271
+Zeneakadémia;side dress circle;right;4;15;681;259
+Zeneakadémia;side dress circle;right;4;16;681;247
+Zeneakadémia;side dress circle;right;4;17;681;235
+Zeneakadémia;side dress circle;right;4;18;681;223
+Zeneakadémia;side dress circle;right;4;19;681;211
+Zeneakadémia;side dress circle;right;4;20;681;199
+Zeneakadémia;side dress circle;right;4;21;681;187
+Zeneakadémia;side dress circle;right;4;22;681;175
+Zeneakadémia;side dress circle;right;4;23;681;163
+Zeneakadémia;side dress circle;right;4;24;681;151
+
+Zeneakadémia;side dress circle;right;5;1;701;427
+Zeneakadémia;side dress circle;right;5;2;701;415
+Zeneakadémia;side dress circle;right;5;3;701;403
+Zeneakadémia;side dress circle;right;5;4;701;391
+Zeneakadémia;side dress circle;right;5;5;701;379
+Zeneakadémia;side dress circle;right;5;6;701;367
+Zeneakadémia;side dress circle;right;5;7;701;355
+Zeneakadémia;side dress circle;right;5;8;701;343
+Zeneakadémia;side dress circle;right;5;9;701;331
+Zeneakadémia;side dress circle;right;5;10;701;319
+Zeneakadémia;side dress circle;right;5;11;701;307
+Zeneakadémia;side dress circle;right;5;12;701;283
+Zeneakadémia;side dress circle;right;5;13;701;271
+Zeneakadémia;side dress circle;right;5;14;701;259
+Zeneakadémia;side dress circle;right;5;15;701;247
+Zeneakadémia;side dress circle;right;5;16;701;235
+Zeneakadémia;side dress circle;right;5;17;701;223
+Zeneakadémia;side dress circle;right;5;18;701;211
+Zeneakadémia;side dress circle;right;5;19;701;199
+Zeneakadémia;side dress circle;right;5;20;701;187
+Zeneakadémia;side dress circle;right;5;21;701;175
+Zeneakadémia;side dress circle;right;5;22;701;163
+
+Zeneakadémia;center dress circle;left;2;1;259;487
+Zeneakadémia;center dress circle;left;2;2;245;487
+Zeneakadémia;center dress circle;left;2;3;231;487
+Zeneakadémia;center dress circle;left;2;4;217;487
+Zeneakadémia;center dress circle;left;2;5;203;487
+Zeneakadémia;center dress circle;left;2;6;189;487
+
+Zeneakadémia;center dress circle;left;3;1;259;499
+Zeneakadémia;center dress circle;left;3;2;245;499
+Zeneakadémia;center dress circle;left;3;3;231;499
+Zeneakadémia;center dress circle;left;3;4;217;499
+Zeneakadémia;center dress circle;left;3;5;203;499
+Zeneakadémia;center dress circle;left;3;6;189;499
+Zeneakadémia;center dress circle;left;3;7;175;499
+Zeneakadémia;center dress circle;left;3;8;161;499
+Zeneakadémia;center dress circle;left;3;9;147;499
+
+Zeneakadémia;center dress circle;left;4;1;259;511
+Zeneakadémia;center dress circle;left;4;2;245;511
+Zeneakadémia;center dress circle;left;4;3;231;511
+Zeneakadémia;center dress circle;left;4;4;217;511
+Zeneakadémia;center dress circle;left;4;5;203;511
+Zeneakadémia;center dress circle;left;4;6;189;511
+Zeneakadémia;center dress circle;left;4;7;175;511
+
+Zeneakadémia;center dress circle;left;5;1;259;523
+Zeneakadémia;center dress circle;left;5;2;245;523
+Zeneakadémia;center dress circle;left;5;3;231;523
+Zeneakadémia;center dress circle;left;5;4;217;523
+Zeneakadémia;center dress circle;left;5;5;203;523
+Zeneakadémia;center dress circle;left;5;6;189;523
+Zeneakadémia;center dress circle;left;5;7;175;523
+
+Zeneakadémia;center dress circle;left;6;1;259;535
+Zeneakadémia;center dress circle;left;6;2;245;535
+Zeneakadémia;center dress circle;left;6;3;231;535
+Zeneakadémia;center dress circle;left;6;4;217;535
+Zeneakadémia;center dress circle;left;6;5;203;535
+Zeneakadémia;center dress circle;left;6;6;189;535
+
+Zeneakadémia;center dress circle;center left;1;1;319;475
+Zeneakadémia;center dress circle;center left;1;2;333;475
+Zeneakadémia;center dress circle;center left;1;3;347;475
+Zeneakadémia;center dress circle;center left;1;4;361;475
+Zeneakadémia;center dress circle;center left;1;5;375;475
+Zeneakadémia;center dress circle;center left;1;6;389;475
+Zeneakadémia;center dress circle;center left;1;7;403;475
+
+Zeneakadémia;center dress circle;center left;2;1;319;487
+Zeneakadémia;center dress circle;center left;2;2;333;487
+Zeneakadémia;center dress circle;center left;2;3;347;487
+Zeneakadémia;center dress circle;center left;2;4;361;487
+Zeneakadémia;center dress circle;center left;2;5;375;487
+Zeneakadémia;center dress circle;center left;2;6;389;487
+Zeneakadémia;center dress circle;center left;2;7;403;487
+
+Zeneakadémia;center dress circle;center left;3;1;319;499
+Zeneakadémia;center dress circle;center left;3;2;333;499
+Zeneakadémia;center dress circle;center left;3;3;347;499
+Zeneakadémia;center dress circle;center left;3;4;361;499
+Zeneakadémia;center dress circle;center left;3;5;375;499
+Zeneakadémia;center dress circle;center left;3;6;389;499
+Zeneakadémia;center dress circle;center left;3;7;403;499
+
+Zeneakadémia;center dress circle;center left;4;1;319;511
+Zeneakadémia;center dress circle;center left;4;2;333;511
+Zeneakadémia;center dress circle;center left;4;3;347;511
+Zeneakadémia;center dress circle;center left;4;4;361;511
+Zeneakadémia;center dress circle;center left;4;5;375;511
+Zeneakadémia;center dress circle;center left;4;6;389;511
+Zeneakadémia;center dress circle;center left;4;7;403;511
+
+Zeneakadémia;center dress circle;center left;5;1;319;523
+Zeneakadémia;center dress circle;center left;5;2;333;523
+Zeneakadémia;center dress circle;center left;5;3;347;523
+Zeneakadémia;center dress circle;center left;5;4;361;523
+Zeneakadémia;center dress circle;center left;5;5;375;523
+Zeneakadémia;center dress circle;center left;5;6;389;523
+Zeneakadémia;center dress circle;center left;5;7;403;523
+
+Zeneakadémia;center dress circle;center left;6;2;333;535
+Zeneakadémia;center dress circle;center left;6;3;347;535
+Zeneakadémia;center dress circle;center left;6;4;361;535
+Zeneakadémia;center dress circle;center left;6;5;375;535
+Zeneakadémia;center dress circle;center left;6;6;389;535
+Zeneakadémia;center dress circle;center left;6;7;403;535
+
+Zeneakadémia;center dress circle;center right;1;1;501;475
+Zeneakadémia;center dress circle;center right;1;2;487;475
+Zeneakadémia;center dress circle;center right;1;3;473;475
+Zeneakadémia;center dress circle;center right;1;4;459;475
+Zeneakadémia;center dress circle;center right;1;5;445;475
+Zeneakadémia;center dress circle;center right;1;6;431;475
+Zeneakadémia;center dress circle;center right;1;7;417;475
+
+Zeneakadémia;center dress circle;center right;2;1;501;487
+Zeneakadémia;center dress circle;center right;2;2;487;487
+Zeneakadémia;center dress circle;center right;2;3;473;487
+Zeneakadémia;center dress circle;center right;2;4;459;487
+Zeneakadémia;center dress circle;center right;2;5;445;487
+Zeneakadémia;center dress circle;center right;2;6;431;487
+Zeneakadémia;center dress circle;center right;2;7;417;487
+
+Zeneakadémia;center dress circle;center right;3;1;501;499
+Zeneakadémia;center dress circle;center right;3;2;487;499
+Zeneakadémia;center dress circle;center right;3;3;473;499
+Zeneakadémia;center dress circle;center right;3;4;459;499
+Zeneakadémia;center dress circle;center right;3;5;445;499
+Zeneakadémia;center dress circle;center right;3;6;431;499
+Zeneakadémia;center dress circle;center right;3;7;417;499
+
+Zeneakadémia;center dress circle;center right;4;1;501;511
+Zeneakadémia;center dress circle;center right;4;2;487;511
+Zeneakadémia;center dress circle;center right;4;3;473;511
+Zeneakadémia;center dress circle;center right;4;4;459;511
+Zeneakadémia;center dress circle;center right;4;5;445;511
+Zeneakadémia;center dress circle;center right;4;6;431;511
+Zeneakadémia;center dress circle;center right;4;7;417;511
+
+Zeneakadémia;center dress circle;center right;5;1;501;523
+Zeneakadémia;center dress circle;center right;5;2;487;523
+Zeneakadémia;center dress circle;center right;5;3;473;523
+Zeneakadémia;center dress circle;center right;5;4;459;523
+Zeneakadémia;center dress circle;center right;5;5;445;523
+Zeneakadémia;center dress circle;center right;5;6;431;523
+Zeneakadémia;center dress circle;center right;5;7;417;523
+
+Zeneakadémia;center dress circle;center right;6;2;487;535
+Zeneakadémia;center dress circle;center right;6;3;473;535
+Zeneakadémia;center dress circle;center right;6;4;459;535
+Zeneakadémia;center dress circle;center right;6;5;445;535
+Zeneakadémia;center dress circle;center right;6;6;431;535
+Zeneakadémia;center dress circle;center right;6;7;417;535
+
+Zeneakadémia;center dress circle;right;2;1;564;487
+Zeneakadémia;center dress circle;right;2;2;578;487
+Zeneakadémia;center dress circle;right;2;3;592;487
+Zeneakadémia;center dress circle;right;2;4;606;487
+Zeneakadémia;center dress circle;right;2;5;620;487
+Zeneakadémia;center dress circle;right;2;6;634;487
+
+Zeneakadémia;center dress circle;right;3;1;564;499
+Zeneakadémia;center dress circle;right;3;2;578;499
+Zeneakadémia;center dress circle;right;3;3;592;499
+Zeneakadémia;center dress circle;right;3;4;606;499
+Zeneakadémia;center dress circle;right;3;5;620;499
+Zeneakadémia;center dress circle;right;3;6;634;499
+Zeneakadémia;center dress circle;right;3;7;648;499
+Zeneakadémia;center dress circle;right;3;8;662;499
+Zeneakadémia;center dress circle;right;3;9;676;499
+
+Zeneakadémia;center dress circle;right;4;1;564;511
+Zeneakadémia;center dress circle;right;4;2;578;511
+Zeneakadémia;center dress circle;right;4;3;592;511
+Zeneakadémia;center dress circle;right;4;4;606;511
+Zeneakadémia;center dress circle;right;4;5;620;511
+Zeneakadémia;center dress circle;right;4;6;634;511
+Zeneakadémia;center dress circle;right;4;7;648;511
+
+Zeneakadémia;center dress circle;right;5;1;564;523
+Zeneakadémia;center dress circle;right;5;2;578;523
+Zeneakadémia;center dress circle;right;5;3;592;523
+Zeneakadémia;center dress circle;right;5;4;606;523
+Zeneakadémia;center dress circle;right;5;5;620;523
+Zeneakadémia;center dress circle;right;5;6;634;523
+Zeneakadémia;center dress circle;right;5;7;648;523
+
+Zeneakadémia;center dress circle;right;6;1;564;535
+Zeneakadémia;center dress circle;right;6;2;578;535
+Zeneakadémia;center dress circle;right;6;3;592;535
+Zeneakadémia;center dress circle;right;6;4;606;535
+Zeneakadémia;center dress circle;right;6;5;620;535
+Zeneakadémia;center dress circle;right;6;6;634;535
+
+Zeneakadémia;organ gallery;left;;30;276;40
+Zeneakadémia;organ gallery;left;;31;290;40
+Zeneakadémia;organ gallery;left;;32;304;40
+Zeneakadémia;organ gallery;left;;33;318;40
+Zeneakadémia;organ gallery;left;;34;332;40
+Zeneakadémia;organ gallery;left;;35;346;40
+Zeneakadémia;organ gallery;left;;36;360;40
+Zeneakadémia;organ gallery;left;;37;374;40
+Zeneakadémia;organ gallery;left;;38;388;40
+Zeneakadémia;organ gallery;left;;39;402;40
+
+Zeneakadémia;organ gallery;left;;20;276;52
+Zeneakadémia;organ gallery;left;;21;290;52
+Zeneakadémia;organ gallery;left;;22;304;52
+Zeneakadémia;organ gallery;left;;23;318;52
+Zeneakadémia;organ gallery;left;;24;332;52
+Zeneakadémia;organ gallery;left;;25;346;52
+Zeneakadémia;organ gallery;left;;26;360;52
+Zeneakadémia;organ gallery;left;;27;374;52
+Zeneakadémia;organ gallery;left;;28;388;52
+Zeneakadémia;organ gallery;left;;29;402;52
+
+Zeneakadémia;organ gallery;left;;10;276;64
+Zeneakadémia;organ gallery;left;;11;290;64
+Zeneakadémia;organ gallery;left;;12;304;64
+Zeneakadémia;organ gallery;left;;13;318;64
+Zeneakadémia;organ gallery;left;;14;332;64
+Zeneakadémia;organ gallery;left;;15;346;64
+Zeneakadémia;organ gallery;left;;16;360;64
+Zeneakadémia;organ gallery;left;;17;374;64
+Zeneakadémia;organ gallery;left;;18;388;64
+Zeneakadémia;organ gallery;left;;19;402;64
+
+Zeneakadémia;organ gallery;right;;30;542;40
+Zeneakadémia;organ gallery;right;;31;528;40
+Zeneakadémia;organ gallery;right;;32;514;40
+Zeneakadémia;organ gallery;right;;33;500;40
+Zeneakadémia;organ gallery;right;;34;486;40
+Zeneakadémia;organ gallery;right;;35;472;40
+Zeneakadémia;organ gallery;right;;36;458;40
+Zeneakadémia;organ gallery;right;;37;444;40
+Zeneakadémia;organ gallery;right;;38;430;40
+Zeneakadémia;organ gallery;right;;39;416;40
+
+Zeneakadémia;organ gallery;right;;20;542;52
+Zeneakadémia;organ gallery;right;;21;528;52
+Zeneakadémia;organ gallery;right;;22;514;52
+Zeneakadémia;organ gallery;right;;23;500;52
+Zeneakadémia;organ gallery;right;;24;486;52
+Zeneakadémia;organ gallery;right;;25;472;52
+Zeneakadémia;organ gallery;right;;26;458;52
+Zeneakadémia;organ gallery;right;;27;444;52
+Zeneakadémia;organ gallery;right;;28;430;52
+Zeneakadémia;organ gallery;right;;29;416;52
+
+Zeneakadémia;organ gallery;right;;10;542;64
+Zeneakadémia;organ gallery;right;;11;528;64
+Zeneakadémia;organ gallery;right;;12;514;64
+Zeneakadémia;organ gallery;right;;13;500;64
+Zeneakadémia;organ gallery;right;;14;486;64
+Zeneakadémia;organ gallery;right;;15;472;64
+Zeneakadémia;organ gallery;right;;16;458;64
+Zeneakadémia;organ gallery;right;;17;444;64
+Zeneakadémia;organ gallery;right;;18;430;64
+Zeneakadémia;organ gallery;right;;19;416;64
