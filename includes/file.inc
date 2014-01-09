@@ -437,8 +437,8 @@ function file_prepare_directory(&$directory, $options = FILE_MODIFY_PERMISSIONS)
   if (!is_dir($directory)) {
     // Let mkdir() recursively create directories and use the default directory
     // permissions.
-    if ($options & FILE_CREATE_DIRECTORY) {
-      return @drupal_mkdir($directory, NULL, TRUE);
+    if (($options & FILE_CREATE_DIRECTORY) && @drupal_mkdir($directory, NULL, TRUE)) {
+      return drupal_chmod($directory);
     }
     return FALSE;
   }
@@ -754,10 +754,11 @@ function file_usage_delete(stdClass $file, $module, $type = NULL, $id = NULL, $c
  * stored in the database. This is a powerful function that in many ways
  * performs like an advanced version of copy().
  * - Checks if $source and $destination are valid and readable/writable.
- * - Checks that $source is not equal to $destination; if they are an error
- *   is reported.
  * - If file already exists in $destination either the call will error out,
  *   replace the file or rename the file based on the $replace parameter.
+ * - If the $source and $destination are equal, the behavior depends on the
+ *   $replace parameter. FILE_EXISTS_REPLACE will error out. FILE_EXISTS_RENAME
+ *   will rename the file until the $destination is unique.
  * - Adds the new file to the files database. If the source file is a
  *   temporary file, the resulting file will also be a temporary file. See
  *   file_save_upload() for details on temporary files.
@@ -852,10 +853,11 @@ function file_valid_uri($uri) {
  * This is a powerful function that in many ways performs like an advanced
  * version of copy().
  * - Checks if $source and $destination are valid and readable/writable.
- * - Checks that $source is not equal to $destination; if they are an error
- *   is reported.
  * - If file already exists in $destination either the call will error out,
  *   replace the file or rename the file based on the $replace parameter.
+ * - If the $source and $destination are equal, the behavior depends on the
+ *   $replace parameter. FILE_EXISTS_REPLACE will error out. FILE_EXISTS_RENAME
+ *   will rename the file until the $destination is unique.
  * - Provides a fallback using realpaths if the move fails using stream
  *   wrappers. This can occur because PHP's copy() function does not properly
  *   support streams if safe_mode or open_basedir are enabled. See
@@ -1143,7 +1145,7 @@ function file_munge_filename($filename, $extensions, $alerts = TRUE) {
 
   // Allow potentially insecure uploads for very savvy users and admin
   if (!variable_get('allow_insecure_uploads', 0)) {
-    // Remove any null bytes. See http://php.net/manual/en/security.filesystem.nullbytes.php
+    // Remove any null bytes. See http://php.net/manual/security.filesystem.nullbytes.php
     $filename = str_replace(chr(0), '', $filename);
 
     $whitelist = array_unique(explode(' ', trim($extensions)));
@@ -1449,7 +1451,7 @@ function file_save_upload($source, $validators = array(), $destination = FALSE, 
 
   // Check for file upload errors and return FALSE if a lower level system
   // error occurred. For a complete list of errors:
-  // See http://php.net/manual/en/features.file-upload.errors.php.
+  // See http://php.net/manual/features.file-upload.errors.php.
   switch ($_FILES['files']['error'][$source]) {
     case UPLOAD_ERR_INI_SIZE:
     case UPLOAD_ERR_FORM_SIZE:
@@ -2212,7 +2214,7 @@ function drupal_chmod($uri, $mode = NULL) {
  * @param $uri
  *   A URI or pathname.
  * @param $context
- *   Refer to http://php.net/manual/en/ref.stream.php
+ *   Refer to http://php.net/manual/ref.stream.php
  *
  * @return
  *   Boolean TRUE on success, or FALSE on failure.
@@ -2331,23 +2333,21 @@ function drupal_basename($uri, $suffix = NULL) {
 }
 
 /**
- * Creates a directory, optionally creating missing components in the path to
- * the directory.
+ * Creates a directory using Drupal's default mode.
  *
- * When PHP's mkdir() creates a directory, the requested mode is affected by the
- * process's umask. This function overrides the umask and sets the mode
- * explicitly for all directory components created.
+ * PHP's mkdir() does not respect Drupal's default permissions mode. If a mode
+ * is not provided, this function will make sure that Drupal's is used.
+ *
+ * Compatibility: normal paths and stream wrappers.
  *
  * @param $uri
  *   A URI or pathname.
  * @param $mode
- *   Mode given to created directories. Defaults to the directory mode
- *   configured in the Drupal installation. It must have a leading zero.
+ *   By default the Drupal mode is used.
  * @param $recursive
- *   Create directories recursively, defaults to FALSE. Cannot work with a mode
- *   which denies writing or execution to the owner of the process.
+ *   Default to FALSE.
  * @param $context
- *   Refer to http://php.net/manual/en/ref.stream.php
+ *   Refer to http://php.net/manual/ref.stream.php
  *
  * @return
  *   Boolean TRUE on success, or FALSE on failure.
@@ -2361,55 +2361,7 @@ function drupal_mkdir($uri, $mode = NULL, $recursive = FALSE, $context = NULL) {
     $mode = variable_get('file_chmod_directory', 0775);
   }
 
-  // If the URI has a scheme, don't override the umask - schemes can handle this
-  // issue in their own implementation.
-  if (file_uri_scheme($uri)) {
-    return _drupal_mkdir_call($uri, $mode, $recursive, $context);
-  }
-
-  // If recursive, create each missing component of the parent directory
-  // individually and set the mode explicitly to override the umask.
-  if ($recursive) {
-    // Ensure the path is using DIRECTORY_SEPARATOR.
-    $uri = str_replace('/', DIRECTORY_SEPARATOR, $uri);
-    // Determine the components of the path.
-    $components = explode(DIRECTORY_SEPARATOR, $uri);
-    array_pop($components);
-    $recursive_path = '';
-    foreach ($components as $component) {
-      $recursive_path .= $component;
-
-      if (!file_exists($recursive_path)) {
-        if (!_drupal_mkdir_call($recursive_path, $mode, FALSE, $context)) {
-          return FALSE;
-        }
-        // Not necessary to use drupal_chmod() as there is no scheme.
-        if (!chmod($recursive_path, $mode)) {
-          return FALSE;
-        }
-      }
-
-      $recursive_path .= DIRECTORY_SEPARATOR;
-    }
-  }
-
-  // Do not check if the top-level directory already exists, as this condition
-  // must cause this function to fail.
-  if (!_drupal_mkdir_call($uri, $mode, FALSE, $context)) {
-    return FALSE;
-  }
-  // Not necessary to use drupal_chmod() as there is no scheme.
-  return chmod($uri, $mode);
-}
-
-/**
- * Helper function. Ensures we don't pass a NULL as a context resource to
- * mkdir().
- *
- * @see drupal_mkdir()
- */
-function _drupal_mkdir_call($uri, $mode, $recursive, $context) {
-  if (is_null($context)) {
+  if (!isset($context)) {
     return mkdir($uri, $mode, $recursive);
   }
   else {
@@ -2426,7 +2378,7 @@ function _drupal_mkdir_call($uri, $mode, $recursive, $context) {
  * @param $uri
  *   A URI or pathname.
  * @param $context
- *   Refer to http://php.net/manual/en/ref.stream.php
+ *   Refer to http://php.net/manual/ref.stream.php
  *
  * @return
  *   Boolean TRUE on success, or FALSE on failure.
