@@ -791,12 +791,12 @@ Zeneakadémia;centre dress circle;centre left;5;5;375;523
 Zeneakadémia;centre dress circle;centre left;5;6;389;523
 Zeneakadémia;centre dress circle;centre left;5;7;403;523
 
-Zeneakadémia;centre dress circle;centre left;6;2;333;535
-Zeneakadémia;centre dress circle;centre left;6;3;347;535
-Zeneakadémia;centre dress circle;centre left;6;4;361;535
-Zeneakadémia;centre dress circle;centre left;6;5;375;535
-Zeneakadémia;centre dress circle;centre left;6;6;389;535
-Zeneakadémia;centre dress circle;centre left;6;7;403;535
+Zeneakadémia;centre dress circle;centre left;6;1;333;535
+Zeneakadémia;centre dress circle;centre left;6;2;347;535
+Zeneakadémia;centre dress circle;centre left;6;3;361;535
+Zeneakadémia;centre dress circle;centre left;6;4;375;535
+Zeneakadémia;centre dress circle;centre left;6;5;389;535
+Zeneakadémia;centre dress circle;centre left;6;6;403;535
 
 Zeneakadémia;centre dress circle;centre right;1;1;501;475
 Zeneakadémia;centre dress circle;centre right;1;2;487;475
@@ -838,12 +838,12 @@ Zeneakadémia;centre dress circle;centre right;5;5;445;523
 Zeneakadémia;centre dress circle;centre right;5;6;431;523
 Zeneakadémia;centre dress circle;centre right;5;7;417;523
 
-Zeneakadémia;centre dress circle;centre right;6;2;487;535
-Zeneakadémia;centre dress circle;centre right;6;3;473;535
-Zeneakadémia;centre dress circle;centre right;6;4;459;535
-Zeneakadémia;centre dress circle;centre right;6;5;445;535
-Zeneakadémia;centre dress circle;centre right;6;6;431;535
-Zeneakadémia;centre dress circle;centre right;6;7;417;535
+Zeneakadémia;centre dress circle;centre right;6;1;487;535
+Zeneakadémia;centre dress circle;centre right;6;2;473;535
+Zeneakadémia;centre dress circle;centre right;6;3;459;535
+Zeneakadémia;centre dress circle;centre right;6;4;445;535
+Zeneakadémia;centre dress circle;centre right;6;5;431;535
+Zeneakadémia;centre dress circle;centre right;6;6;417;535
 
 Zeneakadémia;centre dress circle;right;2;1;564;487
 Zeneakadémia;centre dress circle;right;2;2;578;487
