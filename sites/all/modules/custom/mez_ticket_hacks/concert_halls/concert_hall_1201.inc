@@ -33,7 +33,7 @@ function concert_hall_1201($concert_hall_nid) {
     <div class="mez-legend">
       <div class="mez-ticket free"><span class="inner"></span>' . t('available') . '</div>
       <div class="mez-ticket reserved"><span class="inner"></span>' . t('my reservation') . '</div>
-      <div class="mez-ticket sold"><span class="inner"></span>' . t('(online) not available') . '</div>
+      <div class="mez-ticket sold"><span class="inner"></span>' . t('not available') . '</div>
     </div>
   </div>';
 

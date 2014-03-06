@@ -101,7 +101,7 @@ function mez_ticket_hacks_theme() {
     ),
     'mez_ticket_pdf' => array(
       'variables' => array(
-        'tickets' => NULL
+        'order' => NULL,
       ),
       'template' => 'mez_ticket_pdf',
       'path' => drupal_get_path('theme', 'mez_theme') . '/templates/pdf',
@@ -223,6 +223,27 @@ function mez_ticket_hacks_preprocess_mez_ticket(&$vars) {
     $vars['title'] = $seat->title;
     $vars['seat_nid'] = $seat->nid;
   }
+}
+
+/**
+ * Preprocess function for mez_ticket_pdf.
+ */
+function mez_ticket_hacks_preprocess_mez_ticket_pdf(&$vars) {
+  $order = $vars['order'];
+  $order_w = entity_metadata_wrapper('commerce_order', $order);
+  $payment_method = commerce_payment_method_instance_load($order->data['payment_method']);
+  $vars['env'] = $payment_method['settings']['env'];
+
+  $tickets = array();
+  foreach ($order_w->commerce_line_items as $cli) {
+    $seat = $cli->commerce_product->field_seat->title_field->value();
+    $price = $cli->commerce_unit_price->amount->value();
+    $tickets[] = array(
+      'seat' => $seat,
+      'price' => $price,
+    );
+  }
+  $vars['tickets'] = $tickets;
 }
 
 /**

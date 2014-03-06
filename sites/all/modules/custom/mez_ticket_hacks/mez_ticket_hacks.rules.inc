@@ -67,18 +67,8 @@ function mez_ticket_hacks_rules_action_info() {
 function mez_create_ticket_pdf_action($order) {
   // Attach ticket pdf to email.
   $order_w = entity_metadata_wrapper('commerce_order', $order);
-  $payment_method = commerce_payment_method_instance_load($order->data['payment_method']);
-
-  $tickets = array();
-  foreach ($order_w->commerce_line_items as $cli) {
-    $seat = $cli->commerce_product->field_seat->title_field->value();
-    $price = $cli->commerce_unit_price->amount->value();
-    $tickets[] = array(
-      'seat' => $seat,
-      'price' => $price,
-    );
-  }
-  $tex = theme('mez_ticket_pdf', array('tickets' => $tickets, 'env' => $payment_method['settings']['env']));
+  $concert_nid = $order_w->commerce_line_items[0]->commerce_product->field_concert->nid->value();
+  $tex = theme('mez_ticket_pdf__' . $concert_nid, array('order' => $order));
 
   // Get the destination directory from the pdf sending rule
   $rule = rules_config_load('rules_mez_ticket_pdf_sending');
@@ -95,10 +85,9 @@ function mez_create_ticket_pdf_action($order) {
     $filesdir = drupal_realpath($dir);
     $filename = 'mez_concert_tickets_' . $order->order_id;
     $texfile = file_save_data($tex, $dir . "/$filename.tex");
-
     $output = array();
     $return_val = 0;
-    $cmd = "cd $filesdir;/usr/bin/pdflatex $filename";
+    $cmd = "cd $filesdir;/usr/bin/pdflatex " . drupal_basename($texfile->uri);
     exec($cmd, $output, $return_val);
     rules_invoke_event('mez_ticket_pdfs_generated', $order);
   }
