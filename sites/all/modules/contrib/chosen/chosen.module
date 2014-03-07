@@ -126,6 +126,7 @@ function chosen_library() {
       $module_path . '/css/chosen-drupal.css' => array(),
     ),
     'dependencies' => array(
+      array('system', 'jquery.once'),
       array('chosen', 'chosen'),
     ),
   );
