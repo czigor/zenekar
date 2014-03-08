@@ -20,6 +20,13 @@ function mez_concert_ct_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'additional_settings__active_tab_concert_hall';
+  $strongarm->value = 'edit-submission';
+  $export['additional_settings__active_tab_concert_hall'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'ant_concert';
   $strongarm->value = '0';
   $export['ant_concert'] = $strongarm;

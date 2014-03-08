@@ -46,6 +46,7 @@ function mez_users_default_page_manager_handlers() {
   );
   $display->cache = array();
   $display->title = '';
+  $display->uuid = '483d3fb5-a6c0-4644-9b93-df2c4b56e178';
   $display->content = array();
   $display->panels = array();
   $display->hide_title = PANELS_TITLE_NONE;
@@ -89,6 +90,7 @@ function mez_users_default_page_manager_handlers() {
   );
   $display->cache = array();
   $display->title = '';
+  $display->uuid = 'b2f55bb5-6c7f-4754-a9fd-82c106cd7b4d';
   $display->content = array();
   $display->panels = array();
   $display->hide_title = PANELS_TITLE_NONE;

@@ -21,7 +21,7 @@ function mez_chosen_settings_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'chosen_disable_search_threshold';
-  $strongarm->value = 'Never Apply';
+  $strongarm->value = 0;
   $export['chosen_disable_search_threshold'] = $strongarm;
 
   $strongarm = new stdClass();

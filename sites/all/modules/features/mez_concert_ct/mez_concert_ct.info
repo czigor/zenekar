@@ -1,7 +1,7 @@
 name = MEZ Concert CT
 core = 7.x
 package = MEZ CTs
-version = 7.x-1.0-20131230dev1
+version = 7.x-1.0-20140308dev1
 project = mez_concert_ct
 dependencies[] = ctools
 dependencies[] = date
@@ -61,6 +61,7 @@ features[user_permission][] = delete own concert content
 features[user_permission][] = edit any concert content
 features[user_permission][] = edit own concert content
 features[variable][] = additional_settings__active_tab_concert
+features[variable][] = additional_settings__active_tab_concert_hall
 features[variable][] = ant_concert
 features[variable][] = ant_pattern_concert
 features[variable][] = ant_php_concert

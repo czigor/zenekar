@@ -13,6 +13,13 @@ function mez_commerce_settings_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'commerce_cart_refresh_frequency';
+  $strongarm->value = 0;
+  $export['commerce_cart_refresh_frequency'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'commerce_customer_profile_billing_field';
   $strongarm->value = 'commerce_customer_billing';
   $export['commerce_customer_profile_billing_field'] = $strongarm;
@@ -195,9 +202,43 @@ function mez_commerce_settings_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'commerce_order_apply_pricing_rules_link';
+  $strongarm->value = FALSE;
+  $export['commerce_order_apply_pricing_rules_link'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'commerce_order_simulate_checkout_link';
+  $strongarm->value = FALSE;
+  $export['commerce_order_simulate_checkout_link'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'commerce_payment_pane_require_method';
   $strongarm->value = 1;
   $export['commerce_payment_pane_require_method'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'enable_commerce_checkout_order_created_date_update';
+  $strongarm->value = FALSE;
+  $export['enable_commerce_checkout_order_created_date_update'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'field_bundle_settings_commerce_order__commerce_order';
+  $strongarm->value = array(
+    'view_modes' => array(),
+    'extra_fields' => array(
+      'form' => array(),
+      'display' => array(),
+    ),
+  );
+  $export['field_bundle_settings_commerce_order__commerce_order'] = $strongarm;
 
   return $export;
 }

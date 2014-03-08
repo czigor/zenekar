@@ -1,7 +1,7 @@
 name = MEZ frontpage
 core = 7.x
 package = MEZ
-version = 7.x-1.0-20131223dev1
+version = 7.x-1.0-20140308dev1
 project = mez_frontpage
 dependencies[] = ctools
 dependencies[] = page_manager

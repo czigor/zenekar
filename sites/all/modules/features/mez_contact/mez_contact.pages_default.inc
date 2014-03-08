@@ -46,6 +46,7 @@ function mez_contact_default_page_manager_handlers() {
   );
   $display->cache = array();
   $display->title = '';
+  $display->uuid = '43d04bd6-11ef-47b5-8755-78f45c44e8b5';
   $display->content = array();
   $display->panels = array();
   $display->hide_title = PANELS_TITLE_NONE;
