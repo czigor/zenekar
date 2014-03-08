@@ -31,7 +31,10 @@ function concert_hall_1201($concert_hall_nid) {
     </svg>';
   $return['markup'] .= '<div style="position:absolute; top:' . 0 . 'px; left:' . 0 . 'px;">
     <div class="mez-legend">
-      <div class="mez-ticket free"><span class="inner"></span>' . t('available') . '</div>
+      <div class="mez-ticket free mez-ticket-price-1000"><span class="inner"></span>' . t('1000 Ft') . '</div>
+      <div class="mez-ticket free mez-ticket-price-2000"><span class="inner"></span>' . t('2000 Ft') . '</div>
+      <div class="mez-ticket free mez-ticket-price-2500"><span class="inner"></span>' . t('2500 Ft') . '</div>
+      <div class="mez-ticket free mez-ticket-price-10000"><span class="inner"></span>' . t('10000 Ft sponsor ticket') . '</div>
       <div class="mez-ticket reserved"><span class="inner"></span>' . t('my reservation') . '</div>
       <div class="mez-ticket sold"><span class="inner"></span>' . t('not available') . '</div>
     </div>
