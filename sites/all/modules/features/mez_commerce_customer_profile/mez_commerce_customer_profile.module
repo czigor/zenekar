@@ -18,7 +18,7 @@ function mez_commerce_customer_profile_form_commerce_checkout_form_checkout_alte
       ':input[name="customer_profile_billing[field_want_bill][und]"]' => array('checked' => TRUE),
     ),
   );
-  $form['customer_profile_billing']['#element_validate'] = array('mez_ticket_hacks_billing_information_validate');
+  $form['customer_profile_billing']['#element_validate'] = array('mez_commerce_customer_profile_billing_information_validate');
 }
 
 /**
