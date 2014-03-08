@@ -102,7 +102,7 @@ function mez_commerce_customer_profile_field_default_field_instances() {
       ),
     ),
     'deleted' => 0,
-    'description' => 'Check this if you want to recieve a bill.',
+    'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -134,7 +134,6 @@ function mez_commerce_customer_profile_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Check this if you want to recieve a bill.');
   t('Cím');
   t('I would like a bill');
 

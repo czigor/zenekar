@@ -19,6 +19,13 @@ function mez_unsuccessful_ticket_pdf_generation_rule_default_rules_configuration
       "DO" : [
         { "drupal_message" : { "message" : "\\u003Cp\\u003EAn error occured during the generation of the concert ticket you purchased at [site:url]. A site admin will contact you shortly to send you the ticket manually.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003ESorry for the inconvenience.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EThe transaction id is [commerce-order:commerce-cib-trid].\\u003Cbr\\/\\u003E\\r\\nThe response code is [commerce-order:commerce-cib-rc].\\u003Cbr\\/\\u003E\\r\\nThe response message is: \\u0022[commerce-order:commerce-cib-rt]\\u0022.\\u003Cbr\\/\\u003E\\r\\nThe permission number is [commerce-order:commerce-cib-anum].\\u003Cbr\\/\\u003E\\r\\nThe paid amount is [commerce-order:commerce-cib-amo] HUF.\\u003C\\/p\\u003E" } },
         { "mail" : {
+            "to" : [ "site:mail" ],
+            "subject" : "Unsuccessful ticket pdf generation",
+            "message" : "The ticket generation for order [commerce-order:order-id] was unsuccessful.",
+            "language" : [ "commerce-order:state" ]
+          }
+        },
+        { "mail" : {
             "to" : [ "commerce-order:mail" ],
             "subject" : "[site:name] ticket generation failure",
             "message" : "Dear Customer,\\r\\n\\r\\nAn error occured during the generation of the concert ticket you purchased at [site:url]. A site admin will contact you shortly to send you the ticket(s) manually. \\r\\n\\r\\nSorry for the inconvenience.\\r\\n\\r\\nThe transaction id is [commerce-order:commerce-cib-trid].\\r\\nThe response code is [commerce-order:commerce-cib-rc] .\\r\\nThe response message is [commerce-order:commerce-cib-rt].\\r\\nThe permission number is [commerce-order:commerce-cib-anum].\\r\\nThe paid amount is [commerce-order:commerce-cib-amo] HUF.\\r\\n\\r\\nBest wishes,\\r\\n-- the [site:name] team",

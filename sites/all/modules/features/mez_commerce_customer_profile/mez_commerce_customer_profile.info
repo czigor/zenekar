@@ -1,7 +1,7 @@
 name = MEZ Commerce customer profile
 core = 7.x
 package = MEZ Commerce
-version = 7.x-1.0-20140308dev1
+version = 7.x-1.0-20140308dev2
 project = mez_commerce_customer_profile
 dependencies[] = addressfield
 dependencies[] = commerce_customer

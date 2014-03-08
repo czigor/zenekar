@@ -73,3 +73,21 @@ body.node-type-concert {
   font-size: 0.6em;
   text-align: right;
 }
+
+/**
+ * 2014. 05. 19. concert
+ */
+body.page-node-1206 .mez-concert-hall {
+  .mez-ticket.free.mez-ticket-price-1000 span.inner {
+    background-color: #54C571;
+  }
+  .mez-ticket.free.mez-ticket-price-2000 span.inner {
+    background-color: #9DC209;
+  }
+  .mez-ticket.free.mez-ticket-price-2500 span.inner {
+    background-color: green;
+  }
+  .mez-ticket.free.mez-ticket-price-10000 span.inner {
+    background-color: #254117;
+  }
+}
