@@ -5,3 +5,32 @@
  */
 
 include_once 'mez_commerce_customer_profile.features.inc';
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ *
+ * Alter the Checkout form.
+ */
+function mez_commerce_customer_profile_form_commerce_checkout_form_checkout_alter(&$form, $form_state) {
+  // Show billing information only if the 'I want a bill' checkbox is checked.
+  $form['customer_profile_billing']['commerce_customer_address']['#states'] = array(
+    'visible' => array(
+      ':input[name="customer_profile_billing[field_want_bill][und]"]' => array('checked' => TRUE),
+    ),
+  );
+  $form['customer_profile_billing']['#element_validate'] = array('mez_ticket_hacks_billing_information_validate');
+  dpm($form);
+}
+
+/**
+ * Validation callback for the checkout form.
+ */
+function mez_commerce_customer_profile_billing_information_validate($element, &$form_state, $form) {
+  // If the 'I want a bill' checkbox is checked, name and address is required.
+  if (!empty($form_state['values']['customer_profile_billing']['field_want_bill'][LANGUAGE_NONE][0]['value'])) {
+    if (empty($form_state['values']['customer_profile_billing']['commerce_customer_address'][LANGUAGE_NONE][0]['name_line']) ||
+      empty($form_state['values']['customer_profile_billing']['commerce_customer_address'][LANGUAGE_NONE][0]['thoroughfare'])) {
+      form_error($element, t('If you would like to recieve a bill please fill in at least the name and address fields.'));
+    }
+  }
+}
