@@ -652,221 +652,221 @@ Kodály Központ, Pécs;dress circle;left;XVI;4;309;931
 Kodály Központ, Pécs;dress circle;left;XVI;5;324;934
 Kodály Központ, Pécs;dress circle;left;XVI;6;337;937
 
-Kodály Központ, Pécs;dress circle;center left;A;1;462;782
-Kodály Központ, Pécs;dress circle;center left;A;2;477;782
-Kodály Központ, Pécs;dress circle;center left;A;3;497;783
-Kodály Központ, Pécs;dress circle;center left;A;4;512;780
-Kodály Központ, Pécs;dress circle;center left;A;5;525;778
-Kodály Központ, Pécs;dress circle;center left;A;6;539;775
-Kodály Központ, Pécs;dress circle;center left;A;7;553;772
+Kodály Központ, Pécs;dress circle;centre left;A;1;462;782
+Kodály Központ, Pécs;dress circle;centre left;A;2;477;782
+Kodály Központ, Pécs;dress circle;centre left;A;3;497;783
+Kodály Központ, Pécs;dress circle;centre left;A;4;512;780
+Kodály Központ, Pécs;dress circle;centre left;A;5;525;778
+Kodály Központ, Pécs;dress circle;centre left;A;6;539;775
+Kodály Központ, Pécs;dress circle;centre left;A;7;553;772
 
-Kodály Központ, Pécs;dress circle;center left;I;1;435;808
-Kodály Központ, Pécs;dress circle;center left;I;2;450;809
-Kodály Központ, Pécs;dress circle;center left;I;3;465;811
-Kodály Központ, Pécs;dress circle;center left;I;4;478;812
-Kodály Központ, Pécs;dress circle;center left;I;5;494;816
-Kodály Központ, Pécs;dress circle;center left;I;6;509;814
-Kodály Központ, Pécs;dress circle;center left;I;7;522;810
-Kodály Központ, Pécs;dress circle;center left;I;8;537;807
-Kodály Központ, Pécs;dress circle;center left;I;9;549;805
-Kodály Központ, Pécs;dress circle;center left;I;10;564;802
+Kodály Központ, Pécs;dress circle;centre left;I;1;435;808
+Kodály Központ, Pécs;dress circle;centre left;I;2;450;809
+Kodály Központ, Pécs;dress circle;centre left;I;3;465;811
+Kodály Központ, Pécs;dress circle;centre left;I;4;478;812
+Kodály Központ, Pécs;dress circle;centre left;I;5;494;816
+Kodály Központ, Pécs;dress circle;centre left;I;6;509;814
+Kodály Központ, Pécs;dress circle;centre left;I;7;522;810
+Kodály Központ, Pécs;dress circle;centre left;I;8;537;807
+Kodály Központ, Pécs;dress circle;centre left;I;9;549;805
+Kodály Központ, Pécs;dress circle;centre left;I;10;564;802
 
-Kodály Központ, Pécs;dress circle;center left;II;1;429;831
-Kodály Központ, Pécs;dress circle;center left;II;2;442;833
-Kodály Központ, Pécs;dress circle;center left;II;3;457;834
-Kodály Központ, Pécs;dress circle;center left;II;4;471;835
-Kodály Központ, Pécs;dress circle;center left;II;5;492;839
-Kodály Központ, Pécs;dress circle;center left;II;6;506;836
-Kodály Központ, Pécs;dress circle;center left;II;7;520;833
-Kodály Központ, Pécs;dress circle;center left;II;8;533;831
-Kodály Központ, Pécs;dress circle;center left;II;9;548;827
-Kodály Központ, Pécs;dress circle;center left;II;10;562;824
+Kodály Központ, Pécs;dress circle;centre left;II;1;429;831
+Kodály Központ, Pécs;dress circle;centre left;II;2;442;833
+Kodály Központ, Pécs;dress circle;centre left;II;3;457;834
+Kodály Központ, Pécs;dress circle;centre left;II;4;471;835
+Kodály Központ, Pécs;dress circle;centre left;II;5;492;839
+Kodály Központ, Pécs;dress circle;centre left;II;6;506;836
+Kodály Központ, Pécs;dress circle;centre left;II;7;520;833
+Kodály Központ, Pécs;dress circle;centre left;II;8;533;831
+Kodály Központ, Pécs;dress circle;centre left;II;9;548;827
+Kodály Központ, Pécs;dress circle;centre left;II;10;562;824
 
-Kodály Központ, Pécs;dress circle;center left;III;1;422;853
-Kodály Központ, Pécs;dress circle;center left;III;2;438;855
-Kodály Központ, Pécs;dress circle;center left;III;3;452;857
-Kodály Központ, Pécs;dress circle;center left;III;4;465;858
-Kodály Központ, Pécs;dress circle;center left;III;5;488;861
-Kodály Központ, Pécs;dress circle;center left;III;6;503;859
-Kodály Központ, Pécs;dress circle;center left;III;7;517;856
-Kodály Központ, Pécs;dress circle;center left;III;8;531;853
-Kodály Központ, Pécs;dress circle;center left;III;9;544;850
-Kodály Központ, Pécs;dress circle;center left;III;10;559;847
+Kodály Központ, Pécs;dress circle;centre left;III;1;422;853
+Kodály Központ, Pécs;dress circle;centre left;III;2;438;855
+Kodály Központ, Pécs;dress circle;centre left;III;3;452;857
+Kodály Központ, Pécs;dress circle;centre left;III;4;465;858
+Kodály Központ, Pécs;dress circle;centre left;III;5;488;861
+Kodály Központ, Pécs;dress circle;centre left;III;6;503;859
+Kodály Központ, Pécs;dress circle;centre left;III;7;517;856
+Kodály Központ, Pécs;dress circle;centre left;III;8;531;853
+Kodály Központ, Pécs;dress circle;centre left;III;9;544;850
+Kodály Központ, Pécs;dress circle;centre left;III;10;559;847
 
-Kodály Központ, Pécs;dress circle;center left;IV;1;422;877
-Kodály Központ, Pécs;dress circle;center left;IV;2;437;879
-Kodály Központ, Pécs;dress circle;center left;IV;3;451;879
-Kodály Központ, Pécs;dress circle;center left;IV;4;465;881
-Kodály Központ, Pécs;dress circle;center left;IV;5;485;884
-Kodály Központ, Pécs;dress circle;center left;IV;6;498;882
-Kodály Központ, Pécs;dress circle;center left;IV;7;512;879
-Kodály Központ, Pécs;dress circle;center left;IV;8;526;877
-Kodály Központ, Pécs;dress circle;center left;IV;9;540;873
-Kodály Központ, Pécs;dress circle;center left;IV;10;555;871
+Kodály Központ, Pécs;dress circle;centre left;IV;1;422;877
+Kodály Központ, Pécs;dress circle;centre left;IV;2;437;879
+Kodály Központ, Pécs;dress circle;centre left;IV;3;451;879
+Kodály Központ, Pécs;dress circle;centre left;IV;4;465;881
+Kodály Központ, Pécs;dress circle;centre left;IV;5;485;884
+Kodály Központ, Pécs;dress circle;centre left;IV;6;498;882
+Kodály Központ, Pécs;dress circle;centre left;IV;7;512;879
+Kodály Központ, Pécs;dress circle;centre left;IV;8;526;877
+Kodály Központ, Pécs;dress circle;centre left;IV;9;540;873
+Kodály Központ, Pécs;dress circle;centre left;IV;10;555;871
 
-Kodály Központ, Pécs;dress circle;center left;V;1;416;899
-Kodály Központ, Pécs;dress circle;center left;V;2;430;900
-Kodály Központ, Pécs;dress circle;center left;V;3;444;902
-Kodály Központ, Pécs;dress circle;center left;V;4;458;903
-Kodály Központ, Pécs;dress circle;center left;V;5;482;907
-Kodály Központ, Pécs;dress circle;center left;V;6;495;904
-Kodály Központ, Pécs;dress circle;center left;V;7;509;901
-Kodály Központ, Pécs;dress circle;center left;V;8;523;899
-Kodály Központ, Pécs;dress circle;center left;V;9;537;896
-Kodály Központ, Pécs;dress circle;center left;V;10;551;894
+Kodály Központ, Pécs;dress circle;centre left;V;1;416;899
+Kodály Központ, Pécs;dress circle;centre left;V;2;430;900
+Kodály Központ, Pécs;dress circle;centre left;V;3;444;902
+Kodály Központ, Pécs;dress circle;centre left;V;4;458;903
+Kodály Központ, Pécs;dress circle;centre left;V;5;482;907
+Kodály Központ, Pécs;dress circle;centre left;V;6;495;904
+Kodály Központ, Pécs;dress circle;centre left;V;7;509;901
+Kodály Központ, Pécs;dress circle;centre left;V;8;523;899
+Kodály Központ, Pécs;dress circle;centre left;V;9;537;896
+Kodály Központ, Pécs;dress circle;centre left;V;10;551;894
 
-Kodály Központ, Pécs;dress circle;center left;VI;1;409;922
-Kodály Központ, Pécs;dress circle;center left;VI;2;424;923
-Kodály Központ, Pécs;dress circle;center left;VI;3;439;925
-Kodály Központ, Pécs;dress circle;center left;VI;4;452;926
-Kodály Központ, Pécs;dress circle;center left;VI;5;479;930
-Kodály Központ, Pécs;dress circle;center left;VI;6;493;927
-Kodály Központ, Pécs;dress circle;center left;VI;7;506;924
-Kodály Központ, Pécs;dress circle;center left;VI;8;521;922
-Kodály Központ, Pécs;dress circle;center left;VI;9;535;919
-Kodály Központ, Pécs;dress circle;center left;VI;10;548;916
+Kodály Központ, Pécs;dress circle;centre left;VI;1;409;922
+Kodály Központ, Pécs;dress circle;centre left;VI;2;424;923
+Kodály Központ, Pécs;dress circle;centre left;VI;3;439;925
+Kodály Központ, Pécs;dress circle;centre left;VI;4;452;926
+Kodály Központ, Pécs;dress circle;centre left;VI;5;479;930
+Kodály Központ, Pécs;dress circle;centre left;VI;6;493;927
+Kodály Központ, Pécs;dress circle;centre left;VI;7;506;924
+Kodály Központ, Pécs;dress circle;centre left;VI;8;521;922
+Kodály Központ, Pécs;dress circle;centre left;VI;9;535;919
+Kodály Központ, Pécs;dress circle;centre left;VI;10;548;916
 
-Kodály Központ, Pécs;dress circle;center left;VII;1;397;946
-Kodály Központ, Pécs;dress circle;center left;VII;2;411;947
-Kodály Központ, Pécs;dress circle;center left;VII;3;428;949
-Kodály Központ, Pécs;dress circle;center left;VII;4;440;950
-Kodály Központ, Pécs;dress circle;center left;VII;5;453;952
-Kodály Központ, Pécs;dress circle;center left;VII;6;474;952
-Kodály Központ, Pécs;dress circle;center left;VII;7;489;949
-Kodály Központ, Pécs;dress circle;center left;VII;8;504;947
-Kodály Központ, Pécs;dress circle;center left;VII;9;518;945
-Kodály Központ, Pécs;dress circle;center left;VII;10;532;941
+Kodály Központ, Pécs;dress circle;centre left;VII;1;397;946
+Kodály Központ, Pécs;dress circle;centre left;VII;2;411;947
+Kodály Központ, Pécs;dress circle;centre left;VII;3;428;949
+Kodály Központ, Pécs;dress circle;centre left;VII;4;440;950
+Kodály Központ, Pécs;dress circle;centre left;VII;5;453;952
+Kodály Központ, Pécs;dress circle;centre left;VII;6;474;952
+Kodály Központ, Pécs;dress circle;centre left;VII;7;489;949
+Kodály Központ, Pécs;dress circle;centre left;VII;8;504;947
+Kodály Központ, Pécs;dress circle;centre left;VII;9;518;945
+Kodály Központ, Pécs;dress circle;centre left;VII;10;532;941
 
-Kodály Központ, Pécs;dress circle;center left;VIII;1;390;969
-Kodály Központ, Pécs;dress circle;center left;VIII;2;404;970
-Kodály Központ, Pécs;dress circle;center left;VIII;3;418;972
-Kodály Központ, Pécs;dress circle;center left;VIII;4;432;974
-Kodály Központ, Pécs;dress circle;center left;VIII;5;446;975
-Kodály Központ, Pécs;dress circle;center left;VIII;6;472;975
-Kodály Központ, Pécs;dress circle;center left;VIII;7;485;973
-Kodály Központ, Pécs;dress circle;center left;VIII;8;500;969
-Kodály Központ, Pécs;dress circle;center left;VIII;9;513;967
-Kodály Központ, Pécs;dress circle;center left;VIII;10;527;964
+Kodály Központ, Pécs;dress circle;centre left;VIII;1;390;969
+Kodály Központ, Pécs;dress circle;centre left;VIII;2;404;970
+Kodály Központ, Pécs;dress circle;centre left;VIII;3;418;972
+Kodály Központ, Pécs;dress circle;centre left;VIII;4;432;974
+Kodály Központ, Pécs;dress circle;centre left;VIII;5;446;975
+Kodály Központ, Pécs;dress circle;centre left;VIII;6;472;975
+Kodály Központ, Pécs;dress circle;centre left;VIII;7;485;973
+Kodály Központ, Pécs;dress circle;centre left;VIII;8;500;969
+Kodály Központ, Pécs;dress circle;centre left;VIII;9;513;967
+Kodály Központ, Pécs;dress circle;centre left;VIII;10;527;964
 
-Kodály Központ, Pécs;dress circle;center right;A;1;731;733
-Kodály Központ, Pécs;dress circle;center right;A;2;716;736
-Kodály Központ, Pécs;dress circle;center right;A;3;689;742
-Kodály Központ, Pécs;dress circle;center right;A;4;675;745
-Kodály Központ, Pécs;dress circle;center right;A;5;648;751
-Kodály Központ, Pécs;dress circle;center right;A;6;634;754
-Kodály Központ, Pécs;dress circle;center right;A;7;607;760
-Kodály Központ, Pécs;dress circle;center right;A;8;593;763
+Kodály Központ, Pécs;dress circle;centre right;A;1;731;733
+Kodály Központ, Pécs;dress circle;centre right;A;2;716;736
+Kodály Központ, Pécs;dress circle;centre right;A;3;689;742
+Kodály Központ, Pécs;dress circle;centre right;A;4;675;745
+Kodály Központ, Pécs;dress circle;centre right;A;5;648;751
+Kodály Központ, Pécs;dress circle;centre right;A;6;634;754
+Kodály Központ, Pécs;dress circle;centre right;A;7;607;760
+Kodály Központ, Pécs;dress circle;centre right;A;8;593;763
 
-Kodály Központ, Pécs;dress circle;center right;I;1;760;763
-Kodály Központ, Pécs;dress circle;center right;I;2;747;765
-Kodály Központ, Pécs;dress circle;center right;I;3;733;768
-Kodály Központ, Pécs;dress circle;center right;I;4;718;771
-Kodály Központ, Pécs;dress circle;center right;I;5;704;774
-Kodály Központ, Pécs;dress circle;center right;I;6;691;777
-Kodály Központ, Pécs;dress circle;center right;I;7;676;779
-Kodály Központ, Pécs;dress circle;center right;I;8;662;782
-Kodály Központ, Pécs;dress circle;center right;I;9;648;784
-Kodály Központ, Pécs;dress circle;center right;I;10;634;788
-Kodály Központ, Pécs;dress circle;center right;I;11;621;791
-Kodály Központ, Pécs;dress circle;center right;I;12;607;793
-Kodály Központ, Pécs;dress circle;center right;I;13;593;796
-Kodály Központ, Pécs;dress circle;center right;I;14;579;799
+Kodály Központ, Pécs;dress circle;centre right;I;1;760;763
+Kodály Központ, Pécs;dress circle;centre right;I;2;747;765
+Kodály Központ, Pécs;dress circle;centre right;I;3;733;768
+Kodály Központ, Pécs;dress circle;centre right;I;4;718;771
+Kodály Központ, Pécs;dress circle;centre right;I;5;704;774
+Kodály Központ, Pécs;dress circle;centre right;I;6;691;777
+Kodály Központ, Pécs;dress circle;centre right;I;7;676;779
+Kodály Központ, Pécs;dress circle;centre right;I;8;662;782
+Kodály Központ, Pécs;dress circle;centre right;I;9;648;784
+Kodály Központ, Pécs;dress circle;centre right;I;10;634;788
+Kodály Központ, Pécs;dress circle;centre right;I;11;621;791
+Kodály Központ, Pécs;dress circle;centre right;I;12;607;793
+Kodály Központ, Pécs;dress circle;centre right;I;13;593;796
+Kodály Központ, Pécs;dress circle;centre right;I;14;579;799
 
-Kodály Központ, Pécs;dress circle;center right;II;1;758;785
-Kodály Központ, Pécs;dress circle;center right;II;2;744;788
-Kodály Központ, Pécs;dress circle;center right;II;3;730;791
-Kodály Központ, Pécs;dress circle;center right;II;4;715;795
-Kodály Központ, Pécs;dress circle;center right;II;5;701;796
-Kodály Központ, Pécs;dress circle;center right;II;6;688;799
-Kodály Központ, Pécs;dress circle;center right;II;7;674;803
-Kodály Központ, Pécs;dress circle;center right;II;8;660;805
-Kodály Központ, Pécs;dress circle;center right;II;9;646;808
-Kodály Központ, Pécs;dress circle;center right;II;10;632;810
-Kodály Központ, Pécs;dress circle;center right;II;11;617;813
-Kodály Központ, Pécs;dress circle;center right;II;12;604;816
-Kodály Központ, Pécs;dress circle;center right;II;13;589;819
-Kodály Központ, Pécs;dress circle;center right;II;14;576;822
+Kodály Központ, Pécs;dress circle;centre right;II;1;758;785
+Kodály Központ, Pécs;dress circle;centre right;II;2;744;788
+Kodály Központ, Pécs;dress circle;centre right;II;3;730;791
+Kodály Központ, Pécs;dress circle;centre right;II;4;715;795
+Kodály Központ, Pécs;dress circle;centre right;II;5;701;796
+Kodály Központ, Pécs;dress circle;centre right;II;6;688;799
+Kodály Központ, Pécs;dress circle;centre right;II;7;674;803
+Kodály Központ, Pécs;dress circle;centre right;II;8;660;805
+Kodály Központ, Pécs;dress circle;centre right;II;9;646;808
+Kodály Központ, Pécs;dress circle;centre right;II;10;632;810
+Kodály Központ, Pécs;dress circle;centre right;II;11;617;813
+Kodály Központ, Pécs;dress circle;centre right;II;12;604;816
+Kodály Központ, Pécs;dress circle;centre right;II;13;589;819
+Kodály Központ, Pécs;dress circle;centre right;II;14;576;822
 
-Kodály Központ, Pécs;dress circle;center right;III;1;755;808
-Kodály Központ, Pécs;dress circle;center right;III;2;740;811
-Kodály Központ, Pécs;dress circle;center right;III;3;726;815
-Kodály Központ, Pécs;dress circle;center right;III;4;712;817
-Kodály Központ, Pécs;dress circle;center right;III;5;698;819
-Kodály Központ, Pécs;dress circle;center right;III;6;684;822
-Kodály Központ, Pécs;dress circle;center right;III;7;671;825
-Kodály Központ, Pécs;dress circle;center right;III;8;657;828
-Kodály Központ, Pécs;dress circle;center right;III;9;643;831
-Kodály Központ, Pécs;dress circle;center right;III;10;629;833
-Kodály Központ, Pécs;dress circle;center right;III;11;615;836
-Kodály Központ, Pécs;dress circle;center right;III;12;601;839
-Kodály Központ, Pécs;dress circle;center right;III;13;587;842
-Kodály Központ, Pécs;dress circle;center right;III;14;573;845
+Kodály Központ, Pécs;dress circle;centre right;III;1;755;808
+Kodály Központ, Pécs;dress circle;centre right;III;2;740;811
+Kodály Központ, Pécs;dress circle;centre right;III;3;726;815
+Kodály Központ, Pécs;dress circle;centre right;III;4;712;817
+Kodály Központ, Pécs;dress circle;centre right;III;5;698;819
+Kodály Központ, Pécs;dress circle;centre right;III;6;684;822
+Kodály Központ, Pécs;dress circle;centre right;III;7;671;825
+Kodály Központ, Pécs;dress circle;centre right;III;8;657;828
+Kodály Központ, Pécs;dress circle;centre right;III;9;643;831
+Kodály Központ, Pécs;dress circle;centre right;III;10;629;833
+Kodály Központ, Pécs;dress circle;centre right;III;11;615;836
+Kodály Központ, Pécs;dress circle;centre right;III;12;601;839
+Kodály Központ, Pécs;dress circle;centre right;III;13;587;842
+Kodály Központ, Pécs;dress circle;centre right;III;14;573;845
 
-Kodály Központ, Pécs;dress circle;center right;IV;1;738;834
-Kodály Központ, Pécs;dress circle;center right;IV;2;724;837
-Kodály Központ, Pécs;dress circle;center right;IV;3;710;839
-Kodály Központ, Pécs;dress circle;center right;IV;4;696;842
-Kodály Központ, Pécs;dress circle;center right;IV;5;682;845
-Kodály Központ, Pécs;dress circle;center right;IV;6;668;848
-Kodály Központ, Pécs;dress circle;center right;IV;7;653;851
-Kodály Központ, Pécs;dress circle;center right;IV;8;638;853
-Kodály Központ, Pécs;dress circle;center right;IV;9;624;856
-Kodály Központ, Pécs;dress circle;center right;IV;10;610;859
-Kodály Központ, Pécs;dress circle;center right;IV;11;597;862
-Kodály Központ, Pécs;dress circle;center right;IV;12;582;865
-Kodály Központ, Pécs;dress circle;center right;IV;13;568;868
+Kodály Központ, Pécs;dress circle;centre right;IV;1;738;834
+Kodály Központ, Pécs;dress circle;centre right;IV;2;724;837
+Kodály Központ, Pécs;dress circle;centre right;IV;3;710;839
+Kodály Központ, Pécs;dress circle;centre right;IV;4;696;842
+Kodály Központ, Pécs;dress circle;centre right;IV;5;682;845
+Kodály Központ, Pécs;dress circle;centre right;IV;6;668;848
+Kodály Központ, Pécs;dress circle;centre right;IV;7;653;851
+Kodály Központ, Pécs;dress circle;centre right;IV;8;638;853
+Kodály Központ, Pécs;dress circle;centre right;IV;9;624;856
+Kodály Központ, Pécs;dress circle;centre right;IV;10;610;859
+Kodály Központ, Pécs;dress circle;centre right;IV;11;597;862
+Kodály Központ, Pécs;dress circle;centre right;IV;12;582;865
+Kodály Központ, Pécs;dress circle;centre right;IV;13;568;868
 
-Kodály Központ, Pécs;dress circle;center right;V;1;719;860
-Kodály Központ, Pécs;dress circle;center right;V;2;705;863
-Kodály Központ, Pécs;dress circle;center right;V;3;692;865
-Kodály Központ, Pécs;dress circle;center right;V;4;678;868
-Kodály Központ, Pécs;dress circle;center right;V;5;663;870
-Kodály Központ, Pécs;dress circle;center right;V;6;650;874
-Kodály Központ, Pécs;dress circle;center right;V;7;635;876
-Kodály Központ, Pécs;dress circle;center right;V;8;622;879
-Kodály Központ, Pécs;dress circle;center right;V;9;608;882
-Kodály Központ, Pécs;dress circle;center right;V;10;594;885
-Kodály Központ, Pécs;dress circle;center right;V;11;579;888
-Kodály Központ, Pécs;dress circle;center right;V;12;565;890
+Kodály Központ, Pécs;dress circle;centre right;V;1;719;860
+Kodály Központ, Pécs;dress circle;centre right;V;2;705;863
+Kodály Központ, Pécs;dress circle;centre right;V;3;692;865
+Kodály Központ, Pécs;dress circle;centre right;V;4;678;868
+Kodály Központ, Pécs;dress circle;centre right;V;5;663;870
+Kodály Központ, Pécs;dress circle;centre right;V;6;650;874
+Kodály Központ, Pécs;dress circle;centre right;V;7;635;876
+Kodály Központ, Pécs;dress circle;centre right;V;8;622;879
+Kodály Központ, Pécs;dress circle;centre right;V;9;608;882
+Kodály Központ, Pécs;dress circle;centre right;V;10;594;885
+Kodály Központ, Pécs;dress circle;centre right;V;11;579;888
+Kodály Központ, Pécs;dress circle;centre right;V;12;565;890
 
-Kodály Központ, Pécs;dress circle;center right;VI;1;716;883
-Kodály Központ, Pécs;dress circle;center right;VI;2;703;885
-Kodály Központ, Pécs;dress circle;center right;VI;3;689;887
-Kodály Központ, Pécs;dress circle;center right;VI;4;675;890
-Kodály Központ, Pécs;dress circle;center right;VI;5;661;894
-Kodály Központ, Pécs;dress circle;center right;VI;6;647;896
-Kodály Központ, Pécs;dress circle;center right;VI;7;633;899
-Kodály Központ, Pécs;dress circle;center right;VI;8;619;902
-Kodály Központ, Pécs;dress circle;center right;VI;9;605;905
-Kodály Központ, Pécs;dress circle;center right;VI;10;590;908
-Kodály Központ, Pécs;dress circle;center right;VI;11;576;910
-Kodály Központ, Pécs;dress circle;center right;VI;12;563;914
+Kodály Központ, Pécs;dress circle;centre right;VI;1;716;883
+Kodály Központ, Pécs;dress circle;centre right;VI;2;703;885
+Kodály Központ, Pécs;dress circle;centre right;VI;3;689;887
+Kodály Központ, Pécs;dress circle;centre right;VI;4;675;890
+Kodály Központ, Pécs;dress circle;centre right;VI;5;661;894
+Kodály Központ, Pécs;dress circle;centre right;VI;6;647;896
+Kodály Központ, Pécs;dress circle;centre right;VI;7;633;899
+Kodály Központ, Pécs;dress circle;centre right;VI;8;619;902
+Kodály Központ, Pécs;dress circle;centre right;VI;9;605;905
+Kodály Központ, Pécs;dress circle;centre right;VI;10;590;908
+Kodály Központ, Pécs;dress circle;centre right;VI;11;576;910
+Kodály Központ, Pécs;dress circle;centre right;VI;12;563;914
 
-Kodály Központ, Pécs;dress circle;center right;VII;1;699;908
-Kodály Központ, Pécs;dress circle;center right;VII;2;685;910
-Kodály Központ, Pécs;dress circle;center right;VII;3;671;913
-Kodály Központ, Pécs;dress circle;center right;VII;4;658;916
-Kodály Központ, Pécs;dress circle;center right;VII;5;644;919
-Kodály Központ, Pécs;dress circle;center right;VII;6;630;922
-Kodály Központ, Pécs;dress circle;center right;VII;7;616;924
-Kodály Központ, Pécs;dress circle;center right;VII;8;602;927
-Kodály Központ, Pécs;dress circle;center right;VII;9;588;930
-Kodály Központ, Pécs;dress circle;center right;VII;10;573;933
-Kodály Központ, Pécs;dress circle;center right;VII;11;560;935
-Kodály Központ, Pécs;dress circle;center right;VII;12;546;938
+Kodály Központ, Pécs;dress circle;centre right;VII;1;699;908
+Kodály Központ, Pécs;dress circle;centre right;VII;2;685;910
+Kodály Központ, Pécs;dress circle;centre right;VII;3;671;913
+Kodály Központ, Pécs;dress circle;centre right;VII;4;658;916
+Kodály Központ, Pécs;dress circle;centre right;VII;5;644;919
+Kodály Központ, Pécs;dress circle;centre right;VII;6;630;922
+Kodály Központ, Pécs;dress circle;centre right;VII;7;616;924
+Kodály Központ, Pécs;dress circle;centre right;VII;8;602;927
+Kodály Központ, Pécs;dress circle;centre right;VII;9;588;930
+Kodály Központ, Pécs;dress circle;centre right;VII;10;573;933
+Kodály Központ, Pécs;dress circle;centre right;VII;11;560;935
+Kodály Központ, Pécs;dress circle;centre right;VII;12;546;938
 
-Kodály Központ, Pécs;dress circle;center right;VIII;1;697;931
-Kodály Központ, Pécs;dress circle;center right;VIII;2;683;933
-Kodály Központ, Pécs;dress circle;center right;VIII;3;669;936
-Kodály Központ, Pécs;dress circle;center right;VIII;4;654;939
-Kodály Központ, Pécs;dress circle;center right;VIII;5;640;941
-Kodály Központ, Pécs;dress circle;center right;VIII;6;625;944
-Kodály Központ, Pécs;dress circle;center right;VIII;7;612;947
-Kodály Központ, Pécs;dress circle;center right;VIII;8;597;950
-Kodály Központ, Pécs;dress circle;center right;VIII;9;583;953
-Kodály Központ, Pécs;dress circle;center right;VIII;10;569;956
-Kodály Központ, Pécs;dress circle;center right;VIII;11;556;958
-Kodály Központ, Pécs;dress circle;center right;VIII;12;541;961
+Kodály Központ, Pécs;dress circle;centre right;VIII;1;697;931
+Kodály Központ, Pécs;dress circle;centre right;VIII;2;683;933
+Kodály Központ, Pécs;dress circle;centre right;VIII;3;669;936
+Kodály Központ, Pécs;dress circle;centre right;VIII;4;654;939
+Kodály Központ, Pécs;dress circle;centre right;VIII;5;640;941
+Kodály Központ, Pécs;dress circle;centre right;VIII;6;625;944
+Kodály Központ, Pécs;dress circle;centre right;VIII;7;612;947
+Kodály Központ, Pécs;dress circle;centre right;VIII;8;597;950
+Kodály Központ, Pécs;dress circle;centre right;VIII;9;583;953
+Kodály Központ, Pécs;dress circle;centre right;VIII;10;569;956
+Kodály Központ, Pécs;dress circle;centre right;VIII;11;556;958
+Kodály Központ, Pécs;dress circle;centre right;VIII;12;541;961
 
 Kodály Központ, Pécs;balcony;left;I;1;97;819
 Kodály Központ, Pécs;balcony;left;I;2;107;829
@@ -883,152 +883,152 @@ Kodály Központ, Pécs;balcony;left;III;2;108;647
 Kodály Központ, Pécs;balcony;left;III;3;118;658
 Kodály Központ, Pécs;balcony;left;III;4;128;667
 
-Kodály Központ, Pécs;balcony;center left;I;1;317;1052
-Kodály Központ, Pécs;balcony;center left;I;2;331;1054
-Kodály Központ, Pécs;balcony;center left;I;3;345;1054
-Kodály Központ, Pécs;balcony;center left;I;4;360;1056
-Kodály Központ, Pécs;balcony;center left;I;5;375;1057
-Kodály Központ, Pécs;balcony;center left;I;6;388;1058
-Kodály Központ, Pécs;balcony;center left;I;7;402;1059
-Kodály Központ, Pécs;balcony;center left;I;8;416;1060
-Kodály Központ, Pécs;balcony;center left;I;9;430;1062
-Kodály Központ, Pécs;balcony;center left;I;10;444;1063
-Kodály Központ, Pécs;balcony;center left;I;11;458;1063
-Kodály Központ, Pécs;balcony;center left;I;12;472;1064
+Kodály Központ, Pécs;balcony;centre left;I;1;317;1052
+Kodály Központ, Pécs;balcony;centre left;I;2;331;1054
+Kodály Központ, Pécs;balcony;centre left;I;3;345;1054
+Kodály Központ, Pécs;balcony;centre left;I;4;360;1056
+Kodály Központ, Pécs;balcony;centre left;I;5;375;1057
+Kodály Központ, Pécs;balcony;centre left;I;6;388;1058
+Kodály Központ, Pécs;balcony;centre left;I;7;402;1059
+Kodály Központ, Pécs;balcony;centre left;I;8;416;1060
+Kodály Központ, Pécs;balcony;centre left;I;9;430;1062
+Kodály Központ, Pécs;balcony;centre left;I;10;444;1063
+Kodály Központ, Pécs;balcony;centre left;I;11;458;1063
+Kodály Központ, Pécs;balcony;centre left;I;12;472;1064
 
-Kodály Központ, Pécs;balcony;center left;II;1;314;1075
-Kodály Központ, Pécs;balcony;center left;II;2;328;1076
-Kodály Központ, Pécs;balcony;center left;II;3;342;1077
-Kodály Központ, Pécs;balcony;center left;II;4;356;1078
-Kodály Központ, Pécs;balcony;center left;II;5;370;1079
-Kodály Központ, Pécs;balcony;center left;II;6;383;1080
-Kodály Központ, Pécs;balcony;center left;II;7;400;1082
-Kodály Központ, Pécs;balcony;center left;II;8;414;1083
-Kodály Központ, Pécs;balcony;center left;II;9;428;1084
-Kodály Központ, Pécs;balcony;center left;II;10;442;1085
-Kodály Központ, Pécs;balcony;center left;II;11;455;1086
-Kodály Központ, Pécs;balcony;center left;II;12;470;1087
+Kodály Központ, Pécs;balcony;centre left;II;1;314;1075
+Kodály Központ, Pécs;balcony;centre left;II;2;328;1076
+Kodály Központ, Pécs;balcony;centre left;II;3;342;1077
+Kodály Központ, Pécs;balcony;centre left;II;4;356;1078
+Kodály Központ, Pécs;balcony;centre left;II;5;370;1079
+Kodály Központ, Pécs;balcony;centre left;II;6;383;1080
+Kodály Központ, Pécs;balcony;centre left;II;7;400;1082
+Kodály Központ, Pécs;balcony;centre left;II;8;414;1083
+Kodály Központ, Pécs;balcony;centre left;II;9;428;1084
+Kodály Központ, Pécs;balcony;centre left;II;10;442;1085
+Kodály Központ, Pécs;balcony;centre left;II;11;455;1086
+Kodály Központ, Pécs;balcony;centre left;II;12;470;1087
 
-Kodály Központ, Pécs;balcony;center left;III;1;311;1098
-Kodály Központ, Pécs;balcony;center left;III;2;325;1099
-Kodály Központ, Pécs;balcony;center left;III;3;339;1101
-Kodály Központ, Pécs;balcony;center left;III;4;354;1101
-Kodály Központ, Pécs;balcony;center left;III;5;367;1102
-Kodály Központ, Pécs;balcony;center left;III;6;381;1103
-Kodály Központ, Pécs;balcony;center left;III;7;395;1104
-Kodály Központ, Pécs;balcony;center left;III;8;409;1106
-Kodály Központ, Pécs;balcony;center left;III;9;424;1106
-Kodály Központ, Pécs;balcony;center left;III;10;439;1107
-Kodály Központ, Pécs;balcony;center left;III;11;452;1108
-Kodály Központ, Pécs;balcony;center left;III;12;467;1109
+Kodály Központ, Pécs;balcony;centre left;III;1;311;1098
+Kodály Központ, Pécs;balcony;centre left;III;2;325;1099
+Kodály Központ, Pécs;balcony;centre left;III;3;339;1101
+Kodály Központ, Pécs;balcony;centre left;III;4;354;1101
+Kodály Központ, Pécs;balcony;centre left;III;5;367;1102
+Kodály Központ, Pécs;balcony;centre left;III;6;381;1103
+Kodály Központ, Pécs;balcony;centre left;III;7;395;1104
+Kodály Központ, Pécs;balcony;centre left;III;8;409;1106
+Kodály Központ, Pécs;balcony;centre left;III;9;424;1106
+Kodály Központ, Pécs;balcony;centre left;III;10;439;1107
+Kodály Központ, Pécs;balcony;centre left;III;11;452;1108
+Kodály Központ, Pécs;balcony;centre left;III;12;467;1109
 
-Kodály Központ, Pécs;balcony;center left;IV;1;280;1120
-Kodály Központ, Pécs;balcony;center left;IV;2;293;1121
-Kodály Központ, Pécs;balcony;center left;IV;3;307;1122
-Kodály Központ, Pécs;balcony;center left;IV;4;320;1123
-Kodály Központ, Pécs;balcony;center left;IV;5;335;1124
-Kodály Központ, Pécs;balcony;center left;IV;6;348;1125
-Kodály Központ, Pécs;balcony;center left;IV;7;363;1126
-Kodály Központ, Pécs;balcony;center left;IV;8;378;1127
-Kodály Központ, Pécs;balcony;center left;IV;9;393;1129
-Kodály Központ, Pécs;balcony;center left;IV;10;406;1129
-Kodály Központ, Pécs;balcony;center left;IV;11;420;1131
-Kodály Központ, Pécs;balcony;center left;IV;12;434;1132
-Kodály Központ, Pécs;balcony;center left;IV;13;449;1133
-Kodály Központ, Pécs;balcony;center left;IV;14;462;1135
+Kodály Központ, Pécs;balcony;centre left;IV;1;280;1120
+Kodály Központ, Pécs;balcony;centre left;IV;2;293;1121
+Kodály Központ, Pécs;balcony;centre left;IV;3;307;1122
+Kodály Központ, Pécs;balcony;centre left;IV;4;320;1123
+Kodály Központ, Pécs;balcony;centre left;IV;5;335;1124
+Kodály Központ, Pécs;balcony;centre left;IV;6;348;1125
+Kodály Központ, Pécs;balcony;centre left;IV;7;363;1126
+Kodály Központ, Pécs;balcony;centre left;IV;8;378;1127
+Kodály Központ, Pécs;balcony;centre left;IV;9;393;1129
+Kodály Központ, Pécs;balcony;centre left;IV;10;406;1129
+Kodály Központ, Pécs;balcony;centre left;IV;11;420;1131
+Kodály Központ, Pécs;balcony;centre left;IV;12;434;1132
+Kodály Központ, Pécs;balcony;centre left;IV;13;449;1133
+Kodály Központ, Pécs;balcony;centre left;IV;14;462;1135
 
-Kodály Központ, Pécs;balcony;center left;V;1;285;1141
-Kodály Központ, Pécs;balcony;center left;V;2;299;1143
-Kodály Központ, Pécs;balcony;center left;V;3;315;1144
-Kodály Központ, Pécs;balcony;center left;V;4;328;1145
-Kodály Központ, Pécs;balcony;center left;V;5;343;1146
-Kodály Központ, Pécs;balcony;center left;V;6;356;1147
-Kodály Központ, Pécs;balcony;center left;V;7;370;1148
-Kodály Központ, Pécs;balcony;center left;V;8;384;1149
-Kodály Központ, Pécs;balcony;center left;V;9;398;1149
-Kodály Központ, Pécs;balcony;center left;V;10;412;1151
-Kodály Központ, Pécs;balcony;center left;V;11;426;1152
-Kodály Központ, Pécs;balcony;center left;V;12;441;1153
-Kodály Központ, Pécs;balcony;center left;V;13;456;1154
+Kodály Központ, Pécs;balcony;centre left;V;1;285;1141
+Kodály Központ, Pécs;balcony;centre left;V;2;299;1143
+Kodály Központ, Pécs;balcony;centre left;V;3;315;1144
+Kodály Központ, Pécs;balcony;centre left;V;4;328;1145
+Kodály Központ, Pécs;balcony;centre left;V;5;343;1146
+Kodály Központ, Pécs;balcony;centre left;V;6;356;1147
+Kodály Központ, Pécs;balcony;centre left;V;7;370;1148
+Kodály Központ, Pécs;balcony;centre left;V;8;384;1149
+Kodály Központ, Pécs;balcony;centre left;V;9;398;1149
+Kodály Központ, Pécs;balcony;centre left;V;10;412;1151
+Kodály Központ, Pécs;balcony;centre left;V;11;426;1152
+Kodály Központ, Pécs;balcony;centre left;V;12;441;1153
+Kodály Központ, Pécs;balcony;centre left;V;13;456;1154
 
-Kodály Központ, Pécs;balcony;center right;I;1;667;1066
-Kodály Központ, Pécs;balcony;center right;I;2;651;1066
-Kodály Központ, Pécs;balcony;center right;I;3;637;1066
-Kodály Központ, Pécs;balcony;center right;I;4;623;1066
-Kodály Központ, Pécs;balcony;center right;I;5;608;1066
-Kodály Központ, Pécs;balcony;center right;I;6;594;1066
-Kodály Központ, Pécs;balcony;center right;I;7;581;1066
-Kodály Központ, Pécs;balcony;center right;I;8;565;1066
-Kodály Központ, Pécs;balcony;center right;I;9;551;1066
-Kodály Központ, Pécs;balcony;center right;I;10;537;1066
-Kodály Központ, Pécs;balcony;center right;I;11;523;1066
-Kodály Központ, Pécs;balcony;center right;I;12;508;1066
-Kodály Központ, Pécs;balcony;center right;I;13;495;1066
+Kodály Központ, Pécs;balcony;centre right;I;1;667;1066
+Kodály Központ, Pécs;balcony;centre right;I;2;651;1066
+Kodály Központ, Pécs;balcony;centre right;I;3;637;1066
+Kodály Központ, Pécs;balcony;centre right;I;4;623;1066
+Kodály Központ, Pécs;balcony;centre right;I;5;608;1066
+Kodály Központ, Pécs;balcony;centre right;I;6;594;1066
+Kodály Központ, Pécs;balcony;centre right;I;7;581;1066
+Kodály Központ, Pécs;balcony;centre right;I;8;565;1066
+Kodály Központ, Pécs;balcony;centre right;I;9;551;1066
+Kodály Központ, Pécs;balcony;centre right;I;10;537;1066
+Kodály Központ, Pécs;balcony;centre right;I;11;523;1066
+Kodály Központ, Pécs;balcony;centre right;I;12;508;1066
+Kodály Központ, Pécs;balcony;centre right;I;13;495;1066
 
-Kodály Központ, Pécs;balcony;center right;II;1;780;1082
-Kodály Központ, Pécs;balcony;center right;II;2;759;1090
-Kodály Központ, Pécs;balcony;center right;II;3;673;1089
-Kodály Központ, Pécs;balcony;center right;II;4;659;1089
-Kodály Központ, Pécs;balcony;center right;II;5;646;1089
-Kodály Központ, Pécs;balcony;center right;II;6;630;1089
-Kodály Központ, Pécs;balcony;center right;II;7;616;1089
-Kodály Központ, Pécs;balcony;center right;II;8;602;1089
-Kodály Központ, Pécs;balcony;center right;II;9;589;1089
-Kodály Központ, Pécs;balcony;center right;II;10;573;1089
-Kodály Központ, Pécs;balcony;center right;II;11;559;1089
-Kodály Központ, Pécs;balcony;center right;II;12;545;1089
-Kodály Központ, Pécs;balcony;center right;II;13;530;1089
-Kodály Központ, Pécs;balcony;center right;II;14;516;1089
-Kodály Központ, Pécs;balcony;center right;II;15;502;1089
-Kodály Központ, Pécs;balcony;center right;II;16;487;1089
+Kodály Központ, Pécs;balcony;centre right;II;1;780;1082
+Kodály Központ, Pécs;balcony;centre right;II;2;759;1090
+Kodály Központ, Pécs;balcony;centre right;II;3;673;1089
+Kodály Központ, Pécs;balcony;centre right;II;4;659;1089
+Kodály Központ, Pécs;balcony;centre right;II;5;646;1089
+Kodály Központ, Pécs;balcony;centre right;II;6;630;1089
+Kodály Központ, Pécs;balcony;centre right;II;7;616;1089
+Kodály Központ, Pécs;balcony;centre right;II;8;602;1089
+Kodály Központ, Pécs;balcony;centre right;II;9;589;1089
+Kodály Központ, Pécs;balcony;centre right;II;10;573;1089
+Kodály Központ, Pécs;balcony;centre right;II;11;559;1089
+Kodály Központ, Pécs;balcony;centre right;II;12;545;1089
+Kodály Központ, Pécs;balcony;centre right;II;13;530;1089
+Kodály Központ, Pécs;balcony;centre right;II;14;516;1089
+Kodály Központ, Pécs;balcony;centre right;II;15;502;1089
+Kodály Központ, Pécs;balcony;centre right;II;16;487;1089
 
-Kodály Központ, Pécs;balcony;center right;III;1;770;1105
-Kodály Központ, Pécs;balcony;center right;III;2;749;1111
-Kodály Központ, Pécs;balcony;center right;III;3;664;1111
-Kodály Központ, Pécs;balcony;center right;III;4;649;1111
-Kodály Központ, Pécs;balcony;center right;III;5;635;1111
-Kodály Központ, Pécs;balcony;center right;III;6;622;1111
-Kodály Központ, Pécs;balcony;center right;III;7;606;1111
-Kodály Központ, Pécs;balcony;center right;III;8;592;1111
-Kodály Központ, Pécs;balcony;center right;III;9;578;1111
-Kodály Központ, Pécs;balcony;center right;III;10;564;1111
-Kodály Központ, Pécs;balcony;center right;III;11;549;1111
-Kodály Központ, Pécs;balcony;center right;III;12;535;1111
-Kodály Központ, Pécs;balcony;center right;III;13;521;1111
-Kodály Központ, Pécs;balcony;center right;III;14;506;1111
-Kodály Központ, Pécs;balcony;center right;III;15;493;1111
+Kodály Központ, Pécs;balcony;centre right;III;1;770;1105
+Kodály Központ, Pécs;balcony;centre right;III;2;749;1111
+Kodály Központ, Pécs;balcony;centre right;III;3;664;1111
+Kodály Központ, Pécs;balcony;centre right;III;4;649;1111
+Kodály Központ, Pécs;balcony;centre right;III;5;635;1111
+Kodály Központ, Pécs;balcony;centre right;III;6;622;1111
+Kodály Központ, Pécs;balcony;centre right;III;7;606;1111
+Kodály Központ, Pécs;balcony;centre right;III;8;592;1111
+Kodály Központ, Pécs;balcony;centre right;III;9;578;1111
+Kodály Központ, Pécs;balcony;centre right;III;10;564;1111
+Kodály Központ, Pécs;balcony;centre right;III;11;549;1111
+Kodály Központ, Pécs;balcony;centre right;III;12;535;1111
+Kodály Központ, Pécs;balcony;centre right;III;13;521;1111
+Kodály Központ, Pécs;balcony;centre right;III;14;506;1111
+Kodály Központ, Pécs;balcony;centre right;III;15;493;1111
 
-Kodály Központ, Pécs;balcony;center right;IV;1;770;1128
-Kodály Központ, Pécs;balcony;center right;IV;2;750;1134
-Kodály Központ, Pécs;balcony;center right;IV;3;664;1134
-Kodály Központ, Pécs;balcony;center right;IV;4;649;1134
-Kodály Központ, Pécs;balcony;center right;IV;5;635;1134
-Kodály Központ, Pécs;balcony;center right;IV;6;621;1134
-Kodály Központ, Pécs;balcony;center right;IV;7;606;1134
-Kodály Központ, Pécs;balcony;center right;IV;8;593;1134
-Kodály Központ, Pécs;balcony;center right;IV;9;578;1134
-Kodály Központ, Pécs;balcony;center right;IV;10;565;1134
-Kodály Központ, Pécs;balcony;center right;IV;11;550;1134
-Kodály Központ, Pécs;balcony;center right;IV;12;535;1134
-Kodály Központ, Pécs;balcony;center right;IV;13;521;1134
-Kodály Központ, Pécs;balcony;center right;IV;14;506;1134
-Kodály Központ, Pécs;balcony;center right;IV;15;492;1134
+Kodály Központ, Pécs;balcony;centre right;IV;1;770;1128
+Kodály Központ, Pécs;balcony;centre right;IV;2;750;1134
+Kodály Központ, Pécs;balcony;centre right;IV;3;664;1134
+Kodály Központ, Pécs;balcony;centre right;IV;4;649;1134
+Kodály Központ, Pécs;balcony;centre right;IV;5;635;1134
+Kodály Központ, Pécs;balcony;centre right;IV;6;621;1134
+Kodály Központ, Pécs;balcony;centre right;IV;7;606;1134
+Kodály Központ, Pécs;balcony;centre right;IV;8;593;1134
+Kodály Központ, Pécs;balcony;centre right;IV;9;578;1134
+Kodály Központ, Pécs;balcony;centre right;IV;10;565;1134
+Kodály Központ, Pécs;balcony;centre right;IV;11;550;1134
+Kodály Központ, Pécs;balcony;centre right;IV;12;535;1134
+Kodály Központ, Pécs;balcony;centre right;IV;13;521;1134
+Kodály Központ, Pécs;balcony;centre right;IV;14;506;1134
+Kodály Központ, Pécs;balcony;centre right;IV;15;492;1134
 
-Kodály Központ, Pécs;balcony;center right;V;1;770;1151
-Kodály Központ, Pécs;balcony;center right;V;2;749;1157
-Kodály Központ, Pécs;balcony;center right;V;3;664;1158
-Kodály Központ, Pécs;balcony;center right;V;4;649;1158
-Kodály Központ, Pécs;balcony;center right;V;5;635;1158
-Kodály Központ, Pécs;balcony;center right;V;6;622;1158
-Kodály Központ, Pécs;balcony;center right;V;7;606;1158
-Kodály Központ, Pécs;balcony;center right;V;8;592;1158
-Kodály Központ, Pécs;balcony;center right;V;9;578;1158
-Kodály Központ, Pécs;balcony;center right;V;10;565;1158
-Kodály Központ, Pécs;balcony;center right;V;11;549;1158
-Kodály Központ, Pécs;balcony;center right;V;12;535;1158
-Kodály Központ, Pécs;balcony;center right;V;13;521;1158
-Kodály Központ, Pécs;balcony;center right;V;14;506;1158
-Kodály Központ, Pécs;balcony;center right;V;15;492;1158
+Kodály Központ, Pécs;balcony;centre right;V;1;770;1151
+Kodály Központ, Pécs;balcony;centre right;V;2;749;1157
+Kodály Központ, Pécs;balcony;centre right;V;3;664;1158
+Kodály Központ, Pécs;balcony;centre right;V;4;649;1158
+Kodály Központ, Pécs;balcony;centre right;V;5;635;1158
+Kodály Központ, Pécs;balcony;centre right;V;6;622;1158
+Kodály Központ, Pécs;balcony;centre right;V;7;606;1158
+Kodály Központ, Pécs;balcony;centre right;V;8;592;1158
+Kodály Központ, Pécs;balcony;centre right;V;9;578;1158
+Kodály Központ, Pécs;balcony;centre right;V;10;565;1158
+Kodály Központ, Pécs;balcony;centre right;V;11;549;1158
+Kodály Központ, Pécs;balcony;centre right;V;12;535;1158
+Kodály Központ, Pécs;balcony;centre right;V;13;521;1158
+Kodály Központ, Pécs;balcony;centre right;V;14;506;1158
+Kodály Központ, Pécs;balcony;centre right;V;15;492;1158
 
 Kodály Központ, Pécs;balcony;right;I;1;810;898
 Kodály Központ, Pécs;balcony;right;I;2;815;885
