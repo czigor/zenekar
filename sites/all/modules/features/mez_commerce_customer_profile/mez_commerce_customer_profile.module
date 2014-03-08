@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the MEZ Commerce customer profile feature.
+ */
+
+include_once 'mez_commerce_customer_profile.features.inc';
