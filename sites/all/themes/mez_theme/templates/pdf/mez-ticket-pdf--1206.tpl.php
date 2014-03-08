@@ -23,7 +23,7 @@
 \tiny{
 Sorszám: #3
 
-Vásárlás dátuma: #4
+Vásárlás ideje: #4
 }
         \end{center}
       }
@@ -38,7 +38,7 @@ Vásárlás dátuma: #4
 \setlength{\marginparwidth}{0pt}
 \setlength{\parindent}{0cm}
 <?php foreach ($tickets as $ticket) :?>
-  \mezticket{<?php print $ticket['seat'] ?>}{<?php print $ticket['price']?> Ft}{ZAK<?php print str_pad($order->order_id, 8, '0', STR_PAD_LEFT); ?>}{<?php print format_date($order->created, 'short', '', NULL, 'hu');?>}
+  \mezticket{<?php print ucfirst($ticket['seat']) ?>}{<?php print $ticket['price']?> Ft}{ZAK<?php print str_pad($order->order_id, 8, '0', STR_PAD_LEFT); ?>}{<?php print format_date($order->created, 'short', '', NULL, 'hu');?>}
 <?php endforeach;?>
 
 \end{document}
