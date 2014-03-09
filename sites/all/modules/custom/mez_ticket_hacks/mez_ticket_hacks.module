@@ -376,17 +376,16 @@ function mez_ticket_hacks_node_presave($node) {
       }
       $side = field_get_items('node', $node, 'field_seat_side');
       if ($side) {
-        $title[$lang][0]['value'] .= i18n_string('field:field_seat_side:#allowed_values:' . $side[0]['value'], $side[0]['value'], array('langcode' => $lang)) . ', ';
+        $title[$lang][0]['value'] .= i18n_string('field:field_seat_side:#allowed_values:' . $side[0]['value'], $side[0]['value'], array('langcode' => $lang));
       }
       $row = field_get_items('node', $node, 'field_seat_row');
       if ($row) {
-        $row = $row[0]['value'];
+        $title[$lang][0]['value'] .= t(', row @row', array('@row' => $row[0]['value']), array('langcode' => $lang));
       }
       $number = field_get_items('node', $node, 'field_seat_number');
       if ($number) {
-        $number = $number[0]['value'];
+        $title[$lang][0]['value'] .= t(', seat @seat', array('@seat' => $number[0]['value']), array('langcode' => $lang));
       }
-      $title[$lang][0]['value'] .= t('row @row, seat @seat', array('@row' => $row, '@seat' => $number), array('langcode' => $lang));
     }
     $node->title_field = $title;
     global $language;
