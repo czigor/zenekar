@@ -90,7 +90,7 @@ body.page-node-1206 .mez-concert-hall .mez-ticket.free.mez-ticket-price-2000 spa
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/tickets\.scss}line{font-family:\0000387}}
 body.page-node-1206 .mez-concert-hall .mez-ticket.free.mez-ticket-price-2500 span.inner {
-  background-color: green;
+  background-color: #00ff00;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/tickets\.scss}line{font-family:\0000390}}
 body.page-node-1206 .mez-concert-hall .mez-ticket.free.mez-ticket-price-10000 span.inner {
