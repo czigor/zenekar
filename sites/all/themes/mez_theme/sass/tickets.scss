@@ -10,12 +10,11 @@
  * Ticket
  */
 .mez-concert-hall-field {
-  text-decoration: underline;
-  color: #D99216;
+  font-size: 1.2em;
+  text-align: center;
 }
 
 .mez-concert-hall {
-  display: none;
   height: 500px;
   .mez-ticket span.inner {
     width: 9px;

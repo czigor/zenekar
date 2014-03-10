@@ -5,7 +5,7 @@
  */
 ?>
 <?php if (!empty($concert_hall_details) && !empty($seats)) : ?>
-  <div class="mez-concert-hall-field"><?php print t('Ticket selling');?></div>
+  <div class="mez-concert-hall-field"><?php print t('Please select your tickets!');?></div>
   <div class="mez-concert-hall" style="position: relative; width:<?php print $concert_hall_details['xsize'];?>px; height:<?php print $concert_hall_details['ysize'];?>px;">
     <?php print $concert_hall_details['markup']; ?>
     <?php if (!empty($seats)) : ?>
