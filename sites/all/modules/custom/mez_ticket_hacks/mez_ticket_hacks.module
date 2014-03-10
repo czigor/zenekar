@@ -243,6 +243,7 @@ function mez_ticket_hacks_preprocess_mez_ticket_pdf(&$vars) {
     $tickets[] = array(
       'seat' => $seat,
       'price' => $price,
+      'id' => $cli->commerce_product->product_id->value(),
     );
   }
   $vars['tickets'] = $tickets;
