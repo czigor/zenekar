@@ -12,6 +12,9 @@
       $('.field-name-field-piece').mouseout(function() {
         $(this).next().find('.field-name-field-performers').hide();
       });
+      $('.field-name-field-piece').click(function() {
+        $(this).next().find('.field-name-field-performers').toggle();
+      });
     }
   }
 })(jQuery);
