@@ -261,57 +261,11 @@ function mez_ticket_product_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'commerce_product-ticket-field_ticket_status'
-  $field_instances['commerce_product-ticket-field_ticket_status'] = array(
-    'bundle' => 'ticket',
-    'commerce_cart_settings' => array(
-      'attribute_field' => 0,
-      'attribute_widget' => 'select',
-    ),
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'list',
-        'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 3,
-      ),
-      'line_item' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'ds_extras_field_template' => '',
-    'entity_type' => 'commerce_product',
-    'field_name' => 'field_ticket_status',
-    'label' => 'Status',
-    'required' => 1,
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(
-        'apply_chosen' => 0,
-      ),
-      'type' => 'options_select',
-      'weight' => 40,
-    ),
-  );
-
   // Translatables
   // Included for use with string extractors like potx.
   t('Concert');
   t('Price');
   t('Seat');
-  t('Status');
   t('Stock');
 
   return $field_instances;
