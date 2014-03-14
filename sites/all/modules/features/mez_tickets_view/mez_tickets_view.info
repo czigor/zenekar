@@ -1,7 +1,7 @@
 name = MEZ Tickets view
 core = 7.x
 package = MEZ views
-version = 7.x-1.0-20140314dev1
+version = 7.x-1.0-20140314dev2
 project = mez_tickets_view
 dependencies[] = sexy_exposed
 dependencies[] = views

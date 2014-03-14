@@ -31,16 +31,12 @@ function mez_tickets_view_views_default_views() {
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'sexy_exposed';
   $handler->display->display_options['exposed_form']['options']['submit_button'] = 'Alkalmazás';
+  $handler->display->display_options['exposed_form']['options']['reset_button'] = TRUE;
   $handler->display->display_options['exposed_form']['options']['reset_button_label'] = 'Alaphelyzet';
   $handler->display->display_options['exposed_form']['options']['exposed_sorts_label'] = 'Rendezés';
   $handler->display->display_options['exposed_form']['options']['sort_asc_label'] = 'Növekvő';
   $handler->display->display_options['exposed_form']['options']['sort_desc_label'] = 'Csökkenő';
   $handler->display->display_options['exposed_form']['options']['sexy'] = array(
-    'field_ticket_status_value' => array(
-      'needs_sexy_love' => 1,
-      'sexy_number' => '0',
-      'sexy_width' => '0',
-    ),
     'field_concert_target_id' => array(
       'needs_sexy_love' => 1,
       'sexy_number' => '0',
@@ -190,13 +186,6 @@ function mez_tickets_view_views_default_views() {
         'url' => '',
       ),
     ),
-    'action::views_bulk_operations_delete_revision' => array(
-      'selected' => 0,
-      'postpone_processing' => 0,
-      'skip_confirmation' => 0,
-      'override_label' => 0,
-      'label' => '',
-    ),
     'action::views_bulk_operations_delete_item' => array(
       'selected' => 1,
       'postpone_processing' => 0,
@@ -221,17 +210,21 @@ function mez_tickets_view_views_default_views() {
         'show_all_tokens' => 1,
         'display_values' => array(
           'status' => 'status',
-          'commerce_stock' => 'commerce_stock',
-          'product::commerce_price' => 'product::commerce_price',
           'ticket::commerce_price' => 'ticket::commerce_price',
           'ticket::commerce_stock' => 'ticket::commerce_stock',
           'ticket::field_concert' => 'ticket::field_concert',
           'ticket::field_seat' => 'ticket::field_seat',
-          'ticket::field_ticket_status' => 'ticket::field_ticket_status',
         ),
       ),
     ),
     'action::views_bulk_operations_script_action' => array(
+      'selected' => 0,
+      'postpone_processing' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+    ),
+    'action::views_bulk_operations_delete_revision' => array(
       'selected' => 0,
       'postpone_processing' => 0,
       'skip_confirmation' => 0,
@@ -303,10 +296,29 @@ function mez_tickets_view_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'ticket' => 'ticket',
   );
+  $handler->display->display_options['filters']['type']['group'] = 1;
+  /* Szűrési feltétel: Commerce Product: Stock (commerce_stock) */
+  $handler->display->display_options['filters']['commerce_stock_value']['id'] = 'commerce_stock_value';
+  $handler->display->display_options['filters']['commerce_stock_value']['table'] = 'field_data_commerce_stock';
+  $handler->display->display_options['filters']['commerce_stock_value']['field'] = 'commerce_stock_value';
+  $handler->display->display_options['filters']['commerce_stock_value']['group'] = 1;
+  $handler->display->display_options['filters']['commerce_stock_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['commerce_stock_value']['expose']['operator_id'] = 'commerce_stock_value_op';
+  $handler->display->display_options['filters']['commerce_stock_value']['expose']['label'] = 'Stock';
+  $handler->display->display_options['filters']['commerce_stock_value']['expose']['operator'] = 'commerce_stock_value_op';
+  $handler->display->display_options['filters']['commerce_stock_value']['expose']['identifier'] = 'commerce_stock_value';
+  $handler->display->display_options['filters']['commerce_stock_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+  );
   /* Szűrési feltétel: Commerce Product: Price (commerce_price:amount) */
   $handler->display->display_options['filters']['commerce_price_amount']['id'] = 'commerce_price_amount';
   $handler->display->display_options['filters']['commerce_price_amount']['table'] = 'field_data_commerce_price';
   $handler->display->display_options['filters']['commerce_price_amount']['field'] = 'commerce_price_amount';
+  $handler->display->display_options['filters']['commerce_price_amount']['group'] = 1;
   $handler->display->display_options['filters']['commerce_price_amount']['exposed'] = TRUE;
   $handler->display->display_options['filters']['commerce_price_amount']['expose']['operator_id'] = 'commerce_price_amount_op';
   $handler->display->display_options['filters']['commerce_price_amount']['expose']['label'] = 'Price';
@@ -319,27 +331,11 @@ function mez_tickets_view_views_default_views() {
     4 => 0,
     5 => 0,
   );
-  /* Szűrési feltétel: Commerce Product: Status (field_ticket_status) */
-  $handler->display->display_options['filters']['field_ticket_status_value']['id'] = 'field_ticket_status_value';
-  $handler->display->display_options['filters']['field_ticket_status_value']['table'] = 'field_data_field_ticket_status';
-  $handler->display->display_options['filters']['field_ticket_status_value']['field'] = 'field_ticket_status_value';
-  $handler->display->display_options['filters']['field_ticket_status_value']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_ticket_status_value']['expose']['operator_id'] = 'field_ticket_status_value_op';
-  $handler->display->display_options['filters']['field_ticket_status_value']['expose']['label'] = 'Status';
-  $handler->display->display_options['filters']['field_ticket_status_value']['expose']['operator'] = 'field_ticket_status_value_op';
-  $handler->display->display_options['filters']['field_ticket_status_value']['expose']['identifier'] = 'field_ticket_status_value';
-  $handler->display->display_options['filters']['field_ticket_status_value']['expose']['multiple'] = TRUE;
-  $handler->display->display_options['filters']['field_ticket_status_value']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    3 => 0,
-    4 => 0,
-    5 => 0,
-  );
   /* Szűrési feltétel: Mező: Concert (field_concert) */
   $handler->display->display_options['filters']['field_concert_target_id']['id'] = 'field_concert_target_id';
   $handler->display->display_options['filters']['field_concert_target_id']['table'] = 'field_data_field_concert';
   $handler->display->display_options['filters']['field_concert_target_id']['field'] = 'field_concert_target_id';
+  $handler->display->display_options['filters']['field_concert_target_id']['group'] = 1;
   $handler->display->display_options['filters']['field_concert_target_id']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_concert_target_id']['expose']['operator_id'] = 'field_concert_target_id_op';
   $handler->display->display_options['filters']['field_concert_target_id']['expose']['label'] = 'Concert';
@@ -358,6 +354,7 @@ function mez_tickets_view_views_default_views() {
   $handler->display->display_options['filters']['field_seat_floor_value_i18n']['table'] = 'field_data_field_seat_floor';
   $handler->display->display_options['filters']['field_seat_floor_value_i18n']['field'] = 'field_seat_floor_value_i18n';
   $handler->display->display_options['filters']['field_seat_floor_value_i18n']['relationship'] = 'field_seat_target_id';
+  $handler->display->display_options['filters']['field_seat_floor_value_i18n']['group'] = 1;
   $handler->display->display_options['filters']['field_seat_floor_value_i18n']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_seat_floor_value_i18n']['expose']['operator_id'] = 'field_seat_floor_value_i18n_op';
   $handler->display->display_options['filters']['field_seat_floor_value_i18n']['expose']['label'] = 'Floor';
@@ -376,6 +373,7 @@ function mez_tickets_view_views_default_views() {
   $handler->display->display_options['filters']['field_seat_row_value_i18n']['table'] = 'field_data_field_seat_row';
   $handler->display->display_options['filters']['field_seat_row_value_i18n']['field'] = 'field_seat_row_value_i18n';
   $handler->display->display_options['filters']['field_seat_row_value_i18n']['relationship'] = 'field_seat_target_id';
+  $handler->display->display_options['filters']['field_seat_row_value_i18n']['group'] = 1;
   $handler->display->display_options['filters']['field_seat_row_value_i18n']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_seat_row_value_i18n']['expose']['operator_id'] = 'field_seat_row_value_i18n_op';
   $handler->display->display_options['filters']['field_seat_row_value_i18n']['expose']['label'] = 'Row';
@@ -394,11 +392,13 @@ function mez_tickets_view_views_default_views() {
   $handler->display->display_options['filters']['field_seat_number_value_i18n']['table'] = 'field_data_field_seat_number';
   $handler->display->display_options['filters']['field_seat_number_value_i18n']['field'] = 'field_seat_number_value_i18n';
   $handler->display->display_options['filters']['field_seat_number_value_i18n']['relationship'] = 'field_seat_target_id';
+  $handler->display->display_options['filters']['field_seat_number_value_i18n']['group'] = 1;
   $handler->display->display_options['filters']['field_seat_number_value_i18n']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_seat_number_value_i18n']['expose']['operator_id'] = 'field_seat_number_value_i18n_op';
   $handler->display->display_options['filters']['field_seat_number_value_i18n']['expose']['label'] = 'Seat number';
   $handler->display->display_options['filters']['field_seat_number_value_i18n']['expose']['operator'] = 'field_seat_number_value_i18n_op';
   $handler->display->display_options['filters']['field_seat_number_value_i18n']['expose']['identifier'] = 'field_seat_number_value_i18n';
+  $handler->display->display_options['filters']['field_seat_number_value_i18n']['expose']['multiple'] = TRUE;
   $handler->display->display_options['filters']['field_seat_number_value_i18n']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
@@ -411,11 +411,13 @@ function mez_tickets_view_views_default_views() {
   $handler->display->display_options['filters']['field_seat_side_value_i18n']['table'] = 'field_data_field_seat_side';
   $handler->display->display_options['filters']['field_seat_side_value_i18n']['field'] = 'field_seat_side_value_i18n';
   $handler->display->display_options['filters']['field_seat_side_value_i18n']['relationship'] = 'field_seat_target_id';
+  $handler->display->display_options['filters']['field_seat_side_value_i18n']['group'] = 1;
   $handler->display->display_options['filters']['field_seat_side_value_i18n']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_seat_side_value_i18n']['expose']['operator_id'] = 'field_seat_side_value_i18n_op';
   $handler->display->display_options['filters']['field_seat_side_value_i18n']['expose']['label'] = 'Side';
   $handler->display->display_options['filters']['field_seat_side_value_i18n']['expose']['operator'] = 'field_seat_side_value_i18n_op';
   $handler->display->display_options['filters']['field_seat_side_value_i18n']['expose']['identifier'] = 'field_seat_side_value_i18n';
+  $handler->display->display_options['filters']['field_seat_side_value_i18n']['expose']['multiple'] = TRUE;
   $handler->display->display_options['filters']['field_seat_side_value_i18n']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
@@ -428,6 +430,7 @@ function mez_tickets_view_views_default_views() {
   $handler->display->display_options['filters']['field_concert_hall_target_id']['table'] = 'field_data_field_concert_hall';
   $handler->display->display_options['filters']['field_concert_hall_target_id']['field'] = 'field_concert_hall_target_id';
   $handler->display->display_options['filters']['field_concert_hall_target_id']['relationship'] = 'field_seat_target_id';
+  $handler->display->display_options['filters']['field_concert_hall_target_id']['group'] = 1;
   $handler->display->display_options['filters']['field_concert_hall_target_id']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_concert_hall_target_id']['expose']['operator_id'] = 'field_concert_hall_target_id_op';
   $handler->display->display_options['filters']['field_concert_hall_target_id']['expose']['label'] = 'Concert hall';
