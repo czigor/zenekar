@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the MEZ Tickets view feature.
+ */
+
+include_once 'mez_tickets_view.features.inc';
