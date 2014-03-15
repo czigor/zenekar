@@ -1,7 +1,7 @@
 name = MEZ Concerts view
 core = 7.x
 package = MEZ views
-version = 7.x-1.0-20131223dev1
+version = 7.x-1.0-20140315dev1
 project = mez_concerts_view
 dependencies[] = ds
 dependencies[] = sexy_exposed

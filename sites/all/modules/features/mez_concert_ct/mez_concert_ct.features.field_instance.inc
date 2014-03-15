@@ -89,16 +89,15 @@ function mez_concert_ct_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'hidden',
-        'module' => 'field_collection_table',
+        'module' => 'field_collection',
         'settings' => array(
           'add' => '',
           'delete' => '',
           'description' => 1,
           'edit' => '',
-          'empty' => TRUE,
           'view_mode' => 'full',
         ),
-        'type' => 'field_collection_table_view',
+        'type' => 'field_collection_view',
         'weight' => 1,
       ),
       'full' => array(
@@ -112,6 +111,12 @@ function mez_concert_ct_field_default_field_instances() {
           'view_mode' => 'full',
         ),
         'type' => 'field_collection_view',
+        'weight' => 1,
+      ),
+      'piece' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 1,
       ),
     ),
@@ -149,6 +154,15 @@ function mez_concert_ct_field_default_field_instances() {
         'weight' => 0,
       ),
       'full' => array(
+        'label' => 'hidden',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => 0,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 0,
+      ),
+      'piece' => array(
         'label' => 'hidden',
         'module' => 'entityreference',
         'settings' => array(
@@ -344,7 +358,7 @@ function mez_concert_ct_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'media_multiselect',
+      'module' => 'multiupload_filefield_widget',
       'settings' => array(
         'allowed_schemes' => array(
           'private' => 0,
@@ -366,7 +380,7 @@ function mez_concert_ct_field_default_field_instances() {
         ),
         'progress_indicator' => 'throbber',
       ),
-      'type' => 'media_multiselect',
+      'type' => 'file_mfw',
       'weight' => 5,
     ),
   );
@@ -380,16 +394,15 @@ function mez_concert_ct_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'field_collection_table',
+        'module' => 'field_collection',
         'settings' => array(
           'add' => '',
           'delete' => '',
           'description' => 1,
           'edit' => '',
-          'empty' => TRUE,
           'view_mode' => 'full',
         ),
-        'type' => 'field_collection_table_view',
+        'type' => 'field_collection_view',
         'weight' => 2,
       ),
       'full' => array(
@@ -428,9 +441,9 @@ function mez_concert_ct_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 0,
-      'module' => 'field_collection_table',
+      'module' => 'field_collection',
       'settings' => array(),
-      'type' => 'field_collection_table',
+      'type' => 'field_collection_embed',
       'weight' => 3,
     ),
   );

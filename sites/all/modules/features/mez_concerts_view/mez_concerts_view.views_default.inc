@@ -86,9 +86,12 @@ function mez_concerts_view_views_default_views() {
   $handler->display->display_options['fields']['field_programme']['field'] = 'field_programme';
   $handler->display->display_options['fields']['field_programme']['label'] = 'Műsor';
   $handler->display->display_options['fields']['field_programme']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_programme']['type'] = 'field_collection_one_field';
   $handler->display->display_options['fields']['field_programme']['settings'] = array(
-    'field_name' => 'field_piece',
+    'edit' => '',
+    'delete' => '',
+    'add' => '',
+    'description' => 0,
+    'view_mode' => 'piece',
   );
   $handler->display->display_options['fields']['field_programme']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_programme']['multi_type'] = 'ol';
