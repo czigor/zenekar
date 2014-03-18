@@ -195,7 +195,9 @@ function mez_ticket_hacks_preprocess_mez_ticket(&$vars) {
     }
     $vars['xcoord'] = $ticket_w->field_seat->field_x_coordinate->value() / $compression;
     $vars['ycoord'] = $ticket_w->field_seat->field_y_coordinate->value() / $compression;
-    $vars['title'] = $ticket_w->field_seat->title_field->value() . ' ' . $ticket_w->commerce_price->amount->value() . ' Ft';
+    $seat = $ticket_w->field_seat->value();
+    $title = field_get_items('node', $seat, 'title_field');
+    $vars['title'] = $title[0]['value'] . ' ' . $ticket_w->commerce_price->amount->value() . ' Ft';
 
     $vars['seat_nid'] = $ticket_w->field_seat->nid->value();
     $vars['status'] = ($ticket_w->commerce_stock->value() > 0 ? 'free' : 'sold');
@@ -237,7 +239,7 @@ function mez_ticket_hacks_preprocess_mez_ticket_pdf(&$vars) {
 
   $tickets = array();
   foreach ($order_w->commerce_line_items as $cli) {
-    $seat = $cli->commerce_product->field_seat->title_field->value();
+    $seat = $cli->commerce_product->language('hu')->field_seat->title_field->value();
     $price = $cli->commerce_unit_price->amount->value();
     $tickets[] = array(
       'seat' => $seat,
@@ -363,13 +365,11 @@ function mez_ticket_hacks_commerce_cart_product_add($order, $product, $quantity,
  */
 function mez_ticket_hacks_node_presave($node) {
   if ($node->type == 'seat') {
-    // Set seat node title to [floor] [side] [row]/[number].
+    // Set seat node title to [floor] [side] [row]/[number] [extra].
     $title = array();
-    foreach (array_keys(language_list()) as $lang) {
-      $title[$lang][0]['value'] = '';
-    }
 
     foreach (array_keys(language_list()) as $lang) {
+      $title[$lang][0]['value'] = '';
       $floor = field_get_items('node', $node, 'field_seat_floor');
       if ($floor) {
         $title[$lang][0]['value'] .= i18n_string('field:field_seat_floor:#allowed_values:' . $floor[0]['value'], $floor[0]['value'], array('langcode' => $lang)) . ' ';
@@ -386,7 +386,7 @@ function mez_ticket_hacks_node_presave($node) {
       if ($number) {
         $title[$lang][0]['value'] .= t(', seat @seat', array('@seat' => $number[0]['value']), array('langcode' => $lang));
       }
-      $extra = field_get_items('node', $node, 'field_seat_extra');
+      $extra = field_get_items('node', $node, 'field_seat_extra', $lang);
       if ($extra) {
         $title[$lang][0]['value'] .= ' ' . $extra[0]['value'];
       }
