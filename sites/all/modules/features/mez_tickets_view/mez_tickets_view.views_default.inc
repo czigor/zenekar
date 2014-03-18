@@ -232,6 +232,11 @@ function mez_tickets_view_views_default_views() {
       'label' => '',
     ),
   );
+  /* Mező: Commerce Product: Cikkszám */
+  $handler->display->display_options['fields']['sku']['id'] = 'sku';
+  $handler->display->display_options['fields']['sku']['table'] = 'commerce_product';
+  $handler->display->display_options['fields']['sku']['field'] = 'sku';
+  $handler->display->display_options['fields']['sku']['link_to_product'] = 0;
   /* Mező: Commerce Product: Termékazonosító */
   $handler->display->display_options['fields']['product_id']['id'] = 'product_id';
   $handler->display->display_options['fields']['product_id']['table'] = 'commerce_product';
