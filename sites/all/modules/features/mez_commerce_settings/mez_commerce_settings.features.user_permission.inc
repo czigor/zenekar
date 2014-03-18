@@ -155,13 +155,6 @@ function mez_commerce_settings_user_default_permissions() {
     'module' => 'commerce_product',
   );
 
-  // Exported permission: 'create commerce_product entities of bundle product'.
-  $permissions['create commerce_product entities of bundle product'] = array(
-    'name' => 'create commerce_product entities of bundle product',
-    'roles' => array(),
-    'module' => 'commerce_product',
-  );
-
   // Exported permission: 'create payments'.
   $permissions['create payments'] = array(
     'name' => 'create payments',
@@ -211,13 +204,6 @@ function mez_commerce_settings_user_default_permissions() {
     'module' => 'commerce_product',
   );
 
-  // Exported permission: 'edit any commerce_product entity of bundle product'.
-  $permissions['edit any commerce_product entity of bundle product'] = array(
-    'name' => 'edit any commerce_product entity of bundle product',
-    'roles' => array(),
-    'module' => 'commerce_product',
-  );
-
   // Exported permission: 'edit own commerce_customer_profile entities'.
   $permissions['edit own commerce_customer_profile entities'] = array(
     'name' => 'edit own commerce_customer_profile entities',
@@ -249,13 +235,6 @@ function mez_commerce_settings_user_default_permissions() {
   // Exported permission: 'edit own commerce_product entities'.
   $permissions['edit own commerce_product entities'] = array(
     'name' => 'edit own commerce_product entities',
-    'roles' => array(),
-    'module' => 'commerce_product',
-  );
-
-  // Exported permission: 'edit own commerce_product entities of bundle product'.
-  $permissions['edit own commerce_product entities of bundle product'] = array(
-    'name' => 'edit own commerce_product entities of bundle product',
     'roles' => array(),
     'module' => 'commerce_product',
   );
@@ -311,13 +290,6 @@ function mez_commerce_settings_user_default_permissions() {
     'module' => 'commerce_product',
   );
 
-  // Exported permission: 'view any commerce_product entity of bundle product'.
-  $permissions['view any commerce_product entity of bundle product'] = array(
-    'name' => 'view any commerce_product entity of bundle product',
-    'roles' => array(),
-    'module' => 'commerce_product',
-  );
-
   // Exported permission: 'view own commerce_customer_profile entities'.
   $permissions['view own commerce_customer_profile entities'] = array(
     'name' => 'view own commerce_customer_profile entities',
@@ -349,13 +321,6 @@ function mez_commerce_settings_user_default_permissions() {
   // Exported permission: 'view own commerce_product entities'.
   $permissions['view own commerce_product entities'] = array(
     'name' => 'view own commerce_product entities',
-    'roles' => array(),
-    'module' => 'commerce_product',
-  );
-
-  // Exported permission: 'view own commerce_product entities of bundle product'.
-  $permissions['view own commerce_product entities of bundle product'] = array(
-    'name' => 'view own commerce_product entities of bundle product',
     'roles' => array(),
     'module' => 'commerce_product',
   );
