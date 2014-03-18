@@ -49,7 +49,49 @@ function mez_seat_ct_field_default_field_instances() {
         'apply_chosen' => 0,
       ),
       'type' => 'options_select',
-      'weight' => 31,
+      'weight' => 2,
+    ),
+  );
+
+  // Exported field_instance: 'node-seat-field_seat_extra'
+  $field_instances['node-seat-field_seat_extra'] = array(
+    'bundle' => 'seat',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Some extra information on the seat, e.g. "(wheelchair seat)"',
+    'display' => array(
+      'default' => array(
+        'label' => 'inline',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 9,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_seat_extra',
+    'label' => 'Seat extra',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 7,
     ),
   );
 
@@ -87,10 +129,10 @@ function mez_seat_ct_field_default_field_instances() {
       'active' => 1,
       'module' => 'options',
       'settings' => array(
-        'apply_chosen' => 0,
+        'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 32,
+      'weight' => 3,
     ),
   );
 
@@ -131,7 +173,7 @@ function mez_seat_ct_field_default_field_instances() {
         'apply_chosen' => 0,
       ),
       'type' => 'options_select',
-      'weight' => 35,
+      'weight' => 6,
     ),
   );
 
@@ -169,10 +211,10 @@ function mez_seat_ct_field_default_field_instances() {
       'active' => 1,
       'module' => 'options',
       'settings' => array(
-        'apply_chosen' => 0,
+        'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 34,
+      'weight' => 5,
     ),
   );
 
@@ -210,10 +252,10 @@ function mez_seat_ct_field_default_field_instances() {
       'active' => 1,
       'module' => 'options',
       'settings' => array(
-        'apply_chosen' => 0,
+        'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 33,
+      'weight' => 4,
     ),
   );
 
@@ -261,7 +303,7 @@ function mez_seat_ct_field_default_field_instances() {
       'module' => 'number',
       'settings' => array(),
       'type' => 'number',
-      'weight' => 36,
+      'weight' => 8,
     ),
   );
 
@@ -309,7 +351,7 @@ function mez_seat_ct_field_default_field_instances() {
       'module' => 'number',
       'settings' => array(),
       'type' => 'number',
-      'weight' => 37,
+      'weight' => 9,
     ),
   );
 
@@ -352,7 +394,7 @@ function mez_seat_ct_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => -5,
+      'weight' => 0,
     ),
   );
 
@@ -362,8 +404,10 @@ function mez_seat_ct_field_default_field_instances() {
   t('Cím');
   t('Floor');
   t('Row');
+  t('Seat extra');
   t('Seat number');
   t('Side');
+  t('Some extra information on the seat, e.g. "(wheelchair seat)"');
   t('X coordinate');
   t('Y coordinate');
 

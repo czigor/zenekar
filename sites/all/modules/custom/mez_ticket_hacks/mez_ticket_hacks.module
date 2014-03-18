@@ -385,6 +385,10 @@ function mez_ticket_hacks_node_presave($node) {
       if ($number) {
         $title[$lang][0]['value'] .= t(', seat @seat', array('@seat' => $number[0]['value']), array('langcode' => $lang));
       }
+      $extra = field_get_items('node', $node, 'field_seat_extra');
+      if ($extra) {
+        $title[$lang][0]['value'] .= ' ' . $extra[0]['value'];
+      }
     }
     $node->title_field = $title;
     global $language;
