@@ -219,7 +219,8 @@ function mez_ticket_hacks_preprocess_mez_ticket(&$vars) {
     $ycoord = field_get_items('node', $seat, 'field_y_coordinate');
     $vars['ycoord'] = $ycoord[0]['value'] / $compression;
     $vars['status'] = 'sold';
-    $vars['title'] = $seat->title;
+    $title = field_get_items('node', $seat, 'title_field');
+    $vars['title'] = $title[0]['value'];
     $vars['seat_nid'] = $seat->nid;
     $vars['price'] = 0;
   }
