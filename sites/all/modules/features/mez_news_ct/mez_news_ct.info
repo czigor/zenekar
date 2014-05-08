@@ -1,7 +1,7 @@
 name = MEZ News CT
 core = 7.x
 package = MEZ CTs
-version = 7.x-1.0-20131224dev1
+version = 7.x-1.0-20140508dev1
 project = mez_news_ct
 dependencies[] = ctools
 dependencies[] = ds

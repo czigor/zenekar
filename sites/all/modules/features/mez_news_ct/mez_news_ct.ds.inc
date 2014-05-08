@@ -63,7 +63,6 @@ function mez_news_ct_ds_layout_settings_info() {
         1 => 'post_date',
         2 => 'body',
         3 => 'field_media',
-        4 => 'field_tags',
       ),
     ),
     'fields' => array(
@@ -71,7 +70,6 @@ function mez_news_ct_ds_layout_settings_info() {
       'post_date' => 'ds_content',
       'body' => 'ds_content',
       'field_media' => 'ds_content',
-      'field_tags' => 'ds_content',
     ),
     'classes' => array(),
     'wrappers' => array(
