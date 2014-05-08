@@ -30,12 +30,20 @@ function mez_orders_view_views_default_views() {
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['query_comment'] = FALSE;
-  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['exposed_form']['type'] = 'sexy_exposed';
   $handler->display->display_options['exposed_form']['options']['submit_button'] = 'Alkalmazás';
+  $handler->display->display_options['exposed_form']['options']['reset_button'] = TRUE;
   $handler->display->display_options['exposed_form']['options']['reset_button_label'] = 'Alaphelyzet';
   $handler->display->display_options['exposed_form']['options']['exposed_sorts_label'] = 'Rendezés';
   $handler->display->display_options['exposed_form']['options']['sort_asc_label'] = 'Növekvő';
   $handler->display->display_options['exposed_form']['options']['sort_desc_label'] = 'Csökkenő';
+  $handler->display->display_options['exposed_form']['options']['sexy'] = array(
+    'field_want_bill_value' => array(
+      'needs_sexy_love' => 1,
+      'sexy_number' => '0',
+      'sexy_width' => '0',
+    ),
+  );
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = 50;
   $handler->display->display_options['pager']['options']['expose']['items_per_page_label'] = 'Elemek száma oldalanként';
@@ -166,6 +174,25 @@ function mez_orders_view_views_default_views() {
     'view' => 'commerce_line_item_table|default',
   );
   $handler->display->display_options['fields']['commerce_line_items']['delta_offset'] = '0';
+  /* Szűrési feltétel: Commerce vevőprofil: I would like a bill (field_want_bill) */
+  $handler->display->display_options['filters']['field_want_bill_value']['id'] = 'field_want_bill_value';
+  $handler->display->display_options['filters']['field_want_bill_value']['table'] = 'field_data_field_want_bill';
+  $handler->display->display_options['filters']['field_want_bill_value']['field'] = 'field_want_bill_value';
+  $handler->display->display_options['filters']['field_want_bill_value']['relationship'] = 'commerce_customer_billing_profile_id';
+  $handler->display->display_options['filters']['field_want_bill_value']['group'] = 1;
+  $handler->display->display_options['filters']['field_want_bill_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_want_bill_value']['expose']['operator_id'] = 'field_want_bill_value_op';
+  $handler->display->display_options['filters']['field_want_bill_value']['expose']['label'] = 'Számla';
+  $handler->display->display_options['filters']['field_want_bill_value']['expose']['operator'] = 'field_want_bill_value_op';
+  $handler->display->display_options['filters']['field_want_bill_value']['expose']['identifier'] = 'field_want_bill_value';
+  $handler->display->display_options['filters']['field_want_bill_value']['expose']['multiple'] = TRUE;
+  $handler->display->display_options['filters']['field_want_bill_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+  );
   /* Szűrési feltétel: Commerce rendelés: Rendelési állapot */
   $handler->display->display_options['filters']['state']['id'] = 'state';
   $handler->display->display_options['filters']['state']['table'] = 'commerce_order';

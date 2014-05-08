@@ -1,13 +1,12 @@
 name = MEZ Orders view
 core = 7.x
 package = MEZ Commerce
-version = 7.x-1.0-20131223dev1
+version = 7.x-1.0-20140508dev1
 project = mez_orders_view
-dependencies[] = commerce
-dependencies[] = commerce_order
 dependencies[] = commerce_order_ui
-dependencies[] = views
+dependencies[] = sexy_exposed
 features[ctools][] = views:views_default:3.0
 features[features_api][] = api:2
 features[views_view][] = mez_orders
 features_exclude[dependencies][ctools] = ctools
+features_exclude[dependencies][views] = views
