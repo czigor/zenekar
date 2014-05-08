@@ -1,7 +1,7 @@
 name = MEZ Orders view
 core = 7.x
 package = MEZ Commerce
-version = 7.x-1.0-20140508dev1
+version = 7.x-1.0-20140508dev2
 project = mez_orders_view
 dependencies[] = commerce_order_ui
 dependencies[] = sexy_exposed

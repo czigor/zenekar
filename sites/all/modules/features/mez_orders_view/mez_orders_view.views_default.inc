@@ -135,6 +135,7 @@ function mez_orders_view_views_default_views() {
   $handler->display->display_options['fields']['order_number']['id'] = 'order_number';
   $handler->display->display_options['fields']['order_number']['table'] = 'commerce_order';
   $handler->display->display_options['fields']['order_number']['field'] = 'order_number';
+  $handler->display->display_options['fields']['order_number']['label'] = 'ID';
   $handler->display->display_options['fields']['order_number']['link_to_order'] = 'admin';
   /* Mező: Commerce rendelés: Frissítési dátum */
   $handler->display->display_options['fields']['changed']['id'] = 'changed';
@@ -155,6 +156,7 @@ function mez_orders_view_views_default_views() {
   $handler->display->display_options['fields']['status']['id'] = 'status';
   $handler->display->display_options['fields']['status']['table'] = 'commerce_order';
   $handler->display->display_options['fields']['status']['field'] = 'status';
+  $handler->display->display_options['fields']['status']['label'] = 'Státusz';
   /* Mező: Commerce rendelés: Műveletek hivatkozásai */
   $handler->display->display_options['fields']['operations']['id'] = 'operations';
   $handler->display->display_options['fields']['operations']['table'] = 'commerce_order';
@@ -174,6 +176,11 @@ function mez_orders_view_views_default_views() {
     'view' => 'commerce_line_item_table|default',
   );
   $handler->display->display_options['fields']['commerce_line_items']['delta_offset'] = '0';
+  /* Mező: Commerce-rendelés: Billing information */
+  $handler->display->display_options['fields']['commerce_customer_billing']['id'] = 'commerce_customer_billing';
+  $handler->display->display_options['fields']['commerce_customer_billing']['table'] = 'field_data_commerce_customer_billing';
+  $handler->display->display_options['fields']['commerce_customer_billing']['field'] = 'commerce_customer_billing';
+  $handler->display->display_options['fields']['commerce_customer_billing']['label'] = 'Számlázási információk';
   /* Szűrési feltétel: Commerce vevőprofil: I would like a bill (field_want_bill) */
   $handler->display->display_options['filters']['field_want_bill_value']['id'] = 'field_want_bill_value';
   $handler->display->display_options['filters']['field_want_bill_value']['table'] = 'field_data_field_want_bill';
