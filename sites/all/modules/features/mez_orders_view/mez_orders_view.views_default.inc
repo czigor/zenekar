@@ -157,11 +157,6 @@ function mez_orders_view_views_default_views() {
   $handler->display->display_options['fields']['status']['table'] = 'commerce_order';
   $handler->display->display_options['fields']['status']['field'] = 'status';
   $handler->display->display_options['fields']['status']['label'] = 'Státusz';
-  /* Mező: Commerce rendelés: Műveletek hivatkozásai */
-  $handler->display->display_options['fields']['operations']['id'] = 'operations';
-  $handler->display->display_options['fields']['operations']['table'] = 'commerce_order';
-  $handler->display->display_options['fields']['operations']['field'] = 'operations';
-  $handler->display->display_options['fields']['operations']['label'] = 'Operations';
   /* Mező: Commerce rendelés: Email */
   $handler->display->display_options['fields']['mail']['id'] = 'mail';
   $handler->display->display_options['fields']['mail']['table'] = 'commerce_order';
@@ -181,6 +176,11 @@ function mez_orders_view_views_default_views() {
   $handler->display->display_options['fields']['commerce_customer_billing']['table'] = 'field_data_commerce_customer_billing';
   $handler->display->display_options['fields']['commerce_customer_billing']['field'] = 'commerce_customer_billing';
   $handler->display->display_options['fields']['commerce_customer_billing']['label'] = 'Számlázási információk';
+  /* Mező: Commerce rendelés: Műveletek hivatkozásai */
+  $handler->display->display_options['fields']['operations']['id'] = 'operations';
+  $handler->display->display_options['fields']['operations']['table'] = 'commerce_order';
+  $handler->display->display_options['fields']['operations']['field'] = 'operations';
+  $handler->display->display_options['fields']['operations']['add_destination'] = 0;
   /* Szűrési feltétel: Commerce vevőprofil: I would like a bill (field_want_bill) */
   $handler->display->display_options['filters']['field_want_bill_value']['id'] = 'field_want_bill_value';
   $handler->display->display_options['filters']['field_want_bill_value']['table'] = 'field_data_field_want_bill';
@@ -257,6 +257,64 @@ function mez_orders_view_views_default_views() {
   $handler->display->display_options['menu']['type'] = 'tab';
   $handler->display->display_options['menu']['title'] = 'Shopping carts';
   $handler->display->display_options['menu']['weight'] = '0';
+
+  /* Display: Data export */
+  $handler = $view->new_display('views_data_export', 'Data export', 'views_data_export_1');
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['style_plugin'] = 'views_data_export_csv';
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Mező: Commerce rendelés: Megrendelés száma */
+  $handler->display->display_options['fields']['order_number']['id'] = 'order_number';
+  $handler->display->display_options['fields']['order_number']['table'] = 'commerce_order';
+  $handler->display->display_options['fields']['order_number']['field'] = 'order_number';
+  $handler->display->display_options['fields']['order_number']['label'] = 'ID';
+  $handler->display->display_options['fields']['order_number']['link_to_order'] = 'admin';
+  /* Mező: Commerce rendelés: Frissítési dátum */
+  $handler->display->display_options['fields']['changed']['id'] = 'changed';
+  $handler->display->display_options['fields']['changed']['table'] = 'commerce_order';
+  $handler->display->display_options['fields']['changed']['field'] = 'changed';
+  $handler->display->display_options['fields']['changed']['label'] = 'Updated';
+  $handler->display->display_options['fields']['changed']['date_format'] = 'medium';
+  /* Mező: Commerce-rendelés: Order total */
+  $handler->display->display_options['fields']['commerce_order_total']['id'] = 'commerce_order_total';
+  $handler->display->display_options['fields']['commerce_order_total']['table'] = 'field_data_commerce_order_total';
+  $handler->display->display_options['fields']['commerce_order_total']['field'] = 'commerce_order_total';
+  $handler->display->display_options['fields']['commerce_order_total']['label'] = 'Total';
+  $handler->display->display_options['fields']['commerce_order_total']['click_sort_column'] = 'amount';
+  $handler->display->display_options['fields']['commerce_order_total']['settings'] = array(
+    'calculation' => FALSE,
+  );
+  /* Mező: Commerce rendelés: Megrendelés állapota */
+  $handler->display->display_options['fields']['status']['id'] = 'status';
+  $handler->display->display_options['fields']['status']['table'] = 'commerce_order';
+  $handler->display->display_options['fields']['status']['field'] = 'status';
+  $handler->display->display_options['fields']['status']['label'] = 'Státusz';
+  /* Mező: Commerce rendelés: Email */
+  $handler->display->display_options['fields']['mail']['id'] = 'mail';
+  $handler->display->display_options['fields']['mail']['table'] = 'commerce_order';
+  $handler->display->display_options['fields']['mail']['field'] = 'mail';
+  $handler->display->display_options['fields']['mail']['render_as_link'] = 0;
+  /* Mező: Commerce-rendelés: Line items */
+  $handler->display->display_options['fields']['commerce_line_items']['id'] = 'commerce_line_items';
+  $handler->display->display_options['fields']['commerce_line_items']['table'] = 'field_data_commerce_line_items';
+  $handler->display->display_options['fields']['commerce_line_items']['field'] = 'commerce_line_items';
+  $handler->display->display_options['fields']['commerce_line_items']['label'] = 'Tételek';
+  $handler->display->display_options['fields']['commerce_line_items']['settings'] = array(
+    'view' => 'commerce_line_item_table|default',
+  );
+  $handler->display->display_options['fields']['commerce_line_items']['delta_offset'] = '0';
+  /* Mező: Commerce-rendelés: Billing information */
+  $handler->display->display_options['fields']['commerce_customer_billing']['id'] = 'commerce_customer_billing';
+  $handler->display->display_options['fields']['commerce_customer_billing']['table'] = 'field_data_commerce_customer_billing';
+  $handler->display->display_options['fields']['commerce_customer_billing']['field'] = 'commerce_customer_billing';
+  $handler->display->display_options['fields']['commerce_customer_billing']['label'] = 'Számlázási információk';
+  $handler->display->display_options['path'] = 'admin/commerce/orders/list/orders.csv';
+  $handler->display->display_options['displays'] = array(
+    'admin_page' => 'admin_page',
+    'default' => 0,
+    'shopping_carts' => 0,
+  );
   $export['mez_orders'] = $view;
 
   return $export;
