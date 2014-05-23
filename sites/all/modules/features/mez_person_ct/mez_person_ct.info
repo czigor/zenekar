@@ -1,7 +1,7 @@
 name = MEZ Person CT
 core = 7.x
 package = MEZ CTs
-version = 7.x-1.0-20131223dev1
+version = 7.x-1.0-20140523dev1
 project = mez_person_ct
 dependencies[] = ctools
 dependencies[] = date
@@ -79,3 +79,7 @@ features[variable][] = menu_parent_person
 features[variable][] = node_options_person
 features[variable][] = node_preview_person
 features[variable][] = node_submitted_person
+features[variable][] = pathauto_node_person_en_pattern
+features[variable][] = pathauto_node_person_hu_pattern
+features[variable][] = pathauto_node_person_pattern
+features[variable][] = pathauto_node_person_und_pattern

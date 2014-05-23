@@ -1,7 +1,7 @@
 name = MEZ Piece CT
 core = 7.x
 package = MEZ CTs
-version = 7.x-1.0-20131223dev1
+version = 7.x-1.0-20140523dev1
 project = mez_piece_ct
 dependencies[] = ctools
 dependencies[] = entityreference
@@ -52,3 +52,7 @@ features[variable][] = menu_parent_piece
 features[variable][] = node_options_piece
 features[variable][] = node_preview_piece
 features[variable][] = node_submitted_piece
+features[variable][] = pathauto_node_piece_en_pattern
+features[variable][] = pathauto_node_piece_hu_pattern
+features[variable][] = pathauto_node_piece_pattern
+features[variable][] = pathauto_node_piece_und_pattern

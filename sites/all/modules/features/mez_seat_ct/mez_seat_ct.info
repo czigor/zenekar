@@ -1,7 +1,7 @@
 name = MEZ Seat CT
 core = 7.x
 package = MEZ CTs
-version = 7.x-1.0-20140318dev1
+version = 7.x-1.0-20140523dev1
 project = mez_seat_ct
 dependencies[] = ctools
 dependencies[] = entityreference
@@ -60,3 +60,7 @@ features[variable][] = menu_parent_seat
 features[variable][] = node_options_seat
 features[variable][] = node_preview_seat
 features[variable][] = node_submitted_seat
+features[variable][] = pathauto_node_seat_en_pattern
+features[variable][] = pathauto_node_seat_hu_pattern
+features[variable][] = pathauto_node_seat_pattern
+features[variable][] = pathauto_node_seat_und_pattern

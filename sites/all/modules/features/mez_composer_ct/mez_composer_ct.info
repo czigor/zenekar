@@ -1,7 +1,7 @@
 name = MEZ Composer CT
 core = 7.x
 package = MEZ CTs
-version = 7.x-1.0-20140101dev1
+version = 7.x-1.0-20140523dev1
 project = mez_composer_ct
 dependencies[] = ctools
 dependencies[] = features
@@ -54,3 +54,7 @@ features[variable][] = menu_parent_composer
 features[variable][] = node_options_composer
 features[variable][] = node_preview_composer
 features[variable][] = node_submitted_composer
+features[variable][] = pathauto_node_composer_en_pattern
+features[variable][] = pathauto_node_composer_hu_pattern
+features[variable][] = pathauto_node_composer_pattern
+features[variable][] = pathauto_node_composer_und_pattern

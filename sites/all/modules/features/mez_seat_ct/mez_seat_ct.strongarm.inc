@@ -213,5 +213,33 @@ function mez_seat_ct_strongarm() {
   $strongarm->value = 0;
   $export['node_submitted_seat'] = $strongarm;
 
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_node_seat_en_pattern';
+  $strongarm->value = '';
+  $export['pathauto_node_seat_en_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_node_seat_hu_pattern';
+  $strongarm->value = '';
+  $export['pathauto_node_seat_hu_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_node_seat_pattern';
+  $strongarm->value = '';
+  $export['pathauto_node_seat_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_node_seat_und_pattern';
+  $strongarm->value = '';
+  $export['pathauto_node_seat_und_pattern'] = $strongarm;
+
   return $export;
 }

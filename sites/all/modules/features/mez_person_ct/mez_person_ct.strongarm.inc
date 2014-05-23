@@ -244,5 +244,33 @@ function mez_person_ct_strongarm() {
   $strongarm->value = 0;
   $export['node_submitted_person'] = $strongarm;
 
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_node_person_en_pattern';
+  $strongarm->value = '';
+  $export['pathauto_node_person_en_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_node_person_hu_pattern';
+  $strongarm->value = 'szemely/[node:title]';
+  $export['pathauto_node_person_hu_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_node_person_pattern';
+  $strongarm->value = 'person/[node:title]';
+  $export['pathauto_node_person_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_node_person_und_pattern';
+  $strongarm->value = '';
+  $export['pathauto_node_person_und_pattern'] = $strongarm;
+
   return $export;
 }
