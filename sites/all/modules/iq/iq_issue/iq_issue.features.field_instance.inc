@@ -46,6 +46,7 @@ function iq_issue_field_default_field_instances() {
     'label' => 'Comment',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
@@ -98,12 +99,15 @@ function iq_issue_field_default_field_instances() {
     'label' => 'Assigned to',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
       'active' => 1,
       'module' => 'options',
-      'settings' => array(),
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
       'type' => 'options_select',
       'weight' => 3,
     ),
@@ -143,6 +147,7 @@ function iq_issue_field_default_field_instances() {
     'required' => 0,
     'settings' => array(
       'description_field' => 1,
+      'entity_translation_sync' => FALSE,
       'file_directory' => '',
       'file_extensions' => 'jpg jpeg gif png psd txt doc xls pdf ppt pps odt ods odp tar gz tgz zip cdr docx xlsx',
       'max_filesize' => '',
@@ -207,6 +212,7 @@ function iq_issue_field_default_field_instances() {
     'label' => 'Business value',
     'required' => 1,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'max' => '',
       'min' => '',
       'prefix' => '',
@@ -260,6 +266,7 @@ function iq_issue_field_default_field_instances() {
     'required' => 0,
     'settings' => array(
       'display_summary' => 0,
+      'entity_translation_sync' => FALSE,
       'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
@@ -308,6 +315,7 @@ function iq_issue_field_default_field_instances() {
     'label' => 'Done if/when',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
@@ -360,6 +368,7 @@ function iq_issue_field_default_field_instances() {
     'label' => 'Estimate',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'max' => '',
       'min' => '',
       'prefix' => '',
@@ -408,6 +417,7 @@ function iq_issue_field_default_field_instances() {
     'label' => 'How to demo',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
@@ -459,6 +469,7 @@ function iq_issue_field_default_field_instances() {
     'label' => 'Display on kanban board',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -507,6 +518,7 @@ function iq_issue_field_default_field_instances() {
     'label' => 'Parent issue',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -557,6 +569,7 @@ function iq_issue_field_default_field_instances() {
     'label' => 'Related issues',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -606,12 +619,15 @@ function iq_issue_field_default_field_instances() {
     'label' => 'Status',
     'required' => 1,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
       'active' => 1,
       'module' => 'options',
-      'settings' => array(),
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
       'type' => 'options_select',
       'weight' => 5,
     ),
@@ -651,6 +667,7 @@ function iq_issue_field_default_field_instances() {
     'label' => 'Tags',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -703,12 +720,15 @@ function iq_issue_field_default_field_instances() {
     'label' => 'Type',
     'required' => 1,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
       'active' => 1,
       'module' => 'options',
-      'settings' => array(),
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
       'type' => 'options_select',
       'weight' => 6,
     ),
@@ -750,6 +770,7 @@ function iq_issue_field_default_field_instances() {
     'label' => 'Group content visibility',
     'required' => 1,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'view modes' => array(
@@ -765,7 +786,9 @@ function iq_issue_field_default_field_instances() {
     'widget' => array(
       'active' => 1,
       'module' => 'options',
-      'settings' => array(),
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
       'type' => 'options_select',
       'weight' => 3,
     ),
@@ -816,6 +839,7 @@ function iq_issue_field_default_field_instances() {
           'status' => TRUE,
         ),
       ),
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'view modes' => array(
@@ -833,7 +857,9 @@ function iq_issue_field_default_field_instances() {
     'widget' => array(
       'active' => 0,
       'module' => 'options',
-      'settings' => array(),
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
       'type' => 'options_select',
       'weight' => 1,
     ),
@@ -871,6 +897,7 @@ function iq_issue_field_default_field_instances() {
     'label' => 'Title',
     'required' => 1,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'hide_label' => array(
         'entity' => 0,
         'page' => 0,
@@ -913,6 +940,7 @@ function iq_issue_field_default_field_instances() {
     'label' => 'Kanban status',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -951,6 +979,7 @@ function iq_issue_field_default_field_instances() {
     'label' => 'Limit',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'max' => '',
       'min' => 0,
       'prefix' => '',
@@ -963,6 +992,80 @@ function iq_issue_field_default_field_instances() {
       'settings' => array(),
       'type' => 'number',
       'weight' => 32,
+    ),
+  );
+
+  // Exported field_instance: 'taxonomy_term-issue_status-name_field'
+  $field_instances['taxonomy_term-issue_status-name_field'] = array(
+    'bundle' => 'issue_status',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'taxonomy_term',
+    'field_name' => 'name_field',
+    'label' => 'Név',
+    'required' => TRUE,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'hide_label' => array(
+        'entity' => 0,
+        'page' => 0,
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => -5,
+    ),
+  );
+
+  // Exported field_instance: 'taxonomy_term-issue_tags-name_field'
+  $field_instances['taxonomy_term-issue_tags-name_field'] = array(
+    'bundle' => 'issue_tags',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'taxonomy_term',
+    'field_name' => 'name_field',
+    'label' => 'Név',
+    'required' => TRUE,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'hide_label' => array(
+        'entity' => 0,
+        'page' => 0,
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => -5,
     ),
   );
 
@@ -980,6 +1083,7 @@ function iq_issue_field_default_field_instances() {
   t('How to demo');
   t('Kanban status');
   t('Limit');
+  t('Név');
   t('Parent issue');
   t('Project');
   t('Related issues');
