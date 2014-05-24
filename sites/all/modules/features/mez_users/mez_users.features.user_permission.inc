@@ -10,15 +10,6 @@
 function mez_users_user_default_permissions() {
   $permissions = array();
 
-  // Exported permission: 'access user profiles'.
-  $permissions['access user profiles'] = array(
-    'name' => 'access user profiles',
-    'roles' => array(
-      'site admin' => 'site admin',
-    ),
-    'module' => 'user',
-  );
-
   // Exported permission: 'administer permissions'.
   $permissions['administer permissions'] = array(
     'name' => 'administer permissions',

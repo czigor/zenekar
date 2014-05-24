@@ -240,90 +240,10 @@ function mez_news_ct_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'taxonomy_term-media-description_field'
-  $field_instances['taxonomy_term-media-description_field'] = array(
-    'bundle' => 'media',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'A field replacing taxonomy term description.',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 1,
-      ),
-    ),
-    'entity_type' => 'taxonomy_term',
-    'field_name' => 'description_field',
-    'label' => 'Leírás',
-    'required' => FALSE,
-    'settings' => array(
-      'display_summary' => 0,
-      'entity_translation_sync' => FALSE,
-      'hide_label' => array(
-        'entity' => 0,
-        'page' => 0,
-      ),
-      'text_processing' => 1,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'module' => 'text',
-      'settings' => array(
-        'rows' => 20,
-        'summary_rows' => 5,
-      ),
-      'type' => 'text_textarea_with_summary',
-      'weight' => -5,
-    ),
-  );
-
-  // Exported field_instance: 'taxonomy_term-media-name_field'
-  $field_instances['taxonomy_term-media-name_field'] = array(
-    'bundle' => 'media',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'A field replacing taxonomy term name.',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'taxonomy_term',
-    'field_name' => 'name_field',
-    'label' => 'Név',
-    'required' => TRUE,
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'hide_label' => array(
-        'entity' => 0,
-        'page' => 0,
-      ),
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => -5,
-    ),
-  );
-
   // Translatables
   // Included for use with string extractors like potx.
-  t('A field replacing taxonomy term description.');
-  t('A field replacing taxonomy term name.');
   t('Body');
-  t('Leírás');
   t('Media');
-  t('Név');
   t('Tags');
   t('Title');
 

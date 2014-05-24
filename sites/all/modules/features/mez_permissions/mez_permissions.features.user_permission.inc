@@ -30,15 +30,6 @@ function mez_permissions_user_default_permissions() {
     'module' => 'system',
   );
 
-  // Exported permission: 'access comments'.
-  $permissions['access comments'] = array(
-    'name' => 'access comments',
-    'roles' => array(
-      'authenticated user' => 'authenticated user',
-    ),
-    'module' => 'comment',
-  );
-
   // Exported permission: 'access site in maintenance mode'.
   $permissions['access site in maintenance mode'] = array(
     'name' => 'access site in maintenance mode',
@@ -74,15 +65,6 @@ function mez_permissions_user_default_permissions() {
     'name' => 'administer blocks',
     'roles' => array(),
     'module' => 'block',
-  );
-
-  // Exported permission: 'administer comments'.
-  $permissions['administer comments'] = array(
-    'name' => 'administer comments',
-    'roles' => array(
-      'site admin' => 'site admin',
-    ),
-    'module' => 'comment',
   );
 
   // Exported permission: 'administer image styles'.
@@ -188,15 +170,6 @@ function mez_permissions_user_default_permissions() {
     'module' => 'mimemail',
   );
 
-  // Exported permission: 'edit own comments'.
-  $permissions['edit own comments'] = array(
-    'name' => 'edit own comments',
-    'roles' => array(
-      'authenticated user' => 'authenticated user',
-    ),
-    'module' => 'comment',
-  );
-
   // Exported permission: 'flush caches'.
   $permissions['flush caches'] = array(
     'name' => 'flush caches',
@@ -211,15 +184,6 @@ function mez_permissions_user_default_permissions() {
     'module' => 'pathauto',
   );
 
-  // Exported permission: 'post comments'.
-  $permissions['post comments'] = array(
-    'name' => 'post comments',
-    'roles' => array(
-      'authenticated user' => 'authenticated user',
-    ),
-    'module' => 'comment',
-  );
-
   // Exported permission: 'send arbitrary files'.
   $permissions['send arbitrary files'] = array(
     'name' => 'send arbitrary files',
@@ -228,15 +192,6 @@ function mez_permissions_user_default_permissions() {
       'authenticated user' => 'authenticated user',
     ),
     'module' => 'mimemail',
-  );
-
-  // Exported permission: 'skip comment approval'.
-  $permissions['skip comment approval'] = array(
-    'name' => 'skip comment approval',
-    'roles' => array(
-      'site admin' => 'site admin',
-    ),
-    'module' => 'comment',
   );
 
   // Exported permission: 'submit latitude/longitude'.

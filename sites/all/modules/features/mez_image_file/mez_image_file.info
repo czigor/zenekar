@@ -1,7 +1,7 @@
 name = MEZ Image file
 core = 7.x
 package = MEZ files
-version = 7.x-1.0-20131230dev1
+version = 7.x-1.0-20140523dev1
 project = mez_image_file
 dependencies[] = ctools
 dependencies[] = date
@@ -11,7 +11,7 @@ dependencies[] = features
 dependencies[] = file_entity
 dependencies[] = image
 dependencies[] = mez_concert_ct
-dependencies[] = mez_news_ct
+dependencies[] = mez_mez_news_ct
 dependencies[] = mez_ticket_product
 dependencies[] = options
 dependencies[] = strongarm

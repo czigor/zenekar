@@ -10,28 +10,6 @@
 function mez_ct_settings_user_default_permissions() {
   $permissions = array();
 
-  // Exported permission: 'access content'.
-  $permissions['access content'] = array(
-    'name' => 'access content',
-    'roles' => array(
-      'anonymous user' => 'anonymous user',
-      'authenticated user' => 'authenticated user',
-      'editor' => 'editor',
-      'site admin' => 'site admin',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: 'access content overview'.
-  $permissions['access content overview'] = array(
-    'name' => 'access content overview',
-    'roles' => array(
-      'editor' => 'editor',
-      'site admin' => 'site admin',
-    ),
-    'module' => 'node',
-  );
-
   // Exported permission: 'access private fields'.
   $permissions['access private fields'] = array(
     'name' => 'access private fields',
@@ -94,13 +72,6 @@ function mez_ct_settings_user_default_permissions() {
     'module' => 'i18n_node',
   );
 
-  // Exported permission: 'administer content types'.
-  $permissions['administer content types'] = array(
-    'name' => 'administer content types',
-    'roles' => array(),
-    'module' => 'node',
-  );
-
   // Exported permission: 'administer entity translation'.
   $permissions['administer entity translation'] = array(
     'name' => 'administer entity translation',
@@ -120,22 +91,6 @@ function mez_ct_settings_user_default_permissions() {
     'name' => 'administer field permissions',
     'roles' => array(),
     'module' => 'field_permissions',
-  );
-
-  // Exported permission: 'administer nodes'.
-  $permissions['administer nodes'] = array(
-    'name' => 'administer nodes',
-    'roles' => array(
-      'site admin' => 'site admin',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: 'bypass node access'.
-  $permissions['bypass node access'] = array(
-    'name' => 'bypass node access',
-    'roles' => array(),
-    'module' => 'node',
   );
 
   // Exported permission: 'create field_active'.
@@ -236,15 +191,6 @@ function mez_ct_settings_user_default_permissions() {
       'site admin' => 'site admin',
     ),
     'module' => 'field_permissions',
-  );
-
-  // Exported permission: 'delete revisions'.
-  $permissions['delete revisions'] = array(
-    'name' => 'delete revisions',
-    'roles' => array(
-      'site admin' => 'site admin',
-    ),
-    'module' => 'node',
   );
 
   // Exported permission: 'delete terms in instruments'.
@@ -463,15 +409,6 @@ function mez_ct_settings_user_default_permissions() {
       'site admin' => 'site admin',
     ),
     'module' => 'taxonomy',
-  );
-
-  // Exported permission: 'revert revisions'.
-  $permissions['revert revisions'] = array(
-    'name' => 'revert revisions',
-    'roles' => array(
-      'site admin' => 'site admin',
-    ),
-    'module' => 'node',
   );
 
   // Exported permission: 'toggle field translatability'.
@@ -782,16 +719,6 @@ function mez_ct_settings_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
-  // Exported permission: 'view own unpublished content'.
-  $permissions['view own unpublished content'] = array(
-    'name' => 'view own unpublished content',
-    'roles' => array(
-      'editor' => 'editor',
-      'site admin' => 'site admin',
-    ),
-    'module' => 'node',
-  );
-
   // Exported permission: 'view permalink on comment'.
   $permissions['view permalink on comment'] = array(
     'name' => 'view permalink on comment',
@@ -820,16 +747,6 @@ function mez_ct_settings_user_default_permissions() {
       'authenticated user' => 'authenticated user',
     ),
     'module' => 'ds_extras',
-  );
-
-  // Exported permission: 'view revisions'.
-  $permissions['view revisions'] = array(
-    'name' => 'view revisions',
-    'roles' => array(
-      'editor' => 'editor',
-      'site admin' => 'site admin',
-    ),
-    'module' => 'node',
   );
 
   // Exported permission: 'view search_info on node'.

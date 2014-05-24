@@ -11,21 +11,21 @@ function mez_news_view_views_default_views() {
   $export = array();
 
   $view = new view();
-  $view->name = 'news';
+  $view->name = 'mez_news';
   $view->description = '';
   $view->tag = 'default';
   $view->base_table = 'node';
-  $view->human_name = 'News';
+  $view->human_name = 'MEZ News';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Hírek';
+  $handler->display->display_options['title'] = 'News';
   $handler->display->display_options['use_more'] = TRUE;
   $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['use_more_text'] = 'Régebbi hírek';
+  $handler->display->display_options['use_more_text'] = 'Older news';
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
@@ -69,7 +69,7 @@ function mez_news_view_views_default_views() {
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
-    'news' => 'news',
+    'mez_news' => 'mez_news',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
   /* Szűrési feltétel: Tartalom: Címlapra helyezve */
@@ -125,7 +125,7 @@ function mez_news_view_views_default_views() {
   $handler->display->display_options['title'] = 'Hírek';
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['pane_category']['name'] = 'Nézettáblák';
-  $export['news'] = $view;
+  $export['mez_news'] = $view;
 
   return $export;
 }
