@@ -33,7 +33,6 @@ function iq_issue_field_default_field_bases() {
     'locked' => 0,
     'module' => 'entityreference',
     'settings' => array(
-      'entity_translation_sync' => FALSE,
       'handler' => 'base',
       'handler_settings' => array(
         'behaviors' => array(
@@ -77,9 +76,6 @@ function iq_issue_field_default_field_bases() {
     'settings' => array(
       'display_default' => 1,
       'display_field' => 1,
-      'entity_translation_sync' => array(
-        0 => 'fid',
-      ),
       'uri_scheme' => 'private',
     ),
     'translatable' => 0,
@@ -97,9 +93,7 @@ function iq_issue_field_default_field_bases() {
     'indexes' => array(),
     'locked' => 0,
     'module' => 'number',
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-    ),
+    'settings' => array(),
     'translatable' => 0,
     'type' => 'number_integer',
   );
@@ -126,9 +120,7 @@ function iq_issue_field_default_field_bases() {
     ),
     'locked' => 0,
     'module' => 'text',
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-    ),
+    'settings' => array(),
     'translatable' => 0,
     'type' => 'text_long',
   );
@@ -155,9 +147,7 @@ function iq_issue_field_default_field_bases() {
     ),
     'locked' => 0,
     'module' => 'text',
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-    ),
+    'settings' => array(),
     'translatable' => 0,
     'type' => 'text_with_summary',
   );
@@ -184,9 +174,7 @@ function iq_issue_field_default_field_bases() {
     ),
     'locked' => 0,
     'module' => 'text',
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-    ),
+    'settings' => array(),
     'translatable' => 0,
     'type' => 'text_long',
   );
@@ -204,7 +192,6 @@ function iq_issue_field_default_field_bases() {
     'module' => 'number',
     'settings' => array(
       'decimal_separator' => '.',
-      'entity_translation_sync' => FALSE,
     ),
     'translatable' => 0,
     'type' => 'number_float',
@@ -232,9 +219,7 @@ function iq_issue_field_default_field_bases() {
     ),
     'locked' => 0,
     'module' => 'text',
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-    ),
+    'settings' => array(),
     'translatable' => 0,
     'type' => 'text_long',
   );
@@ -260,7 +245,6 @@ function iq_issue_field_default_field_bases() {
         1 => 'Yes',
       ),
       'allowed_values_function' => '',
-      'entity_translation_sync' => FALSE,
     ),
     'translatable' => 0,
     'type' => 'list_boolean',
@@ -289,7 +273,6 @@ function iq_issue_field_default_field_bases() {
     'locked' => 0,
     'module' => 'entityreference',
     'settings' => array(
-      'entity_translation_sync' => FALSE,
       'handler' => 'iq_issue',
       'handler_settings' => array(
         'behaviors' => array(
@@ -335,7 +318,6 @@ function iq_issue_field_default_field_bases() {
     'locked' => 0,
     'module' => 'entityreference',
     'settings' => array(
-      'entity_translation_sync' => FALSE,
       'handler' => 'iq_issue',
       'handler_settings' => array(
         'behaviors' => array(
@@ -379,7 +361,6 @@ function iq_issue_field_default_field_bases() {
         1 => '',
       ),
       'allowed_values_function' => '',
-      'entity_translation_sync' => FALSE,
     ),
     'translatable' => 0,
     'type' => 'list_boolean',
@@ -396,9 +377,7 @@ function iq_issue_field_default_field_bases() {
     'indexes' => array(),
     'locked' => 0,
     'module' => 'number',
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-    ),
+    'settings' => array(),
     'translatable' => 0,
     'type' => 'number_integer',
   );
@@ -432,7 +411,6 @@ function iq_issue_field_default_field_bases() {
           'parent' => 0,
         ),
       ),
-      'entity_translation_sync' => FALSE,
       'options_list_callback' => 'i18n_taxonomy_allowed_values',
     ),
     'translatable' => 0,
@@ -468,7 +446,6 @@ function iq_issue_field_default_field_bases() {
           'parent' => 0,
         ),
       ),
-      'entity_translation_sync' => FALSE,
       'options_list_callback' => 'i18n_taxonomy_allowed_values',
     ),
     'translatable' => 0,
@@ -498,7 +475,6 @@ function iq_issue_field_default_field_bases() {
         3 => 'Question',
       ),
       'allowed_values_function' => '',
-      'entity_translation_sync' => FALSE,
     ),
     'translatable' => 0,
     'type' => 'list_text',
@@ -527,7 +503,6 @@ function iq_issue_field_default_field_bases() {
         2 => 'Private - accessible only to group members',
       ),
       'allowed_values_function' => '',
-      'entity_translation_sync' => FALSE,
     ),
     'translatable' => 0,
     'type' => 'list_integer',
@@ -540,9 +515,6 @@ function iq_issue_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'title_field',
-    'field_permissions' => array(
-      'type' => 0,
-    ),
     'foreign keys' => array(
       'format' => array(
         'columns' => array(
@@ -559,7 +531,6 @@ function iq_issue_field_default_field_bases() {
     'locked' => 0,
     'module' => 'text',
     'settings' => array(
-      'entity_translation_sync' => FALSE,
       'max_length' => 255,
     ),
     'translatable' => 1,

@@ -22,31 +22,18 @@ function iq_issue_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Hozzászólások';
+  $handler->display->display_options['title'] = 'Comments';
   $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['use_more_text'] = 'tovább';
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['exposed_form']['options']['submit_button'] = 'Alkalmazás';
   $handler->display->display_options['exposed_form']['options']['reset_button'] = TRUE;
-  $handler->display->display_options['exposed_form']['options']['reset_button_label'] = 'Alaphelyzet';
-  $handler->display->display_options['exposed_form']['options']['exposed_sorts_label'] = 'Rendezés';
-  $handler->display->display_options['exposed_form']['options']['sort_asc_label'] = 'Növekvő';
-  $handler->display->display_options['exposed_form']['options']['sort_desc_label'] = 'Csökkenő';
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '50';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['pager']['options']['id'] = '0';
   $handler->display->display_options['pager']['options']['quantity'] = '9';
-  $handler->display->display_options['pager']['options']['expose']['items_per_page_label'] = 'Elemek száma oldalanként';
-  $handler->display->display_options['pager']['options']['expose']['items_per_page_options_all_label'] = '- Mind -';
-  $handler->display->display_options['pager']['options']['expose']['offset_label'] = 'Eltolás';
-  $handler->display->display_options['pager']['options']['tags']['first'] = '« első';
-  $handler->display->display_options['pager']['options']['tags']['previous'] = '‹ előző';
-  $handler->display->display_options['pager']['options']['tags']['next'] = 'következő ›';
-  $handler->display->display_options['pager']['options']['tags']['last'] = 'utolsó »';
   $handler->display->display_options['style_plugin'] = 'table';
   $handler->display->display_options['style_options']['columns'] = array(
     'title_1' => 'title_1',
@@ -125,36 +112,36 @@ function iq_issue_views_default_views() {
       'empty_column' => 0,
     ),
   );
-  /* Viselkedés, ha nincs eredmény: Általános: Szűretlen szöveg */
+  /* No results behavior: Global: Unfiltered text */
   $handler->display->display_options['empty']['area_text_custom']['id'] = 'area_text_custom';
   $handler->display->display_options['empty']['area_text_custom']['table'] = 'views';
   $handler->display->display_options['empty']['area_text_custom']['field'] = 'area_text_custom';
   $handler->display->display_options['empty']['area_text_custom']['empty'] = TRUE;
   $handler->display->display_options['empty']['area_text_custom']['content'] = 'No comments found.';
-  /* Kapcsolat: Hozzászólás: Tartalom */
+  /* Relationship: Comment: Content */
   $handler->display->display_options['relationships']['nid']['id'] = 'nid';
   $handler->display->display_options['relationships']['nid']['table'] = 'comment';
   $handler->display->display_options['relationships']['nid']['field'] = 'nid';
   $handler->display->display_options['relationships']['nid']['required'] = TRUE;
-  /* Kapcsolat: OG membership: OG membership from Tartalom */
+  /* Relationship: OG membership: OG membership from Node */
   $handler->display->display_options['relationships']['og_membership_rel']['id'] = 'og_membership_rel';
   $handler->display->display_options['relationships']['og_membership_rel']['table'] = 'node';
   $handler->display->display_options['relationships']['og_membership_rel']['field'] = 'og_membership_rel';
   $handler->display->display_options['relationships']['og_membership_rel']['relationship'] = 'nid';
   $handler->display->display_options['relationships']['og_membership_rel']['required'] = TRUE;
-  /* Kapcsolat: OG membership: Group Tartalom from OG membership */
+  /* Relationship: OG membership: Group Node from OG membership */
   $handler->display->display_options['relationships']['og_membership_related_node_group']['id'] = 'og_membership_related_node_group';
   $handler->display->display_options['relationships']['og_membership_related_node_group']['table'] = 'og_membership';
   $handler->display->display_options['relationships']['og_membership_related_node_group']['field'] = 'og_membership_related_node_group';
   $handler->display->display_options['relationships']['og_membership_related_node_group']['relationship'] = 'og_membership_rel';
   $handler->display->display_options['relationships']['og_membership_related_node_group']['required'] = TRUE;
-  /* Mező: Tartalom: Cím */
+  /* Field: Content: Title */
   $handler->display->display_options['fields']['title_1']['id'] = 'title_1';
   $handler->display->display_options['fields']['title_1']['table'] = 'node';
   $handler->display->display_options['fields']['title_1']['field'] = 'title';
   $handler->display->display_options['fields']['title_1']['relationship'] = 'og_membership_related_node_group';
   $handler->display->display_options['fields']['title_1']['label'] = 'Project';
-  /* Mező: Tartalom: Cím */
+  /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
@@ -163,7 +150,7 @@ function iq_issue_views_default_views() {
   $handler->display->display_options['fields']['title']['exclude'] = TRUE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
-  /* Mező: Tartalom: Tartalom azonosító */
+  /* Field: Content: Nid */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'node';
   $handler->display->display_options['fields']['nid']['field'] = 'nid';
@@ -172,7 +159,7 @@ function iq_issue_views_default_views() {
   $handler->display->display_options['fields']['nid']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['nid']['alter']['text'] = '#[nid]: [title]';
   $handler->display->display_options['fields']['nid']['link_to_node'] = TRUE;
-  /* Mező: Tartalom: Tartalom azonosító */
+  /* Field: Content: Nid */
   $handler->display->display_options['fields']['nid_1']['id'] = 'nid_1';
   $handler->display->display_options['fields']['nid_1']['table'] = 'node';
   $handler->display->display_options['fields']['nid_1']['field'] = 'nid';
@@ -180,7 +167,7 @@ function iq_issue_views_default_views() {
   $handler->display->display_options['fields']['nid_1']['label'] = '';
   $handler->display->display_options['fields']['nid_1']['exclude'] = TRUE;
   $handler->display->display_options['fields']['nid_1']['element_label_colon'] = FALSE;
-  /* Mező: Hozzászólás: Azonosító */
+  /* Field: Comment: ID */
   $handler->display->display_options['fields']['cid']['id'] = 'cid';
   $handler->display->display_options['fields']['cid']['table'] = 'comment';
   $handler->display->display_options['fields']['cid']['field'] = 'cid';
@@ -188,7 +175,7 @@ function iq_issue_views_default_views() {
   $handler->display->display_options['fields']['cid']['exclude'] = TRUE;
   $handler->display->display_options['fields']['cid']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['cid']['link_to_comment'] = FALSE;
-  /* Mező: Hozzászólás: Beküldés dátuma */
+  /* Field: Comment: Post date */
   $handler->display->display_options['fields']['created']['id'] = 'created';
   $handler->display->display_options['fields']['created']['table'] = 'comment';
   $handler->display->display_options['fields']['created']['field'] = 'created';
@@ -196,29 +183,29 @@ function iq_issue_views_default_views() {
   $handler->display->display_options['fields']['created']['alter']['make_link'] = TRUE;
   $handler->display->display_options['fields']['created']['alter']['path'] = 'node/[nid_1]#comment-[cid]';
   $handler->display->display_options['fields']['created']['date_format'] = 'short';
-  /* Mező: Hozzászólás: Idő */
+  /* Field: Comment: Time */
   $handler->display->display_options['fields']['seconds']['id'] = 'seconds';
   $handler->display->display_options['fields']['seconds']['table'] = 'comment_timer_comment';
   $handler->display->display_options['fields']['seconds']['field'] = 'seconds';
-  /* Mező: Hozzászólás: Time status */
+  /* Field: Comment: Time status */
   $handler->display->display_options['fields']['status']['id'] = 'status';
   $handler->display->display_options['fields']['status']['table'] = 'comment_timer_comment';
   $handler->display->display_options['fields']['status']['field'] = 'status';
   $handler->display->display_options['fields']['status']['label'] = 'Billable';
   $handler->display->display_options['fields']['status']['type'] = 'unicode-yes-no';
   $handler->display->display_options['fields']['status']['not'] = 0;
-  /* Mező: Hozzászólás: Szerző */
+  /* Field: Comment: Author */
   $handler->display->display_options['fields']['name']['id'] = 'name';
   $handler->display->display_options['fields']['name']['table'] = 'comment';
   $handler->display->display_options['fields']['name']['field'] = 'name';
-  /* Szűrési feltétel: Hozzászólás: Elfogadott */
+  /* Filter criterion: Comment: Approved */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'comment';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Szűrési feltétel: Tartalom: Közzétéve */
+  /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status_node']['id'] = 'status_node';
   $handler->display->display_options['filters']['status_node']['table'] = 'node';
   $handler->display->display_options['filters']['status_node']['field'] = 'status';
@@ -226,7 +213,7 @@ function iq_issue_views_default_views() {
   $handler->display->display_options['filters']['status_node']['value'] = 1;
   $handler->display->display_options['filters']['status_node']['group'] = 1;
   $handler->display->display_options['filters']['status_node']['expose']['operator'] = FALSE;
-  /* Szűrési feltétel: Tartalom: Tartalom azonosító */
+  /* Filter criterion: Content: Nid */
   $handler->display->display_options['filters']['nid']['id'] = 'nid';
   $handler->display->display_options['filters']['nid']['table'] = 'node';
   $handler->display->display_options['filters']['nid']['field'] = 'nid';
@@ -251,7 +238,7 @@ function iq_issue_views_default_views() {
     2 => array(),
     3 => array(),
   );
-  /* Szűrési feltétel: Hozzászólás: Beküldés dátuma */
+  /* Filter criterion: Comment: Post date */
   $handler->display->display_options['filters']['created']['id'] = 'created';
   $handler->display->display_options['filters']['created']['table'] = 'comment';
   $handler->display->display_options['filters']['created']['field'] = 'created';
@@ -268,7 +255,7 @@ function iq_issue_views_default_views() {
     1 => 0,
     3 => 0,
   );
-  /* Szűrési feltétel: Hozzászólás: Szerző egyedi azonosítója */
+  /* Filter criterion: Comment: Author uid */
   $handler->display->display_options['filters']['uid']['id'] = 'uid';
   $handler->display->display_options['filters']['uid']['table'] = 'comment';
   $handler->display->display_options['filters']['uid']['field'] = 'uid';
@@ -284,7 +271,7 @@ function iq_issue_views_default_views() {
     1 => 0,
     3 => 0,
   );
-  /* Szűrési feltétel: Hozzászólás: Time status */
+  /* Filter criterion: Comment: Time status */
   $handler->display->display_options['filters']['status_1']['id'] = 'status_1';
   $handler->display->display_options['filters']['status_1']['table'] = 'comment_timer_comment';
   $handler->display->display_options['filters']['status_1']['field'] = 'status';
@@ -316,18 +303,18 @@ function iq_issue_views_default_views() {
   $handler->display->display_options['style_options']['provide_file'] = 1;
   $handler->display->display_options['style_options']['filename'] = 'comments-%timestamp-full.csv';
   $handler->display->display_options['style_options']['parent_sort'] = 1;
-  $handler->display->display_options['style_options']['quote'] = '1';
+  $handler->display->display_options['style_options']['quote'] = 1;
   $handler->display->display_options['style_options']['trim'] = 1;
   $handler->display->display_options['style_options']['replace_newlines'] = 0;
   $handler->display->display_options['style_options']['header'] = 1;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Mező: Tartalom: Cím */
+  /* Field: Content: Title */
   $handler->display->display_options['fields']['title_1']['id'] = 'title_1';
   $handler->display->display_options['fields']['title_1']['table'] = 'node';
   $handler->display->display_options['fields']['title_1']['field'] = 'title';
   $handler->display->display_options['fields']['title_1']['relationship'] = 'og_membership_related_node_group';
   $handler->display->display_options['fields']['title_1']['label'] = 'Project';
-  /* Mező: Tartalom: Cím */
+  /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
@@ -336,7 +323,7 @@ function iq_issue_views_default_views() {
   $handler->display->display_options['fields']['title']['exclude'] = TRUE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
-  /* Mező: Tartalom: Tartalom azonosító */
+  /* Field: Content: Nid */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'node';
   $handler->display->display_options['fields']['nid']['field'] = 'nid';
@@ -345,7 +332,7 @@ function iq_issue_views_default_views() {
   $handler->display->display_options['fields']['nid']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['nid']['alter']['text'] = '#[nid]: [title]';
   $handler->display->display_options['fields']['nid']['link_to_node'] = TRUE;
-  /* Mező: Tartalom: Tartalom azonosító */
+  /* Field: Content: Nid */
   $handler->display->display_options['fields']['nid_1']['id'] = 'nid_1';
   $handler->display->display_options['fields']['nid_1']['table'] = 'node';
   $handler->display->display_options['fields']['nid_1']['field'] = 'nid';
@@ -353,7 +340,7 @@ function iq_issue_views_default_views() {
   $handler->display->display_options['fields']['nid_1']['label'] = '';
   $handler->display->display_options['fields']['nid_1']['exclude'] = TRUE;
   $handler->display->display_options['fields']['nid_1']['element_label_colon'] = FALSE;
-  /* Mező: Hozzászólás: Azonosító */
+  /* Field: Comment: ID */
   $handler->display->display_options['fields']['cid']['id'] = 'cid';
   $handler->display->display_options['fields']['cid']['table'] = 'comment';
   $handler->display->display_options['fields']['cid']['field'] = 'cid';
@@ -361,7 +348,7 @@ function iq_issue_views_default_views() {
   $handler->display->display_options['fields']['cid']['exclude'] = TRUE;
   $handler->display->display_options['fields']['cid']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['cid']['link_to_comment'] = FALSE;
-  /* Mező: Hozzászólás: Beküldés dátuma */
+  /* Field: Comment: Post date */
   $handler->display->display_options['fields']['created']['id'] = 'created';
   $handler->display->display_options['fields']['created']['table'] = 'comment';
   $handler->display->display_options['fields']['created']['field'] = 'created';
@@ -369,24 +356,24 @@ function iq_issue_views_default_views() {
   $handler->display->display_options['fields']['created']['alter']['make_link'] = TRUE;
   $handler->display->display_options['fields']['created']['alter']['path'] = 'node/[nid_1]#comment-[cid]';
   $handler->display->display_options['fields']['created']['date_format'] = 'short';
-  /* Mező: Hozzászólás: Idő */
+  /* Field: Comment: Time */
   $handler->display->display_options['fields']['seconds']['id'] = 'seconds';
   $handler->display->display_options['fields']['seconds']['table'] = 'comment_timer_comment';
   $handler->display->display_options['fields']['seconds']['field'] = 'seconds';
-  /* Mező: Hozzászólás: Idő */
+  /* Field: Comment: Time */
   $handler->display->display_options['fields']['seconds_1']['id'] = 'seconds_1';
   $handler->display->display_options['fields']['seconds_1']['table'] = 'comment_timer_comment';
   $handler->display->display_options['fields']['seconds_1']['field'] = 'seconds';
   $handler->display->display_options['fields']['seconds_1']['label'] = 'Seconds';
   $handler->display->display_options['fields']['seconds_1']['separator'] = '';
   $handler->display->display_options['fields']['seconds_1']['comment_timer_seconds'] = 1;
-  /* Mező: Hozzászólás: Time status */
+  /* Field: Comment: Time status */
   $handler->display->display_options['fields']['status']['id'] = 'status';
   $handler->display->display_options['fields']['status']['table'] = 'comment_timer_comment';
   $handler->display->display_options['fields']['status']['field'] = 'status';
   $handler->display->display_options['fields']['status']['label'] = 'Billable';
   $handler->display->display_options['fields']['status']['not'] = 0;
-  /* Mező: Hozzászólás: Szerző */
+  /* Field: Comment: Author */
   $handler->display->display_options['fields']['name']['id'] = 'name';
   $handler->display->display_options['fields']['name']['table'] = 'comment';
   $handler->display->display_options['fields']['name']['field'] = 'name';
@@ -394,6 +381,41 @@ function iq_issue_views_default_views() {
   $handler->display->display_options['displays'] = array(
     'page' => 'page',
     'default' => 0,
+  );
+  $translatables['comments'] = array(
+    t('Master'),
+    t('Comments'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Items per page'),
+    t('- All -'),
+    t('Offset'),
+    t('« first'),
+    t('‹ previous'),
+    t('next ›'),
+    t('last »'),
+    t('No comments found.'),
+    t('Content'),
+    t('OG membership from node'),
+    t('Group node from OG membership'),
+    t('Project'),
+    t('Issue'),
+    t('#[nid]: [title]'),
+    t('Submitted'),
+    t('Time'),
+    t('.'),
+    t(','),
+    t('Billable'),
+    t('Author'),
+    t('Nid'),
+    t('Submitted between'),
+    t('Page'),
+    t('Data export'),
+    t('Seconds'),
   );
   $export['comments'] = $view;
 
@@ -409,18 +431,12 @@ function iq_issue_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Csatolmányok';
+  $handler->display->display_options['title'] = 'Attachments';
   $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['use_more_text'] = 'tovább';
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['exposed_form']['options']['submit_button'] = 'Alkalmazás';
-  $handler->display->display_options['exposed_form']['options']['reset_button_label'] = 'Alaphelyzet';
-  $handler->display->display_options['exposed_form']['options']['exposed_sorts_label'] = 'Rendezés';
-  $handler->display->display_options['exposed_form']['options']['sort_asc_label'] = 'Növekvő';
-  $handler->display->display_options['exposed_form']['options']['sort_desc_label'] = 'Csökkenő';
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'table';
@@ -437,13 +453,13 @@ function iq_issue_views_default_views() {
       'empty_column' => 0,
     ),
   );
-  /* Kapcsolat: Tartalom: Attachments (field_issue_attachments:fid) */
+  /* Relationship: Content: Attachments (field_issue_attachments:fid) */
   $handler->display->display_options['relationships']['field_issue_attachments_fid']['id'] = 'field_issue_attachments_fid';
   $handler->display->display_options['relationships']['field_issue_attachments_fid']['table'] = 'field_data_field_issue_attachments';
   $handler->display->display_options['relationships']['field_issue_attachments_fid']['field'] = 'field_issue_attachments_fid';
   $handler->display->display_options['relationships']['field_issue_attachments_fid']['label'] = 'File from field_issue_attachments';
   $handler->display->display_options['relationships']['field_issue_attachments_fid']['required'] = TRUE;
-  /* Mező: Fájl: MIME típus */
+  /* Field: File: Mime type */
   $handler->display->display_options['fields']['filemime']['id'] = 'filemime';
   $handler->display->display_options['fields']['filemime']['table'] = 'file_managed';
   $handler->display->display_options['fields']['filemime']['field'] = 'filemime';
@@ -452,7 +468,7 @@ function iq_issue_views_default_views() {
   $handler->display->display_options['fields']['filemime']['exclude'] = TRUE;
   $handler->display->display_options['fields']['filemime']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['filemime']['filemime_image'] = TRUE;
-  /* Mező: Fájl: Név */
+  /* Field: File: Name */
   $handler->display->display_options['fields']['filename']['id'] = 'filename';
   $handler->display->display_options['fields']['filename']['table'] = 'file_managed';
   $handler->display->display_options['fields']['filename']['field'] = 'filename';
@@ -460,29 +476,29 @@ function iq_issue_views_default_views() {
   $handler->display->display_options['fields']['filename']['label'] = 'Filename';
   $handler->display->display_options['fields']['filename']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['filename']['alter']['text'] = '[filemime] [filename]';
-  /* Mező: Fájl: Méret */
+  $handler->display->display_options['fields']['filename']['link_to_file'] = TRUE;
+  /* Field: File: Size */
   $handler->display->display_options['fields']['filesize']['id'] = 'filesize';
   $handler->display->display_options['fields']['filesize']['table'] = 'file_managed';
   $handler->display->display_options['fields']['filesize']['field'] = 'filesize';
   $handler->display->display_options['fields']['filesize']['relationship'] = 'field_issue_attachments_fid';
-  /* Mező: Fájl: Feltöltés dátuma */
+  /* Field: File: Upload date */
   $handler->display->display_options['fields']['timestamp']['id'] = 'timestamp';
   $handler->display->display_options['fields']['timestamp']['table'] = 'file_managed';
   $handler->display->display_options['fields']['timestamp']['field'] = 'timestamp';
   $handler->display->display_options['fields']['timestamp']['relationship'] = 'field_issue_attachments_fid';
   $handler->display->display_options['fields']['timestamp']['label'] = 'Uploaded at';
   $handler->display->display_options['fields']['timestamp']['date_format'] = 'short';
-  /* Rendezési szempont: Fájl: Feltöltés dátuma */
+  /* Sort criterion: File: Upload date */
   $handler->display->display_options['sorts']['timestamp']['id'] = 'timestamp';
   $handler->display->display_options['sorts']['timestamp']['table'] = 'file_managed';
   $handler->display->display_options['sorts']['timestamp']['field'] = 'timestamp';
   $handler->display->display_options['sorts']['timestamp']['relationship'] = 'field_issue_attachments_fid';
-  /* Szövegkörnyezeti szűrő: Tartalom: Tartalom azonosító */
+  /* Contextual filter: Content: Nid */
   $handler->display->display_options['arguments']['nid']['id'] = 'nid';
   $handler->display->display_options['arguments']['nid']['table'] = 'node';
   $handler->display->display_options['arguments']['nid']['field'] = 'nid';
   $handler->display->display_options['arguments']['nid']['default_action'] = 'not found';
-  $handler->display->display_options['arguments']['nid']['exception']['title'] = 'Minden';
   $handler->display->display_options['arguments']['nid']['default_argument_type'] = 'fixed';
   $handler->display->display_options['arguments']['nid']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['nid']['summary']['format'] = 'default_summary';
@@ -493,21 +509,21 @@ function iq_issue_views_default_views() {
     'issue' => 'issue',
   );
   $handler->display->display_options['arguments']['nid']['validate_options']['access'] = TRUE;
-  /* Szűrési feltétel: Tartalom: Közzétéve */
+  /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Szűrési feltétel: Tartalom: Típus */
+  /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
     'issue' => 'issue',
   );
-  /* Szűrési feltétel: Tartalom: Attachments (field_issue_attachments:display) */
+  /* Filter criterion: Content: Attachments (field_issue_attachments:display) */
   $handler->display->display_options['filters']['field_issue_attachments_display']['id'] = 'field_issue_attachments_display';
   $handler->display->display_options['filters']['field_issue_attachments_display']['table'] = 'field_data_field_issue_attachments';
   $handler->display->display_options['filters']['field_issue_attachments_display']['field'] = 'field_issue_attachments_display';
@@ -515,7 +531,6 @@ function iq_issue_views_default_views() {
 
   /* Display: Content pane */
   $handler = $view->new_display('panel_pane', 'Content pane', 'panel_pane_1');
-  $handler->display->display_options['pane_category']['name'] = 'Nézettáblák';
   $handler->display->display_options['argument_input'] = array(
     'nid' => array(
       'type' => 'user',
@@ -525,6 +540,24 @@ function iq_issue_views_default_views() {
       'fixed' => '',
       'label' => 'Issue: Node ID',
     ),
+  );
+  $translatables['issue_attachments'] = array(
+    t('Master'),
+    t('Attachments'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('File from field_issue_attachments'),
+    t('Filename'),
+    t('[filemime] [filename]'),
+    t('Size'),
+    t('Uploaded at'),
+    t('All'),
+    t('Content pane'),
+    t('View panes'),
   );
   $export['issue_attachments'] = $view;
 
@@ -540,58 +573,51 @@ function iq_issue_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Hozzászólások';
+  $handler->display->display_options['title'] = 'Comments';
   $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['use_more_text'] = 'tovább';
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['exposed_form']['options']['submit_button'] = 'Alkalmazás';
-  $handler->display->display_options['exposed_form']['options']['reset_button_label'] = 'Alaphelyzet';
-  $handler->display->display_options['exposed_form']['options']['exposed_sorts_label'] = 'Rendezés';
-  $handler->display->display_options['exposed_form']['options']['sort_asc_label'] = 'Növekvő';
-  $handler->display->display_options['exposed_form']['options']['sort_desc_label'] = 'Csökkenő';
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'comment';
-  /* Kapcsolat: Hozzászólás: Tartalom */
+  /* Relationship: Comment: Content */
   $handler->display->display_options['relationships']['nid']['id'] = 'nid';
   $handler->display->display_options['relationships']['nid']['table'] = 'comment';
   $handler->display->display_options['relationships']['nid']['field'] = 'nid';
   $handler->display->display_options['relationships']['nid']['required'] = TRUE;
-  /* Mező: Hozzászólás: Cím */
+  /* Field: Comment: Title */
   $handler->display->display_options['fields']['subject']['id'] = 'subject';
   $handler->display->display_options['fields']['subject']['table'] = 'comment';
   $handler->display->display_options['fields']['subject']['field'] = 'subject';
   $handler->display->display_options['fields']['subject']['label'] = '';
   $handler->display->display_options['fields']['subject']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['subject']['alter']['ellipsis'] = FALSE;
-  /* Rendezési szempont: Hozzászólás: Szál */
+  /* Sort criterion: Comment: Thread */
   $handler->display->display_options['sorts']['thread']['id'] = 'thread';
   $handler->display->display_options['sorts']['thread']['table'] = 'comment';
   $handler->display->display_options['sorts']['thread']['field'] = 'thread';
-  /* Szövegkörnyezeti szűrő: Hozzászólás: Tartalom azonosító */
+  /* Contextual filter: Comment: Nid */
   $handler->display->display_options['arguments']['nid']['id'] = 'nid';
   $handler->display->display_options['arguments']['nid']['table'] = 'comment';
   $handler->display->display_options['arguments']['nid']['field'] = 'nid';
   $handler->display->display_options['arguments']['nid']['default_action'] = 'not found';
-  $handler->display->display_options['arguments']['nid']['exception']['title'] = 'Minden';
   $handler->display->display_options['arguments']['nid']['default_argument_type'] = 'fixed';
   $handler->display->display_options['arguments']['nid']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['nid']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['nid']['summary_options']['items_per_page'] = '25';
   $handler->display->display_options['arguments']['nid']['specify_validation'] = TRUE;
   $handler->display->display_options['arguments']['nid']['validate']['type'] = 'node';
-  /* Szűrési feltétel: Hozzászólás: Elfogadott */
+  /* Filter criterion: Comment: Approved */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'comment';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Szűrési feltétel: Tartalom: Közzétéve */
+  /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status_node']['id'] = 'status_node';
   $handler->display->display_options['filters']['status_node']['table'] = 'node';
   $handler->display->display_options['filters']['status_node']['field'] = 'status';
@@ -602,7 +628,6 @@ function iq_issue_views_default_views() {
 
   /* Display: Comments */
   $handler = $view->new_display('panel_pane', 'Comments', 'panel_pane_default');
-  $handler->display->display_options['pane_category']['name'] = 'Nézettáblák';
   $handler->display->display_options['allow']['use_pager'] = 0;
   $handler->display->display_options['allow']['items_per_page'] = 0;
   $handler->display->display_options['allow']['offset'] = 0;
@@ -623,6 +648,19 @@ function iq_issue_views_default_views() {
     ),
   );
   $handler->display->display_options['inherit_panels_path'] = '1';
+  $translatables['issue_comments'] = array(
+    t('Master'),
+    t('Comments'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Content'),
+    t('All'),
+    t('View panes'),
+  );
   $export['issue_comments'] = $view;
 
   $view = new view();
@@ -639,29 +677,13 @@ function iq_issue_views_default_views() {
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Issues';
   $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['use_more_text'] = 'tovább';
-  $handler->display->display_options['access']['type'] = 'role';
-  $handler->display->display_options['access']['role'] = array(
-    2 => '2',
-  );
+  $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['exposed_form']['options']['submit_button'] = 'Alkalmazás';
   $handler->display->display_options['exposed_form']['options']['reset_button'] = TRUE;
-  $handler->display->display_options['exposed_form']['options']['reset_button_label'] = 'Alaphelyzet';
-  $handler->display->display_options['exposed_form']['options']['exposed_sorts_label'] = 'Rendezés';
-  $handler->display->display_options['exposed_form']['options']['sort_asc_label'] = 'Növekvő';
-  $handler->display->display_options['exposed_form']['options']['sort_desc_label'] = 'Csökkenő';
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '25';
-  $handler->display->display_options['pager']['options']['expose']['items_per_page_label'] = 'Elemek száma oldalanként';
-  $handler->display->display_options['pager']['options']['expose']['items_per_page_options_all_label'] = '- Mind -';
-  $handler->display->display_options['pager']['options']['expose']['offset_label'] = 'Eltolás';
-  $handler->display->display_options['pager']['options']['tags']['first'] = '« első';
-  $handler->display->display_options['pager']['options']['tags']['previous'] = '‹ előző';
-  $handler->display->display_options['pager']['options']['tags']['next'] = 'következő ›';
-  $handler->display->display_options['pager']['options']['tags']['last'] = 'utolsó »';
   $handler->display->display_options['style_plugin'] = 'table';
   $handler->display->display_options['style_options']['columns'] = array(
     'nid' => 'nid',
@@ -738,7 +760,7 @@ function iq_issue_views_default_views() {
       'empty_column' => 0,
     ),
   );
-  /* Viselkedés, ha nincs eredmény: Általános: Szövegdoboz */
+  /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
   $handler->display->display_options['empty']['area']['table'] = 'views';
   $handler->display->display_options['empty']['area']['field'] = 'area';
@@ -746,19 +768,19 @@ function iq_issue_views_default_views() {
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
   $handler->display->display_options['empty']['area']['content'] = 'There are no issues available.';
   $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
-  /* Kapcsolat: Project node from OG membership */
+  /* Relationship: Project node from OG membership */
   $handler->display->display_options['relationships']['og_membership_related_node_group']['id'] = 'og_membership_related_node_group';
   $handler->display->display_options['relationships']['og_membership_related_node_group']['table'] = 'og_membership';
   $handler->display->display_options['relationships']['og_membership_related_node_group']['field'] = 'og_membership_related_node_group';
   $handler->display->display_options['relationships']['og_membership_related_node_group']['ui_name'] = 'Project node from OG membership';
   $handler->display->display_options['relationships']['og_membership_related_node_group']['required'] = TRUE;
-  /* Mező: Tartalom: Cím */
+  /* Field: Content: Title */
   $handler->display->display_options['fields']['title_1']['id'] = 'title_1';
   $handler->display->display_options['fields']['title_1']['table'] = 'node';
   $handler->display->display_options['fields']['title_1']['field'] = 'title';
   $handler->display->display_options['fields']['title_1']['relationship'] = 'og_membership_related_node_group';
   $handler->display->display_options['fields']['title_1']['label'] = 'Project';
-  /* Mező: Tartalom: Tartalom azonosító */
+  /* Field: Content: Nid */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'node';
   $handler->display->display_options['fields']['nid']['field'] = 'nid';
@@ -766,20 +788,20 @@ function iq_issue_views_default_views() {
   $handler->display->display_options['fields']['nid']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['nid']['alter']['text'] = '#[nid] ';
   $handler->display->display_options['fields']['nid']['link_to_node'] = TRUE;
-  /* Mező: Tartalom: Cím */
+  /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Mező: Tartalom: Frissítési dátum */
+  /* Field: Content: Updated date */
   $handler->display->display_options['fields']['changed']['id'] = 'changed';
   $handler->display->display_options['fields']['changed']['table'] = 'node';
   $handler->display->display_options['fields']['changed']['field'] = 'changed';
   $handler->display->display_options['fields']['changed']['label'] = 'Updated';
   $handler->display->display_options['fields']['changed']['date_format'] = 'custom';
   $handler->display->display_options['fields']['changed']['custom_date_format'] = 'Y-m-d H:i';
-  /* Mező: Tartalom: Business value */
+  /* Field: Content: Business value */
   $handler->display->display_options['fields']['field_issue_business_value']['id'] = 'field_issue_business_value';
   $handler->display->display_options['fields']['field_issue_business_value']['table'] = 'field_data_field_issue_business_value';
   $handler->display->display_options['fields']['field_issue_business_value']['field'] = 'field_issue_business_value';
@@ -787,17 +809,15 @@ function iq_issue_views_default_views() {
     'thousand_separator' => '',
     'prefix_suffix' => 1,
   );
-  /* Mező: Tartalom: Status */
+  /* Field: Content: Status */
   $handler->display->display_options['fields']['field_issue_status_term']['id'] = 'field_issue_status_term';
   $handler->display->display_options['fields']['field_issue_status_term']['table'] = 'field_data_field_issue_status_term';
   $handler->display->display_options['fields']['field_issue_status_term']['field'] = 'field_issue_status_term';
-  $handler->display->display_options['fields']['field_issue_status_term']['label'] = 'Állapot';
-  /* Mező: Tartalom: Type */
+  /* Field: Content: Type */
   $handler->display->display_options['fields']['field_issue_type']['id'] = 'field_issue_type';
   $handler->display->display_options['fields']['field_issue_type']['table'] = 'field_data_field_issue_type';
   $handler->display->display_options['fields']['field_issue_type']['field'] = 'field_issue_type';
-  $handler->display->display_options['fields']['field_issue_type']['label'] = 'Típus';
-  /* Mező: Tartalom: Assigned to */
+  /* Field: Content: Assigned to */
   $handler->display->display_options['fields']['field_issue_assigned_to']['id'] = 'field_issue_assigned_to';
   $handler->display->display_options['fields']['field_issue_assigned_to']['table'] = 'field_data_field_issue_assigned_to';
   $handler->display->display_options['fields']['field_issue_assigned_to']['field'] = 'field_issue_assigned_to';
@@ -805,44 +825,42 @@ function iq_issue_views_default_views() {
   $handler->display->display_options['fields']['field_issue_assigned_to']['settings'] = array(
     'link' => 1,
   );
-  /* Mező: Tartalom: Hozzászólások száma */
+  /* Field: Content: Comment count */
   $handler->display->display_options['fields']['comment_count']['id'] = 'comment_count';
   $handler->display->display_options['fields']['comment_count']['table'] = 'node_comment_statistics';
   $handler->display->display_options['fields']['comment_count']['field'] = 'comment_count';
-  /* Mező: Tartalom: Comment Time */
+  /* Field: Content: Comment Time */
   $handler->display->display_options['fields']['seconds']['id'] = 'seconds';
   $handler->display->display_options['fields']['seconds']['table'] = 'comment_timer_node';
   $handler->display->display_options['fields']['seconds']['field'] = 'seconds';
-  /* Rendezési szempont: Tartalom: Beküldés dátuma */
+  /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Szövegkörnyezeti szűrő: Tartalom: Project (og_group_ref) */
+  /* Contextual filter: Content: Project (og_group_ref) */
   $handler->display->display_options['arguments']['og_group_ref_target_id']['id'] = 'og_group_ref_target_id';
   $handler->display->display_options['arguments']['og_group_ref_target_id']['table'] = 'og_membership';
   $handler->display->display_options['arguments']['og_group_ref_target_id']['field'] = 'og_group_ref_target_id';
-  $handler->display->display_options['arguments']['og_group_ref_target_id']['exception']['title'] = 'Minden';
   $handler->display->display_options['arguments']['og_group_ref_target_id']['default_argument_type'] = 'fixed';
   $handler->display->display_options['arguments']['og_group_ref_target_id']['summary']['format'] = 'default_summary';
-  /* Szövegkörnyezeti szűrő: Tartalom: Létezik hozzá taxonómia kifejezés azonosító (mélységgel) */
+  /* Contextual filter: Content: Has taxonomy term ID (with depth) */
   $handler->display->display_options['arguments']['term_node_tid_depth']['id'] = 'term_node_tid_depth';
   $handler->display->display_options['arguments']['term_node_tid_depth']['table'] = 'node';
   $handler->display->display_options['arguments']['term_node_tid_depth']['field'] = 'term_node_tid_depth';
-  $handler->display->display_options['arguments']['term_node_tid_depth']['exception']['title'] = 'Minden';
   $handler->display->display_options['arguments']['term_node_tid_depth']['default_argument_type'] = 'fixed';
   $handler->display->display_options['arguments']['term_node_tid_depth']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['term_node_tid_depth']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['term_node_tid_depth']['summary_options']['items_per_page'] = '25';
   $handler->display->display_options['arguments']['term_node_tid_depth']['depth'] = '0';
-  /* Szűrési feltétel: Tartalom: Közzétéve */
+  /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Szűrési feltétel: Tartalom: Típus */
+  /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
@@ -850,7 +868,7 @@ function iq_issue_views_default_views() {
     'issue' => 'issue',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Szűrési feltétel: Tartalom: Project (og_group_ref) */
+  /* Filter criterion: Content: Project (og_group_ref) */
   $handler->display->display_options['filters']['og_group_ref_target_id']['id'] = 'og_group_ref_target_id';
   $handler->display->display_options['filters']['og_group_ref_target_id']['table'] = 'og_membership';
   $handler->display->display_options['filters']['og_group_ref_target_id']['field'] = 'og_group_ref_target_id';
@@ -866,7 +884,7 @@ function iq_issue_views_default_views() {
     3 => '3',
     1 => 0,
   );
-  /* Szűrési feltétel: Tartalom: Status (field_issue_status_term) */
+  /* Filter criterion: Content: Status (field_issue_status_term) */
   $handler->display->display_options['filters']['field_issue_status_term_tid']['id'] = 'field_issue_status_term_tid';
   $handler->display->display_options['filters']['field_issue_status_term_tid']['table'] = 'field_data_field_issue_status_term';
   $handler->display->display_options['filters']['field_issue_status_term_tid']['field'] = 'field_issue_status_term_tid';
@@ -886,7 +904,7 @@ function iq_issue_views_default_views() {
   $handler->display->display_options['filters']['field_issue_status_term_tid']['type'] = 'select';
   $handler->display->display_options['filters']['field_issue_status_term_tid']['vocabulary'] = 'issue_status';
   $handler->display->display_options['filters']['field_issue_status_term_tid']['hierarchy'] = 1;
-  /* Szűrési feltétel: Tartalom: Type (field_issue_type) */
+  /* Filter criterion: Content: Type (field_issue_type) */
   $handler->display->display_options['filters']['field_issue_type_value']['id'] = 'field_issue_type_value';
   $handler->display->display_options['filters']['field_issue_type_value']['table'] = 'field_data_field_issue_type';
   $handler->display->display_options['filters']['field_issue_type_value']['field'] = 'field_issue_type_value';
@@ -903,7 +921,7 @@ function iq_issue_views_default_views() {
     3 => '3',
     1 => 0,
   );
-  /* Szűrési feltétel: Tartalom: Assigned to (field_issue_assigned_to) */
+  /* Filter criterion: Content: Assigned to (field_issue_assigned_to) */
   $handler->display->display_options['filters']['field_issue_assigned_to_target_id']['id'] = 'field_issue_assigned_to_target_id';
   $handler->display->display_options['filters']['field_issue_assigned_to_target_id']['table'] = 'field_data_field_issue_assigned_to';
   $handler->display->display_options['filters']['field_issue_assigned_to_target_id']['field'] = 'field_issue_assigned_to_target_id';
@@ -928,7 +946,7 @@ function iq_issue_views_default_views() {
     2 => array(),
     3 => array(),
   );
-  /* Szűrési feltétel: Tartalom: Léteznek hozzá taxonómia kifejezések (mélységgel) */
+  /* Filter criterion: Content: Has taxonomy terms (with depth) */
   $handler->display->display_options['filters']['term_node_tid_depth']['id'] = 'term_node_tid_depth';
   $handler->display->display_options['filters']['term_node_tid_depth']['table'] = 'node';
   $handler->display->display_options['filters']['term_node_tid_depth']['field'] = 'term_node_tid_depth';
@@ -1041,20 +1059,20 @@ function iq_issue_views_default_views() {
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
-  /* Kapcsolat: Group node from OG membership */
+  /* Relationship: Group node from OG membership */
   $handler->display->display_options['relationships']['og_membership_related_node_group']['id'] = 'og_membership_related_node_group';
   $handler->display->display_options['relationships']['og_membership_related_node_group']['table'] = 'og_membership';
   $handler->display->display_options['relationships']['og_membership_related_node_group']['field'] = 'og_membership_related_node_group';
   $handler->display->display_options['relationships']['og_membership_related_node_group']['ui_name'] = 'Group node from OG membership';
   $handler->display->display_options['relationships']['og_membership_related_node_group']['required'] = TRUE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Mező: Tartalom: Cím */
+  /* Field: Content: Title */
   $handler->display->display_options['fields']['title_1']['id'] = 'title_1';
   $handler->display->display_options['fields']['title_1']['table'] = 'node';
   $handler->display->display_options['fields']['title_1']['field'] = 'title';
   $handler->display->display_options['fields']['title_1']['relationship'] = 'og_membership_related_node_group';
   $handler->display->display_options['fields']['title_1']['label'] = 'Project';
-  /* Mező: Tartalom: Tartalom azonosító */
+  /* Field: Content: Nid */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'node';
   $handler->display->display_options['fields']['nid']['field'] = 'nid';
@@ -1062,20 +1080,20 @@ function iq_issue_views_default_views() {
   $handler->display->display_options['fields']['nid']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['nid']['alter']['text'] = '#[nid] ';
   $handler->display->display_options['fields']['nid']['link_to_node'] = TRUE;
-  /* Mező: Tartalom: Cím */
+  /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Mező: Tartalom: Frissítési dátum */
+  /* Field: Content: Updated date */
   $handler->display->display_options['fields']['changed']['id'] = 'changed';
   $handler->display->display_options['fields']['changed']['table'] = 'node';
   $handler->display->display_options['fields']['changed']['field'] = 'changed';
   $handler->display->display_options['fields']['changed']['label'] = 'Updated';
   $handler->display->display_options['fields']['changed']['date_format'] = 'custom';
   $handler->display->display_options['fields']['changed']['custom_date_format'] = 'Y-m-d H:i';
-  /* Mező: Tartalom: Business value */
+  /* Field: Content: Business value */
   $handler->display->display_options['fields']['field_issue_business_value']['id'] = 'field_issue_business_value';
   $handler->display->display_options['fields']['field_issue_business_value']['table'] = 'field_data_field_issue_business_value';
   $handler->display->display_options['fields']['field_issue_business_value']['field'] = 'field_issue_business_value';
@@ -1083,17 +1101,15 @@ function iq_issue_views_default_views() {
     'thousand_separator' => '',
     'prefix_suffix' => 1,
   );
-  /* Mező: Tartalom: Status */
+  /* Field: Content: Status */
   $handler->display->display_options['fields']['field_issue_status_term']['id'] = 'field_issue_status_term';
   $handler->display->display_options['fields']['field_issue_status_term']['table'] = 'field_data_field_issue_status_term';
   $handler->display->display_options['fields']['field_issue_status_term']['field'] = 'field_issue_status_term';
-  $handler->display->display_options['fields']['field_issue_status_term']['label'] = 'Állapot';
-  /* Mező: Tartalom: Type */
+  /* Field: Content: Type */
   $handler->display->display_options['fields']['field_issue_type']['id'] = 'field_issue_type';
   $handler->display->display_options['fields']['field_issue_type']['table'] = 'field_data_field_issue_type';
   $handler->display->display_options['fields']['field_issue_type']['field'] = 'field_issue_type';
-  $handler->display->display_options['fields']['field_issue_type']['label'] = 'Típus';
-  /* Mező: Tartalom: Assigned to */
+  /* Field: Content: Assigned to */
   $handler->display->display_options['fields']['field_issue_assigned_to']['id'] = 'field_issue_assigned_to';
   $handler->display->display_options['fields']['field_issue_assigned_to']['table'] = 'field_data_field_issue_assigned_to';
   $handler->display->display_options['fields']['field_issue_assigned_to']['field'] = 'field_issue_assigned_to';
@@ -1101,11 +1117,11 @@ function iq_issue_views_default_views() {
   $handler->display->display_options['fields']['field_issue_assigned_to']['settings'] = array(
     'link' => 1,
   );
-  /* Mező: Tartalom: Hozzászólások száma */
+  /* Field: Content: Comment count */
   $handler->display->display_options['fields']['comment_count']['id'] = 'comment_count';
   $handler->display->display_options['fields']['comment_count']['table'] = 'node_comment_statistics';
   $handler->display->display_options['fields']['comment_count']['field'] = 'comment_count';
-  /* Mező: Tartalom: Comment Time */
+  /* Field: Content: Comment Time */
   $handler->display->display_options['fields']['seconds']['id'] = 'seconds';
   $handler->display->display_options['fields']['seconds']['table'] = 'comment_timer_node';
   $handler->display->display_options['fields']['seconds']['field'] = 'seconds';
@@ -1123,19 +1139,19 @@ function iq_issue_views_default_views() {
   $handler->display->display_options['style_plugin'] = 'views_data_export_csv';
   $handler->display->display_options['style_options']['provide_file'] = 1;
   $handler->display->display_options['style_options']['parent_sort'] = 1;
-  $handler->display->display_options['style_options']['quote'] = '1';
+  $handler->display->display_options['style_options']['quote'] = 1;
   $handler->display->display_options['style_options']['trim'] = 1;
   $handler->display->display_options['style_options']['replace_newlines'] = 0;
   $handler->display->display_options['style_options']['header'] = 1;
   $handler->display->display_options['style_options']['keep_html'] = 0;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Mező: Tartalom: Cím */
+  /* Field: Content: Title */
   $handler->display->display_options['fields']['title_1']['id'] = 'title_1';
   $handler->display->display_options['fields']['title_1']['table'] = 'node';
   $handler->display->display_options['fields']['title_1']['field'] = 'title';
   $handler->display->display_options['fields']['title_1']['relationship'] = 'og_membership_related_node_group';
   $handler->display->display_options['fields']['title_1']['label'] = 'Project';
-  /* Mező: Tartalom: Tartalom azonosító */
+  /* Field: Content: Nid */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'node';
   $handler->display->display_options['fields']['nid']['field'] = 'nid';
@@ -1143,20 +1159,20 @@ function iq_issue_views_default_views() {
   $handler->display->display_options['fields']['nid']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['nid']['alter']['text'] = '#[nid] ';
   $handler->display->display_options['fields']['nid']['link_to_node'] = TRUE;
-  /* Mező: Tartalom: Cím */
+  /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Mező: Tartalom: Frissítési dátum */
+  /* Field: Content: Updated date */
   $handler->display->display_options['fields']['changed']['id'] = 'changed';
   $handler->display->display_options['fields']['changed']['table'] = 'node';
   $handler->display->display_options['fields']['changed']['field'] = 'changed';
   $handler->display->display_options['fields']['changed']['label'] = 'Updated';
   $handler->display->display_options['fields']['changed']['date_format'] = 'custom';
   $handler->display->display_options['fields']['changed']['custom_date_format'] = 'Y-m-d H:i';
-  /* Mező: Tartalom: Business value */
+  /* Field: Content: Business value */
   $handler->display->display_options['fields']['field_issue_business_value']['id'] = 'field_issue_business_value';
   $handler->display->display_options['fields']['field_issue_business_value']['table'] = 'field_data_field_issue_business_value';
   $handler->display->display_options['fields']['field_issue_business_value']['field'] = 'field_issue_business_value';
@@ -1164,17 +1180,15 @@ function iq_issue_views_default_views() {
     'thousand_separator' => '',
     'prefix_suffix' => 1,
   );
-  /* Mező: Tartalom: Status */
+  /* Field: Content: Status */
   $handler->display->display_options['fields']['field_issue_status_term']['id'] = 'field_issue_status_term';
   $handler->display->display_options['fields']['field_issue_status_term']['table'] = 'field_data_field_issue_status_term';
   $handler->display->display_options['fields']['field_issue_status_term']['field'] = 'field_issue_status_term';
-  $handler->display->display_options['fields']['field_issue_status_term']['label'] = 'Állapot';
-  /* Mező: Tartalom: Type */
+  /* Field: Content: Type */
   $handler->display->display_options['fields']['field_issue_type']['id'] = 'field_issue_type';
   $handler->display->display_options['fields']['field_issue_type']['table'] = 'field_data_field_issue_type';
   $handler->display->display_options['fields']['field_issue_type']['field'] = 'field_issue_type';
-  $handler->display->display_options['fields']['field_issue_type']['label'] = 'Típus';
-  /* Mező: Tartalom: Assigned to */
+  /* Field: Content: Assigned to */
   $handler->display->display_options['fields']['field_issue_assigned_to']['id'] = 'field_issue_assigned_to';
   $handler->display->display_options['fields']['field_issue_assigned_to']['table'] = 'field_data_field_issue_assigned_to';
   $handler->display->display_options['fields']['field_issue_assigned_to']['field'] = 'field_issue_assigned_to';
@@ -1182,15 +1196,15 @@ function iq_issue_views_default_views() {
   $handler->display->display_options['fields']['field_issue_assigned_to']['settings'] = array(
     'link' => 1,
   );
-  /* Mező: Tartalom: Hozzászólások száma */
+  /* Field: Content: Comment count */
   $handler->display->display_options['fields']['comment_count']['id'] = 'comment_count';
   $handler->display->display_options['fields']['comment_count']['table'] = 'node_comment_statistics';
   $handler->display->display_options['fields']['comment_count']['field'] = 'comment_count';
-  /* Mező: Tartalom: Comment Time */
+  /* Field: Content: Comment Time */
   $handler->display->display_options['fields']['seconds']['id'] = 'seconds';
   $handler->display->display_options['fields']['seconds']['table'] = 'comment_timer_node';
   $handler->display->display_options['fields']['seconds']['field'] = 'seconds';
-  /* Mező: Tartalom: Comment Time */
+  /* Field: Content: Comment Time */
   $handler->display->display_options['fields']['seconds_1']['id'] = 'seconds_1';
   $handler->display->display_options['fields']['seconds_1']['table'] = 'comment_timer_node';
   $handler->display->display_options['fields']['seconds_1']['field'] = 'seconds';
@@ -1212,7 +1226,7 @@ function iq_issue_views_default_views() {
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Mező: Tartalom: Tartalom azonosító */
+  /* Field: Content: Nid */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'node';
   $handler->display->display_options['fields']['nid']['field'] = 'nid';
@@ -1220,20 +1234,20 @@ function iq_issue_views_default_views() {
   $handler->display->display_options['fields']['nid']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['nid']['alter']['text'] = '#[nid] ';
   $handler->display->display_options['fields']['nid']['link_to_node'] = TRUE;
-  /* Mező: Tartalom: Cím */
+  /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Mező: Tartalom: Frissítési dátum */
+  /* Field: Content: Updated date */
   $handler->display->display_options['fields']['changed']['id'] = 'changed';
   $handler->display->display_options['fields']['changed']['table'] = 'node';
   $handler->display->display_options['fields']['changed']['field'] = 'changed';
   $handler->display->display_options['fields']['changed']['label'] = 'Updated';
   $handler->display->display_options['fields']['changed']['date_format'] = 'custom';
   $handler->display->display_options['fields']['changed']['custom_date_format'] = 'Y-m-d H:i';
-  /* Mező: Tartalom: Business value */
+  /* Field: Content: Business value */
   $handler->display->display_options['fields']['field_issue_business_value']['id'] = 'field_issue_business_value';
   $handler->display->display_options['fields']['field_issue_business_value']['table'] = 'field_data_field_issue_business_value';
   $handler->display->display_options['fields']['field_issue_business_value']['field'] = 'field_issue_business_value';
@@ -1241,17 +1255,15 @@ function iq_issue_views_default_views() {
     'thousand_separator' => '',
     'prefix_suffix' => 1,
   );
-  /* Mező: Tartalom: Status */
+  /* Field: Content: Status */
   $handler->display->display_options['fields']['field_issue_status_term']['id'] = 'field_issue_status_term';
   $handler->display->display_options['fields']['field_issue_status_term']['table'] = 'field_data_field_issue_status_term';
   $handler->display->display_options['fields']['field_issue_status_term']['field'] = 'field_issue_status_term';
-  $handler->display->display_options['fields']['field_issue_status_term']['label'] = 'Állapot';
-  /* Mező: Tartalom: Type */
+  /* Field: Content: Type */
   $handler->display->display_options['fields']['field_issue_type']['id'] = 'field_issue_type';
   $handler->display->display_options['fields']['field_issue_type']['table'] = 'field_data_field_issue_type';
   $handler->display->display_options['fields']['field_issue_type']['field'] = 'field_issue_type';
-  $handler->display->display_options['fields']['field_issue_type']['label'] = 'Típus';
-  /* Mező: Tartalom: Assigned to */
+  /* Field: Content: Assigned to */
   $handler->display->display_options['fields']['field_issue_assigned_to']['id'] = 'field_issue_assigned_to';
   $handler->display->display_options['fields']['field_issue_assigned_to']['table'] = 'field_data_field_issue_assigned_to';
   $handler->display->display_options['fields']['field_issue_assigned_to']['field'] = 'field_issue_assigned_to';
@@ -1259,22 +1271,21 @@ function iq_issue_views_default_views() {
   $handler->display->display_options['fields']['field_issue_assigned_to']['settings'] = array(
     'link' => 1,
   );
-  /* Mező: Tartalom: Hozzászólások száma */
+  /* Field: Content: Comment count */
   $handler->display->display_options['fields']['comment_count']['id'] = 'comment_count';
   $handler->display->display_options['fields']['comment_count']['table'] = 'node_comment_statistics';
   $handler->display->display_options['fields']['comment_count']['field'] = 'comment_count';
-  /* Mező: Tartalom: Comment Time */
+  /* Field: Content: Comment Time */
   $handler->display->display_options['fields']['seconds']['id'] = 'seconds';
   $handler->display->display_options['fields']['seconds']['table'] = 'comment_timer_node';
   $handler->display->display_options['fields']['seconds']['field'] = 'seconds';
   $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Szövegkörnyezeti szűrő: NID of the Project */
+  /* Contextual filter: NID of the Project */
   $handler->display->display_options['arguments']['og_group_ref_target_id']['id'] = 'og_group_ref_target_id';
   $handler->display->display_options['arguments']['og_group_ref_target_id']['table'] = 'og_membership';
   $handler->display->display_options['arguments']['og_group_ref_target_id']['field'] = 'og_group_ref_target_id';
   $handler->display->display_options['arguments']['og_group_ref_target_id']['ui_name'] = 'NID of the Project';
   $handler->display->display_options['arguments']['og_group_ref_target_id']['default_action'] = 'empty';
-  $handler->display->display_options['arguments']['og_group_ref_target_id']['exception']['title'] = 'Minden';
   $handler->display->display_options['arguments']['og_group_ref_target_id']['default_argument_type'] = 'fixed';
   $handler->display->display_options['arguments']['og_group_ref_target_id']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['og_group_ref_target_id']['summary']['format'] = 'default_summary';
@@ -1287,14 +1298,14 @@ function iq_issue_views_default_views() {
   $handler->display->display_options['arguments']['og_group_ref_target_id']['validate']['fail'] = 'empty';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Szűrési feltétel: Tartalom: Közzétéve */
+  /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Szűrési feltétel: Tartalom: Típus */
+  /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
@@ -1302,7 +1313,7 @@ function iq_issue_views_default_views() {
     'issue' => 'issue',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Szűrési feltétel: Tartalom: Status (field_issue_status_term) */
+  /* Filter criterion: Content: Status (field_issue_status_term) */
   $handler->display->display_options['filters']['field_issue_status_term_tid']['id'] = 'field_issue_status_term_tid';
   $handler->display->display_options['filters']['field_issue_status_term_tid']['table'] = 'field_data_field_issue_status_term';
   $handler->display->display_options['filters']['field_issue_status_term_tid']['field'] = 'field_issue_status_term_tid';
@@ -1322,7 +1333,7 @@ function iq_issue_views_default_views() {
   $handler->display->display_options['filters']['field_issue_status_term_tid']['type'] = 'select';
   $handler->display->display_options['filters']['field_issue_status_term_tid']['vocabulary'] = 'issue_status';
   $handler->display->display_options['filters']['field_issue_status_term_tid']['hierarchy'] = 1;
-  /* Szűrési feltétel: Tartalom: Type (field_issue_type) */
+  /* Filter criterion: Content: Type (field_issue_type) */
   $handler->display->display_options['filters']['field_issue_type_value']['id'] = 'field_issue_type_value';
   $handler->display->display_options['filters']['field_issue_type_value']['table'] = 'field_data_field_issue_type';
   $handler->display->display_options['filters']['field_issue_type_value']['field'] = 'field_issue_type_value';
@@ -1339,7 +1350,7 @@ function iq_issue_views_default_views() {
     3 => '3',
     1 => 0,
   );
-  /* Szűrési feltétel: Tartalom: Assigned to (field_issue_assigned_to) */
+  /* Filter criterion: Content: Assigned to (field_issue_assigned_to) */
   $handler->display->display_options['filters']['field_issue_assigned_to_target_id']['id'] = 'field_issue_assigned_to_target_id';
   $handler->display->display_options['filters']['field_issue_assigned_to_target_id']['table'] = 'field_data_field_issue_assigned_to';
   $handler->display->display_options['filters']['field_issue_assigned_to_target_id']['field'] = 'field_issue_assigned_to_target_id';
@@ -1356,7 +1367,7 @@ function iq_issue_views_default_views() {
     3 => '3',
     1 => 0,
   );
-  /* Szűrési feltétel: Tartalom: Léteznek hozzá taxonómia kifejezések (mélységgel) */
+  /* Filter criterion: Content: Has taxonomy terms (with depth) */
   $handler->display->display_options['filters']['term_node_tid_depth']['id'] = 'term_node_tid_depth';
   $handler->display->display_options['filters']['term_node_tid_depth']['table'] = 'node';
   $handler->display->display_options['filters']['term_node_tid_depth']['field'] = 'term_node_tid_depth';
@@ -1376,7 +1387,6 @@ function iq_issue_views_default_views() {
   );
   $handler->display->display_options['filters']['term_node_tid_depth']['vocabulary'] = 'issue_tags';
   $handler->display->display_options['filters']['term_node_tid_depth']['depth'] = '0';
-  $handler->display->display_options['pane_category']['name'] = 'Nézettáblák';
   $handler->display->display_options['argument_input'] = array(
     'og_group_ref_target_id' => array(
       'type' => 'context',
@@ -1395,20 +1405,20 @@ function iq_issue_views_default_views() {
   $handler->display->display_options['title'] = 'Related issues';
   $handler->display->display_options['defaults']['empty'] = FALSE;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
-  /* Kapcsolat: Project node from OG membership */
+  /* Relationship: Project node from OG membership */
   $handler->display->display_options['relationships']['og_membership_related_node_group']['id'] = 'og_membership_related_node_group';
   $handler->display->display_options['relationships']['og_membership_related_node_group']['table'] = 'og_membership';
   $handler->display->display_options['relationships']['og_membership_related_node_group']['field'] = 'og_membership_related_node_group';
   $handler->display->display_options['relationships']['og_membership_related_node_group']['ui_name'] = 'Project node from OG membership';
   $handler->display->display_options['relationships']['og_membership_related_node_group']['required'] = TRUE;
-  /* Kapcsolat: Entity Reference: Hivatkozó entitás */
+  /* Relationship: Entity Reference: Referencing entity */
   $handler->display->display_options['relationships']['reverse_field_issue_related_node']['id'] = 'reverse_field_issue_related_node';
   $handler->display->display_options['relationships']['reverse_field_issue_related_node']['table'] = 'node';
   $handler->display->display_options['relationships']['reverse_field_issue_related_node']['field'] = 'reverse_field_issue_related_node';
   $handler->display->display_options['relationships']['reverse_field_issue_related_node']['label'] = 'Issue referencing via field_issue_related';
   $handler->display->display_options['relationships']['reverse_field_issue_related_node']['required'] = TRUE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Mező: Tartalom: Tartalom azonosító */
+  /* Field: Content: Nid */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'node';
   $handler->display->display_options['fields']['nid']['field'] = 'nid';
@@ -1416,20 +1426,20 @@ function iq_issue_views_default_views() {
   $handler->display->display_options['fields']['nid']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['nid']['alter']['text'] = '#[nid] ';
   $handler->display->display_options['fields']['nid']['link_to_node'] = TRUE;
-  /* Mező: Tartalom: Cím */
+  /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Mező: Tartalom: Frissítési dátum */
+  /* Field: Content: Updated date */
   $handler->display->display_options['fields']['changed']['id'] = 'changed';
   $handler->display->display_options['fields']['changed']['table'] = 'node';
   $handler->display->display_options['fields']['changed']['field'] = 'changed';
   $handler->display->display_options['fields']['changed']['label'] = 'Updated';
   $handler->display->display_options['fields']['changed']['date_format'] = 'custom';
   $handler->display->display_options['fields']['changed']['custom_date_format'] = 'Y-m-d H:i';
-  /* Mező: Tartalom: Business value */
+  /* Field: Content: Business value */
   $handler->display->display_options['fields']['field_issue_business_value']['id'] = 'field_issue_business_value';
   $handler->display->display_options['fields']['field_issue_business_value']['table'] = 'field_data_field_issue_business_value';
   $handler->display->display_options['fields']['field_issue_business_value']['field'] = 'field_issue_business_value';
@@ -1437,17 +1447,15 @@ function iq_issue_views_default_views() {
     'thousand_separator' => '',
     'prefix_suffix' => 1,
   );
-  /* Mező: Tartalom: Status */
+  /* Field: Content: Status */
   $handler->display->display_options['fields']['field_issue_status_term']['id'] = 'field_issue_status_term';
   $handler->display->display_options['fields']['field_issue_status_term']['table'] = 'field_data_field_issue_status_term';
   $handler->display->display_options['fields']['field_issue_status_term']['field'] = 'field_issue_status_term';
-  $handler->display->display_options['fields']['field_issue_status_term']['label'] = 'Állapot';
-  /* Mező: Tartalom: Type */
+  /* Field: Content: Type */
   $handler->display->display_options['fields']['field_issue_type']['id'] = 'field_issue_type';
   $handler->display->display_options['fields']['field_issue_type']['table'] = 'field_data_field_issue_type';
   $handler->display->display_options['fields']['field_issue_type']['field'] = 'field_issue_type';
-  $handler->display->display_options['fields']['field_issue_type']['label'] = 'Típus';
-  /* Mező: Tartalom: Assigned to */
+  /* Field: Content: Assigned to */
   $handler->display->display_options['fields']['field_issue_assigned_to']['id'] = 'field_issue_assigned_to';
   $handler->display->display_options['fields']['field_issue_assigned_to']['table'] = 'field_data_field_issue_assigned_to';
   $handler->display->display_options['fields']['field_issue_assigned_to']['field'] = 'field_issue_assigned_to';
@@ -1455,22 +1463,21 @@ function iq_issue_views_default_views() {
   $handler->display->display_options['fields']['field_issue_assigned_to']['settings'] = array(
     'link' => 1,
   );
-  /* Mező: Tartalom: Hozzászólások száma */
+  /* Field: Content: Comment count */
   $handler->display->display_options['fields']['comment_count']['id'] = 'comment_count';
   $handler->display->display_options['fields']['comment_count']['table'] = 'node_comment_statistics';
   $handler->display->display_options['fields']['comment_count']['field'] = 'comment_count';
-  /* Mező: Tartalom: Comment Time */
+  /* Field: Content: Comment Time */
   $handler->display->display_options['fields']['seconds']['id'] = 'seconds';
   $handler->display->display_options['fields']['seconds']['table'] = 'comment_timer_node';
   $handler->display->display_options['fields']['seconds']['field'] = 'seconds';
   $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Szövegkörnyezeti szűrő: Tartalom: Tartalom azonosító */
+  /* Contextual filter: Content: Nid */
   $handler->display->display_options['arguments']['nid']['id'] = 'nid';
   $handler->display->display_options['arguments']['nid']['table'] = 'node';
   $handler->display->display_options['arguments']['nid']['field'] = 'nid';
   $handler->display->display_options['arguments']['nid']['relationship'] = 'reverse_field_issue_related_node';
   $handler->display->display_options['arguments']['nid']['default_action'] = 'not found';
-  $handler->display->display_options['arguments']['nid']['exception']['title'] = 'Minden';
   $handler->display->display_options['arguments']['nid']['default_argument_type'] = 'fixed';
   $handler->display->display_options['arguments']['nid']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['nid']['summary']['format'] = 'default_summary';
@@ -1483,14 +1490,14 @@ function iq_issue_views_default_views() {
   $handler->display->display_options['arguments']['nid']['validate_options']['access'] = TRUE;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Szűrési feltétel: Tartalom: Közzétéve */
+  /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Szűrési feltétel: Tartalom: Típus */
+  /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
@@ -1498,7 +1505,7 @@ function iq_issue_views_default_views() {
     'issue' => 'issue',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Szűrési feltétel: Tartalom: Status (field_issue_status_term) */
+  /* Filter criterion: Content: Status (field_issue_status_term) */
   $handler->display->display_options['filters']['field_issue_status_term_tid']['id'] = 'field_issue_status_term_tid';
   $handler->display->display_options['filters']['field_issue_status_term_tid']['table'] = 'field_data_field_issue_status_term';
   $handler->display->display_options['filters']['field_issue_status_term_tid']['field'] = 'field_issue_status_term_tid';
@@ -1518,7 +1525,7 @@ function iq_issue_views_default_views() {
   $handler->display->display_options['filters']['field_issue_status_term_tid']['type'] = 'select';
   $handler->display->display_options['filters']['field_issue_status_term_tid']['vocabulary'] = 'issue_status';
   $handler->display->display_options['filters']['field_issue_status_term_tid']['hierarchy'] = 1;
-  /* Szűrési feltétel: Tartalom: Type (field_issue_type) */
+  /* Filter criterion: Content: Type (field_issue_type) */
   $handler->display->display_options['filters']['field_issue_type_value']['id'] = 'field_issue_type_value';
   $handler->display->display_options['filters']['field_issue_type_value']['table'] = 'field_data_field_issue_type';
   $handler->display->display_options['filters']['field_issue_type_value']['field'] = 'field_issue_type_value';
@@ -1535,7 +1542,7 @@ function iq_issue_views_default_views() {
     3 => '3',
     1 => 0,
   );
-  /* Szűrési feltétel: Tartalom: Assigned to (field_issue_assigned_to) */
+  /* Filter criterion: Content: Assigned to (field_issue_assigned_to) */
   $handler->display->display_options['filters']['field_issue_assigned_to_target_id']['id'] = 'field_issue_assigned_to_target_id';
   $handler->display->display_options['filters']['field_issue_assigned_to_target_id']['table'] = 'field_data_field_issue_assigned_to';
   $handler->display->display_options['filters']['field_issue_assigned_to_target_id']['field'] = 'field_issue_assigned_to_target_id';
@@ -1560,7 +1567,7 @@ function iq_issue_views_default_views() {
     2 => array(),
     3 => array(),
   );
-  /* Szűrési feltétel: Tartalom: Léteznek hozzá taxonómia kifejezések (mélységgel) */
+  /* Filter criterion: Content: Has taxonomy terms (with depth) */
   $handler->display->display_options['filters']['term_node_tid_depth']['id'] = 'term_node_tid_depth';
   $handler->display->display_options['filters']['term_node_tid_depth']['table'] = 'node';
   $handler->display->display_options['filters']['term_node_tid_depth']['field'] = 'term_node_tid_depth';
@@ -1580,7 +1587,6 @@ function iq_issue_views_default_views() {
   );
   $handler->display->display_options['filters']['term_node_tid_depth']['vocabulary'] = 'issue_tags';
   $handler->display->display_options['filters']['term_node_tid_depth']['depth'] = '0';
-  $handler->display->display_options['pane_category']['name'] = 'Nézettáblák';
   $handler->display->display_options['argument_input'] = array(
     'nid' => array(
       'type' => 'user',
@@ -1597,12 +1603,11 @@ function iq_issue_views_default_views() {
   $handler = $view->new_display('panel_pane', 'Issue status taxonomy term', 'panel_pane_4');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Szövegkörnyezeti szűrő: Tartalom: Létezik hozzá taxonómia kifejezés azonosító (mélységgel) */
+  /* Contextual filter: Content: Has taxonomy term ID (with depth) */
   $handler->display->display_options['arguments']['term_node_tid_depth']['id'] = 'term_node_tid_depth';
   $handler->display->display_options['arguments']['term_node_tid_depth']['table'] = 'node';
   $handler->display->display_options['arguments']['term_node_tid_depth']['field'] = 'term_node_tid_depth';
   $handler->display->display_options['arguments']['term_node_tid_depth']['default_action'] = 'empty';
-  $handler->display->display_options['arguments']['term_node_tid_depth']['exception']['title'] = 'Minden';
   $handler->display->display_options['arguments']['term_node_tid_depth']['default_argument_type'] = 'fixed';
   $handler->display->display_options['arguments']['term_node_tid_depth']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['term_node_tid_depth']['summary']['format'] = 'default_summary';
@@ -1615,14 +1620,14 @@ function iq_issue_views_default_views() {
   $handler->display->display_options['arguments']['term_node_tid_depth']['depth'] = '0';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Szűrési feltétel: Tartalom: Közzétéve */
+  /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Szűrési feltétel: Tartalom: Típus */
+  /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
@@ -1630,7 +1635,7 @@ function iq_issue_views_default_views() {
     'issue' => 'issue',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Szűrési feltétel: Tartalom: Project (og_group_ref) */
+  /* Filter criterion: Content: Project (og_group_ref) */
   $handler->display->display_options['filters']['og_group_ref_target_id']['id'] = 'og_group_ref_target_id';
   $handler->display->display_options['filters']['og_group_ref_target_id']['table'] = 'og_membership';
   $handler->display->display_options['filters']['og_group_ref_target_id']['field'] = 'og_group_ref_target_id';
@@ -1646,7 +1651,7 @@ function iq_issue_views_default_views() {
     3 => '3',
     1 => 0,
   );
-  /* Szűrési feltétel: Tartalom: Type (field_issue_type) */
+  /* Filter criterion: Content: Type (field_issue_type) */
   $handler->display->display_options['filters']['field_issue_type_value']['id'] = 'field_issue_type_value';
   $handler->display->display_options['filters']['field_issue_type_value']['table'] = 'field_data_field_issue_type';
   $handler->display->display_options['filters']['field_issue_type_value']['field'] = 'field_issue_type_value';
@@ -1663,7 +1668,7 @@ function iq_issue_views_default_views() {
     3 => '3',
     1 => 0,
   );
-  /* Szűrési feltétel: Tartalom: Assigned to (field_issue_assigned_to) */
+  /* Filter criterion: Content: Assigned to (field_issue_assigned_to) */
   $handler->display->display_options['filters']['field_issue_assigned_to_target_id']['id'] = 'field_issue_assigned_to_target_id';
   $handler->display->display_options['filters']['field_issue_assigned_to_target_id']['table'] = 'field_data_field_issue_assigned_to';
   $handler->display->display_options['filters']['field_issue_assigned_to_target_id']['field'] = 'field_issue_assigned_to_target_id';
@@ -1680,7 +1685,7 @@ function iq_issue_views_default_views() {
     3 => '3',
     1 => 0,
   );
-  /* Szűrési feltétel: Tartalom: Tags (field_issue_tags) */
+  /* Filter criterion: Content: Tags (field_issue_tags) */
   $handler->display->display_options['filters']['field_issue_tags_tid']['id'] = 'field_issue_tags_tid';
   $handler->display->display_options['filters']['field_issue_tags_tid']['table'] = 'field_data_field_issue_tags';
   $handler->display->display_options['filters']['field_issue_tags_tid']['field'] = 'field_issue_tags_tid';
@@ -1699,7 +1704,6 @@ function iq_issue_views_default_views() {
   );
   $handler->display->display_options['filters']['field_issue_tags_tid']['reduce_duplicates'] = TRUE;
   $handler->display->display_options['filters']['field_issue_tags_tid']['vocabulary'] = 'issue_tags';
-  $handler->display->display_options['pane_category']['name'] = 'Nézettáblák';
   $handler->display->display_options['argument_input'] = array(
     'term_node_tid_depth' => array(
       'type' => 'context',
@@ -1716,12 +1720,11 @@ function iq_issue_views_default_views() {
   $handler = $view->new_display('panel_pane', 'Issue tag taxonomy term', 'panel_pane_2');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Szövegkörnyezeti szűrő: Tartalom: Létezik hozzá taxonómia kifejezés azonosító (mélységgel) */
+  /* Contextual filter: Content: Has taxonomy term ID (with depth) */
   $handler->display->display_options['arguments']['term_node_tid_depth']['id'] = 'term_node_tid_depth';
   $handler->display->display_options['arguments']['term_node_tid_depth']['table'] = 'node';
   $handler->display->display_options['arguments']['term_node_tid_depth']['field'] = 'term_node_tid_depth';
   $handler->display->display_options['arguments']['term_node_tid_depth']['default_action'] = 'empty';
-  $handler->display->display_options['arguments']['term_node_tid_depth']['exception']['title'] = 'Minden';
   $handler->display->display_options['arguments']['term_node_tid_depth']['default_argument_type'] = 'fixed';
   $handler->display->display_options['arguments']['term_node_tid_depth']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['term_node_tid_depth']['summary']['format'] = 'default_summary';
@@ -1734,14 +1737,14 @@ function iq_issue_views_default_views() {
   $handler->display->display_options['arguments']['term_node_tid_depth']['depth'] = '0';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Szűrési feltétel: Tartalom: Közzétéve */
+  /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Szűrési feltétel: Tartalom: Típus */
+  /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
@@ -1749,7 +1752,7 @@ function iq_issue_views_default_views() {
     'issue' => 'issue',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Szűrési feltétel: Tartalom: Project (og_group_ref) */
+  /* Filter criterion: Content: Project (og_group_ref) */
   $handler->display->display_options['filters']['og_group_ref_target_id']['id'] = 'og_group_ref_target_id';
   $handler->display->display_options['filters']['og_group_ref_target_id']['table'] = 'og_membership';
   $handler->display->display_options['filters']['og_group_ref_target_id']['field'] = 'og_group_ref_target_id';
@@ -1765,7 +1768,7 @@ function iq_issue_views_default_views() {
     3 => '3',
     1 => 0,
   );
-  /* Szűrési feltétel: Tartalom: Status (field_issue_status_term) */
+  /* Filter criterion: Content: Status (field_issue_status_term) */
   $handler->display->display_options['filters']['field_issue_status_term_tid']['id'] = 'field_issue_status_term_tid';
   $handler->display->display_options['filters']['field_issue_status_term_tid']['table'] = 'field_data_field_issue_status_term';
   $handler->display->display_options['filters']['field_issue_status_term_tid']['field'] = 'field_issue_status_term_tid';
@@ -1785,7 +1788,7 @@ function iq_issue_views_default_views() {
   $handler->display->display_options['filters']['field_issue_status_term_tid']['type'] = 'select';
   $handler->display->display_options['filters']['field_issue_status_term_tid']['vocabulary'] = 'issue_status';
   $handler->display->display_options['filters']['field_issue_status_term_tid']['hierarchy'] = 1;
-  /* Szűrési feltétel: Tartalom: Type (field_issue_type) */
+  /* Filter criterion: Content: Type (field_issue_type) */
   $handler->display->display_options['filters']['field_issue_type_value']['id'] = 'field_issue_type_value';
   $handler->display->display_options['filters']['field_issue_type_value']['table'] = 'field_data_field_issue_type';
   $handler->display->display_options['filters']['field_issue_type_value']['field'] = 'field_issue_type_value';
@@ -1802,7 +1805,7 @@ function iq_issue_views_default_views() {
     3 => '3',
     1 => 0,
   );
-  /* Szűrési feltétel: Tartalom: Assigned to (field_issue_assigned_to) */
+  /* Filter criterion: Content: Assigned to (field_issue_assigned_to) */
   $handler->display->display_options['filters']['field_issue_assigned_to_target_id']['id'] = 'field_issue_assigned_to_target_id';
   $handler->display->display_options['filters']['field_issue_assigned_to_target_id']['table'] = 'field_data_field_issue_assigned_to';
   $handler->display->display_options['filters']['field_issue_assigned_to_target_id']['field'] = 'field_issue_assigned_to_target_id';
@@ -1819,7 +1822,6 @@ function iq_issue_views_default_views() {
     3 => '3',
     1 => 0,
   );
-  $handler->display->display_options['pane_category']['name'] = 'Nézettáblák';
   $handler->display->display_options['argument_input'] = array(
     'term_node_tid_depth' => array(
       'type' => 'context',
@@ -1831,6 +1833,52 @@ function iq_issue_views_default_views() {
     ),
   );
   $handler->display->display_options['inherit_panels_path'] = '1';
+  $translatables['issues'] = array(
+    t('Master'),
+    t('Issues'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Items per page'),
+    t('- All -'),
+    t('Offset'),
+    t('« first'),
+    t('‹ previous'),
+    t('next ›'),
+    t('last »'),
+    t('There are no issues available'),
+    t('There are no issues available.'),
+    t('Group node from OG membership'),
+    t('Project'),
+    t('Issue number'),
+    t('#[nid] '),
+    t('Title'),
+    t('Updated'),
+    t('Business value'),
+    t('Status'),
+    t('Type'),
+    t('Assigned to'),
+    t('Comment count'),
+    t('.'),
+    t(','),
+    t('Comment Time'),
+    t('All'),
+    t('Assigned to (field_issue_assigned_to)'),
+    t('Tag'),
+    t('All issues page'),
+    t('Data export'),
+    t('Comment Time (seconds)'),
+    t('Project issues'),
+    t('View panes'),
+    t('Related issues'),
+    t('Issue referencing via field_issue_related'),
+    t('Issue status taxonomy term'),
+    t('Tags'),
+    t('Issue tag taxonomy term'),
+  );
   $export['issues'] = $view;
 
   return $export;
