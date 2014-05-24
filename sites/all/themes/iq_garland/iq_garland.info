@@ -1,0 +1,8 @@
+name = IQ_Garland
+description = Garland-child theme for the IssueQ UI adjustments.
+core = 7.x
+base theme = garland
+
+stylesheets[all][] = css/iq-styles.css
+
+scripts[] = js/iq-scripts.js

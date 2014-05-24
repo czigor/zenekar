@@ -1,0 +1,35 @@
+/**
+ * @file
+ * Custom mixins.
+ */
+
+// Button.
+@mixin button {
+  background-color: $color-prim-dark; // For IE. Sorry folks ;)
+  @include background-image(linear-gradient($color-prim-light, $color-prim-dark));
+  
+  border: 1px solid $color-border-light;
+  color: #fff;
+  font-style: normal;
+  font-weight: normal;
+  text-shadow: 0 1px 1px $color-shadow;
+
+  &:hover {
+    background-color: darken($color-prim-dark, 10%); // For IE. Sorry again ;)
+    @include background-image(linear-gradient(darken($color-prim-light, 10%), darken($color-prim-dark, 10%)));
+    cursor: pointer;
+  }
+}
+
+// Highlighting form elements.
+@mixin field-widget-highlight($style: 'discrete') {
+  @include box-shadow(lighten($color-shadow, 50%) 0 0.1em 0.4em 0em inset);
+  border-color: darken($color-border-medium, 15%);
+  
+  @if $style == ('discrete') {
+    background: $color-minor;
+  }
+  @else if ('harsh') {
+    background: adjust-hue(lighten(orange, 20%), 10%);
+  }
+}
