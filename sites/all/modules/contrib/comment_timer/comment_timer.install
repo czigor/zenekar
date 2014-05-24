@@ -1,0 +1,121 @@
+<?php
+
+/**
+ * @file
+ * Un/install functions for Comment timer.
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function comment_timer_schema() {
+  $schema['comment_timer_comment'] = array(
+    'description' => 'Stores how much time was spent on a comment.',
+    'fields' => array(
+      'cid' => array(
+        'description' => 'The {comment}.cid these seconds belong to.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'seconds' => array(
+        'description' => 'The number of seconds spent on this comment.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'status' => array(
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 1,
+        'size' => 'tiny',
+        'description' => 'The status of a comment time. (0 = Excluded from node time, 1 = Included in node time)',
+      ),
+    ),
+    'primary key' => array('cid'),
+    'indexes' => array(
+      'seconds' => array('seconds'),
+      'status' => array('status'),
+    ),
+  );
+  $schema['comment_timer_node'] = array(
+    'description' => 'Stores how much time was spent on a node\'s comments.',
+    'fields' => array(
+      'nid' => array(
+        'description' => 'The {node}.nid these seconds belong to.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'seconds' => array(
+        'description' => 'The number of seconds spent on this node.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+    ),
+    'primary key' => array('nid'),
+    'indexes' => array(
+      'seconds' => array('seconds'),
+    ),
+  );
+  return $schema;
+}
+
+/**
+ * Implements hook_install().
+ */
+function comment_timer_install() {
+  // Ensure that comment_timer.module has higher weight (thus its hooks are
+  // called _after_) comment.module.
+  $comment_weight = db_select('system', 's')
+    ->fields('s', array('weight'))
+    ->condition('type', 'module')
+    ->condition('name', 'comment')
+    ->execute()
+    ->fetchCol();
+  db_update('system')
+    ->fields(array(
+      'weight' => $comment_weight[0] + 1,
+    ))
+    ->condition('type', 'module')
+    ->condition('name', 'comment_timer')
+    ->execute();
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function comment_timer_uninstall() {
+  // Remove variables.
+  foreach (node_type_get_types() as $node_type) {
+    variable_del('comment_timer_' . $node_type->type);
+    variable_del('comment_timer_node_label_' . $node_type->type);
+    variable_del('comment_timer_comment_label_' . $node_type->type);
+  }
+}
+
+/**
+ * Create status column for {comment_timer_comment} and set it to 1.
+ */
+function comment_timer_update_7000() {
+  // Add the status column to comment_timer_comment.
+  $status = array(
+    'type' => 'int',
+    'unsigned' => TRUE,
+    'not null' => TRUE,
+    'default' => 1,
+    'size' => 'tiny',
+    'description' => 'The status of a comment time. (0 = Excluded from node time, 1 = Included in node time)',
+    'initial' => 1,
+  );
+  db_add_field('comment_timer_comment', 'status', $status);
+}
+
+/**
+ * Adds an index for {comment_timer_comment}.status field.
+ */
+function comment_timer_update_7001() {
+  db_add_index('comment_timer_comment', 'status', array('status'));
+}

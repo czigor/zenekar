@@ -1,0 +1,13 @@
+name = Comment timer
+description = Tracks time spent on comments.
+dependencies[] = comment
+core = 7.x
+files[] = views/comment_timer_handler_field_seconds.inc
+files[] = views/comment_timer_handler_field_status.inc
+files[] = views/comment_timer_handler_filter_status_operator.inc
+; Information added by Drupal.org packaging script on 2014-02-24
+version = "7.x-1.0"
+core = "7.x"
+project = "comment_timer"
+datestamp = "1393240408"
+
