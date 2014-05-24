@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the MEZ news CT feature.
- */
-
-include_once 'mez_news_ct.features.inc';
