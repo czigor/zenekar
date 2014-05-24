@@ -50,3 +50,8 @@
 .field-name-field-FIELDNAME {
   /* Underscores in field name are replaced with dashes. */
 }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/fields\.scss}line{font-family:\00003108}}
+.more-link a {
+  text-transform: uppercase;
+}
