@@ -69,26 +69,13 @@ function mez_frontpage_default_page_manager_pages() {
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass();
-    $pane->pid = 'new-101c8f78-0280-482c-a045-96ba78c3fdfa';
+    $pane->pid = 'new-892a013d-821d-46d0-9230-3f9832fdcfdb';
     $pane->panel = 'news';
-    $pane->type = 'views';
-    $pane->subtype = 'news';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'mez_news-panel_pane_1';
     $pane->shown = TRUE;
     $pane->access = array();
-    $pane->configuration = array(
-      'override_pager_settings' => FALSE,
-      'use_pager' => FALSE,
-      'nodes_per_page' => 10,
-      'pager_id' => 0,
-      'offset' => 0,
-      'more_link' => FALSE,
-      'feed_icons' => FALSE,
-      'panel_args' => FALSE,
-      'link_to_view' => FALSE,
-      'args' => '',
-      'url' => '',
-      'display' => 'default',
-    );
+    $pane->configuration = array();
     $pane->cache = array();
     $pane->style = array(
       'settings' => NULL,
@@ -97,9 +84,9 @@ function mez_frontpage_default_page_manager_pages() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $pane->uuid = '101c8f78-0280-482c-a045-96ba78c3fdfa';
-    $display->content['new-101c8f78-0280-482c-a045-96ba78c3fdfa'] = $pane;
-    $display->panels['news'][0] = 'new-101c8f78-0280-482c-a045-96ba78c3fdfa';
+    $pane->uuid = '892a013d-821d-46d0-9230-3f9832fdcfdb';
+    $display->content['new-892a013d-821d-46d0-9230-3f9832fdcfdb'] = $pane;
+    $display->panels['news'][0] = 'new-892a013d-821d-46d0-9230-3f9832fdcfdb';
     $pane = new stdClass();
     $pane->pid = 'new-2ac99ac1-c3ed-4c5d-9cae-26bfa12fe09b';
     $pane->panel = 'top_main';
@@ -139,31 +126,18 @@ function mez_frontpage_default_page_manager_pages() {
     $display->content['new-b805bd6e-f7bb-4902-a6e5-c715af41ee55'] = $pane;
     $display->panels['top_main'][1] = 'new-b805bd6e-f7bb-4902-a6e5-c715af41ee55';
     $pane = new stdClass();
-    $pane->pid = 'new-215c68ee-8e91-46fb-963c-0d1e1756b69c';
+    $pane->pid = 'new-25c90316-7be6-4307-a979-04806995428f';
     $pane->panel = 'up';
     $pane->type = 'node';
     $pane->subtype = 'node';
     $pane->shown = TRUE;
-    $pane->access = array(
-      'plugins' => array(
-        0 => array(
-          'name' => 'role',
-          'settings' => array(
-            'rids' => array(
-              0 => 3,
-            ),
-          ),
-          'context' => 'logged-in-user',
-          'not' => FALSE,
-        ),
-      ),
-    );
+    $pane->access = array();
     $pane->configuration = array(
-      'nid' => '52',
-      'links' => 1,
+      'nid' => '2086',
+      'links' => 0,
       'leave_node_title' => 0,
       'identifier' => '',
-      'build_mode' => 'full',
+      'build_mode' => 'teaser',
       'link_node_title' => 0,
       'override_title' => 1,
       'override_title_text' => '',
@@ -176,9 +150,9 @@ function mez_frontpage_default_page_manager_pages() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $pane->uuid = '215c68ee-8e91-46fb-963c-0d1e1756b69c';
-    $display->content['new-215c68ee-8e91-46fb-963c-0d1e1756b69c'] = $pane;
-    $display->panels['up'][0] = 'new-215c68ee-8e91-46fb-963c-0d1e1756b69c';
+    $pane->uuid = '25c90316-7be6-4307-a979-04806995428f';
+    $display->content['new-25c90316-7be6-4307-a979-04806995428f'] = $pane;
+    $display->panels['up'][0] = 'new-25c90316-7be6-4307-a979-04806995428f';
   $display->hide_title = PANELS_TITLE_NONE;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
