@@ -1,0 +1,25 @@
+/**
+ * @file
+ * This file holds general styles for IssueQ project page custom layout.
+ */
+
+/**
+ * General layout styles.
+ */
+.panel-iq-project-page .panel-middle > .clearer {
+  clear: both;
+}
+.panel-iq-project-page .panel-middle > .col {
+  float: left;
+}
+.panel-iq-project-page .panel-middle > .col-1 {
+  width: 50%;
+}
+.panel-iq-project-page .panel-middle > .col-1 > .inside,
+.panel-iq-project-page .panel-middle > .col-2 > .inside {
+  padding-right: 15px;
+}
+.panel-iq-project-page .panel-middle > .col-2,
+.panel-iq-project-page .panel-middle > .col-3 {
+  width: 25%;
+}

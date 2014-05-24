@@ -1,0 +1,24 @@
+<?php
+/**
+ * @file
+ * Install and uninstall functions for IssueQ project.
+ */
+
+/**
+ * Implementation of hook_install().
+ */
+function iq_project_install() {
+  // Increase our module's weight to run after locale.module.
+  // @see iq_project_form_project_node_form_alter()
+  $locale_weight = db_select('system', 's')
+    ->fields('s', array('weight'))
+    ->condition('type', 'module')
+    ->condition('name', 'locale')
+    ->execute()
+    ->fetchField();
+  db_update('system')
+    ->condition('type', 'module')
+    ->condition('name', 'iq_project')
+    ->fields(array('weight' => $locale_weight + 1))
+    ->execute();
+}

@@ -1,0 +1,5 @@
+name = IssueQ Helper
+description = General tweaks and API-like functions for IssueQ.
+core = 7.x
+dependencies[] = og
+package = IssueQ

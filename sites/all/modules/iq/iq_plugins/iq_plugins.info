@@ -1,0 +1,7 @@
+name = IssueQ plugins
+description = Custom plugins for IssueQ.
+core = 7.x
+dependencies[] = ctools
+dependencies[] = panels
+dependencies[] = page_manager
+package = IssueQ

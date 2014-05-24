@@ -1,0 +1,592 @@
+<?php
+
+/**
+ * @file
+ * General tweaks and API-like functions for IssueQ.
+ */
+
+/**
+ * Helper function to get project members, optionally filtered by roles.
+ *
+ * @param $gid
+ *   Group id.
+ * @param  $roles
+ *   An array of roles used in role based filtering.
+ *   Note, that project manager (the creator/author of
+ *   the project) can be referenced by the "project manager"
+ *   role, and project members can be referenced by the
+ *   "member" role. Also note, that if roles are empty,
+ *   then all project members will be selected.
+ * @param $op
+ *   Operation type used in role based filtering.
+ *   The operation type can be "OR", "AND" or  "STRICT".
+ *
+ *     OR means, that those group members will be selected,
+ *     who have at least one matching role with the input
+ *     role set. This is the default.
+ *
+ *     AND means, that those group members will be
+ *     selected, who have all the roles from the input role
+ *     set.
+ *
+ *     STRICT means, that only those group members
+ *     will be selected, who have exactly the same role
+ *     set, which has been specified in the input role set.
+ *
+ *  Note, that if roles are empty, than operation will
+ *  be ignored.
+ *
+ * @return mixed
+ *   Returns an array of uid => name key-value pairs.
+ *   uid refers to the user id, and name refers to the
+ *   user name.
+ */
+function iq_helper_get_project_members($gid, $roles = array(), $op = 'OR') {
+  // Init cache.
+  $cache = &drupal_static(__FUNCTION__);
+  // Init cache keys.
+  $project_members = 'project-' . $gid;
+  $project_members_roles = $project_members . '-roles';
+  $project_members_roles_op = $project_members_roles . '-' . $op;
+
+  if (!isset($cache[$project_members])) {
+    // Get all project members regardless of the roles.
+    $query = db_select('users', 'u');
+    $query->join('og_membership', 'ogm', 'u.uid = ogm.etid');
+    $query->condition('ogm.gid', $gid)
+      ->condition('ogm.entity_type', 'user')
+      ->condition('u.status', 1)
+      ->condition('u.uid', 0, '<>')
+      ->orderBy('u.name')
+      ->fields('u', array('uid', 'name'));
+    // Save query result to cache.
+    $cache[$project_members] = $query->execute()->fetchAllKeyed();
+  }
+
+  if (!empty($cache[$project_members]) && !empty($roles)) {
+    if (!isset($cache[$project_members_roles])) {
+      // Get explicit roles of each project member.
+      $query = db_select('og_users_roles', 'ogur');
+      $query->join('og_role', 'ogr', 'ogur.rid = ogr.rid');
+      $query->condition('ogur.gid', $gid)
+        ->condition('ogur.uid', array_keys($cache[$project_members]), 'IN')
+        ->fields('ogur', array('uid'))
+        ->fields('ogr', array('name'));
+      $result = $query->execute();
+
+      // Group explicit roles by user id.
+      $cache[$project_members_roles] = array();
+      foreach ($result as $record) {
+        if (!isset($cache[$project_members_roles][$record->uid])) {
+          $cache[$project_members_roles][$record->uid] = array();
+        }
+        $cache[$project_members_roles][$record->uid][] = $record->name;
+      }
+
+      // Get project manager's uid.
+      $project_manager_uid = db_select('node', 'n')
+        ->condition('n.nid', $gid)
+        ->fields('n', array('uid'))
+        ->execute()
+        ->fetchField();
+
+      // Merge explicit roles with implicit ones.
+      foreach ($cache[$project_members] as $uid => $name) {
+        if (!isset($cache[$project_members_roles][$uid])) {
+          $cache[$project_members_roles][$uid] = array();
+        }
+        $cache[$project_members_roles][$uid][] = 'member';
+        if ($uid == $project_manager_uid) {
+          $cache[$project_members_roles][$uid][] = 'project manager';
+        }
+      }
+    }
+
+    if (!isset($cache[$project_members_roles_op])) {
+      $cache[$project_members_roles_op] = array();
+      // Check for operation type.
+      switch ($op) {
+        case 'OR':
+          // Filter project members, who have at least one matching role
+          // with the input role set.
+          foreach ($cache[$project_members_roles] as $uid => $member_roles) {
+            foreach ($roles as $role) {
+              if (in_array($role, $member_roles)) {
+                $cache[$project_members_roles_op][] = $uid;
+                break;
+              }
+            }
+          }
+          break;
+
+        case 'AND':
+          // Filter project members, who have all the roles from the input
+          // role set.
+          foreach ($cache[$project_members_roles] as $uid => $member_roles) {
+            $match = TRUE;
+            foreach ($roles as $role) {
+              if (!in_array($role, $member_roles)) {
+                $match = FALSE;
+                break;
+              }
+            }
+            if ($match) {
+              $cache[$project_members_roles_op][] = $uid;
+            }
+          }
+          break;
+
+        case 'STRICT':
+          // Filter project members, who have exactly the same role set,
+          // which has been specified in the input role set.
+          foreach ($cache[$project_members_roles] as $uid => $member_roles) {
+            if ($member_roles == $roles) {
+              $cache[$project_members_roles_op][] = $uid;
+            }
+          }
+          break;
+      }
+    }
+
+    // Filter the initial member list, according to the matching roles.
+    $members = array();
+    foreach ($cache[$project_members_roles_op] as $uid) {
+      $members[$uid] = $cache[$project_members][$uid];
+    }
+
+    return $members;
+  }
+
+  return $cache[$project_members];
+}
+
+/**
+ * Helper function to get user projects, optionally filtered by roles.
+ *
+ * @param $uid
+ *   User id.
+ * @param  $roles
+ *   An array of roles used in role based filtering.
+ *   Note, that project manager (the creator/author of
+ *   the project) can be referenced by the "project manager"
+ *   role, and project members can be referenced by the
+ *   "member" role. Also note, that if roles are empty,
+ *   then all projects will be selected.
+ * @param $op
+ *   Operation type used in role based filtering.
+ *   The operation type can be "OR", "AND" or  "STRICT".
+ *
+ *     OR means, that those projects will be selected,
+ *     within the user has at least one matching role with
+ *     the input role set. This is the default.
+ *
+ *     AND means, that those projects will be selected,
+ *     within the user has all the roles from the input
+ *     role set.
+ *
+ *     STRICT means, that only those projects will be
+ *     selected, within the user has exactly the same role
+ *     set, which has been specified in the input role set.
+ *
+ *   Note, that if input roles empty, than operation will
+ *   be ignored.
+ *
+ * @return mixed
+ *   Returns an array of nid => title key-value pairs.
+ *   nid refers to the project id, and title refers to the
+ *   project title.
+ */
+function iq_helper_get_user_projects($uid, $roles = array(), $op = 'OR') {
+  // Init cache.
+  $cache = &drupal_static(__FUNCTION__);
+  // Init cache keys.
+  $user_projects = 'user-' . $uid;
+  $user_projects_roles = $user_projects . '-roles';
+  $user_projects_roles_op = $user_projects_roles . '-' . $op;
+
+  if (!isset($cache[$user_projects])) {
+    // Get all projects of the user regardless of the roles.
+    $query = db_select('node', 'n');
+    $query->join('og_membership', 'ogm', 'n.nid = ogm.gid');
+    $query->condition('ogm.etid', $uid)
+      ->condition('ogm.entity_type', 'user')
+      ->condition('n.status', 1)
+      ->fields('n', array('nid', 'title'));
+    // Save query result to cache.
+    $cache[$user_projects] = $query->execute()->fetchAllKeyed();
+  }
+
+  if (!empty($cache[$user_projects]) && !empty($roles)) {
+    if (!isset($cache[$user_projects_roles])) {
+      // Get explicit roles of the user.
+      $query = db_select('og_users_roles', 'ogur');
+      $query->join('og_role', 'ogr', 'ogur.rid = ogr.rid');
+      $query->condition('ogur.uid', $uid)
+        ->condition('ogur.gid', array_keys($cache[$user_projects]), 'IN')
+        ->fields('ogur', array('gid'))
+        ->fields('ogr', array('name'));
+      $result = $query->execute();
+
+      // Group explicit roles by project id.
+      $cache[$user_projects_roles] = array();
+      foreach ($result as $record) {
+        if (!isset($cache[$user_projects_roles][$record->gid])) {
+          $cache[$user_projects_roles][$record->gid] = array();
+        }
+        $cache[$user_projects_roles][$record->gid][] = $record->name;
+      }
+
+      // Search for "project manager" implicit roles.
+      $project_manager_in = db_select('node', 'n')
+        ->condition('n.uid', $uid)
+        ->condition('n.nid', array_keys($cache[$user_projects]), 'IN')
+        ->fields('n', array('nid'))
+        ->execute()
+        ->fetchCol();
+
+      // Merge explicit roles with implicit ones.
+      foreach ($cache[$user_projects] as $nid => $title) {
+        if (!isset($cache[$user_projects_roles][$nid])) {
+          $cache[$user_projects_roles][$nid] = array();
+        }
+        $cache[$user_projects_roles][$nid][] = 'member';
+        if (in_array($nid, $project_manager_in)) {
+          $cache[$user_projects_roles][$nid][] = 'project manager';
+        }
+      }
+    }
+
+    if (!isset($cache[$user_projects_roles_op])) {
+      $cache[$user_projects_roles_op] = array();
+      // Check for operation type.
+      switch ($op) {
+        case 'OR':
+          // Filter projects, within the user has at least one matching
+          // role with the input role set.
+          foreach ($cache[$user_projects_roles] as $nid => $user_roles) {
+            foreach ($roles as $role) {
+              if (in_array($role, $user_roles)) {
+                $cache[$user_projects_roles_op][] = $nid;
+                break;
+              }
+            }
+          }
+          break;
+
+        case 'AND':
+          // Filter projects, within the user has all the roles from
+          // the input role set.
+          foreach ($cache[$user_projects_roles] as $nid => $user_roles) {
+            $match = TRUE;
+            foreach ($roles as $role) {
+              if (!in_array($role, $user_roles)) {
+                $match = FALSE;
+                break;
+              }
+            }
+            if ($match) {
+              $cache[$user_projects_roles_op][] = $nid;
+            }
+          }
+          break;
+
+        case 'STRICT':
+          // Filter projects, within the user has exactly the same
+          // role set, which has been specified in the input role set.
+          foreach ($cache[$user_projects_roles] as $nid => $user_roles) {
+            if ($user_roles == $roles) {
+              $cache[$user_projects_roles_op][] = $nid;
+            }
+          }
+          break;
+      }
+    }
+
+    // Filter the initial project list, according to the matching roles.
+    $projects = array();
+    foreach ($cache[$user_projects_roles_op] as $nid) {
+      $projects[$nid] = $cache[$user_projects][$nid];
+    }
+
+    return $projects;
+  }
+
+  return $cache[$user_projects];
+}
+
+/**
+ * Helper function to get nodes the $user has access to.
+ *
+ * @param $type
+ *   Content (node) type.
+ *
+ * @return mixed
+ *   Returns an array of nid => title key-value pairs where nid refers to the
+ *   node id, and title refers to the project title.
+ */
+function iq_helper_get_available_nodes($type) {
+  $cache = &drupal_static(__FUNCTION__);
+  if (!isset($cache[$type])) {
+    $cache[$type] = db_select('node', 'n')
+      ->fields('n', array('nid', 'title'))
+      ->condition('status', NODE_PUBLISHED)
+      ->condition('type', $type)
+      ->orderBy('title')
+      ->addTag('node_access')
+      ->execute()
+      ->fetchAllKeyed();
+  }
+  return $cache[$type];
+}
+
+/**
+ * Helper function to return users with common membership with current $user.
+ *
+ * Uid=1 gets all the active users.
+ *
+ * @return array
+ *   A uid-indexed array of user names, that can be used eg. for form #options.
+ */
+function iq_helper_get_users_with_common_membership() {
+  global $user;
+  // Return only those users in the exposed filter that have common membership
+  // in at least one project with the current $user.
+  $query = db_select('users', 'u')
+    ->fields('u', array('uid', 'name'))
+    ->condition('u.status', 1)
+    ->orderBy('name');
+  if ($user->uid != 1) {
+    $ogm2 = $query->innerJoin('og_membership', 'ogm2', '%alias.etid = u.uid AND %alias.group_type = :node AND ogm2.entity_type = :user AND ogm2.state = :state', array(':node' => 'node', ':user' => 'user', ':state' => OG_STATE_ACTIVE));
+    $ogm1 = $query->innerJoin('og_membership', 'ogm1', '%alias.gid = ' . $ogm2 . '.gid AND %alias.entity_type = :user AND %alias.group_type = :node AND %alias.state = :state', array(':user' => 'user', ':node' => 'node', ':state' => OG_STATE_ACTIVE));
+    $query->condition($ogm1 . '.etid', $user->uid);
+  }
+  return $query->execute()->fetchAllKeyed();
+}
+
+/**
+ * Implements hook_module_implements_alter().
+ */
+function iq_helper_module_implements_alter(&$implementations, $hook) {
+  switch ($hook) {
+    case 'node_type_insert':
+      // Prevent running comment_node_type_insert(), which creates a
+      // comment_body field for every CT created, without any possibility to
+      // export this field with proper weight.
+      if (isset($implementations['comment'])) {
+        unset($implementations['comment']);
+      }
+      break;
+
+    case 'node_insert':
+      if (isset($implementations['path'])) {
+        unset($implementations['path']);
+      }
+      break;
+
+    case 'node_update':
+      if (isset($implementations['path'])) {
+        unset($implementations['path']);
+      }
+      break;
+  }
+}
+
+/**
+ * Implements hook_field_formatter_info().
+ */
+function iq_helper_field_formatter_info() {
+  $field_types = array_keys(field_info_field_types());
+
+  $return = array();
+
+  $return['iq_fieldvalue_count'] = array(
+    'label' => t('Count of field values'),
+    'field types' => $field_types,
+  );
+
+  return $return;
+}
+
+/**
+ * Implements hook_field_formatter_view().
+ */
+function iq_helper_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, &$items, $display) {
+  $settings = $display['settings'];
+
+  $element = array();
+  switch ($display['type']) {
+    case 'iq_fieldvalue_count':
+      $element[0] = array('#markup' => count($items));
+      break;
+
+  }
+
+  return $element;
+}
+
+/**
+ * Set UI language to node's language.
+ *
+ * Implements hook_ctools_render_alter().
+ */
+function iq_helper_ctools_render_alter(&$info, &$page, &$context) {
+  // FIXME: This function seems to do nothing at all.
+  foreach ($context['contexts'] as $ctools_context) {
+    if (is_array($ctools_context->type) && in_array('node', $ctools_context->type)) {
+      global $language;
+      $languages = language_list();
+      $language = $languages['' . $ctools_context->data->language . ''];
+    }
+  }
+}
+
+/**
+ * Implements hook_node_presave().
+ *
+ * Fix Devel generate bugs.
+ */
+function iq_helper_node_presave($node) {
+  if (!empty($node->devel_generate)) {
+    // Anonymous and Admin user shouldn't be the creator of any content!
+    $users = entity_load('user');
+    unset($users[0]);
+    unset($users[1]);
+    $random_user = array_rand($users);
+    $node->uid = $users[$random_user]->uid;
+
+    // Solve og_group_ref problems.
+    if (!empty($node->og_group_ref)) {
+      $groups = og_get_all_group();
+      $random_group = array_rand($groups);
+      $node->og_group_ref[LANGUAGE_NONE][0]['target_id'] = $groups[$random_group];
+    }
+
+    if ($node->type == 'issue') {
+      $assign_to = &$node->field_issue_assigned_to;
+
+      // Unset the "assigned to" field, because it may contain multiple
+      // assignments. One assigned user should be fairly good enough.
+      unset($assign_to[LANGUAGE_NONE]);
+
+      // Get all OG groups and their members.
+      $query = db_select('og_membership', 'ogm');
+      $result = $query
+        ->fields('ogm', array('etid', 'gid'))
+        ->condition('ogm.entity_type', 'user')
+        ->execute()
+        ->fetchAll(PDO::FETCH_ASSOC);
+
+      if (!empty($result)) {
+        // Select one random group member. (This query etid = uid.)
+        $random_data = array_rand($result);
+        $assign_to[LANGUAGE_NONE][0]['target_id'] = $result[$random_data]['etid'];
+        // Issue/user story will be assigned to that group where the user is a
+        // member.
+        $node->og_group_ref[LANGUAGE_NONE][0]['target_id'] = $result[$random_data]['gid'];
+      }
+    }
+    // Just a little hack. Project managers should be only 'pmanager' users.
+    if ($node->type == 'project') {
+      // This isn't pretty, but it's working (and it is only for devel_generate).
+      $pmanager_hu_1 = user_load_by_name('pmanager-hu-1');
+      $pmanager_en_1 = user_load_by_name('pmanager-en-1');
+      $project_managers = array($pmanager_en_1, $pmanager_hu_1);
+      $random_user = array_rand($project_managers);
+      $user = $project_managers[$random_user];
+      $node->uid = $user->uid;
+
+      // Yes, it's an OG group node!
+      $node->group_group[LANGUAGE_NONE][0]['value'] = 1;
+    }
+  }
+}
+
+/**
+ * Implements hook_node_insert().
+ *
+ * Add three random group member for Devel generated projects.
+ * @see path_node_insert()
+ */
+function iq_helper_node_insert($node) {
+  /**
+   * Quasi-copy of path_node_insert() starts here.
+   */
+  if (isset($node->path)) {
+    $path = $node->path;
+    $path['alias'] = trim($path['alias']);
+    // Only save a non-empty alias.
+    if (!empty($path['alias'])) {
+      // Path aliases for our own content types should be language independent.
+      if (!in_array($node->type, array('project', 'issue', 'documentation', 'news'))) {
+        // Ensure fields for programmatic executions.
+        $langcode = entity_language('node', $node);
+      }
+      $path['source'] = 'node/' . $node->nid;
+      $path['language'] = isset($langcode) ? $langcode : LANGUAGE_NONE;
+      path_save($path);
+    }
+  }
+  /**
+   * Quasi-copy of path_node_insert() ends here.
+   */
+
+  if (!empty($node->devel_generate) && $node->type == 'project') {
+    $users = entity_load('user');
+
+    // Anonymous and Admin user can't be a project member.
+    unset($users[0]);
+    unset($users[1]);
+
+    $random_users = array_rand($users, 3);
+
+    // Get developer and customer og role ids.
+    $og_role_ids = db_select('og_role', 'ogr')
+      ->fields('ogr', array('name', 'rid'))
+      ->condition('name', array('developer', 'customer'), 'IN')
+      ->execute()
+      ->fetchAllKeyed();
+
+    for ($i = 0; $i < 3; $i++) {
+      $user = $users[$random_users[$i]];
+
+      // Create OG membership.
+      $og_membership = og_membership_create('node', $node->nid, 'user', $user->uid, 'og_user_node');
+      $og_membership->save();
+
+      // Add custom role for test users by their names.
+      if (strpos($user->name, 'developer') !== FALSE) {
+        og_role_grant('node', $node->nid, $user->uid, $og_role_ids['developer']);
+      }
+      if (strpos($user->name, 'customer') !== FALSE) {
+        og_role_grant('node', $node->nid, $user->uid, $og_role_ids['customer']);
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_node_update().
+ *
+ * @see path_node_update()
+ */
+function iq_helper_node_update($node) {
+  if (isset($node->path)) {
+    $path = $node->path;
+    $path['alias'] = trim($path['alias']);
+    // Delete old alias if user erased it.
+    if (!empty($path['pid']) && empty($path['alias'])) {
+      path_delete($path['pid']);
+    }
+    iq_helper_node_insert($node);
+  }
+}
+
+/**
+ * Implements hook_pathauto_alias_alter().
+ */
+function iq_helper_pathauto_alias_alter(&$alias, &$context) {
+  // Path aliases for our own content types should be language independent.
+  if ($context['module'] == 'node' && in_array($context['type'], array('project', 'issue', 'documentation', 'news'))) {
+    $context['language'] = LANGUAGE_NONE;
+  }
+}

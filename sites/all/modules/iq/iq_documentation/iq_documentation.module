@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the IssueQ documentation feature.
+ */
+
+include_once 'iq_documentation.features.inc';

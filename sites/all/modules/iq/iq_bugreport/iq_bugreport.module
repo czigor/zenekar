@@ -1,0 +1,75 @@
+<?php
+/**
+ * @file
+ * Code for the IssueQ Bug report feature.
+ */
+
+include_once 'iq_bugreport.features.inc';
+
+/**
+ * Implements hook_block_info().
+ */
+function iq_bugreport_block_info() {
+  $return = array();
+  $return['bugreport'] = array(
+    'info' => t('IssueQ bugreport'),
+    'cache' => DRUPAL_NO_CACHE,
+  );
+  return $return;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function iq_bugreport_block_view($delta = '') {
+  $block = array();
+  switch ($delta) {
+    case 'bugreport':
+      $block['subject'] = t('Report a bug');
+      $block['content'] = drupal_get_form('iq_bugreport_block_form');
+    break;
+  }
+  return $block;
+}
+
+/**
+ * Simple form for bugreport block.
+ */
+function iq_bugreport_block_form($form) {
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t('Report a bug'),
+  );
+  return $form;
+}
+
+/**
+ * Stores the current URL to the session and redirects to the bug report form.
+ */
+function iq_bugreport_block_form_submit($form, &$form_state) {
+  global $base_url;
+  $_SESSION['iq_bugreport_url'] = $base_url . request_uri();
+  $form_state['redirect'] = 'bugreport';
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function iq_bugreport_form_bugreport_entityform_edit_form_alter(&$form, &$form_state) {
+  global $user;
+  if (isset($_SESSION['iq_bugreport_url'])) {
+    $form['field_bugreport_url'][LANGUAGE_NONE][0]['value']['#default_value'] = $_SESSION['iq_bugreport_url'];
+  }
+  $form['field_bugreport_reporter_name'][LANGUAGE_NONE][0]['value']['#default_value'] = $user->name;
+  $form['field_bugreport_reporter_email'][LANGUAGE_NONE][0]['value']['#default_value'] = $user->mail;
+  $form['#validate'][] = 'iq_bugreport_form_bugreport_entityform_edit_form_alter_validate';
+}
+
+/**
+ * Custom validator for the email field of the bugreport form.
+ */
+function iq_bugreport_form_bugreport_entityform_edit_form_alter_validate($form, &$form_state) {
+  if ($error = user_validate_mail($form_state['values']['field_bugreport_reporter_email'][LANGUAGE_NONE][0]['value'])) {
+    form_set_error('field_bugreport_reporter_email][' . LANGUAGE_NONE . '][0][value', $error);
+  }
+}

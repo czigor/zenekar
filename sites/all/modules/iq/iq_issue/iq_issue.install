@@ -1,0 +1,1610 @@
+<?php
+/**
+ * @file
+ * Install, uninstall and update functions for IssueQ issue.
+ */
+
+/**
+ * Internal helper function; stores node titles into various other tables.
+ *
+ * @param $table
+ *   Table to merge the data to.
+ * @param $nid
+ *   The {node}.nid the title is for.
+ * @param $vid
+ *   The {node}.vid the title is for.
+ * @param $language
+ *   The {node}.language the title is for.
+ * @param $title
+ *   The title to be stored.
+ */
+function _iq_issue_update_store_node_title($table, $type, $nid, $vid, $language, $title) {
+  $key = array(
+    'entity_type' => 'node',
+    'entity_id' => $nid,
+    'deleted' => 0,
+    'delta' => 0,
+    'language' => $language,
+  );
+  $fields = array(
+    'bundle' => 'issue',
+    'title_field_value' => $title,
+    'title_field_format' => NULL,
+  );
+  switch ($type) {
+    case 'revision':
+      $key['revision_id'] = $vid;
+      break;
+    case 'data':
+      $fields['revision_id'] = $vid;
+      break;
+  }
+  db_merge('field_' . $type . '_' . $table)
+    ->key($key)
+    ->fields($fields)
+    ->execute();
+}
+
+/**
+ * Internal helper function to convert issue node title to title_field.
+ *
+ * @param $nid
+ *   The {node}.nid to be converted.
+ *
+ * @see iq_issue_update_7000()
+ */
+function _iq_issue_update_convert_title_field($nid) {
+  $node = node_load($nid);
+  $title_result = db_select('node_revision', 'nr')
+    ->fields('nr', array('nid', 'vid', 'uid', 'title'))
+    ->condition('nid', $node->nid)
+    ->execute();
+  // Reflect title changes in revisions in title_field, both for the actual
+  // language and LANGUAGE_NONE.
+  foreach ($title_result as $title) {
+    _iq_issue_update_store_node_title('title_field', 'revision', $title->nid, $title->vid, $node->language, $title->title);
+    _iq_issue_update_store_node_title('title_field', 'revision', $title->nid, $title->vid, LANGUAGE_NONE, $title->title);
+  }
+  // Reflect latest/current title in title.field, both for the actual
+  // language and LANGUAGE_NONE. We can't rely upon the $node->title, since
+  // title.module is already enabled, and it overwrites it during
+  // node_load() from {field_data_title_field} data – exactly what we are
+  // trying to invent right now.
+  $node_title = db_select('node', 'n')
+    ->fields('n', array('title'))
+    ->condition('nid', $node->nid)
+    ->execute()
+    ->fetchField();
+  _iq_issue_update_store_node_title('title_field', 'data', $node->nid, $node->vid, $node->language, $node_title);
+  _iq_issue_update_store_node_title('title_field', 'data', $node->nid, $node->vid, LANGUAGE_NONE, $node_title);
+  // Clear the static loading cache (just like node_save() does).
+  entity_get_controller('node')->resetCache(array($node->nid));
+}
+
+/**
+ * Fix a buggy user_story before proceeding.
+ */
+function iq_issue_update_7000() {
+  $node = node_load(2);
+  $node->og_group_ref[LANGUAGE_NONE][0]['target_id'] = 3;
+  node_save($node);
+}
+
+/**
+ * Copies issue.title values to issue.title_field.
+ */
+function iq_issue_update_7001(&$sandbox) {
+  if (!isset($sandbox['progress'])) {
+    $sandbox['progress'] = 0;
+    $sandbox['current_nid'] = 0;
+    $query = new EntityFieldQuery();
+    $sandbox['max'] = $query->entityCondition('entity_type', 'node')
+      ->entityCondition('bundle', 'issue')
+      ->addTag('DANGEROUS_ACCESS_CHECK_OPT_OUT')
+      ->count()
+      ->execute();
+  }
+
+  // Handle 10 issue nodes in a go.
+  $query = new EntityFieldQuery();
+  $result = $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'issue')
+    ->propertyCondition('nid', $sandbox['current_nid'], '>')
+    ->addTag('DANGEROUS_ACCESS_CHECK_OPT_OUT')
+    ->propertyOrderBy('nid')
+    ->range(0, 10)
+    ->execute();
+
+  if (!empty($result['node'])) {
+    foreach ($result['node'] as $node) {
+      _iq_issue_update_convert_title_field($node->nid);
+      $sandbox['progress']++;
+      $sandbox['current_nid'] = $node->nid;
+    }
+  }
+  $sandbox['#finished'] = empty($sandbox['max']) ? 1 : ($sandbox['progress'] / $sandbox['max']);
+}
+
+/**
+ * Moves issue.comment.attachments to issue.attachments.
+ */
+function iq_issue_update_7002(&$sandbox) {
+  if (!isset($sandbox['progress'])) {
+    $sandbox['progress'] = 0;
+    $sandbox['current_cid'] = 0;
+    $query = new EntityFieldQuery();
+    $sandbox['max'] = $query->entityCondition('entity_type', 'comment')
+      ->fieldCondition('field_issue_comment_attachments', 'fid', 0, '>')
+      ->addTag('DANGEROUS_ACCESS_CHECK_OPT_OUT')
+      ->count()
+      ->execute();
+  }
+
+  // Handle 25 affected comments in a go.
+  $query = new EntityFieldQuery();
+  $result = $query->entityCondition('entity_type', 'comment')
+    ->fieldCondition('field_issue_comment_attachments', 'fid', 0, '>')
+    ->propertyCondition('cid', $sandbox['current_cid'], '>')
+    ->addTag('DANGEROUS_ACCESS_CHECK_OPT_OUT')
+    ->range(0, 25)
+    ->execute();
+
+  if (!empty($result['comment'])) {
+    foreach ($result['comment'] as $comment) {
+      $comment = comment_load($comment->cid);
+      // If this comment has altered some node properties, then comment_alter
+      // does have the revision info. In this case we are storing the new files
+      // to that particular revision of the node, IOW reusing that revision.
+      if (isset($comment->comment_alter)) {
+        $node = node_load($comment->nid, $comment->comment_alter['new_vid']);
+      }
+      // If the comment did not have any node revision attached (by
+      // comment_alter), then we are going to create a new revision.
+      else {
+        $node = node_load($comment->nid);
+        $node->log = t('This node revision was created by iq_issue_update_7000() while moving comment.attachments to issue.attachments.');
+        $node->revision = TRUE;
+      }
+      foreach ($comment->field_issue_comment_attachments[LANGUAGE_NONE] as $file) {
+        $node->field_issue_attachments[LANGUAGE_NONE][] = $file;
+      }
+      $comment->field_issue_comment_attachments = array();
+      // Disable node/comment updated notifications.
+      if (module_exists('notifications_content')) {
+        $node->notifications_content_disable = TRUE;
+        $comment->notifications_content_disable = TRUE;
+      }
+      node_save($node);
+      // There is no such a thing as comment_alter_comment_update(). Because of
+      // this, we have to mimic the effect of adding a revision while editing
+      // the comment.
+      if (!empty($node->revision)) {
+        $comment_alter = array(
+          'cid' => $comment->cid,
+          'old_vid' => $node->old_vid,
+          'new_vid' => $node->vid,
+        );
+        drupal_write_record('comment_alter', $comment_alter);
+      }
+      // Comment_timer needs special treatment when resaving comments.
+      $comment->comment_timer = array('seconds' => _comment_timer_seconds_to_hms($comment->comment_timer));
+      comment_save($comment);
+      $sandbox['progress']++;
+      $sandbox['current_cid'] = $comment->cid;
+    }
+  }
+  $sandbox['#finished'] = empty($sandbox['max']) ? 1 : ($sandbox['progress'] / $sandbox['max']);
+}
+
+/**
+ * Removes the no longer needed issue.comment.attachments field.
+ */
+function iq_issue_update_7003() {
+  // @see http://dropbucket.org/node/668
+  // @see http://drupal.stackexchange.com/questions/46085/programatically-remove-a-field-from-a-node
+  field_delete_field('field_issue_comment_attachments');
+  field_purge_batch(10);
+}
+
+/**
+ * Moves issue.priority values to issue.business_value.
+ */
+function iq_issue_update_7004(&$sandbox) {
+  if (!isset($sandbox['progress'])) {
+    $sandbox['progress'] = 0;
+    $sandbox['current_nid'] = 0;
+    // Cache terms' weight for speed.
+    $vocabulary = taxonomy_vocabulary_machine_name_load('issue_priorities');
+    $sandbox['terms'] = array();
+    foreach (taxonomy_get_tree($vocabulary->vid) as $term) {
+      $sandbox['terms'][$term->tid] = 5 - $term->weight;
+    }
+    $query = new EntityFieldQuery();
+    $sandbox['max'] = $query->entityCondition('entity_type', 'node')
+      ->entityCondition('bundle', 'issue')
+      ->addTag('DANGEROUS_ACCESS_CHECK_OPT_OUT')
+      ->count()
+      ->execute();
+  }
+
+  // Handle 10 issue nodes in a go.
+  $query = new EntityFieldQuery();
+  $result = $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'issue')
+    ->propertyCondition('nid', $sandbox['current_nid'], '>')
+    ->addTag('DANGEROUS_ACCESS_CHECK_OPT_OUT')
+    ->propertyOrderBy('nid')
+    ->range(0, 10)
+    ->execute();
+
+  if (!empty($result['node'])) {
+    foreach ($result['node'] as $node) {
+      foreach (array('data', 'revision') as $table) {
+        $from_table = 'field_' . $table . '_field_issue_priority';
+        $to_table = 'field_' . $table . '_field_issue_business_value';
+        $value_result = db_select($from_table, 'fdf_ip')
+          ->fields('fdf_ip')
+          ->condition('entity_type', 'node')
+          ->condition('entity_id', $node->nid)
+          ->execute();
+        foreach ($value_result as $value) {
+          $value->field_issue_business_value_value = $sandbox['terms'][$value->field_issue_priority_tid];
+          unset($value->field_issue_priority_tid);
+          drupal_write_record($to_table, $value);
+        }
+        db_delete($from_table)
+          ->condition('entity_type', 'node')
+          ->condition('entity_id', $node->nid)
+          ->execute();
+      }
+      // Clear the static loading cache (just like node_save() does).
+      entity_get_controller('node')->resetCache(array($node->nid));
+
+      $sandbox['progress']++;
+      $sandbox['current_nid'] = $node->nid;
+    }
+  }
+  $sandbox['#finished'] = empty($sandbox['max']) ? 1 : ($sandbox['progress'] / $sandbox['max']);
+}
+
+/**
+ * Removes the no longer needed issue.priority field.
+ */
+function iq_issue_update_7005() {
+  // @see http://dropbucket.org/node/668
+  // @see http://drupal.stackexchange.com/questions/46085/programatically-remove-a-field-from-a-node
+  field_delete_field('field_issue_priority');
+  field_purge_batch(10);
+}
+
+/**
+ * Removes issue_priorities vocabulary with all its related data.
+ */
+function iq_issue_update_7006() {
+  $vocabulary = taxonomy_vocabulary_machine_name_load('issue_priorities');
+  $sandbox['terms'] = array();
+  foreach (taxonomy_get_tree($vocabulary->vid) as $term) {
+    taxonomy_term_delete($term->tid);
+  }
+  // @see http://dropbucket.org/node/668
+  // @see http://drupal.stackexchange.com/questions/46085/programatically-remove-a-field-from-a-node
+  field_delete_field('field_issue_priorities_bg_color');
+  field_purge_batch(10);
+  taxonomy_vocabulary_delete($vocabulary->vid);
+  variable_del('field_bundle_settings_taxonomy_term__issue_priorities');
+  variable_del('pathauto_taxonomy_term_issue_priorities_pattern');
+  // Just to be sure.
+  cache_clear_all();
+}
+
+/**
+ * Moves issue.body values to issue.description.
+ */
+function iq_issue_update_7007(&$sandbox) {
+  if (!isset($sandbox['progress'])) {
+    $sandbox['progress'] = 0;
+    $sandbox['current_nid'] = 0;
+    $query = new EntityFieldQuery();
+    $sandbox['max'] = $query->entityCondition('entity_type', 'node')
+      ->entityCondition('bundle', 'issue')
+      ->addTag('DANGEROUS_ACCESS_CHECK_OPT_OUT')
+      ->count()
+      ->execute();
+  }
+
+  // Handle 10 issue nodes in a go.
+  $query = new EntityFieldQuery();
+  $result = $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'issue')
+    ->propertyCondition('nid', $sandbox['current_nid'], '>')
+    ->addTag('DANGEROUS_ACCESS_CHECK_OPT_OUT')
+    ->propertyOrderBy('nid')
+    ->range(0, 10)
+    ->execute();
+
+  if (!empty($result['node'])) {
+    foreach ($result['node'] as $node) {
+      foreach (array('data', 'revision') as $table) {
+        $from_table = 'field_' . $table . '_field_issue_body';
+        $to_table = 'field_' . $table . '_field_issue_description';
+        $value_result = db_select($from_table, 'fdf_ib')
+          ->fields('fdf_ib')
+          ->condition('entity_type', 'node')
+          ->condition('entity_id', $node->nid)
+          ->execute();
+        foreach ($value_result as $value) {
+          foreach (array('value', 'summary', 'format') as $column) {
+            $value->{'field_issue_description_' . $column} = $value->{'field_issue_body_' . $column};
+            unset($value->{'field_issue_body_' . $column});
+          }
+          db_insert($to_table)
+            ->fields((array) $value)
+            ->execute();
+        }
+        db_delete($from_table)
+          ->condition('entity_type', 'node')
+          ->condition('entity_id', $node->nid)
+          ->execute();
+      }
+      // Clear the static loading cache (just like node_save() does).
+      entity_get_controller('node')->resetCache(array($node->nid));
+
+      $sandbox['progress']++;
+      $sandbox['current_nid'] = $node->nid;
+    }
+  }
+  $sandbox['#finished'] = empty($sandbox['max']) ? 1 : ($sandbox['progress'] / $sandbox['max']);
+}
+
+/**
+ * Removes the no longer needed issue.body field.
+ */
+function iq_issue_update_7008() {
+  // @see http://dropbucket.org/node/668
+  // @see http://drupal.stackexchange.com/questions/46085/programatically-remove-a-field-from-a-node
+  field_delete_field('field_issue_body');
+  field_purge_batch(10);
+}
+
+/**
+ * Converts issue.status allowed values to taxonomy terms and store the mapping.
+ */
+function iq_issue_update_7009() {
+  $map = array();
+  $vocabulary = taxonomy_vocabulary_machine_name_load('issue_status');
+  $field = field_info_field('field_issue_status');
+  foreach (list_allowed_values($field) as $key => $value) {
+    $term = (object) array(
+      'vid' => $vocabulary->vid,
+      'name' => $value,
+      'weight' => $key,
+      // Kanban fields are not mandatory and this term is not a kanban one, so
+      // explicitly no need to store them.
+    );
+    taxonomy_term_save($term);
+    $map[$key] = $term->tid;
+  }
+  // Store the field value -> term ID map.
+  variable_set('iq_issue_status_map', $map);
+}
+
+/**
+ * Moves issue.status values to issue.status_term (with mapping).
+ */
+function iq_issue_update_7010(&$sandbox) {
+  if (!isset($sandbox['progress'])) {
+    $sandbox['progress'] = 0;
+    $sandbox['current_nid'] = 0;
+    $query = new EntityFieldQuery();
+    $sandbox['max'] = $query->entityCondition('entity_type', 'node')
+      ->entityCondition('bundle', 'issue')
+      ->addTag('DANGEROUS_ACCESS_CHECK_OPT_OUT')
+      ->count()
+      ->execute();
+  }
+
+  // Handle 10 issue nodes in a go.
+  $query = new EntityFieldQuery();
+  $result = $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'issue')
+    ->propertyCondition('nid', $sandbox['current_nid'], '>')
+    ->addTag('DANGEROUS_ACCESS_CHECK_OPT_OUT')
+    ->propertyOrderBy('nid')
+    ->range(0, 10)
+    ->execute();
+
+  if (!empty($result['node'])) {
+    $map = variable_get('iq_issue_status_map', array());
+    foreach ($result['node'] as $node) {
+      foreach (array('data', 'revision') as $table) {
+        $from_table = 'field_' . $table . '_field_issue_status';
+        $to_table = 'field_' . $table . '_field_issue_status_term';
+        $value_result = db_select($from_table, 'fdf_is')
+          ->fields('fdf_is')
+          ->condition('entity_type', 'node')
+          ->condition('entity_id', $node->nid)
+          ->execute();
+        foreach ($value_result as $value) {
+          $value->field_issue_status_term_tid = $map[$value->field_issue_status_value];
+          unset($value->field_issue_status_value);
+          db_insert($to_table)
+            ->fields((array) $value)
+            ->execute();
+        }
+        db_delete($from_table)
+          ->condition('entity_type', 'node')
+          ->condition('entity_id', $node->nid)
+          ->execute();
+      }
+      // Clear the static loading cache (just like node_save() does).
+      entity_get_controller('node')->resetCache(array($node->nid));
+
+      $sandbox['progress']++;
+      $sandbox['current_nid'] = $node->nid;
+    }
+  }
+  $sandbox['#finished'] = empty($sandbox['max']) ? 1 : ($sandbox['progress'] / $sandbox['max']);
+}
+
+/**
+ * Moves user_story_status taxonomy terms to issue_status vocabulary.
+ */
+function iq_issue_update_7011(&$sandbox) {
+  if (!isset($sandbox['progress'])) {
+    $sandbox['progress'] = 0;
+    $sandbox['current_tid'] = 0;
+    $query = new EntityFieldQuery();
+    $sandbox['max'] = $query->entityCondition('entity_type', 'taxonomy_term')
+      ->entityCondition('bundle', 'user_story_status')
+      ->addTag('DANGEROUS_ACCESS_CHECK_OPT_OUT')
+      ->count()
+      ->execute();
+  }
+
+  // Handle 10 user_story_status terms in a go.
+  $query = new EntityFieldQuery();
+  $result = $query->entityCondition('entity_type', 'taxonomy_term')
+    ->entityCondition('bundle', 'user_story_status')
+    ->propertyCondition('tid', $sandbox['current_tid'], '>')
+    ->addTag('DANGEROUS_ACCESS_CHECK_OPT_OUT')
+    ->propertyOrderBy('tid')
+    ->range(0, 10)
+    ->execute();
+
+  if (!empty($result['taxonomy_term'])) {
+    $vid = taxonomy_vocabulary_machine_name_load('issue_status')->vid;
+    foreach ($result['taxonomy_term'] as $term) {
+      foreach (array('data', 'revision') as $table) {
+        $from_table = 'field_' . $table . '_field_user_story_status_limit';
+        $to_table = 'field_' . $table . '_field_issue_status_limit';
+        $value_result = db_select($from_table, 'fdf_ussl')
+          ->fields('fdf_ussl')
+          ->condition('entity_type', 'taxonomy_term')
+          ->condition('entity_id', $term->tid)
+          ->execute();
+        foreach ($value_result as $value) {
+          $value->field_issue_status_limit_value = $value->field_user_story_status_limit_value;
+          unset($value->field_user_story_status_limit_value);
+          db_insert($to_table)
+            ->fields((array) $value)
+            ->execute();
+        }
+        db_delete($from_table)
+          ->condition('entity_type', 'taxonomy_term')
+          ->condition('entity_id', $term->tid)
+          ->execute();
+        // Mark this term as a kanban one.
+        db_insert('field_' . $table . '_field_issue_status_kanban')
+          ->fields(array(
+            'entity_type' => 'taxonomy_term',
+            'bundle' => 'issue_status',
+            'deleted' => 0,
+            'entity_id' => $term->tid,
+            'revision_id' => $term->tid,
+            'language' => LANGUAGE_NONE,
+            'delta' => 0,
+            'field_issue_status_kanban_value' => 1,
+          ))
+          ->execute();
+      }
+      // Move the term to the issue_status vocabulary.
+      db_update('taxonomy_term_data')
+        ->fields(array('vid' => $vid))
+        ->condition('tid', $term->tid)
+        ->execute();
+      // Clear the taxonomy terms cache (almost like taxonomy_term_save() does).
+      taxonomy_terms_static_reset();
+
+      $sandbox['progress']++;
+      $sandbox['current_tid'] = $term->tid;
+    }
+  }
+  $sandbox['#finished'] = empty($sandbox['max']) ? 1 : ($sandbox['progress'] / $sandbox['max']);
+}
+
+/**
+ * Moves user_story_tags taxonomy terms to issue_tags vocabulary.
+ */
+function iq_issue_update_7012() {
+  db_update('taxonomy_term_data')
+    ->fields(array(
+      'vid' => taxonomy_vocabulary_machine_name_load('issue_tags')->vid,
+    ))
+    ->condition('vid', taxonomy_vocabulary_machine_name_load('user_story_tags')->vid)
+    ->execute();
+  // Clear the taxonomy terms cache (almost like taxonomy_term_save() does).
+  taxonomy_terms_static_reset();
+}
+
+/**
+ * Regenerates path aliases of (possibly) moved taxonomy terms.
+ */
+function iq_issue_update_7013() {
+  // @see http://stackoverflow.com/a/12200672
+  global $conf;
+  module_load_include('inc', 'pathauto');
+  module_load_include('inc', 'pathauto.pathauto');
+  $vids = array(
+    taxonomy_vocabulary_machine_name_load('issue_tags')->vid,
+    taxonomy_vocabulary_machine_name_load('issue_status')->vid,
+  );
+  // Get all terms that need to be updated.
+  $query = db_select('taxonomy_term_data', 'ttd');
+  $query->addField('ttd', 'tid');
+  $query->condition('vid', $vids, 'IN');
+  $tids = $query->execute()->fetchCol();
+  // Temporarily set the update action to overwrite.
+  $conf['pathauto_update_action'] = PATHAUTO_UPDATE_ACTION_DELETE;
+  pathauto_taxonomy_term_update_alias_multiple($tids, 'bulkupdate');
+  // Clear the taxonomy terms cache (almost like taxonomy_term_save() does).
+  taxonomy_terms_static_reset();
+}
+
+/**
+ * Removes the no longer needed/oldish issue.status field.
+ */
+function iq_issue_update_7014() {
+  // @see http://dropbucket.org/node/668
+  // @see http://drupal.stackexchange.com/questions/46085/programatically-remove-a-field-from-a-node
+  field_delete_field('field_issue_status');
+  field_purge_batch(10);
+}
+
+/**
+ * Converts user_story nodes to issue ones.
+ */
+function iq_issue_update_7015(&$sandbox) {
+  if (!isset($sandbox['progress'])) {
+    $sandbox['progress'] = 0;
+    $sandbox['current_nid'] = 0;
+    $query = new EntityFieldQuery();
+    $sandbox['max'] = $query->entityCondition('entity_type', 'node')
+      ->entityCondition('bundle', 'user_story')
+      ->addTag('DANGEROUS_ACCESS_CHECK_OPT_OUT')
+      ->count()
+      ->execute();
+  }
+
+  // Handle 5 user_story nodes in a go.
+  $query = new EntityFieldQuery();
+  $result = $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'user_story')
+    ->propertyCondition('nid', $sandbox['current_nid'], '>')
+    ->addTag('DANGEROUS_ACCESS_CHECK_OPT_OUT')
+    ->propertyOrderBy('nid')
+    ->range(0, 5)
+    ->execute();
+
+  if (!empty($result['node'])) {
+    $convert_fields = array(
+      // field_user_story_assigned_to -> field_issue_assigned_to (target_id), only with delta = 0.
+      'assigned_to' => array(
+        'table' => 'assigned_to',
+        'columns' => array(
+          'target_id',
+        ),
+      ),
+      // field_user_story_attachments -> field_issue_attachments (fid, display, description).
+      'attachments' => array(
+        'table' => 'attachments',
+        'columns' => array(
+          'fid',
+          'display',
+          'description',
+        ),
+      ),
+      // field_user_story_business_value -> field_issue_business_value (value).
+      'business_value' => array(
+        'table' => 'business_value',
+        'columns' => array(
+          'value',
+        ),
+      ),
+      // field_user_story_description -> field_issue_description (value, summary, format).
+      'description' => array(
+        'table' => 'description',
+        'columns' => array(
+          'value',
+          'summary',
+          'format',
+        ),
+      ),
+      // field_user_story_done_if_when -> field_issue_done_if_when (value, format).
+      'done_if_when' => array(
+        'table' => 'done_if_when',
+        'columns' => array(
+          'value',
+          'format',
+        ),
+      ),
+      // field_user_story_estimate -> field_issue_estimate (value).
+      'estimate' => array(
+        'table' => 'estimate',
+        'columns' => array(
+          'value',
+        ),
+      ),
+      // field_user_story_how_to_demo -> field_issue_how_to_demo (value, format).
+      'how_to_demo' => array(
+        'table' => 'how_to_demo',
+        'columns' => array(
+          'value',
+          'format',
+        ),
+      ),
+      // field_user_story_related_issues -> field_issue_related (target_id).
+      'related_issues' => array(
+        'table' => 'related',
+        'columns' => array(
+          'target_id',
+        ),
+      ),
+      // field_user_story_status -> field_issue_status_term (tid).
+      'status' => array(
+        'table' => 'status_term',
+        'columns' => array(
+          'tid',
+        ),
+      ),
+      // field_user_story_tags -> field_issue_tags (tid).
+      'tags' => array(
+        'table' => 'tags',
+        'columns' => array(
+          'tid',
+        ),
+      ),
+    );
+    // Collect issue parents in the {variable} table (and set the proper parents
+    // in another hook_update_N() later).
+    $issue_parents = variable_get('iq_issue_parents', array());
+    // Cycle through the five nodes.
+    foreach ($result['node'] as $node) {
+      // Collect data about related_issues first.
+      $related_issues = db_select('field_data_field_user_story_related_issues', 'fdf_usri')
+        ->fields('fdf_usri', array('field_user_story_related_issues_target_id'))
+        ->condition('entity_type', 'node')
+        ->condition('bundle', 'user_story')
+        ->condition('entity_id', $node->nid)
+        ->orderBy('delta')
+        ->execute();
+      foreach ($related_issues as $related_issue) {
+        $issue_parents[$related_issue->field_user_story_related_issues_target_id] = $node->nid;
+      }
+      // Handle both the field_data_field_... and field_revision_field_...
+      // tables the same way.
+      foreach (array('data', 'revision') as $table) {
+        // Cycle through all the to-be-converted tables.
+        foreach ($convert_fields as $from => $to) {
+          $from_table = 'field_' . $table . '_field_user_story_' . $from;
+          $to_table = 'field_' . $table . '_field_issue_' . $to['table'];
+          $value_result = db_select($from_table, 'fdf_us')
+            ->fields('fdf_us')
+            ->condition('entity_type', 'node')
+            ->condition('entity_id', $node->nid)
+            ->execute();
+          // Cycle through all the found values in that table.
+          foreach ($value_result as $value) {
+            // Cycle through the to-be-converted columns in that table.
+            foreach ($to['columns'] as $column) {
+              $value->{'field_issue_' . $to['table'] . '_' . $column} = $value->{'field_user_story_' . $from . '_' . $column};
+              unset($value->{'field_user_story_' . $from . '_' . $column});
+            }
+            db_insert($to_table)
+              ->fields((array) $value)
+              ->execute();
+          }
+          db_delete($from_table)
+            ->condition('entity_type', 'node')
+            ->condition('entity_id', $node->nid)
+            ->execute();
+          // The 'assigned_to' table needs special attention as the source is a
+          // multi-value field, but the destination is only a single-value one.
+          db_delete($from_table)
+            ->condition('entity_type', 'node')
+            ->condition('entity_id', $node->nid)
+            ->condition('delta', 0, '>')
+            ->execute();
+        }
+      }
+      // Finally, let's switch the node type itself.
+      db_update('node')
+        ->fields(array(
+          'type' => 'issue',
+          'comment' => COMMENT_NODE_OPEN,
+        ))
+        ->condition('nid', $node->nid)
+        ->execute();
+      db_update('node_revision')
+        ->fields(array(
+          'comment' => COMMENT_NODE_OPEN,
+        ))
+        ->condition('nid', $node->nid)
+        ->execute();
+      // Clear the static loading cache (just like node_save() does).
+      entity_get_controller('node')->resetCache(array($node->nid));
+      // Issues converted from user_story nodes should have the 'General task'
+      // issue.type and should be displayed on the kanban board.
+      $revisions = db_select('node_revision', 'nr')
+        ->fields('nr', array('vid'))
+        ->condition('nid', $node->nid)
+        ->orderBy('vid')
+        ->execute();
+      foreach ($revisions as $revision) {
+        $type_values = array(
+          'entity_type' => 'node',
+          'bundle' => 'issue',
+          'deleted' => 0,
+          'entity_id' => $node->nid,
+          'revision_id' => $revision->vid,
+          'language' => LANGUAGE_NONE,
+          'delta' => 0,
+          'field_issue_type_value' => 2, // 'General task'.
+        );
+        db_insert('field_revision_field_issue_type')
+          ->fields($type_values)
+          ->execute();
+        $kanban_values = array(
+          'entity_type' => 'node',
+          'bundle' => 'issue',
+          'deleted' => 0,
+          'entity_id' => $node->nid,
+          'revision_id' => $revision->vid,
+          'language' => LANGUAGE_NONE,
+          'delta' => 0,
+          'field_issue_kanban_value' => 1,
+        );
+        db_insert('field_revision_field_issue_kanban')
+          ->fields($kanban_values)
+          ->execute();
+      }
+      db_insert('field_data_field_issue_type')
+        ->fields($type_values)
+        ->execute();
+      db_insert('field_data_field_issue_kanban')
+        ->fields($kanban_values)
+        ->execute();
+      // Don't forget about converting node title into title_field.
+      _iq_issue_update_convert_title_field($node->nid);
+
+      $sandbox['progress']++;
+      $sandbox['current_nid'] = $node->nid;
+    }
+    variable_set('iq_issue_parents', $issue_parents);
+  }
+  $sandbox['#finished'] = empty($sandbox['max']) ? 1 : ($sandbox['progress'] / $sandbox['max']);
+}
+
+/**
+ * Sets the parents of issues for those issues that were user_stories before.
+ */
+function iq_issue_update_7016(&$sandbox) {
+  $issue_parents = variable_get('iq_issue_parents', array());
+  foreach ($issue_parents as $issue_nid => $parent_nid) {
+    $issue_vid = db_select('node', 'n')
+      ->fields('n', array('vid'))
+      ->condition('nid', $issue_nid)
+      ->execute()
+      ->fetchField();
+    $values = array(
+      'entity_type' => 'node',
+      'bundle' => 'issue',
+      'deleted' => 0,
+      'entity_id' => $issue_nid,
+      'revision_id' => $issue_vid,
+      'language' => LANGUAGE_NONE,
+      'delta' => 0,
+      'field_issue_parent_target_id' => $parent_nid,
+    );
+    db_insert('field_revision_field_issue_parent')
+      ->fields($values)
+      ->execute();
+    db_insert('field_data_field_issue_parent')
+      ->fields($values)
+      ->execute();
+    // Clear the static loading cache (just like node_save() does).
+    entity_get_controller('node')->resetCache(array($issue_nid));
+  }
+  variable_del('iq_issue_parents');
+}
+
+/**
+ * Regenerates path aliases of (possibly) converted issue nodes.
+ */
+function iq_issue_update_7017() {
+  // @see http://stackoverflow.com/a/12200672
+  global $conf;
+  module_load_include('inc', 'pathauto');
+  module_load_include('inc', 'pathauto.pathauto');
+  // Get all nodes that need to be updated.
+  $nids = db_select('node', 'n')
+    ->fields('n', array('nid'))
+    ->condition('type', 'issue')
+    ->execute()
+    ->fetchCol();
+  // Temporarily set the update action to overwrite.
+  $conf['pathauto_update_action'] = PATHAUTO_UPDATE_ACTION_DELETE;
+  pathauto_node_update_alias_multiple($nids, 'bulkupdate');
+  // Clear the static loading cache (just like node_save() does).
+  entity_get_controller('node')->resetCache($nids);
+}
+
+/**
+ * Removes the no longer needed/oldish user_story.assigned_to field.
+ */
+function iq_issue_update_7018() {
+  // @see http://dropbucket.org/node/668
+  // @see http://drupal.stackexchange.com/questions/46085/programatically-remove-a-field-from-a-node
+  field_delete_field('field_user_story_assigned_to');
+  field_purge_batch(10);
+}
+
+/**
+ * Removes the no longer needed/oldish user_story.attachments field.
+ */
+function iq_issue_update_7019() {
+  // @see http://dropbucket.org/node/668
+  // @see http://drupal.stackexchange.com/questions/46085/programatically-remove-a-field-from-a-node
+  field_delete_field('field_user_story_attachments');
+  field_purge_batch(10);
+}
+
+/**
+ * Removes the no longer needed/oldish user_story.business_value field.
+ */
+function iq_issue_update_7020() {
+  // @see http://dropbucket.org/node/668
+  // @see http://drupal.stackexchange.com/questions/46085/programatically-remove-a-field-from-a-node
+  field_delete_field('field_user_story_business_value');
+  field_purge_batch(10);
+}
+
+/**
+ * Removes the no longer needed/oldish user_story.description field.
+ */
+function iq_issue_update_7021() {
+  // @see http://dropbucket.org/node/668
+  // @see http://drupal.stackexchange.com/questions/46085/programatically-remove-a-field-from-a-node
+  field_delete_field('field_user_story_description');
+  field_purge_batch(10);
+}
+
+/**
+ * Removes the no longer needed/oldish user_story.done_if_when field.
+ */
+function iq_issue_update_7022() {
+  // @see http://dropbucket.org/node/668
+  // @see http://drupal.stackexchange.com/questions/46085/programatically-remove-a-field-from-a-node
+  field_delete_field('field_user_story_done_if_when');
+  field_purge_batch(10);
+}
+
+/**
+ * Removes the no longer needed/oldish user_story.estimate field.
+ */
+function iq_issue_update_7023() {
+  // @see http://dropbucket.org/node/668
+  // @see http://drupal.stackexchange.com/questions/46085/programatically-remove-a-field-from-a-node
+  field_delete_field('field_user_story_estimate');
+  field_purge_batch(10);
+}
+
+/**
+ * Removes the no longer needed/oldish user_story.how_to_demo field.
+ */
+function iq_issue_update_7024() {
+  // @see http://dropbucket.org/node/668
+  // @see http://drupal.stackexchange.com/questions/46085/programatically-remove-a-field-from-a-node
+  field_delete_field('field_user_story_how_to_demo');
+  field_purge_batch(10);
+}
+
+/**
+ * Removes the no longer needed/oldish user_story.related_issues field.
+ */
+function iq_issue_update_7025() {
+  // @see http://dropbucket.org/node/668
+  // @see http://drupal.stackexchange.com/questions/46085/programatically-remove-a-field-from-a-node
+  field_delete_field('field_user_story_related_issues');
+  field_purge_batch(10);
+}
+
+/**
+ * Removes the no longer needed/oldish user_story.status field.
+ */
+function iq_issue_update_7026() {
+  // @see http://dropbucket.org/node/668
+  // @see http://drupal.stackexchange.com/questions/46085/programatically-remove-a-field-from-a-node
+  field_delete_field('field_user_story_status');
+  field_purge_batch(10);
+}
+
+/**
+ * Removes the no longer needed/oldish user_story.tags field.
+ */
+function iq_issue_update_7027() {
+  // @see http://dropbucket.org/node/668
+  // @see http://drupal.stackexchange.com/questions/46085/programatically-remove-a-field-from-a-node
+  field_delete_field('field_user_story_tags');
+  field_purge_batch(10);
+}
+
+/**
+ * Fixes issue properties' bundle.
+ */
+function iq_issue_update_7028() {
+  $tables = array(
+    'assigned_to',
+    'attachments',
+    'business_value',
+    'description',
+    'done_if_when',
+    'estimate',
+    'how_to_demo',
+    'related',
+    'status_term',
+    'tags',
+  );
+  foreach (array('data', 'revision') as $type) {
+    foreach ($tables as $table) {
+      db_update('field_' . $type . '_field_issue_' . $table)
+        ->fields(array(
+          'bundle' => 'issue',
+        ))
+        ->condition('bundle', 'user_story')
+        ->execute();
+    }
+    db_update('field_' . $type . '_group_content_access')
+      ->fields(array(
+        'bundle' => 'issue',
+      ))
+      ->condition('bundle', 'user_story')
+      ->execute();
+  }
+  // Clear the static loading cache (almost like node_save() does, but for all
+  // nodes).
+  entity_get_controller('node')->resetCache();
+}
+
+/**
+ * Removes the no longer needed/oldish user_story.group_content_access field.
+ */
+function iq_issue_update_7029() {
+  // @see http://dropbucket.org/node/668
+  // @see http://drupal.stackexchange.com/questions/46085/programatically-remove-a-field-from-a-node
+  $instance = field_info_instance('node', 'group_content_access', 'user_story');
+  field_delete_instance($instance);
+  field_purge_batch(10);
+}
+
+/**
+ * Removes the no longer needed/oldish user_story.og_group_ref field.
+ */
+function iq_issue_update_7030() {
+  // @see http://dropbucket.org/node/668
+  // @see http://drupal.stackexchange.com/questions/46085/programatically-remove-a-field-from-a-node
+  $instance = field_info_instance('node', 'og_group_ref', 'user_story');
+  field_delete_instance($instance);
+  field_purge_batch(10);
+}
+
+/**
+ * Removes the no longer needed/oldish user_story_status.limit field.
+ */
+function iq_issue_update_7031() {
+  // @see http://dropbucket.org/node/668
+  // @see http://drupal.stackexchange.com/questions/46085/programatically-remove-a-field-from-a-node
+  field_delete_field('field_user_story_status_limit');
+  field_purge_batch(10);
+}
+
+/**
+ * Removes the no longer needed/oldish user_story vocabularies.
+ */
+function iq_issue_update_7032() {
+  taxonomy_vocabulary_delete(taxonomy_vocabulary_machine_name_load('user_story_status')->vid);
+  taxonomy_vocabulary_delete(taxonomy_vocabulary_machine_name_load('user_story_tags')->vid);
+  cache_clear_all();
+}
+
+/**
+ * Removes the no longer needed/oldish user_story content type altogether.
+ */
+function iq_issue_update_7033() {
+  // @see http://data.agaric.com/delete-content-type-programmatically-drupal-7
+  node_type_delete('user_story');
+  $variables = array(
+    'comment_anonymous_user_story',
+    'comment_default_mode_user_story',
+    'comment_default_per_page_user_story',
+    'comment_form_location_user_story',
+    'comment_preview_user_story',
+    'comment_subject_field_user_story',
+    'comment_user_story',
+    'field_bundle_settings_node__user_story',
+    'i18n_node_extended_user_story',
+    'i18n_node_options_user_story',
+    'language_content_type_user_story',
+    'menu_options_user_story',
+    'menu_parent_user_story',
+    'node_options_user_story',
+    'node_preview_user_story',
+    'node_submitted_user_story',
+    'pathauto_node_user_story_pattern',
+    'pathauto_taxonomy_term_user_story_status_pattern',
+    'pathauto_taxonomy_term_user_story_tags_pattern',
+  );
+  foreach ($variables as $variable) {
+    variable_del($variable);
+  }
+  node_types_rebuild();
+  menu_rebuild();
+  // Just to be sure.
+  cache_clear_all();
+}
+
+/**
+ * Turns on kanban board if it was turned on (switch from user_story feature to
+ * kanban_board feature).
+ */
+function iq_issue_update_7034() {
+  if (module_exists('iq_user_story')) {
+    module_enable(array('iq_kanban_board'));
+    module_disable(array('iq_user_story'));
+    cache_clear_all();
+  }
+}
+
+/**
+ * Fix issue properties regarding revisions (there was a bug in
+ * iq_issue_update_7015).
+ */
+function iq_issue_update_7035(&$sandbox) {
+  if (!isset($sandbox['progress'])) {
+    $sandbox['progress'] = 0;
+    $sandbox['current_nid'] = 0;
+    $query = new EntityFieldQuery();
+    $sandbox['max'] = $query->entityCondition('entity_type', 'node')
+      ->entityCondition('bundle', 'issue')
+      ->addTag('DANGEROUS_ACCESS_CHECK_OPT_OUT')
+      ->count()
+      ->execute();
+  }
+
+  // Handle 20 issue nodes in a go.
+  $query = new EntityFieldQuery();
+  $result = $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'issue')
+    ->propertyCondition('nid', $sandbox['current_nid'], '>')
+    ->addTag('DANGEROUS_ACCESS_CHECK_OPT_OUT')
+    ->propertyOrderBy('nid')
+    ->range(0, 20)
+    ->execute();
+
+  if (!empty($result['node'])) {
+    $convert_fields = array(
+      'assigned_to' => array(
+        'field_issue_assigned_to_target_id',
+      ),
+      'attachments' => array(
+        'field_issue_attachments_fid',
+        'field_issue_attachments_display',
+        'field_issue_attachments_description',
+      ),
+      'business_value' => array(
+        'field_issue_business_value_value',
+      ),
+      'description' => array(
+        'field_issue_description_value',
+        'field_issue_description_summary',
+        'field_issue_description_format',
+      ),
+      'done_if_when' => array(
+        'field_issue_done_if_when_value',
+        'field_issue_done_if_when_format',
+      ),
+      'estimate' => array(
+        'field_issue_estimate_value',
+      ),
+      'how_to_demo' => array(
+        'field_issue_how_to_demo_value',
+        'field_issue_how_to_demo_format',
+      ),
+      'related'=> array(
+        'field_issue_related_target_id',
+      ),
+      'status_term' => array(
+        'field_issue_status_term_tid',
+      ),
+      'tags' => array(
+        'field_issue_tags_tid',
+      ),
+      'type' => array(
+        'field_issue_type_value',
+      ),
+      'parent'=> array(
+        'field_issue_parent_target_id',
+      ),
+      'kanban'=> array(
+        'field_issue_kanban_value',
+      ),
+    );
+    // Cycle through the twenty issue nodes.
+    foreach ($result['node'] as $node) {
+      $node = node_load($node->nid);
+      // Fetch the latest revision's vid...
+      $revision_query = db_select('field_revision_field_issue_assigned_to', 'frf_iat')
+        ->condition('entity_id', $node->nid);
+      $revision_query->addExpression('MAX(revision_id)');
+      $latest_revision = $revision_query->execute()->fetchField();
+      // ...then dump it to the node table (to set it as current revision).
+      db_update('node')
+        ->fields(array('vid' => $latest_revision))
+        ->condition('nid', $node->nid)
+        ->execute();
+      // Cycle through all the converted fields.
+      foreach ($convert_fields as $field_name => $columns) {
+        // Fetch the data of that field (ie. for the latest revision)...
+        $data = db_select('field_revision_field_issue_' . $field_name, 'frfi')
+          ->condition('entity_id', $node->nid)
+          ->condition('revision_id', $latest_revision)
+          ->fields('frfi', $columns)
+          ->execute()
+          ->fetchAssoc();
+        // ...and if such thing exists...
+        if ($data) {
+          // ...then dump it to the current data table (and set the revision ID
+          // as well).
+          $data['revision_id'] = $latest_revision;
+          db_update('field_data_field_issue_' . $field_name)
+            ->fields($data)
+            ->condition('entity_id', $node->nid)
+            ->execute();
+        }
+      }
+      // Clear the static loading cache (just like node_save() does).
+      entity_get_controller('node')->resetCache(array($node->nid));
+
+      $sandbox['progress']++;
+      $sandbox['current_nid'] = $node->nid;
+    }
+  }
+  $sandbox['#finished'] = empty($sandbox['max']) ? 1 : ($sandbox['progress'] / $sandbox['max']);
+}
+
+/**
+ * Fix issue revision IDs.
+ */
+function iq_issue_update_7036(&$sandbox) {
+  if (!isset($sandbox['progress'])) {
+    $sandbox['progress'] = 0;
+    $sandbox['current_nid'] = 0;
+    $query = new EntityFieldQuery();
+    $sandbox['max'] = $query->entityCondition('entity_type', 'node')
+      ->entityCondition('bundle', 'issue')
+      ->addTag('DANGEROUS_ACCESS_CHECK_OPT_OUT')
+      ->count()
+      ->execute();
+  }
+
+  // Handle 20 issue nodes in a go.
+  $query = new EntityFieldQuery();
+  $result = $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'issue')
+    ->propertyCondition('nid', $sandbox['current_nid'], '>')
+    ->addTag('DANGEROUS_ACCESS_CHECK_OPT_OUT')
+    ->propertyOrderBy('nid')
+    ->range(0, 20)
+    ->execute();
+
+  if (!empty($result['node'])) {
+    $convert_fields = array(
+      'assigned_to' => array(
+        'field_issue_assigned_to_target_id',
+      ),
+      'attachments' => array(
+        'field_issue_attachments_fid',
+        'field_issue_attachments_display',
+        'field_issue_attachments_description',
+      ),
+      'business_value' => array(
+        'field_issue_business_value_value',
+      ),
+      'description' => array(
+        'field_issue_description_value',
+        'field_issue_description_summary',
+        'field_issue_description_format',
+      ),
+      'done_if_when' => array(
+        'field_issue_done_if_when_value',
+        'field_issue_done_if_when_format',
+      ),
+      'estimate' => array(
+        'field_issue_estimate_value',
+      ),
+      'how_to_demo' => array(
+        'field_issue_how_to_demo_value',
+        'field_issue_how_to_demo_format',
+      ),
+      'related'=> array(
+        'field_issue_related_target_id',
+      ),
+      'status_term' => array(
+        'field_issue_status_term_tid',
+      ),
+      'tags' => array(
+        'field_issue_tags_tid',
+      ),
+      'type' => array(
+        'field_issue_type_value',
+      ),
+      'parent'=> array(
+        'field_issue_parent_target_id',
+      ),
+      'kanban'=> array(
+        'field_issue_kanban_value',
+      ),
+    );
+    // Cycle through the twenty issue nodes.
+    foreach ($result['node'] as $node) {
+      // Fetch the latest revision's vid...
+      $revision_query = db_select('node_revision', 'nr')
+        ->condition('nid', $node->nid);
+      $revision_query->addExpression('MAX(vid)');
+      $latest_revision = $revision_query->execute()->fetchField();
+      // ...then dump it to the node table (to set it as current revision).
+      db_update('node')
+        ->fields(array('vid' => $latest_revision))
+        ->condition('nid', $node->nid)
+        ->execute();
+      // Cycle through all the converted fields.
+      foreach ($convert_fields as $field_name => $columns) {
+        // Fetch the data of that field (ie. for the latest revision)...
+        $data = db_select('field_revision_field_issue_' . $field_name, 'frfi')
+          ->condition('entity_id', $node->nid)
+          ->condition('revision_id', $latest_revision)
+          ->fields('frfi', $columns)
+          ->execute()
+          ->fetchAssoc();
+        // ...and if such thing exists...
+        if ($data) {
+          // ...then dump it to the current data table (and set the revision ID
+          // as well).
+          $data['revision_id'] = $latest_revision;
+          db_update('field_data_field_issue_' . $field_name)
+            ->fields($data)
+            ->condition('entity_id', $node->nid)
+            ->execute();
+        }
+      }
+      // Clear the static loading cache (just like node_save() does).
+      entity_get_controller('node')->resetCache(array($node->nid));
+
+      $sandbox['progress']++;
+      $sandbox['current_nid'] = $node->nid;
+    }
+  }
+  $sandbox['#finished'] = empty($sandbox['max']) ? 1 : ($sandbox['progress'] / $sandbox['max']);
+}
+
+/**
+ * Fix issue node titles.
+ */
+function iq_issue_update_7037(&$sandbox) {
+  if (!isset($sandbox['progress'])) {
+    $sandbox['progress'] = 0;
+    $sandbox['current_nid'] = 0;
+    $query = new EntityFieldQuery();
+    $sandbox['max'] = $query->entityCondition('entity_type', 'node')
+      ->entityCondition('bundle', 'issue')
+      ->fieldCondition('title_field', 'value', NULL)
+      ->addTag('DANGEROUS_ACCESS_CHECK_OPT_OUT')
+      ->count()
+      ->execute();
+  }
+
+  // Handle 5 issue nodes in a go.
+  $query = new EntityFieldQuery();
+  $result = $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'issue')
+    ->fieldCondition('title_field', 'value', NULL)
+    ->propertyCondition('nid', $sandbox['current_nid'], '>')
+    ->addTag('DANGEROUS_ACCESS_CHECK_OPT_OUT')
+    ->propertyOrderBy('nid')
+    ->range(0, 5)
+    ->execute();
+
+  if (!empty($result['node'])) {
+    // Cycle through the twenty issue nodes.
+    foreach ($result['node'] as $node) {
+      // Fetch the latest revision's vid...
+      $revision_query = db_select('node_revision', 'nr')
+        ->condition('nid', $node->nid);
+      $revision_query->addExpression('MAX(vid)');
+      $latest_revision = $revision_query->execute()->fetchField();
+      // ...then fetch the node title from a place where it still exists...
+      $title = db_select('field_revision_title_field', 'fr_tf')
+        ->condition('entity_id', $node->nid)
+        ->condition('revision_id', $latest_revision, '<>')
+        ->isNotNull('title_field_value')
+        ->fields('fr_tf', array('title_field_value', 'title_field_format'))
+        ->execute()
+        ->fetchAssoc();
+      // ...and finally dump it back to the actual data and latest revision.
+      db_update('field_data_title_field')
+        ->fields($title)
+        ->condition('entity_id', $node->nid)
+        ->isNull('title_field_value')
+        ->execute();
+      db_update('field_revision_title_field')
+        ->fields($title)
+        ->condition('entity_id', $node->nid)
+        ->isNull('title_field_value')
+        ->execute();
+      db_update('node')
+        ->fields(array('title' => $title['title_field_value']))
+        ->condition('nid', $node->nid)
+        ->execute();
+      db_update('node_revision')
+        ->fields(array('title' => $title['title_field_value']))
+        ->condition('nid', $node->nid)
+        ->condition('title', '')
+        ->execute();
+      // Clear the static loading cache (just like node_save() does).
+      entity_get_controller('node')->resetCache(array($node->nid));
+
+      $sandbox['progress']++;
+      $sandbox['current_nid'] = $node->nid;
+    }
+  }
+  $sandbox['#finished'] = empty($sandbox['max']) ? 1 : ($sandbox['progress'] / $sandbox['max']);
+}
+
+/**
+ * Get rid of node/add/user-story menu link.
+ */
+function iq_issue_update_7038() {
+  $links = menu_load_links('user-menu');
+  foreach ($links as $link) {
+    if ($link['link_path'] == 'node/add/user-story') {
+      menu_link_delete($link['mlid']);
+      break;
+    }
+  }
+}
+
+/**
+ * Fix issue.attachments that have been messed up with in iq_issue_update_7035
+ * and/or iq_issue_update_7036.
+ */
+function iq_issue_update_7039() {
+  // Fetch the nids of issue nodes with multiple attachments (in their actual
+  // revision).
+  // SELECT entity_id, COUNT(*) FROM `iq7_field_data_field_issue_attachments` GROUP BY entity_id HAVING COUNT(*) > 1
+  $query = db_select('field_data_field_issue_attachments', 'fdf_ia');
+  $query->addField('fdf_ia', 'entity_id');
+  $query->groupBy('entity_id');
+  $query->having('COUNT(*) > 1');
+  $query->countQuery();
+  $nids = $query->execute()->fetchCol();
+  // Cycle through the affected issues.
+  foreach ($nids as $nid) {
+    // Retrieve the actual revision.
+    $revision_id = db_select('node', 'n')
+      ->fields('n', array('vid'))
+      ->condition('nid', $nid)
+      ->addTag('DANGEROUS_ACCESS_CHECK_OPT_OUT')
+      ->execute()
+      ->fetchField();
+    // Delete the actual field data.
+    db_delete('field_data_field_issue_attachments')
+      ->condition('entity_id', $nid)
+      ->execute();
+    // Copy the data from field_revision_field_* as actual data.
+    $result = db_select('field_revision_field_issue_attachments', 'frf_ia')
+      ->fields('frf_ia')
+      ->condition('entity_id', $nid)
+      ->condition('revision_id', $revision_id)
+      ->execute();
+    foreach ($result as $row) {
+      db_insert('field_data_field_issue_attachments')
+        ->fields((array)$row)
+        ->execute();
+    }
+  }
+}
+
+/**
+ * Fix issue.related that have been messed up with in iq_issue_update_7035
+ * and/or iq_issue_update_7036.
+ */
+function iq_issue_update_7040() {
+  // Fetch the nids of issue nodes with multiple related issues (in their actual
+  // revision).
+  // SELECT entity_id, COUNT(*) FROM `iq7_field_data_field_issue_related` GROUP BY entity_id HAVING COUNT(*) > 1
+  $query = db_select('field_data_field_issue_related', 'fdf_ir');
+  $query->addField('fdf_ir', 'entity_id');
+  $query->groupBy('entity_id');
+  $query->having('COUNT(*) > 1');
+  $query->countQuery();
+  $nids = $query->execute()->fetchCol();
+  // Cycle through the affected issues.
+  foreach ($nids as $nid) {
+    // Retrieve the actual revision.
+    $revision_id = db_select('node', 'n')
+      ->fields('n', array('vid'))
+      ->condition('nid', $nid)
+      ->addTag('DANGEROUS_ACCESS_CHECK_OPT_OUT')
+      ->execute()
+      ->fetchField();
+    // Delete the actual field data.
+    db_delete('field_data_field_issue_related')
+      ->condition('entity_id', $nid)
+      ->execute();
+    // Copy the data from field_revision_field_* as actual data.
+    $result = db_select('field_revision_field_issue_related', 'frf_ir')
+      ->fields('frf_ir')
+      ->condition('entity_id', $nid)
+      ->condition('revision_id', $revision_id)
+      ->execute();
+    foreach ($result as $row) {
+      db_insert('field_data_field_issue_related')
+        ->fields((array)$row)
+        ->execute();
+    }
+  }
+}
+
+/**
+ * Fix issue.tags that have been messed up with in iq_issue_update_7035 and/or
+ * iq_issue_update_7036.
+ */
+function iq_issue_update_7041() {
+  // Fetch the nids of issue nodes with multiple tags (in their actual
+  // revision).
+  // SELECT entity_id, COUNT(*) FROM `iq7_field_data_field_issue_tags` GROUP BY entity_id HAVING COUNT(*) > 1
+  $query = db_select('field_data_field_issue_tags', 'fdf_it');
+  $query->addField('fdf_it', 'entity_id');
+  $query->groupBy('entity_id');
+  $query->having('COUNT(*) > 1');
+  $query->countQuery();
+  $nids = $query->execute()->fetchCol();
+  // Cycle through the affected issues.
+  foreach ($nids as $nid) {
+    // Retrieve the actual revision.
+    $revision_id = db_select('node', 'n')
+      ->fields('n', array('vid'))
+      ->condition('nid', $nid)
+      ->addTag('DANGEROUS_ACCESS_CHECK_OPT_OUT')
+      ->execute()
+      ->fetchField();
+    // Delete the actual field data.
+    db_delete('field_data_field_issue_tags')
+      ->condition('entity_id', $nid)
+      ->execute();
+    // Copy the data from field_revision_field_* as actual data.
+    $result = db_select('field_revision_field_issue_tags', 'frf_it')
+      ->fields('frf_it')
+      ->condition('entity_id', $nid)
+      ->condition('revision_id', $revision_id)
+      ->execute();
+    foreach ($result as $row) {
+      db_insert('field_data_field_issue_tags')
+        ->fields((array)$row)
+        ->execute();
+    }
+  }
+}
+
+/**
+ * Migrate Non-billable flag data to comment timer status.
+ */
+function iq_issue_update_7042() {
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'flagging')
+    ->entityCondition('bundle', 'billable')
+    ->propertyCondition('entity_type', 'comment');
+  $result = $query->execute();
+  if (isset($result['flagging'])) {
+    $flagging_ids = array_keys($result['flagging']);
+  }
+  $flaggings = entity_load('flagging', $flagging_ids);
+  foreach ($flaggings as $flagging) {
+    $comment = comment_load($flagging->entity_id);
+    $comment->comment_timer_status = 0;
+    comment_save($comment);
+  }
+  module_disable(array('flag'));
+  drupal_uninstall_modules(array('flag'));
+  drupal_flush_all_caches();
+  features_revert();
+}
+
+/**
+ * Implements hook_update_dependencies().
+ */
+function iq_issue_update_dependencies() {
+  // comment_timer_update_7000() should run before iq_issue_update_7042().
+  $dependencies['iq_issue'][7042]['comment_timer'] = 7000;
+  return $dependencies;
+}
+
+/**
+ * Upgrades from iq_profile.profile to issueq.profile.
+ */
+function iq_issue_update_7043() {
+  variable_set('install_profile', 'issueq');
+  db_update('system')
+    ->fields(array(
+      'filename' => 'profiles/issueq/issueq.profile',
+      'name' => 'issueq',
+    ))
+    ->condition('name', 'iq_profile')
+    ->execute();
+  drupal_flush_all_caches();
+  cache_clear_all();
+}
+
+/**
+ * Enables issueq.profile.
+ */
+function iq_issue_update_7044() {
+  db_update('system')
+    ->fields(array(
+      'status' => 1,
+    ))
+    ->condition('name', 'issueq')
+    ->execute();
+}
+
+/**
+ * Converts filtered_html to ckeditor filter format.
+ */
+function iq_issue_update_7045() {
+  $tables = array(
+    'field_data_field_documentation_body' => 'field_documentation_body_format',
+    'field_data_field_issue_comment_body' => 'field_issue_comment_body_format',
+    'field_data_field_issue_description' => 'field_issue_description_format',
+    'field_data_field_news_body' => 'field_news_body_format',
+    'field_data_field_project_body' => 'field_project_body_format',
+    'field_data_title_field' => 'title_field_format',
+    'field_revision_field_documentation_body' => 'field_documentation_body_format',
+    'field_revision_field_issue_comment_body' => 'field_issue_comment_body_format',
+    'field_revision_field_issue_description' => 'field_issue_description_format',
+    'field_revision_field_news_body' => 'field_news_body_format',
+    'field_revision_field_project_body' => 'field_project_body_format',
+    'field_revision_title_field' => 'title_field_format',
+    'users' => 'signature_format',
+  );
+  foreach ($tables as $table => $field) {
+    db_update($table)
+      ->fields(array(
+        $field => 'ckeditor',
+      ))
+      ->condition($field, 'filtered_html')
+      ->execute();
+  }
+  $filter_format = filter_format_load('filtered_html');
+  filter_format_disable($filter_format);
+  cache_clear_all();
+  drupal_flush_all_caches();
+}

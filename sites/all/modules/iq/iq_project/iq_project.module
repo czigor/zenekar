@@ -1,0 +1,48 @@
+<?php
+/**
+ * @file
+ * Code for the IssueQ Project feature.
+ */
+
+include_once 'iq_project.features.inc';
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function iq_project_form_project_node_form_alter(&$form, &$form_state, $form_id) {
+  // Project nodes can not be language neutral, so remove the this option from
+  // node create form. This code must run after locale.module changed this
+  // #value to a select.
+  // @see iq_project_install()
+  // Weird $form['language']['#default_value'] == 'en'; not working.
+  if (!isset($form['#node']->nid)) {
+    unset($form['language']['#options'][LANGUAGE_NONE]);
+    unset($form['language']['#default_value']);
+  }
+  // Project language can not be changed after created.
+  else {
+    $form['language']['#access'] = FALSE;
+  }
+}
+
+/**
+ * Implements hook_enable().
+ */
+function iq_project_enable() {
+  // Create Add project link.
+  $item = array(
+    'link_path' => 'node/add/project',
+    'link_title' => 'Add project',
+    'menu_name' => 'user-menu',
+    'weight' => -50,
+  );
+  menu_link_save($item);
+}
+
+/**
+ * Implements hook_disable().
+ */
+function iq_project_disable() {
+  // Remove Add project link.
+  menu_link_delete(NULL, 'node/add/project');
+}

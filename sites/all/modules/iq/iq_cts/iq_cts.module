@@ -1,0 +1,212 @@
+<?php
+/**
+ * @file
+ * Code for the IssueQ Content Types feature.
+ */
+
+include_once 'iq_cts.features.inc';
+
+/**
+ * Implements hook_entity_info_alter().
+ */
+function iq_cts_entity_info_alter(&$entity_info) {
+  $entity_info['comment']['view modes']['teaser'] = array(
+    'label' => t('Teaser'),
+    'custom settings' => TRUE,
+  );
+}
+
+/**
+ * Implements hook_menu_local_tasks_alter().
+ */
+function iq_cts_menu_local_tasks_alter(&$data, $router_item, $root_path) {
+  // Add local action link with 'Add documentation' title if the requested URL
+  // is node/%/documentations and the node type is project.
+  if ($root_path == 'node/%/documentations') {
+    $node = node_load(arg(1));
+    if ($node && $node->type == 'project' && og_user_access('node', $node->nid, 'create documentation content')) {
+      $data['actions']['output'][] = array(
+        '#theme' => 'menu_local_action',
+        '#link' => array(
+          'title' => t('Add documentation'),
+          'href' => 'node/add/documentation',
+          'localized_options' => array(
+            'query' => array(
+              'project' => $node->nid,
+            ),
+            'attributes' => array(
+              'title' => t('Add documentation'),
+            ),
+          ),
+        ),
+      );
+    }
+  }
+
+  // Add local action link with 'Add news' title if the requested URL is
+  // node/%/news and the node type is project.
+  if ($root_path == 'node/%/news') {
+    $node = node_load(arg(1));
+    if ($node && $node->type == 'project' && og_user_access('node', $node->nid, 'create news content')) {
+      $item = menu_get_item('node/' . $node->nid . '/add-news');
+      $data['actions']['output'][] = array(
+        '#theme' => 'menu_local_action',
+        '#link' => array(
+          'title' => t('Add news'),
+          'href' => 'node/add/news',
+          'localized_options' => array(
+            'query' => array(
+              'project' => $node->nid,
+            ),
+            'attributes' => array(
+              'title' => t('Add news'),
+            ),
+          ),
+        ),
+      );
+    }
+  }
+
+  // Add local action link with 'Add child page' title to the
+  // documentation node, if the node is part of a book.
+  if ($root_path == 'node/%') {
+    $node = node_load(arg(1));
+    if ($node && $node->type == 'documentation' && !empty($node->book)) {
+      $project_nid = $node->og_group_ref[LANGUAGE_NONE][0]['target_id'];
+      // Construct a special menu item.
+      $item = array(
+        'title' => 'Add child page',
+        'href' => 'node/add/documentation',
+        'localized_options' => array(
+          'query' => array(
+            'project' => $project_nid,
+            'parent' => $node->book['mlid'],
+          ),
+        ),
+      );
+      $data['actions']['output'][] = array(
+        '#theme' => 'menu_local_action',
+        '#link' => $item,
+      );
+    }
+  }
+
+  if ($root_path == 'node/%') {
+    $node = node_load(arg(1));
+    // Add local action links to the project page.
+    if ($node && $node->type == 'project') {
+      if (og_user_access('node', $node->nid, 'create issue content')) {
+        $data['actions']['output'][] = array(
+          '#theme' => 'menu_local_action',
+          '#link' => array(
+            'title' => t('Add issue'),
+            'href' => 'node/add/issue',
+            'localized_options' => array(
+              'query' => array(
+                'project' => $node->nid,
+              ),
+              'attributes' => array(
+                'title' => t('Add issue'),
+              ),
+            ),
+          ),
+        );
+      }
+      if (og_user_access('node', $node->nid, 'create documentation content')) {
+        $data['actions']['output'][] = array(
+          '#theme' => 'menu_local_action',
+          '#link' => array(
+            'title' => t('Add documentation'),
+            'href' => 'node/add/documentation',
+            'localized_options' => array(
+              'query' => array(
+                'project' => $node->nid,
+              ),
+              'attributes' => array(
+                'title' => t('Add documentation'),
+              ),
+            ),
+          ),
+        );
+      }
+      if (og_user_access('node', $node->nid, 'create news content')) {
+        $data['actions']['output'][] = array(
+          '#theme' => 'menu_local_action',
+          '#link' => array(
+            'title' => t('Add news'),
+            'href' => 'node/add/news',
+            'localized_options' => array(
+              'query' => array(
+                'project' => $node->nid,
+              ),
+              'attributes' => array(
+                'title' => t('Add news'),
+              ),
+            ),
+          ),
+        );
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ */
+function iq_cts_form_node_form_alter(&$form, &$form_state, $form_id) {
+  // Set language neutral as default language on non-project content types.
+  // This will be corrected to parent project node's language later in
+  // hook_node_submit().
+  if (in_array($form['type']["#value"], array('documentation', 'issue', 'news'))) {
+    $form['language']['#value'] = LANGUAGE_NONE;
+  }
+  // Jump on our own content types only.
+  if (in_array($form['type']["#value"], array('project', 'documentation', 'issue', 'news'))) {
+    _iq_cts_form_node_form_alter_generic($form);
+  }
+
+  if (in_array($form['type']['#value'], array('news', 'documentation', 'issue')) && isset($_GET['project']) && is_numeric($_GET['project'])) {
+    // Try to load the project from URL.
+    $node = node_load($_GET['project']);
+    if ($node && $node->type == 'project') {
+      // Hide and set the default value of the og_group_ref field.
+      $form['og_group_ref']['#access'] = FALSE;
+      $form['og_group_ref'][LANGUAGE_NONE]['#options'] = array($node->nid => $node->title);
+      $form['og_group_ref'][LANGUAGE_NONE]['#default_value'] = $node->nid;
+    }
+  }
+}
+
+/**
+ * Generic IssueQ-specific node form alter.
+ *
+ * @param &$form
+ *   The to-be-altered node form.
+ */
+function _iq_cts_form_node_form_alter_generic(&$form) {
+  // Hide Group access field in the appropriate context.
+  if (isset($form['group_access'])) {
+    $form['group_access']['#access'] = FALSE;
+    // Make some options unavailable, because group access must be "Private".
+    unset($form['group_access'][LANGUAGE_NONE]['#options'][0]);
+  }
+  // Hide Group content access field in the appropriate context.
+  if (isset($form['group_content_access'])) {
+    $form['group_content_access']['#access'] = FALSE;
+    // Make some options unavailable, because group content access must be
+    // "Use group defaults".
+    unset($form['group_content_access'][LANGUAGE_NONE]['#options'][OG_CONTENT_ACCESS_PUBLIC]);
+    unset($form['group_content_access'][LANGUAGE_NONE]['#options'][OG_CONTENT_ACCESS_PRIVATE]);
+  }
+}
+
+/**
+ * Implements hook_node_submit().
+ */
+function iq_cts_node_submit($node, $form, &$form_state) {
+  // Set the language of the node to the selected project's language.
+  if (in_array($form_state['values']['type'], array('documentation', 'issue', 'news')) && !empty($form_state['values']['og_group_ref'][LANGUAGE_NONE][0]['target_id'])) {
+    $project = node_load($form_state['values']['og_group_ref'][LANGUAGE_NONE][0]['target_id']);
+    $node->language = $project->language;
+  }
+}

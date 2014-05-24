@@ -1,0 +1,15 @@
+/**
+ * @file
+ * This file holds general styles for inline title custom style plugin.
+ */
+
+.panel-pane.inline-title .pane-title,
+.panel-pane.inline-title .pane-content {
+  float: left;
+}
+.panel-pane.inline-title .pane-content {
+  padding-left: 5px;
+}
+.panel-pane.inline-title .clearer {
+  clear: both;
+}
