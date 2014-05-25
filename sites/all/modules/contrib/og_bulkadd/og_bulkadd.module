@@ -15,11 +15,20 @@ function og_bulkadd_menu() {
     'type' => MENU_LOCAL_TASK,
     'weight' => 5,
     'title' => 'Bulk adding users',
-    'access callback' => 'og_ui_user_access_group',
-    'access arguments' => array('add user', 1, 2),
+    'access callback' => 'og_bulkadd_access',
+    'access arguments' => array(1, 2),
   );
-
   return $items;
+}
+
+/**
+ * Menu access callback.
+ */
+function og_bulkadd_access($group_type, $gid) {
+  if (user_access('access user profiles')) {
+   return og_ui_user_access_group('add user', $group_type, $gid);
+  }
+  return FALSE;
 }
 
 /**
@@ -30,6 +39,7 @@ function og_bulkadd_users_form($form, &$form_state, $group_type, $group_id) {
   $query = new EntityFieldQuery();
   $result = $query->entityCondition('entity_type', 'user')
     ->propertyCondition('status', 1)
+    ->propertyOrderBy('name')
     ->execute();
   if (isset($result['user'])) {
     $user_uids = array_keys($result['user']);
