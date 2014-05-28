@@ -1,0 +1,4 @@
+name = MEZ IQ
+description = MEZ IQ integration.  
+core = 7.x
+package = MEZ

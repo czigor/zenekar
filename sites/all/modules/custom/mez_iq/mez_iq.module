@@ -1,0 +1,59 @@
+<?php
+
+/**
+ * @file
+ * IQ related stuff
+ *
+ */
+
+/**
+ * Implements hook_node_access_records().
+ */
+function mez_iq_node_access_records($node) {
+  // Public groups' content is available to all authenticated users but
+  // not to anonymous.
+  $project = NULL;
+  $grants = array();
+  if (in_array($node->type, array('issue', 'news', 'documentation'))) {
+    $project_nid = field_get_items('node', $node, 'og_group_ref');
+    $project = node_load($project_nid[0]['target_id']);
+  }
+  if ($node->type == 'project') {
+    $project = $node;
+  }
+  if (!empty($project)) {
+    $group_access = field_get_items('node', $project, 'group_access');
+    if ($group_access[0]['value'] == 0) {
+      $grants[] = array(
+        'realm' => 'mez_public_og',
+        'gid' => 1,
+        'grant_view' => 1,
+        'grant_update' => 0,
+        'grant_delete' => 0,
+        'priority' => 0,
+      );
+    }
+  }
+  return $grants;
+}
+
+/**
+ * Implements hook_node_grants().
+ */
+function mez_iq_node_grants($account, $op) {
+  $grants = array();
+  if ($account->uid > 0) {
+    $grants['mez_public_og'][] = 1;
+  }
+  return $grants;
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function mez_iq_form_project_node_form_alter(&$form, &$form_state, $form_id) {
+  // Let's cancel what iq_cts_form_node_form_alter() does.
+  $form['group_access']['#access'] = TRUE;
+  array_unshift($form['group_access'][LANGUAGE_NONE]['#options'], t('Public - accessible to all authenticated users'));
+  $form['group_access'][LANGUAGE_NONE]['#default_value'] = empty($form['nid']['#value']) ? 0 : $form['group_access'][LANGUAGE_NONE]['#default_value'];
+}
