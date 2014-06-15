@@ -129,3 +129,35 @@ function mez_iq_query_rolequery_alter(QueryAlterableInterface $query) {
   $role_subquery->where('users_to_include.uid = users.uid');
   $query->exists($role_subquery);
 }
+
+/**
+ * Implements hook_ctools_render_alter().
+ *
+ *  Add member to group when viewing a project or issue page of a public
+ *  project. The proper way to do this was to create a separate permission
+ *  set for public projects. But I am lazy.
+ */
+function mez_iq_ctools_render_alter(&$info, &$page, &$context) {
+  if (isset($context['handler']->conf['access']['plugins'][0]['name']) && ($context['handler']->conf['access']['plugins'][0]['name'] == 'node_type')) {
+    if (isset($context['handler']->conf['access']['plugins'][0]['settings']['type']['issue'])) {
+      $issue_w = entity_metadata_wrapper('node', $context['contexts']['argument_entity_id:node_1']->data);
+      if ($issue_w->og_group_ref->group_access->value() == 0) {
+        global $user;
+        if (!og_is_member('node', $issue_w->og_group_ref->nid->value(), 'user', NULL, array())) {
+          $ogm = og_membership_create('node', $issue_w->og_group_ref->nid->value(), 'user', $user->uid, 'og_user_node');
+          $ogm->save();
+        }
+      }
+    }
+    elseif (isset($context['handler']->conf['access']['plugins'][0]['settings']['type']['project'])) {
+      $project_w = entity_metadata_wrapper('node', $context['contexts']['argument_entity_id:node_1']->data);
+      if ($project_w->group_access->value() == 0) {
+        global $user;
+        if (!og_is_member('node', $project_w->nid->value(), 'user', NULL, array())) {
+          $ogm = og_membership_create('node', $project_w->nid->value(), 'user', $user->uid, 'og_user_node');
+          $ogm->save();
+        }
+      }
+    }
+  }
+}
