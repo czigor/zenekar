@@ -71,9 +71,14 @@ function mez_iq_form_alter(&$form, &$form_state, $form_id) {
     elseif (isset($form[OG_AUDIENCE_FIELD][LANGUAGE_NONE]['#default_value'][0])) {
       $project = node_load($form[OG_AUDIENCE_FIELD][LANGUAGE_NONE]['#default_value'][0]);
     }
+    elseif (is_numeric($form[OG_AUDIENCE_FIELD][LANGUAGE_NONE]['#default_value'])) {
+      $project = node_load($form[OG_AUDIENCE_FIELD][LANGUAGE_NONE]['#default_value']);
+    }
+    if (!empty($project)) {
     $audience = field_get_items('node', $project, OG_ACCESS_FIELD);
-    if ($audience[0]['value'] == 0) {
-      $form['field_issue_assigned_to'][LANGUAGE_NONE]['#options'] = _mez_iq_assigned_to_options();
+      if ($audience[0]['value'] == 0) {
+        $form['field_issue_assigned_to'][LANGUAGE_NONE]['#options'] = _mez_iq_assigned_to_options();
+      }
     }
   }
 }
