@@ -44,13 +44,6 @@ function mez_file_permissions_user_default_permissions() {
     'module' => 'media',
   );
 
-  // Exported permission: 'administer private files download permission'.
-  $permissions['administer private files download permission'] = array(
-    'name' => 'administer private files download permission',
-    'roles' => array(),
-    'module' => 'private_files_download_permission',
-  );
-
   // Exported permission: 'bypass file access'.
   $permissions['bypass file access'] = array(
     'name' => 'bypass file access',
@@ -58,18 +51,12 @@ function mez_file_permissions_user_default_permissions() {
     'module' => 'file_entity',
   );
 
-  // Exported permission: 'bypass private files download permission'.
-  $permissions['bypass private files download permission'] = array(
-    'name' => 'bypass private files download permission',
-    'roles' => array(),
-    'module' => 'private_files_download_permission',
-  );
-
   // Exported permission: 'create files'.
   $permissions['create files'] = array(
     'name' => 'create files',
     'roles' => array(
       'editor' => 'editor',
+      'member' => 'member',
       'site admin' => 'site admin',
     ),
     'module' => 'file_entity',
@@ -83,7 +70,7 @@ function mez_file_permissions_user_default_permissions() {
       'editor' => 'editor',
       'site admin' => 'site admin',
     ),
-    'module' => 'media',
+    'module' => 'media_bulk_upload',
   );
 
   // Exported permission: 'view files'.
@@ -100,7 +87,9 @@ function mez_file_permissions_user_default_permissions() {
   $permissions['view own files'] = array(
     'name' => 'view own files',
     'roles' => array(
-      'authenticated user' => 'authenticated user',
+      'editor' => 'editor',
+      'member' => 'member',
+      'site admin' => 'site admin',
     ),
     'module' => 'file_entity',
   );
@@ -108,14 +97,20 @@ function mez_file_permissions_user_default_permissions() {
   // Exported permission: 'view own private files'.
   $permissions['view own private files'] = array(
     'name' => 'view own private files',
-    'roles' => array(),
+    'roles' => array(
+      'member' => 'member',
+    ),
     'module' => 'file_entity',
   );
 
   // Exported permission: 'view private files'.
   $permissions['view private files'] = array(
     'name' => 'view private files',
-    'roles' => array(),
+    'roles' => array(
+      'editor' => 'editor',
+      'member' => 'member',
+      'site admin' => 'site admin',
+    ),
     'module' => 'file_entity',
   );
 
