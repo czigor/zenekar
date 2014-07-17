@@ -437,8 +437,8 @@ function file_prepare_directory(&$directory, $options = FILE_MODIFY_PERMISSIONS)
   if (!is_dir($directory)) {
     // Let mkdir() recursively create directories and use the default directory
     // permissions.
-    if ($options & FILE_CREATE_DIRECTORY) {
-      return @drupal_mkdir($directory, NULL, TRUE);
+    if (($options & FILE_CREATE_DIRECTORY) && @drupal_mkdir($directory, NULL, TRUE)) {
+      return drupal_chmod($directory);
     }
     return FALSE;
   }
@@ -1999,23 +1999,7 @@ function file_download() {
   $target = implode('/', $args);
   $uri = $scheme . '://' . $target;
   if (file_stream_wrapper_valid_scheme($scheme) && file_exists($uri)) {
-    // Let other modules provide headers and controls access to the file.
-    // module_invoke_all() uses array_merge_recursive() which merges header
-    // values into a new array. To avoid that and allow modules to override
-    // headers instead, use array_merge() to merge the returned arrays.
-    $headers = array();
-    foreach (module_implements('file_download') as $module) {
-      $function = $module . '_file_download';
-      $result = $function($uri);
-      if ($result == -1) {
-        // Throw away the headers received so far.
-        $headers = array();
-        break;
-      }
-      if (isset($result) && is_array($result)) {
-        $headers = array_merge($headers, $result);
-      }
-    }
+    $headers = file_download_headers($uri);
     if (count($headers)) {
       file_transfer($uri, $headers);
     }
@@ -2027,6 +2011,69 @@ function file_download() {
   drupal_exit();
 }
 
+/**
+ * Retrieves headers for a private file download.
+ *
+ * Calls all module implementations of hook_file_download() to retrieve headers
+ * for files by the module that originally provided the file. The presence of
+ * returned headers indicates the current user has access to the file.
+ *
+ * @param $uri
+ *   The URI for the file whose headers should be retrieved.
+ *
+ * @return
+ *   If access is allowed, headers for the file, suitable for passing to
+ *   file_transfer(). If access is not allowed, an empty array will be returned.
+ *
+ * @see file_transfer()
+ * @see file_download_access()
+ * @see hook_file_downlaod()
+ */
+function file_download_headers($uri) {
+  // Let other modules provide headers and control access to the file.
+  // module_invoke_all() uses array_merge_recursive() which merges header
+  // values into a new array. To avoid that and allow modules to override
+  // headers instead, use array_merge() to merge the returned arrays.
+  $headers = array();
+  foreach (module_implements('file_download') as $module) {
+    $function = $module . '_file_download';
+    $result = $function($uri);
+    if ($result == -1) {
+      // Throw away the headers received so far.
+      $headers = array();
+      break;
+    }
+    if (isset($result) && is_array($result)) {
+      $headers = array_merge($headers, $result);
+    }
+  }
+  return $headers;
+}
+
+/**
+ * Checks that the current user has access to a particular file.
+ *
+ * The return value of this function hinges on the return value from
+ * file_download_headers(), which is the function responsible for collecting
+ * access information through hook_file_download().
+ *
+ * If immediately transferring the file to the browser and the headers will
+ * need to be retrieved, the return value of file_download_headers() should be
+ * used to determine access directly, so that access checks will not be run
+ * twice.
+ *
+ * @param $uri
+ *   The URI for the file whose access should be retrieved.
+ *
+ * @return
+ *   Boolean TRUE if access is allowed. FALSE if access is not allowed.
+ *
+ * @see file_download_headers()
+ * @see hook_file_download()
+ */
+function file_download_access($uri) {
+  return count(file_download_headers($uri)) > 0;
+}
 
 /**
  * Finds all files that match a given mask in a given directory.
@@ -2339,21 +2386,19 @@ function drupal_basename($uri, $suffix = NULL) {
 }
 
 /**
- * Creates a directory, optionally creating missing components in the path to
- * the directory.
+ * Creates a directory using Drupal's default mode.
  *
- * When PHP's mkdir() creates a directory, the requested mode is affected by the
- * process's umask. This function overrides the umask and sets the mode
- * explicitly for all directory components created.
+ * PHP's mkdir() does not respect Drupal's default permissions mode. If a mode
+ * is not provided, this function will make sure that Drupal's is used.
+ *
+ * Compatibility: normal paths and stream wrappers.
  *
  * @param $uri
  *   A URI or pathname.
  * @param $mode
- *   Mode given to created directories. Defaults to the directory mode
- *   configured in the Drupal installation. It must have a leading zero.
+ *   By default the Drupal mode is used.
  * @param $recursive
- *   Create directories recursively, defaults to FALSE. Cannot work with a mode
- *   which denies writing or execution to the owner of the process.
+ *   Default to FALSE.
  * @param $context
  *   Refer to http://php.net/manual/ref.stream.php
  *
@@ -2369,55 +2414,7 @@ function drupal_mkdir($uri, $mode = NULL, $recursive = FALSE, $context = NULL) {
     $mode = variable_get('file_chmod_directory', 0775);
   }
 
-  // If the URI has a scheme, don't override the umask - schemes can handle this
-  // issue in their own implementation.
-  if (file_uri_scheme($uri)) {
-    return _drupal_mkdir_call($uri, $mode, $recursive, $context);
-  }
-
-  // If recursive, create each missing component of the parent directory
-  // individually and set the mode explicitly to override the umask.
-  if ($recursive) {
-    // Ensure the path is using DIRECTORY_SEPARATOR.
-    $uri = str_replace('/', DIRECTORY_SEPARATOR, $uri);
-    // Determine the components of the path.
-    $components = explode(DIRECTORY_SEPARATOR, $uri);
-    array_pop($components);
-    $recursive_path = '';
-    foreach ($components as $component) {
-      $recursive_path .= $component;
-
-      if (!file_exists($recursive_path)) {
-        if (!_drupal_mkdir_call($recursive_path, $mode, FALSE, $context)) {
-          return FALSE;
-        }
-        // Not necessary to use drupal_chmod() as there is no scheme.
-        if (!chmod($recursive_path, $mode)) {
-          return FALSE;
-        }
-      }
-
-      $recursive_path .= DIRECTORY_SEPARATOR;
-    }
-  }
-
-  // Do not check if the top-level directory already exists, as this condition
-  // must cause this function to fail.
-  if (!_drupal_mkdir_call($uri, $mode, FALSE, $context)) {
-    return FALSE;
-  }
-  // Not necessary to use drupal_chmod() as there is no scheme.
-  return chmod($uri, $mode);
-}
-
-/**
- * Helper function. Ensures we don't pass a NULL as a context resource to
- * mkdir().
- *
- * @see drupal_mkdir()
- */
-function _drupal_mkdir_call($uri, $mode, $recursive, $context) {
-  if (is_null($context)) {
+  if (!isset($context)) {
     return mkdir($uri, $mode, $recursive);
   }
   else {
