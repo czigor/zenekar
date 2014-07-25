@@ -2102,25 +2102,6 @@ class CommentFieldsTest extends CommentHelperCase {
     $edit = array('comment_body[und][0][value]' => $this->randomName(8));
     $this->drupalPost('node/' . $this->node->nid, $edit, t('Save'));
   }
-
-  /**
-   * Test that certain comment functionalities work without the comment_body
-   * field, and without generating warnings.
-   */
-  function testDeletedCommentBody() {
-    // Delete the comment_body field.
-    $this->drupalLogin($this->admin_user);
-    $this->drupalPost('admin/structure/types/manage/article/comment/fields/comment_body/delete', array(), t('Delete'));
-
-    // Preview an empty comment.
-    $this->drupalPost('node/' . $this->node->nid, array(), t('Preview'));
-
-    // Post an empty comment.
-    $this->drupalPost('node/' . $this->node->nid, array(), t('Save'));
-
-    // View the comment administration overview page.
-    $this->drupalGet('admin/content/comment');
-  }
 }
 
 /**
