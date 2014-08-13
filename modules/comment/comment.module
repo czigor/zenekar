@@ -2193,17 +2193,20 @@ function comment_submit($comment) {
     // 2) Strip out all HTML tags
     // 3) Convert entities back to plain-text.
     $field = field_info_field('comment_body');
-    $langcode = field_is_translatable('comment', $field) ? entity_language('comment', $comment) : LANGUAGE_NONE;
-    $comment_body = $comment->comment_body[$langcode][0];
-    if (isset($comment_body['format'])) {
-      $comment_text = check_markup($comment_body['value'], $comment_body['format']);
+    // Do not try to extract from comment_body if no such field exists.
+    if ($field && isset($comment->comment_body)) {
+      $langcode = field_is_translatable('comment', $field) ? entity_language('comment', $comment) : LANGUAGE_NONE;
+      $comment_body = $comment->comment_body[$langcode][0];
+      if (isset($comment_body['format'])) {
+        $comment_text = check_markup($comment_body['value'], $comment_body['format']);
+      }
+      else {
+        $comment_text = check_plain($comment_body['value']);
+      }
+      $comment->subject = truncate_utf8(trim(decode_entities(strip_tags($comment_text))), 29, TRUE);
     }
-    else {
-      $comment_text = check_plain($comment_body['value']);
-    }
-    $comment->subject = truncate_utf8(trim(decode_entities(strip_tags($comment_text))), 29, TRUE);
-    // Edge cases where the comment body is populated only by HTML tags will
-    // require a default subject.
+    // Edge cases where the comment body is populated only by HTML tags or does
+    // not exist will require a default subject.
     if ($comment->subject == '') {
       $comment->subject = t('(No subject)');
     }
