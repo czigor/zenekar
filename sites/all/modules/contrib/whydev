@@ -1,5 +1,4 @@
 fe_paths http://drupal.org/node/1806472
 link http://drupal.org/node/191428
 i18nviews only dev
-media: https://drupal.org/node/1186434, https://drupal.org/node/2126755
 wysiwyg: Media embedding works only in dev.
