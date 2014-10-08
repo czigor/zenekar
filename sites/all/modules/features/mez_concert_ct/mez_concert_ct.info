@@ -12,7 +12,6 @@ dependencies[] = field_collection
 dependencies[] = file
 dependencies[] = file_entity
 dependencies[] = list
-dependencies[] = media_multiselect
 dependencies[] = mez_composer_ct
 dependencies[] = mez_concert
 dependencies[] = mez_person_ct

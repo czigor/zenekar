@@ -8,7 +8,6 @@ dependencies[] = ds
 dependencies[] = features
 dependencies[] = file
 dependencies[] = file_entity
-dependencies[] = media_multiselect
 dependencies[] = mez_composer_ct
 dependencies[] = mez_concert_ct
 dependencies[] = node
