@@ -62,17 +62,6 @@ function mez_file_permissions_user_default_permissions() {
     'module' => 'file_entity',
   );
 
-  // Exported permission: 'import media'.
-  $permissions['import media'] = array(
-    'name' => 'import media',
-    'roles' => array(
-      'authenticated user' => 'authenticated user',
-      'editor' => 'editor',
-      'site admin' => 'site admin',
-    ),
-    'module' => 'media_bulk_upload',
-  );
-
   // Exported permission: 'view files'.
   $permissions['view files'] = array(
     'name' => 'view files',
@@ -98,6 +87,7 @@ function mez_file_permissions_user_default_permissions() {
   $permissions['view own private files'] = array(
     'name' => 'view own private files',
     'roles' => array(
+      'editor' => 'editor',
       'member' => 'member',
     ),
     'module' => 'file_entity',
@@ -107,8 +97,6 @@ function mez_file_permissions_user_default_permissions() {
   $permissions['view private files'] = array(
     'name' => 'view private files',
     'roles' => array(
-      'editor' => 'editor',
-      'member' => 'member',
       'site admin' => 'site admin',
     ),
     'module' => 'file_entity',
