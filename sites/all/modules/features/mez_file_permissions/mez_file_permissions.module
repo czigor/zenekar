@@ -5,3 +5,27 @@
  */
 
 include_once 'mez_file_permissions.features.inc';
+
+/**
+ * Implements hook_file_entity_access().
+ *
+ * The file_entity module restricts access to private files by default, while
+ * Drupal core inherits the permissions to the entity it belongs to. This piece
+ * of code adapts to Drupal core.
+ */
+function mez_file_permissions_file_entity_access($op, $file, $account) {
+  if (!is_object($file)) {
+    return;
+  }
+  foreach (file_usage_list($file) as $module => $usage) {
+    foreach ($usage as $entity_type => $entities) {
+      foreach ($entities as $etid => $count) {
+        if ($entity = entity_load_single($entity_type, $etid)) {
+          if (entity_access($op, $entity_type, $entity)) {
+            return FILE_ENTITY_ACCESS_ALLOW;
+          }
+        }
+      }
+    }
+  }
+}
