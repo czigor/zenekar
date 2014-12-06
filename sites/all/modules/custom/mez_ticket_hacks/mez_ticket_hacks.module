@@ -276,6 +276,7 @@ function _mez_tickets_in_cart() {
  */
 function mez_ticket_hacks_menu() {
   $items = array();
+  // These are CSRF security holes. We need a token.
   $items['mez-ticket-to-cart/%/%commerce_product'] = array(
     'page callback' => 'mez_ticket_to_cart',
     'page arguments' => array(1, 2),
