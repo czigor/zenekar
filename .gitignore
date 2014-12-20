@@ -5,3 +5,5 @@ sites/*/settings*.php
 sites/*/files
 sites/*/private
 sites/all/translations
+
+sites/all/themes/*/.sass-cache
