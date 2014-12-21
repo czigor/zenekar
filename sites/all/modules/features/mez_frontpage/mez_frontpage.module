@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the MEZ frontpage feature.
- */
-
-include_once 'mez_frontpage.features.inc';
