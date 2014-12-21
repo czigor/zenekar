@@ -1,9 +1,12 @@
 /**
  * Menu related styling.
  */
-.navbar-brand {
-  padding: 0;
-  img {
-  height: 50px;
+.navbar {
+  .margin-bottom: 0px;
+  .navbar-brand {
+    padding: 0;
+    img {
+    height: 50px;
+    }
   }
 }

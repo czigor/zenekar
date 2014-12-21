@@ -1,0 +1,15 @@
+.container {
+  margin: 0;
+  padding: 0;
+}
+
+footer.footer.container {
+  background-color: black;
+  color: #fff;
+  width: 100vw;
+  padding: 10px;
+  overflow-y: none;
+  input {
+    width: 10em;
+  }
+}

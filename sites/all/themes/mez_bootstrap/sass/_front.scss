@@ -1,0 +1,44 @@
+/* general styles */
+.front {
+  overflow-x: hidden;
+  .front-section {
+    width: 100vw;
+    position: relative;
+  }
+
+  /* additional sections */
+  #opening {
+    height: 100vh;
+    .title {
+      position: relative;
+      top: 30px;
+      text-align: center;
+      color: white;
+      span {
+        font-style: italic;
+      }
+    }
+  }
+  #about {
+    height: 90vh;
+  }
+  
+  #archive {
+    height: 90vh;
+  }
+  
+  .jumbotron-inner {
+    top:20vh;
+    left: 10vw;
+    color: black;
+    position: relative;
+    background-color: #fff;
+    width: 40vw;
+    opacity: 0.6;
+    min-width: 250px;
+  }
+  .jumbotron-outer {
+    width: 100vw;
+    margin-bottom: 0; 
+  } 
+}

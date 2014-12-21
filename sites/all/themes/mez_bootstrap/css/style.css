@@ -6719,9 +6719,73 @@ button.close {
   /* line 18, ../bootstrap/sass/bootstrap/mixins/_responsive-visibility.scss */
   .hidden-print {
     display: none !important; } }
-/* line 1, ../sass/_menu.scss */
-.navbar-brand {
+/**
+ * Menu related styling.
+ */
+/* line 4, ../sass/_menu.scss */
+.navbar {
+  .margin-bottom: 0px; }
+  /* line 6, ../sass/_menu.scss */
+  .navbar .navbar-brand {
+    padding: 0; }
+    /* line 8, ../sass/_menu.scss */
+    .navbar .navbar-brand img {
+      height: 50px; }
+
+/* general styles */
+/* line 2, ../sass/_front.scss */
+.front {
+  overflow-x: hidden;
+  /* additional sections */ }
+  /* line 4, ../sass/_front.scss */
+  .front .front-section {
+    width: 100vw;
+    position: relative; }
+  /* line 10, ../sass/_front.scss */
+  .front #opening {
+    height: 100vh; }
+    /* line 12, ../sass/_front.scss */
+    .front #opening .title {
+      position: relative;
+      top: 30px;
+      text-align: center;
+      color: white; }
+      /* line 17, ../sass/_front.scss */
+      .front #opening .title span {
+        font-style: italic; }
+  /* line 22, ../sass/_front.scss */
+  .front #about {
+    height: 90vh; }
+  /* line 26, ../sass/_front.scss */
+  .front #archive {
+    height: 90vh; }
+  /* line 30, ../sass/_front.scss */
+  .front .jumbotron-inner {
+    top: 20vh;
+    left: 10vw;
+    color: black;
+    position: relative;
+    background-color: #fff;
+    width: 40vw;
+    opacity: 0.6;
+    min-width: 250px; }
+  /* line 40, ../sass/_front.scss */
+  .front .jumbotron-outer {
+    width: 100vw;
+    margin-bottom: 0; }
+
+/* line 1, ../sass/_page.scss */
+.container {
+  margin: 0;
   padding: 0; }
-  /* line 3, ../sass/_menu.scss */
-  .navbar-brand img {
-    height: 50px; }
+
+/* line 6, ../sass/_page.scss */
+footer.footer.container {
+  background-color: black;
+  color: #fff;
+  width: 100vw;
+  padding: 10px;
+  overflow-y: none; }
+  /* line 12, ../sass/_page.scss */
+  footer.footer.container input {
+    width: 10em; }

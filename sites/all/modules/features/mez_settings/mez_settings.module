@@ -49,9 +49,52 @@ function mez_settings_theme($existing, $type, $theme, $path) {
 function mez_settings_preprocess_mez_frontpage(&$vars) {
   $frontpage_page = node_load(variable_get('mez_frontpage_page_nid'));
   $backgrounds = field_get_items('node', $frontpage_page, 'field_media');
-  $vars['content'] = array();
-  $vars['content'][0] = array(
-    'node' => node_view(node_load(2098)),
+
+  // Get most recent sticky promoted node for the opening page.
+  $query = new EntityFieldQuery();
+  $result = $query->entityCondition('entity_type', 'node')
+    ->propertyCondition('status', 1)
+    ->propertyCondition('promote', 1)
+    ->propertyCondition('sticky', 1)
+    ->propertyOrderBy('created', 'DESC')
+    ->execute();
+  if (isset($result['node'])) {
+    $opening_nids = array_keys($result['node']);
+  }
+  $opening_nids = empty($opening_nids) ? 2098 : $opening_nids[0];
+  $vars['opening'] = array(
+    'node' => node_view(node_load($opening_nids), 'teaser'),
     'bg' => file_create_url($backgrounds[0]['uri']),
   );
+
+  // Get the last news
+  $query = new EntityFieldQuery();
+  $result = $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'mez_news')
+    ->propertyCondition('status', 1)
+    ->propertyCondition('promote', 1)
+    ->propertyOrderBy('created', 'DESC')
+    ->propertyCondition('nid', $opening_nids[0], '!=')
+    ->execute();
+  if (isset($result['node'])) {
+    $news_nids = array_keys($result['node']);
+  }
+  $news_nids = empty($news_nids) ? 2098 : $news_nids[0];
+
+  $vars['news'] = array(
+    'node' => node_view(node_load($news_nids), 'teaser'),
+  );
+
+  // About
+  $vars['about'] = array(
+    'node' => node_view(node_load(13), 'teaser'),
+    'bg' => file_create_url($backgrounds[1]['uri']),
+  );
+
+  // Archive
+  $vars['archive'] = array(
+    'bg' => file_create_url($backgrounds[2]['uri']),
+  );
+  $vars['site_name'] = variable_get_value('site_name');
+  $vars['site_slogan'] = variable_get_value('site_slogan');
 }
