@@ -5,3 +5,53 @@
  */
 
 include_once 'mez_settings.features.inc';
+
+/**
+ * Implements hook_menu().
+ */
+function mez_settings_menu() {
+  $items = array();
+  // Frontpage
+  $items['front'] = array(
+    'page callback' => 'mez_settings_front',
+    'access callback' => TRUE,
+    'type' => MENU_NORMAL_ITEM,
+  );
+  return $items;
+}
+
+/**
+ * Menu callback.
+ */
+function mez_settings_front() {
+  return array(
+    '#theme' => 'mez_frontpage',
+  );
+}
+
+/**
+ * Implements hook_theme().
+ */
+function mez_settings_theme($existing, $type, $theme, $path) {
+  return array (
+    'mez_frontpage' => array(
+      'template' => 'mez-frontpage',
+      'path' => drupal_get_path('theme', 'mez_bootstrap') . '/templates',
+      'variables' => array(
+      ),
+    ),
+  );
+}
+
+/**
+ * Preprocess function for the frontpage.
+ */
+function mez_settings_preprocess_mez_frontpage(&$vars) {
+  $frontpage_page = node_load(variable_get('mez_frontpage_page_nid'));
+  $backgrounds = field_get_items('node', $frontpage_page, 'field_media');
+  $vars['content'] = array();
+  $vars['content'][0] = array(
+    'node' => node_view(node_load(2098)),
+    'bg' => file_create_url($backgrounds[0]['uri']),
+  );
+}
