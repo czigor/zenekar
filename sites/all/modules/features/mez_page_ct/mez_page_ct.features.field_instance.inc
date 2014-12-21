@@ -38,7 +38,7 @@ function mez_page_ct_field_default_field_instances() {
           'trim_length' => 600,
         ),
         'type' => 'text_summary_or_trimmed',
-        'weight' => 0,
+        'weight' => 1,
       ),
     ),
     'entity_type' => 'node',
@@ -66,6 +66,8 @@ function mez_page_ct_field_default_field_instances() {
   // Exported field_instance: 'node-page-field_media'
   $field_instances['node-page-field_media'] = array(
     'bundle' => 'page',
+    'comment_alter' => 0,
+    'comment_alter_hide' => 0,
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -84,19 +86,23 @@ function mez_page_ct_field_default_field_instances() {
         'weight' => 2,
       ),
       'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'label' => 'hidden',
+        'module' => 'file_entity',
+        'settings' => array(
+          'file_view_mode' => 'preview',
+        ),
+        'type' => 'file_rendered',
+        'weight' => 3,
       ),
     ),
+    'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_media',
     'label' => 'Media',
     'required' => 0,
     'settings' => array(
-      'description_field' => 0,
-      'entity_translation_sync' => 0,
+      'description_field' => 1,
+      'entity_translation_sync' => FALSE,
       'file_directory' => 'page',
       'file_extensions' => 'txt pdf doc odt jpg gif png bmp jpeg mp3 ogg avi mpg mpeg',
       'max_filesize' => '',
@@ -104,29 +110,11 @@ function mez_page_ct_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'media',
+      'module' => 'multiupload_filefield_widget',
       'settings' => array(
-        'allowed_schemes' => array(
-          'private' => 0,
-          'public' => 'public',
-          'youtube' => 'youtube',
-        ),
-        'allowed_types' => array(
-          'audio' => 'audio',
-          'document' => 0,
-          'image' => 'image',
-          'video' => 'video',
-        ),
-        'browser_plugins' => array(
-          'media_default--media_browser_1' => 'media_default--media_browser_1',
-          'media_default--media_browser_my_files' => 0,
-          'media_internet' => 'media_internet',
-          'upload' => 'upload',
-          'youtube' => 0,
-        ),
         'progress_indicator' => 'throbber',
       ),
-      'type' => 'media_generic',
+      'type' => 'file_mfw',
       'weight' => 32,
     ),
   );
@@ -157,9 +145,14 @@ function mez_page_ct_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
+        'label' => 'hidden',
+        'module' => 'title',
+        'settings' => array(
+          'title_class' => '',
+          'title_link' => '',
+          'title_style' => 'h2',
+        ),
+        'type' => 'title_linked',
         'weight' => 0,
       ),
     ),

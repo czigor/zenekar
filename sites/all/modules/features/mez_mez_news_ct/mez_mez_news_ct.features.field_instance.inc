@@ -161,11 +161,21 @@ function mez_mez_news_ct_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 2,
       ),
+      'short_teaser' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 1,
+      ),
       'teaser' => array(
         'label' => 'hidden',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 8,
+        'module' => 'text',
+        'settings' => array(
+          'trim_length' => 300,
+        ),
+        'type' => 'text_summary_or_trimmed',
+        'weight' => 2,
       ),
     ),
     'entity_type' => 'node',
@@ -212,11 +222,21 @@ function mez_mez_news_ct_field_default_field_instances() {
         'type' => 'file_rendered',
         'weight' => 3,
       ),
-      'teaser' => array(
+      'short_teaser' => array(
         'label' => 'above',
+        'module' => 'file',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 10,
+        'type' => 'file_default',
+        'weight' => 2,
+      ),
+      'teaser' => array(
+        'label' => 'hidden',
+        'module' => 'file_entity',
+        'settings' => array(
+          'file_view_mode' => 'preview',
+        ),
+        'type' => 'file_rendered',
+        'weight' => 4,
       ),
     ),
     'entity_type' => 'node',
@@ -233,7 +253,7 @@ function mez_mez_news_ct_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'media_multiselect',
+      'module' => 'multiupload_filefield_widget',
       'settings' => array(
         'allowed_schemes' => array(
           'private' => 0,
@@ -255,7 +275,7 @@ function mez_mez_news_ct_field_default_field_instances() {
         ),
         'progress_indicator' => 'throbber',
       ),
-      'type' => 'media_multiselect',
+      'type' => 'file_mfw',
       'weight' => 3,
     ),
   );
@@ -280,11 +300,18 @@ function mez_mez_news_ct_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 4,
       ),
+      'short_teaser' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 3,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 9,
+        'weight' => 10,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -333,13 +360,24 @@ function mez_mez_news_ct_field_default_field_instances() {
         'type' => 'text_plain',
         'weight' => 0,
       ),
-      'teaser' => array(
+      'short_teaser' => array(
         'label' => 'hidden',
         'module' => 'title',
         'settings' => array(
           'title_class' => '',
           'title_link' => 'content',
           'title_style' => 'span',
+        ),
+        'type' => 'title_linked',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'hidden',
+        'module' => 'title',
+        'settings' => array(
+          'title_class' => '',
+          'title_link' => '',
+          'title_style' => 'h2',
         ),
         'type' => 'title_linked',
         'weight' => 0,

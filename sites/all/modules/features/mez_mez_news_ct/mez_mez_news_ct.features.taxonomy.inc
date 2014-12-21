@@ -16,6 +16,8 @@ function mez_mez_news_ct_taxonomy_default_vocabularies() {
       'hierarchy' => 0,
       'module' => 'taxonomy',
       'weight' => 0,
+      'language' => 'und',
+      'i18n_mode' => 4,
     ),
   );
 }
