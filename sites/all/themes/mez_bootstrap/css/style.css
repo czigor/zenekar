@@ -6719,3 +6719,9 @@ button.close {
   /* line 18, ../bootstrap/sass/bootstrap/mixins/_responsive-visibility.scss */
   .hidden-print {
     display: none !important; } }
+/* line 1, ../sass/_menu.scss */
+.navbar-brand {
+  padding: 0; }
+  /* line 3, ../sass/_menu.scss */
+  .navbar-brand img {
+    height: 50px; }
