@@ -83,16 +83,16 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#"><img src="<?php print $logo;?>" title="<?php print $site_name;?>" /></a>
+      <a class="navbar-brand" href="/"><img src="<?php print $logo;?>" title="<?php print $site_name;?>" /></a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <?php if (!empty($primary_nav)): ?>
-      <?php print render($primary_nav); ?>
+        <?php print render($primary_nav); ?>
       <?php endif; ?>
-      <?php if (!empty($page['navigation'])): ?>
-      <?php print render($page['navigation']); ?>
+      <?php if (!empty($page['lang_chooser'])): ?>
+        <?php print render($page['lang_chooser']); ?>
       <?php endif; ?>
     </div>  <!-- /.navbar-collapse -->
   </div>  <!-- /.container-fluid -->
@@ -103,10 +103,6 @@
 <div class="main-container container">
 
   <header role="banner" id="page-header">
-    <?php if (!empty($site_slogan)): ?>
-      <p class="lead"><?php print $site_slogan; ?></p>
-    <?php endif; ?>
-
     <?php print render($page['header']); ?>
   </header> <!-- /#page-header -->
 
