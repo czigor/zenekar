@@ -1,12 +1,17 @@
 /**
  * Menu related styling.
  */
+
 .navbar {
-  .margin-bottom: 0px;
+  margin-bottom: 0px;
   .navbar-brand {
     padding: 0;
     img {
-    height: 50px;
+      height: 50px;
     }
   }
+}
+
+#admin-menu {
+  z-index: 1000;
 }

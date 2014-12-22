@@ -20,7 +20,7 @@
 
 
 <!-- News section -->
-<div id="news" class="front-section">
+<div id="news">
   <div class="jumbotron jumbotron-outer"> <?php print render($news['node']);?></div>
 </div>
 <!-- /News section -->
