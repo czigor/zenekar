@@ -16,6 +16,8 @@ function mez_person_ct_taxonomy_default_vocabularies() {
       'hierarchy' => 1,
       'module' => 'mez',
       'weight' => 0,
+      'language' => 'und',
+      'i18n_mode' => 1,
     ),
   );
 }

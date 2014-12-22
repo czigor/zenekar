@@ -15,6 +15,7 @@ function iq_project_og_features_default_permissions() {
     'roles' => array(
       'administrator member' => 'administrator member',
       'developer' => 'developer',
+      'member' => 'member',
     ),
   );
 
@@ -44,6 +45,7 @@ function iq_project_og_features_default_permissions() {
     'roles' => array(
       'administrator member' => 'administrator member',
       'developer' => 'developer',
+      'member' => 'member',
     ),
   );
 
@@ -62,6 +64,7 @@ function iq_project_og_features_default_permissions() {
     'roles' => array(
       'administrator member' => 'administrator member',
       'developer' => 'developer',
+      'member' => 'member',
     ),
   );
 
@@ -124,9 +127,7 @@ function iq_project_og_features_default_permissions() {
 
   // Exported og permission: 'node:project:subscribe'
   $permissions['node:project:subscribe'] = array(
-    'roles' => array(
-      'non-member' => 'non-member',
-    ),
+    'roles' => array(),
   );
 
   // Exported og permission: 'node:project:subscribe without approval'
@@ -144,6 +145,7 @@ function iq_project_og_features_default_permissions() {
     'roles' => array(
       'administrator member' => 'administrator member',
       'developer' => 'developer',
+      'member' => 'member',
     ),
   );
 
@@ -157,6 +159,7 @@ function iq_project_og_features_default_permissions() {
     'roles' => array(
       'administrator member' => 'administrator member',
       'developer' => 'developer',
+      'member' => 'member',
     ),
   );
 
@@ -165,6 +168,8 @@ function iq_project_og_features_default_permissions() {
     'roles' => array(
       'administrator member' => 'administrator member',
       'developer' => 'developer',
+      'member' => 'member',
+      'non-member' => 'non-member',
     ),
   );
 
@@ -173,6 +178,8 @@ function iq_project_og_features_default_permissions() {
     'roles' => array(
       'administrator member' => 'administrator member',
       'developer' => 'developer',
+      'member' => 'member',
+      'non-member' => 'non-member',
     ),
   );
 
@@ -181,6 +188,8 @@ function iq_project_og_features_default_permissions() {
     'roles' => array(
       'administrator member' => 'administrator member',
       'developer' => 'developer',
+      'member' => 'member',
+      'non-member' => 'non-member',
     ),
   );
 
@@ -191,6 +200,7 @@ function iq_project_og_features_default_permissions() {
       'customer' => 'customer',
       'developer' => 'developer',
       'member' => 'member',
+      'non-member' => 'non-member',
     ),
   );
 
@@ -201,6 +211,7 @@ function iq_project_og_features_default_permissions() {
       'customer' => 'customer',
       'developer' => 'developer',
       'member' => 'member',
+      'non-member' => 'non-member',
     ),
   );
 
@@ -211,6 +222,7 @@ function iq_project_og_features_default_permissions() {
       'customer' => 'customer',
       'developer' => 'developer',
       'member' => 'member',
+      'non-member' => 'non-member',
     ),
   );
 
@@ -218,6 +230,7 @@ function iq_project_og_features_default_permissions() {
   $permissions['node:project:update field_issue_description field'] = array(
     'roles' => array(
       'member' => 'member',
+      'non-member' => 'non-member',
     ),
   );
 
@@ -226,6 +239,8 @@ function iq_project_og_features_default_permissions() {
     'roles' => array(
       'administrator member' => 'administrator member',
       'developer' => 'developer',
+      'member' => 'member',
+      'non-member' => 'non-member',
     ),
   );
 
@@ -234,6 +249,8 @@ function iq_project_og_features_default_permissions() {
     'roles' => array(
       'administrator member' => 'administrator member',
       'developer' => 'developer',
+      'member' => 'member',
+      'non-member' => 'non-member',
     ),
   );
 
@@ -242,6 +259,8 @@ function iq_project_og_features_default_permissions() {
     'roles' => array(
       'administrator member' => 'administrator member',
       'developer' => 'developer',
+      'member' => 'member',
+      'non-member' => 'non-member',
     ),
   );
 
@@ -250,6 +269,8 @@ function iq_project_og_features_default_permissions() {
     'roles' => array(
       'administrator member' => 'administrator member',
       'developer' => 'developer',
+      'member' => 'member',
+      'non-member' => 'non-member',
     ),
   );
 
@@ -258,6 +279,8 @@ function iq_project_og_features_default_permissions() {
     'roles' => array(
       'administrator member' => 'administrator member',
       'developer' => 'developer',
+      'member' => 'member',
+      'non-member' => 'non-member',
     ),
   );
 
@@ -268,6 +291,7 @@ function iq_project_og_features_default_permissions() {
       'customer' => 'customer',
       'developer' => 'developer',
       'member' => 'member',
+      'non-member' => 'non-member',
     ),
   );
 
@@ -276,6 +300,8 @@ function iq_project_og_features_default_permissions() {
     'roles' => array(
       'administrator member' => 'administrator member',
       'developer' => 'developer',
+      'member' => 'member',
+      'non-member' => 'non-member',
     ),
   );
 
@@ -286,6 +312,7 @@ function iq_project_og_features_default_permissions() {
       'customer' => 'customer',
       'developer' => 'developer',
       'member' => 'member',
+      'non-member' => 'non-member',
     ),
   );
 
@@ -296,6 +323,7 @@ function iq_project_og_features_default_permissions() {
       'customer' => 'customer',
       'developer' => 'developer',
       'member' => 'member',
+      'non-member' => 'non-member',
     ),
   );
 
@@ -304,6 +332,8 @@ function iq_project_og_features_default_permissions() {
     'roles' => array(
       'administrator member' => 'administrator member',
       'developer' => 'developer',
+      'member' => 'member',
+      'non-member' => 'non-member',
     ),
   );
 
@@ -337,7 +367,9 @@ function iq_project_og_features_default_permissions() {
 
   // Exported og permission: 'node:project:update group_access field'
   $permissions['node:project:update group_access field'] = array(
-    'roles' => array(),
+    'roles' => array(
+      'administrator member' => 'administrator member',
+    ),
   );
 
   // Exported og permission: 'node:project:update group_content_access field'
@@ -355,6 +387,8 @@ function iq_project_og_features_default_permissions() {
     'roles' => array(
       'administrator member' => 'administrator member',
       'developer' => 'developer',
+      'member' => 'member',
+      'non-member' => 'non-member',
     ),
   );
 
@@ -368,6 +402,7 @@ function iq_project_og_features_default_permissions() {
     'roles' => array(
       'administrator member' => 'administrator member',
       'developer' => 'developer',
+      'member' => 'member',
     ),
   );
 
@@ -381,6 +416,7 @@ function iq_project_og_features_default_permissions() {
     'roles' => array(
       'administrator member' => 'administrator member',
       'developer' => 'developer',
+      'member' => 'member',
     ),
   );
 
@@ -388,6 +424,7 @@ function iq_project_og_features_default_permissions() {
   $permissions['node:project:update title_field field'] = array(
     'roles' => array(
       'member' => 'member',
+      'non-member' => 'non-member',
     ),
   );
 
@@ -398,6 +435,7 @@ function iq_project_og_features_default_permissions() {
       'customer' => 'customer',
       'developer' => 'developer',
       'member' => 'member',
+      'non-member' => 'non-member',
     ),
   );
 
@@ -408,6 +446,7 @@ function iq_project_og_features_default_permissions() {
       'customer' => 'customer',
       'developer' => 'developer',
       'member' => 'member',
+      'non-member' => 'non-member',
     ),
   );
 
@@ -423,6 +462,7 @@ function iq_project_og_features_default_permissions() {
       'customer' => 'customer',
       'developer' => 'developer',
       'member' => 'member',
+      'non-member' => 'non-member',
     ),
   );
 
@@ -433,6 +473,7 @@ function iq_project_og_features_default_permissions() {
       'customer' => 'customer',
       'developer' => 'developer',
       'member' => 'member',
+      'non-member' => 'non-member',
     ),
   );
 
@@ -443,6 +484,7 @@ function iq_project_og_features_default_permissions() {
       'customer' => 'customer',
       'developer' => 'developer',
       'member' => 'member',
+      'non-member' => 'non-member',
     ),
   );
 
@@ -453,6 +495,7 @@ function iq_project_og_features_default_permissions() {
       'customer' => 'customer',
       'developer' => 'developer',
       'member' => 'member',
+      'non-member' => 'non-member',
     ),
   );
 
@@ -463,6 +506,7 @@ function iq_project_og_features_default_permissions() {
       'customer' => 'customer',
       'developer' => 'developer',
       'member' => 'member',
+      'non-member' => 'non-member',
     ),
   );
 
@@ -473,6 +517,7 @@ function iq_project_og_features_default_permissions() {
       'customer' => 'customer',
       'developer' => 'developer',
       'member' => 'member',
+      'non-member' => 'non-member',
     ),
   );
 
@@ -481,6 +526,8 @@ function iq_project_og_features_default_permissions() {
     'roles' => array(
       'administrator member' => 'administrator member',
       'developer' => 'developer',
+      'member' => 'member',
+      'non-member' => 'non-member',
     ),
   );
 
@@ -490,6 +537,8 @@ function iq_project_og_features_default_permissions() {
       'administrator member' => 'administrator member',
       'customer' => 'customer',
       'developer' => 'developer',
+      'member' => 'member',
+      'non-member' => 'non-member',
     ),
   );
 
@@ -500,6 +549,7 @@ function iq_project_og_features_default_permissions() {
       'customer' => 'customer',
       'developer' => 'developer',
       'member' => 'member',
+      'non-member' => 'non-member',
     ),
   );
 
@@ -510,6 +560,7 @@ function iq_project_og_features_default_permissions() {
       'customer' => 'customer',
       'developer' => 'developer',
       'member' => 'member',
+      'non-member' => 'non-member',
     ),
   );
 
@@ -520,6 +571,7 @@ function iq_project_og_features_default_permissions() {
       'customer' => 'customer',
       'developer' => 'developer',
       'member' => 'member',
+      'non-member' => 'non-member',
     ),
   );
 
@@ -530,6 +582,7 @@ function iq_project_og_features_default_permissions() {
       'customer' => 'customer',
       'developer' => 'developer',
       'member' => 'member',
+      'non-member' => 'non-member',
     ),
   );
 
@@ -540,6 +593,7 @@ function iq_project_og_features_default_permissions() {
       'customer' => 'customer',
       'developer' => 'developer',
       'member' => 'member',
+      'non-member' => 'non-member',
     ),
   );
 
@@ -550,6 +604,7 @@ function iq_project_og_features_default_permissions() {
       'customer' => 'customer',
       'developer' => 'developer',
       'member' => 'member',
+      'non-member' => 'non-member',
     ),
   );
 
@@ -560,6 +615,7 @@ function iq_project_og_features_default_permissions() {
       'customer' => 'customer',
       'developer' => 'developer',
       'member' => 'member',
+      'non-member' => 'non-member',
     ),
   );
 
@@ -570,6 +626,7 @@ function iq_project_og_features_default_permissions() {
       'customer' => 'customer',
       'developer' => 'developer',
       'member' => 'member',
+      'non-member' => 'non-member',
     ),
   );
 
@@ -580,12 +637,16 @@ function iq_project_og_features_default_permissions() {
       'customer' => 'customer',
       'developer' => 'developer',
       'member' => 'member',
+      'non-member' => 'non-member',
     ),
   );
 
   // Exported og permission: 'node:project:view group_access field'
   $permissions['node:project:view group_access field'] = array(
-    'roles' => array(),
+    'roles' => array(
+      'administrator member' => 'administrator member',
+      'member' => 'member',
+    ),
   );
 
   // Exported og permission: 'node:project:view group_content_access field'
@@ -605,12 +666,16 @@ function iq_project_og_features_default_permissions() {
       'customer' => 'customer',
       'developer' => 'developer',
       'member' => 'member',
+      'non-member' => 'non-member',
     ),
   );
 
   // Exported og permission: 'node:project:view og_user_node field'
   $permissions['node:project:view og_user_node field'] = array(
-    'roles' => array(),
+    'roles' => array(
+      'administrator member' => 'administrator member',
+      'member' => 'member',
+    ),
   );
 
   // Exported og permission: 'node:project:view title_field field'
@@ -620,6 +685,7 @@ function iq_project_og_features_default_permissions() {
       'customer' => 'customer',
       'developer' => 'developer',
       'member' => 'member',
+      'non-member' => 'non-member',
     ),
   );
 

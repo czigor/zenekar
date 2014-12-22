@@ -120,8 +120,8 @@ function iq_issue_field_group_info() {
       1 => 'field_issue_attachments',
       2 => 'field_issue_business_value',
       3 => 'field_issue_description',
-      4 => 'field_issue_status_term',
-      5 => 'field_issue_type',
+      4 => 'field_issue_type',
+      5 => 'field_issue_status_term',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

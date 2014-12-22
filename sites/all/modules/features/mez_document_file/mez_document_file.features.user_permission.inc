@@ -15,6 +15,7 @@ function mez_document_file_user_default_permissions() {
     'name' => 'delete any document files',
     'roles' => array(
       'editor' => 'editor',
+      'member' => 'member',
       'site admin' => 'site admin',
     ),
     'module' => 'file_entity',
@@ -25,6 +26,7 @@ function mez_document_file_user_default_permissions() {
     'name' => 'delete own document files',
     'roles' => array(
       'editor' => 'editor',
+      'member' => 'member',
     ),
     'module' => 'file_entity',
   );
@@ -32,7 +34,9 @@ function mez_document_file_user_default_permissions() {
   // Exported permission: 'download any document files'.
   $permissions['download any document files'] = array(
     'name' => 'download any document files',
-    'roles' => array(),
+    'roles' => array(
+      'member' => 'member',
+    ),
     'module' => 'file_entity',
   );
 
@@ -41,6 +45,7 @@ function mez_document_file_user_default_permissions() {
     'name' => 'download own document files',
     'roles' => array(
       'editor' => 'editor',
+      'member' => 'member',
       'site admin' => 'site admin',
     ),
     'module' => 'file_entity',
@@ -51,6 +56,7 @@ function mez_document_file_user_default_permissions() {
     'name' => 'edit any document files',
     'roles' => array(
       'editor' => 'editor',
+      'member' => 'member',
       'site admin' => 'site admin',
     ),
     'module' => 'file_entity',
@@ -61,6 +67,7 @@ function mez_document_file_user_default_permissions() {
     'name' => 'edit own document files',
     'roles' => array(
       'editor' => 'editor',
+      'member' => 'member',
       'site admin' => 'site admin',
     ),
     'module' => 'file_entity',

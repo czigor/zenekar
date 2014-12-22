@@ -60,8 +60,85 @@ function mez_settings_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'admin_theme';
-  $strongarm->value = '0';
+  $strongarm->value = 'bartik';
   $export['admin_theme'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'chosen_disable_search';
+  $strongarm->value = 0;
+  $export['chosen_disable_search'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'chosen_disable_search_threshold';
+  $strongarm->value = '0';
+  $export['chosen_disable_search_threshold'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'chosen_jquery_selector';
+  $strongarm->value = 'select';
+  $export['chosen_jquery_selector'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'chosen_minimum_multiple';
+  $strongarm->value = '0';
+  $export['chosen_minimum_multiple'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'chosen_minimum_single';
+  $strongarm->value = '10';
+  $export['chosen_minimum_single'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'chosen_minimum_width';
+  $strongarm->value = '200';
+  $export['chosen_minimum_width'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'chosen_no_results_text';
+  $strongarm->value = 'No results match';
+  $export['chosen_no_results_text'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'chosen_placeholder_text_multiple';
+  $strongarm->value = 'Choose some options';
+  $export['chosen_placeholder_text_multiple'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'chosen_placeholder_text_single';
+  $strongarm->value = 'Choose an option';
+  $export['chosen_placeholder_text_single'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'chosen_search_contains';
+  $strongarm->value = 0;
+  $export['chosen_search_contains'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'chosen_use_theme';
+  $strongarm->value = 1;
+  $export['chosen_use_theme'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -596,8 +673,18 @@ function mez_settings_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'themekey_attributes';
   $strongarm->value = array(
+    'book:bid' => array(
+      'description' => 'Book: ID - The id of the book (bid). This is the node id (nid) of the top book page. See <a href="/hu/admin/content/book">admin/content/book</a> for your books',
+      'validator' => 'themekey_validator_ctype_digit',
+      'page cache' => 1,
+    ),
+    'book:has_children' => array(
+      'description' => 'Book: Has Children - Whether the book has child pages or not. Possible values are "0" for false and "1" for true.',
+      'validator' => 'themekey_validator_numeric_boolean',
+      'page cache' => 1,
+    ),
     'comment:cid' => array(
-      'description' => 'Comment: ID - The id of a comment (cid). See <a href="/admin/content/comment">admin/content/comment</a> for your published comments or <a href="/admin/content/comment/approval">admin/content/comment/approval</a> for comments awaiting approval',
+      'description' => 'Comment: ID - The id of a comment (cid). See <a href="/hu/admin/content/comment">admin/content/comment</a> for your published comments or <a href="/hu/admin/content/comment/approval">admin/content/comment/approval</a> for comments awaiting approval',
       'validator' => 'themekey_validator_ctype_digit',
       'page cache' => 1,
     ),
@@ -676,13 +763,23 @@ foo
       'validator' => 'themekey_validator_string_boolean',
       'page cache' => 1,
     ),
+    'group:id' => array(
+      'description' => 'Group: ID - The og group ID',
+      'validator' => 'themekey_validator_ctype_digit',
+      'page cache' => 1,
+    ),
+    'group:type' => array(
+      'description' => 'Group: Type - The type of an og group',
+      'validator' => 'themekey_validator_og_group_type',
+      'page cache' => 1,
+    ),
     'locale:language' => array(
-      'description' => 'Locale: Language - The code of the current site language, formatted like "en" or "de" or "neutral". See <a href="/admin/config/language">admin/config/language</a> for the codes of your enabled languages',
+      'description' => 'Locale: Language - The code of the current site language, formatted like "en" or "de" or "neutral". See <a href="/hu/admin/config/language">admin/config/language</a> for the codes of your enabled languages',
       'validator' => 'themekey_validator_language',
       'page cache' => 1,
     ),
     'locale:language_content' => array(
-      'description' => 'Locale: Language Content - The code of the current content language, formatted like "en" or "de" or "neutral". See <a href="/admin/config/language">admin/config/language</a> for the codes of your enabled languages',
+      'description' => 'Locale: Language Content - The code of the current content language, formatted like "en" or "de" or "neutral". See <a href="/hu/admin/config/language">admin/config/language</a> for the codes of your enabled languages',
       'validator' => 'themekey_validator_language',
       'page cache' => 1,
     ),
@@ -1094,7 +1191,7 @@ foo
       'page cache' => 1,
     ),
     'node:language' => array(
-      'description' => 'Node: Language - The code of the selected language of a node (formatted like "en" or "de") or "neutral". See <a href="/admin/config/language">admin/config/language</a> for the codes of your enabled languages',
+      'description' => 'Node: Language - The code of the selected language of a node (formatted like "en" or "de") or "neutral". See <a href="/hu/admin/config/language">admin/config/language</a> for the codes of your enabled languages',
       'validator' => 'themekey_validator_language',
       'page cache' => 1,
     ),
@@ -1130,12 +1227,12 @@ foo
       'page cache' => 1,
     ),
     'node:type' => array(
-      'description' => 'Node: Type - The machine-readable content type of the node. See <a href="/admin/structure/types">admin/structure/types</a> for your content types (use column "Type"). Drupal default types are "page" and "story".',
+      'description' => 'Node: Type - The machine-readable content type of the node. See <a href="/hu/admin/structure/types">admin/structure/types</a> for your content types (use column "Type"). Drupal default types are "page" and "story".',
       'validator' => 'themekey_validator_node_type',
       'page cache' => 1,
     ),
     'node:uid' => array(
-      'description' => 'Node: User ID - The node author\'s user id (uid). The user id can be found in the URL of the user\'s profile page, "user/23" or "user/23/edit" (23 = uid). See <a href="/admin/user/user/list">admin/user/user/list</a> for your users.',
+      'description' => 'Node: User ID - The node author\'s user id (uid). The user id can be found in the URL of the user\'s profile page, "user/23" or "user/23/edit" (23 = uid). See <a href="/hu/admin/user/user/list">admin/user/user/list</a> for your users.',
       'validator' => 'themekey_validator_ctype_digit',
       'page cache' => 1,
     ),
@@ -1253,25 +1350,25 @@ foo
       'description' => 'System: Browser - Information about user\'s browser. Possible values: \'Blazer [VERSION]\', \'Internet Explorer [VERSION]\', \'Internet Explorer Mobile [VERSION]\', \'Mozilla Firefox [VERSION]\', \'Netscape [VERSION]\', \'Google Chrome [VERSION]\', \'Safari [VERSION]\', \'Galeon [VERSION]\', \'Konqueror [VERSION]\', \'Gecko based\', \'Opera [VERSION]\', \'Lynx [VERSION]\', \'Fennec [VERSION]\', \'Maemo [VERSION]\', \'unknown\'',
       'page cache' => 0,
       'deprecated' => TRUE,
-      'deprecated message' => 'Property system:user_browser is deprecated. Consider to use one of the new properties ThemeKey provides in combination with <a href="https://drupal.org/project/browscap">Browscap</a>, <a href="https://drupal.org/project/mobile_detect_api">Mobile Detect API</a>, or <a href="https://drupal.org/project/mobile_detect_api">Mobile Detect</a>.',
+      'deprecated message' => 'Property system:user_browser is deprecated. Consider to use one of the new properties ThemeKey provides in combination with <a href="https://drupal.org/project/browscap">Böngészőszámláló</a>, <a href="https://drupal.org/project/mobile_detect_api">Mobile Detect API</a>, or <a href="https://drupal.org/project/mobile_detect_api">Mobile Detect</a>.',
     ),
     'system:user_browser_simplified' => array(
       'description' => 'System: Browser - Simplified information about user\'s browser. Possible values: \'Blazer\', \'Internet Explorer\', \'Internet Explorer Mobile\', \'Mozilla Firefox\', \'Netscape\', \'Google Chrome\', \'Safari\', \'Galeon\', \'Konqueror\', \'Gecko based\', \'Opera\', \'Lynx\', \'Fennec\', \'Maemo\', \'unknown\'',
       'page cache' => 0,
       'deprecated' => TRUE,
-      'deprecated message' => 'Property system:user_browser_simplified is deprecated. Consider to use one of the new properties ThemeKey provides in combination with <a href="https://drupal.org/project/browscap">Browscap</a>, <a href="https://drupal.org/project/mobile_detect_api">Mobile Detect API</a>, or <a href="https://drupal.org/project/mobile_detect_api">Mobile Detect</a>.',
+      'deprecated message' => 'Property system:user_browser_simplified is deprecated. Consider to use one of the new properties ThemeKey provides in combination with <a href="https://drupal.org/project/browscap">Böngészőszámláló</a>, <a href="https://drupal.org/project/mobile_detect_api">Mobile Detect API</a>, or <a href="https://drupal.org/project/mobile_detect_api">Mobile Detect</a>.',
     ),
     'system:user_os' => array(
       'description' => 'System: Operating System - Information about user\'s browser. Possible values: \'Windows XP\', \'Windows Vista\', \'Windows 98\', \'Windows 2000\', \'Windows 2003 server\', \'Windows NT\',  \'Windows ME\', \'Windows CE\', \'Windows ME\', \'Windows Phone\', \'iPhone\', \'iPad\', \'Mac OS X\', \'Macintosh\', \'Linux\', \'Free BSD\', \'Symbian\', \'webOS\', \'Android\', \'Blackberry\', \'unknown\'',
       'page cache' => 0,
       'deprecated' => TRUE,
-      'deprecated message' => 'Property system:user_os is deprecated. Consider to use one of the new properties ThemeKey provides in combination with <a href="https://drupal.org/project/browscap">Browscap</a>, <a href="https://drupal.org/project/mobile_detect_api">Mobile Detect API</a>, or <a href="https://drupal.org/project/mobile_detect_api">Mobile Detect</a>.',
+      'deprecated message' => 'Property system:user_os is deprecated. Consider to use one of the new properties ThemeKey provides in combination with <a href="https://drupal.org/project/browscap">Böngészőszámláló</a>, <a href="https://drupal.org/project/mobile_detect_api">Mobile Detect API</a>, or <a href="https://drupal.org/project/mobile_detect_api">Mobile Detect</a>.',
     ),
     'system:user_os_simplified' => array(
       'description' => 'System: Operating System - Simplified information about user\'s browser. Possible values: \'Windows\', \'Windows Phone\', \'iPhone\', \'iPad\', \'Mac OS X\', \'Macintosh\', \'Linux\', \'Free BSD\', \'Symbian\', \'webOS\', \'Android\', \'Blackberry\', \'unknown\'',
       'page cache' => 0,
       'deprecated' => TRUE,
-      'deprecated message' => 'Property system:user_os_simplified is deprecated. Consider to use one of the new properties ThemeKey provides in combination with <a href="https://drupal.org/project/browscap">Browscap</a>, <a href="https://drupal.org/project/mobile_detect_api">Mobile Detect API</a>, or <a href="https://drupal.org/project/mobile_detect_api">Mobile Detect</a>.',
+      'deprecated message' => 'Property system:user_os_simplified is deprecated. Consider to use one of the new properties ThemeKey provides in combination with <a href="https://drupal.org/project/browscap">Böngészőszámláló</a>, <a href="https://drupal.org/project/mobile_detect_api">Mobile Detect API</a>, or <a href="https://drupal.org/project/mobile_detect_api">Mobile Detect</a>.',
     ),
     'taxonomy:name' => array(
       'description' => 'Taxonomy: Name - The term name (name) of a taxonomy term without support for translations.',
@@ -1289,7 +1386,7 @@ foo
       'page cache' => 0,
     ),
     'taxonomy:vid' => array(
-      'description' => 'Taxonomy: Vocabulary - The vocabulary id (vid) of a taxonomy vocabulary. See <a href="/admin/structure/taxonomy">admin/structure/taxonomy</a> for your vocabularies.',
+      'description' => 'Taxonomy: Vocabulary - The vocabulary id (vid) of a taxonomy vocabulary. See <a href="/hu/admin/structure/taxonomy">admin/structure/taxonomy</a> for your vocabularies.',
       'validator' => 'themekey_validator_ctype_digit',
       'page cache' => 1,
     ),
@@ -1301,12 +1398,12 @@ foo
     ),
     'user:language' => array(
       'description' => 'User: Language - The language the user has set in the settings of his profile page.
-      Format is the language code (for example "en" for English or "de" for German) that can be found on <a href="/admin/config/regional/language/overview">admin/config/regional/language/overview</a>.',
+      Format is the language code (for example "en" for English or "de" for German) that can be found on <a href="/hu/admin/config/regional/language/overview">admin/config/regional/language/overview</a>.',
       'validator' => 'themekey_validator_language',
       'page cache' => 1,
     ),
     'user:name' => array(
-      'description' => 'User: Name - The username of the user. See <a href="/admin/people/people">admin/people/people</a> for your users.',
+      'description' => 'User: Name - The username of the user. See <a href="/hu/admin/people/people">admin/people/people</a> for your users.',
       'page cache' => 1,
     ),
     'user:role' => array(
@@ -1315,7 +1412,7 @@ foo
       'page cache' => 1,
     ),
     'user:uid' => array(
-      'description' => 'User: ID - The id of the user (uid). The user id can be found in the URL of the users profile page, "user/23" or "user/23/edit" (23 = uid). See <a href="/admin/people/people">admin/people/people</a> for your users.',
+      'description' => 'User: ID - The id of the user (uid). The user id can be found in the URL of the users profile page, "user/23" or "user/23/edit" (23 = uid). See <a href="/hu/admin/people/people">admin/people/people</a> for your users.',
       'validator' => 'themekey_validator_ctype_digit',
       'page cache' => 1,
     ),
@@ -1348,211 +1445,136 @@ foo
   $strongarm->name = 'themekey_maps';
   $strongarm->value = array(
     0 => array(
-      'src' => 'contact:uid',
-      'dst' => 'themekey_ui:author_triggers_theme',
-      'callback' => 'themekey_contact_uid2theme',
+      'src' => 'node:nid',
+      'dst' => 'book:bid',
+      'callback' => 'themekey_book_nid2bid',
     ),
     1 => array(
-      'src' => 'system:dummy',
-      'dst' => 'system:query_param',
-      'callback' => 'themekey_dummy2query_param',
+      'src' => 'node:nid',
+      'dst' => 'book:has_children',
+      'callback' => 'themekey_book_nid2has_children',
     ),
     2 => array(
-      'src' => 'system:dummy',
-      'dst' => 'system:cookie',
-      'callback' => 'themekey_dummy2cookie',
-    ),
-    3 => array(
-      'src' => 'system:dummy',
-      'dst' => 'system:http_header',
-      'callback' => 'themekey_dummy2http_header',
-    ),
-    4 => array(
-      'src' => 'system:dummy',
-      'dst' => 'system:post',
-      'callback' => 'themekey_dummy2post',
-    ),
-    5 => array(
-      'src' => 'system:dummy',
-      'dst' => 'system:query_string',
-      'callback' => 'themekey_dummy2query_string',
-    ),
-    6 => array(
-      'src' => 'system:dummy',
-      'dst' => 'system:date_time',
-      'callback' => 'themekey_dummy2date_time',
-    ),
-    7 => array(
-      'src' => 'system:dummy',
-      'dst' => 'system:date',
-      'callback' => 'themekey_dummy2date',
-    ),
-    8 => array(
-      'src' => 'system:dummy',
-      'dst' => 'system:month',
-      'callback' => 'themekey_dummy2month',
-    ),
-    9 => array(
-      'src' => 'system:dummy',
-      'dst' => 'system:time',
-      'callback' => 'themekey_dummy2time',
-    ),
-    10 => array(
-      'src' => 'system:dummy',
-      'dst' => 'system:day_of_week',
-      'callback' => 'themekey_dummy2day_of_week',
-    ),
-    11 => array(
-      'src' => 'system:dummy',
-      'dst' => 'system:day_of_month',
-      'callback' => 'themekey_dummy2day_of_month',
-    ),
-    12 => array(
-      'src' => 'system:dummy',
-      'dst' => 'system:user_browser',
-      'callback' => 'themekey_dummy2user_browser',
-    ),
-    13 => array(
-      'src' => 'system:dummy',
-      'dst' => 'system:user_os',
-      'callback' => 'themekey_dummy2user_os',
-    ),
-    14 => array(
-      'src' => 'system:user_browser',
-      'dst' => 'system:user_browser_simplified',
-      'callback' => 'themekey_user_browser2user_browser_simplified',
-    ),
-    15 => array(
-      'src' => 'system:user_os',
-      'dst' => 'system:user_os_simplified',
-      'callback' => 'themekey_user_os2user_os_simplified',
-    ),
-    16 => array(
-      'src' => 'system:dummy',
-      'dst' => 'system:session',
-      'callback' => 'themekey_dummy2session',
-    ),
-    17 => array(
-      'src' => 'system:dummy',
-      'dst' => 'locale:language_from_browser',
-      'callback' => 'themekey_locale_dummy2language_from_browser',
-    ),
-    18 => array(
       'src' => 'drupal:get_q',
       'dst' => 'views:vid',
       'callback' => 'themekey_views_getq2vid',
     ),
-    19 => array(
+    3 => array(
       'src' => 'drupal:get_q',
       'dst' => 'views:machine_name',
       'callback' => 'themekey_views_getq2machine_name',
     ),
-    20 => array(
+    4 => array(
       'src' => 'drupal:get_q',
       'dst' => 'views:human_name',
       'callback' => 'themekey_views_getq2human_name',
     ),
-    21 => array(
-      'src' => 'node:nid',
-      'dst' => 'path:node_alias',
-      'callback' => 'themekey_path_nid2alias',
-    ),
-    22 => array(
-      'src' => 'taxonomy:tid',
-      'dst' => 'taxonomy:vid',
-      'callback' => 'themekey_taxonomy_tid2vid',
-    ),
-    23 => array(
-      'src' => 'taxonomy:tid',
-      'dst' => 'taxonomy:tid_and_childs',
-      'callback' => 'themekey_taxonomy_tid2tid_and_parents',
-    ),
-    24 => array(
-      'src' => 'node:nid',
-      'dst' => 'taxonomy:tid',
-      'callback' => 'themekey_taxonomy_nid2tid',
-    ),
-    25 => array(
-      'src' => 'taxonomy:tid',
-      'dst' => 'taxonomy:name',
-      'callback' => 'themekey_taxonomy_tid2name',
-    ),
-    26 => array(
+    5 => array(
       'src' => 'profile:uid',
       'dst' => 'themekey_ui:author_triggers_theme',
       'callback' => 'themekey_user_profile2theme',
     ),
-    27 => array(
+    6 => array(
+      'src' => 'contact:uid',
+      'dst' => 'themekey_ui:author_triggers_theme',
+      'callback' => 'themekey_contact_uid2theme',
+    ),
+    7 => array(
+      'src' => 'taxonomy:tid',
+      'dst' => 'taxonomy:vid',
+      'callback' => 'themekey_taxonomy_tid2vid',
+    ),
+    8 => array(
+      'src' => 'taxonomy:tid',
+      'dst' => 'taxonomy:tid_and_childs',
+      'callback' => 'themekey_taxonomy_tid2tid_and_parents',
+    ),
+    9 => array(
+      'src' => 'node:nid',
+      'dst' => 'taxonomy:tid',
+      'callback' => 'themekey_taxonomy_nid2tid',
+    ),
+    10 => array(
+      'src' => 'taxonomy:tid',
+      'dst' => 'taxonomy:name',
+      'callback' => 'themekey_taxonomy_tid2name',
+    ),
+    11 => array(
+      'src' => 'comment:cid',
+      'dst' => 'node:nid',
+      'callback' => 'themekey_comment_cid2nid',
+    ),
+    12 => array(
       'src' => 'node:nid',
       'dst' => 'node:changed',
       'callback' => 'themekey_node_nid2changed',
     ),
-    28 => array(
+    13 => array(
       'src' => 'node:nid',
       'dst' => 'node:created',
       'callback' => 'themekey_node_nid2created',
     ),
-    29 => array(
+    14 => array(
       'src' => 'node:changed',
       'dst' => 'node:changed_date_time',
       'callback' => 'themekey_node_timestamp2datetime',
     ),
-    30 => array(
+    15 => array(
       'src' => 'node:created',
       'dst' => 'node:created_date_time',
       'callback' => 'themekey_node_timestamp2datetime',
     ),
-    31 => array(
+    16 => array(
       'src' => 'node:changed',
       'dst' => 'node:changed_date',
       'callback' => 'themekey_node_timestamp2date',
     ),
-    32 => array(
+    17 => array(
       'src' => 'node:created',
       'dst' => 'node:created_date',
       'callback' => 'themekey_node_timestamp2date',
     ),
-    33 => array(
+    18 => array(
       'src' => 'node:nid',
       'dst' => 'node:language',
       'callback' => 'themekey_node_nid2language',
     ),
-    34 => array(
+    19 => array(
       'src' => 'node:nid',
       'dst' => 'node:vid',
       'callback' => 'themekey_node_nid2vid',
     ),
-    35 => array(
+    20 => array(
       'src' => 'node:nid',
       'dst' => 'node:promote',
       'callback' => 'themekey_node_nid2promote',
     ),
-    36 => array(
+    21 => array(
       'src' => 'node:nid',
       'dst' => 'node:sticky',
       'callback' => 'themekey_node_nid2sticky',
     ),
-    37 => array(
+    22 => array(
       'src' => 'node:nid',
       'dst' => 'node:type',
       'callback' => 'themekey_node_nid2type',
     ),
-    38 => array(
+    23 => array(
       'src' => 'node:nid',
       'dst' => 'node:uid',
       'callback' => 'themekey_node_nid2uid',
     ),
-    39 => array(
+    24 => array(
       'src' => 'node:nid',
       'dst' => 'node:title',
       'callback' => 'themekey_node_nid2title',
     ),
-    40 => array(
+    25 => array(
       'src' => 'drupal:get_q',
       'dst' => 'node:type',
       'callback' => 'themekey_node_get_q2type',
     ),
-    41 => array(
+    26 => array(
       'src' => 'node:nid',
       'dst' => 'node:field_instrument_tid',
       'callback' => 'themekey_node_nid2field_value',
@@ -1563,7 +1585,7 @@ foo
         'translatable' => '0',
       ),
     ),
-    42 => array(
+    27 => array(
       'src' => 'node:nid',
       'dst' => 'node:field_tags_tid',
       'callback' => 'themekey_node_nid2field_value',
@@ -1574,7 +1596,7 @@ foo
         'translatable' => '0',
       ),
     ),
-    43 => array(
+    28 => array(
       'src' => 'node:nid',
       'dst' => 'node:field_time_value',
       'callback' => 'themekey_node_nid2field_value',
@@ -1585,7 +1607,7 @@ foo
         'translatable' => '0',
       ),
     ),
-    44 => array(
+    29 => array(
       'src' => 'node:nid',
       'dst' => 'node:field_time_value2',
       'callback' => 'themekey_node_nid2field_value',
@@ -1596,7 +1618,7 @@ foo
         'translatable' => '0',
       ),
     ),
-    45 => array(
+    30 => array(
       'src' => 'node:nid',
       'dst' => 'node:field_comma_separator_value',
       'callback' => 'themekey_node_nid2field_value',
@@ -1607,7 +1629,7 @@ foo
         'translatable' => '0',
       ),
     ),
-    46 => array(
+    31 => array(
       'src' => 'node:nid',
       'dst' => 'node:field_family_name_value',
       'callback' => 'themekey_node_nid2field_value',
@@ -1618,7 +1640,7 @@ foo
         'translatable' => '1',
       ),
     ),
-    47 => array(
+    32 => array(
       'src' => 'node:nid',
       'dst' => 'node:field_family_name_format',
       'callback' => 'themekey_node_nid2field_value',
@@ -1629,7 +1651,7 @@ foo
         'translatable' => '1',
       ),
     ),
-    48 => array(
+    33 => array(
       'src' => 'node:nid',
       'dst' => 'node:field_given_name_value',
       'callback' => 'themekey_node_nid2field_value',
@@ -1640,7 +1662,7 @@ foo
         'translatable' => '1',
       ),
     ),
-    49 => array(
+    34 => array(
       'src' => 'node:nid',
       'dst' => 'node:field_given_name_format',
       'callback' => 'themekey_node_nid2field_value',
@@ -1651,7 +1673,7 @@ foo
         'translatable' => '1',
       ),
     ),
-    50 => array(
+    35 => array(
       'src' => 'node:nid',
       'dst' => 'node:field_media_fid',
       'callback' => 'themekey_node_nid2field_value',
@@ -1662,7 +1684,7 @@ foo
         'translatable' => '0',
       ),
     ),
-    51 => array(
+    36 => array(
       'src' => 'node:nid',
       'dst' => 'node:field_media_display',
       'callback' => 'themekey_node_nid2field_value',
@@ -1673,7 +1695,7 @@ foo
         'translatable' => '0',
       ),
     ),
-    52 => array(
+    37 => array(
       'src' => 'node:nid',
       'dst' => 'node:field_media_description',
       'callback' => 'themekey_node_nid2field_value',
@@ -1684,7 +1706,7 @@ foo
         'translatable' => '0',
       ),
     ),
-    53 => array(
+    38 => array(
       'src' => 'node:nid',
       'dst' => 'node:field_programme_value',
       'callback' => 'themekey_node_nid2field_value',
@@ -1695,7 +1717,7 @@ foo
         'translatable' => '0',
       ),
     ),
-    54 => array(
+    39 => array(
       'src' => 'node:nid',
       'dst' => 'node:field_programme_revision_id',
       'callback' => 'themekey_node_nid2field_value',
@@ -1706,7 +1728,7 @@ foo
         'translatable' => '0',
       ),
     ),
-    55 => array(
+    40 => array(
       'src' => 'node:nid',
       'dst' => 'node:body_value',
       'callback' => 'themekey_node_nid2field_value',
@@ -1717,7 +1739,7 @@ foo
         'translatable' => '1',
       ),
     ),
-    56 => array(
+    41 => array(
       'src' => 'node:nid',
       'dst' => 'node:body_summary',
       'callback' => 'themekey_node_nid2field_value',
@@ -1728,7 +1750,7 @@ foo
         'translatable' => '1',
       ),
     ),
-    57 => array(
+    42 => array(
       'src' => 'node:nid',
       'dst' => 'node:body_format',
       'callback' => 'themekey_node_nid2field_value',
@@ -1739,7 +1761,7 @@ foo
         'translatable' => '1',
       ),
     ),
-    58 => array(
+    43 => array(
       'src' => 'node:nid',
       'dst' => 'node:field_active_value',
       'callback' => 'themekey_node_nid2field_value',
@@ -1750,7 +1772,7 @@ foo
         'translatable' => '0',
       ),
     ),
-    59 => array(
+    44 => array(
       'src' => 'node:nid',
       'dst' => 'node:field_email_email',
       'callback' => 'themekey_node_nid2field_value',
@@ -1761,7 +1783,7 @@ foo
         'translatable' => '0',
       ),
     ),
-    60 => array(
+    45 => array(
       'src' => 'node:nid',
       'dst' => 'node:field_email_list_value',
       'callback' => 'themekey_node_nid2field_value',
@@ -1772,7 +1794,7 @@ foo
         'translatable' => '0',
       ),
     ),
-    61 => array(
+    46 => array(
       'src' => 'node:nid',
       'dst' => 'node:field_image_fid',
       'callback' => 'themekey_node_nid2field_value',
@@ -1783,7 +1805,7 @@ foo
         'translatable' => '0',
       ),
     ),
-    62 => array(
+    47 => array(
       'src' => 'node:nid',
       'dst' => 'node:field_image_alt',
       'callback' => 'themekey_node_nid2field_value',
@@ -1794,7 +1816,7 @@ foo
         'translatable' => '0',
       ),
     ),
-    63 => array(
+    48 => array(
       'src' => 'node:nid',
       'dst' => 'node:field_image_title',
       'callback' => 'themekey_node_nid2field_value',
@@ -1805,7 +1827,7 @@ foo
         'translatable' => '0',
       ),
     ),
-    64 => array(
+    49 => array(
       'src' => 'node:nid',
       'dst' => 'node:field_image_width',
       'callback' => 'themekey_node_nid2field_value',
@@ -1816,7 +1838,7 @@ foo
         'translatable' => '0',
       ),
     ),
-    65 => array(
+    50 => array(
       'src' => 'node:nid',
       'dst' => 'node:field_image_height',
       'callback' => 'themekey_node_nid2field_value',
@@ -1827,7 +1849,7 @@ foo
         'translatable' => '0',
       ),
     ),
-    66 => array(
+    51 => array(
       'src' => 'node:nid',
       'dst' => 'node:field_member_value',
       'callback' => 'themekey_node_nid2field_value',
@@ -1838,7 +1860,7 @@ foo
         'translatable' => '0',
       ),
     ),
-    67 => array(
+    52 => array(
       'src' => 'node:nid',
       'dst' => 'node:field_membership_dates_value',
       'callback' => 'themekey_node_nid2field_value',
@@ -1849,7 +1871,7 @@ foo
         'translatable' => '0',
       ),
     ),
-    68 => array(
+    53 => array(
       'src' => 'node:nid',
       'dst' => 'node:field_membership_dates_value2',
       'callback' => 'themekey_node_nid2field_value',
@@ -1860,7 +1882,7 @@ foo
         'translatable' => '0',
       ),
     ),
-    69 => array(
+    54 => array(
       'src' => 'node:nid',
       'dst' => 'node:field_neptun_code_value',
       'callback' => 'themekey_node_nid2field_value',
@@ -1871,7 +1893,7 @@ foo
         'translatable' => '0',
       ),
     ),
-    70 => array(
+    55 => array(
       'src' => 'node:nid',
       'dst' => 'node:field_neptun_code_format',
       'callback' => 'themekey_node_nid2field_value',
@@ -1882,7 +1904,7 @@ foo
         'translatable' => '0',
       ),
     ),
-    71 => array(
+    56 => array(
       'src' => 'node:nid',
       'dst' => 'node:field_occupation_value',
       'callback' => 'themekey_node_nid2field_value',
@@ -1893,7 +1915,7 @@ foo
         'translatable' => '1',
       ),
     ),
-    72 => array(
+    57 => array(
       'src' => 'node:nid',
       'dst' => 'node:field_occupation_format',
       'callback' => 'themekey_node_nid2field_value',
@@ -1904,7 +1926,7 @@ foo
         'translatable' => '1',
       ),
     ),
-    73 => array(
+    58 => array(
       'src' => 'node:nid',
       'dst' => 'node:field_person_address_lid',
       'callback' => 'themekey_node_nid2field_value',
@@ -1915,7 +1937,7 @@ foo
         'translatable' => '0',
       ),
     ),
-    74 => array(
+    59 => array(
       'src' => 'node:nid',
       'dst' => 'node:field_phone_value',
       'callback' => 'themekey_node_nid2field_value',
@@ -1926,7 +1948,7 @@ foo
         'translatable' => '0',
       ),
     ),
-    75 => array(
+    60 => array(
       'src' => 'node:nid',
       'dst' => 'node:field_phone_format',
       'callback' => 'themekey_node_nid2field_value',
@@ -1937,7 +1959,7 @@ foo
         'translatable' => '0',
       ),
     ),
-    76 => array(
+    61 => array(
       'src' => 'node:nid',
       'dst' => 'node:field_composer_target_id',
       'callback' => 'themekey_node_nid2field_value',
@@ -1948,7 +1970,7 @@ foo
         'translatable' => '0',
       ),
     ),
-    77 => array(
+    62 => array(
       'src' => 'node:nid',
       'dst' => 'node:field_piece_title_value',
       'callback' => 'themekey_node_nid2field_value',
@@ -1959,7 +1981,7 @@ foo
         'translatable' => '1',
       ),
     ),
-    78 => array(
+    63 => array(
       'src' => 'node:nid',
       'dst' => 'node:field_piece_title_format',
       'callback' => 'themekey_node_nid2field_value',
@@ -1970,7 +1992,7 @@ foo
         'translatable' => '1',
       ),
     ),
-    79 => array(
+    64 => array(
       'src' => 'node:nid',
       'dst' => 'node:title_field_value',
       'callback' => 'themekey_node_nid2field_value',
@@ -1981,7 +2003,7 @@ foo
         'translatable' => '1',
       ),
     ),
-    80 => array(
+    65 => array(
       'src' => 'node:nid',
       'dst' => 'node:title_field_format',
       'callback' => 'themekey_node_nid2field_value',
@@ -1992,7 +2014,7 @@ foo
         'translatable' => '1',
       ),
     ),
-    81 => array(
+    66 => array(
       'src' => 'node:nid',
       'dst' => 'node:field_person_body_value',
       'callback' => 'themekey_node_nid2field_value',
@@ -2003,7 +2025,7 @@ foo
         'translatable' => '1',
       ),
     ),
-    82 => array(
+    67 => array(
       'src' => 'node:nid',
       'dst' => 'node:field_person_body_summary',
       'callback' => 'themekey_node_nid2field_value',
@@ -2014,7 +2036,7 @@ foo
         'translatable' => '1',
       ),
     ),
-    83 => array(
+    68 => array(
       'src' => 'node:nid',
       'dst' => 'node:field_person_body_format',
       'callback' => 'themekey_node_nid2field_value',
@@ -2025,7 +2047,7 @@ foo
         'translatable' => '1',
       ),
     ),
-    84 => array(
+    69 => array(
       'src' => 'node:nid',
       'dst' => 'node:field_location_lid',
       'callback' => 'themekey_node_nid2field_value',
@@ -2036,7 +2058,7 @@ foo
         'translatable' => '0',
       ),
     ),
-    85 => array(
+    70 => array(
       'src' => 'node:nid',
       'dst' => 'node:field_location_reference_target_id',
       'callback' => 'themekey_node_nid2field_value',
@@ -2047,7 +2069,7 @@ foo
         'translatable' => '0',
       ),
     ),
-    86 => array(
+    71 => array(
       'src' => 'node:nid',
       'dst' => 'node:field_ticket_selling_value',
       'callback' => 'themekey_node_nid2field_value',
@@ -2058,7 +2080,7 @@ foo
         'translatable' => '0',
       ),
     ),
-    87 => array(
+    72 => array(
       'src' => 'node:nid',
       'dst' => 'node:field_concert_hall_target_id',
       'callback' => 'themekey_node_nid2field_value',
@@ -2069,7 +2091,7 @@ foo
         'translatable' => '0',
       ),
     ),
-    88 => array(
+    73 => array(
       'src' => 'node:nid',
       'dst' => 'node:field_seat_floor_value',
       'callback' => 'themekey_node_nid2field_value',
@@ -2080,7 +2102,7 @@ foo
         'translatable' => '0',
       ),
     ),
-    89 => array(
+    74 => array(
       'src' => 'node:nid',
       'dst' => 'node:field_seat_number_value',
       'callback' => 'themekey_node_nid2field_value',
@@ -2091,7 +2113,7 @@ foo
         'translatable' => '0',
       ),
     ),
-    90 => array(
+    75 => array(
       'src' => 'node:nid',
       'dst' => 'node:field_seat_row_value',
       'callback' => 'themekey_node_nid2field_value',
@@ -2102,7 +2124,7 @@ foo
         'translatable' => '0',
       ),
     ),
-    91 => array(
+    76 => array(
       'src' => 'node:nid',
       'dst' => 'node:field_seat_side_value',
       'callback' => 'themekey_node_nid2field_value',
@@ -2113,7 +2135,7 @@ foo
         'translatable' => '0',
       ),
     ),
-    92 => array(
+    77 => array(
       'src' => 'node:nid',
       'dst' => 'node:field_x_coordinate_value',
       'callback' => 'themekey_node_nid2field_value',
@@ -2124,7 +2146,7 @@ foo
         'translatable' => '0',
       ),
     ),
-    93 => array(
+    78 => array(
       'src' => 'node:nid',
       'dst' => 'node:field_y_coordinate_value',
       'callback' => 'themekey_node_nid2field_value',
@@ -2135,7 +2157,7 @@ foo
         'translatable' => '0',
       ),
     ),
-    94 => array(
+    79 => array(
       'src' => 'node:nid',
       'dst' => 'node:field_ticket_map_compression_value',
       'callback' => 'themekey_node_nid2field_value',
@@ -2146,7 +2168,7 @@ foo
         'translatable' => '0',
       ),
     ),
-    95 => array(
+    80 => array(
       'src' => 'node:nid',
       'dst' => 'node:field_seat_extra_value',
       'callback' => 'themekey_node_nid2field_value',
@@ -2157,7 +2179,7 @@ foo
         'translatable' => '1',
       ),
     ),
-    96 => array(
+    81 => array(
       'src' => 'node:nid',
       'dst' => 'node:field_seat_extra_format',
       'callback' => 'themekey_node_nid2field_value',
@@ -2168,7 +2190,7 @@ foo
         'translatable' => '1',
       ),
     ),
-    97 => array(
+    82 => array(
       'src' => 'node:nid',
       'dst' => 'node:field_project_attachments_fid',
       'callback' => 'themekey_node_nid2field_value',
@@ -2179,7 +2201,7 @@ foo
         'translatable' => '0',
       ),
     ),
-    98 => array(
+    83 => array(
       'src' => 'node:nid',
       'dst' => 'node:field_project_attachments_display',
       'callback' => 'themekey_node_nid2field_value',
@@ -2190,7 +2212,7 @@ foo
         'translatable' => '0',
       ),
     ),
-    99 => array(
+    84 => array(
       'src' => 'node:nid',
       'dst' => 'node:field_project_attachments_description',
       'callback' => 'themekey_node_nid2field_value',
@@ -2201,7 +2223,7 @@ foo
         'translatable' => '0',
       ),
     ),
-    100 => array(
+    85 => array(
       'src' => 'node:nid',
       'dst' => 'node:field_project_body_value',
       'callback' => 'themekey_node_nid2field_value',
@@ -2212,7 +2234,7 @@ foo
         'translatable' => '0',
       ),
     ),
-    101 => array(
+    86 => array(
       'src' => 'node:nid',
       'dst' => 'node:field_project_body_summary',
       'callback' => 'themekey_node_nid2field_value',
@@ -2223,7 +2245,7 @@ foo
         'translatable' => '0',
       ),
     ),
-    102 => array(
+    87 => array(
       'src' => 'node:nid',
       'dst' => 'node:field_project_body_format',
       'callback' => 'themekey_node_nid2field_value',
@@ -2234,7 +2256,7 @@ foo
         'translatable' => '0',
       ),
     ),
-    103 => array(
+    88 => array(
       'src' => 'node:nid',
       'dst' => 'node:field_project_tags_tid',
       'callback' => 'themekey_node_nid2field_value',
@@ -2245,7 +2267,7 @@ foo
         'translatable' => '0',
       ),
     ),
-    104 => array(
+    89 => array(
       'src' => 'node:nid',
       'dst' => 'node:group_access_value',
       'callback' => 'themekey_node_nid2field_value',
@@ -2256,106 +2278,7 @@ foo
         'translatable' => '0',
       ),
     ),
-    105 => array(
-      'src' => 'node:nid',
-      'dst' => 'node:group_group_value',
-      'callback' => 'themekey_node_nid2field_value',
-      'args' => array(
-        'field_name' => 'group_group',
-        'type' => 'list_boolean',
-        'column' => 'value',
-        'translatable' => '0',
-      ),
-    ),
-    106 => array(
-      'src' => 'node:nid',
-      'dst' => 'node:field_documentation_attachments_fid',
-      'callback' => 'themekey_node_nid2field_value',
-      'args' => array(
-        'field_name' => 'field_documentation_attachments',
-        'type' => 'file',
-        'column' => 'fid',
-        'translatable' => '0',
-      ),
-    ),
-    107 => array(
-      'src' => 'node:nid',
-      'dst' => 'node:field_documentation_attachments_display',
-      'callback' => 'themekey_node_nid2field_value',
-      'args' => array(
-        'field_name' => 'field_documentation_attachments',
-        'type' => 'file',
-        'column' => 'display',
-        'translatable' => '0',
-      ),
-    ),
-    108 => array(
-      'src' => 'node:nid',
-      'dst' => 'node:field_documentation_attachments_description',
-      'callback' => 'themekey_node_nid2field_value',
-      'args' => array(
-        'field_name' => 'field_documentation_attachments',
-        'type' => 'file',
-        'column' => 'description',
-        'translatable' => '0',
-      ),
-    ),
-    109 => array(
-      'src' => 'node:nid',
-      'dst' => 'node:field_documentation_body_value',
-      'callback' => 'themekey_node_nid2field_value',
-      'args' => array(
-        'field_name' => 'field_documentation_body',
-        'type' => 'text_with_summary',
-        'column' => 'value',
-        'translatable' => '0',
-      ),
-    ),
-    110 => array(
-      'src' => 'node:nid',
-      'dst' => 'node:field_documentation_body_summary',
-      'callback' => 'themekey_node_nid2field_value',
-      'args' => array(
-        'field_name' => 'field_documentation_body',
-        'type' => 'text_with_summary',
-        'column' => 'summary',
-        'translatable' => '0',
-      ),
-    ),
-    111 => array(
-      'src' => 'node:nid',
-      'dst' => 'node:field_documentation_body_format',
-      'callback' => 'themekey_node_nid2field_value',
-      'args' => array(
-        'field_name' => 'field_documentation_body',
-        'type' => 'text_with_summary',
-        'column' => 'format',
-        'translatable' => '0',
-      ),
-    ),
-    112 => array(
-      'src' => 'node:nid',
-      'dst' => 'node:field_documentation_major_value',
-      'callback' => 'themekey_node_nid2field_value',
-      'args' => array(
-        'field_name' => 'field_documentation_major',
-        'type' => 'list_boolean',
-        'column' => 'value',
-        'translatable' => '0',
-      ),
-    ),
-    113 => array(
-      'src' => 'node:nid',
-      'dst' => 'node:og_group_ref_target_id',
-      'callback' => 'themekey_node_nid2field_value',
-      'args' => array(
-        'field_name' => 'og_group_ref',
-        'type' => 'entityreference',
-        'column' => 'target_id',
-        'translatable' => '0',
-      ),
-    ),
-    114 => array(
+    90 => array(
       'src' => 'node:nid',
       'dst' => 'node:field_issue_assigned_to_target_id',
       'callback' => 'themekey_node_nid2field_value',
@@ -2366,7 +2289,7 @@ foo
         'translatable' => '0',
       ),
     ),
-    115 => array(
+    91 => array(
       'src' => 'node:nid',
       'dst' => 'node:field_issue_attachments_fid',
       'callback' => 'themekey_node_nid2field_value',
@@ -2377,7 +2300,7 @@ foo
         'translatable' => '0',
       ),
     ),
-    116 => array(
+    92 => array(
       'src' => 'node:nid',
       'dst' => 'node:field_issue_attachments_display',
       'callback' => 'themekey_node_nid2field_value',
@@ -2388,7 +2311,7 @@ foo
         'translatable' => '0',
       ),
     ),
-    117 => array(
+    93 => array(
       'src' => 'node:nid',
       'dst' => 'node:field_issue_attachments_description',
       'callback' => 'themekey_node_nid2field_value',
@@ -2399,7 +2322,7 @@ foo
         'translatable' => '0',
       ),
     ),
-    118 => array(
+    94 => array(
       'src' => 'node:nid',
       'dst' => 'node:field_issue_business_value_value',
       'callback' => 'themekey_node_nid2field_value',
@@ -2410,7 +2333,7 @@ foo
         'translatable' => '0',
       ),
     ),
-    119 => array(
+    95 => array(
       'src' => 'node:nid',
       'dst' => 'node:field_issue_description_value',
       'callback' => 'themekey_node_nid2field_value',
@@ -2421,7 +2344,7 @@ foo
         'translatable' => '0',
       ),
     ),
-    120 => array(
+    96 => array(
       'src' => 'node:nid',
       'dst' => 'node:field_issue_description_summary',
       'callback' => 'themekey_node_nid2field_value',
@@ -2432,7 +2355,7 @@ foo
         'translatable' => '0',
       ),
     ),
-    121 => array(
+    97 => array(
       'src' => 'node:nid',
       'dst' => 'node:field_issue_description_format',
       'callback' => 'themekey_node_nid2field_value',
@@ -2443,7 +2366,7 @@ foo
         'translatable' => '0',
       ),
     ),
-    122 => array(
+    98 => array(
       'src' => 'node:nid',
       'dst' => 'node:field_issue_done_if_when_value',
       'callback' => 'themekey_node_nid2field_value',
@@ -2454,7 +2377,7 @@ foo
         'translatable' => '0',
       ),
     ),
-    123 => array(
+    99 => array(
       'src' => 'node:nid',
       'dst' => 'node:field_issue_done_if_when_format',
       'callback' => 'themekey_node_nid2field_value',
@@ -2465,7 +2388,7 @@ foo
         'translatable' => '0',
       ),
     ),
-    124 => array(
+    100 => array(
       'src' => 'node:nid',
       'dst' => 'node:field_issue_estimate_value',
       'callback' => 'themekey_node_nid2field_value',
@@ -2476,7 +2399,7 @@ foo
         'translatable' => '0',
       ),
     ),
-    125 => array(
+    101 => array(
       'src' => 'node:nid',
       'dst' => 'node:field_issue_how_to_demo_value',
       'callback' => 'themekey_node_nid2field_value',
@@ -2487,7 +2410,7 @@ foo
         'translatable' => '0',
       ),
     ),
-    126 => array(
+    102 => array(
       'src' => 'node:nid',
       'dst' => 'node:field_issue_how_to_demo_format',
       'callback' => 'themekey_node_nid2field_value',
@@ -2498,7 +2421,7 @@ foo
         'translatable' => '0',
       ),
     ),
-    127 => array(
+    103 => array(
       'src' => 'node:nid',
       'dst' => 'node:field_issue_kanban_value',
       'callback' => 'themekey_node_nid2field_value',
@@ -2509,7 +2432,7 @@ foo
         'translatable' => '0',
       ),
     ),
-    128 => array(
+    104 => array(
       'src' => 'node:nid',
       'dst' => 'node:field_issue_parent_target_id',
       'callback' => 'themekey_node_nid2field_value',
@@ -2520,7 +2443,7 @@ foo
         'translatable' => '0',
       ),
     ),
-    129 => array(
+    105 => array(
       'src' => 'node:nid',
       'dst' => 'node:field_issue_related_target_id',
       'callback' => 'themekey_node_nid2field_value',
@@ -2531,29 +2454,7 @@ foo
         'translatable' => '0',
       ),
     ),
-    130 => array(
-      'src' => 'node:nid',
-      'dst' => 'node:field_issue_status_term_tid',
-      'callback' => 'themekey_node_nid2field_value',
-      'args' => array(
-        'field_name' => 'field_issue_status_term',
-        'type' => 'taxonomy_term_reference',
-        'column' => 'tid',
-        'translatable' => '0',
-      ),
-    ),
-    131 => array(
-      'src' => 'node:nid',
-      'dst' => 'node:field_issue_tags_tid',
-      'callback' => 'themekey_node_nid2field_value',
-      'args' => array(
-        'field_name' => 'field_issue_tags',
-        'type' => 'taxonomy_term_reference',
-        'column' => 'tid',
-        'translatable' => '0',
-      ),
-    ),
-    132 => array(
+    106 => array(
       'src' => 'node:nid',
       'dst' => 'node:field_issue_type_value',
       'callback' => 'themekey_node_nid2field_value',
@@ -2564,7 +2465,7 @@ foo
         'translatable' => '0',
       ),
     ),
-    133 => array(
+    107 => array(
       'src' => 'node:nid',
       'dst' => 'node:group_content_access_value',
       'callback' => 'themekey_node_nid2field_value',
@@ -2575,7 +2476,95 @@ foo
         'translatable' => '0',
       ),
     ),
-    134 => array(
+    108 => array(
+      'src' => 'node:nid',
+      'dst' => 'node:og_group_ref_target_id',
+      'callback' => 'themekey_node_nid2field_value',
+      'args' => array(
+        'field_name' => 'og_group_ref',
+        'type' => 'entityreference',
+        'column' => 'target_id',
+        'translatable' => '0',
+      ),
+    ),
+    109 => array(
+      'src' => 'node:nid',
+      'dst' => 'node:field_documentation_attachments_fid',
+      'callback' => 'themekey_node_nid2field_value',
+      'args' => array(
+        'field_name' => 'field_documentation_attachments',
+        'type' => 'file',
+        'column' => 'fid',
+        'translatable' => '0',
+      ),
+    ),
+    110 => array(
+      'src' => 'node:nid',
+      'dst' => 'node:field_documentation_attachments_display',
+      'callback' => 'themekey_node_nid2field_value',
+      'args' => array(
+        'field_name' => 'field_documentation_attachments',
+        'type' => 'file',
+        'column' => 'display',
+        'translatable' => '0',
+      ),
+    ),
+    111 => array(
+      'src' => 'node:nid',
+      'dst' => 'node:field_documentation_attachments_description',
+      'callback' => 'themekey_node_nid2field_value',
+      'args' => array(
+        'field_name' => 'field_documentation_attachments',
+        'type' => 'file',
+        'column' => 'description',
+        'translatable' => '0',
+      ),
+    ),
+    112 => array(
+      'src' => 'node:nid',
+      'dst' => 'node:field_documentation_body_value',
+      'callback' => 'themekey_node_nid2field_value',
+      'args' => array(
+        'field_name' => 'field_documentation_body',
+        'type' => 'text_with_summary',
+        'column' => 'value',
+        'translatable' => '0',
+      ),
+    ),
+    113 => array(
+      'src' => 'node:nid',
+      'dst' => 'node:field_documentation_body_summary',
+      'callback' => 'themekey_node_nid2field_value',
+      'args' => array(
+        'field_name' => 'field_documentation_body',
+        'type' => 'text_with_summary',
+        'column' => 'summary',
+        'translatable' => '0',
+      ),
+    ),
+    114 => array(
+      'src' => 'node:nid',
+      'dst' => 'node:field_documentation_body_format',
+      'callback' => 'themekey_node_nid2field_value',
+      'args' => array(
+        'field_name' => 'field_documentation_body',
+        'type' => 'text_with_summary',
+        'column' => 'format',
+        'translatable' => '0',
+      ),
+    ),
+    115 => array(
+      'src' => 'node:nid',
+      'dst' => 'node:field_documentation_major_value',
+      'callback' => 'themekey_node_nid2field_value',
+      'args' => array(
+        'field_name' => 'field_documentation_major',
+        'type' => 'list_boolean',
+        'column' => 'value',
+        'translatable' => '0',
+      ),
+    ),
+    116 => array(
       'src' => 'node:nid',
       'dst' => 'node:field_news_body_value',
       'callback' => 'themekey_node_nid2field_value',
@@ -2586,7 +2575,7 @@ foo
         'translatable' => '0',
       ),
     ),
-    135 => array(
+    117 => array(
       'src' => 'node:nid',
       'dst' => 'node:field_news_body_summary',
       'callback' => 'themekey_node_nid2field_value',
@@ -2597,7 +2586,7 @@ foo
         'translatable' => '0',
       ),
     ),
-    136 => array(
+    118 => array(
       'src' => 'node:nid',
       'dst' => 'node:field_news_body_format',
       'callback' => 'themekey_node_nid2field_value',
@@ -2608,10 +2597,138 @@ foo
         'translatable' => '0',
       ),
     ),
+    119 => array(
+      'src' => 'node:nid',
+      'dst' => 'node:group_group_value',
+      'callback' => 'themekey_node_nid2field_value',
+      'args' => array(
+        'field_name' => 'group_group',
+        'type' => 'list_boolean',
+        'column' => 'value',
+        'translatable' => '0',
+      ),
+    ),
+    120 => array(
+      'src' => 'node:nid',
+      'dst' => 'node:field_issue_status_term_tid',
+      'callback' => 'themekey_node_nid2field_value',
+      'args' => array(
+        'field_name' => 'field_issue_status_term',
+        'type' => 'taxonomy_term_reference',
+        'column' => 'tid',
+        'translatable' => '0',
+      ),
+    ),
+    121 => array(
+      'src' => 'node:nid',
+      'dst' => 'node:field_issue_tags_tid',
+      'callback' => 'themekey_node_nid2field_value',
+      'args' => array(
+        'field_name' => 'field_issue_tags',
+        'type' => 'taxonomy_term_reference',
+        'column' => 'tid',
+        'translatable' => '0',
+      ),
+    ),
+    122 => array(
+      'src' => 'system:dummy',
+      'dst' => 'locale:language_from_browser',
+      'callback' => 'themekey_locale_dummy2language_from_browser',
+    ),
+    123 => array(
+      'src' => 'node:nid',
+      'dst' => 'path:node_alias',
+      'callback' => 'themekey_path_nid2alias',
+    ),
+    124 => array(
+      'src' => 'system:dummy',
+      'dst' => 'system:query_param',
+      'callback' => 'themekey_dummy2query_param',
+    ),
+    125 => array(
+      'src' => 'system:dummy',
+      'dst' => 'system:cookie',
+      'callback' => 'themekey_dummy2cookie',
+    ),
+    126 => array(
+      'src' => 'system:dummy',
+      'dst' => 'system:http_header',
+      'callback' => 'themekey_dummy2http_header',
+    ),
+    127 => array(
+      'src' => 'system:dummy',
+      'dst' => 'system:post',
+      'callback' => 'themekey_dummy2post',
+    ),
+    128 => array(
+      'src' => 'system:dummy',
+      'dst' => 'system:query_string',
+      'callback' => 'themekey_dummy2query_string',
+    ),
+    129 => array(
+      'src' => 'system:dummy',
+      'dst' => 'system:date_time',
+      'callback' => 'themekey_dummy2date_time',
+    ),
+    130 => array(
+      'src' => 'system:dummy',
+      'dst' => 'system:date',
+      'callback' => 'themekey_dummy2date',
+    ),
+    131 => array(
+      'src' => 'system:dummy',
+      'dst' => 'system:month',
+      'callback' => 'themekey_dummy2month',
+    ),
+    132 => array(
+      'src' => 'system:dummy',
+      'dst' => 'system:time',
+      'callback' => 'themekey_dummy2time',
+    ),
+    133 => array(
+      'src' => 'system:dummy',
+      'dst' => 'system:day_of_week',
+      'callback' => 'themekey_dummy2day_of_week',
+    ),
+    134 => array(
+      'src' => 'system:dummy',
+      'dst' => 'system:day_of_month',
+      'callback' => 'themekey_dummy2day_of_month',
+    ),
+    135 => array(
+      'src' => 'system:dummy',
+      'dst' => 'system:user_browser',
+      'callback' => 'themekey_dummy2user_browser',
+    ),
+    136 => array(
+      'src' => 'system:dummy',
+      'dst' => 'system:user_os',
+      'callback' => 'themekey_dummy2user_os',
+    ),
     137 => array(
-      'src' => 'comment:cid',
-      'dst' => 'node:nid',
-      'callback' => 'themekey_comment_cid2nid',
+      'src' => 'system:user_browser',
+      'dst' => 'system:user_browser_simplified',
+      'callback' => 'themekey_user_browser2user_browser_simplified',
+    ),
+    138 => array(
+      'src' => 'system:user_os',
+      'dst' => 'system:user_os_simplified',
+      'callback' => 'themekey_user_os2user_os_simplified',
+    ),
+    139 => array(
+      'src' => 'system:dummy',
+      'dst' => 'system:session',
+      'callback' => 'themekey_dummy2session',
+    ),
+    140 => array(
+      'src' => 'node:nid',
+      'dst' => 'group:id',
+      'callback' => 'themekey_og_context_nid2gid',
+    ),
+    141 => array(
+      'src' => 'node:nid',
+      'dst' => 'group:type',
+      'callback' => 'themekey_og_context_nid2type',
     ),
   );
   $export['themekey_maps'] = $strongarm;
@@ -2621,16 +2738,18 @@ foo
   $strongarm->api_version = 1;
   $strongarm->name = 'themekey_modules';
   $strongarm->value = array(
-    0 => 'contact',
-    1 => 'system',
-    2 => 'locale',
-    3 => 'views',
-    4 => 'path',
-    5 => 'admin_menu',
-    6 => 'taxonomy',
-    7 => 'user',
-    8 => 'node',
-    9 => 'comment',
+    0 => 'book',
+    1 => 'views',
+    2 => 'user',
+    3 => 'contact',
+    4 => 'taxonomy',
+    5 => 'comment',
+    6 => 'node',
+    7 => 'admin_menu',
+    8 => 'locale',
+    9 => 'path',
+    10 => 'system',
+    11 => 'og_context',
   );
   $export['themekey_modules'] = $strongarm;
 
@@ -2678,19 +2797,19 @@ foo
       'fit' => 6,
     ),
     4 => array(
-      'path' => 'user/#/contact',
+      'path' => 'user/#/edit',
       'callbacks' => array(),
       'wildcards' => array(
-        1 => 'contact:uid',
+        1 => 'profile:uid',
       ),
       'weight' => 2,
       'fit' => 5,
     ),
     5 => array(
-      'path' => 'user/#/edit',
+      'path' => 'user/#/contact',
       'callbacks' => array(),
       'wildcards' => array(
-        1 => 'profile:uid',
+        1 => 'contact:uid',
       ),
       'weight' => 2,
       'fit' => 5,
@@ -2714,6 +2833,16 @@ foo
       'fit' => 5,
     ),
     8 => array(
+      'path' => 'group/%/#',
+      'callbacks' => array(),
+      'wildcards' => array(
+        1 => 'group:type',
+        2 => 'group:id',
+      ),
+      'weight' => 1,
+      'fit' => 4,
+    ),
+    9 => array(
       'path' => 'user/#',
       'callbacks' => array(),
       'wildcards' => array(
@@ -2722,7 +2851,7 @@ foo
       'weight' => 1,
       'fit' => 2,
     ),
-    9 => array(
+    10 => array(
       'path' => 'node/#',
       'callbacks' => array(),
       'wildcards' => array(
@@ -2739,6 +2868,8 @@ foo
   $strongarm->api_version = 1;
   $strongarm->name = 'themekey_properties';
   $strongarm->value = array(
+    'book:bid' => 'book:bid',
+    'book:has_children' => 'book:has_children',
     'comment:cid' => 'comment:cid',
     'drupal:base_path' => 'drupal:base_path',
     'drupal:get_q' => 'drupal:get_q',
@@ -2746,6 +2877,8 @@ foo
     'drupal:path' => 'drupal:path',
     'drupal:path:wildcard' => 'drupal:path:wildcard',
     'drupal:path_is_admin' => 'drupal:path_is_admin',
+    'group:id' => 'group:id',
+    'group:type' => 'group:type',
     'locale:language' => 'locale:language',
     'locale:language_content' => 'locale:language_content',
     'locale:language_from_browser' => 'locale:language_from_browser',
@@ -2905,7 +3038,7 @@ foo
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'theme_default';
-  $strongarm->value = 'mez_theme';
+  $strongarm->value = 'mez_bootstrap';
   $export['theme_default'] = $strongarm;
 
   $strongarm = new stdClass();

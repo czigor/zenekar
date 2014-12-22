@@ -22,8 +22,9 @@ function iq_search_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Search';
+  $handler->display->display_options['title'] = 'Keresés';
   $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['use_more_text'] = 'tovább';
   $handler->display->display_options['access']['type'] = 'role';
   $handler->display->display_options['access']['role'] = array(
     2 => '2',
@@ -33,21 +34,32 @@ function iq_search_views_default_views() {
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['exposed_form']['options']['submit_button'] = 'Search';
   $handler->display->display_options['exposed_form']['options']['reset_button'] = TRUE;
+  $handler->display->display_options['exposed_form']['options']['reset_button_label'] = 'Alaphelyzet';
+  $handler->display->display_options['exposed_form']['options']['exposed_sorts_label'] = 'Rendezés';
+  $handler->display->display_options['exposed_form']['options']['sort_asc_label'] = 'Növekvő';
+  $handler->display->display_options['exposed_form']['options']['sort_desc_label'] = 'Csökkenő';
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '30';
+  $handler->display->display_options['pager']['options']['expose']['items_per_page_label'] = 'Elemek száma oldalanként';
+  $handler->display->display_options['pager']['options']['expose']['items_per_page_options_all_label'] = '- Mind -';
+  $handler->display->display_options['pager']['options']['expose']['offset_label'] = 'Eltolás';
+  $handler->display->display_options['pager']['options']['tags']['first'] = '« első';
+  $handler->display->display_options['pager']['options']['tags']['previous'] = '‹ előző';
+  $handler->display->display_options['pager']['options']['tags']['next'] = 'következő ›';
+  $handler->display->display_options['pager']['options']['tags']['last'] = 'utolsó »';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'search_api_multi';
   $handler->display->display_options['row_options']['view_mode'] = array(
     'comment' => 'teaser',
     'node' => 'teaser',
   );
-  /* No results behavior: Global: Unfiltered text */
+  /* Viselkedés, ha nincs eredmény: Általános: Szűretlen szöveg */
   $handler->display->display_options['empty']['area_text_custom']['id'] = 'area_text_custom';
   $handler->display->display_options['empty']['area_text_custom']['table'] = 'views';
   $handler->display->display_options['empty']['area_text_custom']['field'] = 'area_text_custom';
   $handler->display->display_options['empty']['area_text_custom']['empty'] = TRUE;
   $handler->display->display_options['empty']['area_text_custom']['content'] = 'No search results found for given criteria.';
-  /* Field: Search: CommentIndex results */
+  /* Mező: Keresés: CommentIndex results */
   $handler->display->display_options['fields']['commentindex']['id'] = 'commentindex';
   $handler->display->display_options['fields']['commentindex']['table'] = 'search_api_multi';
   $handler->display->display_options['fields']['commentindex']['field'] = 'commentindex';
@@ -58,7 +70,7 @@ function iq_search_views_default_views() {
   $handler->display->display_options['fields']['commentindex']['display'] = 'view';
   $handler->display->display_options['fields']['commentindex']['view_mode'] = 'teaser';
   $handler->display->display_options['fields']['commentindex']['bypass_access'] = 0;
-  /* Field: Search: ContentIndex results */
+  /* Mező: Keresés: ContentIndex results */
   $handler->display->display_options['fields']['contentindex']['id'] = 'contentindex';
   $handler->display->display_options['fields']['contentindex']['table'] = 'search_api_multi';
   $handler->display->display_options['fields']['contentindex']['field'] = 'contentindex';
@@ -68,12 +80,12 @@ function iq_search_views_default_views() {
   $handler->display->display_options['fields']['contentindex']['display'] = 'view';
   $handler->display->display_options['fields']['contentindex']['view_mode'] = 'teaser';
   $handler->display->display_options['fields']['contentindex']['bypass_access'] = 0;
-  /* Sort criterion: Search: Relevance */
+  /* Rendezési szempont: Keresés: Relevancia */
   $handler->display->display_options['sorts']['search_api_relevance']['id'] = 'search_api_relevance';
   $handler->display->display_options['sorts']['search_api_relevance']['table'] = 'search_api_multi';
   $handler->display->display_options['sorts']['search_api_relevance']['field'] = 'search_api_relevance';
   $handler->display->display_options['sorts']['search_api_relevance']['order'] = 'DESC';
-  /* Filter criterion: Multi Search: Author */
+  /* Szűrési feltétel: Multi Search: Szerző */
   $handler->display->display_options['filters']['search_api_multi_author']['id'] = 'search_api_multi_author';
   $handler->display->display_options['filters']['search_api_multi_author']['table'] = 'search_api_multi';
   $handler->display->display_options['filters']['search_api_multi_author']['field'] = 'search_api_multi_author';
@@ -91,7 +103,7 @@ function iq_search_views_default_views() {
     'commentindex:author:uid' => 'commentindex:author:uid',
     'contentindex:author' => 'contentindex:author',
   );
-  /* Filter criterion: Multi Search: Node type */
+  /* Szűrési feltétel: Multi Search: Tartalomtípus */
   $handler->display->display_options['filters']['search_api_multi_node_type']['id'] = 'search_api_multi_node_type';
   $handler->display->display_options['filters']['search_api_multi_node_type']['table'] = 'search_api_multi';
   $handler->display->display_options['filters']['search_api_multi_node_type']['field'] = 'search_api_multi_node_type';
@@ -108,7 +120,7 @@ function iq_search_views_default_views() {
     'commentindex:node:type' => 'commentindex:node:type',
     'contentindex:type' => 'contentindex:type',
   );
-  /* Filter criterion: Multi Search: Project */
+  /* Szűrési feltétel: Multi Search: Project */
   $handler->display->display_options['filters']['search_api_multi_project']['id'] = 'search_api_multi_project';
   $handler->display->display_options['filters']['search_api_multi_project']['table'] = 'search_api_multi';
   $handler->display->display_options['filters']['search_api_multi_project']['field'] = 'search_api_multi_project';
@@ -125,7 +137,7 @@ function iq_search_views_default_views() {
     'commentindex:node:og_group_ref' => 'commentindex:node:og_group_ref',
     'contentindex:og_group_ref' => 'contentindex:og_group_ref',
   );
-  /* Filter criterion: Search: Fulltext search */
+  /* Szűrési feltétel: Keresés: Fulltext search */
   $handler->display->display_options['filters']['search_api_multi_fulltext']['id'] = 'search_api_multi_fulltext';
   $handler->display->display_options['filters']['search_api_multi_fulltext']['table'] = 'search_api_multi';
   $handler->display->display_options['filters']['search_api_multi_fulltext']['field'] = 'search_api_multi_fulltext';
@@ -155,27 +167,6 @@ function iq_search_views_default_views() {
   $handler->display->display_options['menu']['type'] = 'normal';
   $handler->display->display_options['menu']['title'] = 'Search';
   $handler->display->display_options['menu']['name'] = 'main-menu';
-  $translatables['search_multi'] = array(
-    t('Master'),
-    t('Search'),
-    t('more'),
-    t('Reset'),
-    t('Sort by'),
-    t('Asc'),
-    t('Desc'),
-    t('Items per page'),
-    t('- All -'),
-    t('Offset'),
-    t('« first'),
-    t('‹ previous'),
-    t('next ›'),
-    t('last »'),
-    t('No search results found for given criteria.'),
-    t('Author'),
-    t('Node type'),
-    t('Project'),
-    t('Page'),
-  );
   $export['search_multi'] = $view;
 
   return $export;

@@ -106,7 +106,7 @@ function mez_news_view_views_default_views() {
   $handler->display->display_options['use_more_text'] = 'Older news';
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'full';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '20';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '100';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['pager']['options']['id'] = '0';
   $handler->display->display_options['pager']['options']['quantity'] = '9';
@@ -118,13 +118,6 @@ function mez_news_view_views_default_views() {
   $handler->display->display_options['pager']['options']['tags']['next'] = 'következő ›';
   $handler->display->display_options['pager']['options']['tags']['last'] = 'utolsó »';
   $handler->display->display_options['path'] = 'news';
-
-  /* Display: Tartalomtábla */
-  $handler = $view->new_display('panel_pane', 'Tartalomtábla', 'panel_pane_1');
-  $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'Hírek';
-  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
-  $handler->display->display_options['pane_category']['name'] = 'Nézettáblák';
   $export['mez_news'] = $view;
 
   return $export;

@@ -291,6 +291,7 @@ function mez_image_file_file_default_displays() {
   $file_display->status = FALSE;
   $file_display->settings = array(
     'colorbox_node_style' => '',
+    'colorbox_node_style_first' => '',
     'colorbox_image_style' => '',
     'colorbox_gallery' => 'post',
     'colorbox_gallery_custom' => '',

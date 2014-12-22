@@ -60,6 +60,14 @@ function iq_settings_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'language_negotiation_language';
   $strongarm->value = array(
+    'locale-url' => array(
+      'callbacks' => array(
+        'language' => 'locale_language_from_url',
+        'switcher' => 'locale_language_switcher_url',
+        'url_rewrite' => 'locale_language_url_rewrite_url',
+      ),
+      'file' => 'includes/locale.inc',
+    ),
     'locale-user' => array(
       'callbacks' => array(
         'language' => 'locale_language_from_user',
@@ -84,6 +92,11 @@ function iq_settings_strongarm() {
         'language' => 'locale_language_from_interface',
       ),
       'file' => 'includes/locale.inc',
+    ),
+    'language-default' => array(
+      'callbacks' => array(
+        'language' => 'language_from_default',
+      ),
     ),
   );
   $export['language_negotiation_language_content'] = $strongarm;
@@ -156,7 +169,7 @@ function iq_settings_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'site_frontpage';
-  $strongarm->value = 'issues';
+  $strongarm->value = 'front';
   $export['site_frontpage'] = $strongarm;
 
   return $export;

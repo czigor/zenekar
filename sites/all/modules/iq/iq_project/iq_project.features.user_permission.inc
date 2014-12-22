@@ -15,6 +15,7 @@ function iq_project_user_default_permissions() {
     'name' => 'create project content',
     'roles' => array(
       'admin' => 'admin',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'node',
   );
@@ -33,6 +34,7 @@ function iq_project_user_default_permissions() {
     'name' => 'delete own project content',
     'roles' => array(
       'admin' => 'admin',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'node',
   );
@@ -58,6 +60,7 @@ function iq_project_user_default_permissions() {
     'name' => 'edit own project content',
     'roles' => array(
       'admin' => 'admin',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'node',
   );

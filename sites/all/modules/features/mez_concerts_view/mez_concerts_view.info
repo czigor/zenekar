@@ -1,13 +1,13 @@
 name = MEZ Concerts view
 core = 7.x
 package = MEZ views
-version = 7.x-1.0-20140315dev1
+version = 7.x-1.0-20141222dev3
 project = mez_concerts_view
 dependencies[] = ds
-dependencies[] = sexy_exposed
-dependencies[] = views
 dependencies[] = views_content
 features[ctools][] = views:views_default:3.0
 features[features_api][] = api:2
 features[views_view][] = concerts
 features_exclude[dependencies][ctools] = ctools
+features_exclude[dependencies][sexy_exposed] = sexy_exposed
+mtime = 1419252126

@@ -1,7 +1,7 @@
 name = MEZ News view
 core = 7.x
 package = MEZ views
-version = 7.x-1.0-20140523dev1
+version = 7.x-1.0-20141222dev1
 project = mez_news_view
 dependencies[] = views
 dependencies[] = views_content
@@ -9,3 +9,4 @@ features[ctools][] = views:views_default:3.0
 features[features_api][] = api:2
 features[views_view][] = mez_news
 features_exclude[dependencies][ctools] = ctools
+mtime = 1401310261

@@ -217,6 +217,77 @@ function iq_project_default_page_manager_handlers() {
     $display->content['new-a555afb2-ce84-43cf-bd5f-5a4d78bc28bd'] = $pane;
     $display->panels['middle_1st_col'][3] = 'new-a555afb2-ce84-43cf-bd5f-5a4d78bc28bd';
     $pane = new stdClass();
+    $pane->pid = 'new-737ad98a-1d75-4393-816e-3256e07dcabe';
+    $pane->panel = 'middle_1st_col';
+    $pane->type = 'entity_field';
+    $pane->subtype = 'node:group_access';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'label' => 'title',
+      'formatter' => 'i18n_list_default',
+      'delta_limit' => 0,
+      'delta_offset' => '0',
+      'delta_reversed' => FALSE,
+      'formatter_settings' => array(),
+      'context' => 'argument_entity_id:node_1',
+      'override_title' => 1,
+      'override_title_text' => 'Láthatóság',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 4;
+    $pane->locks = array();
+    $pane->uuid = '737ad98a-1d75-4393-816e-3256e07dcabe';
+    $display->content['new-737ad98a-1d75-4393-816e-3256e07dcabe'] = $pane;
+    $display->panels['middle_1st_col'][4] = 'new-737ad98a-1d75-4393-816e-3256e07dcabe';
+    $pane = new stdClass();
+    $pane->pid = 'new-117d5580-249a-4e29-a23d-956cc8b6fcf6';
+    $pane->panel = 'middle_1st_col';
+    $pane->type = 'token';
+    $pane->subtype = 'node:members--1';
+    $pane->shown = TRUE;
+    $pane->access = array(
+      'plugins' => array(
+        0 => array(
+          'name' => 'entity_field_value:node:project:group_access',
+          'settings' => array(
+            'group_access' => array(
+              'und' => array(
+                0 => array(
+                  'value' => '1',
+                ),
+              ),
+            ),
+            'group_access_value' => '1',
+          ),
+          'context' => 'argument_entity_id:node_1',
+          'not' => FALSE,
+        ),
+      ),
+    );
+    $pane->configuration = array(
+      'sanitize' => 1,
+      'context' => 'argument_entity_id:node_1',
+      'override_title' => 1,
+      'override_title_text' => 'Látják',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 5;
+    $pane->locks = array();
+    $pane->uuid = '117d5580-249a-4e29-a23d-956cc8b6fcf6';
+    $display->content['new-117d5580-249a-4e29-a23d-956cc8b6fcf6'] = $pane;
+    $display->panels['middle_1st_col'][5] = 'new-117d5580-249a-4e29-a23d-956cc8b6fcf6';
+    $pane = new stdClass();
     $pane->pid = 'new-25825533-17ad-47c7-9beb-6b39a6619769';
     $pane->panel = 'middle_2nd_col';
     $pane->type = 'views_panes';

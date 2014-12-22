@@ -80,34 +80,12 @@ function mez_videos_view_views_default_views() {
   $handler->display->display_options['defaults']['use_more_text'] = FALSE;
   $handler->display->display_options['use_more_text'] = 'tovább';
   $handler->display->display_options['defaults']['exposed_form'] = FALSE;
-  $handler->display->display_options['exposed_form']['type'] = 'sexy_exposed';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['exposed_form']['options']['submit_button'] = 'Alkalmazás';
   $handler->display->display_options['exposed_form']['options']['reset_button_label'] = 'Alaphelyzet';
   $handler->display->display_options['exposed_form']['options']['exposed_sorts_label'] = 'Rendezés';
   $handler->display->display_options['exposed_form']['options']['sort_asc_label'] = 'Növekvő';
   $handler->display->display_options['exposed_form']['options']['sort_desc_label'] = 'Csökkenő';
-  $handler->display->display_options['exposed_form']['options']['sexy'] = array(
-    'field_tags_tid' => array(
-      'needs_sexy_love' => 1,
-      'sexy_number' => '0',
-      'sexy_width' => '0',
-    ),
-    'field_concert_target_id' => array(
-      'needs_sexy_love' => 1,
-      'sexy_number' => '0',
-      'sexy_width' => '0',
-    ),
-    'field_pieces_target_id' => array(
-      'needs_sexy_love' => 1,
-      'sexy_number' => '0',
-      'sexy_width' => '0',
-    ),
-    'field_location_reference_target_id' => array(
-      'needs_sexy_love' => 1,
-      'sexy_number' => '0',
-      'sexy_width' => '0',
-    ),
-  );
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '20';
@@ -241,33 +219,6 @@ function mez_videos_view_views_default_views() {
   );
   $handler->display->display_options['filters']['field_day_date_value']['form_type'] = 'date_text';
   $handler->display->display_options['path'] = 'videos';
-
-  /* Display: Tartalomtábla */
-  $handler = $view->new_display('panel_pane', 'Tartalomtábla', 'panel_pane_1');
-  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
-  $handler->display->display_options['defaults']['use_more'] = FALSE;
-  $handler->display->display_options['use_more'] = TRUE;
-  $handler->display->display_options['defaults']['use_more_always'] = FALSE;
-  $handler->display->display_options['defaults']['use_more_always'] = FALSE;
-  $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['defaults']['use_more_text'] = FALSE;
-  $handler->display->display_options['use_more_text'] = 'tovább';
-  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
-  $handler->display->display_options['style_plugin'] = 'default';
-  $handler->display->display_options['defaults']['style_options'] = FALSE;
-  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
-  $handler->display->display_options['row_plugin'] = 'ds';
-  $handler->display->display_options['row_options']['alternating'] = 1;
-  $handler->display->display_options['row_options']['grouping'] = 0;
-  $handler->display->display_options['row_options']['advanced'] = 0;
-  $handler->display->display_options['row_options']['delta_fieldset']['delta_fields'] = array();
-  $handler->display->display_options['row_options']['grouping_fieldset']['group_field'] = 'file_managed|timestamp';
-  $handler->display->display_options['row_options']['default_fieldset']['view_mode'] = 'teaser';
-  $handler->display->display_options['row_options']['alternating_fieldset']['alternating'] = TRUE;
-  $handler->display->display_options['row_options']['alternating_fieldset']['item_1'] = 'short_teaser';
-  $handler->display->display_options['row_options']['alternating_fieldset']['item_2'] = 'short_teaser';
-  $handler->display->display_options['defaults']['row_options'] = FALSE;
-  $handler->display->display_options['pane_category']['name'] = 'Nézettáblák';
   $export['videos'] = $view;
 
   return $export;

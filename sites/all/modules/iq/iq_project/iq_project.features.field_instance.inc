@@ -42,6 +42,7 @@ function iq_project_field_default_field_instances() {
     'required' => 0,
     'settings' => array(
       'description_field' => 0,
+      'entity_translation_sync' => FALSE,
       'file_directory' => '',
       'file_extensions' => 'jpg jpeg gif png psd txt doc xls pdf ppt pps odt ods odp tar gz tgz zip cdr docx xlsx',
       'max_filesize' => '',
@@ -95,6 +96,7 @@ function iq_project_field_default_field_instances() {
     'required' => 0,
     'settings' => array(
       'display_summary' => 0,
+      'entity_translation_sync' => FALSE,
       'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
@@ -143,6 +145,7 @@ function iq_project_field_default_field_instances() {
     'label' => 'Tags',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -193,6 +196,7 @@ function iq_project_field_default_field_instances() {
     'label' => 'Group visibility',
     'required' => 1,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'view modes' => array(
@@ -253,6 +257,7 @@ function iq_project_field_default_field_instances() {
     'label' => 'Group',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'view modes' => array(
@@ -279,6 +284,43 @@ function iq_project_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'taxonomy_term-project_tags-name_field'
+  $field_instances['taxonomy_term-project_tags-name_field'] = array(
+    'bundle' => 'project_tags',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'taxonomy_term',
+    'field_name' => 'name_field',
+    'label' => 'Név',
+    'required' => TRUE,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'hide_label' => array(
+        'entity' => 0,
+        'page' => 0,
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => -5,
+    ),
+  );
+
   // Translatables
   // Included for use with string extractors like potx.
   t('Attachments');
@@ -286,6 +328,7 @@ function iq_project_field_default_field_instances() {
   t('Determine if this is an OG group.');
   t('Group');
   t('Group visibility');
+  t('Név');
   t('Tags');
 
   return $field_instances;

@@ -30,20 +30,12 @@ function mez_orders_view_views_default_views() {
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['query_comment'] = FALSE;
-  $handler->display->display_options['exposed_form']['type'] = 'sexy_exposed';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['exposed_form']['options']['submit_button'] = 'Alkalmazás';
-  $handler->display->display_options['exposed_form']['options']['reset_button'] = TRUE;
   $handler->display->display_options['exposed_form']['options']['reset_button_label'] = 'Alaphelyzet';
   $handler->display->display_options['exposed_form']['options']['exposed_sorts_label'] = 'Rendezés';
   $handler->display->display_options['exposed_form']['options']['sort_asc_label'] = 'Növekvő';
   $handler->display->display_options['exposed_form']['options']['sort_desc_label'] = 'Csökkenő';
-  $handler->display->display_options['exposed_form']['options']['sexy'] = array(
-    'field_want_bill_value' => array(
-      'needs_sexy_love' => 1,
-      'sexy_number' => '0',
-      'sexy_width' => '0',
-    ),
-  );
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = 50;
   $handler->display->display_options['pager']['options']['expose']['items_per_page_label'] = 'Elemek száma oldalanként';

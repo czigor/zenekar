@@ -13,7 +13,7 @@ function iq_notification_rules_default_rules_configuration() {
       "LABEL" : "Documentation saved",
       "PLUGIN" : "reaction rule",
       "OWNER" : "rules",
-      "REQUIRES" : [ "rules", "flag", "rules_conditional", "og" ],
+      "REQUIRES" : [ "rules", "flag", "rules_conditional", "rules_i18n", "og" ],
       "ON" : {
         "node_insert--documentation" : { "bundle" : "documentation" },
         "node_update--documentation" : { "bundle" : "documentation" }
@@ -100,26 +100,38 @@ function iq_notification_rules_default_rules_configuration() {
       "LABEL" : "Issue commented",
       "PLUGIN" : "reaction rule",
       "OWNER" : "rules",
-      "REQUIRES" : [ "rules", "flag", "rules_conditional", "og", "comment_alter" ],
+      "REQUIRES" : [
+        "rules",
+        "flag",
+        "rules_conditional",
+        "rules_i18n",
+        "og",
+        "comment_alter"
+      ],
       "ON" : { "comment_alter_node_postsave" : [] },
       "IF" : [
         { "entity_has_field" : { "entity" : [ "node" ], "field" : "og_group_ref" } },
         { "entity_has_field" : { "entity" : [ "node" ], "field" : "field_issue_assigned_to" } },
         { "entity_has_field" : { "entity" : [ "node" ], "field" : "field_issue_tags" } },
-        { "entity_has_field" : { "entity" : [ "node" ], "field" : "field_issue_business_value" } },
         { "entity_has_field" : { "entity" : [ "node" ], "field" : "field_issue_status_term" } },
         { "entity_has_field" : { "entity" : [ "node" ], "field" : "field_issue_type" } },
         { "entity_has_field" : { "entity" : [ "node-unchanged" ], "field" : "og_group_ref" } },
         { "entity_has_field" : { "entity" : [ "node-unchanged" ], "field" : "field_issue_assigned_to" } },
         { "entity_has_field" : { "entity" : [ "node-unchanged" ], "field" : "field_issue_tags" } },
-        { "entity_has_field" : {
-            "entity" : [ "node-unchanged" ],
-            "field" : "field_issue_business_value"
-          }
-        },
         { "entity_has_field" : { "entity" : [ "node-unchanged" ], "field" : "field_issue_status_term" } },
         { "entity_has_field" : { "entity" : [ "node-unchanged" ], "field" : "field_issue_type" } },
-        { "entity_has_field" : { "entity" : [ "comment" ], "field" : "field_issue_comment_body" } }
+        { "entity_has_field" : { "entity" : [ "comment" ], "field" : "field_issue_comment_body" } },
+        { "entity_is_of_type" : {
+            "entity" : [ "node:field_issue_status_term" ],
+            "type" : "taxonomy_term"
+          }
+        },
+        { "entity_is_of_type" : {
+            "entity" : [ "node-unchanged:field_issue_status_term" ],
+            "type" : "taxonomy_term"
+          }
+        },
+        { "entity_has_field" : { "entity" : [ "node:og-group-ref" ], "field" : "group_access" } }
       ],
       "DO" : [
         { "flag_fetch_users_node" : {
@@ -168,24 +180,42 @@ function iq_notification_rules_default_rules_configuration() {
             "DO" : [
               { "CONDITIONAL" : [
                   {
-                    "IF" : { "og_user_in_group" : {
-                        "account" : [ "list-item" ],
-                        "group" : [ "node:og-group-ref" ],
-                        "states" : { "value" : { "1" : "1" } }
-                      }
-                    },
+                    "IF" : { "NOT user_is_blocked" : { "account" : [ "list-item" ] } },
                     "DO" : [
                       { "CONDITIONAL" : [
                           {
-                            "IF" : { "NOT user_is_blocked" : { "account" : [ "list-item" ] } },
+                            "IF" : { "og_user_in_group" : {
+                                "account" : [ "list-item" ],
+                                "group" : [ "node:og-group-ref" ],
+                                "states" : { "value" : { "1" : "1" } }
+                              }
+                            },
                             "DO" : [
                               { "mail" : {
                                   "to" : [ "list-item:mail" ],
                                   "subject" : "[[node:og-group-ref:title]] New comment for Issue: [node:title] #[comment:node:nid]",
-                                  "message" : "Greetings [list-item:name], new comment by [comment:author:name]\\r\\n\\r\\n[comment:field-issue-comment-body:value]\\r\\n\\r\\nAssigned to: [node-unchanged:field-issue-assigned-to:name] \\u21d2 [node:field-issue-assigned-to:name]\\r\\nStatus: [node-unchanged:field-issue-status-term:name] \\u21d2 [node:field-issue-status-term:name]\\r\\nBusiness value: [node-unchanged:field-issue-business-value] \\u21d2 [node:field-issue-business-value]\\r\\nType: [node-unchanged:field-issue-type] \\u21d2 [node:field-issue-type]\\r\\nDescription:\\r\\n[node:field_issue_description]\\r\\n--\\r\\nRead on or unsubscribe at: [comment:url]\\r\\n",
+                                  "message" : "Greetings [list-item:name], new comment by [comment:author:name]\\r\\n\\r\\n[comment:field-issue-comment-body:value]\\r\\n\\r\\nAssigned to: [node-unchanged:field-issue-assigned-to] \\u21d2 [node:field-issue-assigned-to]\\r\\nStatus: [node-unchanged:field-issue-status-term] \\u21d2 [node:field-issue-status-term]\\r\\nType: [node-unchanged:field-issue-type] \\u21d2 [node:field-issue-type]\\r\\nDescription:\\r\\n[node:field_issue_description]\\r\\n--\\r\\nRead on or unsubscribe at: [comment:url]\\r\\n",
                                   "from" : [ "" ],
                                   "language" : [ "" ]
                                 }
+                              }
+                            ]
+                          },
+                          { "ELSE" : [
+                              { "CONDITIONAL" : [
+                                  {
+                                    "IF" : { "data_is" : { "data" : [ "node:og-group-ref:group-access" ], "value" : 0 } },
+                                    "DO" : [
+                                      { "mail" : {
+                                          "to" : [ "list-item:mail" ],
+                                          "subject" : "[[node:og-group-ref:title]] New comment for Issue: [node:title] #[comment:node:nid]",
+                                          "message" : "Greetings [list-item:name], new comment by [comment:author:name]\\r\\n\\r\\n[comment:field-issue-comment-body:value]\\r\\n\\r\\nAssigned to: [node-unchanged:field-issue-assigned-to] \\u21d2 [node:field-issue-assigned-to]\\r\\nStatus: [node-unchanged:field-issue-status-term] \\u21d2 [node:field-issue-status-term]\\r\\nType: [node-unchanged:field-issue-type] \\u21d2 [node:field-issue-type]\\r\\nDescription:\\r\\n[node:field_issue_description]\\r\\n--\\r\\nRead on or unsubscribe at: [comment:url]\\r\\n",
+                                          "language" : [ "" ]
+                                        }
+                                      }
+                                    ]
+                                  }
+                                ]
                               }
                             ]
                           }
@@ -205,7 +235,14 @@ function iq_notification_rules_default_rules_configuration() {
       "LABEL" : "Issue saved",
       "PLUGIN" : "reaction rule",
       "OWNER" : "rules",
-      "REQUIRES" : [ "rules", "flag", "rules_conditional", "og", "comment_alter" ],
+      "REQUIRES" : [
+        "rules",
+        "flag",
+        "rules_conditional",
+        "og",
+        "rules_i18n",
+        "comment_alter"
+      ],
       "ON" : {
         "node_insert--issue" : { "bundle" : "issue" },
         "comment_alter_node_update--issue" : { "bundle" : "issue" }
@@ -213,8 +250,6 @@ function iq_notification_rules_default_rules_configuration() {
       "IF" : [
         { "entity_has_field" : { "entity" : [ "node" ], "field" : "og_group_ref" } },
         { "entity_has_field" : { "entity" : [ "node" ], "field" : "field_issue_assigned_to" } },
-        { "entity_has_field" : { "entity" : [ "node" ], "field" : "field_issue_tags" } },
-        { "entity_has_field" : { "entity" : [ "node" ], "field" : "field_issue_business_value" } },
         { "entity_has_field" : { "entity" : [ "node" ], "field" : "field_issue_status_term" } },
         { "entity_has_field" : { "entity" : [ "node" ], "field" : "field_issue_type" } }
       ],
@@ -271,22 +306,21 @@ function iq_notification_rules_default_rules_configuration() {
                         "states" : { "value" : { "1" : "1" } }
                       }
                     },
+                    "DO" : []
+                  }
+                ]
+              },
+              { "CONDITIONAL" : [
+                  {
+                    "IF" : { "NOT user_is_blocked" : { "account" : [ "list-item" ] } },
                     "DO" : [
-                      { "CONDITIONAL" : [
-                          {
-                            "IF" : { "NOT user_is_blocked" : { "account" : [ "list-item" ] } },
-                            "DO" : [
-                              { "mail" : {
-                                  "to" : [ "list-item:mail" ],
-                                  "subject" : "[[node:og-group-ref:title]] New comment for Issue: [node:title] #[node:nid]",
-                                  "message" : "Greetings [list-item:name], change by [site:current-user:name]\\r\\n\\r\\n[node:field-issue-comment-body:value]\\r\\n\\r\\nAssigned to: [node:field-issue-assigned-to:name]\\r\\nStatus: [node:field-issue-status-term:name]\\r\\nBusiness value: [node:field-issue-business-value]\\r\\nType: [node:field-issue-type]\\r\\nLabels: [node:field-issue-tags:0:name], [node:field-issue-tags:1:name], [node:field-issue-tags:2:name], [node:field-issue-tags:3:name]\\r\\nDescription:\\r\\n[node:field_issue_description]\\r\\n--\\r\\nRead on or unsubscribe at: [node:url]\\r\\n",
-                                  "from" : [ "" ],
-                                  "language" : [ "" ]
-                                }
-                              }
-                            ]
-                          }
-                        ]
+                      { "mail" : {
+                          "to" : [ "list-item:mail" ],
+                          "subject" : "[[node:og-group-ref:title]] New comment for Issue: [node:title] #[node:nid]",
+                          "message" : "Greetings [list-item:name], change by [site:current-user:name]\\r\\n\\r\\n[node:field-issue-comment-body:value]\\r\\n\\r\\nAssigned to: [node:field-issue-assigned-to]\\r\\nStatus: [node:field-issue-status-term]\\r\\nType: [node:field-issue-type]\\r\\n\\r\\nDescription:\\r\\n[node:field_issue_description]\\r\\n--\\r\\nRead on or unsubscribe at: [node:url]\\r\\n",
+                          "from" : [ "" ],
+                          "language" : [ "" ]
+                        }
                       }
                     ]
                   }
@@ -302,7 +336,7 @@ function iq_notification_rules_default_rules_configuration() {
       "LABEL" : "News saved",
       "PLUGIN" : "reaction rule",
       "OWNER" : "rules",
-      "REQUIRES" : [ "rules", "og", "rules_conditional" ],
+      "REQUIRES" : [ "rules", "og", "rules_conditional", "rules_i18n" ],
       "ON" : {
         "node_insert--news" : { "bundle" : "news" },
         "node_update--news" : { "bundle" : "news" }
@@ -347,7 +381,7 @@ function iq_notification_rules_default_rules_configuration() {
       "LABEL" : "Project saved",
       "PLUGIN" : "reaction rule",
       "OWNER" : "rules",
-      "REQUIRES" : [ "rules", "flag", "rules_conditional", "og" ],
+      "REQUIRES" : [ "rules", "flag", "rules_conditional", "rules_i18n", "og" ],
       "ON" : {
         "node_insert--project" : { "bundle" : "project" },
         "node_update--project" : { "bundle" : "project" }

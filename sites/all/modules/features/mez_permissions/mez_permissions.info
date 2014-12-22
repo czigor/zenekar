@@ -1,7 +1,7 @@
 name = MEZ permissions
 core = 7.x
 package = MEZ
-version = 7.x-1.0-20140524dev1
+version = 7.x-1.0-20141222dev1
 project = mez_permissions
 dependencies[] = admin_menu
 dependencies[] = block
@@ -55,3 +55,4 @@ features[user_permission][] = view node location table
 features[user_permission][] = view post access counter
 features[user_permission][] = view the administration theme
 features[user_permission][] = view user location table
+mtime = 1401310261
