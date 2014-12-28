@@ -10,8 +10,15 @@
       height: 50px;
     }
   }
+  .language-switcher-locale-url {
+    list-style-type: none;
+    margin-left: 20px;
+    margin-right:  20px;
+  }
+  
 }
 
 #admin-menu {
   z-index: 1000;
 }
+

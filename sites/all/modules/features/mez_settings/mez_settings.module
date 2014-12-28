@@ -98,3 +98,10 @@ function mez_settings_preprocess_mez_frontpage(&$vars) {
   $vars['site_name'] = variable_get_value('site_name');
   $vars['site_slogan'] = variable_get_value('site_slogan');
 }
+
+/**
+ * Page preprocess hook.
+ */
+function mez_settings_preprocess_page(&$variables) {
+  $variables['lang_chooser'] = locale_block_view('language');
+}

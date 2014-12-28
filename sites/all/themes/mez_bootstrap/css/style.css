@@ -6731,8 +6731,13 @@ button.close {
     /* line 9, ../sass/_menu.scss */
     .navbar .navbar-brand img {
       height: 50px; }
+  /* line 13, ../sass/_menu.scss */
+  .navbar .language-switcher-locale-url {
+    list-style-type: none;
+    margin-left: 20px;
+    margin-right: 20px; }
 
-/* line 15, ../sass/_menu.scss */
+/* line 21, ../sass/_menu.scss */
 #admin-menu {
   z-index: 1000; }
 

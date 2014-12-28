@@ -91,9 +91,12 @@
       <?php if (!empty($primary_nav)): ?>
         <?php print render($primary_nav); ?>
       <?php endif; ?>
-      <?php if (!empty($page['lang_chooser'])): ?>
-        <?php print render($page['lang_chooser']); ?>
+      <?php if (!empty($lang_chooser)): ?>
+        <div class="navbar-right">
+          <?php print $lang_chooser['content']; ?>
+        </div>
       <?php endif; ?>
+
     </div>  <!-- /.navbar-collapse -->
   </div>  <!-- /.container-fluid -->
 </nav>
