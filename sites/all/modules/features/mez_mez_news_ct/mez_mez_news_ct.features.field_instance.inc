@@ -150,15 +150,26 @@ function mez_mez_news_ct_field_default_field_instances() {
       'default' => array(
         'label' => 'hidden',
         'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 1,
+        'settings' => array(
+          'trim_length' => 300,
+        ),
+        'type' => 'text_summary_or_trimmed',
+        'weight' => 2,
       ),
       'full' => array(
         'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
+        'weight' => 2,
+      ),
+      'mez_frontpage' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(
+          'trim_length' => 300,
+        ),
+        'type' => 'text_summary_or_trimmed',
         'weight' => 2,
       ),
       'short_teaser' => array(
@@ -207,11 +218,13 @@ function mez_mez_news_ct_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
-        'module' => 'file',
-        'settings' => array(),
-        'type' => 'file_default',
-        'weight' => 2,
+        'label' => 'hidden',
+        'module' => 'file_entity',
+        'settings' => array(
+          'file_view_mode' => 'preview',
+        ),
+        'type' => 'file_rendered',
+        'weight' => 4,
       ),
       'full' => array(
         'label' => 'hidden',
@@ -221,6 +234,15 @@ function mez_mez_news_ct_field_default_field_instances() {
         ),
         'type' => 'file_rendered',
         'weight' => 3,
+      ),
+      'mez_frontpage' => array(
+        'label' => 'hidden',
+        'module' => 'file_entity',
+        'settings' => array(
+          'file_view_mode' => 'preview',
+        ),
+        'type' => 'file_rendered',
+        'weight' => 4,
       ),
       'short_teaser' => array(
         'label' => 'above',
@@ -289,16 +311,21 @@ function mez_mez_news_ct_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'taxonomy',
         'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
-        'weight' => 3,
+        'type' => 'hidden',
+        'weight' => 10,
       ),
       'full' => array(
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 4,
+      ),
+      'mez_frontpage' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 10,
       ),
       'short_teaser' => array(
         'label' => 'above',
@@ -309,8 +336,9 @@ function mez_mez_news_ct_field_default_field_instances() {
       ),
       'teaser' => array(
         'label' => 'above',
+        'module' => 'iq_helper',
         'settings' => array(),
-        'type' => 'hidden',
+        'type' => 'iq_fieldvalue_count',
         'weight' => 10,
       ),
     ),
@@ -347,8 +375,8 @@ function mez_mez_news_ct_field_default_field_instances() {
         'module' => 'title',
         'settings' => array(
           'title_class' => '',
-          'title_link' => 'content',
-          'title_style' => 'span',
+          'title_link' => '',
+          'title_style' => 'h2',
         ),
         'type' => 'title_linked',
         'weight' => 0,
@@ -358,6 +386,17 @@ function mez_mez_news_ct_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_plain',
+        'weight' => 0,
+      ),
+      'mez_frontpage' => array(
+        'label' => 'hidden',
+        'module' => 'title',
+        'settings' => array(
+          'title_class' => '',
+          'title_link' => '',
+          'title_style' => 'h2',
+        ),
+        'type' => 'title_linked',
         'weight' => 0,
       ),
       'short_teaser' => array(
@@ -376,7 +415,7 @@ function mez_mez_news_ct_field_default_field_instances() {
         'module' => 'title',
         'settings' => array(
           'title_class' => '',
-          'title_link' => '',
+          'title_link' => 'content',
           'title_style' => 'h2',
         ),
         'type' => 'title_linked',

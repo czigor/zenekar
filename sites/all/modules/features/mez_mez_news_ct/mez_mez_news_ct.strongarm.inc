@@ -187,6 +187,9 @@ function mez_mez_news_ct_strongarm() {
       'print' => array(
         'custom_settings' => FALSE,
       ),
+      'mez_frontpage' => array(
+        'custom_settings' => TRUE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
