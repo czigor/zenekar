@@ -63,7 +63,7 @@ function mez_settings_preprocess_mez_frontpage(&$vars) {
   }
   $opening_nids = empty($opening_nids) ? 2098 : $opening_nids[0];
   $vars['opening'] = array(
-    'node' => node_view(node_load($opening_nids), 'teaser'),
+    'node' => node_view(node_load($opening_nids), 'mez_frontpage'),
     'bg' => file_create_url($backgrounds[0]['uri']),
   );
 
@@ -82,12 +82,12 @@ function mez_settings_preprocess_mez_frontpage(&$vars) {
   $news_nids = empty($news_nids) ? 2098 : $news_nids[0];
 
   $vars['news'] = array(
-    'node' => node_view(node_load($news_nids), 'teaser'),
+    'node' => node_view(node_load($news_nids), 'mez_frontpage'),
   );
 
   // About
   $vars['about'] = array(
-    'node' => node_view(node_load(13), 'teaser'),
+    'node' => node_view(node_load(13), 'mez_frontpage'),
     'bg' => file_create_url($backgrounds[1]['uri']),
   );
 
