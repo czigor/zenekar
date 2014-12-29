@@ -45,6 +45,39 @@ function mez_concerts_view_views_default_views() {
   $handler->display->display_options['pager']['options']['tags']['next'] = 'következő ›';
   $handler->display->display_options['pager']['options']['tags']['last'] = 'utolsó »';
   $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'field_media' => 'field_media',
+    'title' => 'title',
+    'field_time' => 'field_time',
+    'field_programme' => 'field_programme',
+  );
+  $handler->display->display_options['style_options']['default'] = 'field_time';
+  $handler->display->display_options['style_options']['info'] = array(
+    'field_media' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'title' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_time' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'desc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_programme' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
   /* Mező: Tartalom: Media */
   $handler->display->display_options['fields']['field_media']['id'] = 'field_media';
   $handler->display->display_options['fields']['field_media']['table'] = 'field_data_field_media';
@@ -159,7 +192,6 @@ function mez_concerts_view_views_default_views() {
   $handler->display->display_options['filters']['field_time_value']['operator'] = 'between';
   $handler->display->display_options['filters']['field_time_value']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_time_value']['expose']['operator_id'] = 'field_time_value_op';
-  $handler->display->display_options['filters']['field_time_value']['expose']['label'] = 'Time';
   $handler->display->display_options['filters']['field_time_value']['expose']['operator'] = 'field_time_value_op';
   $handler->display->display_options['filters']['field_time_value']['expose']['identifier'] = 'field_time_value';
   $handler->display->display_options['filters']['field_time_value']['expose']['remember_roles'] = array(
@@ -168,6 +200,7 @@ function mez_concerts_view_views_default_views() {
     3 => 0,
     4 => 0,
     5 => 0,
+    6 => 0,
   );
   $handler->display->display_options['filters']['field_time_value']['form_type'] = 'date_text';
   /* Szűrési feltétel: Tartalom: Composer (field_composer) */
