@@ -26,15 +26,5 @@ function iq_settings_user_default_permissions() {
     'module' => 'filter',
   );
 
-  // Exported permission: 'use text format ckeditor'.
-  $permissions['use text format ckeditor'] = array(
-    'name' => 'use text format ckeditor',
-    'roles' => array(
-      'admin' => 'admin',
-      'authenticated user' => 'authenticated user',
-    ),
-    'module' => 'filter',
-  );
-
   return $permissions;
 }
