@@ -240,6 +240,12 @@ function mez_concert_ct_strongarm() {
       'short_teaser' => array(
         'custom_settings' => TRUE,
       ),
+      'mez_frontpage' => array(
+        'custom_settings' => TRUE,
+      ),
+      'print' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
@@ -267,6 +273,10 @@ function mez_concert_ct_strongarm() {
             'weight' => '0',
             'visible' => FALSE,
           ),
+          'mez_frontpage' => array(
+            'weight' => '0',
+            'visible' => FALSE,
+          ),
         ),
         'mez_concert_shopping_cart' => array(
           'full' => array(
@@ -285,30 +295,38 @@ function mez_concert_ct_strongarm() {
             'weight' => '-4',
             'visible' => FALSE,
           ),
+          'mez_frontpage' => array(
+            'weight' => '-4',
+            'visible' => FALSE,
+          ),
         ),
         'mez_concert_bank_information' => array(
           'full' => array(
             'weight' => '1',
             'visible' => TRUE,
           ),
+          'mez_frontpage' => NULL,
         ),
         'mez_concert_bank_logos' => array(
           'full' => array(
             'weight' => '',
             'visible' => TRUE,
           ),
+          'mez_frontpage' => NULL,
         ),
         'mez_concert_bankcard_logos' => array(
           'full' => array(
             'weight' => '3',
             'visible' => TRUE,
           ),
+          'mez_frontpage' => NULL,
         ),
         'mez_concert_bank_logo' => array(
           'full' => array(
             'weight' => '2',
             'visible' => TRUE,
           ),
+          'mez_frontpage' => NULL,
         ),
         'mez_concert_bank_info' => array(
           'full' => array(
@@ -324,6 +342,10 @@ function mez_concert_ct_strongarm() {
             'visible' => FALSE,
           ),
           'short_teaser' => array(
+            'weight' => '-6',
+            'visible' => FALSE,
+          ),
+          'mez_frontpage' => array(
             'weight' => '-6',
             'visible' => FALSE,
           ),

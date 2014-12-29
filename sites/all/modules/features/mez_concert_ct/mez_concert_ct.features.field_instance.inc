@@ -89,29 +89,15 @@ function mez_concert_ct_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'hidden',
-        'module' => 'field_collection',
-        'settings' => array(
-          'add' => '',
-          'delete' => '',
-          'description' => 1,
-          'edit' => '',
-          'view_mode' => 'full',
-        ),
-        'type' => 'field_collection_view',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 1,
       ),
       'full' => array(
         'label' => 'hidden',
-        'module' => 'field_collection',
-        'settings' => array(
-          'add' => '',
-          'delete' => '',
-          'description' => 0,
-          'edit' => '',
-          'view_mode' => 'full',
-        ),
-        'type' => 'field_collection_view',
-        'weight' => 1,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 2,
       ),
       'piece' => array(
         'label' => 'hidden',
@@ -212,6 +198,12 @@ function mez_concert_ct_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 4,
       ),
+      'mez_frontpage' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 11,
+      ),
       'short_teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -274,6 +266,12 @@ function mez_concert_ct_field_default_field_instances() {
         'type' => 'entityreference_entity_view',
         'weight' => 8,
       ),
+      'mez_frontpage' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 10,
+      ),
       'short_teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -326,6 +324,15 @@ function mez_concert_ct_field_default_field_instances() {
         'settings' => array(),
         'type' => 'mez_media',
         'weight' => 7,
+      ),
+      'mez_frontpage' => array(
+        'label' => 'hidden',
+        'module' => 'file_entity',
+        'settings' => array(
+          'file_view_mode' => 'colorbox_preview',
+        ),
+        'type' => 'file_rendered',
+        'weight' => 2,
       ),
       'short_teaser' => array(
         'label' => 'hidden',
@@ -418,6 +425,12 @@ function mez_concert_ct_field_default_field_instances() {
         'type' => 'field_collection_view',
         'weight' => 6,
       ),
+      'mez_frontpage' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 9,
+      ),
       'short_teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -473,6 +486,12 @@ on: Webshop is visible for public.',
         'settings' => array(),
         'type' => 'mez_concert_hall',
         'weight' => 5,
+      ),
+      'mez_frontpage' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'short_teaser' => array(
         'label' => 'above',
@@ -540,6 +559,20 @@ on: Webshop is visible for public.',
         ),
         'type' => 'date_default',
         'weight' => 3,
+      ),
+      'mez_frontpage' => array(
+        'label' => 'hidden',
+        'module' => 'date',
+        'settings' => array(
+          'format_type' => 'long',
+          'fromto' => 'both',
+          'multiple_from' => '',
+          'multiple_number' => '',
+          'multiple_to' => '',
+          'show_repeat_rule' => 'show',
+        ),
+        'type' => 'date_default',
+        'weight' => 1,
       ),
       'short_teaser' => array(
         'label' => 'hidden',
@@ -624,6 +657,17 @@ on: Webshop is visible for public.',
         'settings' => array(),
         'type' => 'text_plain',
         'weight' => 2,
+      ),
+      'mez_frontpage' => array(
+        'label' => 'hidden',
+        'module' => 'mez_concert',
+        'settings' => array(
+          'title_class' => '',
+          'title_link' => 'content',
+          'title_style' => 'div',
+        ),
+        'type' => 'mez_concert_title',
+        'weight' => 0,
       ),
       'short_teaser' => array(
         'label' => 'hidden',
