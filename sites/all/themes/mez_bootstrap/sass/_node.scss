@@ -1,0 +1,33 @@
+// Concert
+.node-type-concert {
+  .field-collection-view {
+    padding: 0;
+    border: 0px none;
+  }
+  .field-name-field-media {
+    .mediaelement-audio {
+      .mejs-controls {
+        //width: 101%;
+        .mejs-horizontal-volume-slider {
+          width: 26px;
+        }
+      }
+    }
+  }
+  .field-name-field-time {
+    font-size: 12px;
+    font-style: italic;
+    margin-bottom: 20px;
+    margin-top: -5px;
+  }
+}
+
+// MEZ News
+.node-mez-news {
+  .field-name-post-date {
+    font-size: 12px;
+    font-style: italic;
+    margin-bottom: 20px;
+    margin-top: -5px;
+  }
+}

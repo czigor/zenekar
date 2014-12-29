@@ -1,10 +1,34 @@
 footer.footer.container {
   background-color: black;
   color: #fff;
-  width: 99vw;
+  width: 100%;
   padding: 10px;
   overflow-y: hidden;
+
   input {
     width: 10em;
   }
+  h2 {
+    font-size: 25px;
+  }
+  
+  .block {
+    display: inline;
+    float: left;
+    position: relative;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  
+  #block-user-login {
+    ul {
+      list-style-type: none;
+      padding-left: 0px;
+    }
+  }
 }
+
+.main-container {
+  margin-bottom: 20px;
+}
+

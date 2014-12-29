@@ -1,0 +1,47 @@
+// Concerts
+.view-concerts {
+  .views-exposed-form {
+    .views-widget-filter-field_time_value {
+      input {
+        width: 10em;
+      }
+      label {
+        display: block;
+      }
+      #edit-field-time-value-min-wrapper {
+        margin-bottom: 10px;
+      }
+    }
+  }
+  .views-field-field-programme {
+    .view-mode-piece:before,
+    .view-mode-piece:after {
+      content: none;
+    }
+  }
+}
+
+// Tweets
+.view-mez-tweets {
+  .views-row {
+    background-color: #111;
+    padding: 10px;
+    border-radius: 6px;
+
+    .views-field-created-time,
+    .views-field-web-intents {
+      font-style: italic;
+      font-size: 12px;
+    }
+  }
+}
+
+// News
+.view-mez-news {
+  .field-name-post-date {
+    font-style: italic;
+    font-size: 12px;
+    margin-top: -10px;
+    margin-bottom: 10px;
+  }
+}
