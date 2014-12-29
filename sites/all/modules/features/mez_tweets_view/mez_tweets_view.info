@@ -1,0 +1,10 @@
+name = MEZ Tweets view
+core = 7.x
+package = MEZ views
+version = 7.x-1.0-20141229dev1
+project = mez_tweets_view
+dependencies[] = views
+features[ctools][] = views:views_default:3.0
+features[features_api][] = api:2
+features[views_view][] = mez_tweets
+features_exclude[dependencies][ctools] = ctools
