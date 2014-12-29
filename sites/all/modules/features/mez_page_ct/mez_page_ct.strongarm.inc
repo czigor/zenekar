@@ -181,6 +181,15 @@ function mez_page_ct_strongarm() {
       'revision' => array(
         'custom_settings' => FALSE,
       ),
+      'mez_frontpage' => array(
+        'custom_settings' => TRUE,
+      ),
+      'print' => array(
+        'custom_settings' => FALSE,
+      ),
+      'short_teaser' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(

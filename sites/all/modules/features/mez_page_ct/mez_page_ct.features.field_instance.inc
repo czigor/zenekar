@@ -31,6 +31,15 @@ function mez_page_ct_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 1,
       ),
+      'mez_frontpage' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(
+          'trim_length' => 600,
+        ),
+        'type' => 'text_summary_or_trimmed',
+        'weight' => 1,
+      ),
       'teaser' => array(
         'label' => 'hidden',
         'module' => 'text',
@@ -84,6 +93,12 @@ function mez_page_ct_field_default_field_instances() {
         'settings' => array(),
         'type' => 'file_default',
         'weight' => 2,
+      ),
+      'mez_frontpage' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 9,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -141,7 +156,18 @@ function mez_page_ct_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
-        'type' => 'text_plain',
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+      'mez_frontpage' => array(
+        'label' => 'hidden',
+        'module' => 'title',
+        'settings' => array(
+          'title_class' => '',
+          'title_link' => '',
+          'title_style' => 'h2',
+        ),
+        'type' => 'title_linked',
         'weight' => 0,
       ),
       'teaser' => array(
