@@ -308,19 +308,21 @@ function mez_concert_ct_field_default_field_instances() {
   // Exported field_instance: 'node-concert-field_media'
   $field_instances['node-concert-field_media'] = array(
     'bundle' => 'concert',
+    'comment_alter' => 0,
+    'comment_alter_hide' => 0,
     'deleted' => 0,
     'description' => 'Audio media are preferred to be placed last as they occupy wider space and destroy the nice grid. ',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
-        'module' => 'mez_concert',
+        'module' => 'mez_concert_ct',
         'settings' => array(),
         'type' => 'mez_media',
         'weight' => 3,
       ),
       'full' => array(
         'label' => 'hidden',
-        'module' => 'mez_concert',
+        'module' => 'mez_concert_ct',
         'settings' => array(),
         'type' => 'mez_media',
         'weight' => 7,
@@ -379,8 +381,8 @@ function mez_concert_ct_field_default_field_instances() {
           'video' => 'video',
         ),
         'browser_plugins' => array(
-          'media_default--media_browser_1' => 0,
-          'media_default--media_browser_my_files' => 'media_default--media_browser_my_files',
+          'media_default--media_browser_1' => 'media_default--media_browser_1',
+          'media_default--media_browser_my_files' => 0,
           'media_internet' => 'media_internet',
           'upload' => 'upload',
           'youtube' => 'youtube',
@@ -660,7 +662,7 @@ on: Webshop is visible for public.',
       ),
       'mez_frontpage' => array(
         'label' => 'hidden',
-        'module' => 'mez_concert',
+        'module' => 'mez_concert_ct',
         'settings' => array(
           'title_class' => '',
           'title_link' => 'content',
@@ -671,7 +673,7 @@ on: Webshop is visible for public.',
       ),
       'short_teaser' => array(
         'label' => 'hidden',
-        'module' => 'mez_concert',
+        'module' => 'mez_concert_ct',
         'settings' => array(
           'title_class' => '',
           'title_link' => 'content',
@@ -682,7 +684,7 @@ on: Webshop is visible for public.',
       ),
       'teaser' => array(
         'label' => 'hidden',
-        'module' => 'mez_concert',
+        'module' => 'mez_concert_ct',
         'settings' => array(
           'title_class' => '',
           'title_link' => 'content',

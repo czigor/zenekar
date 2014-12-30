@@ -5,3 +5,75 @@
  */
 
 include_once 'mez_concert_ct.features.inc';
+
+/**
+ * Implements hook_field_formatter_info().
+ */
+function mez_concert_ct_field_formatter_info() {
+  return array(
+    'mez_media' => array(
+      'label' => t('MEZ media'),
+      'field types' => array('file'),
+    ),
+    // This is almost the same as title_linked except that a 'Tickets for sale here!!'
+    // text is displayed when ticket selling is on.
+    'mez_concert_title' => array(
+      'label' => t('MEZ concert title'),
+      'field types' => array('text'),
+      'settings' => array('title_style' => '', 'title_link' => '', 'title_class' => ''),
+    ),
+  );
+}
+
+/**
+ * Implements hook_field_formatter_settings_form().
+ */
+function mez_concert_ct_field_formatter_settings_form($field, $instance, $view_mode, $form, &$form_state) {
+  if ($instance['display'][$view_mode]['type'] == 'mez_concert_title') {
+    return title_field_formatter_settings_form($field, $instance, $view_mode, $form, $form_state);
+  }
+}
+
+/**
+ * Implements hook_field_formatter_settings_summary().
+ */
+function mez_concert_ct_field_formatter_settings_summary($field, $instance, $view_mode) {
+  if ($instance['display'][$view_mode]['type'] == 'mez_concert_title') {
+    return title_field_formatter_settings_summary($field, $instance, $view_mode);
+  }
+}
+
+/**
+ * Implements hook_field_formatter_view().
+ */
+function mez_concert_ct_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
+  $element = array();
+  $settings = $display['settings'];
+  switch ($display['type']) {
+    case 'mez_media' :
+      $element[0] = array(
+        array(
+          '#markup' => views_embed_view('mez_image', 'default', $entity->nid),
+        ),
+        array(
+          '#markup' => views_embed_view('mez_document', 'default', $entity->nid),
+        ),
+        array(
+          '#markup' => views_embed_view('mez_audio', 'default', $entity->nid),
+        ),
+        array(
+          '#markup' => views_embed_view('mez_video', 'default', $entity->nid),
+        ),
+      );
+
+      break;
+    case 'mez_concert_title' :
+      $element = title_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display);
+      $ticket_selling = field_get_items('node', $entity, 'field_ticket_selling');
+      if ($ticket_selling[0]['value'] == 'on') {
+        $element[0]['#markup'] .= '<div class="concert-title-ticket-selling">' . l(t('Tickets for sale here!'), 'node/' . $entity->nid) . '</div>';
+      }
+      break;
+  }
+  return $element;
+}
