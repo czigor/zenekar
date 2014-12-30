@@ -1,3 +1,16 @@
+// General views theming
+.view {
+  td {
+    padding: 10px;
+  }
+  .views-row-odd,
+  .odd, 
+  .odd + .footable-row-detail {
+    background-color: #d9d9d9;
+    padding: 10px;
+  }
+}
+
 // Concerts
 .view-concerts {
   .views-exposed-form {
@@ -43,5 +56,40 @@
     font-size: 12px;
     margin-top: -10px;
     margin-bottom: 10px;
+  }
+}
+
+// Media assets
+.view-mez-media-assets,
+.view-media-store-browser {
+  .views-exposed-form {
+    .views-widget-filter-field_day_date_value {
+      input {
+        width: 10em;
+      }
+      label {
+        display: block;
+      }
+      #edit-field-time-value-min-wrapper {
+        margin-bottom: 10px;
+      }
+    }
+  }
+}
+
+// Media
+.view-media {
+  .views-exposed-form {
+    .views-widget-filter-field_day_date_value {
+      input {
+        width: 10em;
+      }
+      label {
+        display: block;
+      }
+      #edit-field-time-value-min-wrapper {
+        margin-bottom: 10px;
+      }
+    }
   }
 }
