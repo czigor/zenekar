@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the MEZ Media Store views feature.
+ */
+
+include_once 'mez_media_store_views.features.inc';
