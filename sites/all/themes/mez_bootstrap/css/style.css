@@ -42,10 +42,10 @@
       position: relative;
       text-align: center;
       color: white; }
-      /* line 24, ../sass/_front.scss */
+      /* line 23, ../sass/_front.scss */
       .front #opening .title span {
         font-style: italic; }
-  /* line 30, ../sass/_front.scss */
+  /* line 29, ../sass/_front.scss */
   .front .jumbotron-inner {
     top: 20vh;
     left: 10vw;
@@ -55,7 +55,7 @@
     width: 40vw;
     opacity: 0.6;
     min-width: 250px; }
-  /* line 40, ../sass/_front.scss */
+  /* line 39, ../sass/_front.scss */
   .front .jumbotron-outer {
     width: 100vw;
     margin-bottom: 0; }
@@ -86,8 +86,20 @@ footer.footer.container {
     padding-left: 0px; }
 
 /* line 31, ../sass/_page.scss */
-.main-container {
-  margin-bottom: 20px; }
+body:not(.front) {
+  background: url("/sites/default/files/page/014_6043.jpg") no-repeat center center fixed;
+  background-size: cover; }
+  /* line 34, ../sass/_page.scss */
+  body:not(.front) .main-container {
+    margin-bottom: 20px;
+    min-height: 80vh; }
+    /* line 37, ../sass/_page.scss */
+    body:not(.front) .main-container .row {
+      margin: 10px;
+      padding: 20px;
+      border-radius: 10px;
+      background-color: #fff;
+      opacity: 0.93; }
 
 /* line 3, ../sass/_views.scss */
 .view td {

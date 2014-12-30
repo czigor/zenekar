@@ -47,8 +47,8 @@ function mez_settings_theme($existing, $type, $theme, $path) {
  * Preprocess function for the frontpage.
  */
 function mez_settings_preprocess_mez_frontpage(&$vars) {
-  $frontpage_page = node_load(variable_get('mez_frontpage_page_nid'));
-  $backgrounds = field_get_items('node', $frontpage_page, 'field_media');
+  $background_page = node_load(variable_get('mez_background_page_nid'));
+  $backgrounds = field_get_items('node', $background_page, 'field_media');
 
   // Get most recent sticky promoted node for the opening page.
   $query = new EntityFieldQuery();
@@ -104,4 +104,15 @@ function mez_settings_preprocess_mez_frontpage(&$vars) {
  */
 function mez_settings_preprocess_page(&$variables) {
   $variables['lang_chooser'] = locale_block_view('language');
+  // Get a random background if not on the frontpage.
+  if (!drupal_is_front_page()) {
+    $background_page = node_load(variable_get('mez_background_page_nid'));
+    $backgrounds = field_get_items('node', $background_page, 'field_media');
+    $items_count = count($backgrounds);
+    // Random number
+    $delta = time() % $items_count;
+    $url = file_create_url($backgrounds[$delta]['uri']);
+    drupal_add_js(array('mezBg' => $url), 'setting');
+    drupal_add_js(drupal_get_path('module', 'mez_settings') . '/js/mez_settings_background.js');
+  }
 }

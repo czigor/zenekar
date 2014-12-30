@@ -28,7 +28,18 @@ footer.footer.container {
   }
 }
 
-.main-container {
-  margin-bottom: 20px;
+body:not(.front) {
+  background: url('/sites/default/files/page/014_6043.jpg') no-repeat center center fixed; 
+  background-size: cover;
+  .main-container {
+    margin-bottom: 20px;
+    min-height: 80vh;
+    .row {
+    margin: 10px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #fff;
+    opacity: 0.93;
+    }
+  }
 }
-
