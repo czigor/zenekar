@@ -3109,13 +3109,13 @@ foo
     'toggle_main_menu' => 1,
     'toggle_secondary_menu' => 1,
     'default_logo' => 0,
-    'logo_path' => 'sites/all/themes/mez_bootstrap/images/mez_logo_hu.jpg',
+    'logo_path' => 'sites/all/themes/mez_bootstrap/images/mez_logo_hu.png',
     'logo_upload' => '',
-    'default_favicon' => 1,
-    'favicon_path' => '',
+    'default_favicon' => 0,
+    'favicon_path' => 'sites/all/themes/mez_bootstrap/images/mez_favicon.gif',
     'favicon_upload' => '',
-    'general__active_tab' => 'edit-theme-settings',
-    'bootstrap__active_tab' => 'edit-advanced',
+    'general__active_tab' => 'edit-favicon',
+    'bootstrap__active_tab' => 'edit-components',
     'bootstrap_breadcrumb' => '1',
     'bootstrap_breadcrumb_home' => 0,
     'bootstrap_breadcrumb_title' => 1,
@@ -3166,6 +3166,7 @@ foo
     'bootstrap_bootswatch' => '',
     'bootstrap_rebuild_registry' => 0,
     'bootstrap_toggle_jquery_error' => 0,
+    'favicon_mimetype' => 'image/gif',
   );
   $export['theme_mez_bootstrap_settings'] = $strongarm;
 
