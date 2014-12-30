@@ -276,7 +276,12 @@ function mez_permissions_user_default_permissions() {
   // Exported permission: 'view the administration theme'.
   $permissions['view the administration theme'] = array(
     'name' => 'view the administration theme',
-    'roles' => array(),
+    'roles' => array(
+      'admin' => 'admin',
+      'editor' => 'editor',
+      'member' => 'member',
+      'site admin' => 'site admin',
+    ),
     'module' => 'system',
   );
 
