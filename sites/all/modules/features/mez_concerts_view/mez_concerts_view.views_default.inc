@@ -46,6 +46,7 @@ function mez_concerts_view_views_default_views() {
   $handler->display->display_options['pager']['options']['tags']['last'] = 'utolsó »';
   $handler->display->display_options['style_plugin'] = 'footable';
   $handler->display->display_options['style_options']['columns'] = array(
+    'counter' => 'counter',
     'field_media' => 'field_media',
     'title' => 'title',
     'field_time' => 'field_time',
@@ -53,6 +54,11 @@ function mez_concerts_view_views_default_views() {
   );
   $handler->display->display_options['style_options']['default'] = 'field_time';
   $handler->display->display_options['style_options']['info'] = array(
+    'counter' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
     'field_media' => array(
       'align' => '',
       'separator' => '',
@@ -83,6 +89,10 @@ function mez_concerts_view_views_default_views() {
     'icon' => '',
     'icon_size' => '',
     'hide' => array(
+      'counter' => array(
+        'phone' => 0,
+        'tablet' => 0,
+      ),
       'field_media' => array(
         'phone' => 'phone',
         'tablet' => 0,
@@ -101,6 +111,13 @@ function mez_concerts_view_views_default_views() {
       ),
     ),
   );
+  /* Mező: Általános: Eredményszámláló megtekintése */
+  $handler->display->display_options['fields']['counter']['id'] = 'counter';
+  $handler->display->display_options['fields']['counter']['table'] = 'views';
+  $handler->display->display_options['fields']['counter']['field'] = 'counter';
+  $handler->display->display_options['fields']['counter']['label'] = '';
+  $handler->display->display_options['fields']['counter']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['counter']['counter_start'] = '1';
   /* Mező: Tartalom: Media */
   $handler->display->display_options['fields']['field_media']['id'] = 'field_media';
   $handler->display->display_options['fields']['field_media']['table'] = 'field_data_field_media';
