@@ -66,6 +66,36 @@ function mez_settings_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'bootstrap_library_settings';
+  $strongarm->value = array(
+    'bootstrap' => array(
+      'bootstrap_library_settings__bootstrap__active_tab' => '',
+    ),
+    'minimized' => array(
+      'options' => '1',
+    ),
+    'visibility' => array(
+      'visibility' => '0',
+      'pages' => 'admin/*',
+    ),
+    'theme' => array(
+      'visibility' => '1',
+      'themes' => array(
+        'mez_bootstrap' => 'mez_bootstrap',
+      ),
+    ),
+    'files' => array(
+      'types' => array(
+        'css' => 'css',
+        'js' => 'js',
+      ),
+    ),
+  );
+  $export['bootstrap_library_settings'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'chosen_disable_search';
   $strongarm->value = 0;
   $export['chosen_disable_search'] = $strongarm;
