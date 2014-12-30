@@ -26,6 +26,7 @@ function mez_media_views_views_default_views() {
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['use_more_text'] = 'tovább';
   $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['access']['perm'] = 'administer files';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
@@ -43,21 +44,22 @@ function mez_media_views_views_default_views() {
   $handler->display->display_options['pager']['options']['tags']['previous'] = '‹ előző';
   $handler->display->display_options['pager']['options']['tags']['next'] = 'következő ›';
   $handler->display->display_options['pager']['options']['tags']['last'] = 'utolsó »';
-  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_plugin'] = 'footable';
   $handler->display->display_options['style_options']['columns'] = array(
     'views_bulk_operations' => 'views_bulk_operations',
     'rendered_entity' => 'rendered_entity',
-    'field_day_date' => 'field_day_date',
-    'timestamp' => 'timestamp',
-    'filesize' => 'filesize',
-    'field_tags' => 'field_tags',
+    'rendered_entity_1' => 'rendered_entity',
     'type' => 'type',
-    'rendered_entity_1' => 'rendered_entity_1',
+    'filesize' => 'filesize',
+    'timestamp' => 'timestamp',
+    'name' => 'name',
+    'field_day_date' => 'field_day_date',
+    'field_tags' => 'field_tags',
     'fid' => 'fid',
-    'fid_1' => 'fid',
-    'fid_2' => 'fid',
+    'fid_1' => 'fid_1',
+    'fid_2' => 'fid_2',
   );
-  $handler->display->display_options['style_options']['default'] = '-1';
+  $handler->display->display_options['style_options']['default'] = 'field_day_date';
   $handler->display->display_options['style_options']['info'] = array(
     'views_bulk_operations' => array(
       'align' => '',
@@ -65,44 +67,51 @@ function mez_media_views_views_default_views() {
       'empty_column' => 0,
     ),
     'rendered_entity' => array(
-      'align' => 'views-align-center',
-      'separator' => '',
-      'empty_column' => 0,
-    ),
-    'field_day_date' => array(
-      'sortable' => 0,
-      'default_sort_order' => 'asc',
       'align' => '',
       'separator' => '',
       'empty_column' => 0,
     ),
-    'timestamp' => array(
-      'sortable' => 0,
+    'rendered_entity_1' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'type' => array(
+      'sortable' => 1,
       'default_sort_order' => 'asc',
       'align' => '',
       'separator' => '',
       'empty_column' => 0,
     ),
     'filesize' => array(
-      'sortable' => 0,
+      'sortable' => 1,
       'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'timestamp' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'desc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'name' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_day_date' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'desc',
       'align' => '',
       'separator' => '',
       'empty_column' => 0,
     ),
     'field_tags' => array(
-      'align' => '',
-      'separator' => '',
-      'empty_column' => 0,
-    ),
-    'type' => array(
-      'sortable' => 0,
-      'default_sort_order' => 'asc',
-      'align' => '',
-      'separator' => '',
-      'empty_column' => 0,
-    ),
-    'rendered_entity_1' => array(
       'align' => '',
       'separator' => '',
       'empty_column' => 0,
@@ -127,6 +136,61 @@ function mez_media_views_views_default_views() {
       'align' => '',
       'separator' => '',
       'empty_column' => 0,
+    ),
+  );
+  $handler->display->display_options['style_options']['footable'] = array(
+    'expand' => 'views_bulk_operations',
+    'icon' => '',
+    'icon_size' => '',
+    'hide' => array(
+      'views_bulk_operations' => array(
+        'phone' => 0,
+        'tablet' => 0,
+      ),
+      'rendered_entity' => array(
+        'phone' => 0,
+        'tablet' => 0,
+      ),
+      'rendered_entity_1' => array(
+        'phone' => 0,
+        'tablet' => 0,
+      ),
+      'type' => array(
+        'phone' => 'phone',
+        'tablet' => 0,
+      ),
+      'filesize' => array(
+        'phone' => 'phone',
+        'tablet' => 0,
+      ),
+      'timestamp' => array(
+        'phone' => 'phone',
+        'tablet' => 'tablet',
+      ),
+      'name' => array(
+        'phone' => 'phone',
+        'tablet' => 'tablet',
+      ),
+      'field_day_date' => array(
+        'phone' => 'phone',
+        'tablet' => 0,
+      ),
+      'field_tags' => array(
+        'phone' => 'phone',
+        'tablet' => 'tablet',
+      ),
+      'fid' => array(
+        'phone' => 'phone',
+        'tablet' => 'tablet',
+      ),
+      'fid_1' => array(
+        'phone' => 'phone',
+        'tablet' => 'tablet',
+      ),
+      'fid_2' => array(
+        'phone' => 'phone',
+        'tablet' => 'tablet',
+      ),
     ),
   );
   /* Kapcsolat: Fájl: A felhasználó, aki feltöltötte */
@@ -255,7 +319,7 @@ function mez_media_views_views_default_views() {
   $handler->display->display_options['fields']['name']['relationship'] = 'uid';
   $handler->display->display_options['fields']['name']['label'] = 'Szerző';
   $handler->display->display_options['fields']['name']['link_to_user'] = FALSE;
-  /* Mező: Fájl: Dátum */
+  /* Mező: Mező: Dátum */
   $handler->display->display_options['fields']['field_day_date']['id'] = 'field_day_date';
   $handler->display->display_options['fields']['field_day_date']['table'] = 'field_data_field_day_date';
   $handler->display->display_options['fields']['field_day_date']['field'] = 'field_day_date';
@@ -310,7 +374,7 @@ function mez_media_views_views_default_views() {
   $handler->display->display_options['sorts']['timestamp']['table'] = 'file_managed';
   $handler->display->display_options['sorts']['timestamp']['field'] = 'timestamp';
   $handler->display->display_options['sorts']['timestamp']['order'] = 'DESC';
-  /* Szűrési feltétel: Fájl: Dátum (field_day_date) */
+  /* Szűrési feltétel: Mező: Dátum (field_day_date) */
   $handler->display->display_options['filters']['field_day_date_value']['id'] = 'field_day_date_value';
   $handler->display->display_options['filters']['field_day_date_value']['table'] = 'field_data_field_day_date';
   $handler->display->display_options['filters']['field_day_date_value']['field'] = 'field_day_date_value';
@@ -411,6 +475,7 @@ function mez_media_views_views_default_views() {
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['style_options']['row_class_special'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'fields';
   /* Kapcsolat: Tartalom: Media (field_media:fid) */
   $handler->display->display_options['relationships']['field_media_fid']['id'] = 'field_media_fid';
@@ -446,9 +511,10 @@ function mez_media_views_views_default_views() {
   $handler->display->display_options['arguments']['nid']['specify_validation'] = TRUE;
   $handler->display->display_options['arguments']['nid']['validate']['type'] = 'node';
   $handler->display->display_options['arguments']['nid']['validate_options']['types'] = array(
-    'concert' => 'concert',
     'news' => 'news',
+    'concert' => 'concert',
     'page' => 'page',
+    'media_asset' => 'media_asset',
   );
   /* Szűrési feltétel: Tartalom: Közzétéve */
   $handler->display->display_options['filters']['status']['id'] = 'status';
@@ -492,8 +558,8 @@ function mez_media_views_views_default_views() {
   $handler->display->display_options['exposed_form']['options']['sort_desc_label'] = 'Csökkenő';
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['pager']['options']['offset'] = '0';
-  $handler->display->display_options['style_plugin'] = 'grid';
-  $handler->display->display_options['style_options']['columns'] = '5';
+  $handler->display->display_options['style_plugin'] = 'views_bootstrap_grid_plugin_style';
+  $handler->display->display_options['style_options']['columns'] = '4';
   $handler->display->display_options['row_plugin'] = 'fields';
   /* Kapcsolat: Tartalom: Media (field_media:fid) */
   $handler->display->display_options['relationships']['field_media_fid']['id'] = 'field_media_fid';
@@ -529,9 +595,10 @@ function mez_media_views_views_default_views() {
   $handler->display->display_options['arguments']['nid']['specify_validation'] = TRUE;
   $handler->display->display_options['arguments']['nid']['validate']['type'] = 'node';
   $handler->display->display_options['arguments']['nid']['validate_options']['types'] = array(
-    'concert' => 'concert',
     'news' => 'news',
+    'concert' => 'concert',
     'page' => 'page',
+    'media_asset' => 'media_asset',
   );
   /* Szűrési feltétel: Tartalom: Közzétéve */
   $handler->display->display_options['filters']['status']['id'] = 'status';
@@ -575,8 +642,8 @@ function mez_media_views_views_default_views() {
   $handler->display->display_options['exposed_form']['options']['sort_desc_label'] = 'Csökkenő';
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['pager']['options']['offset'] = '0';
-  $handler->display->display_options['style_plugin'] = 'grid';
-  $handler->display->display_options['style_options']['columns'] = '5';
+  $handler->display->display_options['style_plugin'] = 'views_bootstrap_grid_plugin_style';
+  $handler->display->display_options['style_options']['columns'] = '4';
   $handler->display->display_options['row_plugin'] = 'fields';
   /* Kapcsolat: Tartalom: Media (field_media:fid) */
   $handler->display->display_options['relationships']['field_media_fid']['id'] = 'field_media_fid';
@@ -609,9 +676,10 @@ function mez_media_views_views_default_views() {
   $handler->display->display_options['arguments']['nid']['specify_validation'] = TRUE;
   $handler->display->display_options['arguments']['nid']['validate']['type'] = 'node';
   $handler->display->display_options['arguments']['nid']['validate_options']['types'] = array(
-    'concert' => 'concert',
     'news' => 'news',
+    'concert' => 'concert',
     'page' => 'page',
+    'media_asset' => 'media_asset',
   );
   /* Szűrési feltétel: Tartalom: Közzétéve */
   $handler->display->display_options['filters']['status']['id'] = 'status';
@@ -655,8 +723,8 @@ function mez_media_views_views_default_views() {
   $handler->display->display_options['exposed_form']['options']['sort_desc_label'] = 'Csökkenő';
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['pager']['options']['offset'] = '0';
-  $handler->display->display_options['style_plugin'] = 'grid';
-  $handler->display->display_options['style_options']['columns'] = '5';
+  $handler->display->display_options['style_plugin'] = 'views_bootstrap_grid_plugin_style';
+  $handler->display->display_options['style_options']['columns'] = '4';
   $handler->display->display_options['row_plugin'] = 'fields';
   /* Kapcsolat: Tartalom: Media (field_media:fid) */
   $handler->display->display_options['relationships']['field_media_fid']['id'] = 'field_media_fid';
@@ -692,9 +760,10 @@ function mez_media_views_views_default_views() {
   $handler->display->display_options['arguments']['nid']['specify_validation'] = TRUE;
   $handler->display->display_options['arguments']['nid']['validate']['type'] = 'node';
   $handler->display->display_options['arguments']['nid']['validate_options']['types'] = array(
-    'concert' => 'concert',
     'news' => 'news',
+    'concert' => 'concert',
     'page' => 'page',
+    'media_asset' => 'media_asset',
   );
   /* Szűrési feltétel: Tartalom: Közzétéve */
   $handler->display->display_options['filters']['status']['id'] = 'status';

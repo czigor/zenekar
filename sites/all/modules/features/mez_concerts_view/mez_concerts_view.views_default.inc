@@ -44,7 +44,7 @@ function mez_concerts_view_views_default_views() {
   $handler->display->display_options['pager']['options']['tags']['previous'] = '‹ előző';
   $handler->display->display_options['pager']['options']['tags']['next'] = 'következő ›';
   $handler->display->display_options['pager']['options']['tags']['last'] = 'utolsó »';
-  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_plugin'] = 'footable';
   $handler->display->display_options['style_options']['columns'] = array(
     'field_media' => 'field_media',
     'title' => 'title',
@@ -76,6 +76,29 @@ function mez_concerts_view_views_default_views() {
       'align' => '',
       'separator' => '',
       'empty_column' => 0,
+    ),
+  );
+  $handler->display->display_options['style_options']['footable'] = array(
+    'expand' => 'title',
+    'icon' => '',
+    'icon_size' => '',
+    'hide' => array(
+      'field_media' => array(
+        'phone' => 'phone',
+        'tablet' => 0,
+      ),
+      'title' => array(
+        'phone' => 0,
+        'tablet' => 0,
+      ),
+      'field_time' => array(
+        'phone' => 'phone',
+        'tablet' => 0,
+      ),
+      'field_programme' => array(
+        'phone' => 'phone',
+        'tablet' => 'tablet',
+      ),
     ),
   );
   /* Mező: Tartalom: Media */
@@ -129,11 +152,6 @@ function mez_concerts_view_views_default_views() {
   $handler->display->display_options['fields']['field_programme']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_programme']['multi_type'] = 'ol';
   $handler->display->display_options['fields']['field_programme']['separator'] = '<>';
-  /* Rendezési szempont: Mező: Time -  kezdődátum (field_time) */
-  $handler->display->display_options['sorts']['field_time_value']['id'] = 'field_time_value';
-  $handler->display->display_options['sorts']['field_time_value']['table'] = 'field_data_field_time';
-  $handler->display->display_options['sorts']['field_time_value']['field'] = 'field_time_value';
-  $handler->display->display_options['sorts']['field_time_value']['order'] = 'DESC';
   /* Szűrési feltétel: Tartalom: Közzétéve */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
