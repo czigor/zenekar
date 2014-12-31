@@ -26,19 +26,19 @@
 <!-- /News section -->
 
 
-<!-- About section  -->
-<div id="about" class="front-section" style="background: url(<?php print $about['bg'] ?>) no-repeat center center fixed; background-size: cover;">
+<!-- Support section  -->
+<div id="about" class="front-section" style="background: url(<?php print $support['bg'] ?>) no-repeat center center fixed; background-size: cover;">
   <div class="jumbotron jumbotron-inner">
-    <?php print render($about['node']); ?>
+    <?php print render($support['node']); ?>
   </div>
 </div>
 <!-- /About section -->
 
-<!-- News section -->
-<div id="news2">
-  <div class="jumbotron jumbotron-outer"> <?php print render($news['node']);?></div>
+<!-- Concert section -->
+<div id="concert">
+  <div class="jumbotron jumbotron-outer"> <?php print render($concert['node']);?></div>
 </div>
-<!-- /News section -->
+<!-- /Concert section -->
 
 <!-- Archive section  -->
 <div id="archive" class="front-section" style="background: url(<?php print $archive['bg'] ?>) no-repeat center center fixed; background-size: cover;">

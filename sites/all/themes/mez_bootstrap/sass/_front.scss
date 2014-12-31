@@ -39,5 +39,15 @@
   .jumbotron-outer {
     width: 100vw;
     margin-bottom: 0; 
-  } 
+  }
+  .jumbotron {
+    .field-name-node-link {
+      text-align: right;
+      .btn-primary {
+        a {
+          color: #fff;
+        }
+      }
+    }
+  }
 }

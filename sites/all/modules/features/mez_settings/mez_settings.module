@@ -61,9 +61,9 @@ function mez_settings_preprocess_mez_frontpage(&$vars) {
   if (isset($result['node'])) {
     $opening_nids = array_keys($result['node']);
   }
-  $opening_nids = empty($opening_nids) ? 2098 : $opening_nids[0];
+  $opening_nid = empty($opening_nids) ? 2098 : $opening_nids[0];
   $vars['opening'] = array(
-    'node' => node_view(node_load($opening_nids), 'mez_frontpage'),
+    'node' => node_view(node_load($opening_nid), 'mez_frontpage'),
     'bg' => file_create_url($backgrounds[0]['uri']),
   );
 
@@ -74,21 +74,38 @@ function mez_settings_preprocess_mez_frontpage(&$vars) {
     ->propertyCondition('status', 1)
     ->propertyCondition('promote', 1)
     ->propertyOrderBy('created', 'DESC')
-    ->propertyCondition('nid', $opening_nids[0], '!=')
+    ->propertyCondition('nid', $opening_nid, '!=')
     ->execute();
   if (isset($result['node'])) {
     $news_nids = array_keys($result['node']);
   }
-  $news_nids = empty($news_nids) ? 2098 : $news_nids[0];
+  $news_nid = empty($news_nids) ? $opening_nid : $news_nids[0];
 
   $vars['news'] = array(
-    'node' => node_view(node_load($news_nids), 'mez_frontpage'),
+    'node' => node_view(node_load($news_nid), 'mez_frontpage'),
   );
 
-  // About
-  $vars['about'] = array(
+  // Support
+  $vars['support'] = array(
     'node' => node_view(node_load(13), 'mez_frontpage'),
     'bg' => file_create_url($backgrounds[1]['uri']),
+  );
+
+  // Get the frontpage concert
+   $query = new EntityFieldQuery();
+   $result = $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'concert')
+    ->propertyCondition('status', 1)
+    ->propertyCondition('promote', 1)
+    ->propertyOrderBy('created', 'DESC')
+    ->execute();
+  if (isset($result['node'])) {
+    $concert_nids = array_keys($result['node']);
+  }
+  $concert_nid = empty($concert_nids) ? 1206 : $concert_nids[0];
+
+  $vars['concert'] = array(
+    'node' => node_view(node_load($concert_nid), 'mez_frontpage'),
   );
 
   // Archive
