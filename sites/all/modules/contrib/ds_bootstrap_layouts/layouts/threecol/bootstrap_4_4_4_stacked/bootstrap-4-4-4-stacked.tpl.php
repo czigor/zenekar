@@ -11,28 +11,28 @@
     <?php print render($title_suffix['contextual_links']); ?>
   <?php endif; ?>
   <?php if ($top): ?>
-    <div class="row-fluid">
-      <<?php print $top_wrapper; ?> class="span12 <?php print $top_classes; ?>">
+    <div class="row">
+      <<?php print $top_wrapper; ?> class="col-sm-12 <?php print $top_classes; ?>">
         <?php print $top; ?>
       </<?php print $top_wrapper; ?>>
     </div>
   <?php endif; ?>
   <?php if ($left || $central || $right): ?>
-    <div class="row-fluid">
-      <<?php print $left_wrapper; ?> class="span4 <?php print $left_classes; ?>">
+    <div class="row">
+      <<?php print $left_wrapper; ?> class="col-sm-4 <?php print $left_classes; ?>">
         <?php print $left; ?>
       </<?php print $left_wrapper; ?>>
-      <<?php print $central_wrapper; ?> class="span4 <?php print $central_classes; ?>">
+      <<?php print $central_wrapper; ?> class="col-sm-4 <?php print $central_classes; ?>">
         <?php print $central; ?>
       </<?php print $central_wrapper; ?>>
-      <<?php print $right_wrapper; ?> class="span4 <?php print $right_classes; ?>">
+      <<?php print $right_wrapper; ?> class="col-sm-4 <?php print $right_classes; ?>">
         <?php print $right; ?>
       </<?php print $right_wrapper; ?>>
     </div>
   <?php endif; ?>
   <?php if ($bottom): ?>
-    <div class="row-fluid">
-      <<?php print $bottom_wrapper; ?> class="span12 <?php print $bottom_classes; ?>">
+    <div class="row">
+      <<?php print $bottom_wrapper; ?> class="col-sm-12 <?php print $bottom_classes; ?>">
         <?php print $bottom; ?>
       </<?php print $bottom_wrapper; ?>>
     </div>

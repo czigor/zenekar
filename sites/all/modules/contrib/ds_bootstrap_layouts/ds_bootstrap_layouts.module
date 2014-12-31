@@ -24,6 +24,16 @@ function ds_bootstrap_layouts_ds_layout_info() {
   );
 
   // Two columns.
+  $layouts['bootstrap_1_11'] = array(
+    'label' => t('Bootstrap Two Columns: 1-11'),
+    'path' => $twocol . '/bootstrap_1_11',
+    'regions' => array(
+      'left' => t('Left'),
+      'right' => t('Right'),
+    ),
+    'form' => TRUE,
+    'image' => TRUE,
+  );
   $layouts['bootstrap_2_10'] = array(
     'label' => t('Bootstrap Two Columns: 2-10'),
     'path' => $twocol . '/bootstrap_2_10',
@@ -144,6 +154,16 @@ function ds_bootstrap_layouts_ds_layout_info() {
   $layouts['bootstrap_10_2'] = array(
     'label' => t('Bootstrap Two Columns: 10-2'),
     'path' => $twocol . '/bootstrap_10_2',
+    'regions' => array(
+      'left' => t('Left'),
+      'right' => t('Right'),
+    ),
+    'form' => TRUE,
+    'image' => TRUE,
+  );
+  $layouts['bootstrap_11_1'] = array(
+    'label' => t('Bootstrap Two Columns: 11-1'),
+    'path' => $twocol . '/bootstrap_11_1',
     'regions' => array(
       'left' => t('Left'),
       'right' => t('Right'),

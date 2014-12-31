@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Bootstrap 4-8 template for Display Suite.
+ * Bootstrap 11-1 template for Display Suite.
  *
  * Available variables:
  *
@@ -22,11 +22,11 @@
 <?php endif; ?>
 
 <div class="row">
-<<?php print $left_wrapper; ?> class="col-sm-4 <?php print $left_classes; ?>">
+<<?php print $left_wrapper; ?> class="col-sm-11 <?php print $left_classes; ?>">
 <?php print $left; ?>
 </<?php print $left_wrapper; ?>>
 
-<<?php print $right_wrapper; ?> class="col-sm-8 <?php print $right_classes; ?>">
+<<?php print $right_wrapper; ?> class="col-sm-1 <?php print $right_classes; ?>">
 <?php print $right; ?>
 </<?php print $right_wrapper; ?>>
 

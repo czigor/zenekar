@@ -22,13 +22,15 @@
 <?php endif; ?>
 
 <div class="row">
-<<?php print $left_wrapper; ?> class="col-sm-4 <?php print $left_classes; ?>">
+<<?php print $left_wrapper; ?> class="<?php if (!empty($right)): ?>col-sm-8 <?php else :?>col-sm-12<?php endif; ?> <?php print $left_classes; ?>">
 <?php print $left; ?>
 </<?php print $left_wrapper; ?>>
 
-<<?php print $right_wrapper; ?> class="col-sm-8 <?php print $right_classes; ?>">
+<?php if (!empty($right)): ?>
+<<?php print $right_wrapper; ?> class="col-sm-4 <?php print $right_classes; ?>">
 <?php print $right; ?>
 </<?php print $right_wrapper; ?>>
+<?php endif; ?>
 
 </div>
 </<?php print $layout_wrapper ?>>

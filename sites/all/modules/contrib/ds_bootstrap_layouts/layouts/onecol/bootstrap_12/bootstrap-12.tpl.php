@@ -10,8 +10,8 @@
   <?php if (isset($title_suffix['contextual_links'])): ?>
     <?php print render($title_suffix['contextual_links']); ?>
   <?php endif; ?>
-  <div class="row-fluid">
-    <<?php print $central_wrapper; ?> class="span12 <?php print $central_classes; ?>">
+  <div class="row">
+    <<?php print $central_wrapper; ?> class="col-sm-12 <?php print $central_classes; ?>">
       <?php print $central; ?>
     </<?php print $central_wrapper; ?>>
   </div>

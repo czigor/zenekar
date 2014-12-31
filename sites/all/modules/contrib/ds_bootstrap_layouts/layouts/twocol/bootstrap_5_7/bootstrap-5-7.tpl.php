@@ -10,11 +10,11 @@
   <?php if (isset($title_suffix['contextual_links'])): ?>
     <?php print render($title_suffix['contextual_links']); ?>
   <?php endif; ?>
-  <div class="row-fluid">
-    <<?php print $left_wrapper; ?> class="span5 <?php print $left_classes; ?>">
+  <div class="row">
+    <<?php print $left_wrapper; ?> class="col-sm-5 <?php print $left_classes; ?>">
       <?php print $left; ?>
     </<?php print $left_wrapper; ?>>
-    <<?php print $right_wrapper; ?> class="span7 <?php print $right_classes; ?>">
+    <<?php print $right_wrapper; ?> class="col-sm-7 <?php print $right_classes; ?>">
       <?php print $right; ?>
     </<?php print $right_wrapper; ?>>
   </div>
