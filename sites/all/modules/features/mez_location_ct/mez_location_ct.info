@@ -1,7 +1,7 @@
 name = MEZ Location CT
 core = 7.x
 package = MEZ CTs
-version = 7.x-1.0-20140524dev1
+version = 7.x-1.0-20150101dev1
 project = mez_location_ct
 dependencies[] = ctools
 dependencies[] = features
@@ -56,3 +56,4 @@ features[variable][] = pathauto_node_location_en_pattern
 features[variable][] = pathauto_node_location_hu_pattern
 features[variable][] = pathauto_node_location_pattern
 features[variable][] = pathauto_node_location_und_pattern
+mtime = 1401310261
