@@ -43,6 +43,7 @@
 <!-- Archive section  -->
 <div id="archive" class="front-section" style="background: url(<?php print $archive['bg'] ?>) no-repeat center center fixed; background-size: cover;">
   <div class="jumbotron jumbotron-inner">
+    <?php print render($archive['node']); ?>
   </div>
 </div>
 <!-- /Archive section -->
