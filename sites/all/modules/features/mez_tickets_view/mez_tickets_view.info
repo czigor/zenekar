@@ -3,7 +3,6 @@ core = 7.x
 package = MEZ views
 version = 7.x-1.0-20141222dev1
 project = mez_tickets_view
-dependencies[] = sexy_exposed
 dependencies[] = views
 features[ctools][] = views:views_default:3.0
 features[features_api][] = api:2
