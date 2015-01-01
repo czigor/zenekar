@@ -111,6 +111,7 @@ function mez_settings_preprocess_mez_frontpage(&$vars) {
   // Archive
   $vars['archive'] = array(
     'bg' => file_create_url($backgrounds[2]['uri']),
+    'node' => node_view(node_load(2200), 'mez_frontpage'),
   );
   $vars['site_name'] = variable_get_value('site_name');
   $vars['site_slogan'] = variable_get_value('site_slogan');
