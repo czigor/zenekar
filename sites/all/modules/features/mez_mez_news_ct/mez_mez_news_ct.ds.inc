@@ -49,11 +49,22 @@ function mez_mez_news_ct_ds_field_settings_info() {
       'weight' => '3',
       'label' => 'hidden',
       'format' => 'default',
+      'formatter_settings' => array(
+        'link text' => 'Read more',
+        'wrapper' => 'div',
+        'class' => 'btn btn-primary btn-lg',
+        'ft' => array(),
+      ),
     ),
     'post_date' => array(
       'weight' => '1',
       'label' => 'hidden',
-      'format' => 'ds_post_date_long',
+      'format' => 'ds_post_date_only_day',
+    ),
+    'field_media' => array(
+      'formatter_settings' => array(
+        'ft' => array(),
+      ),
     ),
   );
   $export['node|mez_news|mez_frontpage'] = $ds_fieldsetting;

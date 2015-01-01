@@ -239,7 +239,7 @@ function mez_mez_news_ct_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'file_entity',
         'settings' => array(
-          'file_view_mode' => 'preview',
+          'file_view_mode' => 'teaser',
         ),
         'type' => 'file_rendered',
         'weight' => 4,
