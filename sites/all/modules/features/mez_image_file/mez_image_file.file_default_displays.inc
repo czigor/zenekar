@@ -363,6 +363,14 @@ function mez_image_file_file_default_displays() {
 
   $file_display = new stdClass();
   $file_display->api_version = 1;
+  $file_display->name = 'image__full__file_field_iq_fieldvalue_count';
+  $file_display->weight = 0;
+  $file_display->status = FALSE;
+  $file_display->settings = '';
+  $export['image__full__file_field_iq_fieldvalue_count'] = $file_display;
+
+  $file_display = new stdClass();
+  $file_display->api_version = 1;
   $file_display->name = 'image__full__file_field_media_colorbox';
   $file_display->weight = 0;
   $file_display->status = FALSE;
