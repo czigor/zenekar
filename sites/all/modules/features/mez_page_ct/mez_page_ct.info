@@ -1,7 +1,7 @@
 name = MEZ Page CT
 core = 7.x
 package = MEZ CTs
-version = 7.x-1.0-20141229dev1
+version = 7.x-1.0-20150101dev1
 project = mez_page_ct
 dependencies[] = ctools
 dependencies[] = ds
@@ -64,4 +64,4 @@ features[variable][] = pathauto_node_page_en_pattern
 features[variable][] = pathauto_node_page_hu_pattern
 features[variable][] = pathauto_node_page_pattern
 features[variable][] = pathauto_node_page_und_pattern
-mtime = 1419851140
+mtime = 1419869206

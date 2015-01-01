@@ -129,13 +129,11 @@ function mez_page_ct_ds_layout_settings_info() {
       'ds_content' => array(
         0 => 'title_field',
         1 => 'body',
-        2 => 'node_link',
       ),
     ),
     'fields' => array(
       'title_field' => 'ds_content',
       'body' => 'ds_content',
-      'node_link' => 'ds_content',
     ),
     'classes' => array(),
     'wrappers' => array(
