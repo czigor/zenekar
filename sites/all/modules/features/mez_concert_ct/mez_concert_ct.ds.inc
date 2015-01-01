@@ -17,11 +17,6 @@ function mez_concert_ct_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'concert';
   $ds_fieldsetting->view_mode = 'full';
   $ds_fieldsetting->settings = array(
-    'comments' => array(
-      'weight' => '9',
-      'label' => 'hidden',
-      'format' => 'default',
-    ),
     'field_programme' => array(
       'formatter_settings' => array(
         'ft' => array(
@@ -51,6 +46,27 @@ function mez_concert_ct_ds_field_settings_info() {
     ),
   );
   $export['node|concert|full'] = $ds_fieldsetting;
+
+  $ds_fieldsetting = new stdClass();
+  $ds_fieldsetting->api_version = 1;
+  $ds_fieldsetting->id = 'node|concert|mez_frontpage';
+  $ds_fieldsetting->entity_type = 'node';
+  $ds_fieldsetting->bundle = 'concert';
+  $ds_fieldsetting->view_mode = 'mez_frontpage';
+  $ds_fieldsetting->settings = array(
+    'node_link' => array(
+      'weight' => '4',
+      'label' => 'hidden',
+      'format' => 'default',
+      'formatter_settings' => array(
+        'link text' => 'Read more',
+        'wrapper' => 'div',
+        'class' => 'btn btn-primary btn-lg',
+        'ft' => array(),
+      ),
+    ),
+  );
+  $export['node|concert|mez_frontpage'] = $ds_fieldsetting;
 
   $ds_fieldsetting = new stdClass();
   $ds_fieldsetting->api_version = 1;
@@ -136,7 +152,7 @@ function mez_concert_ct_ds_layout_settings_info() {
   $ds_layout->entity_type = 'node';
   $ds_layout->bundle = 'concert';
   $ds_layout->view_mode = 'full';
-  $ds_layout->layout = 'ds_2col_stacked';
+  $ds_layout->layout = 'bootstrap_3_9';
   $ds_layout->settings = array(
     'regions' => array(
       'left' => array(
@@ -151,7 +167,6 @@ function mez_concert_ct_ds_layout_settings_info() {
         6 => 'field_programme',
         7 => 'field_media',
         8 => 'field_location_reference',
-        9 => 'comments',
       ),
     ),
     'fields' => array(
@@ -164,14 +179,11 @@ function mez_concert_ct_ds_layout_settings_info() {
       'field_programme' => 'right',
       'field_media' => 'right',
       'field_location_reference' => 'right',
-      'comments' => 'right',
     ),
     'classes' => array(),
     'wrappers' => array(
-      'header' => 'div',
       'left' => 'div',
       'right' => 'div',
-      'footer' => 'div',
     ),
     'layout_wrapper' => 'div',
     'layout_attributes' => '',
@@ -187,26 +199,33 @@ function mez_concert_ct_ds_layout_settings_info() {
   $ds_layout->entity_type = 'node';
   $ds_layout->bundle = 'concert';
   $ds_layout->view_mode = 'mez_frontpage';
-  $ds_layout->layout = 'ds_1col';
+  $ds_layout->layout = 'bootstrap_4_8';
   $ds_layout->settings = array(
     'regions' => array(
-      'ds_content' => array(
-        0 => 'title_field',
-        1 => 'field_time',
-        2 => 'field_media',
+      'left' => array(
+        0 => 'field_media',
+      ),
+      'right' => array(
+        1 => 'title_field',
+        2 => 'field_time',
+        3 => 'body',
+        4 => 'node_link',
       ),
     ),
     'fields' => array(
-      'title_field' => 'ds_content',
-      'field_time' => 'ds_content',
-      'field_media' => 'ds_content',
+      'field_media' => 'left',
+      'title_field' => 'right',
+      'field_time' => 'right',
+      'body' => 'right',
+      'node_link' => 'right',
     ),
     'limit' => array(
       'field_media' => '1',
     ),
     'classes' => array(),
     'wrappers' => array(
-      'ds_content' => 'div',
+      'left' => 'div',
+      'right' => 'div',
     ),
     'layout_wrapper' => 'div',
     'layout_attributes' => '',

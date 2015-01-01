@@ -14,7 +14,7 @@ function mez_concert_ct_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'additional_settings__active_tab_concert';
-  $strongarm->value = 'edit-auto-nodetitle';
+  $strongarm->value = 'edit-workflow';
   $export['additional_settings__active_tab_concert'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -296,7 +296,7 @@ function mez_concert_ct_strongarm() {
             'visible' => FALSE,
           ),
           'mez_frontpage' => array(
-            'weight' => '-4',
+            'weight' => '6',
             'visible' => FALSE,
           ),
         ),
@@ -346,7 +346,7 @@ function mez_concert_ct_strongarm() {
             'visible' => FALSE,
           ),
           'mez_frontpage' => array(
-            'weight' => '-6',
+            'weight' => '5',
             'visible' => FALSE,
           ),
         ),
