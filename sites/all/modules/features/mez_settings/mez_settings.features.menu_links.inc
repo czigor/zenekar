@@ -576,6 +576,51 @@ function mez_settings_menu_default_menu_links() {
     'menu_links_customized' => 1,
     'parent_identifier' => 'main-menu_a-zenekarrl:node/2',
   );
+  // Exported menu link: menu-mez-user_logout:user/logout
+  $menu_links['menu-mez-user_logout:user/logout'] = array(
+    'menu_name' => 'menu-mez-user',
+    'link_path' => 'user/logout',
+    'router_path' => 'user/logout',
+    'link_title' => 'Logout',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+      'identifier' => 'menu-mez-user_logout:user/logout',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -49,
+    'customized' => 1,
+    'language' => 'und',
+    'menu_links_customized' => 1,
+  );
+  // Exported menu link: menu-mez-user_user-account:user
+  $menu_links['menu-mez-user_user-account:user'] = array(
+    'menu_name' => 'menu-mez-user',
+    'link_path' => 'user',
+    'router_path' => 'user',
+    'link_title' => 'User account',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+      'alter' => TRUE,
+      'identifier' => 'menu-mez-user_user-account:user',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -50,
+    'customized' => 1,
+    'language' => 'und',
+    'menu_links_customized' => 1,
+  );
   // Translatables
   // Included for use with string extractors like potx.
   t('A zenekarról');
@@ -591,6 +636,7 @@ function mez_settings_menu_default_menu_links() {
   t('Koncertek');
   t('List view');
   t('Lista nézet');
+  t('Logout');
   t('Media admin list');
   t('Media store');
   t('Médiatár');
@@ -601,6 +647,7 @@ function mez_settings_menu_default_menu_links() {
   t('The orchestra');
   t('Támogatás');
   t('Történelem');
+  t('User account');
   t('Ügykezelő');
 
 
