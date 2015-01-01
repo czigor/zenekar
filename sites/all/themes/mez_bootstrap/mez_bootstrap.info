@@ -69,3 +69,4 @@ stylesheets[all][] = css/style.css
 ;---------------
 ; Disable BootstrapCDN if using Bootstrap source files in your sub-theme.
 settings[bootstrap_cdn] = ''
+scripts[] = 'bootstrap/assets/javascripts/bootstrap.js'
