@@ -30,11 +30,6 @@ function mez_media_asset_ct_ds_field_settings_info() {
         ),
       ),
     ),
-    'field_day_date' => array(
-      'formatter_settings' => array(
-        'ft' => array(),
-      ),
-    ),
   );
   $export['node|media_asset|full'] = $ds_fieldsetting;
 

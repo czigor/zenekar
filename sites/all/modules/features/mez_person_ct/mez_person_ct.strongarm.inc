@@ -262,7 +262,7 @@ function mez_person_ct_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_node_person_pattern';
-  $strongarm->value = 'person/[node:title]';
+  $strongarm->value = '';
   $export['pathauto_node_person_pattern'] = $strongarm;
 
   $strongarm = new stdClass();

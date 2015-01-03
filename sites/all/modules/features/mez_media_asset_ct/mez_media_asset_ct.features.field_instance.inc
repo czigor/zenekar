@@ -186,7 +186,7 @@ function mez_media_asset_ct_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'media',
+      'module' => 'multiupload_filefield_widget',
       'settings' => array(
         'allowed_schemes' => array(
           'private' => 0,
@@ -206,8 +206,9 @@ function mez_media_asset_ct_field_default_field_instances() {
           'upload' => 'upload',
           'youtube' => 'youtube',
         ),
+        'progress_indicator' => 'throbber',
       ),
-      'type' => 'media_generic',
+      'type' => 'file_mfw',
       'weight' => 3,
     ),
   );
@@ -232,7 +233,7 @@ function mez_media_asset_ct_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'i18n_taxonomy',
         'settings' => array(),
-        'type' => 'i18n_taxonomy_term_reference_link',
+        'type' => 'i18n_taxonomy_term_reference_plain',
         'weight' => 4,
       ),
       'teaser' => array(

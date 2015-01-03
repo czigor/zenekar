@@ -22,7 +22,7 @@ function mez_media_store_views_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Media store';
+  $handler->display->display_options['title'] = 'Médiatár';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['use_more_text'] = 'tovább';
   $handler->display->display_options['access']['type'] = 'perm';
@@ -174,7 +174,7 @@ function mez_media_store_views_views_default_views() {
   $handler->display->display_options['filters']['field_tags_tid_i18n']['field'] = 'field_tags_tid_i18n';
   $handler->display->display_options['filters']['field_tags_tid_i18n']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_tags_tid_i18n']['expose']['operator_id'] = 'field_tags_tid_i18n_op';
-  $handler->display->display_options['filters']['field_tags_tid_i18n']['expose']['label'] = 'Tags';
+  $handler->display->display_options['filters']['field_tags_tid_i18n']['expose']['label'] = 'Címkék';
   $handler->display->display_options['filters']['field_tags_tid_i18n']['expose']['operator'] = 'field_tags_tid_i18n_op';
   $handler->display->display_options['filters']['field_tags_tid_i18n']['expose']['identifier'] = 'field_tags_tid_i18n';
   $handler->display->display_options['filters']['field_tags_tid_i18n']['expose']['multiple'] = TRUE;
@@ -207,7 +207,7 @@ function mez_media_store_views_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Media store browser';
+  $handler->display->display_options['title'] = 'Médiatár böngésző';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['use_more_text'] = 'tovább';
   $handler->display->display_options['access']['type'] = 'perm';
@@ -270,7 +270,8 @@ function mez_media_store_views_views_default_views() {
   $handler->display->display_options['fields']['field_tags']['id'] = 'field_tags';
   $handler->display->display_options['fields']['field_tags']['table'] = 'field_data_field_tags';
   $handler->display->display_options['fields']['field_tags']['field'] = 'field_tags';
-  $handler->display->display_options['fields']['field_tags']['label'] = 'Címkék';
+  $handler->display->display_options['fields']['field_tags']['label'] = '';
+  $handler->display->display_options['fields']['field_tags']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_tags']['hide_empty'] = TRUE;
   $handler->display->display_options['fields']['field_tags']['type'] = 'i18n_taxonomy_term_reference_plain';
   $handler->display->display_options['fields']['field_tags']['delta_offset'] = '0';
@@ -310,7 +311,7 @@ function mez_media_store_views_views_default_views() {
   $handler->display->display_options['filters']['field_tags_tid_i18n']['relationship'] = 'file_to_node';
   $handler->display->display_options['filters']['field_tags_tid_i18n']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_tags_tid_i18n']['expose']['operator_id'] = 'field_tags_tid_i18n_op';
-  $handler->display->display_options['filters']['field_tags_tid_i18n']['expose']['label'] = 'Tags';
+  $handler->display->display_options['filters']['field_tags_tid_i18n']['expose']['label'] = 'Címkék';
   $handler->display->display_options['filters']['field_tags_tid_i18n']['expose']['operator'] = 'field_tags_tid_i18n_op';
   $handler->display->display_options['filters']['field_tags_tid_i18n']['expose']['identifier'] = 'field_tags_tid_i18n';
   $handler->display->display_options['filters']['field_tags_tid_i18n']['expose']['multiple'] = TRUE;

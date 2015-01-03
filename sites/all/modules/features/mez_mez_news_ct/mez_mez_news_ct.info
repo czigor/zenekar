@@ -1,7 +1,7 @@
 name = MEZ News CT
 core = 7.x
 package = MEZ CTs
-version = 7.x-1.0-20150101dev1
+version = 7.x-1.0-20150103dev1
 project = mez_mez_news_ct
 dependencies[] = ctools
 dependencies[] = ds
@@ -81,4 +81,4 @@ features[variable][] = pathauto_node_mez_news_en_pattern
 features[variable][] = pathauto_node_mez_news_hu_pattern
 features[variable][] = pathauto_node_mez_news_pattern
 features[variable][] = pathauto_node_mez_news_und_pattern
-mtime = 1419869130
+mtime = 1420277432

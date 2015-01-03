@@ -1,10 +1,11 @@
 name = MEZ Composer CT
 core = 7.x
 package = MEZ CTs
-version = 7.x-1.0-20140523dev2
+version = 7.x-1.0-20150103dev1
 project = mez_composer_ct
 dependencies[] = ctools
 dependencies[] = features
+dependencies[] = iq_issue
 dependencies[] = list
 dependencies[] = node
 dependencies[] = options
@@ -58,3 +59,4 @@ features[variable][] = pathauto_node_composer_hu_pattern
 features[variable][] = pathauto_node_composer_pattern
 features[variable][] = pathauto_node_composer_und_pattern
 features_exclude[field_base][title_field] = title_field
+mtime = 1400920902

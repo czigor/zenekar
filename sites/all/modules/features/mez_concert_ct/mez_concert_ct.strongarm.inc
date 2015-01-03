@@ -536,14 +536,14 @@ function mez_concert_ct_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_node_concert_hu_pattern';
-  $strongarm->value = 'koncert/[node:title]';
+  $strongarm->value = '';
   $export['pathauto_node_concert_hu_pattern'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_node_concert_pattern';
-  $strongarm->value = 'concert/[node:title]';
+  $strongarm->value = '';
   $export['pathauto_node_concert_pattern'] = $strongarm;
 
   $strongarm = new stdClass();

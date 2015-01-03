@@ -17,26 +17,6 @@ function mez_ct_settings_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
-  // Exported permission: 'add terms in 1'.
-  $permissions['add terms in 1'] = array(
-    'name' => 'add terms in 1',
-    'roles' => array(
-      'editor' => 'editor',
-      'site admin' => 'site admin',
-    ),
-    'module' => 'taxonomy_access_fix',
-  );
-
-  // Exported permission: 'add terms in 2'.
-  $permissions['add terms in 2'] = array(
-    'name' => 'add terms in 2',
-    'roles' => array(
-      'editor' => 'editor',
-      'site admin' => 'site admin',
-    ),
-    'module' => 'taxonomy_access_fix',
-  );
-
   // Exported permission: 'admin_classes'.
   $permissions['admin_classes'] = array(
     'name' => 'admin_classes',

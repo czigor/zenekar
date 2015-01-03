@@ -26,7 +26,7 @@ function mez_media_asset_ct_node_info() {
       'base' => 'node_content',
       'description' => '',
       'has_title' => '1',
-      'title_label' => t('Title'),
+      'title_label' => t('Cím'),
       'help' => '',
     ),
   );

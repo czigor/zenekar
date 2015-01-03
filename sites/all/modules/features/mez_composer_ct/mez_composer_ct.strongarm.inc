@@ -276,14 +276,14 @@ return "[node:field-family-name]" . $comma . "$given_name";
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_node_composer_hu_pattern';
-  $strongarm->value = 'zeneszerzo/[node:title]';
+  $strongarm->value = '';
   $export['pathauto_node_composer_hu_pattern'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_node_composer_pattern';
-  $strongarm->value = 'composer/[node:title]';
+  $strongarm->value = '';
   $export['pathauto_node_composer_pattern'] = $strongarm;
 
   $strongarm = new stdClass();

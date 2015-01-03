@@ -33,7 +33,7 @@ function mez_image_file_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 5,
+        'weight' => 4,
       ),
       'full' => array(
         'label' => 'hidden',
@@ -107,7 +107,7 @@ function mez_image_file_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 10,
+        'weight' => 8,
       ),
       'full' => array(
         'label' => 'above',
@@ -258,7 +258,7 @@ function mez_image_file_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 6,
+        'weight' => 5,
       ),
       'full' => array(
         'label' => 'above',
@@ -328,7 +328,7 @@ function mez_image_file_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 7,
+        'weight' => 6,
       ),
       'full' => array(
         'label' => 'hidden',
@@ -399,7 +399,7 @@ function mez_image_file_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 11,
+        'weight' => 9,
       ),
       'full' => array(
         'label' => 'above',
@@ -463,7 +463,7 @@ function mez_image_file_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 9,
+        'weight' => 7,
       ),
       'full' => array(
         'label' => 'above',
