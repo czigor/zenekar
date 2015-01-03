@@ -29,12 +29,6 @@ function mez_concerts_view_views_default_views() {
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['distinct'] = TRUE;
-  $handler->display->display_options['exposed_form']['type'] = 'sexy_exposed';
-  $handler->display->display_options['exposed_form']['options']['submit_button'] = 'Alkalmazás';
-  $handler->display->display_options['exposed_form']['options']['reset_button_label'] = 'Alaphelyzet';
-  $handler->display->display_options['exposed_form']['options']['exposed_sorts_label'] = 'Rendezés';
-  $handler->display->display_options['exposed_form']['options']['sort_asc_label'] = 'Növekvő';
-  $handler->display->display_options['exposed_form']['options']['sort_desc_label'] = 'Csökkenő';
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '30';
   $handler->display->display_options['pager']['options']['expose']['items_per_page_label'] = 'Elemek száma oldalanként';
