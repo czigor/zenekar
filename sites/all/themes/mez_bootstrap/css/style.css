@@ -6781,20 +6781,24 @@ button.close {
   /* line 10, ../sass/_front.scss */
   .front .front-section {
     width: 100vw;
-    height: 90vh;
-    position: relative; }
-  /* line 17, ../sass/_front.scss */
+    position: relative;
+    min-height: 800px; }
+    @media (min-height: 800px) {
+      /* line 10, ../sass/_front.scss */
+      .front .front-section {
+        min-height: 90vh; } }
+  /* line 20, ../sass/_front.scss */
   .front #opening {
     padding-top: 20px; }
-    /* line 19, ../sass/_front.scss */
+    /* line 22, ../sass/_front.scss */
     .front #opening .title {
       position: relative;
       text-align: center;
       color: white; }
-      /* line 23, ../sass/_front.scss */
+      /* line 26, ../sass/_front.scss */
       .front #opening .title span {
         font-style: italic; }
-  /* line 29, ../sass/_front.scss */
+  /* line 32, ../sass/_front.scss */
   .front .jumbotron-inner {
     top: 20vh;
     left: 10vw;
@@ -6804,14 +6808,18 @@ button.close {
     width: 40vw;
     opacity: 0.6;
     min-width: 250px; }
-  /* line 39, ../sass/_front.scss */
+  /* line 42, ../sass/_front.scss */
   .front .jumbotron-outer {
     width: 100vw;
     margin-bottom: 0; }
-  /* line 44, ../sass/_front.scss */
+  @media (max-height: 800px) {
+    /* line 47, ../sass/_front.scss */
+    .front .jumbotron p {
+      font-size: 14px; } }
+  /* line 52, ../sass/_front.scss */
   .front .jumbotron .field-name-node-link {
     text-align: right; }
-    /* line 47, ../sass/_front.scss */
+    /* line 55, ../sass/_front.scss */
     .front .jumbotron .field-name-node-link .btn-primary a {
       color: #fff; }
 
@@ -6941,6 +6949,9 @@ body:not(.front) {
   font-style: italic;
   margin-bottom: 20px;
   margin-top: -5px; }
+/* line 33, ../sass/_node.scss */
+.node-mez-news .field-name-field-media {
+  margin-top: 20px; }
 
 /* line 2, ../sass/_form.scss */
 .radio input[type="radio"],

@@ -9,8 +9,11 @@
   
   .front-section {
     width: 100vw;
-    height: 90vh;
     position: relative;
+    min-height: 800px;
+    @media (min-height: 800px) {
+      min-height: 90vh;
+    }
   }
 
   /* additional sections */
@@ -41,6 +44,11 @@
     margin-bottom: 0; 
   }
   .jumbotron {
+    p {
+      @media (max-height: 800px) {
+        font-size: 14px;
+      }
+    } 
     .field-name-node-link {
       text-align: right;
       .btn-primary {
