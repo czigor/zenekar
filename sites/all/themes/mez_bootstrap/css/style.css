@@ -6843,20 +6843,31 @@ footer.footer.container {
     position: relative;
     margin-left: 10px;
     margin-right: 10px; }
-  /* line 24, ../sass/_page.scss */
+    /* line 21, ../sass/_page.scss */
+    footer.footer.container .block .views-row {
+      background-color: black;
+      border-bottom: 1px #777 solid; }
+      /* line 24, ../sass/_page.scss */
+      footer.footer.container .block .views-row .twitter-status {
+        background-color: black;
+        color: #fff; }
+        /* line 27, ../sass/_page.scss */
+        footer.footer.container .block .views-row .twitter-status .avatar {
+          border: 2px #777 solid; }
+  /* line 35, ../sass/_page.scss */
   footer.footer.container #block-user-login ul {
     list-style-type: none;
     padding-left: 0px; }
 
-/* line 31, ../sass/_page.scss */
+/* line 42, ../sass/_page.scss */
 body:not(.front) {
   background: url("/sites/default/files/page/014_6043.jpg") no-repeat center center fixed;
   background-size: cover; }
-  /* line 34, ../sass/_page.scss */
+  /* line 45, ../sass/_page.scss */
   body:not(.front) .main-container {
     margin-bottom: 20px;
     min-height: 80vh; }
-    /* line 37, ../sass/_page.scss */
+    /* line 48, ../sass/_page.scss */
     body:not(.front) .main-container .row {
       margin: 10px;
       padding: 20px;

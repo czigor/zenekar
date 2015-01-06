@@ -18,6 +18,17 @@ footer.footer.container {
     position: relative;
     margin-left: 10px;
     margin-right: 10px;
+    .views-row {
+      background-color: black;
+      border-bottom: 1px #777 solid;
+      .twitter-status {
+        background-color: black;
+        color: #fff;
+        .avatar {
+          border: 2px #777 solid;
+        }
+      }
+    }
   }
   
   #block-user-login {
