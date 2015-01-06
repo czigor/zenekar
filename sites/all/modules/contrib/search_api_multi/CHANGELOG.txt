@@ -1,3 +1,9 @@
+Search API Multi-Index Searches 1.2 (05/24/2014):
+-------------------------------------------------
+- #2148023 by drunken monkey: Fixed filtering for specific entity type bundles.
+- #2147563 by drunken monkey: Improved error handling.
+- #2113925 by drunken monkey: Fixed the "Search: Index" filter.
+
 Search API Multi-Index Searches 1.1 (12/09/2013):
 -------------------------------------------------
 - #2138225 by Ronino: Fixed definition of Relevance Views field handler.

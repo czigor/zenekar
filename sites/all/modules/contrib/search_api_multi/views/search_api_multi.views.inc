@@ -26,59 +26,64 @@ function search_api_multi_views_data() {
     );
     $index_options = array();
     foreach (search_api_index_load_multiple(FALSE, array('enabled' => TRUE)) as $index_id => $index) {
-      $index_options[$index_id] = check_plain($index->name);
-      $wrapper = $index->entityWrapper(NULL, TRUE);
+      try {
+        $index_options[$index_id] = check_plain($index->name);
+        $wrapper = $index->entityWrapper(NULL, TRUE);
 
-      // Add a relationship to the index's entity type.
-      $info = array(
-        'label' => t('@index results', array('@index' => $index->name)),
-        'type' => $index->item_type,
-        'description' => t('Results from the @index index.', array('@index' => $index->name)),
-      );
-      if (empty($entity_types[$index->item_type])) {
-        $info += $index->datasource()->getMetadataWrapper()->info();
-      }
-      entity_views_field_definition($index_id, $info, $table);
+        // Add a relationship to the index's entity type.
+        $info = array(
+          'label' => t('@index results', array('@index' => $index->name)),
+          'type' => $index->item_type,
+          'description' => t('Results from the @index index.', array('@index' => $index->name)),
+        );
+        if (empty($entity_types[$index->item_type])) {
+          $info += $index->datasource()->getMetadataWrapper()->info();
+        }
+        entity_views_field_definition($index_id, $info, $table);
 
-      // Add handlers for all indexed fields.
-      foreach ($index->getFields() as $key => $field) {
-        $tmp = $wrapper;
-        $group = '';
-        $name = $index->name;
-        $parts = explode(':', $key);
-        foreach ($parts as $i => $part) {
-          if (!isset($tmp->$part)) {
-            continue 2;
-          }
-          $tmp = $tmp->$part;
-          $info = $tmp->info();
-          $group = ($group ? $group . ' » ' . $name : $name);
-          $name = $info['label'];
-          if ($i < count($parts) - 1) {
-            // Unwrap lists.
-            $level = search_api_list_nesting_level($info['type']);
-            for ($j = 0; $j < $level; ++$j) {
-              $tmp = $tmp[0];
+        // Add handlers for all indexed fields.
+        foreach ($index->getFields() as $key => $field) {
+          $tmp = $wrapper;
+          $group = '';
+          $name = $index->name;
+          $parts = explode(':', $key);
+          foreach ($parts as $i => $part) {
+            if (!isset($tmp->$part)) {
+              continue 2;
+            }
+            $tmp = $tmp->$part;
+            $info = $tmp->info();
+            $group = ($group ? $group . ' » ' . $name : $name);
+            $name = $info['label'];
+            if ($i < count($parts) - 1) {
+              // Unwrap lists.
+              $level = search_api_list_nesting_level($info['type']);
+              for ($j = 0; $j < $level; ++$j) {
+                $tmp = $tmp[0];
+              }
             }
           }
+          $key = "$index_id:$key";
+          $id = _entity_views_field_identifier($key, $table);
+          if ($group) {
+            $table[$id]['group'] = $group;
+            $name = t('!field (indexed)', array('!field' => $name));
+          }
+          $table[$id]['title'] = $name;
+          $table[$id]['help'] = empty($info['description']) ? t('(No information available)') : $info['description'];
+          $table[$id]['type'] = $field['type'];
+          $table[$id]['real field'] = $key;
+          _search_api_views_add_handlers($key, $field, $tmp, $table);
+          // The newest (Search API 1.10+) SearchApiViewsHandlerFilterOptions
+          // class is incompatible with multi-index searches. Substitute our own
+          // handler.
+          if (isset($table[$id]['filter']['handler']) && $table[$id]['filter']['handler'] == 'SearchApiViewsHandlerFilterOptions' && method_exists('SearchApiViewsHandlerFilterOptions', 'get_wrapper')) {
+            $table[$id]['filter']['handler'] = 'SearchApiMultiViewsHandlerFilterOptions';
+          }
         }
-        $key = "$index_id:$key";
-        $id = _entity_views_field_identifier($key, $table);
-        if ($group) {
-          $table[$id]['group'] = $group;
-          $name = t('!field (indexed)', array('!field' => $name));
-        }
-        $table[$id]['title'] = $name;
-        $table[$id]['help'] = empty($info['description']) ? t('(No information available)') : $info['description'];
-        $table[$id]['type'] = $field['type'];
-        $table[$id]['real field'] = $key;
-        _search_api_views_add_handlers($key, $field, $tmp, $table);
-        // The newest (Search API 1.10+) SearchApiViewsHandlerFilterOptions
-        // class is incompatible with multi-index searches. Substitute our own
-        // handler.
-        if (isset($table[$id]['filter']['handler']) && $table[$id]['filter']['handler'] == 'SearchApiViewsHandlerFilterOptions' && method_exists('SearchApiViewsHandlerFilterOptions', 'get_wrapper')) {
-          $table[$id]['filter']['handler'] = 'SearchApiMultiViewsHandlerFilterOptions';
-        }
+      }
+      catch (Exception $e) {
+        watchdog_exception('search_api_multi', $e);
       }
     }
 

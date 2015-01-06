@@ -556,36 +556,53 @@ class SearchApiMultiQuery implements SearchApiMultiQueryInterface {
    */
   public function filter(SearchApiQueryFilterInterface $filter) {
     $this->filter->filter($filter);
-    $this->checkFilterIndexes($filter);
+    $indexes = $this->checkFilterIndexes($filter);
+    $this->used_indexes += $indexes;
+    // Since the filter is added with AND to the query, the query will be
+    // restricted to the indexes encountered within it.
+    $this->indexes = array_intersect_key($this->indexes, $indexes);
     return $this;
   }
 
   /**
    * Checks a filter object for filters on the used indexes.
    *
-   * Collects all encountered indexes in $this->used_indexes.
-   *
    * @param SearchApiQueryFilterInterface $filter
    *   The filter whose indexes should be added.
+   *
+   * @return array
+   *   An array mapping the machine names of all indexes used in the filter to
+   *   TRUE.
    */
   protected function checkFilterIndexes(SearchApiQueryFilterInterface $filter) {
-    // Stores all indexes of fields used in filters.
+    $indexes = array();
+    // Remember all the indexes of fields used in any filters, so we can later
+    // restrict the search to only those. Also, restrict the search correctly if
+    // the "search_api_multi_index" field is used.
     foreach ($filter->getFilters() as $f) {
       if (is_array($f)) {
         if ($f[0] == 'search_api_multi_index') {
           if ($f[2] == '=') {
-            $this->used_indexes[$f[1]] = TRUE;
+            $indexes[$f[1]] = TRUE;
+          }
+          else {
+            foreach ($this->indexes as $id => $index) {
+              if ($id != $f[1]) {
+                $indexes[$id] = TRUE;
+              }
+            }
           }
         }
-        elseif (strpos($f[0], ':') !== FALSE) {
+        elseif ($f[2] != '<>' && strpos($f[1], ':')) {
           list($index_id) = explode(':', $f[0], 2);
-          $this->used_indexes[$index_id] = TRUE;
+          $indexes[$index_id] = TRUE;
         }
       }
       else {
-        $this->checkFilterIndexes($f);
+        $indexes += $this->checkFilterIndexes($f);
       }
     }
+    return $indexes;
   }
 
   /**
@@ -607,8 +624,10 @@ class SearchApiMultiQuery implements SearchApiMultiQueryInterface {
     }
     else {
       $this->filter->condition($field, $value, $operator);
-      list($index_id) = explode(':', $field, 2);
-      $this->used_indexes[$index_id] = TRUE;
+      if ($operator != '<>' && strpos($field, ':')) {
+        list($index_id) = explode(':', $field, 2);
+        $this->used_indexes[$index_id] = TRUE;
+      }
     }
     return $this;
   }
@@ -724,7 +743,12 @@ class SearchApiMultiQuery implements SearchApiMultiQueryInterface {
     // Prepare a normal Search API query for all contained indexes.
     $queries = array();
     foreach ($this->getIndexes() as $index_id => $index) {
-      $queries[$index_id] = search_api_query($index_id, $options);
+      try {
+        $queries[$index_id] = search_api_query($index_id, $options);
+      }
+      catch (SearchApiException $e) {
+        watchdog_exception('search_api_multi', $e);
+      }
     }
 
     // Set the filters appropriately.
@@ -866,7 +890,12 @@ class SearchApiMultiQuery implements SearchApiMultiQueryInterface {
     $fields = array();
     foreach ($sort as $key) {
       list($index_id, $field) = explode(':', $key, 2);
-      $fields[$index_id][$field] = $this->indexes[$index_id]->options['fields'][$field];
+      if (!empty($this->indexes[$index_id])) {
+        $fields[$index_id][$field] = $this->indexes[$index_id]->options['fields'][$field];
+      }
+    }
+    if (!$fields) {
+      return;
     }
     // Determine for which items we need the entity.
     $to_load = array();
@@ -893,6 +922,9 @@ class SearchApiMultiQuery implements SearchApiMultiQueryInterface {
     }
     // Now extract the fields for each item.
     foreach ($results as $i => $result) {
+      if (empty($fields[$result['index_id']])) {
+        continue;
+      }
       $item_fields = $fields[$result['index_id']];
       if (empty($result['entity'])) {
         $results[$i]['fields'] += array_fill_keys(array_keys($item_fields), NULL);

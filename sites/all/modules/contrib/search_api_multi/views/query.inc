@@ -86,7 +86,12 @@ class SearchApiMultiViewsQuery extends SearchApiViewsQuery {
     // Load the results in bulk, by item type, and create the wrappers.
     if (!empty($load_items)) {
       foreach ($load_items as $type => $ids) {
-        $load_items[$type] = search_api_get_datasource_controller($type)->loadItems($ids);
+        try {
+          $load_items[$type] = search_api_get_datasource_controller($type)->loadItems($ids);
+        }
+        catch (SearchApiException $e) {
+          watchdog_exception('search_api_multi', $e);
+        }
       }
     }
 
