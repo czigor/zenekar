@@ -93,4 +93,6 @@ function mez_concert_ct_form_concert_node_form_alter(&$form, $form_state) {
       }
     }
   }
+  // Restrict access to the ticket selling setting.
+  $form['field_ticket_selling']['#access'] = user_access('administer mez ticket selling');
 }
