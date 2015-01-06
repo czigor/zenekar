@@ -61,9 +61,10 @@ function mez_concert_ct_field_default_field_instances() {
         'weight' => 0,
       ),
     ),
+    'ds_extras_field_template' => '',
     'entity_type' => 'field_collection_item',
     'field_name' => 'field_performer',
-    'label' => 'Performer',
+    'label' => 'Person',
     'required' => 0,
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -728,8 +729,8 @@ on: Webshop is visible for public.',
   t('Instrument');
   t('Location');
   t('Media');
-  t('Performer');
   t('Performers');
+  t('Person');
   t('Piece');
   t('Programme');
   t('Remark');

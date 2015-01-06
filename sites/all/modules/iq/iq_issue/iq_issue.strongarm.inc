@@ -272,6 +272,9 @@ function iq_issue_strongarm() {
         'language' => array(
           'weight' => '0',
         ),
+        'locations' => array(
+          'weight' => '30',
+        ),
       ),
       'display' => array(
         'comment_timer' => array(

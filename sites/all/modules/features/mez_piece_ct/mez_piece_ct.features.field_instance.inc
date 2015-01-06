@@ -62,12 +62,14 @@ function mez_piece_ct_field_default_field_instances() {
   // Exported field_instance: 'node-piece-field_piece_title'
   $field_instances['node-piece-field_piece_title'] = array(
     'bundle' => 'piece',
+    'comment_alter' => 0,
+    'comment_alter_hide' => 0,
     'default_value' => NULL,
     'deleted' => 0,
     'description' => 'No roman numbers should be used. If only some movements of the composition were played add each movement separately. Guideline examples: 
 <ul><li>3rd symphony</li>
 <li>5th symphony - 1st movement</li>
-<li>1st symphony (Titan) - 2nd movement (</li>
+<li>1st symphony (Titan) - 2nd movement</li>
 <li>Romeo and Juliet - Dance of the Knights</li>
 </ul>',
     'display' => array(
@@ -179,7 +181,7 @@ function mez_piece_ct_field_default_field_instances() {
   t('No roman numbers should be used. If only some movements of the composition were played add each movement separately. Guideline examples: 
 <ul><li>3rd symphony</li>
 <li>5th symphony - 1st movement</li>
-<li>1st symphony (Titan) - 2nd movement (</li>
+<li>1st symphony (Titan) - 2nd movement</li>
 <li>Romeo and Juliet - Dance of the Knights</li>
 </ul>');
   t('Piece title');

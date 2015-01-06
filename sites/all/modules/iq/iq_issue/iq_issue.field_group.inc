@@ -131,7 +131,7 @@ function iq_issue_field_group_info() {
         'classes' => 'group-issue-details field-group-fieldset',
         'description' => '',
       ),
-      'formatter' => 'collapsed',
+      'formatter' => 'open',
     ),
   );
   $export['group_issue_details|node|issue|form'] = $field_group;
