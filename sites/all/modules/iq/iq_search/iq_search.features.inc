@@ -114,17 +114,17 @@ function iq_search_default_search_api_index() {
       "index_directly" : 1,
       "cron_limit" : "200",
       "fields" : {
-        "type" : { "type" : "string" },
-        "title" : { "type" : "text" },
-        "status" : { "type" : "boolean" },
         "author" : { "type" : "integer", "entity_type" : "user" },
-        "og_group_ref" : { "type" : "integer", "entity_type" : "node" },
-        "search_api_language" : { "type" : "string" },
-        "field_project_body:value" : { "type" : "text" },
-        "field_issue_description:value" : { "type" : "text" },
         "field_documentation_body:value" : { "type" : "text" },
+        "field_issue_description:value" : { "type" : "text" },
         "field_news_body:value" : { "type" : "text" },
-        "search_api_access_node" : { "type" : "list\\u003Cstring\\u003E" }
+        "field_project_body:value" : { "type" : "text" },
+        "og_group_ref" : { "type" : "integer", "entity_type" : "node" },
+        "search_api_access_node" : { "type" : "list\\u003Cstring\\u003E" },
+        "search_api_language" : { "type" : "string" },
+        "status" : { "type" : "boolean" },
+        "title" : { "type" : "text" },
+        "type" : { "type" : "string" }
       },
       "data_alter_callbacks" : {
         "search_api_alter_bundle_filter" : {
@@ -286,7 +286,7 @@ function iq_search_default_search_api_server() {
             "boost" : "1.0"
           },
           "field_issue_comment_body:value" : {
-            "table" : "search_api_db_commentindex_field_issue_comment_body_value",
+            "table" : "search_api_db_commentindex_text",
             "type" : "text",
             "boost" : "1.0"
           },
@@ -305,7 +305,7 @@ function iq_search_default_search_api_server() {
             "boost" : "1.0"
           },
           "title" : {
-            "table" : "search_api_db_contentindex_title",
+            "table" : "search_api_db_contentindex_text",
             "type" : "text",
             "boost" : "1.0"
           },
@@ -334,22 +334,22 @@ function iq_search_default_search_api_server() {
             "boost" : "1.0"
           },
           "field_project_body:value" : {
-            "table" : "search_api_db_contentindex_field_project_body_value",
+            "table" : "search_api_db_contentindex_text",
             "type" : "text",
             "boost" : "1.0"
           },
           "field_news_body:value" : {
-            "table" : "search_api_db_contentindex_field_news_body_value",
+            "table" : "search_api_db_contentindex_text",
             "type" : "text",
             "boost" : "1.0"
           },
           "field_documentation_body:value" : {
-            "table" : "search_api_db_contentindex_field_documentation_body_value",
+            "table" : "search_api_db_contentindex_text",
             "type" : "text",
             "boost" : "1.0"
           },
           "field_issue_description:value" : {
-            "table" : "search_api_db_contentindex_field_issue_description_value",
+            "table" : "search_api_db_contentindex_text",
             "type" : "text",
             "boost" : "1.0"
           },
