@@ -166,7 +166,7 @@ function iq_documentation_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_node_documentation_pattern';
-  $strongarm->value = 'docs/[node:title]';
+  $strongarm->value = '';
   $export['pathauto_node_documentation_pattern'] = $strongarm;
 
   return $export;

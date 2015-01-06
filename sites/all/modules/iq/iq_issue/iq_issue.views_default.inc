@@ -409,7 +409,7 @@ function iq_issue_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Attachments';
+  $handler->display->display_options['title'] = 'Csatolmányok';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['use_more_text'] = 'tovább';
   $handler->display->display_options['access']['type'] = 'perm';
@@ -622,18 +622,24 @@ function iq_issue_views_default_views() {
   $handler->display->display_options['pager']['options']['tags']['last'] = 'utolsó »';
   $handler->display->display_options['style_plugin'] = 'table';
   $handler->display->display_options['style_options']['columns'] = array(
+    'title_1' => 'title_1',
     'nid' => 'nid',
     'title' => 'title',
     'changed' => 'changed',
-    'field_issue_business_value' => 'field_issue_business_value',
     'field_issue_status_term' => 'field_issue_status_term',
-    'field_issue_type' => 'field_issue_type',
     'field_issue_assigned_to' => 'field_issue_assigned_to',
     'comment_count' => 'comment_count',
     'seconds' => 'seconds',
   );
-  $handler->display->display_options['style_options']['default'] = 'field_issue_business_value';
+  $handler->display->display_options['style_options']['default'] = 'changed';
   $handler->display->display_options['style_options']['info'] = array(
+    'title_1' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
     'nid' => array(
       'sortable' => 1,
       'default_sort_order' => 'asc',
@@ -655,21 +661,7 @@ function iq_issue_views_default_views() {
       'separator' => '',
       'empty_column' => 0,
     ),
-    'field_issue_business_value' => array(
-      'sortable' => 1,
-      'default_sort_order' => 'desc',
-      'align' => '',
-      'separator' => '',
-      'empty_column' => 0,
-    ),
     'field_issue_status_term' => array(
-      'sortable' => 1,
-      'default_sort_order' => 'asc',
-      'align' => '',
-      'separator' => '',
-      'empty_column' => 0,
-    ),
-    'field_issue_type' => array(
       'sortable' => 1,
       'default_sort_order' => 'asc',
       'align' => '',
@@ -737,24 +729,11 @@ function iq_issue_views_default_views() {
   $handler->display->display_options['fields']['changed']['label'] = 'Updated';
   $handler->display->display_options['fields']['changed']['date_format'] = 'custom';
   $handler->display->display_options['fields']['changed']['custom_date_format'] = 'Y-m-d H:i';
-  /* Mező: Tartalom: Business value */
-  $handler->display->display_options['fields']['field_issue_business_value']['id'] = 'field_issue_business_value';
-  $handler->display->display_options['fields']['field_issue_business_value']['table'] = 'field_data_field_issue_business_value';
-  $handler->display->display_options['fields']['field_issue_business_value']['field'] = 'field_issue_business_value';
-  $handler->display->display_options['fields']['field_issue_business_value']['settings'] = array(
-    'thousand_separator' => '',
-    'prefix_suffix' => 1,
-  );
   /* Mező: Tartalom: Status */
   $handler->display->display_options['fields']['field_issue_status_term']['id'] = 'field_issue_status_term';
   $handler->display->display_options['fields']['field_issue_status_term']['table'] = 'field_data_field_issue_status_term';
   $handler->display->display_options['fields']['field_issue_status_term']['field'] = 'field_issue_status_term';
   $handler->display->display_options['fields']['field_issue_status_term']['label'] = 'Állapot';
-  /* Mező: Tartalom: Type */
-  $handler->display->display_options['fields']['field_issue_type']['id'] = 'field_issue_type';
-  $handler->display->display_options['fields']['field_issue_type']['table'] = 'field_data_field_issue_type';
-  $handler->display->display_options['fields']['field_issue_type']['field'] = 'field_issue_type';
-  $handler->display->display_options['fields']['field_issue_type']['label'] = 'Típus';
   /* Mező: Tartalom: Assigned to */
   $handler->display->display_options['fields']['field_issue_assigned_to']['id'] = 'field_issue_assigned_to';
   $handler->display->display_options['fields']['field_issue_assigned_to']['table'] = 'field_data_field_issue_assigned_to';
@@ -917,14 +896,12 @@ function iq_issue_views_default_views() {
     'nid' => 'nid',
     'title' => 'title',
     'changed' => 'changed',
-    'field_issue_business_value' => 'field_issue_business_value',
     'field_issue_status_term' => 'field_issue_status_term',
-    'field_issue_type' => 'field_issue_type',
     'field_issue_assigned_to' => 'field_issue_assigned_to',
     'comment_count' => 'comment_count',
     'seconds' => 'seconds',
   );
-  $handler->display->display_options['style_options']['default'] = 'field_issue_business_value';
+  $handler->display->display_options['style_options']['default'] = 'changed';
   $handler->display->display_options['style_options']['info'] = array(
     'title_1' => array(
       'sortable' => 1,
@@ -954,21 +931,7 @@ function iq_issue_views_default_views() {
       'separator' => '',
       'empty_column' => 0,
     ),
-    'field_issue_business_value' => array(
-      'sortable' => 1,
-      'default_sort_order' => 'desc',
-      'align' => '',
-      'separator' => '',
-      'empty_column' => 0,
-    ),
     'field_issue_status_term' => array(
-      'sortable' => 1,
-      'default_sort_order' => 'asc',
-      'align' => '',
-      'separator' => '',
-      'empty_column' => 0,
-    ),
-    'field_issue_type' => array(
       'sortable' => 1,
       'default_sort_order' => 'asc',
       'align' => '',
@@ -1033,24 +996,11 @@ function iq_issue_views_default_views() {
   $handler->display->display_options['fields']['changed']['label'] = 'Updated';
   $handler->display->display_options['fields']['changed']['date_format'] = 'custom';
   $handler->display->display_options['fields']['changed']['custom_date_format'] = 'Y-m-d H:i';
-  /* Mező: Tartalom: Business value */
-  $handler->display->display_options['fields']['field_issue_business_value']['id'] = 'field_issue_business_value';
-  $handler->display->display_options['fields']['field_issue_business_value']['table'] = 'field_data_field_issue_business_value';
-  $handler->display->display_options['fields']['field_issue_business_value']['field'] = 'field_issue_business_value';
-  $handler->display->display_options['fields']['field_issue_business_value']['settings'] = array(
-    'thousand_separator' => '',
-    'prefix_suffix' => 1,
-  );
   /* Mező: Tartalom: Status */
   $handler->display->display_options['fields']['field_issue_status_term']['id'] = 'field_issue_status_term';
   $handler->display->display_options['fields']['field_issue_status_term']['table'] = 'field_data_field_issue_status_term';
   $handler->display->display_options['fields']['field_issue_status_term']['field'] = 'field_issue_status_term';
   $handler->display->display_options['fields']['field_issue_status_term']['label'] = 'Állapot';
-  /* Mező: Tartalom: Type */
-  $handler->display->display_options['fields']['field_issue_type']['id'] = 'field_issue_type';
-  $handler->display->display_options['fields']['field_issue_type']['table'] = 'field_data_field_issue_type';
-  $handler->display->display_options['fields']['field_issue_type']['field'] = 'field_issue_type';
-  $handler->display->display_options['fields']['field_issue_type']['label'] = 'Típus';
   /* Mező: Tartalom: Assigned to */
   $handler->display->display_options['fields']['field_issue_assigned_to']['id'] = 'field_issue_assigned_to';
   $handler->display->display_options['fields']['field_issue_assigned_to']['table'] = 'field_data_field_issue_assigned_to';
@@ -1191,24 +1141,11 @@ function iq_issue_views_default_views() {
   $handler->display->display_options['fields']['changed']['label'] = 'Updated';
   $handler->display->display_options['fields']['changed']['date_format'] = 'custom';
   $handler->display->display_options['fields']['changed']['custom_date_format'] = 'Y-m-d H:i';
-  /* Mező: Tartalom: Business value */
-  $handler->display->display_options['fields']['field_issue_business_value']['id'] = 'field_issue_business_value';
-  $handler->display->display_options['fields']['field_issue_business_value']['table'] = 'field_data_field_issue_business_value';
-  $handler->display->display_options['fields']['field_issue_business_value']['field'] = 'field_issue_business_value';
-  $handler->display->display_options['fields']['field_issue_business_value']['settings'] = array(
-    'thousand_separator' => '',
-    'prefix_suffix' => 1,
-  );
   /* Mező: Tartalom: Status */
   $handler->display->display_options['fields']['field_issue_status_term']['id'] = 'field_issue_status_term';
   $handler->display->display_options['fields']['field_issue_status_term']['table'] = 'field_data_field_issue_status_term';
   $handler->display->display_options['fields']['field_issue_status_term']['field'] = 'field_issue_status_term';
   $handler->display->display_options['fields']['field_issue_status_term']['label'] = 'Állapot';
-  /* Mező: Tartalom: Type */
-  $handler->display->display_options['fields']['field_issue_type']['id'] = 'field_issue_type';
-  $handler->display->display_options['fields']['field_issue_type']['table'] = 'field_data_field_issue_type';
-  $handler->display->display_options['fields']['field_issue_type']['field'] = 'field_issue_type';
-  $handler->display->display_options['fields']['field_issue_type']['label'] = 'Típus';
   /* Mező: Tartalom: Assigned to */
   $handler->display->display_options['fields']['field_issue_assigned_to']['id'] = 'field_issue_assigned_to';
   $handler->display->display_options['fields']['field_issue_assigned_to']['table'] = 'field_data_field_issue_assigned_to';
@@ -1387,24 +1324,11 @@ function iq_issue_views_default_views() {
   $handler->display->display_options['fields']['changed']['label'] = 'Updated';
   $handler->display->display_options['fields']['changed']['date_format'] = 'custom';
   $handler->display->display_options['fields']['changed']['custom_date_format'] = 'Y-m-d H:i';
-  /* Mező: Tartalom: Business value */
-  $handler->display->display_options['fields']['field_issue_business_value']['id'] = 'field_issue_business_value';
-  $handler->display->display_options['fields']['field_issue_business_value']['table'] = 'field_data_field_issue_business_value';
-  $handler->display->display_options['fields']['field_issue_business_value']['field'] = 'field_issue_business_value';
-  $handler->display->display_options['fields']['field_issue_business_value']['settings'] = array(
-    'thousand_separator' => '',
-    'prefix_suffix' => 1,
-  );
   /* Mező: Tartalom: Status */
   $handler->display->display_options['fields']['field_issue_status_term']['id'] = 'field_issue_status_term';
   $handler->display->display_options['fields']['field_issue_status_term']['table'] = 'field_data_field_issue_status_term';
   $handler->display->display_options['fields']['field_issue_status_term']['field'] = 'field_issue_status_term';
   $handler->display->display_options['fields']['field_issue_status_term']['label'] = 'Állapot';
-  /* Mező: Tartalom: Type */
-  $handler->display->display_options['fields']['field_issue_type']['id'] = 'field_issue_type';
-  $handler->display->display_options['fields']['field_issue_type']['table'] = 'field_data_field_issue_type';
-  $handler->display->display_options['fields']['field_issue_type']['field'] = 'field_issue_type';
-  $handler->display->display_options['fields']['field_issue_type']['label'] = 'Típus';
   /* Mező: Tartalom: Assigned to */
   $handler->display->display_options['fields']['field_issue_assigned_to']['id'] = 'field_issue_assigned_to';
   $handler->display->display_options['fields']['field_issue_assigned_to']['table'] = 'field_data_field_issue_assigned_to';

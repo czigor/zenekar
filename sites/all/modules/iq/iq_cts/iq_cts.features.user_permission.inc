@@ -85,7 +85,10 @@ function iq_cts_user_default_permissions() {
   // Exported permission: 'administer nodes'.
   $permissions['administer nodes'] = array(
     'name' => 'administer nodes',
-    'roles' => array(),
+    'roles' => array(
+      'editor' => 'editor',
+      'site admin' => 'site admin',
+    ),
     'module' => 'node',
   );
 
