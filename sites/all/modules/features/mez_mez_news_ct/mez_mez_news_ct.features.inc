@@ -22,7 +22,7 @@ function mez_mez_news_ct_ctools_plugin_api($module = NULL, $api = NULL) {
 function mez_mez_news_ct_node_info() {
   $items = array(
     'mez_news' => array(
-      'name' => t('Hír'),
+      'name' => t('MEZ Hír'),
       'base' => 'node_content',
       'description' => '',
       'has_title' => '1',

@@ -1,7 +1,7 @@
 name = MEZ Concert CT
 core = 7.x
 package = MEZ CTs
-version = 7.x-1.0-20150103dev1
+version = 7.x-1.0-20150106dev1
 project = mez_concert_ct
 dependencies[] = ctools
 dependencies[] = date
@@ -106,4 +106,3 @@ features[variable][] = pathauto_node_concert_en_pattern
 features[variable][] = pathauto_node_concert_hu_pattern
 features[variable][] = pathauto_node_concert_pattern
 features[variable][] = pathauto_node_concert_und_pattern
-mtime = 1420277432

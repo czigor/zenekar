@@ -152,21 +152,31 @@ function mez_concert_ct_ds_layout_settings_info() {
   $ds_layout->entity_type = 'node';
   $ds_layout->bundle = 'concert';
   $ds_layout->view_mode = 'full';
-  $ds_layout->layout = 'bootstrap_3_9';
+  $ds_layout->layout = 'bootstrap_4_8';
   $ds_layout->settings = array(
+    'classes' => array(),
+    'wrappers' => array(
+      'left' => 'div',
+      'right' => 'div',
+    ),
+    'layout_wrapper' => 'div',
+    'layout_attributes' => '',
+    'layout_attributes_merge' => 1,
+    'layout_link_attribute' => '',
+    'layout_link_custom' => '',
     'regions' => array(
       'left' => array(
         0 => 'mez_concert_shopping_cart',
         1 => 'mez_concert_bank_info',
       ),
       'right' => array(
-        2 => 'title_field',
-        3 => 'field_time',
-        4 => 'body',
-        5 => 'field_ticket_selling',
-        6 => 'field_programme',
-        7 => 'field_media',
-        8 => 'field_location_reference',
+        0 => 'title_field',
+        1 => 'field_time',
+        2 => 'body',
+        3 => 'field_ticket_selling',
+        4 => 'field_programme',
+        5 => 'field_media',
+        6 => 'field_location_reference',
       ),
     ),
     'fields' => array(
@@ -180,16 +190,6 @@ function mez_concert_ct_ds_layout_settings_info() {
       'field_media' => 'right',
       'field_location_reference' => 'right',
     ),
-    'classes' => array(),
-    'wrappers' => array(
-      'left' => 'div',
-      'right' => 'div',
-    ),
-    'layout_wrapper' => 'div',
-    'layout_attributes' => '',
-    'layout_attributes_merge' => 1,
-    'layout_link_attribute' => '',
-    'layout_link_custom' => '',
   );
   $export['node|concert|full'] = $ds_layout;
 
