@@ -122,8 +122,9 @@ function mez_settings_preprocess_mez_frontpage(&$vars) {
  */
 function mez_settings_preprocess_page(&$variables) {
   $variables['lang_chooser'] = locale_block_view('language');
+  global $theme;
   // Get a random background if not on the frontpage.
-  if (!drupal_is_front_page()) {
+  if (!drupal_is_front_page() && $theme == 'mez_bootstrap') {
     $background_page = node_load(variable_get('mez_background_page_nid'));
     $backgrounds = field_get_items('node', $background_page, 'field_media');
     $items_count = count($backgrounds);
