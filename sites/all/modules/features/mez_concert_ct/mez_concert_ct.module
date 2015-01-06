@@ -77,3 +77,20 @@ function mez_concert_ct_field_formatter_view($entity_type, $entity, $field, $ins
   }
   return $element;
 }
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function mez_concert_ct_form_concert_node_form_alter(&$form, $form_state) {
+  // Replace programme fc button texts with something more sensible.
+  $form['field_programme'][LANGUAGE_NONE]['add_more']['#value'] = t('Add another programme item');
+  foreach (element_children($form['field_programme'][LANGUAGE_NONE]) as $key) {
+    if (is_numeric($key)) {
+      $form['field_programme'][LANGUAGE_NONE][$key]['remove_button']['#value'] = t('Remove programme item');
+      $form['field_programme'][LANGUAGE_NONE][$key]['field_performers'][LANGUAGE_NONE]['add_more']['#value'] = t('Add another performer');
+      foreach (element_children($form['field_programme'][LANGUAGE_NONE][$key]['field_performers'][LANGUAGE_NONE]) as $key2) {
+        $form['field_programme'][LANGUAGE_NONE][$key]['field_performers'][LANGUAGE_NONE][$key2]['remove_button']['#value'] = t('Remove performer');
+      }
+    }
+  }
+}
