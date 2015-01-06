@@ -10,7 +10,7 @@
 <div id="opening" class="front-section" style="background: url(<?php print $opening['bg']; ?>) no-repeat center center fixed; background-size: cover;">
   <div class="title">
     <h1><?php print $site_name; ?></h1>
-    <span><?php print $site_slogan; ?><span>
+    <span><?php print $site_slogan; ?></span>
   </div>
   <div class="jumbotron jumbotron-inner">
     <?php print render($opening['node']); ?>
