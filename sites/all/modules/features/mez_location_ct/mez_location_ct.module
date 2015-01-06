@@ -5,3 +5,11 @@
  */
 
 include_once 'mez_location_ct.features.inc';
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function mez_location_ct_form_location_node_form_alter(&$form, $form_state) {
+  // Restrict access to the ticket selling setting.
+  $form['field_ticket_map_compression']['#access'] = user_access('administer mez ticket selling');
+}
