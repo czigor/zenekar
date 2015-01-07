@@ -54,6 +54,23 @@ function mez_concert_ct_default_rules_configuration() {
                     ]
                   }
                 ]
+              },
+              { "CONDITIONAL" : [
+                  {
+                    "IF" : { "entity_has_field" : { "entity" : [ "file:file" ], "field" : "field_concert" } },
+                    "DO" : [
+                      { "CONDITIONAL" : [
+                          {
+                            "IF" : { "data_is_empty" : { "data" : [ "file:file:field-concert" ] } },
+                            "DO" : [
+                              { "data_set" : { "data" : [ "file:file:field-concert" ], "value" : [ "node" ] } }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
               }
             ]
           }

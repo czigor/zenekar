@@ -240,6 +240,8 @@ function mez_person_ct_field_default_field_instances() {
   // Exported field_instance: 'node-person-field_instrument'
   $field_instances['node-person-field_instrument'] = array(
     'bundle' => 'person',
+    'comment_alter' => 0,
+    'comment_alter_hide' => 0,
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
@@ -278,7 +280,7 @@ function mez_person_ct_field_default_field_instances() {
       'active' => 1,
       'module' => 'options',
       'settings' => array(
-        'apply_chosen' => 0,
+        'apply_chosen' => 1,
       ),
       'type' => 'options_select',
       'weight' => 7,

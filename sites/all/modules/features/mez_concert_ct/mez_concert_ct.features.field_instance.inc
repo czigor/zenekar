@@ -25,6 +25,7 @@ function mez_concert_ct_field_default_field_instances() {
         'weight' => 1,
       ),
     ),
+    'ds_extras_field_template' => '',
     'entity_type' => 'field_collection_item',
     'field_name' => 'field_instrument',
     'label' => 'Instrument',
@@ -37,7 +38,7 @@ function mez_concert_ct_field_default_field_instances() {
       'active' => 1,
       'module' => 'options',
       'settings' => array(
-        'apply_chosen' => 0,
+        'apply_chosen' => 1,
       ),
       'type' => 'options_select',
       'weight' => 3,
@@ -74,7 +75,7 @@ function mez_concert_ct_field_default_field_instances() {
       'active' => 1,
       'module' => 'options',
       'settings' => array(
-        'apply_chosen' => 0,
+        'apply_chosen' => 1,
       ),
       'type' => 'options_select',
       'weight' => 1,
@@ -159,6 +160,7 @@ function mez_concert_ct_field_default_field_instances() {
         'weight' => 0,
       ),
     ),
+    'ds_extras_field_template' => '',
     'entity_type' => 'field_collection_item',
     'field_name' => 'field_piece',
     'label' => 'Piece',
@@ -171,7 +173,7 @@ function mez_concert_ct_field_default_field_instances() {
       'active' => 1,
       'module' => 'options',
       'settings' => array(
-        'apply_chosen' => 0,
+        'apply_chosen' => 1,
       ),
       'type' => 'options_select',
       'weight' => 1,

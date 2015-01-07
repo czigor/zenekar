@@ -1,7 +1,7 @@
 name = MEZ Concert CT
 core = 7.x
 package = MEZ CTs
-version = 7.x-1.0-20150106dev2
+version = 7.x-1.0-20150107dev1
 project = mez_concert_ct
 dependencies[] = ctools
 dependencies[] = date
