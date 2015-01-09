@@ -6782,23 +6782,24 @@ button.close {
   .front .front-section {
     width: 100vw;
     position: relative;
-    min-height: 800px; }
+    min-height: 800px;
+    margin-bottom: -30px; }
     @media (min-height: 800px) {
       /* line 10, ../sass/_front.scss */
       .front .front-section {
         min-height: 90vh; } }
-  /* line 20, ../sass/_front.scss */
+  /* line 21, ../sass/_front.scss */
   .front #opening {
     padding-top: 20px; }
-    /* line 22, ../sass/_front.scss */
+    /* line 23, ../sass/_front.scss */
     .front #opening .title {
       position: relative;
       text-align: center;
       color: white; }
-      /* line 26, ../sass/_front.scss */
+      /* line 27, ../sass/_front.scss */
       .front #opening .title span {
         font-style: italic; }
-  /* line 32, ../sass/_front.scss */
+  /* line 33, ../sass/_front.scss */
   .front .jumbotron-inner {
     top: 20vh;
     left: 10vw;
@@ -6808,18 +6809,19 @@ button.close {
     width: 40vw;
     opacity: 0.6;
     min-width: 250px; }
-  /* line 42, ../sass/_front.scss */
+  /* line 43, ../sass/_front.scss */
   .front .jumbotron-outer {
     width: 100vw;
-    margin-bottom: 0; }
+    margin-bottom: 0;
+    padding-top: 50px; }
   @media (max-height: 800px) {
-    /* line 47, ../sass/_front.scss */
+    /* line 49, ../sass/_front.scss */
     .front .jumbotron p {
       font-size: 14px; } }
-  /* line 52, ../sass/_front.scss */
+  /* line 54, ../sass/_front.scss */
   .front .jumbotron .field-name-node-link {
     text-align: right; }
-    /* line 55, ../sass/_front.scss */
+    /* line 57, ../sass/_front.scss */
     .front .jumbotron .field-name-node-link .btn-primary a {
       color: #fff; }
 
@@ -6828,46 +6830,46 @@ footer.footer.container {
   background-color: black;
   color: #fff;
   width: 100%;
-  padding: 10px;
+  padding: 40px 10px 10px 10px;
   overflow-y: hidden; }
-  /* line 8, ../sass/_page.scss */
+  /* line 9, ../sass/_page.scss */
   footer.footer.container input {
     width: 10em; }
-  /* line 11, ../sass/_page.scss */
+  /* line 12, ../sass/_page.scss */
   footer.footer.container h2 {
     font-size: 25px; }
-  /* line 15, ../sass/_page.scss */
+  /* line 16, ../sass/_page.scss */
   footer.footer.container .block {
     display: inline;
     float: left;
     position: relative;
     margin-left: 10px;
     margin-right: 10px; }
-    /* line 21, ../sass/_page.scss */
+    /* line 22, ../sass/_page.scss */
     footer.footer.container .block .views-row {
       background-color: black;
       border-bottom: 1px #777 solid; }
-      /* line 24, ../sass/_page.scss */
+      /* line 25, ../sass/_page.scss */
       footer.footer.container .block .views-row .twitter-status {
         background-color: black;
         color: #fff; }
-        /* line 27, ../sass/_page.scss */
+        /* line 28, ../sass/_page.scss */
         footer.footer.container .block .views-row .twitter-status .avatar {
           border: 2px #777 solid; }
-  /* line 35, ../sass/_page.scss */
+  /* line 36, ../sass/_page.scss */
   footer.footer.container #block-user-login ul {
     list-style-type: none;
     padding-left: 0px; }
 
-/* line 42, ../sass/_page.scss */
+/* line 43, ../sass/_page.scss */
 body:not(.front) {
   background: url("/sites/default/files/page/014_6043.jpg") no-repeat center center fixed;
   background-size: cover; }
-  /* line 45, ../sass/_page.scss */
+  /* line 46, ../sass/_page.scss */
   body:not(.front) .main-container {
     margin-bottom: 20px;
     min-height: 80vh; }
-    /* line 48, ../sass/_page.scss */
+    /* line 49, ../sass/_page.scss */
     body:not(.front) .main-container .row {
       margin: 10px;
       padding: 20px;

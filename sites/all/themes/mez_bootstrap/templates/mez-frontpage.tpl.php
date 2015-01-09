@@ -32,7 +32,7 @@
     <?php print render($support['node']); ?>
   </div>
 </div>
-<!-- /About section -->
+<!-- /Support section -->
 
 <!-- Concert section -->
 <div id="concert">
