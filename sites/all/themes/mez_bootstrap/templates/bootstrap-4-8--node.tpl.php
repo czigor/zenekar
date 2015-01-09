@@ -29,7 +29,7 @@
   <?php endif; ?>
 
   <?php if (!empty($right)): ?>
-    <<?php print $right_wrapper; ?> class="<?php if (!empty($right)): ?>col-sm-8 <?php else :?>col-sm-12<?php endif; ?> <?php print $right_classes; ?>">
+    <<?php print $right_wrapper; ?> class="<?php if (!empty($left)): ?>col-sm-8 <?php else :?>col-sm-12<?php endif; ?> <?php print $right_classes; ?>">
       <?php print $right; ?>
     </<?php print $right_wrapper; ?>>
   <?php endif; ?>

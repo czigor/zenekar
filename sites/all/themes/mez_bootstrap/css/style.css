@@ -6825,51 +6825,51 @@ button.close {
     .front .jumbotron .field-name-node-link .btn-primary a {
       color: #fff; }
 
-/* line 1, ../sass/_page.scss */
+/* line 3, ../sass/_page.scss */
 footer.footer.container {
   background-color: black;
   color: #fff;
   width: 100%;
   padding: 40px 10px 10px 10px;
   overflow-y: hidden; }
-  /* line 9, ../sass/_page.scss */
+  /* line 11, ../sass/_page.scss */
   footer.footer.container input {
     width: 10em; }
-  /* line 12, ../sass/_page.scss */
+  /* line 14, ../sass/_page.scss */
   footer.footer.container h2 {
     font-size: 25px; }
-  /* line 16, ../sass/_page.scss */
+  /* line 18, ../sass/_page.scss */
   footer.footer.container .block {
     display: inline;
     float: left;
     position: relative;
     margin-left: 10px;
     margin-right: 10px; }
-    /* line 22, ../sass/_page.scss */
+    /* line 24, ../sass/_page.scss */
     footer.footer.container .block .views-row {
       background-color: black;
       border-bottom: 1px #777 solid; }
-      /* line 25, ../sass/_page.scss */
+      /* line 27, ../sass/_page.scss */
       footer.footer.container .block .views-row .twitter-status {
         background-color: black;
         color: #fff; }
-        /* line 28, ../sass/_page.scss */
+        /* line 30, ../sass/_page.scss */
         footer.footer.container .block .views-row .twitter-status .avatar {
           border: 2px #777 solid; }
-  /* line 36, ../sass/_page.scss */
+  /* line 38, ../sass/_page.scss */
   footer.footer.container #block-user-login ul {
     list-style-type: none;
     padding-left: 0px; }
 
-/* line 43, ../sass/_page.scss */
+/* line 45, ../sass/_page.scss */
 body:not(.front) {
   background: url("/sites/default/files/page/014_6043.jpg") no-repeat center center fixed;
   background-size: cover; }
-  /* line 46, ../sass/_page.scss */
+  /* line 48, ../sass/_page.scss */
   body:not(.front) .main-container {
     margin-bottom: 20px;
     min-height: 80vh; }
-    /* line 49, ../sass/_page.scss */
+    /* line 51, ../sass/_page.scss */
     body:not(.front) .main-container .row {
       margin: 10px;
       padding: 20px;
