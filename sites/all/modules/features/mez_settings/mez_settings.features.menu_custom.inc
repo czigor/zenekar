@@ -18,6 +18,14 @@ function mez_settings_menu_default_menu_custom() {
     'language' => 'und',
     'i18n_mode' => 5,
   );
+  // Exported menu: menu-mez-iq.
+  $menus['menu-mez-iq'] = array(
+    'menu_name' => 'menu-mez-iq',
+    'title' => 'MEZ IQ',
+    'description' => '',
+    'language' => 'und',
+    'i18n_mode' => 0,
+  );
   // Exported menu: menu-mez-user.
   $menus['menu-mez-user'] = array(
     'menu_name' => 'menu-mez-user',
@@ -28,6 +36,7 @@ function mez_settings_menu_default_menu_custom() {
   );
   // Translatables
   // Included for use with string extractors like potx.
+  t('MEZ IQ');
   t('MEZ User');
   t('Main menu');
   t('The <em>Main</em> menu is used on many sites to show the major sections of the site, often in a top navigation bar.');

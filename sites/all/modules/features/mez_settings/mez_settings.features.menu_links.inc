@@ -576,6 +576,116 @@ function mez_settings_menu_default_menu_links() {
     'menu_links_customized' => 1,
     'parent_identifier' => 'main-menu_a-zenekarrl:node/2',
   );
+  // Exported menu link: menu-mez-iq_gyek:issues
+  $menu_links['menu-mez-iq_gyek:issues'] = array(
+    'menu_name' => 'menu-mez-iq',
+    'link_path' => 'issues',
+    'router_path' => 'issues',
+    'link_title' => 'Ügyek',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+      'identifier' => 'menu-mez-iq_gyek:issues',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -49,
+    'customized' => 1,
+    'language' => 'und',
+    'menu_links_customized' => 1,
+  );
+  // Exported menu link: menu-mez-iq_hozzszlsok:comments
+  $menu_links['menu-mez-iq_hozzszlsok:comments'] = array(
+    'menu_name' => 'menu-mez-iq',
+    'link_path' => 'comments',
+    'router_path' => 'comments',
+    'link_title' => 'Hozzászólások',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+      'identifier' => 'menu-mez-iq_hozzszlsok:comments',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -48,
+    'customized' => 1,
+    'language' => 'und',
+    'menu_links_customized' => 1,
+  );
+  // Exported menu link: menu-mez-iq_j-gy:node/add/issue
+  $menu_links['menu-mez-iq_j-gy:node/add/issue'] = array(
+    'menu_name' => 'menu-mez-iq',
+    'link_path' => 'node/add/issue',
+    'router_path' => 'node/add/issue',
+    'link_title' => 'Új ügy',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+      'identifier' => 'menu-mez-iq_j-gy:node/add/issue',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => 0,
+    'customized' => 1,
+    'language' => 'und',
+    'menu_links_customized' => 1,
+  );
+  // Exported menu link: menu-mez-iq_j-projekt:node/add/project
+  $menu_links['menu-mez-iq_j-projekt:node/add/project'] = array(
+    'menu_name' => 'menu-mez-iq',
+    'link_path' => 'node/add/project',
+    'router_path' => 'node/add/project',
+    'link_title' => 'Új projekt',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+      'identifier' => 'menu-mez-iq_j-projekt:node/add/project',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => 0,
+    'customized' => 1,
+    'language' => 'und',
+    'menu_links_customized' => 1,
+  );
+  // Exported menu link: menu-mez-iq_projektek:projects
+  $menu_links['menu-mez-iq_projektek:projects'] = array(
+    'menu_name' => 'menu-mez-iq',
+    'link_path' => 'projects',
+    'router_path' => 'projects',
+    'link_title' => 'Projektek',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+      'identifier' => 'menu-mez-iq_projektek:projects',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -50,
+    'customized' => 1,
+    'language' => 'und',
+    'menu_links_customized' => 1,
+  );
   // Exported menu link: menu-mez-user_logout:user/logout
   $menu_links['menu-mez-user_logout:user/logout'] = array(
     'menu_name' => 'menu-mez-user',
@@ -629,6 +739,7 @@ function mez_settings_menu_default_menu_links() {
   t('Böngésző nézet');
   t('Concerts');
   t('History');
+  t('Hozzászólások');
   t('Hírek');
   t('Issues');
   t('Jelentkezés');
@@ -642,12 +753,16 @@ function mez_settings_menu_default_menu_links() {
   t('Médiatár');
   t('News');
   t('Projects');
+  t('Projektek');
   t('Próbaterem');
   t('Support the orchestra!');
   t('The orchestra');
   t('Támogatás');
   t('Történelem');
   t('User account');
+  t('Új projekt');
+  t('Új ügy');
+  t('Ügyek');
   t('Ügykezelő');
 
 
