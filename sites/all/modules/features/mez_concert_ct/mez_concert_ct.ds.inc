@@ -17,20 +17,6 @@ function mez_concert_ct_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'concert';
   $ds_fieldsetting->view_mode = 'full';
   $ds_fieldsetting->settings = array(
-    'field_programme' => array(
-      'formatter_settings' => array(
-        'ft' => array(
-          'func' => 'theme_ds_field_expert',
-          'lb-cl' => 'field-label',
-          'ow' => TRUE,
-          'ow-el' => 'div',
-          'ow-cl' => '',
-          'ow-def-cl' => TRUE,
-          'ow-at' => '',
-          'ow-def-at' => FALSE,
-        ),
-      ),
-    ),
     'title_field' => array(
       'formatter_settings' => array(
         'ft' => array(
@@ -154,6 +140,30 @@ function mez_concert_ct_ds_layout_settings_info() {
   $ds_layout->view_mode = 'full';
   $ds_layout->layout = 'bootstrap_4_8';
   $ds_layout->settings = array(
+    'regions' => array(
+      'left' => array(
+        0 => 'mez_concert_shopping_cart',
+        1 => 'mez_concert_bank_info',
+      ),
+      'right' => array(
+        2 => 'title_field',
+        3 => 'field_time',
+        4 => 'body',
+        5 => 'field_ticket_selling',
+        6 => 'field_media',
+        7 => 'field_location_reference',
+      ),
+    ),
+    'fields' => array(
+      'mez_concert_shopping_cart' => 'left',
+      'mez_concert_bank_info' => 'left',
+      'title_field' => 'right',
+      'field_time' => 'right',
+      'body' => 'right',
+      'field_ticket_selling' => 'right',
+      'field_media' => 'right',
+      'field_location_reference' => 'right',
+    ),
     'classes' => array(),
     'wrappers' => array(
       'left' => 'div',
@@ -164,32 +174,6 @@ function mez_concert_ct_ds_layout_settings_info() {
     'layout_attributes_merge' => 1,
     'layout_link_attribute' => '',
     'layout_link_custom' => '',
-    'regions' => array(
-      'left' => array(
-        0 => 'mez_concert_shopping_cart',
-        1 => 'mez_concert_bank_info',
-      ),
-      'right' => array(
-        0 => 'title_field',
-        1 => 'field_time',
-        2 => 'body',
-        3 => 'field_ticket_selling',
-        4 => 'field_programme',
-        5 => 'field_media',
-        6 => 'field_location_reference',
-      ),
-    ),
-    'fields' => array(
-      'mez_concert_shopping_cart' => 'left',
-      'mez_concert_bank_info' => 'left',
-      'title_field' => 'right',
-      'field_time' => 'right',
-      'body' => 'right',
-      'field_ticket_selling' => 'right',
-      'field_programme' => 'right',
-      'field_media' => 'right',
-      'field_location_reference' => 'right',
-    ),
   );
   $export['node|concert|full'] = $ds_layout;
 

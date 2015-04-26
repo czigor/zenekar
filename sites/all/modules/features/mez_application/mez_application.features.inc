@@ -19,16 +19,6 @@ function mez_application_default_entity_rule_setting() {
     "args" : null,
     "false_msg" : null
   }');
-  $items['2'] = entity_import('entity_rule_setting', '{
-    "id" : "2",
-    "entity_type" : "entityform",
-    "bundle" : "application",
-    "op" : "entityform_submission",
-    "rules_config" : "rules_mez_application_submission",
-    "weight" : "0",
-    "args" : null,
-    "false_msg" : null
-  }');
   return $items;
 }
 
@@ -57,8 +47,8 @@ function mez_application_default_entityform_type() {
         "format" : "wysiwyg"
       },
       "submission_show_submitted" : 0,
-      "submissions_view" : "entityforms",
-      "user_submissions_view" : "",
+      "submissions_view" : "default",
+      "user_submissions_view" : "default",
       "form_status" : "ENTITYFORM_OPEN",
       "roles" : { "1" : "1", "2" : "2", "3" : 0, "4" : 0, "5" : 0 },
       "resubmit_action" : "old",

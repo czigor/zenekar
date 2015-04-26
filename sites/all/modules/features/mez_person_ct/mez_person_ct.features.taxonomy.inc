@@ -13,7 +13,7 @@ function mez_person_ct_taxonomy_default_vocabularies() {
       'name' => 'Instruments',
       'machine_name' => 'instruments',
       'description' => 'Instruments',
-      'hierarchy' => 0,
+      'hierarchy' => 1,
       'module' => 'mez',
       'weight' => 0,
       'language' => 'und',

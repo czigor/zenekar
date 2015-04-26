@@ -2708,124 +2708,124 @@ foo
       'callback' => 'themekey_path_nid2alias',
     ),
     119 => array(
-      'src' => 'system:dummy',
-      'dst' => 'system:query_param',
-      'callback' => 'themekey_dummy2query_param',
-    ),
-    120 => array(
-      'src' => 'system:dummy',
-      'dst' => 'system:cookie',
-      'callback' => 'themekey_dummy2cookie',
-    ),
-    121 => array(
-      'src' => 'system:dummy',
-      'dst' => 'system:http_header',
-      'callback' => 'themekey_dummy2http_header',
-    ),
-    122 => array(
-      'src' => 'system:dummy',
-      'dst' => 'system:post',
-      'callback' => 'themekey_dummy2post',
-    ),
-    123 => array(
-      'src' => 'system:dummy',
-      'dst' => 'system:query_string',
-      'callback' => 'themekey_dummy2query_string',
-    ),
-    124 => array(
-      'src' => 'system:dummy',
-      'dst' => 'system:date_time',
-      'callback' => 'themekey_dummy2date_time',
-    ),
-    125 => array(
-      'src' => 'system:dummy',
-      'dst' => 'system:date',
-      'callback' => 'themekey_dummy2date',
-    ),
-    126 => array(
-      'src' => 'system:dummy',
-      'dst' => 'system:month',
-      'callback' => 'themekey_dummy2month',
-    ),
-    127 => array(
-      'src' => 'system:dummy',
-      'dst' => 'system:time',
-      'callback' => 'themekey_dummy2time',
-    ),
-    128 => array(
-      'src' => 'system:dummy',
-      'dst' => 'system:day_of_week',
-      'callback' => 'themekey_dummy2day_of_week',
-    ),
-    129 => array(
-      'src' => 'system:dummy',
-      'dst' => 'system:day_of_month',
-      'callback' => 'themekey_dummy2day_of_month',
-    ),
-    130 => array(
-      'src' => 'system:dummy',
-      'dst' => 'system:user_browser',
-      'callback' => 'themekey_dummy2user_browser',
-    ),
-    131 => array(
-      'src' => 'system:dummy',
-      'dst' => 'system:user_os',
-      'callback' => 'themekey_dummy2user_os',
-    ),
-    132 => array(
-      'src' => 'system:user_browser',
-      'dst' => 'system:user_browser_simplified',
-      'callback' => 'themekey_user_browser2user_browser_simplified',
-    ),
-    133 => array(
-      'src' => 'system:user_os',
-      'dst' => 'system:user_os_simplified',
-      'callback' => 'themekey_user_os2user_os_simplified',
-    ),
-    134 => array(
-      'src' => 'system:dummy',
-      'dst' => 'system:session',
-      'callback' => 'themekey_dummy2session',
-    ),
-    135 => array(
       'src' => 'taxonomy:tid',
       'dst' => 'taxonomy:vid',
       'callback' => 'themekey_taxonomy_tid2vid',
     ),
-    136 => array(
+    120 => array(
       'src' => 'taxonomy:tid',
       'dst' => 'taxonomy:tid_and_childs',
       'callback' => 'themekey_taxonomy_tid2tid_and_parents',
     ),
-    137 => array(
+    121 => array(
       'src' => 'node:nid',
       'dst' => 'taxonomy:tid',
       'callback' => 'themekey_taxonomy_nid2tid',
     ),
-    138 => array(
+    122 => array(
       'src' => 'taxonomy:tid',
       'dst' => 'taxonomy:name',
       'callback' => 'themekey_taxonomy_tid2name',
     ),
-    139 => array(
+    123 => array(
       'src' => 'profile:uid',
       'dst' => 'themekey_ui:author_triggers_theme',
       'callback' => 'themekey_user_profile2theme',
     ),
-    140 => array(
+    124 => array(
       'src' => 'drupal:get_q',
       'dst' => 'views:vid',
       'callback' => 'themekey_views_getq2vid',
     ),
-    141 => array(
+    125 => array(
       'src' => 'drupal:get_q',
       'dst' => 'views:machine_name',
       'callback' => 'themekey_views_getq2machine_name',
     ),
-    142 => array(
+    126 => array(
       'src' => 'drupal:get_q',
       'dst' => 'views:human_name',
       'callback' => 'themekey_views_getq2human_name',
+    ),
+    127 => array(
+      'src' => 'system:dummy',
+      'dst' => 'system:query_param',
+      'callback' => 'themekey_dummy2query_param',
+    ),
+    128 => array(
+      'src' => 'system:dummy',
+      'dst' => 'system:cookie',
+      'callback' => 'themekey_dummy2cookie',
+    ),
+    129 => array(
+      'src' => 'system:dummy',
+      'dst' => 'system:http_header',
+      'callback' => 'themekey_dummy2http_header',
+    ),
+    130 => array(
+      'src' => 'system:dummy',
+      'dst' => 'system:post',
+      'callback' => 'themekey_dummy2post',
+    ),
+    131 => array(
+      'src' => 'system:dummy',
+      'dst' => 'system:query_string',
+      'callback' => 'themekey_dummy2query_string',
+    ),
+    132 => array(
+      'src' => 'system:dummy',
+      'dst' => 'system:date_time',
+      'callback' => 'themekey_dummy2date_time',
+    ),
+    133 => array(
+      'src' => 'system:dummy',
+      'dst' => 'system:date',
+      'callback' => 'themekey_dummy2date',
+    ),
+    134 => array(
+      'src' => 'system:dummy',
+      'dst' => 'system:month',
+      'callback' => 'themekey_dummy2month',
+    ),
+    135 => array(
+      'src' => 'system:dummy',
+      'dst' => 'system:time',
+      'callback' => 'themekey_dummy2time',
+    ),
+    136 => array(
+      'src' => 'system:dummy',
+      'dst' => 'system:day_of_week',
+      'callback' => 'themekey_dummy2day_of_week',
+    ),
+    137 => array(
+      'src' => 'system:dummy',
+      'dst' => 'system:day_of_month',
+      'callback' => 'themekey_dummy2day_of_month',
+    ),
+    138 => array(
+      'src' => 'system:dummy',
+      'dst' => 'system:user_browser',
+      'callback' => 'themekey_dummy2user_browser',
+    ),
+    139 => array(
+      'src' => 'system:dummy',
+      'dst' => 'system:user_os',
+      'callback' => 'themekey_dummy2user_os',
+    ),
+    140 => array(
+      'src' => 'system:user_browser',
+      'dst' => 'system:user_browser_simplified',
+      'callback' => 'themekey_user_browser2user_browser_simplified',
+    ),
+    141 => array(
+      'src' => 'system:user_os',
+      'dst' => 'system:user_os_simplified',
+      'callback' => 'themekey_user_os2user_os_simplified',
+    ),
+    142 => array(
+      'src' => 'system:dummy',
+      'dst' => 'system:session',
+      'callback' => 'themekey_dummy2session',
     ),
     143 => array(
       'src' => 'node:nid',
@@ -2853,10 +2853,10 @@ foo
     5 => 'node',
     6 => 'og_context',
     7 => 'path',
-    8 => 'system',
-    9 => 'taxonomy',
-    10 => 'user',
-    11 => 'views',
+    8 => 'taxonomy',
+    9 => 'user',
+    10 => 'views',
+    11 => 'system',
   );
   $export['themekey_modules'] = $strongarm;
 

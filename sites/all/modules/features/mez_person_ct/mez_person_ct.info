@@ -1,7 +1,7 @@
 name = MEZ Person CT
 core = 7.x
 package = MEZ CTs
-version = 7.x-1.0-20150107dev1
+version = 7.x-1.0-20150426dev1
 project = mez_person_ct
 dependencies[] = ctools
 dependencies[] = date

@@ -1,7 +1,7 @@
 name = MEZ Image file
 core = 7.x
 package = MEZ files
-version = 7.x-1.0-20150103dev1
+version = 7.x-1.0-20150426dev1
 project = mez_image_file
 dependencies[] = ctools
 dependencies[] = date
@@ -101,4 +101,3 @@ features[user_permission][] = edit any image files
 features[user_permission][] = edit own image files
 features[variable][] = entity_translation_settings_file__image
 features[variable][] = field_bundle_settings_file__image
-mtime = 1420277432

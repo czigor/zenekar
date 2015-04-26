@@ -1,11 +1,12 @@
 name = MEZ Seat CT
 core = 7.x
 package = MEZ CTs
-version = 7.x-1.0-20140523dev1
+version = 7.x-1.0-20150426dev1
 project = mez_seat_ct
 dependencies[] = ctools
 dependencies[] = entityreference
 dependencies[] = features
+dependencies[] = iq_issue
 dependencies[] = list
 dependencies[] = mez_composer_ct
 dependencies[] = node

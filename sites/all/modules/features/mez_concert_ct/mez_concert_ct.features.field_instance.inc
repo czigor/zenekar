@@ -422,15 +422,8 @@ function mez_concert_ct_field_default_field_instances() {
       ),
       'full' => array(
         'label' => 'above',
-        'module' => 'field_collection',
-        'settings' => array(
-          'add' => '',
-          'delete' => '',
-          'description' => 0,
-          'edit' => '',
-          'view_mode' => 'full',
-        ),
-        'type' => 'field_collection_view',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 6,
       ),
       'mez_frontpage' => array(

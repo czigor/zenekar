@@ -13,17 +13,7 @@ function mez_commerce_customer_profile_field_default_field_instances() {
   // Exported field_instance: 'commerce_customer_profile-billing-commerce_customer_address'
   $field_instances['commerce_customer_profile-billing-commerce_customer_address'] = array(
     'bundle' => 'billing',
-    'default_value' => array(
-      0 => array(
-        'element_key' => 'commerce_customer_profile|billing|commerce_customer_address|und|0',
-        'thoroughfare' => '',
-        'premise' => '',
-        'postal_code' => '',
-        'locality' => '',
-        'country' => 'HU',
-        'name_line' => '',
-      ),
-    ),
+    'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -80,6 +70,7 @@ function mez_commerce_customer_profile_field_default_field_instances() {
         'available_countries' => array(
           'HU' => 'HU',
         ),
+        'default_country' => '',
         'format_handlers' => array(
           'address' => 'address',
           'address-hide-country' => 'address-hide-country',

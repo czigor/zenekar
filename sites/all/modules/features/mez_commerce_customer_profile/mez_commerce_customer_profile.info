@@ -1,7 +1,7 @@
 name = MEZ Commerce customer profile
 core = 7.x
 package = MEZ Commerce
-version = 7.x-1.0-20140308dev2
+version = 7.x-1.0-20150426dev2
 project = mez_commerce_customer_profile
 dependencies[] = addressfield
 dependencies[] = commerce_customer
@@ -12,7 +12,6 @@ dependencies[] = features
 dependencies[] = list
 dependencies[] = options
 dependencies[] = strongarm
-features[commerce_customer_type][] = billing
 features[ctools][] = strongarm:strongarm:1
 features[features_api][] = api:2
 features[field_base][] = commerce_customer_address

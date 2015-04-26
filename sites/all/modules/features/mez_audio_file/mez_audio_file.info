@@ -1,7 +1,7 @@
 name = MEZ Audio file
 core = 7.x
 package = MEZ files
-version = 7.x-1.0-20141229dev1
+version = 7.x-1.0-20150426dev1
 project = mez_audio_file
 dependencies[] = ctools
 dependencies[] = date
@@ -72,4 +72,3 @@ features[user_permission][] = edit any audio files
 features[user_permission][] = edit own audio files
 features[variable][] = entity_translation_settings_file__audio
 features[variable][] = field_bundle_settings_file__audio
-mtime = 1419865392
