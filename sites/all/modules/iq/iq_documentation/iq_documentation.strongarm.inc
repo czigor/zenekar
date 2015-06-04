@@ -83,6 +83,12 @@ function iq_documentation_strongarm() {
       'print' => array(
         'custom_settings' => FALSE,
       ),
+      'mez_frontpage' => array(
+        'custom_settings' => FALSE,
+      ),
+      'revision' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
