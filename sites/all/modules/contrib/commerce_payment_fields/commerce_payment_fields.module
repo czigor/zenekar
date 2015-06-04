@@ -1,0 +1,86 @@
+<?php
+
+/**
+ * Implements hook_entity_info_alter().
+ */
+function commerce_payment_fields_entity_info_alter(&$entity_info) {
+  $entity_info['commerce_payment_transaction']['fieldable'] = TRUE;
+  foreach (commerce_payment_fields_fieldable_payment_methods() as $payment_method) {
+    // Convert underscores to hyphens for the menu item argument.
+    $method_arg = strtr($payment_method['method_id'], '_', '-');
+    $entity_info['commerce_payment_transaction']['bundles'][$payment_method['method_id']] = array(
+        'label' => $payment_method['title'],
+        'admin' => array(
+          'path' => 'admin/commerce/config/payments/' . $method_arg,
+          'real path' => 'admin/commerce/config/payments/' . $method_arg,
+          'access arguments' => array('administer payment methods'),
+        ),
+    );
+  }
+}
+
+/**
+ * Implements hook_menu().
+ */
+function commerce_payment_fields_menu() {
+  $items['admin/commerce/config/payments'] = array(
+    'title' => 'Payments transactions structure',
+    'description' => 'Manage fieldable payment transactions for your store.',
+    'page callback' => 'commerce_payment_fields_transaction_types_overview',
+    'access arguments' => array('administer customer profile types'),
+    'type' => MENU_LOCAL_TASK,
+    'weight' => 0,
+    'file' => 'commerce_payment_fields.admin.inc',
+  );
+  foreach (commerce_payment_fields_fieldable_payment_methods() as $payment_method) {
+    // Convert underscores to hyphens for the menu item argument.
+    $method_arg = strtr($payment_method['method_id'], '_', '-');
+    $items['admin/commerce/config/payments/' . $method_arg] = array(
+      'title' => $payment_method['title'],
+      'description' => 'Configure general payment transaction settings, fields, and displays.',
+      'page callback' => 'drupal_get_form',
+      'page arguments' => array('commerce_payment_fields_transaction_settings_form', $payment_method['method_id']),
+      'access arguments' => array('administer payment methods'),
+      'file' => 'commerce_payment_fields.admin.inc',
+      //'context' => MENU_CONTEXT_PAGE | MENU_CONTEXT_INLINE,
+    );
+    $items['admin/commerce/config/payments/' . $method_arg . '/settings'] = array(
+      'title' => 'Settings',
+      'type' => MENU_DEFAULT_LOCAL_TASK,
+      'weight' => -10,
+      'context' => MENU_CONTEXT_PAGE | MENU_CONTEXT_INLINE,
+    );
+  }
+  return $items;
+}
+
+/**
+ * Implements hook_menu_alter().
+ */
+function commerce_payment_fields_menu_alter(&$items) {
+  // Transform the field UI tabs into contextual links.
+  foreach (commerce_payment_fields_fieldable_payment_methods() as $payment_method) {
+    // Convert underscores to hyphens for the menu item argument.
+    $method_arg = strtr($payment_method['method_id'], '_', '-');
+
+    $items['admin/commerce/config/payments/' . $method_arg . '/fields']['context'] = MENU_CONTEXT_PAGE | MENU_CONTEXT_INLINE;
+    $items['admin/commerce/config/payments/' . $method_arg . '/display']['context'] = MENU_CONTEXT_PAGE | MENU_CONTEXT_INLINE;
+  }
+}
+
+/**
+* Returns a list of all node types that contain a product reference field.
+*
+* @return
+* An array of node types, keyed by type.
+*/
+function commerce_payment_fields_fieldable_payment_methods() {
+  $list = array();
+  foreach (commerce_payment_methods() as $payment_id => $payment_method) {
+    if (!empty($payment_method['fieldable'])) {
+      $list[$payment_id] = $payment_method;
+    }
+  }
+  ksort($list);
+  return $list;
+}

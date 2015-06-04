@@ -1,0 +1,12 @@
+name = Drupal Commerce Payment Transaction Fields
+description = Make the Commerce Payment Transactions fieldable..
+core = 7.x
+package = Commerce (contrib)
+
+dependencies[] = commerce_payment
+; Information added by Drupal.org packaging script on 2014-03-18
+version = "7.x-1.x-dev"
+core = "7.x"
+project = "commerce_payment_fields"
+datestamp = "1395142160"
+
