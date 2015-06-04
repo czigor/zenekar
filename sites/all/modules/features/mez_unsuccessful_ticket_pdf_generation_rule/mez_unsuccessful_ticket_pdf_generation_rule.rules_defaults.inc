@@ -14,10 +14,19 @@ function mez_unsuccessful_ticket_pdf_generation_rule_default_rules_configuration
       "PLUGIN" : "reaction rule",
       "OWNER" : "rules",
       "TAGS" : [ "MEZ" ],
-      "REQUIRES" : [ "rules_i18n", "rules", "commerce_order", "mez_ticket_hacks" ],
+      "REQUIRES" : [ "rules", "rules_i18n", "commerce_order", "mez_ticket_hacks" ],
       "ON" : { "mez_ticket_pdfs_failure" : [] },
       "DO" : [
-        { "drupal_message" : { "message" : "\\u003Cp\\u003EAn error occured during the generation of the concert ticket you purchased at [site:url]. A site admin will contact you shortly to send you the ticket manually.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003ESorry for the inconvenience.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EThe transaction id is [commerce-order:commerce-cib-trid].\\u003Cbr\\/\\u003E\\r\\nThe response code is [commerce-order:commerce-cib-rc].\\u003Cbr\\/\\u003E\\r\\nThe response message is: \\u0022[commerce-order:commerce-cib-rt]\\u0022.\\u003Cbr\\/\\u003E\\r\\nThe permission number is [commerce-order:commerce-cib-anum].\\u003Cbr\\/\\u003E\\r\\nThe paid amount is [commerce-order:commerce-cib-amo] HUF.\\u003C\\/p\\u003E" } },
+        { "component_rules_mez_get_last_transaction" : {
+            "USING" : { "order" : [ "commerce-order" ] },
+            "PROVIDE" : { "transaction" : { "transaction" : "Transaction" } }
+          }
+        },
+        { "drupal_message" : {
+            "message" : "\\u003Cp\\u003EAn error occured during the generation of the concert ticket you purchased at [site:url]. A site admin will contact you shortly to send you the ticket manually.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003ESorry for the inconvenience.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EThe transaction id is [transaction:remote-id].\\u003Cbr\\/\\u003E\\r\\nThe response code is [transaction:remote-status].\\u003Cbr\\/\\u003E\\r\\nThe response message is: \\u0022[transaction:message]\\u0022.\\u003Cbr\\/\\u003E\\r\\nThe permission number is [transaction:commerce-cib-anum].\\u003Cbr\\/\\u003E\\r\\nThe paid amount is [transaction:amount] HUF.\\u003C\\/p\\u003E",
+            "type" : "warning"
+          }
+        },
         { "mail" : {
             "to" : [ "site:mail" ],
             "subject" : "Unsuccessful ticket pdf generation",
@@ -28,7 +37,7 @@ function mez_unsuccessful_ticket_pdf_generation_rule_default_rules_configuration
         { "mail" : {
             "to" : [ "commerce-order:mail" ],
             "subject" : "[site:name] ticket generation failure",
-            "message" : "Dear Customer,\\r\\n\\r\\nAn error occured during the generation of the concert ticket you purchased at [site:url]. A site admin will contact you shortly to send you the ticket(s) manually. \\r\\n\\r\\nSorry for the inconvenience.\\r\\n\\r\\nThe transaction id is [commerce-order:commerce-cib-trid].\\r\\nThe response code is [commerce-order:commerce-cib-rc] .\\r\\nThe response message is [commerce-order:commerce-cib-rt].\\r\\nThe permission number is [commerce-order:commerce-cib-anum].\\r\\nThe paid amount is [commerce-order:commerce-cib-amo] HUF.\\r\\n\\r\\nBest wishes,\\r\\n-- the [site:name] team",
+            "message" : "Dear Customer,\\r\\n\\r\\nAn error occured during the generation of the concert ticket you purchased at [site:url]. A site admin will contact you shortly to send you the ticket(s) manually. \\r\\n\\r\\nSorry for the inconvenience.\\r\\n\\r\\nThe transaction id is [transaction:remote-id].\\r\\nThe response code is [transaction:remote-status] .\\r\\nThe response message is [transaction:message].\\r\\nThe permission number is [transaction:commerce-cib-anum].\\r\\nThe paid amount is [transaction:amount] HUF.\\r\\n\\r\\nBest wishes,\\r\\n-- the [site:name] team",
             "language" : [ "site:current-page:language" ]
           }
         },

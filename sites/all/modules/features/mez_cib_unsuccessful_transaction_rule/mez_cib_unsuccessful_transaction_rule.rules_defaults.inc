@@ -14,14 +14,23 @@ function mez_cib_unsuccessful_transaction_rule_default_rules_configuration() {
       "PLUGIN" : "reaction rule",
       "OWNER" : "rules",
       "TAGS" : [ "CIB" ],
-      "REQUIRES" : [ "rules_i18n", "rules", "commerce_order", "commerce_cib" ],
+      "REQUIRES" : [ "rules", "rules_i18n", "commerce_order", "commerce_cib" ],
       "ON" : { "commerce_cib_transaction_fails" : [] },
       "DO" : [
-        { "drupal_message" : { "message" : "\\u003Cp\\u003ESomething went wrong during the communication with CIB. No money has been removed from your account and the selected tickets have not been bought yet. Please try again!\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EThe transaction id is: [commerce-order:commerce-cib-trid].\\u003Cbr\\/\\u003E\\r\\nThe response code is: [commerce-order:commerce-cib-rc].\\u003Cbr\\/\\u003E\\r\\nThe response message is: [commerce-order:commerce-cib-rt].\\u003Cbr\\/\\u003E\\r\\nAn email has been sent to [commerce-order:mail] with the details.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EWe are sorry about your inconvenience!\\u003C\\/p\\u003E" } },
+        { "component_rules_mez_get_last_transaction" : {
+            "USING" : { "order" : [ "commerce-order" ] },
+            "PROVIDE" : { "transaction" : { "transaction" : "Transaction" } }
+          }
+        },
+        { "drupal_message" : {
+            "message" : "\\u003Cp\\u003ESomething went wrong during the communication with CIB. No money has been removed from your account and the selected tickets have not been bought yet. Please try again!\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EThe transaction id is: [transaction:remote-id].\\u003Cbr\\/\\u003E\\r\\nThe response code is: [transaction:remote-status].\\u003Cbr\\/\\u003E\\r\\nThe response message is: [transaction:message].\\u003Cbr\\/\\u003E\\r\\nAn email has been sent to [commerce-order:mail] with the details.\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EWe are sorry about your inconvenience!\\u003C\\/p\\u003E",
+            "type" : "warning"
+          }
+        },
         { "mail" : {
             "to" : "[commerce-order:mail]",
             "subject" : "Unsuccesful order on [site:name]",
-            "message" : "Dear Customer,\\r\\n\\r\\nSomething went wrong during the communication with CIB. No money has been removed from your account and the selected tickets have not been bought yet. Please try again!\\r\\n\\r\\nThe transaction id is: [commerce-order:commerce-cib-trid].\\r\\nThe response code is: [commerce-order:commerce-cib-rc].\\r\\nThe response message is: [commerce-order:commerce-cib-rt].\\r\\n\\r\\nWe are sorry about your inconvenience!\\r\\n\\r\\nThe [site:name] team",
+            "message" : "Dear Customer,\\r\\n\\r\\nSomething went wrong during the communication with CIB. No money has been removed from your account and the selected tickets have not been bought yet. Please try again!\\r\\n\\r\\nThe transaction id is: [transaction:remote-id].\\r\\nThe response code is: [transaction:remote-status].\\r\\nThe response message is: [transaction:message].\\r\\n\\r\\nWe are sorry about your inconvenience!\\r\\n\\r\\nThe [site:name] team",
             "language" : [ "site:current-page:language" ]
           }
         },

@@ -1,0 +1,9 @@
+name = MEZ Get last transaction rule component
+core = 7.x
+package = MEZ Commerce
+version = 7.x-1.0-20150604dev1
+project = mez_get_last_transaction_rule
+dependencies[] = entity
+dependencies[] = rules
+features[features_api][] = api:2
+features[rules_config][] = rules_mez_get_last_transaction
