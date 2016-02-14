@@ -6,11 +6,13 @@
 \usepackage{tikz}
 \usepackage{graphicx}
 \usepackage[hidelinks]{hyperref}
+\usepackage{qrcode}
+\usepackage{makebarcode}
 
 \pagestyle{empty}
 
 \newcommand{\addsponsor}[1]{\includegraphics[width=2.3cm,height=8mm]{<?php print drupal_realpath('sites/all/themes/mez_theme/images/sponsors/');?>#1}}
-\definecolor{lg}{rgb}{0.98,0.98,0.98}
+\definecolor{lg}{rgb}{0.95,0.95,0.95}
 
 % One ticket for the 2015. 05. 13. concert.
 \newcommand{\mezticket}[4]{
@@ -27,41 +29,44 @@
 	\quad\textsc{Zenekarért}\\
 	\quad\textsc{Alapítvány}\\
 	\\
-	1085 Budapest\\
+	1085 Budapest,\\
 	Baross u. 30.\\
 	\\
 	Adószám:\\
-	18238334-1-42 MMA\\
+	18238334-1-42
 };
 \node[anchor=south west,align=center,font=\tiny] at (0,0) {
 \includegraphics[width=2.75cm]{<?php print drupal_realpath('sites/all/themes/mez_theme/images');?>mez-logo.png}\\
 \url{zenekar.bme.hu}
 };
+\draw (4,0)--(4,7);
 % Concert details
 \node[anchor=north, align=center] at (13,6.9) {
-	{\small Zeneakadémia, 1061 Budapest, Liszt Ference tér 8.}\\
+	{\small Zeneakadémia, 1061 Budapest, Liszt Ferenc tér 8.}\\
 	\\
 	A 120 éves\\
 	\LARGE \textsc{Műegyetemi Zenekar jubileumi hangversenye}\\
-	\emph{Liszt: Les Preludes --- Weber: Klarinétverseny (op. 74) --- Brahms: IV. szimfónia}\vspace{3mm}\\
-	Nagyterem, 2016. május 13. péntek 19:30\vspace{3mm}\\
+	\emph{Liszt: Les Préludes --- Weber: Klarinétverseny (op. 74) --- Brahms: IV. szimfónia}\vspace{3mm}\\
+	Nagyterem, 2016. május 13., péntek, 19:30\vspace{3mm}\\
 	{\Large \underline{#1}}\vspace{3mm}\\
-	Ára: #2 
+	Ára: #2
 };
-\node[anchor=south west,font=\scriptsize] at (4,0) {\includegraphics[width=2cm]{<?php print drupal_realpath('sites/all/themes/mez_theme/images/');?>2719-qr.jpg}};
+\node[anchor=south east,font=\scriptsize] at (22,0) {\qrcode[height=2cm]{http://zenekar.bme.hu/hu/concert/120-eves-jubileumi-hangverseny}};
 % Ticket data
 \node[anchor=south,align=center,rotate=90,font=\tiny] at (4,3.5) {
-Sorszám: \texttt{#3}\qquad
-Vásárlás ideje: \texttt{#4}
+\tiny Vásárlás ideje: \texttt{#4}\\
+\barcode[code=Code39,H=5mm]{3}\\
+Sorszám: \texttt{3}
 };
 % Sponsors
-\node[anchor=south east,align=right] at (22,0) {
+\node[anchor=south west,align=right] at (4,0) {
 	\addsponsor{nka.png}
 	\addsponsor{bme.png}
 	\addsponsor{bme-ehk.png}
+	\addsponsor{pro-progressio.png}
 };
 <?php if($env != 'live') :?>
-	\node [text opacity=0.5,rotate=-20,font=\Huge] at (11,3.5) {TESZT TESZT TESZT TESZT};
+	\node[draw,rounded corners=2pt, line width=0.5mm] [opacity=0.3,rotate=15,font=\Huge] at (11,3.5) {\bfseries MINTA MINTA MINTA MINTA MINTA};
 <?php endif;?>
 \end{tikzpicture}
 \end{center}
