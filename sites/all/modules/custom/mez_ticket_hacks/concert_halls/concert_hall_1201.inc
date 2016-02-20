@@ -40,6 +40,7 @@ function concert_hall_1201($concert_hall_nid, $concert_nid) {
     ->condition("{$concert_alias}.field_concert_target_id", $concert_nid)
     ->execute()
     ->fetchAllKeyed(0,0);
+  asort($ticket_prices);
   $return['markup'] .= '<div style="position:absolute; top:' . 0 . 'px; left:' . 0 . 'px;">
     <div class="mez-legend">';
     foreach ($ticket_prices as $ticket_price) {

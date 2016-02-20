@@ -1,4 +1,4 @@
-\documentclass[a4paper]{article}
+﻿\documentclass[a4paper]{article}
 \usepackage[T1]{fontenc}
 \usepackage[latin2]{inputenc}
 \usepackage{ae,aecompl}
@@ -37,7 +37,7 @@
 };
 \node[anchor=south west,align=center,font=\tiny] at (0,0) {
 \includegraphics[width=2.75cm]{<?php print drupal_realpath('sites/all/themes/mez_theme/images');?>mez-logo.png}\\
-\url{zenekar.bme.hu}
+\url{http://zenekar.bme.hu}
 };
 \draw (4,0)--(4,7);
 % Concert details
