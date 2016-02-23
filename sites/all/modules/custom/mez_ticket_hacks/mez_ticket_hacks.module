@@ -175,7 +175,7 @@ function mez_ticket_hacks_preprocess_mez_concert_hall(&$vars) {
   // Concert hall specific markup.
   $function = 'concert_hall_' . $vars['concert_hall_nid'];
   ctools_include($function, 'mez_ticket_hacks', 'concert_halls');
-  $vars['concert_hall_details'] = $function($vars['concert_hall_nid']);
+  $vars['concert_hall_details'] = $function($vars['concert_hall_nid'], $vars['concert_nid']);
 }
 
 /**
