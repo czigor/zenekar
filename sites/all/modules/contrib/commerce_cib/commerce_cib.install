@@ -16,7 +16,7 @@ function commerce_cib_requirements($phase) {
     $ret = module_enable(array('commerce_payment_fields', 'date', 'text'));
     $severity = empty($ret) ? REQUIREMENT_ERROR : REQUIREMENT_OK;
     $requirements['commerce_cib_commerce_payment_fields'] = array(
-      'title' => $t('Commerce Payment fields module dependency for Commerce CIB'),
+      'title' => $t('Commerce Payment fields and Date module dependency for Commerce CIB'),
       'value' => '',
       'severity' => $severity,
     );

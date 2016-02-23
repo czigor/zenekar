@@ -36,7 +36,7 @@ function mez_ticket_hacks_field_formatter_view($entity_type, $entity, $field, $i
   $settings = $display['settings'];
   switch ($display['type']) {
     case 'mez_concert_hall' :
-      $path = drupal_get_path('theme', 'mez_theme') . '/css/tickets.css';
+      $path = drupal_get_path('theme', 'mez_bootstrap') . '/css/tickets.css';
       drupal_add_css($path);
 
       drupal_add_js('misc/ajax.js');
@@ -89,7 +89,7 @@ function mez_ticket_hacks_theme() {
         'concert_hall_nid' => NULL,
        ),
       'template' => 'mez_concert_hall',
-      'path' => drupal_get_path('theme', 'mez_theme') . '/templates',
+      'path' => drupal_get_path('theme', 'mez_bootstrap') . '/templates',
     ),
     'mez_ticket' => array(
       'variables' => array(
@@ -102,7 +102,7 @@ function mez_ticket_hacks_theme() {
         'order' => NULL,
       ),
       'template' => 'mez_ticket_pdf',
-      'path' => drupal_get_path('theme', 'mez_theme') . '/templates/pdf',
+      'path' => drupal_get_path('theme', 'mez_bootstrap') . '/templates/pdf',
     ),
   );
 }
@@ -646,8 +646,6 @@ function mez_ticket_hacks_block_view($delta) {
 
   switch ($delta) {
     case 'cib_infos':
-      $path = drupal_get_path('theme', 'mez_theme') . '/css/tickets.css';
-
       $content = array();
       $variables = array(
         'path' => drupal_get_path('module', 'mez_ticket_hacks') . '/images/CIB_logo_30px.gif',
