@@ -3,7 +3,7 @@
  * @file ZAK concert hall specific markup.
  */
 
-function concert_hall_164($concert_hall_nid) {
+function concert_hall_164($concert_hall_nid, $concert_nid) {
   $return = array();
 
   $concert_hall = node_load($concert_hall_nid);
