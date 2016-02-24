@@ -55,8 +55,8 @@
 % Ticket data
 \node[anchor=south,align=center,rotate=90,font=\tiny] at (4,3.5) {
 \tiny Vásárlás ideje: \texttt{#4}\\
-\barcode[code=Code39,H=5mm]{3}\\
-Sorszám: \texttt{3}
+\barcode[code=Code39,H=5mm]{#3}\\
+Sorszám: \texttt{#3}
 };
 % Sponsors
 \node[anchor=south west,align=right] at (4,0) {
