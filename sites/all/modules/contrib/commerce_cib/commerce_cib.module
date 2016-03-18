@@ -168,24 +168,41 @@ function commerce_cib_redirect_form($form, &$form_state, $order, $payment_method
     }
 
     // Let's initialize the transaction
+    $ts = date("YmdHis", time());
+    $return_url = 'http://' . $_SERVER['SERVER_NAME'] . '/commerce_cib_finish/' . $order->order_id;
     $query10 = array(
       'CRYPTO' => 1,
       'MSGT' => 10,
       'TRID' => $trid,
       'UID' => $eki_user,
       'LANG' => 'HU',
-      'TS' => date("YmdHis", time()),
+      'TS' => $ts,
       'AUTH' => 0,
       'AMO' => $amo,
       'CUR' => $payment_method['settings']['cur'],
-      'URL' => 'http://' . $_SERVER['SERVER_NAME'] . '/commerce_cib_finish/' . $order->order_id,
+      'URL' => $return_url,
       'PID' => $payment_method['settings']['pid'],
     );
     $url = commerce_cib_create_url($query10, $payment_method['settings']);
     $answer = drupal_http_request($url);
+    $vars = [
+      '@orderid' => $order->order_id,
+      '@msgt' => 10,
+      '@trid' => $trid,
+      '@uid' => $eki_user,
+      '@ts' => $ts,
+      '@amo' => $amo,
+      '@url' => $return_url,
+      '@pid' => $payment_method['settings']['pid'],
+      '@code' => $answer->code,
+    ];
+    watchdog('commerce_cib', t('Request to CIB sent for order @orderid with MSGT @msgt, TRID @trid, UID @uid, TS @ts, AMO @amo, URL @url and PID @pid. The answer was returned a code @code.', $vars));
     if ($answer->code == 200) {
       $cleartext = ekiDecodeUrl($answer->data, $des);
       parse_str($cleartext, $query);
+      $vars['@cleartext'] = $cleartext;
+      watchdog('commerce_cib', t('Response from CIB sent for order @orderid, MSGT @msgt, TRID @trid. The response is: @cleartext.', $vars));
+
       if ($query['RC'] == '00') {
         $initialized = TRUE;
       }
@@ -212,6 +229,12 @@ function commerce_cib_redirect_form($form, &$form_state, $order, $payment_method
       'TRID' => $trid,
     );
     $url = commerce_cib_create_url($query20, $payment_method['settings'], 'customer');
+    $vars = [
+      '@pid' => $payment_method['settings']['pid'],
+      '@trid' => $trid,
+      '@transaction_id' => $new_transaction->transaction_id,
+    ];
+    watchdog('commerce_cib', t('CIB 20 redirect to MSGT 20, PID @pid, transaction id @transaction_id and TRID @trid.', $vars));
     header('Location: ' . $url);
     exit();
   }
@@ -246,6 +269,15 @@ function commerce_cib_finish_step($order) {
 
     $url = commerce_cib_create_url($query32, $payment_method['settings']);
     $answer = drupal_http_request($url);
+    $vars = [
+      '@orderid' => $order->order_id,
+      '@msgt' => 32,
+      '@trid' => $trid,
+      '@amo' => $amo,
+      '@pid' => $payment_method['settings']['pid'],
+      '@code' => $answer->code,
+    ];
+    watchdog('commerce_cib', t('Request to CIB sent for order @orderid with MSGT @msgt, TRID @trid, AMO @amo and PID @pid. The answer was returned a code @code.', $vars));
     // Everything seems to be allright so far.
     if ($answer->code == 200) {
       commerce_cib_analyse_message($answer, $payment_method, $order);
@@ -261,6 +293,15 @@ function commerce_cib_finish_step($order) {
       );
       $url = commerce_cib_create_url($query33, $payment_method['settings']);
       $answer = drupal_http_request($url);
+      $vars = [
+        '@orderid' => $order->order_id,
+        '@msgt' => 33,
+        '@trid' => $trid,
+        '@amo' => $amo,
+        '@pid' => $payment_method['settings']['pid'],
+        '@code' => $answer->code,
+      ];
+      watchdog('commerce_cib', t('Request to CIB sent for order @orderid with MSGT @msgt, TRID @trid, AMO @amo and PID @pid. The answer was returned a code @code.', $vars));
       if ($answer->code == 200) {
         commerce_cib_analyse_message($answer, $payment_method, $order);
       }
@@ -279,6 +320,15 @@ function commerce_cib_analyse_message($answer, $payment_method, $order) {
   $des = ($payment_method['settings']['env'] == 'live') ? $payment_method['settings']['des-live'] : $payment_method['settings']['des-test'];
   $cleartext2 = ekiDecodeUrl($answer->data, $des);
   parse_str($cleartext2, $query);
+  $vars = [
+    '@orderid' => $order->ordier_id,
+    '@trid' => $query['TRID'],
+    '@msgt' => $query['MSGT'],
+    '@rc' => $query['RC'],
+    '@rt' => $query['RT'],
+    '@anum' => $query['ANUM'],
+  ];
+  watchdog('commerce_cib', t('Message from CIB for order @orderid. TRID: @trid, MSGT: @msgt, RC: @rc, RT: @rt, ANUM: @anum.', $vars));
   $transaction = _commerce_cib_get_transaction($query['TRID']);
   $transaction->commerce_cib_msgt[LANGUAGE_NONE][0]['value'] = $query['MSGT'];
   $transaction->remote_status = $query['RC'];
@@ -404,6 +454,16 @@ function _commerce_cib_transaction_investigate($transaction) {
   );
   $url = commerce_cib_create_url($query33, $payment_method['settings']);
   $answer = drupal_http_request($url);
+  $vars = [
+    '@orderid' => $transaction->order_id,
+    '@msgt' => 33,
+    '@trid' => $transaction->remoote_id,
+    '@amo' => $transaction->amount,
+    '@pid' => $payment_method['settings']['pid'],
+    '@code' => $answer->code,
+  ];
+  watchdog('commerce_cib', t('Request to CIB sent for order @orderid with MSGT @msgt, TRID @trid, AMO @amo and PID @pid. The answer was returned a code @code.', $vars));
+
   $des = ($payment_method['settings']['env'] == 'live') ? $payment_method['settings']['des-live'] : $payment_method['settings']['des-test'];
   if ($answer->code == 200) {
     $cleartext2 = ekiDecodeUrl($answer->data, $des);
@@ -411,9 +471,14 @@ function _commerce_cib_transaction_investigate($transaction) {
     if (($query['TRID'] == $transaction['trid']) && ($query['MSGT'] == 31)) {
       $transaction->commerce_cib_msgt[LANGUAGE_NONE][0]['value'] = $query['MSGT'];
       $transaction->remote_status = $query['RC'];
-      $transaction->message = iconv('ISO-8859-2//TRANSLIT', 'UTF-8', $query['RT']); // Text messages are sent in latin2 by IIS.
+      // Text messages are sent in latin2 by IIS.
+      $transaction->message = iconv('ISO-8859-2//TRANSLIT', 'UTF-8', $query['RT']);
       $transaction->commerce_cib_anum[LANGUAGE_NONE][0]['value'] = $query['ANUM'];
-
+      $vars['@msgt'] = 31;
+      $vars['@trid'] = $query['TRID'];
+      $vars['@rc'] = $query['RC'];
+      $vars['@rt'] = $transaction->message;
+      watchdog('commerce_cib', t('Response from CIB sent for order @orderid. MSGT @msgt, TRID @trid, RC @rc, RT @rt.', $vars));
       $query37 = array(
         'MSGT' => 37,
         'PID' => $payment_method['settings']['pid'],
@@ -422,12 +487,25 @@ function _commerce_cib_transaction_investigate($transaction) {
       );
       $url = commerce_cib_create_url($query37, $payment_method['settings']);
       $answer = drupal_http_request($url);
+      $vars = [
+        '@orderid' => $transaction->order_id,
+        '@msgt' => 37,
+        '@trid' => $transaction->remoote_id,
+        '@amo' => $transaction->amount,
+        '@pid' => $payment_method['settings']['pid'],
+        '@code' => $answer->code,
+      ];
+      watchdog('commerce_cib', t('Request to CIB sent for order @orderid with MSGT @msgt, TRID @trid, AMO @amo and PID @pid. The answer was returned a code @code.', $vars));
+
       if ($answer->code == 200) {
         $cleartext2 = ekiDecodeUrl($answer->data, $des);
         parse_str($cleartext2, $query);
         if (($query['TRID'] == $transaction->remote_id) && ($query['MSGT'] == 38)) {
           $transaction->commerce_cib_history[LANGUAGE_NONE][0]['value'] = $query['HISTORY'];
         }
+        $vars['@cleartext'] = $cleartext2;
+        $vars['@msgt'] = $query['MSGT'];
+        watchdog('commerce_cib', t('Response from CIB sent for order @orderid, MSGT @msgt, TRID @trid. The response is: @cleartext.', $vars));
       }
 
     }
