@@ -196,7 +196,7 @@ function commerce_cib_redirect_form($form, &$form_state, $order, $payment_method
       '@pid' => $payment_method['settings']['pid'],
       '@code' => $answer->code,
     ];
-    watchdog('commerce_cib', t('Request to CIB sent for order @orderid with MSGT @msgt, TRID @trid, UID @uid, TS @ts, AMO @amo, URL @url and PID @pid. The answer was returned a code @code.', $vars));
+    watchdog('commerce_cib', t('Request to CIB sent for order @orderid with MSGT @msgt, TRID @trid, UID @uid, TS @ts, AMO @amo, URL @url and PID @pid. The answer returned a code @code.', $vars));
     if ($answer->code == 200) {
       $cleartext = ekiDecodeUrl($answer->data, $des);
       parse_str($cleartext, $query);
@@ -277,7 +277,7 @@ function commerce_cib_finish_step($order) {
       '@pid' => $payment_method['settings']['pid'],
       '@code' => $answer->code,
     ];
-    watchdog('commerce_cib', t('Request to CIB sent for order @orderid with MSGT @msgt, TRID @trid, AMO @amo and PID @pid. The answer was returned a code @code.', $vars));
+    watchdog('commerce_cib', t('Request to CIB sent for order @orderid with MSGT @msgt, TRID @trid, AMO @amo and PID @pid. The answer returned a code @code.', $vars));
     // Everything seems to be allright so far.
     if ($answer->code == 200) {
       commerce_cib_analyse_message($answer, $payment_method, $order);
@@ -301,7 +301,7 @@ function commerce_cib_finish_step($order) {
         '@pid' => $payment_method['settings']['pid'],
         '@code' => $answer->code,
       ];
-      watchdog('commerce_cib', t('Request to CIB sent for order @orderid with MSGT @msgt, TRID @trid, AMO @amo and PID @pid. The answer was returned a code @code.', $vars));
+      watchdog('commerce_cib', t('Request to CIB sent for order @orderid with MSGT @msgt, TRID @trid, AMO @amo and PID @pid. The answer returned a code @code.', $vars));
       if ($answer->code == 200) {
         commerce_cib_analyse_message($answer, $payment_method, $order);
       }
@@ -462,13 +462,13 @@ function _commerce_cib_transaction_investigate($transaction) {
     '@pid' => $payment_method['settings']['pid'],
     '@code' => $answer->code,
   ];
-  watchdog('commerce_cib', t('Request to CIB sent for order @orderid with MSGT @msgt, TRID @trid, AMO @amo and PID @pid. The answer was returned a code @code.', $vars));
+  watchdog('commerce_cib', t('Request to CIB sent for order @orderid with MSGT @msgt, TRID @trid, AMO @amo and PID @pid. The answer returned a code @code.', $vars));
 
   $des = ($payment_method['settings']['env'] == 'live') ? $payment_method['settings']['des-live'] : $payment_method['settings']['des-test'];
   if ($answer->code == 200) {
     $cleartext2 = ekiDecodeUrl($answer->data, $des);
     parse_str($cleartext2, $query);
-    if (($query['TRID'] == $transaction['trid']) && ($query['MSGT'] == 31)) {
+    if (($query['TRID'] == $transaction->remote_id) && ($query['MSGT'] == 31)) {
       $transaction->commerce_cib_msgt[LANGUAGE_NONE][0]['value'] = $query['MSGT'];
       $transaction->remote_status = $query['RC'];
       // Text messages are sent in latin2 by IIS.
@@ -495,7 +495,7 @@ function _commerce_cib_transaction_investigate($transaction) {
         '@pid' => $payment_method['settings']['pid'],
         '@code' => $answer->code,
       ];
-      watchdog('commerce_cib', t('Request to CIB sent for order @orderid with MSGT @msgt, TRID @trid, AMO @amo and PID @pid. The answer was returned a code @code.', $vars));
+      watchdog('commerce_cib', t('Request to CIB sent for order @orderid with MSGT @msgt, TRID @trid, AMO @amo and PID @pid. The answer returned a code @code.', $vars));
 
       if ($answer->code == 200) {
         $cleartext2 = ekiDecodeUrl($answer->data, $des);
