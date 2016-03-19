@@ -16,9 +16,9 @@ features[rules_config][] = rules_cib_timeouted_transaction
 features[rules_config][] = rules_cib_transaction_initialization_failure
 features[rules_config][] = rules_cib_unsuccesful_transaction
 
-; Information added by Drupal.org packaging script on 2016-02-23
-version = "7.x-2.1"
+; Information added by Drupal.org packaging script on 2016-03-19
+version = "7.x-2.2"
 core = "7.x"
 project = "commerce_cib"
-datestamp = "1456216448"
+datestamp = "1458391554"
 

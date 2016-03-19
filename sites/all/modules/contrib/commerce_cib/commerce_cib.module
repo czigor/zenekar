@@ -272,7 +272,7 @@ function commerce_cib_finish_step($order) {
     $vars = [
       '@orderid' => $order->order_id,
       '@msgt' => 32,
-      '@trid' => $trid,
+      '@trid' => $query['TRID'],
       '@amo' => $amo,
       '@pid' => $payment_method['settings']['pid'],
       '@code' => $answer->code,
@@ -296,7 +296,7 @@ function commerce_cib_finish_step($order) {
       $vars = [
         '@orderid' => $order->order_id,
         '@msgt' => 33,
-        '@trid' => $trid,
+        '@trid' => $query['TRID'],
         '@amo' => $amo,
         '@pid' => $payment_method['settings']['pid'],
         '@code' => $answer->code,
@@ -321,7 +321,7 @@ function commerce_cib_analyse_message($answer, $payment_method, $order) {
   $cleartext2 = ekiDecodeUrl($answer->data, $des);
   parse_str($cleartext2, $query);
   $vars = [
-    '@orderid' => $order->ordier_id,
+    '@orderid' => $order->order_id,
     '@trid' => $query['TRID'],
     '@msgt' => $query['MSGT'],
     '@rc' => $query['RC'],
@@ -457,7 +457,7 @@ function _commerce_cib_transaction_investigate($transaction) {
   $vars = [
     '@orderid' => $transaction->order_id,
     '@msgt' => 33,
-    '@trid' => $transaction->remoote_id,
+    '@trid' => $transaction->remote_id,
     '@amo' => $transaction->amount,
     '@pid' => $payment_method['settings']['pid'],
     '@code' => $answer->code,
@@ -490,7 +490,7 @@ function _commerce_cib_transaction_investigate($transaction) {
       $vars = [
         '@orderid' => $transaction->order_id,
         '@msgt' => 37,
-        '@trid' => $transaction->remoote_id,
+        '@trid' => $transaction->remote_id,
         '@amo' => $transaction->amount,
         '@pid' => $payment_method['settings']['pid'],
         '@code' => $answer->code,
