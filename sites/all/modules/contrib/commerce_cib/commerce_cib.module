@@ -217,7 +217,7 @@ function commerce_cib_redirect_form($form, &$form_state, $order, $payment_method
     $new_transaction->remote_id = $trid;
     $new_transaction->amount = $amo;
     $new_transaction->currency_code = $payment_method['settings']['cur'];
-    $new_transaction->commerce_cib_msgt[LANGUAGE_NONE][0]['value'] = '';
+    $new_transaction->commerce_cib_msg[LANGUAGE_NONE][0]['value'] = '';
     $new_transaction->commerce_cib_rc[LANGUAGE_NONE][0]['value'] = '';
     $new_transaction->commerce_cib_rt[LANGUAGE_NONE][0]['value'] = '';
     $new_transaction->commerce_cib_anum[LANGUAGE_NONE][0]['value'] = '';
@@ -330,7 +330,7 @@ function commerce_cib_analyse_message($answer, $payment_method, $order) {
   ];
   watchdog('commerce_cib', t('Message from CIB for order @orderid. TRID: @trid, MSGT: @msgt, RC: @rc, RT: @rt, ANUM: @anum.', $vars));
   $transaction = _commerce_cib_get_transaction($query['TRID']);
-  $transaction->commerce_cib_msgt[LANGUAGE_NONE][0]['value'] = $query['MSGT'];
+  $transaction->commerce_cib_msg[LANGUAGE_NONE][0]['value'] = $query['MSGT'];
   $transaction->remote_status = $query['RC'];
   $transaction->message = iconv('ISO-8859-2//TRANSLIT', 'UTF-8', $query['RT']);
   $transaction->commerce_cib_anum[LANGUAGE_NONE][0]['value'] = $query['ANUM'];
@@ -463,13 +463,12 @@ function _commerce_cib_transaction_investigate($transaction) {
     '@code' => $answer->code,
   ];
   watchdog('commerce_cib', t('Request to CIB sent for order @orderid with MSGT @msgt, TRID @trid, AMO @amo and PID @pid. The answer returned a code @code.', $vars));
-
-  $des = ($payment_method['settings']['env'] == 'live') ? $payment_method['settings']['des-live'] : $payment_method['settings']['des-test'];
   if ($answer->code == 200) {
+    $des = ($payment_method['settings']['env'] == 'live') ? $payment_method['settings']['des-live'] : $payment_method['settings']['des-test'];
     $cleartext2 = ekiDecodeUrl($answer->data, $des);
     parse_str($cleartext2, $query);
     if (($query['TRID'] == $transaction->remote_id) && ($query['MSGT'] == 31)) {
-      $transaction->commerce_cib_msgt[LANGUAGE_NONE][0]['value'] = $query['MSGT'];
+      $transaction->commerce_cib_msg[LANGUAGE_NONE][0]['value'] = $query['MSGT'];
       $transaction->remote_status = $query['RC'];
       // Text messages are sent in latin2 by IIS.
       $transaction->message = iconv('ISO-8859-2//TRANSLIT', 'UTF-8', $query['RT']);
@@ -507,14 +506,13 @@ function _commerce_cib_transaction_investigate($transaction) {
         $vars['@msgt'] = $query['MSGT'];
         watchdog('commerce_cib', t('Response from CIB sent for order @orderid, MSGT @msgt, TRID @trid. The response is: @cleartext.', $vars));
       }
-
     }
     else {
       $transaction->commerce_cib_rc[LANGUAGE_NONE][0]['value'] = '';
     }
-    $transaction['commerce_cib_end'][LANGUAGE_NONE][0]['value'] = time();
-    commerce_payment_transaction_save($transaction);
   }
+  $transaction->commerce_cib_end[LANGUAGE_NONE][0]['value'] = time();
+  commerce_payment_transaction_save($transaction);
 }
 
 /**
