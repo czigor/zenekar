@@ -423,7 +423,6 @@ function commerce_cib_handle_timeouts() {
       $order = commerce_order_load($tt->order_id);
       // Get transaction error codes and history.
       _commerce_cib_transaction_investigate($tt);
-      watchdog('commerce_cib', 'Transaction query returned: RC=!rc, RT=!rt, HISTORY=!history, ANUM=!anum, TRID=!trid', array('!rc' => $tt->remote_status, '!rt' => $tt->message, '!history' => $history[0]['value'], '!anum' => empty($anum[0]['value']) ? $anum[0]['value'] : 'n/a', '!trid' => $tt->remote_id));
       commerce_order_status_update($order, 'canceled');
       rules_invoke_event('commerce_cib_timeout', $order);
     }
