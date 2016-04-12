@@ -13,9 +13,9 @@ dependencies[] = text
 dependencies[] = commerce_payment_fields
 features[features_api][] = api:2
 
-; Information added by Drupal.org packaging script on 2016-02-23
-version = "7.x-2.1"
+; Information added by Drupal.org packaging script on 2016-03-21
+version = "7.x-2.5"
 core = "7.x"
 project = "commerce_cib"
-datestamp = "1456216448"
+datestamp = "1458577426"
 

@@ -5,93 +5,74 @@
 /**
  * Ticket
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/tickets\.scss}line{font-family:\0000312}}
+/* line 12, ../sass/tickets.scss */
 .mez-concert-hall-field {
   font-size: 1.2em;
-  text-align: center;
-}
+  text-align: center; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/tickets\.scss}line{font-family:\0000317}}
+/* line 17, ../sass/tickets.scss */
 .mez-concert-hall {
-  height: 500px;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/tickets\.scss}line{font-family:\0000319}}
-.mez-concert-hall .mez-ticket span.inner {
-  width: 9px;
-  height: 9px;
-  display: block;
-  margin: 0;
-  padding: 0;
-  border-radius: 4px;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/tickets\.scss}line{font-family:\0000327}}
-.mez-concert-hall .mez-ticket.sold span.inner {
-  background-color: red;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/tickets\.scss}line{font-family:\0000330}}
-.mez-concert-hall .mez-ticket.free span.inner {
-  background-color: green;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/tickets\.scss}line{font-family:\0000333}}
-.mez-concert-hall .mez-ticket.reserved span.inner {
-  background-color: #eeee00;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/tickets\.scss}line{font-family:\0000336}}
-.mez-concert-hall .mez-legend .mez-ticket .inner {
-  float: left;
-  position: relative;
-  top: 8px;
-  margin-right: 10px;
-}
+  height: 500px; }
+  /* line 19, ../sass/tickets.scss */
+  .mez-concert-hall .mez-ticket span.inner {
+    width: 9px;
+    height: 9px;
+    display: block;
+    margin: 0;
+    padding: 0;
+    border-radius: 2px;
+    border: solid #404040 1px; }
+  /* line 28, ../sass/tickets.scss */
+  .mez-concert-hall .mez-ticket.sold span.inner {
+    background-color: lightgray; }
+  /* line 31, ../sass/tickets.scss */
+  .mez-concert-hall .mez-ticket.free span.inner {
+    background-color: green; }
+  /* line 34, ../sass/tickets.scss */
+  .mez-concert-hall .mez-ticket.free.mez-ticket-price-1000 span.inner {
+    background-color: orange; }
+  /* line 37, ../sass/tickets.scss */
+  .mez-concert-hall .mez-ticket.free.mez-ticket-price-2000 span.inner {
+    background-color: blue; }
+  /* line 40, ../sass/tickets.scss */
+  .mez-concert-hall .mez-ticket.free.mez-ticket-price-2500 span.inner {
+    background-color: green; }
+  /* line 43, ../sass/tickets.scss */
+  .mez-concert-hall .mez-ticket.free.mez-ticket-price-10000 span.inner {
+    background-color: black; }
+  /* line 46, ../sass/tickets.scss */
+  .mez-concert-hall .mez-ticket.reserved span.inner {
+    background-color: #eeee00; }
+  /* line 49, ../sass/tickets.scss */
+  .mez-concert-hall .mez-legend .mez-ticket .inner {
+    float: left;
+    position: relative;
+    top: 5px;
+    margin-right: 10px; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/tickets\.scss}line{font-family:\0000346}}
+/* line 59, ../sass/tickets.scss */
 body.node-type-concert .ds-2col-stacked .group-left {
   width: 190px;
-  margin-right: 20px;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/tickets\.scss}line{font-family:\0000350}}
+  margin-right: 20px; }
+/* line 63, ../sass/tickets.scss */
 body.node-type-concert .ds-2col-stacked .group-right {
   width: 760px;
-  float: left;
-}
+  float: left; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/tickets\.scss}line{font-family:\0000358}}
+/* line 71, ../sass/tickets.scss */
 .view-mez-shopping-cart-block .views-field-commerce-total {
-  text-align: right;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/tickets\.scss}line{font-family:\0000361}}
+  text-align: right; }
+/* line 74, ../sass/tickets.scss */
 .view-mez-shopping-cart-block .views-row-even {
-  background-color: #D99216;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/tickets\.scss}line{font-family:\0000364}}
+  background-color: #D99216; }
+/* line 77, ../sass/tickets.scss */
 .view-mez-shopping-cart-block .views-row-last {
   border-bottom: 1px solid black;
   margin-bottom: 10px;
-  padding-bottom: 10px;
-}
+  padding-bottom: 10px; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/tickets\.scss}line{font-family:\0000371}}
+/* line 84, ../sass/tickets.scss */
 .mez_concert_bank_information {
   font-size: 0.6em;
-  text-align: right;
-}
-
-/**
- * 2014. 05. 19. concert
- */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/tickets\.scss}line{font-family:\0000380}}
-body.page-node-1206 .mez-concert-hall .mez-ticket.free.mez-ticket-price-1000 span.inner {
-  background-color: #54C571;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/tickets\.scss}line{font-family:\0000383}}
-body.page-node-1206 .mez-concert-hall .mez-ticket.free.mez-ticket-price-2000 span.inner {
-  background-color: #9DC209;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/tickets\.scss}line{font-family:\0000386}}
-body.page-node-1206 .mez-concert-hall .mez-ticket.free.mez-ticket-price-2500 span.inner {
-  background-color: #00ff00;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/czigor\/public_html\/zenekar\/sites\/all\/themes\/mez_theme\/sass\/tickets\.scss}line{font-family:\0000389}}
-body.page-node-1206 .mez-concert-hall .mez-ticket.free.mez-ticket-price-10000 span.inner {
-  background-color: #254117;
-}
+  text-align: right; }
+  
