@@ -1,13 +1,8 @@
- includes/file.inc                  |   70 ++++++++++++++++++++++++++++++------
- includes/stream_wrappers.inc       |    4 +--
- modules/simpletest/tests/file.test |   35 ++++++++++++++++++
- 3 files changed, 97 insertions(+), 12 deletions(-)
-
 diff --git a/includes/file.inc b/includes/file.inc
-index 09a4424..8494935 100644
+index ba3da06..a394304 100644
 --- a/includes/file.inc
 +++ b/includes/file.inc
-@@ -441,8 +441,8 @@ function file_prepare_directory(&$directory, $options = FILE_MODIFY_PERMISSIONS)
+@@ -437,8 +437,8 @@ function file_prepare_directory(&$directory, $options = FILE_MODIFY_PERMISSIONS)
    if (!is_dir($directory)) {
      // Let mkdir() recursively create directories and use the default directory
      // permissions.
@@ -18,7 +13,7 @@ index 09a4424..8494935 100644
      }
      return FALSE;
    }
-@@ -2309,19 +2309,21 @@ function drupal_basename($uri, $suffix = NULL) {
+@@ -2381,19 +2381,21 @@ function drupal_basename($uri, $suffix = NULL) {
  }
  
  /**
@@ -45,9 +40,9 @@ index 09a4424..8494935 100644
 + *   Create directories recursively, defaults to FALSE. Cannot work with a mode
 + *   which denies writing or execution to the owner of the process.
   * @param $context
-  *   Refer to http://php.net/manual/en/ref.stream.php
+  *   Refer to http://php.net/manual/ref.stream.php
   *
-@@ -2337,7 +2339,55 @@ function drupal_mkdir($uri, $mode = NULL, $recursive = FALSE, $context = NULL) {
+@@ -2409,7 +2411,55 @@ function drupal_mkdir($uri, $mode = NULL, $recursive = FALSE, $context = NULL) {
      $mode = variable_get('file_chmod_directory', 0775);
    }
  
@@ -105,7 +100,7 @@ index 09a4424..8494935 100644
    }
    else {
 diff --git a/includes/stream_wrappers.inc b/includes/stream_wrappers.inc
-index fa401c6..4908b29 100644
+index 4882938..54c58ef 100644
 --- a/includes/stream_wrappers.inc
 +++ b/includes/stream_wrappers.inc
 @@ -636,10 +636,10 @@ abstract class DrupalLocalStreamWrapper implements DrupalStreamWrapperInterface
@@ -122,7 +117,7 @@ index fa401c6..4908b29 100644
    }
  
 diff --git a/modules/simpletest/tests/file.test b/modules/simpletest/tests/file.test
-index ebaa0c0..1d5fa25 100644
+index 89ecac7..6a9794f 100644
 --- a/modules/simpletest/tests/file.test
 +++ b/modules/simpletest/tests/file.test
 @@ -108,6 +108,7 @@ class FileTestCase extends DrupalWebTestCase {
@@ -141,14 +136,14 @@ index ebaa0c0..1d5fa25 100644
  
      // PHP on Windows has limited support for file permissions. Usually each of
      // "user", "group" and "other" use one octal digit (3 bits) to represent the
-@@ -912,6 +914,39 @@ class FileDirectoryTest extends FileTestCase {
+@@ -894,6 +896,39 @@ class FileDirectoryTest extends FileTestCase {
    }
  
    /**
 +   * Test local directory handling functions.
 +   */
 +  function testFileCheckLocalDirectoryHandling() {
-+    $directory = conf_path() . '/files';
++    $directory = file_default_scheme() . '://';
 +
 +    // Check a new recursively created local directory for correct file system
 +    // permissions.
@@ -156,18 +151,18 @@ index ebaa0c0..1d5fa25 100644
 +    $child = $this->randomName();
 +
 +    // Files directory already exists.
-+    $this->assertTrue(is_dir($directory), t('Files directory already exists.'), 'File');
++    $this->assertTrue(is_dir($directory), 'Files directory already exists.', 'File');
 +    // Make files directory writable only.
 +    $old_mode = fileperms($directory);
 +
 +    // Create the directories.
 +    $parent_path = $directory . DIRECTORY_SEPARATOR . $parent;
 +    $child_path = $parent_path . DIRECTORY_SEPARATOR . $child;
-+    $this->assertTrue(drupal_mkdir($child_path, 0775, TRUE), t('No error reported when creating new local directories.'), 'File');
++    $this->assertTrue(drupal_mkdir($child_path, 0775, TRUE), 'No error reported when creating new local directories.', 'File');
 +
 +    // Ensure new directories also exist.
-+    $this->assertTrue(is_dir($parent_path), t('New parent directory actually exists.'), 'File');
-+    $this->assertTrue(is_dir($child_path), t('New child directory actually exists.'), 'File');
++    $this->assertTrue(is_dir($parent_path), 'New parent directory actually exists.', 'File');
++    $this->assertTrue(is_dir($child_path), 'New child directory actually exists.', 'File');
 +
 +    // Check that new directory permissions were set properly.
 +    $this->assertDirectoryPermissions($parent_path, 0775);
