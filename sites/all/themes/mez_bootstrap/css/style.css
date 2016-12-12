@@ -6962,14 +6962,30 @@ body:not(.front) {
   font-style: italic;
   margin-bottom: 20px;
   margin-top: -5px; }
+/* line 25, ../sass/_node.scss */
+.node-type-concert .partleader {
+  font-style: italic; }
+/* line 29, ../sass/_node.scss */
+.node-type-concert .auxiliary:after {
+  content: "*"; }
+/* line 34, ../sass/_node.scss */
+.node-type-concert table#views-aggregator-datatable td {
+  padding: 2px;
+  padding-left: 10px; }
+/* line 39, ../sass/_node.scss */
+.node-type-concert table#views-aggregator-datatable td.views-field-field-instrument {
+  white-space: nowrap;
+  padding-right: 10px;
+  font-weight: bold;
+  vertical-align: text-top; }
 
-/* line 27, ../sass/_node.scss */
+/* line 51, ../sass/_node.scss */
 .node-mez-news .field-name-post-date {
   font-size: 12px;
   font-style: italic;
   margin-bottom: 20px;
   margin-top: -5px; }
-/* line 33, ../sass/_node.scss */
+/* line 57, ../sass/_node.scss */
 .node-mez-news .field-name-field-media {
   margin-top: 20px; }
 
