@@ -6960,7 +6960,7 @@ body:not(.front) {
 /* line 103, ../sass/_views.scss */
 .repertoir-piece-item {
   display: list-item;
-  list-style-type: decimal;
+  list-style-type: disc;
   list-style-position: inside; }
 
 /* line 3, ../sass/_node.scss */
