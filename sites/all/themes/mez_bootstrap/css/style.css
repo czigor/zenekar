@@ -6789,17 +6789,26 @@ button.close {
       .front .front-section {
         min-height: 90vh; } }
   /* line 21, ../sass/_front.scss */
-  .front #opening {
-    padding-top: 20px; }
-    /* line 23, ../sass/_front.scss */
-    .front #opening .title {
+  .front #main {
+    padding-top: 20px;
+    padding-bottom: 200px; }
+    /* line 24, ../sass/_front.scss */
+    .front #main .title {
       position: relative;
       text-align: center;
-      color: white; }
-      /* line 27, ../sass/_front.scss */
-      .front #opening .title span {
+      color: white;
+      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; }
+      /* line 29, ../sass/_front.scss */
+      .front #main .title span {
         font-style: italic; }
-  /* line 33, ../sass/_front.scss */
+  /* line 35, ../sass/_front.scss */
+  .front .well {
+    opacity: 0.9; }
+    /* line 37, ../sass/_front.scss */
+    .front .well img {
+      margin-left: auto;
+      margin-right: auto; }
+  /* line 43, ../sass/_front.scss */
   .front .jumbotron-inner {
     top: 20vh;
     left: 10vw;
@@ -6807,28 +6816,27 @@ button.close {
     position: relative;
     background-color: #fff;
     width: 40vw;
-    opacity: 0.6; }
-    @media (min-width: 768px) {
-      /* line 33, ../sass/_front.scss */
-      .front .jumbotron-inner {
-        min-width: 700px; } }
-    @media (max-width: 768px) {
-      /* line 33, ../sass/_front.scss */
-      .front .jumbotron-inner {
-        min-width: 250px; } }
-  /* line 48, ../sass/_front.scss */
+    opacity: 0.9;
+    /*    @media (min-width: $screen-sm-min) {
+          min-width: 600px;
+        }
+        @media (max-width: $screen-sm-min) {
+          min-width: 250px;
+        }
+    */ }
+  /* line 59, ../sass/_front.scss */
   .front .jumbotron-outer {
     width: 100vw;
     margin-bottom: 0;
     padding-top: 50px; }
   @media (max-height: 800px) {
-    /* line 54, ../sass/_front.scss */
+    /* line 65, ../sass/_front.scss */
     .front .jumbotron p {
       font-size: 14px; } }
-  /* line 59, ../sass/_front.scss */
+  /* line 70, ../sass/_front.scss */
   .front .jumbotron .field-name-node-link {
     text-align: right; }
-    /* line 62, ../sass/_front.scss */
+    /* line 73, ../sass/_front.scss */
     .front .jumbotron .field-name-node-link .btn-primary a {
       color: #fff; }
 
