@@ -10,7 +10,7 @@
   .front-section {
     width: 100vw;
     position: relative;
-    min-height: 800px;
+    overflow: hidden;
     margin-bottom: -30px;
     @media (min-height: 800px) {
       min-height: 90vh;
@@ -19,49 +19,29 @@
 
   /* additional sections */
   #main {
-    padding-top: 20px;
-	padding-bottom: 200px;
 	.title {
+      padding-top: 100px;
+  	  padding-bottom: 50px;
       position: relative;
       text-align: center;
       color: white;
-	  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+	  text-shadow: -1px -1px black, 1px 1px black, 1px -1px black, -1px 1px black;
       span {
         font-style: italic;
       }
     }
   }
-  
-  .well {
-    opacity: 0.9;
-	img {
-	  margin-left: auto;
-      margin-right: auto;
-	}
-  }
-  
-  .jumbotron-inner {
-    top:20vh;
-    left: 10vw;
+	
+  #opening {
+	  margin-bottom: 200px;
+	}	
+	
+	
+  .jumbotron {
+    opacity: 0.95;
     color: black;
     position: relative;
-    background-color: #fff;
-    width: 40vw;
-    opacity: 0.9;
-/*    @media (min-width: $screen-sm-min) {
-      min-width: 600px;
-    }
-    @media (max-width: $screen-sm-min) {
-      min-width: 250px;
-    }
-*/
-  }
-  .jumbotron-outer {
-    width: 100vw;
-    margin-bottom: 0;
-    padding-top: 50px;
-  }
-  .jumbotron {
+	margin-bottom: 100px;
     p {
       @media (max-height: 800px) {
         font-size: 14px;
@@ -75,5 +55,29 @@
         }
       }
     }
+  }
+
+  
+  
+  .jumbotron-inner {
+    top:20vh;
+    left: 10vw;
+    color: black;
+    position: relative;
+    background-color: #fff;
+    width: 40vw;
+/*    @media (min-width: $screen-sm-min) {
+      min-width: 600px;
+    }
+    @media (max-width: $screen-sm-min) {
+      min-width: 250px;
+    }
+*/
+  }
+  .jumbotron-outer {
+    width: 100vw;
+    margin-bottom: 0;
+    padding-top: 50px;
+	opacity: 1;
   }
 }
