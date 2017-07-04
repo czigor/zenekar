@@ -648,7 +648,7 @@ function mez_ticket_hacks_block_view($delta) {
     case 'cib_infos':
       $content = array();
       $variables = array(
-        'path' => drupal_get_path('module', 'mez_ticket_hacks') . '/images/CIB_logo_30px.gif',
+        'path' => drupal_get_path('module', 'mez_ticket_hacks') . '/images/CIB_logo_30px.png',
         'alt' => t('Bank card payment provider: CIB Bank Inc.'),
         'title' => t('Bank card payment provider: CIB Bank Inc.'),
       );
@@ -659,7 +659,7 @@ function mez_ticket_hacks_block_view($delta) {
         '#weight' => -10,
       );
       $variables = array(
-        'path' => drupal_get_path('module', 'mez_ticket_hacks') . '/images/bankcard_logos_30px.gif',
+        'path' => drupal_get_path('module', 'mez_ticket_hacks') . '/images/Kartyalogok_30px.png',
         'alt' => t('Accepted cards'),
         'title' => t('Accepted cards'),
       );
