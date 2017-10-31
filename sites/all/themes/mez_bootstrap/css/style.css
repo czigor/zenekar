@@ -6857,9 +6857,7 @@ footer.footer.container {
   footer.footer.container .block {
     display: inline;
     float: left;
-    position: relative;
-    margin-left: 10px;
-    margin-right: 10px; }
+    position: relative; }
     /* line 23, ../sass/_page.scss */
     footer.footer.container .block .views-row {
       background-color: black;
