@@ -49,3 +49,11 @@ function mez_bootstrap_menu_link(array $variables) {
 
   return '<li' . drupal_attributes($element['#attributes']) . '>' . $output . $sub_menu . "</li>\n";
 }
+
+/**
+ * Overrides All Day label from Date.
+ */
+
+function mez_bootstrap_date_all_day_label() {
+  return t('');
+}

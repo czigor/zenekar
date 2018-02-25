@@ -6782,24 +6782,43 @@ button.close {
   .front .front-section {
     width: 100vw;
     position: relative;
-    min-height: 800px;
+    overflow: hidden;
     margin-bottom: -30px; }
     @media (min-height: 800px) {
       /* line 10, ../sass/_front.scss */
       .front .front-section {
         min-height: 90vh; } }
-  /* line 21, ../sass/_front.scss */
+  /* line 22, ../sass/_front.scss */
+  .front #main .title {
+    padding-top: 100px;
+    padding-bottom: 50px;
+    position: relative;
+    text-align: center;
+    color: white;
+    text-shadow: -1px -1px black, 1px 1px black, 1px -1px black, -1px 1px black; }
+    /* line 29, ../sass/_front.scss */
+    .front #main .title span {
+      font-style: italic; }
+  /* line 35, ../sass/_front.scss */
   .front #opening {
-    padding-top: 20px; }
-    /* line 23, ../sass/_front.scss */
-    .front #opening .title {
-      position: relative;
-      text-align: center;
-      color: white; }
-      /* line 27, ../sass/_front.scss */
-      .front #opening .title span {
-        font-style: italic; }
-  /* line 33, ../sass/_front.scss */
+    margin-bottom: 200px; }
+  /* line 40, ../sass/_front.scss */
+  .front .jumbotron {
+    opacity: 0.95;
+    color: black;
+    position: relative;
+    margin-bottom: 100px; }
+    @media (max-height: 800px) {
+      /* line 45, ../sass/_front.scss */
+      .front .jumbotron p {
+        font-size: 14px; } }
+    /* line 50, ../sass/_front.scss */
+    .front .jumbotron .field-name-node-link {
+      text-align: right; }
+      /* line 53, ../sass/_front.scss */
+      .front .jumbotron .field-name-node-link .btn-primary a {
+        color: #fff; }
+  /* line 62, ../sass/_front.scss */
   .front .jumbotron-inner {
     top: 20vh;
     left: 10vw;
@@ -6807,30 +6826,19 @@ button.close {
     position: relative;
     background-color: #fff;
     width: 40vw;
-    opacity: 0.6; }
-    @media (min-width: 768px) {
-      /* line 33, ../sass/_front.scss */
-      .front .jumbotron-inner {
-        min-width: 700px; } }
-    @media (max-width: 768px) {
-      /* line 33, ../sass/_front.scss */
-      .front .jumbotron-inner {
-        min-width: 250px; } }
-  /* line 48, ../sass/_front.scss */
+    /*    @media (min-width: $screen-sm-min) {
+          min-width: 600px;
+        }
+        @media (max-width: $screen-sm-min) {
+          min-width: 250px;
+        }
+    */ }
+  /* line 77, ../sass/_front.scss */
   .front .jumbotron-outer {
     width: 100vw;
     margin-bottom: 0;
-    padding-top: 50px; }
-  @media (max-height: 800px) {
-    /* line 54, ../sass/_front.scss */
-    .front .jumbotron p {
-      font-size: 14px; } }
-  /* line 59, ../sass/_front.scss */
-  .front .jumbotron .field-name-node-link {
-    text-align: right; }
-    /* line 62, ../sass/_front.scss */
-    .front .jumbotron .field-name-node-link .btn-primary a {
-      color: #fff; }
+    padding-top: 50px;
+    opacity: 1; }
 
 /* line 2, ../sass/_page.scss */
 footer.footer.container {
@@ -6849,9 +6857,7 @@ footer.footer.container {
   footer.footer.container .block {
     display: inline;
     float: left;
-    position: relative;
-    margin-left: 10px;
-    margin-right: 10px; }
+    position: relative; }
     /* line 23, ../sass/_page.scss */
     footer.footer.container .block .views-row {
       background-color: black;
