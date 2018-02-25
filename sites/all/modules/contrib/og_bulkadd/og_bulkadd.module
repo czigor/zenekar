@@ -9,6 +9,7 @@
  * Implements hook_menu().
  */
 function og_bulkadd_menu() {
+  $items = array();
   $items['group/%/%/admin/people/bulk-add-user'] = array(
     'page callback' => 'drupal_get_form',
     'page arguments' => array('og_bulkadd_users_form', 1, 2),
@@ -47,7 +48,7 @@ function og_bulkadd_users_form($form, &$form_state, $group_type, $group_id) {
 
   $field_names = og_get_group_audience_fields();
   $field_name = key($field_names);
-  // Ger group members
+  // Get group members
   $query = new EntityFieldQuery();
   $result = $query->entityCondition('entity_type', 'user')
     ->propertyCondition('status', 1)
@@ -59,17 +60,18 @@ function og_bulkadd_users_form($form, &$form_state, $group_type, $group_id) {
   }
 
   $nonmember_uids = array_diff($user_uids, $group_member_uids);
-  $users = user_load_multiple($nonmember_uids);
-  $user_options = array();
-  foreach ($users as $user) {
-    $user_options[$user->uid] = $user->name;
-  }
+  $non_members = db_select('users', 'u')
+    ->fields('u', array('uid', 'name'))
+    ->condition('u.uid', $nonmember_uids)
+    ->orderBy('u.name')
+    ->execute()
+    ->fetchAllKeyed();
 
   $form['users'] = array(
     '#type' => 'select',
     '#default_value' => NULL,
     '#title' => t('Select the users to add'),
-    '#options' => $user_options,
+    '#options' => $non_members,
     '#multiple' => TRUE,
   );
 
