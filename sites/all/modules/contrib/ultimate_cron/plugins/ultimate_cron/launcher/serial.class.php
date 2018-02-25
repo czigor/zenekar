@@ -225,8 +225,14 @@ class UltimateCronSerialLauncher extends UltimateCronLauncher {
       // Run job.
       $job->run();
     }
+    catch (Throwable $e) {
+      watchdog_exception('serial_launcher', $e, 'Error executing %job: @error', array('%job' => $job->name, '@error' => (string) $e), WATCHDOG_ERROR);
+      $log_entry->finish();
+      $job->unlock($lock_id);
+      return FALSE;
+    }
     catch (Exception $e) {
-      watchdog('serial_launcher', 'Error executing %job: @error', array('%job' => $job->name, '@error' => (string) $e), WATCHDOG_ERROR);
+      watchdog_exception('serial_launcher', $e, 'Error executing %job: @error', array('%job' => $job->name, '@error' => (string) $e), WATCHDOG_ERROR);
       $log_entry->finish();
       $job->unlock($lock_id);
       return FALSE;
@@ -424,4 +430,5 @@ class UltimateCronSerialLauncher extends UltimateCronLauncher {
       ultimate_cron_poorman_trigger();
     }
   }
+
 }

@@ -115,7 +115,7 @@ class UltimateCronQueueSettings extends UltimateCronTaggedSettings {
         }
       }
       try {
-        $function($item->data);
+        call_user_func($function, $item->data);
         $queue->deleteItem($item);
         $items++;
         // Sleep after processing retrieving.
@@ -123,9 +123,17 @@ class UltimateCronQueueSettings extends UltimateCronTaggedSettings {
           usleep($settings['queue']['item_delay'] * 1000000);
         }
       }
+      catch (Throwable $e) {
+        // Just continue ...
+        watchdog_exception($job->hook['module'], $e, "Queue item @item_id from queue @queue failed with message @message", array(
+          '@item_id' => $item->item_id,
+          '@queue' => $settings['queue']['name'],
+          '@message' => (string) $e,
+        ), WATCHDOG_ERROR);
+      }
       catch (Exception $e) {
         // Just continue ...
-        watchdog($job->hook['module'], "Queue item @item_id from queue @queue failed with message @message", array(
+        watchdog_exception($job->hook['module'], $e, "Queue item @item_id from queue @queue failed with message @message", array(
           '@item_id' => $item->item_id,
           '@queue' => $settings['queue']['name'],
           '@message' => (string) $e,
@@ -410,4 +418,5 @@ class UltimateCronQueueSettings extends UltimateCronTaggedSettings {
       }
     }
   }
+
 }
