@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Template file for the formatted "colored message" of the colorfield module.
