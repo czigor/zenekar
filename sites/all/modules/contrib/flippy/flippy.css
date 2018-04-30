@@ -19,7 +19,7 @@ ul.flippy li {
   display: none;
 }
 
-.flippy li.previous.empty, .flippy li.next.empty {
+.flippy li.prev.empty, .flippy li.next.empty {
   color: LightGrey;
 }
 

@@ -160,8 +160,6 @@ function flippy_form_node_type_form_alter(&$form, $form_state) {
 
     $form['flippy']['flippy_token'] = array(
       '#type' => 'fieldset',
-      '#collapsible' => TRUE,
-      '#collapsed' => TRUE,
       '#title' => t('Browse available tokens'),
       '#states' => array(
         'visible' => array(
@@ -171,7 +169,7 @@ function flippy_form_node_type_form_alter(&$form, $form_state) {
     );
 
     $form['flippy']['flippy_token']['flippy_token_browser'] = array(
-      '#theme' => 'token_tree',
+      '#theme' => 'token_tree_link',
       '#token_types' => array('node'),
     );
 
@@ -352,8 +350,8 @@ function flippy_build_list($node) {
     // Create a starting-point EntityFieldQuery object
     global $language;
     $query = db_select('node', 'n');
-    $query->condition('type', $node->type)
-      ->condition('status', 1)
+    $query->condition('n.type', $node->type)
+      ->condition('n.status', 1)
       ->condition('n.nid', $node->nid, '!=')
       ->condition(db_or()
         ->condition('n.language', array($language->language, LANGUAGE_NONE), 'IN')
@@ -377,13 +375,13 @@ function flippy_build_list($node) {
       // set the conditions
 
       // first and last queries
-      $first->join('field_data_' . $sort, $sort, 'n.nid = ' . $sort . '.entity_id');
+      $first->join('field_data_' . $sort, $sort, 'n.nid = ' . $sort . '.entity_id AND ' . $sort . '.entity_type = :entity_type', array(':entity_type' => 'node'));
       $first->condition($sort . '.' . $sort . '_value', $field_value, $before);
-      $last->join('field_data_' . $sort, $sort, 'n.nid = ' . $sort . '.entity_id');
+      $last->join('field_data_' . $sort, $sort, 'n.nid = ' . $sort . '.entity_id AND ' . $sort . '.entity_type = :entity_type', array(':entity_type' => 'node'));
       $last->condition($sort . '.' . $sort . '_value', $field_value, $after);
 
       // previous and next queries
-      $prev->join('field_data_' . $sort, $sort, 'n.nid = ' . $sort . '.entity_id');
+      $prev->join('field_data_' . $sort, $sort, 'n.nid = ' . $sort . '.entity_id AND ' . $sort . '.entity_type = :entity_type', array(':entity_type' => 'node'));
       $prev->condition(db_or()
         ->condition($sort . '.' . $sort . '_value', $field_value, $before)
         ->condition(db_and()
@@ -392,7 +390,7 @@ function flippy_build_list($node) {
         )
       );
 
-      $next->join('field_data_' . $sort, $sort, 'n.nid = ' . $sort . '.entity_id');
+      $next->join('field_data_' . $sort, $sort, 'n.nid = ' . $sort . '.entity_id AND ' . $sort . '.entity_type = :entity_type', array(':entity_type' => 'node'));
       $next->condition(db_or()
         ->condition($sort . '.' . $sort . '_value', $field_value, $after)
         ->condition(db_and()
