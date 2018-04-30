@@ -31,3 +31,11 @@ Installation:
   libraries/jquery-miniColors/jquery.minicolors.css
   libraries/jquery-miniColors/jquery.minicolors.js
 * Enable the colorfield minicolors module.
+
+Custom form API example for a normal colorpicker:
+  $form['text_color'] = array(
+    '#type' => 'colorfield_picker',
+    '#title' => 'Text Color',
+    '#default_value' => variable_get('text_color', '#000'),
+  );
+q
