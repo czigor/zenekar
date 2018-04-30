@@ -9,9 +9,15 @@
  * Implements hook_install().
  */
 function eu_cookie_compliance_install() {
+
   $default_filter_format = filter_default_format();
   if ($default_filter_format == 'filtered_html') {
     $default_filter_format = 'full_html';
+  }
+
+  $cookie_policy = _eu_cookie_compliance_find_privacy_policy();
+  if (!$cookie_policy) {
+    $cookie_policy = '<front>';
   }
 
   $popup_settings = array(
@@ -23,8 +29,25 @@ function eu_cookie_compliance_install() {
       'value' => '<h2>Thank you for accepting cookies</h2><p>You can now hide this message or find out more about cookies.</p>',
       'format' => $default_filter_format,
     ),
+    'popup_enabled' => TRUE,
+    'popup_position' => FALSE,
+    'popup_bg_hex' => '0779bf',
+    'popup_text_hex' => 'fff',
+    'popup_agreed_enabled' => FALSE,
+    'popup_height' => '',
+    'popup_width' => '100%',
+    'popup_delay' => 1000,
+    'popup_link' => $cookie_policy,
+    'fixed_top_position' => TRUE,
   );
   variable_set('eu_cookie_compliance', $popup_settings);
+
+  // Enable banner for all roles.
+  $roles = user_roles();
+  $permission = 'display EU Cookie Compliance popup';
+  foreach ($roles as $rid => $value) {
+    user_role_grant_permissions($rid, array($permission));
+  }
 }
 
 /**
@@ -36,7 +59,30 @@ function eu_cookie_compliance_uninstall() {
 }
 
 /**
- * Change the popup delay from seconds to milliseconds.
+ * Implements hook_requirements().
+ */
+function eu_cookie_compliance_requirements($phase) {
+  $requirements = array();
+  $settings = variable_get('eu_cookie_compliance');
+
+  if ($settings['popup_link'] == '<front>' && $settings['show_disagree_button']) {
+    $requirements['eu_cookie_compliance'] = array(
+      'title' => t('EU Cookie Compliance'),
+      'severity' => REQUIREMENT_ERROR,
+      'description' => t('Your privacy policy link is pointing at the front page. This is the default value after installation, and unless your privacy policy is actually posted at the front page, you will need to create a separate page for the privacy policy and link to that page.'),
+    );
+    if ($phase == 'runtime') {
+      $requirements['eu_cookie_compliance'] += array(
+        'value' => t('Privacy Policy link not provided'),
+      );
+    }
+  }
+
+  return $requirements;
+}
+
+/**
+ * Change the banner sliding animation time from seconds to milliseconds.
  */
 function eu_cookie_compliance_update_7000(&$sandbox = NULL) {
   global $language;
@@ -113,3 +159,16 @@ function eu_cookie_compliance_update_7002(&$sandbox) {
   db_query('delete from {menu_links} where link_path = \'eu-cookie-compliance-check\'');
 }
 
+/**
+ * Clear cache for only the settings of this module, to initialize new module settings.
+ */
+function eu_cookie_compliance_update_7003(&$sandbox) {
+  eu_cookie_compliance_clear_caches();
+}
+
+/**
+ * Version 1.21. Clear cache for only the settings of this module.
+ */
+function eu_cookie_compliance_update_7004(&$sandbox) {
+  eu_cookie_compliance_clear_caches();
+}

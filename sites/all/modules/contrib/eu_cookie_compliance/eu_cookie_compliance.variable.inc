@@ -1,6 +1,11 @@
 <?php
 
 /**
+ * @file
+ * Configuration for translations.
+ */
+
+/**
  * Implements hook_variable_info().
  */
 function eu_cookie_compliance_variable_info($options) {

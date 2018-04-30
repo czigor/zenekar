@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * EU cookie compliance primary module file.
@@ -49,7 +50,7 @@ function eu_cookie_compliance_page_build(&$page) {
   $popup_settings = eu_cookie_compliance_get_settings();
   global $theme, $user;
 
-  // Check Add/Remove domains
+  // Check Add/Remove domains.
   $domain_allow = TRUE;
   $domain_option = isset($popup_settings['domains_option']) ? $popup_settings['domains_option'] : 1;
   if (!empty($popup_settings['domains_list'])) {
@@ -88,12 +89,15 @@ function eu_cookie_compliance_page_build(&$page) {
     $geoip_match = eu_cookie_compliance_user_in_eu();
   }
 
+  // Allow other modules to alter the geo IP matching logic.
+  drupal_alter('eu_cookie_compliance_geoip_match', $geoip_match);
+
   $uid1_match = TRUE;
   if ($user->uid == 1 && isset($popup_settings['exclude_uid_1']) && $popup_settings['exclude_uid_1']) {
     $uid1_match = FALSE;
   }
 
-  // Allow other modules to alter if the popup needs to be shown or not.
+  // Allow other modules to alter if the banner needs to be shown or not.
   $modules_allow_popup = TRUE;
   drupal_alter('eu_cookie_compliance_show_popup', $modules_allow_popup);
 
@@ -108,7 +112,7 @@ function eu_cookie_compliance_page_build(&$page) {
       $cid = 'eu_cookie_compliance_client_settings:' . $language->language . ':' . $theme;
     }
     $data = array();
-    if($cache = cache_get($cid, 'cache')) {
+    if ($cache = cache_get($cid, 'cache')) {
       $data = $cache->data;
     }
     else {
@@ -139,10 +143,29 @@ function eu_cookie_compliance_page_build(&$page) {
         $data['css'] .= '#sliding-popup.sliding-popup-top { position: fixed; }';
       }
 
+      $show_disagree_buttons = TRUE;
+      if (array_key_exists('show_disagree_button', $popup_settings) && $popup_settings['show_disagree_button'] === 0) {
+        $show_disagree_buttons = FALSE;
+      }
+
       $popup_text_info = str_replace(array("\r", "\n"), '', $popup_settings['popup_info']['value']);
       $popup_text_agreed = str_replace(array("\r", "\n"), '', $popup_settings['popup_agreed']['value']);
-      $html_info = theme('eu_cookie_compliance_popup_info', array('message' => check_markup($popup_text_info, $popup_settings['popup_info']['format'], FALSE), 'agree_button' => $popup_settings['popup_agree_button_message'], 'disagree_button' => $popup_settings['popup_disagree_button_message']));
-      $html_agreed = theme('eu_cookie_compliance_popup_agreed', array('message' => check_markup($popup_text_agreed, $popup_settings['popup_agreed']['format'], FALSE), 'hide_button' => $popup_settings['popup_hide_button_message'], 'find_more_button' => $popup_settings['popup_find_more_button_message']));
+      $mobile_popup_text_info = str_replace(array("\r", "\n"), '', !empty($popup_settings['mobile_popup_info']['value']) ? $popup_settings['mobile_popup_info']['value'] : '');
+      $html_info = theme('eu_cookie_compliance_popup_info', array(
+        'message' => check_markup($popup_text_info, $popup_settings['popup_info']['format'], FALSE),
+        'agree_button' => $popup_settings['popup_agree_button_message'],
+        'disagree_button' => $show_disagree_buttons ? $popup_settings['popup_disagree_button_message'] : FALSE,
+      ));
+      $mobile_html_info = theme('eu_cookie_compliance_popup_info', array(
+        'message' => check_markup($mobile_popup_text_info, $popup_settings['popup_info']['format'], FALSE),
+        'agree_button' => $popup_settings['popup_agree_button_message'],
+        'disagree_button' => $show_disagree_buttons ? $popup_settings['popup_disagree_button_message'] : FALSE,
+      ));
+      $html_agreed = theme('eu_cookie_compliance_popup_agreed', array(
+        'message' => check_markup($popup_text_agreed, $popup_settings['popup_agreed']['format'], FALSE),
+        'hide_button' => $popup_settings['popup_hide_button_message'],
+        'find_more_button' => $show_disagree_buttons ? $popup_settings['popup_find_more_button_message'] : FALSE,
+      ));
       // Check if theme_debug is enabled.
       if (variable_get('theme_debug') == 1) {
         // Remove unwanted HTML comments.
@@ -150,7 +173,7 @@ function eu_cookie_compliance_page_build(&$page) {
         $html_agreed = preg_replace('/<!--(.|\s)*?-->/', '', $html_agreed);
       }
       $clicking_confirmation = (isset($popup_settings['popup_clicking_confirmation'])) ? $popup_settings['popup_clicking_confirmation'] : TRUE;
-      $scrolling_confirmation = (isset($popup_settings['popup_scrolling_confirmation']))? $popup_settings['popup_scrolling_confirmation'] : FALSE;
+      $scrolling_confirmation = (isset($popup_settings['popup_scrolling_confirmation'])) ? $popup_settings['popup_scrolling_confirmation'] : FALSE;
       $data['variables'] = array(
         'popup_enabled' => $popup_settings['popup_enabled'],
         'popup_agreed_enabled' => $popup_settings['popup_agreed_enabled'],
@@ -158,6 +181,9 @@ function eu_cookie_compliance_page_build(&$page) {
         'popup_clicking_confirmation' => $clicking_confirmation,
         'popup_scrolling_confirmation' => $scrolling_confirmation,
         'popup_html_info' => empty($html_info) ? FALSE : trim($html_info),
+        'use_mobile_message' => !empty($popup_settings['use_mobile_message']) ? $popup_settings['use_mobile_message'] : FALSE,
+        'mobile_popup_html_info' => $popup_settings['popup_enabled'] ? $mobile_html_info : FALSE,
+        'mobile_breakpoint' => !empty($popup_settings['mobile_breakpoint']) ? $popup_settings['mobile_breakpoint'] : '768',
         'popup_html_agreed' => empty($html_agreed) ? FALSE : trim($html_agreed),
         'popup_use_bare_css' => empty($popup_settings['use_bare_css']) ? FALSE : $popup_settings['use_bare_css'],
         'popup_height' => ($popup_settings['popup_height'] !== '') ? (int) $popup_settings['popup_height'] : 'auto',
@@ -168,7 +194,6 @@ function eu_cookie_compliance_page_build(&$page) {
         'popup_position' => empty($popup_settings['popup_position']) ? NULL : $popup_settings['popup_position'],
         'popup_language' => $language->language,
         'better_support_for_screen_readers' => isset($popup_settings['better_support_for_screen_readers']) ? $popup_settings['better_support_for_screen_readers'] : 0,
-        'cookie_name' => isset($popup_settings['cookie_name']) ? $popup_settings['cookie_name'] : '',
         'reload_page' => isset($popup_settings['reload_page']) ? $popup_settings['reload_page'] : 0,
         'domain' => variable_get('eu_cookie_compliance_domain', ''),
         'popup_eu_only_js' => isset($popup_settings['eu_only_js']) ? $popup_settings['eu_only_js'] : 0,
@@ -190,6 +215,10 @@ function eu_cookie_compliance_page_build(&$page) {
 
     $script_scope = isset($popup_settings['script_scope']) ? $popup_settings['script_scope'] : 'footer';
 
+    // Add the cookie name inline, since Drupal.settings will not be available
+    // if the script is loaded in the header.
+    drupal_add_js('var eu_cookie_compliance_cookie_name = "' . (!empty($popup_settings['cookie_name']) ? $popup_settings['cookie_name'] : '') . '";', array('type' => 'inline', 'scope' => $script_scope));
+
     drupal_add_js(array('eu_cookie_compliance' => $data['variables']), array('type' => 'setting', 'scope' => $script_scope));
     if (!isset($popup_settings['use_bare_css']) || $popup_settings['use_bare_css'] == 0) {
       drupal_add_css(drupal_get_path('module', 'eu_cookie_compliance') . '/css/eu_cookie_compliance.css');
@@ -208,10 +237,10 @@ function eu_cookie_compliance_page_build(&$page) {
 function eu_cookie_compliance_permission() {
   return array(
     'administer EU Cookie Compliance popup' => array(
-      'title' => 'Administer EU Cookie Compliance popup',
+      'title' => 'Administer EU Cookie Compliance banner',
     ),
     'display EU Cookie Compliance popup' => array(
-      'title' => 'Display EU Cookie Compliance popup',
+      'title' => 'Display EU Cookie Compliance banner',
     ),
   );
 }
@@ -281,11 +310,11 @@ function eu_cookie_compliance_json() {
  * Check if the user is in the EU.
  */
 function eu_cookie_compliance_user_in_eu() {
-  $geoip_match = TRUE;
+  $geoip_match = FALSE;
   $eu_countries_default = array(
     NULL, 'BE', 'BG', 'CZ', 'DK', 'DE', 'EE', 'IE', 'EL', 'ES', 'FR', 'HR',
     'IT', 'CY', 'LV', 'LT', 'LU', 'HU', 'MT', 'NL', 'AT', 'PL', 'PT', 'RO',
-    'SI', 'SK', 'FI', 'SE', 'UK', 'GB',
+    'SI', 'SK', 'FI', 'SE', 'UK', 'GB', 'NO',
   );
   // Allow custom array of countries to be loaded from settings.php, defaulting
   // to the array above.
@@ -302,7 +331,7 @@ function eu_cookie_compliance_user_in_eu() {
   if (in_array($country_code, $eu_countries)) {
     $geoip_match = TRUE;
   }
-  if ($country_code == '') {
+  if ($country_code == '' || $country_code == '-') {
     $geoip_match = TRUE;
   }
 
@@ -310,4 +339,83 @@ function eu_cookie_compliance_user_in_eu() {
     'country' => $country_code,
     'in_eu' => $geoip_match,
   );
+}
+
+/**
+ * Clear cache for the eu_cookie_compliance settings.
+ */
+function eu_cookie_compliance_clear_caches() {
+  $use_domain = FALSE;
+  if (module_exists('domain')) {
+    $domains = domain_domains();
+    $use_domain = TRUE;
+  }
+  // Clear cache for all enabled themes.
+  $themes = system_rebuild_theme_data();
+  foreach ($themes as $theme) {
+    if ($theme->status == 1) {
+      if (module_exists('locale')) {
+        $languages = locale_language_list();
+      }
+      else {
+        global $language;
+        $current_language = !empty($language->language) ? $language->language : 'en';
+        $languages = array($current_language => $current_language);
+      }
+      foreach ($languages as $key => $current_language) {
+        if ($use_domain) {
+          foreach ($domains as $domain) {
+            cache_clear_all('eu_cookie_compliance_client_settings:' . $key . ':' . $theme->name . ':' . $domain['domain_id'], 'cache', TRUE);
+          }
+        }
+        else {
+          cache_clear_all('eu_cookie_compliance_client_settings:' . $key . ':' . $theme->name, 'cache', TRUE);
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Attempt to find the cookie/privacy policy by searching for common titles.
+ *
+ * @return bool|string
+ *   URL to the node if found, otherwise FALSE.
+ */
+function _eu_cookie_compliance_find_privacy_policy() {
+  $pattern = 'privacy|privacy +policy|cookie +policy|terms +of +use|terms +of +service|terms +and +conditions';
+
+  $database_type = $GLOBALS['databases']['default']['default']['driver'];
+  // Select operator based on the database type.
+  switch ($database_type) {
+    case 'pgsql':
+      $op = '~*';
+      break;
+
+    case 'sqlite':
+      $op = 'REGEXP';
+      // The regexp function is not defined in SQLite for Drupal 7.
+      Database::getConnection('default')->sqliteCreateFunction('REGEXP',
+        function ($pattern, $data, $delimiter = '~', $modifiers = 'isuS') {
+          if (isset($pattern, $data) === TRUE) {
+            return (preg_match(sprintf('%1$s%2$s%1$s%3$s', $delimiter, $pattern, $modifiers), $data) > 0);
+          }
+          return NULL;
+        });
+      break;
+
+    default:
+      $op = 'RLIKE';
+  }
+
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node')
+    ->propertyCondition('title', $pattern, $op);
+
+  $result = $query->execute();
+  if (isset($result['node'])) {
+    $nodes = array_keys($result['node']);
+    return ('node/' . array_shift($nodes));
+  }
+  return FALSE;
 }

@@ -8,42 +8,45 @@ half a million pounds for a serious breach.
 
 How it works.
 =============
-The module displays a pup-up at the bottom or at the top of web site to make
+The module displays a banner at the bottom or at the top of web site to make
 users aware of the fact that cookies are being set. The user may then give
 his/her consent or move to a page that provides more details. Consent is given
 by user pressing the agree buttons or by continuing browsing the web site. Once
-consent is given another pop-up appears with a thank you message.
+consent is given another banner appears with a thank you message.
 
-The module provides a settings page where the pop-up can be customised. There
-are also template files for the pop-ups that can be overridden by your theme.
+The module provides a settings page where the banner can be customised. There
+are also template files for the banners that can be overridden by your theme.
 
 Installation.
 =============
 1. Unzip the files to the "sites/all/modules" directory and enable the module.
 
-2. If desired, give the administer EU Cookie Compliance popup permissions that
+2. If desired, give the administer EU Cookie Compliance banner permissions that
    allow users of certain roles access the administration page. You can do so on
    the admin/user/permissions page.
 
-   - there is also a 'display EU Cookie Compliance popup' permission that helps
-   you show the popup to the roles you desire
+   - there is also a 'display EU Cookie Compliance banner' permission that helps
+   you show the banner to the roles you desire
 
 3. You may want to create a page that would explain how your site uses cookies.
-   Alternatively, if you have a privacy policy, you can link the pop-up to that
+   Alternatively, if you have a privacy policy, you can link the banner to that
    page (see next step).
 
 4. Go to the admin/config/system/eu-cookie-compliance page to configure and
-   enable the pop-up
+   enable the banner
 
-5. If you want to customise the pop-up background and text color, either type
+5. If you want to customise the banner background and text color, either type
    in the hex values or simply install 
    http://drupal.org/project/jquery_colorpicker
 
-6. If you want to theme your pop-up override the themes in the template file.
+6. If you want to theme your banner override the themes in the template file.
 
 7. If you want to show the message in EU countries only, install the geoip
-   module: http://drupal.org/project/geoip and enable the option on the admin
-   page.
+   module: http://drupal.org/project/geoip or the smart_ip module:
+   http://drupal.org/project/smart_ip and enable the option "Only display banner
+   in EU countries" on the admin page. There is a JavaScript based option
+   available for sites that use Varnish (or other caching strategies). The
+   JavaScript based variant also works for visitors that bypass Varnish.
 
 8. To translate the message displayed, enable the i18n_variable module in the
    i18n package. After enabling "EU Cookie Compliance" at

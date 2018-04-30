@@ -121,9 +121,8 @@
   #sliding-popup .popup-content #popup-buttons {
     clear: both;
     float: none;
-    margin: 5px 0;
+    margin: 5px 0 1em;
     max-width: 100%;
-    margin-bottom: 1em;
   }
   #sliding-popup .popup-content #popup-buttons button {
 
