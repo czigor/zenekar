@@ -1250,79 +1250,6 @@ function file_entity_file_formatter_file_field_settings($form, &$form_state, $se
 }
 
 /**
- * Replace file entity title text.
- *
- * @param $file
- *   The file entity.
- * @param $replace_options
- *   (Optional) Options to pass to token_replace().
- * @param $title
- *   (Optional) The title text to use.
- *
- * @return string
- *   Returns the replaced title text.
- */
-function file_entity_replace_title($file, $replace_options = array(), $title = NULL) {
-  $replace_options += array(
-    'clear' => TRUE,
-    'sanitize' => FALSE,
-  );
-
-  $title_default = '[file:field_file_image_title_text]';
-  if (!isset($title)) {
-    $title = variable_get('file_entity_title', $title_default);
-  }
-  // If the defaults are not changed then inlining replacement is much faster
-  // than dealing with the token system.
-  if ($title === $title_default) {
-    $title_items = field_get_items('file', $file, 'field_file_image_title_text');
-    return $title_items ? $title_items[0]['value'] : '';
-  }
-  elseif (!empty($title)) {
-    return token_replace($title, array('file' => $file), $replace_options);
-  }
-
-  return '';
-}
-
-/**
- * Replace file entity alt.
- *
- * @param $file
- *   The file entity.
- * @param $replace_options
- *   (Optional) Options to pass to token_replace().
- * @param $alt
- *   (Optional) The alt text to use.
- *
- * @return string
- *   Returns the replaced alt text.
- */
-function file_entity_replace_alt($file, $replace_options = array(), $alt = NULL) {
-  $replace_options += array(
-    'clear' => TRUE,
-    'sanitize' => FALSE,
-  );
-
-  $alt_default = '[file:field_file_image_alt_text]';
-
-  if (!isset($alt)) {
-    $alt = variable_get('file_entity_alt', $alt_default);
-  }
-
-  // If the defaults are not changed then inlining replacement is much faster
-  // than dealing with the token system.
-  if ($alt === $alt_default) {
-    $alt_items = field_get_items('file', $file, 'field_file_image_alt_text');
-    return $alt_items ? $alt_items[0]['value'] : '';
-  }
-  elseif (!empty($alt)) {
-    return token_replace($alt, array('file' => $file), $replace_options);
-  }
-}
-
-
-/**
  * Implements hook_file_formatter_FORMATTER_view().
  *
  * Returns a drupal_render() array to display an image of the chosen style.
@@ -1362,8 +1289,8 @@ function file_entity_file_formatter_file_image_view($file, $display, $langcode) 
         '#path' => $file->uri,
         '#width' => isset($file->override['attributes']['width']) ? $file->override['attributes']['width'] : $file->metadata['width'],
         '#height' => isset($file->override['attributes']['height']) ? $file->override['attributes']['height'] : $file->metadata['height'],
-        '#alt' => file_entity_replace_alt($file, $replace_options, $display['settings']['alt']),
-        '#title' => file_entity_replace_title($file, $replace_options, $display['settings']['title']),
+        '#alt' => token_replace($display['settings']['alt'], array('file' => $file), $replace_options),
+        '#title' => token_replace($display['settings']['title'], array('file' => $file), $replace_options),
       );
     }
     else {
@@ -1372,8 +1299,8 @@ function file_entity_file_formatter_file_image_view($file, $display, $langcode) 
         '#path' => $file->uri,
         '#width' => isset($file->override['attributes']['width']) ? $file->override['attributes']['width'] : $file->metadata['width'],
         '#height' => isset($file->override['attributes']['height']) ? $file->override['attributes']['height'] : $file->metadata['height'],
-        '#alt' => file_entity_replace_alt($file, $replace_options, $display['settings']['alt']),
-        '#title' => file_entity_replace_title($file, $replace_options, $display['settings']['title']),
+        '#alt' => token_replace($display['settings']['alt'], array('file' => $file), $replace_options),
+        '#title' => token_replace($display['settings']['title'], array('file' => $file), $replace_options),
       );
     }
     return $element;
@@ -2727,64 +2654,4 @@ function file_entity_form_system_performance_settings_alter(&$form, &$form_state
     '#default_value' => variable_get('file_entity_total_count_optimization', FALSE),
     '#description' => t('Recommended if the files admin page loads too slowly due to a high number of files.'),
   );
-}
-
-/**
- * hook_field_widget_form_alter
- */
-function file_entity_field_widget_form_alter(&$element, &$form_state, $context) {
-  // This hook is used to prepopulate the alt and title field in any image field widget,
-  // with the values which are set in the file_entity fields,
-  // but ONLY if there is a alt/title set in the original file entity,
-  // and ONLY if the values are empty.
-  if($context['field']['type'] == 'image') {
-    foreach (element_children($element) as $delta) {
-      $fid = $element[$delta]['#default_value']['fid'];
-      $file = entity_load('file', array($fid), $conditions = array(), $reset = FALSE);
-      if($file) {
-        // not 100% sure whether this is the right langcode to use, when entity translations are enabled.
-        $langcode = $context['langcode'];
-        $alt_field = field_get_items('file', $file[$fid], 'field_file_image_alt_text', $langcode);
-        $title_field = field_get_items('file', $file[$fid], 'field_file_image_title_text', $langcode);
-        if(!empty($alt_field[0]['value']) && empty($element[$delta]['#default_value']['alt'])) {
-          $element[$delta]['#default_value']['alt'] = $alt_field[0]['value'];
-        }
-        if(!empty($title_field[0]['value']) && empty($element[$delta]['#default_value']['title'])) {
-          $element[$delta]['#default_value']['title'] = $title_field[0]['value'];
-        }
-      }
-    }
-  }
-}
-
-/**
- * Implements hook_field_attach_update().
- */
-function file_entity_field_attach_update($entity_type, $entity) {
-  // The other way around: you upload a new image on a node and enter alt/title tags.
-  // Save alt and title text from the image field to the file entity,
-  // but ONLY if the file entity's alt/title fields are empty.
-  if ($entity_type == 'node') {
-  list(, , $bundle) = entity_extract_ids($entity_type, $entity);
-  // Examine every image field instance attached to this entity's bundle.
-  $instances = array_intersect_key(field_info_instances($entity_type, $bundle), _file_entity_get_fields_by_type('image'));
-    foreach ($instances as $field_name => $instance) {
-      if (!empty($entity->{$field_name})) {
-        foreach ($entity->{$field_name} as $langcode => $items) {
-          foreach ($items as $delta => $item) {
-            $file = file_load($item['fid']);
-            if ($file) {
-              if (isset($file->field_file_image_alt_text) && empty($file->field_file_image_alt_text[$langcode][0]['value'])) {
-                $file->field_file_image_alt_text[$langcode][0]['value'] = $item['alt'];
-              }
-              if (isset($file->field_file_image_title_text) && empty($file->field_file_image_title_text[$langcode][0]['value'])) {
-                $file->field_file_image_title_text[$langcode][0]['value'] = $item['title'];
-              }
-            }
-            field_attach_update('file', $file);
-          }
-        }
-      }
-    }
-  }
 }

@@ -87,7 +87,7 @@ function rolereference_field_validate($entity_type, $entity, $field, $instance, 
   }
   // Prevent performance hog if there are no ids to check.
   if ($ids) {
-    $referenceable_roles = rolereference_potential_references($field['settings']['referenceable_roles']);
+    $referenceable_roles = rolereference_potential_references($field['settings']['referenceable_roles'], $field['field_name']);
 
     foreach ($items as $delta => $item) {
       if (is_array($item)) {
@@ -107,7 +107,7 @@ function rolereference_field_validate($entity_type, $entity, $field, $instance, 
  * Implements hook_field_prepare_view().
  */
 function rolereference_field_prepare_view($entity_type, $entities, $field, $instances, $langcode, &$items) {
-  $referenceable_roles = rolereference_potential_references($field['settings']['referenceable_roles']);
+  $referenceable_roles = rolereference_potential_references($field['settings']['referenceable_roles'], $field['field_name']);
 
   // Extract nids to check.
   $ids = array();
@@ -190,7 +190,7 @@ function rolereference_field_widget_info_alter(&$info) {
  * Implements hook_options_list().
  */
 function rolereference_options_list($field) {
-  return rolereference_potential_references($field['settings']['referenceable_roles']);
+  return rolereference_potential_references($field['settings']['referenceable_roles'], $field['field_name']);
 }
 
 
@@ -223,7 +223,7 @@ function rolereference_field_views_data($field) {
     if (isset($data[$table])) {
       $data[$table][$id_column]['relationship'] = array(
         'base' => 'role',
-        'field' => 'rid',
+        'field' => $columns['rid'],
         'base field' => 'rid',
         'label' => $field['field_name'],
       );
@@ -238,14 +238,14 @@ function rolereference_field_views_data($field) {
  *
  * @param {array} $referenceable_roles
  */
-function rolereference_potential_references($referenceable_roles) {
-  $roles = &drupal_static(__FUNCTION__, array());
+function rolereference_potential_references($referenceable_roles, $field_name) {
+  $roles = &drupal_static('rolereference_' . $field_name, array());
   $user_roles = user_roles();
 
   if (empty($roles)) {
-    foreach ($referenceable_roles as $rid => $enabled) {
-      if (!empty($enabled) && isset($user_roles[$rid])) {
-        $roles[$rid] = $user_roles[$rid];
+    foreach ($user_roles as $rid => $role) {
+      if (!empty($referenceable_roles[$rid])) {
+        $roles[$rid] = $role;
       }
     }
     if (empty($roles)) {
@@ -287,4 +287,36 @@ function rolereference_field_extract_info() {
     ),
   );
   return $extractors;
+}
+
+/**
+ * Implements feeds_processor_targets_alter().
+ */
+function rolereference_feeds_processor_targets_alter(&$targets, $entity_type, $bundle_name) {
+  // Set up feeds mapper for rolereference fields.
+  foreach (field_info_instances($entity_type, $bundle_name) as $name => $instance) {
+    $info = field_info_field($name);
+    if ($info['type'] == 'rolereference') {
+      $targets[$name] = array(
+        'name' => check_plain($instance['label']),
+        'description' => t('Role reference field.'),
+        'callback' => 'rolereference_set_target',
+      );
+    }
+  }
+}
+
+/**
+ * Feeds callback to set mapping target.
+ */
+function rolereference_set_target($source, $entity, $target, array $values, $mapping) {
+  // Process rolereference field data.
+  $info = field_info_field($target);
+  if ($info['type'] == 'rolereference') {
+    foreach ($values as $rid) {
+      if (!empty($rid)) {
+        $entity->{$target}[$entity->language][] = array('rid' => $rid);
+      }
+    }
+  }
 }

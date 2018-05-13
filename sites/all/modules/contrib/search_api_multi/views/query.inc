@@ -6,6 +6,13 @@
 class SearchApiMultiViewsQuery extends SearchApiViewsQuery {
 
   /**
+   * The query that will be executed.
+   *
+   * @var SearchApiMultiQueryInterface
+   */
+  protected $query;
+
+  /**
    * Create the basic query object and fill with default values.
    */
   public function init($base_table, $base_field, $options) {
@@ -22,10 +29,16 @@ class SearchApiMultiViewsQuery extends SearchApiViewsQuery {
    * Helper function for adding results to a view in the format expected by the view.
    */
   protected function addResults(array $results, $view) {
-    $rows = array();
+    $indexes = $this->getIndexes();
     foreach ($results as $result) {
       $row = array();
 
+      if (!empty($this->options['entity_access']) && isset($indexes[$result['index_id']]) && $indexes[$result['index_id']]->getEntityType()) {
+        $entity = $indexes[$result['index_id']]->loadItems(array($result['id']));
+        if (!$entity || !entity_access('view', $indexes[$result['index_id']]->item_type, reset($entity))) {
+          continue;
+        }
+      }
       // Include the loaded item for this result row, if present, or the item
       // ID.
       if (!empty($result['entity'])) {
@@ -33,6 +46,14 @@ class SearchApiMultiViewsQuery extends SearchApiViewsQuery {
       }
       else {
         $row['entity'] = $result['id'];
+      }
+
+      // Gather any fields from the search results.
+      if (!empty($result['fields'])) {
+        foreach ($result['fields'] as $field_id => $value) {
+          $field_id = $result['index_id'] . ':' . $field_id;
+          $row['_entity_properties'][$field_id] = $value;
+        }
       }
 
       $row['_entity_properties']['search_api_multi_id'] = $result['id'];
@@ -67,7 +88,7 @@ class SearchApiMultiViewsQuery extends SearchApiViewsQuery {
         'description' => t('Results from the @index index.', array('@index' => $index->name)),
       );
       if (!$entity_type) {
-        $info['property info'][$index_id] += $index->datasource()->getMetadataWrapper()->info();
+        $info['property info'][$index_id] += $index->entityWrapper()->info();
       }
     }
 
@@ -99,8 +120,14 @@ class SearchApiMultiViewsQuery extends SearchApiViewsQuery {
     foreach ($results as $row_index => $row) {
       $index_id = $row->_entity_properties['search_api_multi_index'];
       if ($indexes[$index_id]) {
-        $index = $indexes[$index_id];
-        $item = is_scalar($row->entity) ? $load_items[$index->item_type][$row->entity] : $row->entity;
+        if (is_scalar($row->entity)) {
+          $index = $indexes[$index_id];
+          if (empty($load_items[$index->item_type][$row->entity])) {
+            continue;
+          }
+          $row->entity = $load_items[$index->item_type][$row->entity];
+        }
+        $item = $row->entity;
         $data = new stdClass();
         $data->{$index_id} = $item;
         $wrappers[$row_index] = entity_metadata_wrapper('search_api_multi', $data, $info);
@@ -133,14 +160,18 @@ class SearchApiMultiViewsQuery extends SearchApiViewsQuery {
   // Query interface methods (proxy to $this->query)
   //
 
-  public function getServer() {
-    return $this->server;
-  }
-
+  /**
+   * Retrieves the searched indexes.
+   *
+   * @return SearchApiIndex[]
+   *   An array of SearchApiIndex objects representing all indexes that will be
+   *   used for this search, keyed by machine names.
+   */
   public function getIndexes() {
     if (!$this->errors) {
       return $this->query->getIndexes();
     }
+    return array();
   }
 
 }

@@ -8,6 +8,9 @@ define('ULTIMATE_CRON_DATABASE_LOGGER_CLEANUP_METHOD_DISABLED', 1);
 define('ULTIMATE_CRON_DATABASE_LOGGER_CLEANUP_METHOD_EXPIRE', 2);
 define('ULTIMATE_CRON_DATABASE_LOGGER_CLEANUP_METHOD_RETAIN', 3);
 
+/**
+ * Class for using database as log storage.
+ */
 class UltimateCronDatabaseLogger extends UltimateCronLogger {
   public $options = array();
   public $log_entry_class = '\UltimateCronDatabaseLogEntry';
@@ -42,6 +45,7 @@ class UltimateCronDatabaseLogger extends UltimateCronLogger {
     $jobs = _ultimate_cron_job_load_all();
     $current = 1;
     $max = 0;
+    $count_deleted = array();
     foreach ($jobs as $job) {
       if ($job->getPlugin($this->type)->name === $this->name) {
         $max++;
@@ -49,13 +53,23 @@ class UltimateCronDatabaseLogger extends UltimateCronLogger {
     }
     foreach ($jobs as $job) {
       if ($job->getPlugin($this->type)->name === $this->name) {
-        $this->cleanupJob($job);
+        $deleted_logs = $this->cleanupJob($job);
         $class = _ultimate_cron_get_class('job');
         if ($class::$currentJob) {
           $class::$currentJob->setProgress($current / $max);
           $current++;
         }
+        if ($deleted_logs > 0) {
+          // Store number of deleted messages for each job.
+          $count_deleted[$job->name] = $deleted_logs;
+        }
       }
+    }
+    if (!empty($count_deleted)) {
+      watchdog('database_logger', '@count_entries log entries removed for @jobs_count jobs', array(
+          '@count_entries' => array_sum($count_deleted),
+          '@jobs_count' => count($count_deleted),
+      ), WATCHDOG_INFO);
     }
   }
 
@@ -67,7 +81,7 @@ class UltimateCronDatabaseLogger extends UltimateCronLogger {
 
     switch ($settings['method']) {
       case ULTIMATE_CRON_DATABASE_LOGGER_CLEANUP_METHOD_DISABLED:
-        return;
+        return 0;
 
       case ULTIMATE_CRON_DATABASE_LOGGER_CLEANUP_METHOD_EXPIRE:
         $expire = $settings['expire'];
@@ -83,7 +97,7 @@ class UltimateCronDatabaseLogger extends UltimateCronLogger {
         ))->fetchField();
         $max -= $settings['retain'];
         if ($max <= 0) {
-          return;
+          return 0;
         }
         $chunk = min($max, 100);
         break;
@@ -92,7 +106,7 @@ class UltimateCronDatabaseLogger extends UltimateCronLogger {
         watchdog('ultimate_cron', 'Invalid cleanup method: @method', array(
           '@method' => $settings['method'],
         ));
-        return;
+        return 0;
     }
 
     // Chunked delete.
@@ -116,12 +130,8 @@ class UltimateCronDatabaseLogger extends UltimateCronLogger {
           ->execute();
       }
     } while ($lids && $max > 0);
-    if ($count) {
-      watchdog('database_logger', '@count log entries removed for job @name', array(
-        '@count' => $count,
-        '@name' => $job->name,
-      ), WATCHDOG_INFO);
-    }
+
+    return $count;
   }
 
   /**
@@ -210,7 +220,7 @@ class UltimateCronDatabaseLogger extends UltimateCronLogger {
       '#parents' => array('settings', $this->type, $this->name, 'retain'),
       '#type' => 'textfield',
       '#title' => t('Retain logs'),
-      '#description' => t('Retain X amount of log entries.'),
+      '#description' => t('Retain X amount of log entries; this value is per cron job. Setting this to 1000 on sites with 15 cron jobs will store a total of 15000 entries. High values can result in slower log performance.'),
       '#default_value' => $values['retain'],
       '#fallback' => TRUE,
       '#required' => TRUE,
@@ -275,15 +285,19 @@ class UltimateCronDatabaseLogger extends UltimateCronLogger {
         ->fetchObject($this->log_entry_class, array($name, $this));
     }
     else {
-      $log_entry = db_select('ultimate_cron_log', 'l')
-        ->fields('l')
-        ->condition('l.name', $name)
-        ->condition('l.log_type', $log_types, 'IN')
-        ->orderBy('l.start_time', 'DESC')
-        ->orderBy('l.end_time', 'DESC')
-        ->range(0, 1)
-        ->execute()
-        ->fetchObject($this->log_entry_class, array($name, $this));
+      $subquery = db_select('ultimate_cron_log', 'l3')
+        ->fields('l3', array('name', 'log_type'))
+        ->groupBy('name')
+        ->groupBy('log_type');
+      $subquery->addExpression('MAX(l3.start_time)', 'start_time');
+
+      $query = db_select('ultimate_cron_log', 'l1')
+        ->fields('l1');
+      $query->join($subquery, 'l2', 'l1.name = l2.name AND l1.start_time = l2.start_time AND l1.log_type = l2.log_type');
+      $query->condition('l2.name', $name);
+      $query->condition('l2.log_type', $log_types, 'IN');
+
+      $log_entry = $query->execute()->fetchObject($this->log_entry_class, array($name, $this));
     }
     if ($log_entry) {
       $log_entry->finished = TRUE;
@@ -302,19 +316,18 @@ class UltimateCronDatabaseLogger extends UltimateCronLogger {
       return parent::loadLatestLogEntries($jobs, $log_types);
     }
 
-    $result = db_query("SELECT l.*
-    FROM {ultimate_cron_log} l
-    JOIN (
-      SELECT l3.name, (
-        SELECT l4.lid
-        FROM {ultimate_cron_log} l4
-        WHERE l4.name = l3.name
-        AND l4.log_type IN (:log_types)
-        ORDER BY l4.name desc, l4.start_time DESC
-        LIMIT 1
-      ) AS lid FROM {ultimate_cron_log} l3
-      GROUP BY l3.name
-    ) l2 on l2.lid = l.lid", array(':log_types' => $log_types));
+    $subquery = db_select('ultimate_cron_log', 'l3')
+      ->fields('l3', array('name', 'log_type'))
+      ->groupBy('name')
+      ->groupBy('log_type');
+    $subquery->addExpression('MAX(l3.start_time)', 'start_time');
+
+    $query = db_select('ultimate_cron_log', 'l1')
+      ->fields('l1');
+    $query->join($subquery, 'l2', 'l1.name = l2.name AND l1.start_time = l2.start_time AND l1.log_type = l2.log_type');
+    $query->condition('l2.log_type', $log_types, 'IN');
+
+    $result = $query->execute();
 
     $log_entries = array();
     while ($object = $result->fetchObject()) {
@@ -355,6 +368,9 @@ class UltimateCronDatabaseLogger extends UltimateCronLogger {
 
 }
 
+/**
+ * Class for Ultimate Cron log entries.
+ */
 class UltimateCronDatabaseLogEntry extends UltimateCronLogEntry {
   /**
    * Save log entry.
@@ -409,7 +425,7 @@ class UltimateCronDatabaseLogEntry extends UltimateCronLogEntry {
         $retry++;
         if ($retry > 3) {
           $retry = 0;
-          watchdog('database_logger', (string) $e, array(), WATCHDOG_CRITICAL);
+          watchdog_exception('database_logger', $e, NULL, array(), WATCHDOG_CRITICAL);
           return;
         }
 
@@ -418,4 +434,5 @@ class UltimateCronDatabaseLogEntry extends UltimateCronLogEntry {
       }
     }
   }
+
 }

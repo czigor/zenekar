@@ -197,7 +197,7 @@ function file_entity_file_load($files) {
 /**
  * Implements hook_entitycache_ENTITY_TYPE_load().
  */
-function file_entitycache_file_load($files) {
+function file_entity_entitycache_file_load($files) {
   // Integrates with entitycache - ensures the alt and title text on images is
   // localized.
   file_entity_set_title_alt_properties($files);
@@ -207,13 +207,6 @@ function file_entitycache_file_load($files) {
  * Implements hook_entity_load().
  */
 function file_entity_entity_load($entities, $entity_type) {
-  file_entity_set_title_alt_properties_on_file_fields($entities, $entity_type);
-}
-
-/**
- * Implements hook_entitycache_load().
- */
-function file_entity_entitycache_load($entities, $entity_type) {
   file_entity_set_title_alt_properties_on_file_fields($entities, $entity_type);
 }
 
@@ -269,9 +262,41 @@ function file_entity_set_title_alt_properties_on_file_fields($entities, $entity_
  *   properties. Defaults to the language of the current request.
  */
 function file_entity_set_title_alt_properties($files, $language = NULL) {
+  if (!isset($language)) {
+    $language = $GLOBALS['language'];
+  }
+
+  $alt = variable_get('file_entity_alt', '[file:field_file_image_alt_text]');
+  $title = variable_get('file_entity_title', '[file:field_file_image_title_text]');
+
+  $replace_options = array(
+    'clear' => TRUE,
+    'sanitize' => FALSE,
+    'language' => $language,
+  );
+
   foreach ($files as $file) {
-    $file->title = file_entity_replace_title($file);
-    $file->alt = file_entity_replace_alt($file);
+    // Load alt and title text from fields.
+    if (!empty($alt)) {
+      $output = token_replace($alt, array('file' => $file), $replace_options);
+
+      if (!empty($output)) {
+        // @todo Remove once https://www.drupal.org/node/1713164 is fixed.
+        // There is currently no way to get the raw alt text returned from the
+        // token so we revert the encoding done during tokenization.
+        $file->alt = decode_entities($output);
+      }
+    }
+    if (!empty($title)) {
+      $output = token_replace($title, array('file' => $file), $replace_options);
+
+      if (!empty($output)) {
+        // @todo Remove once https://www.drupal.org/node/1713164 is fixed.
+        // There is currently no way to get the raw title text returned from the
+        // token so we revert the encoding done during tokenization.
+        $file->title = decode_entities($output);
+      }
+    }
   }
 }
 

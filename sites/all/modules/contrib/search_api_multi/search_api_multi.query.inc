@@ -62,11 +62,15 @@ interface SearchApiMultiQueryInterface {
    *
    * @param string $conjunction
    *   The conjunction to use for the filter - either 'AND' or 'OR'.
+   * @param string[] $tags
+   *   (Optional) An arbitrary set of tags. Can be used to identify this filter
+   *   down the line if necessary. This is primarily used by the facet system
+   *   to support OR facet queries.
    *
    * @return SearchApiQueryFilterInterface
    *   A filter object that is set to use the specified conjunction.
    */
-  public function createFilter($conjunction = 'AND');
+  public function createFilter($conjunction = 'AND', array $tags = array());
 
   /**
    * Sets the keys to search for.
@@ -186,6 +190,12 @@ interface SearchApiMultiQueryInterface {
    *     - id: The item's ID.
    *     - index_id: The machine name of the index this item was found on.
    *     - score: A float measuring how well the item fits the search.
+   *     - fields: (optional) If set, an array containing some field values
+   *       already ready-to-use, keyed by their field identifiers (without index
+   *       prefix). This allows search engines (or postprocessors) to store
+   *       extracted fields so other modules don't have to extract them again.
+   *       This fields should always be checked by modules that want to use
+   *       field contents of the result items.
    *     - entity (optional): If set, the fully loaded result item. This field
    *       should always be used by modules using search results, to avoid
    *       duplicate item loads.
@@ -210,7 +220,7 @@ interface SearchApiMultiQueryInterface {
   /**
    * Retrieves the searched indexes.
    *
-   * @return array
+   * @return SearchApiIndex[]
    *   An array of SearchApiIndex objects representing all indexes that will be
    *   used for this search, keyed by machine names.
    */
@@ -512,9 +522,9 @@ class SearchApiMultiQuery implements SearchApiMultiQueryInterface {
   /**
    * {@inheritdoc}
    */
-  public function createFilter($conjunction = 'AND') {
+  public function createFilter($conjunction = 'AND', array $tags = array()) {
     $filter_class = $this->options['filter class'];
-    return new $filter_class($conjunction);
+    return new $filter_class($conjunction, $tags);
   }
 
   /**
@@ -593,7 +603,7 @@ class SearchApiMultiQuery implements SearchApiMultiQueryInterface {
             }
           }
         }
-        elseif ($f[2] != '<>' && strpos($f[1], ':')) {
+        elseif ($f[2] != '<>' && strpos($f[0], ':')) {
           list($index_id) = explode(':', $f[0], 2);
           $indexes[$index_id] = TRUE;
         }
@@ -741,6 +751,7 @@ class SearchApiMultiQuery implements SearchApiMultiQueryInterface {
       $options['offset'] = 0;
     }
     // Prepare a normal Search API query for all contained indexes.
+    /** @var SearchApiQuery[] $queries */
     $queries = array();
     foreach ($this->getIndexes() as $index_id => $index) {
       try {
@@ -758,6 +769,15 @@ class SearchApiMultiQuery implements SearchApiMultiQueryInterface {
     foreach ($queries as $index_id => $query) {
       $query->keys($this->orig_keys);
       $query->fields($this->index_fields[$index_id]);
+      foreach ($this->sort as $field => $order) {
+        if (strpos($field, ':') !== FALSE) {
+          list($field_index_id, $field) = explode(':', $field, 2);
+          if ($field_index_id != $index_id) {
+            continue;
+          }
+        }
+        $query->sort($field, $order);
+      }
 
       $response = $query->execute();
 
@@ -835,13 +855,13 @@ class SearchApiMultiQuery implements SearchApiMultiQueryInterface {
   /**
    * Helper method for adding a filter to index-specific queries.
    *
-   * @param array $filters
+   * @param SearchApiQueryFilterInterface[]|array[] $filters
    *   An array of filters to add, as returned by
    *   SearchApiQueryFilterInterface::getFilters().
-   * @param array $parents
+   * @param SearchApiQuery[] $parents
    *   The query or filter objects to which the filters should be applied, keyed
    *   by index ID.
-   * @param array $queries
+   * @param SearchApiQuery[] $queries
    *   The queries used, keyed by index ID.
    */
   protected function addFilters(array $filters, array $parents, array $queries) {
@@ -851,9 +871,12 @@ class SearchApiMultiQuery implements SearchApiMultiQueryInterface {
           continue;
         }
         list($index_id, $field) = explode(':', $filter[0], 2);
-        $parents[$index_id]->condition($field, $filter[1], $filter[2]);
+        if (!empty($parents[$index_id])) {
+          $parents[$index_id]->condition($field, $filter[1], $filter[2]);
+        }
       }
       else {
+        /** @var SearchApiQueryFilterInterface[] $nested */
         $nested = array();
         foreach ($parents as $index_id => $query) {
           $nested[$index_id] = $queries[$index_id]->createFilter($filter->getConjunction());
@@ -962,7 +985,12 @@ class SearchApiMultiQuery implements SearchApiMultiQueryInterface {
         $comp = $a['score'] - $b['score'];
       }
       elseif ($key == 'search_api_id') {
-        $comp = $a['id'] - $b['id'];
+        if (is_numeric($a['id']) && is_numeric($b['id'])) {
+          $comp = $a['id'] - $b['id'];
+        }
+        else {
+          $comp = strnatcasecmp($a['id'], $b['id']);
+        }
       }
       else {
         list($index_id, $field) = explode(':', $key, 2);
@@ -1116,6 +1144,61 @@ class SearchApiMultiQuery implements SearchApiMultiQueryInterface {
    */
   public function &getOptions() {
     return $this->options;
+  }
+
+  /**
+   * Implements the magic __toString() method to simplify debugging.
+   */
+  public function __toString() {
+    $ret = '';
+    if ($this->indexes) {
+      $indexes = array();
+      foreach ($this->indexes as $index) {
+        $indexes[] = $index->machine_name;
+      }
+      $ret .= 'Indexes: ' . implode(', ', $indexes) . "\n";
+    }
+    $ret .= 'Keys: ' . str_replace("\n", "\n  ", var_export($this->orig_keys, TRUE)) . "\n";
+    if (isset($this->keys)) {
+      $ret .= 'Parsed keys: ' . str_replace("\n", "\n  ", var_export($this->keys, TRUE)) . "\n";
+      $ret .= 'Searched fields: ' . (isset($this->fields) ? implode(', ', $this->fields) : '[ALL]') . "\n";
+    }
+    if ($filter = (string) $this->filter) {
+      $filter = str_replace("\n", "\n  ", $filter);
+      $ret .= "Filters:\n  $filter\n";
+    }
+    if ($this->sort) {
+      $sort = array();
+      foreach ($this->sort as $field => $order) {
+        $sort[] = "$field $order";
+      }
+      $ret .= 'Sorting: ' . implode(', ', $sort) . "\n";
+    }
+    $options = $this->sanitizeOptions($this->options);
+    $options = str_replace("\n", "\n  ", var_export($options, TRUE));
+    $ret .= 'Options: ' . $options . "\n";
+    return $ret;
+  }
+
+  /**
+   * Sanitizes an array of options in a way that plays nice with var_export().
+   *
+   * @param array $options
+   *   An array of options.
+   *
+   * @return array
+   *   The sanitized options.
+   */
+  protected function sanitizeOptions(array $options) {
+    foreach ($options as $key => $value) {
+      if (is_object($value)) {
+        $options[$key] = 'object (' . get_class($value) . ')';
+      }
+      elseif (is_array($value)) {
+        $options[$key] = $this->sanitizeOptions($value);
+      }
+    }
+    return $options;
   }
 
 }
