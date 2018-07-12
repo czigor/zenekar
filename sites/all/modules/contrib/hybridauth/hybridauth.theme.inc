@@ -9,6 +9,7 @@
  */
 function template_preprocess_hybridauth_widget(&$vars, $hook) {
   $element = $vars['element'];
+  $vars['title'] = filter_xss_admin($element['#title']);
   $vars['providers'] = array();
   foreach ($element['providers'] as $provider) {
     $vars['providers'][] = l(render($provider['text']), $provider['path'], $provider['options']);
