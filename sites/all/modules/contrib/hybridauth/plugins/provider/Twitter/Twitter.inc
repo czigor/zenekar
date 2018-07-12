@@ -9,6 +9,7 @@
  */
 $plugin = array(
   'configuration_form_callback' => 'hybridauth_provider_twitter_configuration_form_callback',
+  'configuration_callback' => 'hybridauth_provider_twitter_configuration_callback',
 );
 
 function hybridauth_provider_twitter_configuration_form_callback(&$form, $provider_id) {
@@ -21,4 +22,17 @@ function hybridauth_provider_twitter_configuration_form_callback(&$form, $provid
       '%callback_uri' => url('hybridauth/endpoint', array('absolute' => TRUE, 'query' => array('hauth.done' => 'Twitter'), 'language' => _hybridauth_language_default())),
     )
   );
+  $form['vtabs']['advanced'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Advanced settings'),
+  );
+  $form['vtabs']['advanced']['hybridauth_provider_' . $provider_id . '_includeEmail'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Include E-mail'),
+    '#default_value' => variable_get('hybridauth_provider_' . $provider_id . '_includeEmail', FALSE),
+  );
+}
+
+function hybridauth_provider_twitter_configuration_callback(&$config, $provider_id) {
+  $config['includeEmail'] = variable_get('hybridauth_provider_' . $provider_id . '_includeEmail', FALSE);
 }

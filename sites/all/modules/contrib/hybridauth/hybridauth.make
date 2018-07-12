@@ -4,6 +4,6 @@ api = 2
 
 libraries[hybridauth][type] = "libraries"
 libraries[hybridauth][download][type] = "file"
-libraries[hybridauth][download][url] = "https://github.com/hybridauth/hybridauth/archive/2.5.1.zip"
+libraries[hybridauth][download][url] = "https://codeload.github.com/hybridauth/hybridauth/legacy.tar.gz/v2"
 libraries[hybridauth][directory_name] = "hybridauth"
 libraries[hybridauth][destination] = "libraries"
