@@ -62,6 +62,9 @@
 .hybridauth-goodreads-hybridauth-16 {
   background: transparent url(icons/goodreads.png) 0px 0px no-repeat;
 }
+.hybridauth-humanitarianid-hybridauth-16 {
+  background: transparent url(icons/humanitarianid.png) 0px 0px no-repeat;
+}
 .hybridauth-identica-hybridauth-16 {
   background: transparent url(icons/identica.png) 0px 0px no-repeat;
 }
@@ -79,6 +82,12 @@
 }
 .hybridauth-odnoklassniki-hybridauth-16 {
   background: transparent url(icons/odnoklassniki.png) 0px 0px no-repeat;
+}
+.hybridauth-openstreetmap-hybridauth-16 {
+  background: transparent url(icons/openstreetmap.png) 0px 0px no-repeat;
+}
+.hybridauth-pinterest-hybridauth-16 {
+  background: transparent url(icons/pinterest.png) 0px 0px no-repeat;
 }
 .hybridauth-pixnet-hybridauth-16 {
   background: transparent url(icons/pixnet.png) 0px 0px no-repeat;

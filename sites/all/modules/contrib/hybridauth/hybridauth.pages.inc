@@ -114,6 +114,9 @@ function _hybridauth_window_close($redirect = TRUE) {
   $destination_options = drupal_parse_url($destination) + $base_options;
   $destination_error_options = drupal_parse_url($destination_error) + $base_options;
 
+  drupal_alter('hybridauth_destination_options', $destination_options);
+  drupal_alter('hybridauth_destination_error_options', $destination_error_options);
+
   $destination = url($destination_options['path'], $destination_options);
   $destination_error = url($destination_error_options['path'], $destination_error_options);
 
@@ -248,6 +251,8 @@ function _hybridauth_window_process_auth($data) {
   if ($identity = _hybridauth_identity_load($data)) {
     // Check if user is blocked.
     if ($account = _hybridauth_user_is_blocked_by_uid($identity['uid'])) {
+      $account = user_load($identity['uid']);
+      module_invoke_all('hybridauth_user_blocked', $account, $data);
       drupal_set_message(t('The username %name has not been activated or is blocked.', array('%name' => $account->name)), 'error');
     }
     // Check for email verification timestamp.

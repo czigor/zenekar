@@ -18,7 +18,7 @@ function hybridauth_uninstall() {
     variable_del('hybridauth_provider_' . $provider_id . '_window_height');
     variable_del('hybridauth_provider_' . $provider_id . '_display');
     variable_del('hybridauth_provider_' . $provider_id . '_scope');
-    // Not used anymore.
+    // Legacy variables.
     variable_del('hybridauth_provider_' . $provider_id . '_enabled');
     variable_del('hybridauth_provider_' . $provider_id . '_weight');
   }
@@ -53,7 +53,7 @@ function hybridauth_uninstall() {
   variable_del('hybridauth_proxy');
   variable_del('hybridauth_debug');
 
-  // Some old variables not present in the code now.
+  // Legacy variables.
   variable_del('hybridauth_registration_role_choice');
   variable_del('hybridauth_registration_roles');
   variable_del('hybridauth_window_type');

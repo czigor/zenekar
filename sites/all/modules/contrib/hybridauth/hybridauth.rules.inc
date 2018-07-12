@@ -180,7 +180,7 @@ function _hybridauth_rules_data_properties() {
     $token_info = hybridauth_token_info();
   }
   else {
-    include_once drupal_get_path('module', 'hybridauth') . '/hybridauth.tokens.inc';
+    module_load_include('inc', 'hybridauth', 'hybridauth.tokens');
     $token_info = hybridauth_token_info();
   }
   foreach ($token_info['tokens']['hybridauth'] as $key => $value) {
