@@ -366,3 +366,15 @@ function eu_cookie_compliance_update_7008() {
   $eu_cookie_settings['withdraw_enabled'] = 1;
   variable_set('eu_cookie_compliance', $eu_cookie_settings);
 }
+
+/**
+ * Disable withdraw tab and banner in the consent method "Consent by default".
+ */
+function eu_cookie_compliance_update_7009() {
+  $eu_cookie_settings = variable_get('eu_cookie_compliance', array());
+
+  if (!empty($eu_cookie_settings['method']) && $eu_cookie_settings['method'] == 'default' && !empty($eu_cookie_settings['withdraw_enabled']) && $eu_cookie_settings['withdraw_enabled'] == 1) {
+    $eu_cookie_settings['withdraw_enabled'] = 0;
+  }
+  variable_set('eu_cookie_compliance', $eu_cookie_settings);
+}
