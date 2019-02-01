@@ -1,0 +1,38 @@
+<?php
+/**
+ * @file
+ * Install, Uninstall, and Update hooks for structured_data module.
+ */
+
+/**
+ * Implements hook_uninstall().
+ */
+function structured_data_uninstall() {
+  // Marketing variables.
+  variable_del('structured_data_site_name_default');
+  variable_del('structured_data_site_name_custom');
+  variable_del('structured_data_site_name_alternative');
+  variable_del('structured_data_site_logo_default');
+  variable_del('structured_data_site_logo_custom');
+  // Local Business variables.
+  variable_del('structured_data_business_type');
+  variable_del('structured_data_address');
+  variable_del('structured_data_city');
+  variable_del('structured_data_state');
+  variable_del('structured_data_zip');
+  // Corporate contact variables.
+  variable_del('structured_data_phone');
+  variable_del('structured_data_phone_type');
+  variable_del('structured_data_phone_options');
+  // Social links variables.
+  variable_del('structured_data_social_links');
+}
+
+
+/**
+ * Remove settings to use default site name and logo, we now fall back to those.
+ */
+function structured_data_update_7001() {
+  variable_del('structured_data_site_name_default');
+  variable_del('structured_data_site_logo_default');
+}

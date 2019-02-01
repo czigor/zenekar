@@ -1,0 +1,200 @@
+<?php
+/**
+ * @file
+ * Annotate your content to generate Rich Search Snippets.
+ */
+
+/**
+ * Implements hook_permission().
+ */
+function structured_data_permission() {
+  return array(
+    'configure structured data' =>  array(
+      'title' => t('Configure structured data'),
+      'description' => t('Determine which elements should be included in Rich Snippits.'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_menu().
+ */
+function structured_data_menu() {
+  $items['admin/config/structured-data'] = array(
+    'title' => 'Structured data',
+    'description' => 'The main configuration page for Structured Data',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('structured_data_settings_form'),
+    'access arguments' => array('configure structured data'),
+    'file' => 'structured_data.admin.inc',
+  );
+
+  return $items;
+}
+
+/**
+ * Implements template_preprocess_html().
+ *
+ * Add the necesarry json-ld to the page header.
+ */
+function structured_data_preprocess_html(&$vars) {
+  // Without more information, we assume every website is just a website.
+  $structured_data = array(
+    '@context' => 'http://schema.org',
+    '@type' => 'WebSite',
+  );
+  // Override if a business type was selected.
+  if ($schema_type = variable_get('structured_data_business_type', FALSE)) {
+    $structured_data['@type'] = $schema_type;
+  }
+
+  // Add site name info.
+  $structured_data['name'] = structured_data_get_site_name();
+  // Get the alternative site name.
+  if ($alternative_site_name = variable_get('structured_data_site_name_alternative', FALSE)) {
+    $structured_data['alternateName'] = $alternative_site_name;
+  }
+
+  // If metatag has set a cononical URL, add that here too.
+  $head_elements = drupal_add_html_head();
+  if (!empty($head_elements['metatag_canonical'])) {
+    $structured_data['url'] = $head_elements['metatag_canonical']['#value'];
+  }
+  else {
+    // URL is required, so we fall back to using the site home page.
+    $structured_data['url'] = url('', array('absolute' => TRUE));
+  }
+
+  // Add site logo.
+  $structured_data['logo'] = structured_data_get_site_logo();
+
+  // Add local business info.
+  $local_data = structured_data_get_local_info();
+  $structured_data = array_merge($structured_data, $local_data);
+
+  // Add corporate contact info.
+  $corp_data = structured_data_get_corporate_info();
+  $structured_data = array_merge($structured_data, $corp_data);
+
+  //Add social links.
+  $social_links = structured_data_get_social_link_info();
+
+  if ($social_links) {
+    $structured_data['sameAs'] = $social_links;
+  }
+
+
+  // If there is any sructured data, add it to the page.
+  if (!empty($structured_data)) {
+    $json_ld_script = array(
+      '#tag' => 'script',
+      '#attributes' => array('type' => 'application/ld+json'),
+      '#value' => defined('JSON_UNESCAPED_SLASHES') ? json_encode($structured_data, JSON_UNESCAPED_SLASHES) : json_encode($structured_data),
+    );
+    drupal_add_html_head($json_ld_script, 'structured_data_json_ld');
+  }
+}
+
+/**
+ * Gets only the site name.
+ *
+ * @return (string) Site name.
+ */
+function structured_data_get_site_name() {
+  // Get the site name.
+  if ($custom_name = variable_get('structured_data_site_name_custom', FALSE)) {
+    $site_name = $custom_name;
+  }
+  else {
+    $site_name = variable_get('site_name', '');
+  }
+
+  return $site_name;
+}
+
+/**
+ * Gets the a URL to the site logo.
+ *
+ * @return (string) Path to a suitable logo file.
+ */
+function structured_data_get_site_logo() {
+  if ($custom_logo = variable_get('structured_data_site_logo_custom', FALSE)) {
+    if ($logo = file_load($custom_logo)) {
+      $logo_path = file_create_url($logo->uri);
+    }
+  }
+  else {
+    $default_theme = variable_get('theme_default', 'bartik');
+    $logo_path = theme_get_setting('logo', $default_theme);
+  }
+
+  return $logo_path;
+}
+
+/**
+ * Gets the local business data.
+ *
+ * @return (array) Data matching schema.org definition for address.
+ */
+function structured_data_get_local_info() {
+  $data = array(
+    'address' => array('@type' => 'PostalAddress'),
+  );
+
+  // Address parts are grouped together.
+  if ($address = variable_get('structured_data_address', FALSE)) {
+    $data['address']['streetAddress'] = $address;
+  }
+  if ($city = variable_get('structured_data_city', FALSE)) {
+    $data['address']['addressLocality'] = $city;
+  }
+  if ($state = variable_get('structured_data_state', FALSE)) {
+    $data['address']['addressRegion'] = $state;
+  }
+  if ($zip = variable_get('structured_data_zip', FALSE)) {
+    $data['address']['postalCode'] = $zip;
+  }
+
+  return $data;
+}
+
+/**
+ * Gets the corporate contact data.
+ *
+ * @return (array) Data matching schema.org definition for contactPoint.
+ */
+function structured_data_get_corporate_info() {
+  $data = array();
+  // Only add a contact point if a phone number is provided.
+  if ($phone = variable_get('structured_data_phone', FALSE)) {
+    $data['contactPoint'] = array(
+      '@type' => 'ContactPoint',
+      'telephone' => $phone,
+    );
+    if ($phone_type = variable_get('structured_data_phone_type', FALSE)) {
+      $data['contactPoint']['contactType'] = $phone_type;
+    }
+    $phone_options = variable_get('structured_data_phone_options', array());
+    // Remove options not selected, get only values.
+    $options = array_values(array_filter($phone_options));
+    if (count($options)) {
+      $data['contactPoint']['contactOption'] = $options;
+    }
+  }
+
+  return $data;
+}
+/**
+ * Gets the social link data.
+ *
+ * @return (array) Data matching schema.org definition for sameAs.
+ */
+function structured_data_get_social_link_info() {
+  $data = array();
+
+  if ($social_links = variable_get('structured_data_social_links', FALSE)) {
+    return $social_links;
+  }
+
+  return FALSE;
+}
