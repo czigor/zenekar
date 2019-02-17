@@ -11,6 +11,11 @@ SUMMARY OF STATE OF CURRENT CORE PATCHES (to be updated manually)
 HISTORY
 =======
 
+#3 - 2019.02.18. - After updating to Drupal 7.64
+------------------------------------------------
+* No patch applied. (Kept robots.txt and .htaccess.)
+
+
 #2 - 2018.10.20. - After updating to Drupal 7.60
 ------------------------------------------------
 * NEW PATCH: htaccess-force-https-and-no-www.patch
