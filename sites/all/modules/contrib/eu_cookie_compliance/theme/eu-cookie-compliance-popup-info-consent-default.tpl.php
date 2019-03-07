@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Template file for consent banner.
+ * Pop-up prompting user to give consent for the website to set cookies.
  *
  * When overriding this template it is important to note that jQuery will use
  * the following classes to assign actions to buttons:
@@ -26,15 +26,15 @@
  */
 ?>
 <div>
-  <div class="popup-content info">
+  <div class ="popup-content info">
     <div id="popup-text">
       <?php print $message ?>
-      <?php if ($disagree_button) : ?>
-        <button type="button" class="find-more-button eu-cookie-compliance-more-button"><?php print $disagree_button; ?></button>
-      <?php endif; ?>
     </div>
     <div id="popup-buttons">
       <button type="button" class="<?php print $primary_button_class; ?>"><?php print $agree_button; ?></button>
+      <?php if ($disagree_button) : ?>
+        <button type="button" class="find-more-button eu-cookie-compliance-more-button <?php print $primary_button_class; ?>"><?php print $disagree_button; ?></button>
+      <?php endif; ?>
       <?php if ($secondary_button_label) : ?>
         <button type="button" class="<?php print $secondary_button_class; ?>" ><?php print $secondary_button_label; ?></button>
       <?php endif; ?>
