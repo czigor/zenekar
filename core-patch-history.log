@@ -11,6 +11,11 @@ SUMMARY OF STATE OF CURRENT CORE PATCHES (to be updated manually)
 HISTORY
 =======
 
+#4 - 2019.02.18. - After updating to Drupal 7.65
+------------------------------------------------
+* No patch applied. (Kept robots.txt and .htaccess.)
+
+
 #3 - 2019.02.18. - After updating to Drupal 7.64
 ------------------------------------------------
 * No patch applied. (Kept robots.txt and .htaccess.)
