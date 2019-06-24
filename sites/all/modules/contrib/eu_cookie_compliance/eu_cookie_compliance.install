@@ -125,6 +125,7 @@ function _eu_cookie_compliance_get_popup_default_setting() {
     $default_filter_format = 'full_html';
   }
 
+  module_load_include('module', 'eu_cookie_compliance', 'eu_cookie_compliance');
   $cookie_policy = _eu_cookie_compliance_find_privacy_policy();
   if (!$cookie_policy) {
     $cookie_policy = '<front>';
@@ -382,7 +383,7 @@ function eu_cookie_compliance_update_7008() {
   );
   $eu_cookie_settings['withdraw_action_button_label'] = 'Withdraw consent';
   $eu_cookie_settings['withdraw_tab_button_label'] = 'Privacy settings';
-  $eu_cookie_settings['withdraw_enabled'] = 1;
+  $eu_cookie_settings['withdraw_enabled'] = 0;
   // Set default info template to 'legacy' for 'consent by default' config
   // option.
   if (!array_key_exists('info_template', $eu_cookie_settings)) {
@@ -422,3 +423,32 @@ function eu_cookie_compliance_update_7010() {
     }
   }
 }
+
+/**
+ * Add config variables for the "Opt-in with categories" feature.
+ */
+function eu_cookie_compliance_update_7011() {
+  $eu_cookie_settings = variable_get('eu_cookie_compliance', array());
+  $new_settings = array(
+    'cookie_categories' => '',
+    'enable_save_preferences_button' => TRUE,
+    'save_preferences_button_label' => 'Save preferences',
+    'accept_all_categories_button_label' => 'Accept all cookies',
+    'fix_first_cookie_category' => TRUE,
+    'select_all_categories_by_default' => FALSE,
+    'withdraw_button_on_info_popup' => FALSE,
+  );
+  variable_set('eu_cookie_compliance', $eu_cookie_settings + $new_settings);
+
+  if (module_exists('i18n_variable')) {
+    $languages = language_list();
+    foreach (array_keys($languages) as $langcode) {
+      $settings = i18n_variable_get('eu_cookie_compliance', $langcode);
+      if (!empty($settings)) {
+        $updated_setting = $settings + $new_settings;
+        i18n_variable_set('eu_cookie_compliance', $updated_setting, $langcode);
+      }
+    }
+  }
+}
+
