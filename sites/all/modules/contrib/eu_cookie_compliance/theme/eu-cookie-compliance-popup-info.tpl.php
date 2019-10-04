@@ -59,7 +59,7 @@
           <div class="eu-cookie-compliance-category">
             <div>
               <input type="checkbox" name="cookie-categories" id="cookie-category-<?php print $key; ?>"
-                     value="<?php print $key; ?>" <?php if ($fix_first_cookie_category && $first_loop) : ?>checked disabled<?php endif; ?>
+                     value="<?php print $key; ?>" <?php if ($fix_first_cookie_category && $first_loop) : ?>checked disabled<?php endif; ?>>
               <label for="cookie-category-<?php print $key; ?>"><?php print $category['label']; ?></label>
             </div>
           <?php if (isset($category['description'])) : ?>

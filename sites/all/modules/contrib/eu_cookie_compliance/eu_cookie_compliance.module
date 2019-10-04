@@ -129,7 +129,7 @@ function eu_cookie_compliance_page_build(&$page) {
   if (!empty($popup_settings['popup_enabled']) && user_access('display EU Cookie Compliance popup') && $geoip_match['in_eu'] && $domain_allow && !$path_match && !$admin_page_match && $uid1_match && $modules_allow_popup) {
     global $language;
 
-    $method = !empty($popup_settings['method']) ? $popup_settings['method'] : 'default';
+    $method = !empty($popup_settings['method']) ? $popup_settings['method'] : 'opt_in';
 
     // Set default template (based on earlier version of module).
     if (!isset($popup_settings['info_template'])) {
@@ -150,7 +150,7 @@ function eu_cookie_compliance_page_build(&$page) {
     else {
       // Initialize some needed popup settings messages.
       $popup_settings_messages = array(
-        'popup_agree_button_message' => t('OK, I agree'),
+        'popup_agree_button_message' => t('Accept'),
         'popup_disagree_button_message' => t('More info'),
         'popup_hide_button_message' => t('Hide'),
         'popup_find_more_button_message' => t('More info'),
@@ -207,7 +207,7 @@ function eu_cookie_compliance_page_build(&$page) {
         case 'default':
           $click_confirmation = isset($popup_settings['popup_clicking_confirmation']) ? $popup_settings['popup_clicking_confirmation'] : TRUE;
           $scroll_confirmation = isset($popup_settings['popup_scrolling_confirmation']) ? $popup_settings['popup_scrolling_confirmation'] : FALSE;
-          $primary_button_label = !empty($popup_settings['popup_agree_button_message']) ? filter_xss($popup_settings['popup_agree_button_message']) : 'OK, I agree';
+          $primary_button_label = !empty($popup_settings['popup_agree_button_message']) ? filter_xss($popup_settings['popup_agree_button_message']) : 'Accept';
           $primary_button_class = 'agree-button eu-cookie-compliance-default-button';
           $secondary_button_label = '';
           $secondary_button_class = '';
@@ -219,7 +219,7 @@ function eu_cookie_compliance_page_build(&$page) {
         case 'opt_in':
           $click_confirmation = FALSE;
           $scroll_confirmation = FALSE;
-          $primary_button_label = !empty($popup_settings['popup_agree_button_message']) ? filter_xss($popup_settings['popup_agree_button_message']) : 'OK, I agree';
+          $primary_button_label = !empty($popup_settings['popup_agree_button_message']) ? filter_xss($popup_settings['popup_agree_button_message']) : 'Accept';
           $primary_button_class = 'agree-button eu-cookie-compliance-secondary-button';
           $secondary_button_label = !empty($popup_settings['disagree_button_label']) ? filter_xss($popup_settings['disagree_button_label']) : 'Decline';
           $secondary_button_class = 'decline-button eu-cookie-compliance-default-button';
@@ -250,7 +250,7 @@ function eu_cookie_compliance_page_build(&$page) {
           $scroll_confirmation = FALSE;
           $primary_button_label = !empty($popup_settings['disagree_button_label']) ? filter_xss($popup_settings['disagree_button_label']) : 'Decline';
           $primary_button_class = 'decline-button eu-cookie-compliance-secondary-button';
-          $secondary_button_label = !empty($popup_settings['popup_agree_button_message']) ? filter_xss($popup_settings['popup_agree_button_message']) : 'OK, I agree';
+          $secondary_button_label = !empty($popup_settings['popup_agree_button_message']) ? filter_xss($popup_settings['popup_agree_button_message']) : 'Accept';
           $secondary_button_class = 'agree-button eu-cookie-compliance-default-button';
           $privacy_settings_tab_label = $withdraw_button_on_info_popup ? $popup_settings['withdraw_tab_button_label'] : FALSE;
           $popup_info_template = 'eu_cookie_compliance_popup_info';
@@ -332,11 +332,13 @@ function eu_cookie_compliance_page_build(&$page) {
         'popup_link' => url(token_replace($popup_settings['popup_link'])),
         'popup_link_new_window' => isset($popup_settings['popup_link_new_window']) ? $popup_settings['popup_link_new_window'] : 1,
         'popup_position' => empty($popup_settings['popup_position']) ? NULL : $popup_settings['popup_position'],
+        'fixed_top_position' => empty($popup_settings['fixed_top_position']) ? FALSE : $popup_settings['fixed_top_position'],
         'popup_language' => $language->language,
         'store_consent' => $popup_settings['consent_storage_method'] != 'do_not_store',
         'better_support_for_screen_readers' => isset($popup_settings['better_support_for_screen_readers']) ? $popup_settings['better_support_for_screen_readers'] : 0,
         'reload_page' => isset($popup_settings['reload_page']) ? $popup_settings['reload_page'] : 0,
         'domain' => variable_get('eu_cookie_compliance_domain', ''),
+        'domain_all_sites' => variable_get('eu_cookie_compliance_domain_all_sites'),
         'popup_eu_only_js' => isset($popup_settings['eu_only_js']) ? $popup_settings['eu_only_js'] : 0,
         'cookie_lifetime' => variable_get('eu_cookie_compliance_cookie_lifetime', 100),
         'cookie_session' => empty($popup_settings['cookie_session']) ? FALSE : $popup_settings['cookie_session'],
@@ -371,15 +373,15 @@ function eu_cookie_compliance_page_build(&$page) {
     $load_disabled_scripts = '';
     if ($disabled_javascripts != '') {
       $load_disabled_scripts = '';
-      $disabled_javascripts = _eu_cookie_compliance_explode_multiple_lines($disabled_javascripts);
+      $disabled_javascripts = _eu_cookie_compliance_explode_multiple_lines($disabled_javascripts, FALSE);
       $disabled_javascripts = array_filter($disabled_javascripts, 'strlen');
 
       foreach ($disabled_javascripts as $script) {
         $parts = explode('%3A', $script);
         $category = NULL;
         if (count($parts) > 1) {
-          $category = $parts[0];
-          $script = $parts[1];
+          $category = array_shift($parts);
+          $script = implode(':', $parts);
         }
 
         // Split the string if a | is present.
@@ -413,7 +415,9 @@ function eu_cookie_compliance_page_build(&$page) {
       }
     }
 
-    drupal_add_js('function euCookieComplianceLoadScripts(category) {' . $load_disabled_scripts . '}', array('type' => 'inline', 'scope' => $script_scope));
+    if ($load_disabled_scripts) {
+      drupal_add_js('function euCookieComplianceLoadScripts(category) {' . $load_disabled_scripts . '}', array('type' => 'inline', 'scope' => $script_scope));
+    }
 
     // Add the cookie name inline, since Drupal.settings will not be available
     // if the script is loaded in the header.
@@ -430,8 +434,8 @@ function eu_cookie_compliance_page_build(&$page) {
     drupal_add_js(drupal_get_path('module', 'eu_cookie_compliance') . '/js/eu_cookie_compliance.js', array(
       'type' => 'file',
       'scope' => $script_scope,
-      'group' => JS_THEME,
-      'weight' => 100,
+      'group' => JS_DEFAULT,
+      'weight' => 0,
     ));
   }
 }
@@ -519,7 +523,7 @@ function eu_cookie_compliance_theme() {
  *   [key => ['label' => label, 'description' => description]]
  */
 function _eu_cookie_compliance_extract_category_key_label_description($string) {
-  $categories = [];
+  $categories = array();
 
   $list = explode("\n", $string);
   $list = array_map('trim', $list);
@@ -543,7 +547,7 @@ function _eu_cookie_compliance_extract_category_key_label_description($string) {
       $description = '';
     }
 
-    $categories[$key] = ['label' => $label, 'description' => $description];
+    $categories[$key] = array('label' => $label, 'description' => $description);
   }
   return $categories;
 }
@@ -555,32 +559,27 @@ function _eu_cookie_compliance_extract_category_key_label_description($string) {
  *   Setting to retrieve.
  *
  * @return string|null|array
- *   if no settings are defined, this function returns NULL.
+ *   The requested setting or an array of all settings.
  */
 function eu_cookie_compliance_get_settings($setting = 'all') {
   $popup_settings = variable_get('eu_cookie_compliance', array());
 
-  // Certain settings are required, so make sure they always return a valid
-  // value. For example, this might not be set properly for all translations
-  // when using translations of the variables.
-  $required_settings = array(
+  // Ensure a default value exists for each setting.
+  $popup_settings += array(
     'consent_storage_method' => 'do_not_store',
+    'cookie_categories' => NULL,
+    'enable_save_preferences_button' => NULL,
+    'fix_first_cookie_category' => NULL,
+    'select_all_categories_by_default' => NULL,
     'show_disagree_button' => TRUE,
+    'withdraw_button_on_info_popup' => NULL,
   );
 
   if ($setting == 'all') {
     return $popup_settings;
   }
 
-  if (isset($popup_settings[$setting])) {
-    return $popup_settings[$setting];
-  }
-  elseif (isset($required_settings[$setting])) {
-    return $required_settings[$setting];
-  }
-  else {
-    return NULL;
-  }
+  return isset($popup_settings[$setting]) ? $popup_settings[$setting] : NULL;
 }
 
 /**
@@ -603,9 +602,10 @@ function eu_cookie_compliance_json() {
 function eu_cookie_compliance_user_in_eu() {
   $geoip_match = FALSE;
   $eu_countries_default = array(
-    NULL, 'BE', 'BG', 'CZ', 'DK', 'DE', 'EE', 'IE', 'EL', 'ES', 'FR', 'HR',
-    'IT', 'CY', 'LV', 'LT', 'LU', 'HU', 'MT', 'NL', 'AT', 'PL', 'PT', 'RO',
-    'SI', 'SK', 'FI', 'SE', 'UK', 'GB', 'NO',
+    NULL, 'AT', 'AX', 'BE', 'BG', 'CY', 'CZ', 'DE', 'DK', 'EE', 'EL', 'ES',
+    'EU', 'FI', 'FR', 'GB', 'GF', 'GI', 'GP', 'GR', 'HR', 'HU', 'IE', 'IS',
+    'IT', 'LI', 'LT', 'LU', 'LV', 'ME', 'MF', 'MQ', 'MT', 'NL', 'NO', 'PL',
+    'PT', 'RE', 'RO', 'SE', 'SI', 'SK', 'YT', 'UK',
   );
   // Allow custom array of countries to be loaded from settings.php, defaulting
   // to the array above.
@@ -741,45 +741,75 @@ function _eu_cookie_compliance_explode_multiple_lines($text, $convert = TRUE) {
  *   URL to the node if found, otherwise FALSE.
  */
 function _eu_cookie_compliance_find_privacy_policy() {
-  if (!module_exists('node')) {
-    return FALSE;
-  }
-
-  $pattern = 'privacy|privacy +policy|cookie +policy|terms +of +use|terms +of +service|terms +and +conditions';
-
   $database_type = $GLOBALS['databases']['default']['default']['driver'];
-  // Select operator based on the database type.
-  switch ($database_type) {
-    case 'pgsql':
-      $op = '~*';
-      break;
 
-    case 'sqlite':
-      $op = 'REGEXP';
-      // The regexp function is not defined in SQLite for Drupal 7.
-      Database::getConnection('default')->sqliteCreateFunction('REGEXP',
-        function ($pattern, $data, $delimiter = '~', $modifiers = 'isuS') {
-          if (isset($pattern, $data) === TRUE) {
-            return (preg_match(sprintf('%1$s%2$s%1$s%3$s', $delimiter, $pattern, $modifiers), $data) > 0);
-          }
-          return NULL;
-        });
-      break;
+  if ($database_type === 'sqlsrv') {
+    $query = db_query(
+      "select nid from {node} where 
+      title LIKE 'Privacy%' OR 
+      title LIKE 'Privacy policy%' OR 
+      title LIKE 'Privacy Policy%' OR 
+      title LIKE 'Cookie policy%' OR 
+      title LIKE 'Cookie Policy%' OR 
+      title LIKE 'Terms of use%' OR 
+      title LIKE 'Terms of Use%' OR 
+      title LIKE 'Terms of service%' OR 
+      title LIKE 'Terms of Service%' OR 
+      title LIKE 'Terms and conditions%' OR 
+      title LIKE 'Terms and Conditions%'
+      "
+    );
+    $result = $query->fetchAllAssoc('nid');
 
-    default:
-      $op = 'RLIKE';
+    if (!empty($result)) {
+      return ('/node/' . reset(array_keys($result)));
+    }
   }
+  else {
+    // Select operator based on the database type.
+    switch ($database_type) {
+      case 'pgsql':
+        $op = '~*';
+        break;
 
-  $query = new EntityFieldQuery();
-  $query->entityCondition('entity_type', 'node')
-    ->propertyCondition('title', $pattern, $op);
+      case 'sqlite':
+        $op = 'REGEXP';
+        // The regexp function is not defined in SQLite for Drupal 7.
+        Database::getConnection('default')->sqliteCreateFunction('REGEXP', '_eu_cookie_compliance_sqlite_regex_query_builder', 2);
+        break;
 
-  $result = $query->execute();
-  if (isset($result['node'])) {
-    $nodes = array_keys($result['node']);
-    return ('node/' . array_shift($nodes));
+      default:
+        $op = 'RLIKE';
+    }
+
+    $pattern = 'privacy|privacy +policy|cookie +policy|terms +of +use|terms +of +service|terms +and +conditions';
+
+    $query = new EntityFieldQuery();
+    $query->entityCondition('entity_type', 'node')
+      ->propertyCondition('title', $pattern, $op);
+
+    $result = $query->execute();
+    if (isset($result['node'])) {
+      $nodes = array_keys($result['node']);
+      return ('node/' . array_shift($nodes));
+    }
   }
   return FALSE;
+}
+
+/**
+ * Callback function for SQLite regular expression query.
+ *
+ * @param string $pattern
+ *   Search pattern.
+ * @param string $data
+ *   Data coming from SQLite.
+ *
+ * @return bool
+ *   Returns whether the pattern can be found in the data.
+ */
+function _eu_cookie_compliance_sqlite_regex_query_builder($pattern, $data) {
+  return (preg_match(sprintf('%1$s%2$s%1$s%3$s', '~', $pattern, 'isuS'), $data) > 0);
 }
 
 /**
