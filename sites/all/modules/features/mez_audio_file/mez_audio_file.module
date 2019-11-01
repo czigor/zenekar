@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the MEZ Audio file feature.
- */
-
-include_once 'mez_audio_file.features.inc';

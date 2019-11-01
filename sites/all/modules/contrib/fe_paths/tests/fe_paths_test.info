@@ -1,7 +1,0 @@
-name = File Entity Paths test
-description = Support module to File Entity Paths test.
-dependencies[] = fe_paths
-package = Testing
-core = 7.x
-hidden = TRUE
-

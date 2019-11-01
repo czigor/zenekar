@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the IssueQ settings feature.
- */
-
-include_once 'iq_settings.features.inc';

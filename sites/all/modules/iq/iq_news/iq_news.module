@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the IssueQ news feature.
- */
-
-include_once 'iq_news.features.inc';

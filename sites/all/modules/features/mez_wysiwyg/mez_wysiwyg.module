@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Drupal needs this blank file.
- */
-
-include_once 'mez_wysiwyg.features.inc';

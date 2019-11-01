@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the MEZ Videos view feature.
- */
-
-include_once 'mez_videos_view.features.inc';

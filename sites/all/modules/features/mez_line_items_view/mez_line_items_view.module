@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the MEZ Line items view feature.
- */
-
-include_once 'mez_line_items_view.features.inc';

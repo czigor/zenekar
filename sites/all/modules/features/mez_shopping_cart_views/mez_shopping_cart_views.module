@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the MEZ shopping cart views feature.
- */
-
-include_once 'mez_shopping_cart_views.features.inc';

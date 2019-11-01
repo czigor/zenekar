@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the MEZ Media views feature.
- */
-
-include_once 'mez_media_views.features.inc';

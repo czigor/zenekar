@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the MEZ Ticket product feature.
- */
-
-include_once 'mez_ticket_product.features.inc';

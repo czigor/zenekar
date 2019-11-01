@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the MEZ Document file feature.
- */
-
-include_once 'mez_document_file.features.inc';

@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the MEZ Orders view feature.
- */
-
-include_once 'mez_orders_view.features.inc';

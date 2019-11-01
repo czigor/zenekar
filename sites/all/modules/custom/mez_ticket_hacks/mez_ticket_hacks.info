@@ -1,7 +1,0 @@
-name = MEZ ticket  hacks
-description = MEZ ticket selling  
-core = 7.x
-package = MEZ
-
-project = "mez_ticket_hacks"
-version = "7.x-1.0"

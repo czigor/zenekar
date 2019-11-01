@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the MEZ Piece CT feature.
- */
-
-include_once 'mez_piece_ct.features.inc';
