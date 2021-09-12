@@ -42,6 +42,7 @@ function seckit_admin_form() {
   // fieldset for Content Security Policy (CSP)
   $args = array(
     '!wiki' => l(t('Mozilla Wiki'), 'https://wiki.mozilla.org/Security/CSP'),
+    '!caniuse' => l(t('Can I use'), 'https://caniuse.com/#feat=contentsecuritypolicy'),
   );
   $form['seckit_xss']['csp'] = array(
     '#type' => 'fieldset',
@@ -57,8 +58,38 @@ function seckit_admin_form() {
     '#default_value' => $options['seckit_xss']['csp']['checkbox'],
     '#title' => t('Enable Content Security Policy'),
     '#return_value' => 1,
-    '#description' => t('Send Content-Security-Policy (official), X-Content-Security-Policy (supported by Mozilla Firefox and IE10) and X-WebKit-CSP (supported by Google Chrome and Safari) HTTP response headers with the list of Content Security Policy directives. <br/>Violation reports are ignored when this option is disabled.'),
+    '#description' => t('Send Content-Security-Policy HTTP response headers with the list of Content Security Policy directives. <br/>Violation reports are ignored when this option is disabled.'),
   );
+  $form['seckit_xss']['csp']['vendor-prefix'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Vendor Prefixed CSP headers'),
+    '#collapsible' => TRUE,
+    '#tree' => TRUE,
+    '#collapsed' => !($options['seckit_xss']['csp']['vendor-prefix']['x'] || $options['seckit_xss']['csp']['vendor-prefix']['webkit']),
+    '#description' => t('Support for legacy vendor-prefixed CSP headers. Details at !caniuse.', $args),
+  );
+  $form['seckit_xss']['csp']['vendor-prefix']['x'] = array(
+    '#type' => 'checkbox',
+    '#default_value' => $options['seckit_xss']['csp']['vendor-prefix']['x'],
+    '#title' => t('Send X-Content-Security-Policy HTTP response header'),
+    '#return_value' => 1,
+    '#description' => t('Send vendor-prefixed X-Content-Security-Policy HTTP response headers with the list of Content Security Policy directives.'),
+  );
+  $form['seckit_xss']['csp']['vendor-prefix']['webkit'] = array(
+    '#type' => 'checkbox',
+    '#default_value' => $options['seckit_xss']['csp']['vendor-prefix']['webkit'],
+    '#title' => t('Send X-WebKit-CSP HTTP response header'),
+    '#return_value' => 1,
+    '#description' => t('Send vendor-prefixed X-WebKit-CSP HTTP response headers with the list of Content Security Policy directives.'),
+  );
+  // CSP Upgrade Insecure Requests
+  $form['seckit_xss']['csp']['upgrade-req'] = array(
+    '#type' => 'checkbox',
+      '#default_value' => $options['seckit_xss']['csp']['upgrade-req'],
+      '#title' => t('Enable Upgrade Insecure Requests'),
+      '#return_value' => 1,
+      '#description' => t('Upgrade Insecure Requests (upgrade-insecure-requests) instructs user agents to rewrite URL schemes, changing HTTP to HTTPS. This directive is used to protect your visitors from insecure content or for websites with large numbers of old URL\'s that need to be rewritten.'),
+   );
   // CSP report-only mode
   $form['seckit_xss']['csp']['report-only'] = array(
     '#type' => 'checkbox',
@@ -466,6 +497,34 @@ function seckit_admin_form() {
     '#default_value' => $options['seckit_ct']['enforce'],
   );
 
+  // main fieldset for feature_policy
+  $args = array(
+    '!Google' => l(t("Google's developer documentation"), 'https://developers.google.com/web/updates/2018/06/feature-policy'),
+  );
+  $form['seckit_fp'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Feature policy'),
+    '#collapsible' => TRUE,
+    '#collapsed' => (!$options['seckit_fp']['feature_policy']),
+    '#tree' => TRUE,
+    '#description' => t("Allows configuration of the Feature-Policy header to selectively enable, disable, and modify the behavior of certain APIs and web features in the browser. See !Google.", $args)
+  );
+
+  // enable/disable Feature Policy
+  $form['seckit_fp']['feature_policy'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Feature policy'),
+    '#default_value' => $options['seckit_fp']['feature_policy'],
+    '#description' => t(' Enable the Feature-Policy header.'),
+  );
+  // From-Origin destination
+  $form['seckit_fp']['feature_policy_policy'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Policy'),
+    '#default_value' => $options['seckit_fp']['feature_policy_policy'],
+    '#description' => t('Specify the policy to be sent out with Feature-Policy headers.'),
+  );
+
   // main fieldset for various
   $form['seckit_various'] = array(
     '#type' => 'fieldset',
@@ -697,13 +756,6 @@ function seckit_admin_form_validate($form, &$form_state) {
  * Submits form.
  */
 function seckit_admin_form_submit($form, &$form_state) {
-  $from_origin_enable = $form_state['values']['seckit_various']['from_origin'];
-  $file_system = file_default_scheme();
-  if ($from_origin_enable && ($file_system == 'public')) {
-    $msg = t('From-Origin HTTP response header will not be served for files because of public file system. It is recommended to enable private file system to ensure provided by From-Origin security.');
-    drupal_set_message($msg, 'warning');
-  }
-
   // Our depencency on seckit_boot() may have changed, so reset the
   // bootstrap module settings and cache.
   _system_update_bootstrap_status();

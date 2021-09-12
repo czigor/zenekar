@@ -1,5 +1,4 @@
 <?php
-// $Id: potx.inc,v 1.1.2.17.2.7.2.19.2.16 2011/01/26 12:16:06 goba Exp $
 
 /**
  * @file
@@ -13,14 +12,21 @@
  *   functions can be implemented to use the functionality provided here as an
  *   API for Drupal code to translatable string conversion.
  *
- *   The potx-cli.php script can be used with this include file as
- *   a command line interface to string extraction. The potx.module
- *   can be used as a web interface for manual extraction.
- *
  *   For a module using potx as an extraction API, but providing more
  *   sophisticated functionality on top of it, look into the
  *   'Localization server' module: http://drupal.org/project/l10n_server
  */
+
+/**
+ * Use Twig and the Symfony YAML parser, found in the vendor directory.
+ */
+set_include_path(get_include_path() . PATH_SEPARATOR . __DIR__ . '/vendor');
+spl_autoload_register(function($c){
+  @include preg_replace('#\\\|_(?!.*\\\)#','/',$c).'.php';
+});
+
+use Symfony\Component\Yaml\Yaml;
+use Symfony\Component\Yaml\Exception\ParseException;
 
 /**
  * The current Drupal major API verion.
@@ -108,6 +114,14 @@ define('POTX_API_6', 6);
 define('POTX_API_7', 7);
 
 /**
+ * Parse source files in Drupal 8.x format.
+ *
+ * Changes since 7.x documented at
+ * http://drupal.org/list-changes/drupal?to_branch=8.x
+ */
+define('POTX_API_8', 8);
+
+/**
  * When no context is used. Makes it easy to look these up.
  */
 define('POTX_CONTEXT_NONE', NULL);
@@ -116,6 +130,42 @@ define('POTX_CONTEXT_NONE', NULL);
  * When there was a context identification error.
  */
 define('POTX_CONTEXT_ERROR', FALSE);
+
+/**
+ * Regular expression pattern used to localize JavaScript strings.
+ */
+define('POTX_JS_STRING', '(?:(?:\'(?:\\\\\'|[^\'])*\'|"(?:\\\\"|[^"])*")(?:\s*\+\s*)?)+');
+
+/**
+ * Regular expression pattern used to match simple JS object literal.
+ *
+ * This pattern matches a basic JS object, but will fail on an object with
+ * nested objects. Used in JS file parsing for string arg processing.
+ */
+define('POTX_JS_OBJECT', '\{.*?\}');
+
+
+/**
+ * Regular expression to match an object containing a key 'context'.
+ *
+ * Pattern to match a JS object containing a 'context key' with a string value,
+ * which is captured. Will fail if there are nested objects.
+ */
+define('POTX_JS_OBJECT_CONTEXT', '
+  \{              # match object literal start
+  .*?             # match anything, non-greedy
+  (?:             # match a form of "context"
+    \'context\'
+    |
+    "context"
+    |
+    context
+  )
+  \s*:\s*         # match key-value separator ":"
+  (' . POTX_JS_STRING . ')  # match context string
+  .*?             # match anything, non-greedy
+  \}              # match end of object literal
+');
 
 /**
  * Process a file and put extracted information to the given parameters.
@@ -144,13 +194,24 @@ function _potx_process_file($file_path, $strip_prefix = 0, $save_callback = '_po
   _potx_find_version_number($code, $file_name, $version_callback);
 
   // The .info files are not PHP code, no need to tokenize.
-  if ($name_parts['extension'] == 'info') {
+  if ($name_parts['extension'] == 'info' && $api_version < POTX_API_8) {
     _potx_find_info_file_strings($file_path, $file_name, $save_callback, $api_version);
     return;
+  }
+  elseif ($name_parts['extension'] == 'yml' && $api_version > POTX_API_7) {
+    _potx_parse_yaml_file($code, $file_name, $file_path, $save_callback);
   }
   elseif ($name_parts['extension'] == 'js' && $api_version > POTX_API_5) {
     // @todo: D7 context support.
     _potx_parse_js_file($code, $file_name, $save_callback);
+  }
+  elseif ($name_parts['extension'] == 'twig' && $api_version > POTX_API_7) {
+    _potx_parse_twig_file($code, $file_name, $save_callback);
+  }
+
+  $constraint_extract = FALSE;
+  if (substr($name_parts['filename'], -10) == 'Constraint' && $api_version > POTX_API_7) {
+    $constraint_extract = TRUE;
   }
 
   // Extract raw PHP language tokens.
@@ -167,12 +228,24 @@ function _potx_process_file($file_path, $strip_prefix = 0, $save_callback = '_po
     if ((!is_array($token)) || (($token[0] != T_WHITESPACE) && ($token[0] != T_INLINE_HTML))) {
       if (is_array($token)) {
         $token[] = $line_number;
+
+         $constraint_match = $constraint_extract && $token[0] == T_VARIABLE && strlen($token[1]) >= 7 && substr_compare($token[1], 'message', -7, 7, true) === 0;
+
          // Fill array for finding token offsets quickly.
-         if ($token[0] == T_STRING || ($token[0] == T_VARIABLE && $token[1] == '$t')) {
-           if (!isset($_potx_lookup[$token[1]])) {
-             $_potx_lookup[$token[1]] = array();
+         if (in_array($token[0], array(T_STRING, T_DOC_COMMENT)) || ($token[0] == T_VARIABLE && $token[1] == '$t') || $constraint_match
+             || ($token[0] == T_CONSTANT_ENCAPSED_STRING && ($token[1] == "'#template'" || $token[1] == '"#template"'))) {
+
+           // Give doc comments a specific key because their content varies.
+           $key = ($token[0] == T_DOC_COMMENT) ? 'T_DOC_COMMENT' : ($constraint_match ? 'T_POTX_CONSTRAINT' : $token[1]);
+           // Normalise "#template" token to support both single-quoted and double-quoted #template keys.
+           if ($key == '"#template"') {
+             $key = "'#template'";
            }
-           $_potx_lookup[$token[1]][] = $token_number;
+
+           if (!isset($_potx_lookup[$key])) {
+             $_potx_lookup[$key] = array();
+           }
+           $_potx_lookup[$key][] = $token_number;
          }
       }
       $_potx_tokens[] = $token;
@@ -190,22 +263,50 @@ function _potx_process_file($file_path, $strip_prefix = 0, $save_callback = '_po
 
   // Regular t() calls with different usages.
   if ($api_version > POTX_API_6) {
-    // Drupal 7 onwards supports context on t() and st().
+    // Drupal 7 onwards supports context on t().
     _potx_find_t_calls_with_context($file_name, $save_callback);
-    _potx_find_t_calls_with_context($file_name, $save_callback, '$t', POTX_STRING_BOTH);
-    _potx_find_t_calls_with_context($file_name, $save_callback, 'st', POTX_STRING_INSTALLER);
+    if ($api_version < POTX_API_8) {
+      // st() and $t() are supported up to Drupal 7.
+      _potx_find_t_calls_with_context($file_name, $save_callback, '$t', POTX_STRING_BOTH);
+      _potx_find_t_calls_with_context($file_name, $save_callback, 'st', POTX_STRING_INSTALLER);
+    }
+    else {
+      // TranslatableMarkup (and deprecated TranslationWrapper) added in Drupal 8.
+      _potx_find_t_calls_with_context($file_name, $save_callback, 'TranslatableMarkup');
+      _potx_find_t_calls_with_context($file_name, $save_callback, 'TranslationWrapper');
+    }
   }
   else {
+    // Context-less API up to Drupal 6.
     _potx_find_t_calls($file_name, $save_callback);
     _potx_find_t_calls($file_name, $save_callback, '$t', POTX_STRING_BOTH);
     _potx_find_t_calls($file_name, $save_callback, 'st', POTX_STRING_INSTALLER);
   }
-  // This does not support context even in Drupal 7.
-  _potx_find_t_calls($file_name, $save_callback, '_locale_import_message', POTX_STRING_BOTH);
+  if ($api_version < POTX_API_8) {
+    // This does not support context even in Drupal 7.
+    _potx_find_t_calls($file_name, $save_callback, '_locale_import_message', POTX_STRING_BOTH);
+  }
+  // dt() in drush does not support context either.
+  _potx_find_t_calls($file_name, $save_callback, 'dt');
 
   if ($api_version > POTX_API_5) {
     // Watchdog calls have both of their arguments translated from Drupal 6.x.
-    _potx_find_watchdog_calls($file_name, $save_callback);
+    if ($api_version < POTX_API_8) {
+      _potx_find_watchdog_calls($file_name, $save_callback);
+    }
+
+    if ($api_version > POTX_API_7) {
+      // Logging calls may use a colorful set of methods now.
+      _potx_find_t_calls($file_name, $save_callback, 'debug');
+      _potx_find_t_calls($file_name, $save_callback, 'info');
+      _potx_find_t_calls($file_name, $save_callback, 'notice');
+      _potx_find_t_calls($file_name, $save_callback, 'warning');
+      _potx_find_t_calls($file_name, $save_callback, 'error');
+      _potx_find_t_calls($file_name, $save_callback, 'critical');
+      _potx_find_t_calls($file_name, $save_callback, 'alert');
+      _potx_find_t_calls($file_name, $save_callback, 'emergency');
+      _potx_find_log_calls($file_name, $save_callback);
+    }
   }
   else {
     // Watchdog calls only have their first argument translated in Drupal 5.x
@@ -214,38 +315,91 @@ function _potx_process_file($file_path, $strip_prefix = 0, $save_callback = '_po
   }
 
   // Plurals need unique parsing.
-  _potx_find_format_plural_calls($file_name, $save_callback, $api_version);
+  if ($api_version < POTX_API_8) {
+    // format_plural() is removed in Drupal 8.
+    _potx_find_format_plural_calls($file_name, $save_callback, 'format_plural', $api_version);
+  }
+
+  // Support for formatPlural() calls in Drupal 8+.
+  if ($api_version > POTX_API_7) {
+    _potx_find_format_plural_calls($file_name, $save_callback, 'formatPlural', $api_version);
+    _potx_find_format_plural_calls($file_name, $save_callback, 'PluralTranslatableMarkup', $api_version);
+  }
 
   if ($name_parts['extension'] == 'module') {
     if ($api_version < POTX_API_7) {
       _potx_find_perm_hook($file_name, $name_parts['filename'], $save_callback);
     }
     if ($api_version > POTX_API_5) {
+      // @todo: if tabs are not defined on the menu hook anymore, exclude this for 8.
       _potx_find_menu_hooks($file_name, $name_parts['filename'], $save_callback);
     }
   }
 
+  // Support @Translation annotation (in doc comments) on Drupal 8+.
+  if ($api_version > POTX_API_7) {
+    _potx_find_translation_annotations($file_name, $save_callback);
+  }
+
+  if ($constraint_extract) {
+    _potx_find_constraint_messages($file_name, $save_callback);
+  }
+
+  if ($api_version > POTX_API_7) {
+    _potx_process_inline_templates($file_name, $save_callback);
+  }
+
   // Special handling of some Drupal core files.
-  if (($basename == 'locale.inc' && $api_version < POTX_API_7) || $basename == 'iso.inc') {
+  if ($api_version < POTX_API_8 && (($basename == 'locale.inc' && $api_version < POTX_API_7) || $basename == 'iso.inc')) {
+    _potx_find_language_names($file_name, $save_callback, $api_version);
+  }
+  elseif ($api_version > POTX_API_7 && $basename == 'LanguageManager.php') {
     _potx_find_language_names($file_name, $save_callback, $api_version);
   }
   elseif ($basename == 'locale.module') {
+    // Applies to all Drupal versions, yay!
     _potx_add_date_strings($file_name, $save_callback, $api_version);
   }
   elseif ($basename == 'common.inc') {
+    // Applies to all Drupal versions, yay!
     _potx_add_format_interval_strings($file_name, $save_callback, $api_version);
   }
   elseif ($basename == 'system.module') {
+    // Applies to all Drupal versions, yay!
     _potx_add_default_region_names($file_name, $save_callback, $api_version);
   }
-  elseif ($basename == 'user.module') {
-    // Save default user role names.
+  elseif ($basename == 'user.module' && $api_version < POTX_API_8) {
+    // Save default user role names (up to Drupal 7).
     $save_callback('anonymous user', POTX_CONTEXT_NONE, $file_name);
     $save_callback('authenticated user', POTX_CONTEXT_NONE, $file_name);
     if ($api_version > POTX_API_6) {
       // Administator role is included by default from Drupal 7.
       $save_callback('administrator', POTX_CONTEXT_NONE, $file_name);
     }
+  }
+}
+
+/**
+ * Executes tasks that need to happen after all the files have been processed.
+ *
+ * @param string $save_callback
+ * @param int $api_version
+ */
+function potx_finish_processing($save_callback = '_potx_save_string', $api_version = POTX_API_CURRENT) {
+  global $yaml_translation_patterns;
+  global $_potx_module_metadata;
+  global $potx_callbacks;
+
+  if ($api_version > POTX_API_7) {
+    foreach ($_potx_module_metadata as $module_name => $module_metadata) {
+      $potx_callbacks['store_module_metadata']($module_name, $module_metadata);
+    }
+    // Parsing shipped configuration has to happen after processing all schemas.
+    _potx_parse_shipped_configuration($save_callback, $api_version);
+    // Clear yaml translation patterns, so translation patterns for a module
+    // won't be used for extracting translatable strings for another module.
+    $yaml_translation_patterns = NULL;
+
   }
 }
 
@@ -290,7 +444,8 @@ function _potx_build_files($string_mode = POTX_STRING_RUNTIME, $build_mode = POT
       $occured = $file_list = array();
       // Look for strings appearing in multiple directories (ie.
       // different subprojects). So we can include them in general.pot.
-      $last_location = dirname(array_shift(array_keys($file_info)));
+      $names = array_keys($file_info);
+      $last_location = dirname(array_shift($names));
       $multiple_locations = FALSE;
       foreach ($file_info as $file => $lines) {
         $occured[] = "$file:". join(';', $lines);
@@ -730,8 +885,17 @@ function _potx_find_t_calls($file, $save_callback, $function_name = 't', $string
   // Lookup tokens by function name.
   if (isset($_potx_lookup[$function_name])) {
     foreach ($_potx_lookup[$function_name] as $ti) {
-      list($ctok, $par, $mid, $rig) = array($_potx_tokens[$ti], $_potx_tokens[$ti+1], $_potx_tokens[$ti+2], $_potx_tokens[$ti+3]);
+      list($prev, $ctok, $par, $mid, $rig) = array($_potx_tokens[$ti - 1], $_potx_tokens[$ti], $_potx_tokens[$ti+1], $_potx_tokens[$ti+2], $_potx_tokens[$ti+3]);
       list($type, $string, $line) = $ctok;
+
+      if (is_array($prev) && $prev[0] == T_FUNCTION) {
+        continue;
+      }
+
+      if ($function_name == 'debug' && is_array($prev) && $prev[0] != T_OBJECT_OPERATOR) {
+        continue;
+      }
+
       if ($par == "(") {
         if (in_array($rig, array(")", ","))
           && (is_array($mid) && ($mid[0] == T_CONSTANT_ENCAPSED_STRING))) {
@@ -774,8 +938,17 @@ function _potx_find_t_calls_with_context($file, $save_callback, $function_name =
   // Lookup tokens by function name.
   if (isset($_potx_lookup[$function_name])) {
     foreach ($_potx_lookup[$function_name] as $ti) {
-      list($ctok, $par, $mid, $rig) = array($_potx_tokens[$ti], $_potx_tokens[$ti+1], $_potx_tokens[$ti+2], $_potx_tokens[$ti+3]);
+      if (count($_potx_tokens) <= $ti + 3 || $_potx_tokens[$ti+1] != '(') {
+        // This is not a t() call or similar, e.g. "TranslatableMarkup" in "class TranslationWrapper extends TranslatableMarkup {}"
+        continue;
+      }
+      list($prev, $ctok, $par, $mid, $rig) = array($_potx_tokens[$ti - 1], $_potx_tokens[$ti], $_potx_tokens[$ti+1], $_potx_tokens[$ti+2], $_potx_tokens[$ti+3]);
       list($type, $string, $line) = $ctok;
+
+      if (is_array($prev) && $prev[0] == T_FUNCTION) {
+        continue;
+      }
+
       if ($par == "(") {
         if (in_array($rig, array(")", ","))
           && (is_array($mid) && ($mid[0] == T_CONSTANT_ENCAPSED_STRING))) {
@@ -801,7 +974,7 @@ function _potx_find_t_calls_with_context($file, $save_callback, $function_name =
 }
 
 /**
- * Detect all occurances of watchdog() calls. Only from Drupal 6.
+ * Detect all occurances of watchdog() calls. Only in Drupal 6 and Drupal 7.
  *
  * These sequences are searched for:
  *   watchdog + "(" + T_CONSTANT_ENCAPSED_STRING + "," +
@@ -818,8 +991,13 @@ function _potx_find_watchdog_calls($file, $save_callback) {
   // Lookup tokens by function name.
   if (isset($_potx_lookup['watchdog'])) {
     foreach ($_potx_lookup['watchdog'] as $ti) {
-      list($ctok, $par, $mtype, $comma, $message, $rig) = array($_potx_tokens[$ti], $_potx_tokens[$ti+1], $_potx_tokens[$ti+2], $_potx_tokens[$ti+3], $_potx_tokens[$ti+4], $_potx_tokens[$ti+5]);
+      list($prev, $ctok, $par, $mtype, $comma, $message, $rig) = array($_potx_tokens[$ti - 1], $_potx_tokens[$ti], $_potx_tokens[$ti+1], $_potx_tokens[$ti+2], $_potx_tokens[$ti+3], $_potx_tokens[$ti+4], $_potx_tokens[$ti+5]);
       list($type, $string, $line) = $ctok;
+
+      if (is_array($prev) && $prev[0] == T_FUNCTION) {
+        continue;
+      }
+
       if ($par == '(') {
         // Both type and message should be a string literal.
         if (in_array($rig, array(')', ',')) && $comma == ','
@@ -839,28 +1017,29 @@ function _potx_find_watchdog_calls($file, $save_callback) {
 }
 
 /**
- * Detect all occurances of format_plural calls.
+ * Detect all occurances of log() calls.
  *
  * These sequences are searched for:
- *   T_STRING("format_plural") + "(" + ..anything (might be more tokens).. +
- *   "," + T_CONSTANT_ENCAPSED_STRING +
- *   "," + T_CONSTANT_ENCAPSED_STRING + parenthesis (or comma allowed from
- *   Drupal 6)
+ *   log + "(" + ..anything (might be more tokens).. +
+ *   "," + T_CONSTANT_ENCAPSED_STRING + whatever.
  *
  * @param $file
  *   Name of file parsed.
  * @param $save_callback
  *   Callback function used to save strings.
- * @param $api_version
- *   Drupal API version to work with.
  */
-function _potx_find_format_plural_calls($file, $save_callback, $api_version = POTX_API_CURRENT) {
+function _potx_find_log_calls($file, $save_callback) {
   global $_potx_tokens, $_potx_lookup;
 
-  if (isset($_potx_lookup['format_plural'])) {
-    foreach ($_potx_lookup['format_plural'] as $ti) {
-      list($ctok, $par1) = array($_potx_tokens[$ti], $_potx_tokens[$ti+1]);
+  if (isset($_potx_lookup['log'])) {
+    foreach ($_potx_lookup['log'] as $ti) {
+      list($prev, $ctok, $par1) = array($_potx_tokens[$ti - 1], $_potx_tokens[$ti], $_potx_tokens[$ti+1]);
       list($type, $string, $line) = $ctok;
+
+      if (is_array($prev) && $prev[0] == T_FUNCTION) {
+        continue;
+      }
+
       if ($par1 == "(") {
         // Eat up everything that is used as the first parameter
         $tn = $ti + 2;
@@ -873,6 +1052,76 @@ function _potx_find_format_plural_calls($file, $save_callback, $api_version = PO
             $depth--;
           }
           $tn++;
+          if ($depth < 0) {
+            // There is no second argument. This log() call was a false
+            // positive, continue with the next one.
+            continue 2;
+          }
+        }
+        // Get further parameters
+        list($comma, $message, $par2) = array($_potx_tokens[$tn], $_potx_tokens[$tn+1], $_potx_tokens[$tn+2]);
+        if (($comma == ',') && in_array($par2, array(')', ',')) &&
+          (is_array($message) && ($message[0] == T_CONSTANT_ENCAPSED_STRING))) {
+          // Context is not supported on watchdog().
+          $save_callback(_potx_format_quoted_string($message[1]), POTX_CONTEXT_NONE, $file, $line);
+        }
+        else {
+          // log() found, but the parameters are not correct.
+          _potx_marker_error($file, $line, 'log', $ti, t('In log(), the log level should be followed by a literal string. There should be no variables, concatenation, constants or even a t() call there.'), 'http://drupal.org/node/323101');
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Detect all occurances of format_plural calls.
+ *
+ * These sequences are searched for:
+ *   T_STRING("$function_name") + "(" + ..anything (might be more tokens).. +
+ *   "," + T_CONSTANT_ENCAPSED_STRING +
+ *   "," + T_CONSTANT_ENCAPSED_STRING + parenthesis (or comma allowed from
+ *   Drupal 6)
+ *
+ * @param $file
+ *   Name of file parsed.
+ * @param $save_callback
+ *   Callback function used to save strings.
+ * @param $function_name
+ *   The name of the function to look for (could be 'format_plural' or
+ *   'formatPlural').
+ * @param $api_version
+ *   Drupal API version to work with.
+ */
+function _potx_find_format_plural_calls($file, $save_callback, $function_name = 'format_plural', $api_version = POTX_API_CURRENT) {
+  global $_potx_tokens, $_potx_lookup;
+
+  if (isset($_potx_lookup[$function_name])) {
+    foreach ($_potx_lookup[$function_name] as $ti) {
+      list($prev, $ctok, $par1) = array($_potx_tokens[$ti - 1], $_potx_tokens[$ti], $_potx_tokens[$ti+1]);
+      list($type, $string, $line) = $ctok;
+
+      if (is_array($prev) && $prev[0] == T_FUNCTION) {
+        continue;
+      }
+
+      if ($par1 == "(") {
+        // Eat up everything that is used as the first parameter
+        $tn = $ti + 2;
+        $depth = 0;
+        while (!($_potx_tokens[$tn] == "," && $depth == 0)) {
+          if ($_potx_tokens[$tn] == "(") {
+            $depth++;
+          }
+          elseif ($_potx_tokens[$tn] == ")") {
+            $depth--;
+          }
+          $tn++;
+          if ($depth < 0) {
+            // There is no second argument. This $function_name() call was a
+            // false positive, continue with the next one.
+            continue 2;
+          }
         }
         // Get further parameters
         list($comma1, $singular, $comma2, $plural, $par2) = array($_potx_tokens[$tn], $_potx_tokens[$tn+1], $_potx_tokens[$tn+2], $_potx_tokens[$tn+3], $_potx_tokens[$tn+4]);
@@ -884,7 +1133,7 @@ function _potx_find_format_plural_calls($file, $save_callback, $api_version = PO
           if ($par2 == ',' && $api_version > POTX_API_6) {
             // If there was a comma after the plural, we need to look forward
             // to try and find the context.
-            $context = _potx_find_context($ti, $tn + 5, $file, 'format_plural');
+            $context = _potx_find_context($ti, $tn + 5, $file, $function_name);
           }
           if ($context !== POTX_CONTEXT_ERROR) {
             // Only save if there was no error in context parsing.
@@ -897,8 +1146,8 @@ function _potx_find_format_plural_calls($file, $save_callback, $api_version = PO
           }
         }
         else {
-          // format_plural() found, but the parameters are not correct.
-          _potx_marker_error($file, $line, "format_plural", $ti, t('In format_plural(), the singular and plural strings should be literal strings. There should be no variables, concatenation, constants or even a t() call there.'), 'http://drupal.org/node/323072');
+          // $function_name() found, but the parameters are not correct.
+          _potx_marker_error($file, $line, $function_name, $ti, t('In @function(), the singular and plural strings should be literal strings. There should be no variables, concatenation, constants or even a t() call there.', array('@function' => $function_name)), 'http://drupal.org/node/323072');
         }
       }
     }
@@ -992,10 +1241,11 @@ function _potx_skip_args($here) {
   global $_potx_tokens;
 
   $nesting = 0;
-  // Go through to either the end of the function call or to a comma
-  // after the current position on the same nesting level.
+  // Go through to either the end of the function call, or to a comma after the
+  // current position on the same nesting level, or an unexpected semicolon.
   while (!(($_potx_tokens[$here] == ',' && $nesting == 0) ||
-           ($_potx_tokens[$here] == ')' && $nesting == -1))) {
+           ($_potx_tokens[$here] == ')' && $nesting == -1) ||
+           $_potx_tokens[$here] === ';')) {
     $here++;
     if (!is_array($_potx_tokens[$here])) {
       if ($_potx_tokens[$here] == ')') {
@@ -1005,6 +1255,9 @@ function _potx_skip_args($here) {
         $nesting++;
       }
     }
+  }
+  if ($_potx_tokens[$here] === ';') {
+    potx_status('error', t('Unexpected ;'));
   }
   // If we run out of nesting, it means we reached the end of the function call,
   // so we skipped the arguments but did not find meat for looking at the
@@ -1034,19 +1287,25 @@ function _potx_find_context($tf, $ti, $file, $function_name) {
     // Now we actually might have some definition for a context. The $options
     // argument is coming up, which might have a key for context.
     list($com, $arr, $par) = array($_potx_tokens[$ti], $_potx_tokens[$ti+1], $_potx_tokens[$ti+2]);
-    if ($com == ',' && $arr[1] == 'array' && $par == '(') {
+    if ($com == ',' && ($forward = _potx_is_beginning_of_array($arr, $par))) {
       $nesting = 0;
-      $ti += 3;
+      $ti += $forward;
       // Go through to either the end of the array or to the key definition of
       // context on the same nesting level.
       while (!((is_array($_potx_tokens[$ti]) && (in_array($_potx_tokens[$ti][1], array('"context"', "'context'"))) && ($_potx_tokens[$ti][0] == T_CONSTANT_ENCAPSED_STRING) && ($nesting == 0)) ||
-               ($_potx_tokens[$ti] == ')' && $nesting == -1))) {
+               (_potx_is_end_of_array($_potx_tokens[$ti]) && $nesting == -1))) {
         $ti++;
         if (!is_array($_potx_tokens[$ti])) {
-          if ($_potx_tokens[$ti] == ')') {
+          // Treat each () and [] pair as going into / out of nesting levels.
+          // There may be function or method calls as well as nested short
+          // arrays within the arguments list. The list may be similar to:
+          // array('langcode' => $obj->someMethod([])[2], 'context' => 'Long month name')
+          // or
+          // ['langcode' => $obj->someMethod(array())[2], 'context' => 'Long month name']
+          if ($_potx_tokens[$ti] == ')' || $_potx_tokens[$ti] == ']') {
             $nesting--;
           }
-          if ($_potx_tokens[$ti] == '(') {
+          if ($_potx_tokens[$ti] == '(' || $_potx_tokens[$ti] == '[') {
             $nesting++;
           }
         }
@@ -1074,6 +1333,39 @@ function _potx_find_context($tf, $ti, $file, $function_name) {
 
   // After skipping args, we did not find a comma to look for $options.
   return POTX_CONTEXT_NONE;
+}
+
+/**
+ * Determines if processing an array.
+ *
+ * @param string|string[] $arr
+ * @param string|NULL $par
+ *
+ * @return int|FALSE
+ *   The number to forward the current position forward to start processing the
+ *   array. FALSE if not processing an array.
+ */
+function _potx_is_beginning_of_array($arr, $par) {
+  if ($arr === '[' && is_array($par)) {
+    return 2;
+  }
+  if (is_array($arr) && $arr[1] == 'array' && $par == '(') {
+    return 3;
+  }
+  return FALSE;
+}
+
+/**
+ * Determines if at the end of an array.
+ *
+ * @param string $token
+ *   The token being processed.
+ *
+ * @return bool
+ *   TRUE is  at the end of an array, FALSE if not.
+ */
+function _potx_is_end_of_array($token) {
+  return $token == ')' || $token == ']';
 }
 
 /**
@@ -1155,7 +1447,17 @@ function _potx_find_menu_hooks($file, $filebase, $save_callback) {
 function _potx_find_language_names($file, $save_callback, $api_version = POTX_API_CURRENT) {
   global $_potx_tokens, $_potx_lookup;
 
-  foreach ($_potx_lookup[$api_version > POTX_API_5 ? '_locale_get_predefined_list' : '_locale_get_iso639_list'] as $ti) {
+  if ($api_version > POTX_API_7) {
+    $key = 'getStandardLanguageList';
+  }
+  elseif ($api_version > POTX_API_5) {
+    $key = '_locale_get_predefined_list';
+  }
+  else {
+    $key = '_locale_get_iso639_list';
+  }
+
+  foreach ($_potx_lookup[$key] as $ti) {
     // Search for the definition of _locale_get_predefined_list(), not where it is called.
     if ($_potx_tokens[$ti-1][0] == T_FUNCTION) {
       break;
@@ -1292,10 +1594,10 @@ function _potx_add_default_region_names($file, $save_callback, $api_version = PO
     'footer' => 'Footer',
   );
   if ($api_version > POTX_API_6) {
-    // @todo: Update with final region list when D7 stabilizes.
-    $regions['highlight'] = 'Highlighted content';
+    $regions['highlight'] = 'Highlighted';
     $regions['help'] = 'Help';
     $regions['page_top'] = 'Page top';
+    $regions['page_top'] = 'Page bottom';
   }
   foreach ($regions as $region) {
     // Regions come with the default context.
@@ -1350,31 +1652,89 @@ function _potx_find_info_file_strings($file_path, $file_name, $save_callback, $a
  * Regex code lifted from _locale_parse_js_file().
  */
 function _potx_parse_js_file($code, $file, $save_callback) {
-  $js_string_regex = '(?:(?:\'(?:\\\\\'|[^\'])*\'|"(?:\\\\"|[^"])*")(?:\s*\+\s*)?)+';
-
   // Match all calls to Drupal.t() in an array.
   // Note: \s also matches newlines with the 's' modifier.
-  preg_match_all('~[^\w]Drupal\s*\.\s*t\s*\(\s*('. $js_string_regex .')\s*[,\)]~s', $code, $t_matches, PREG_SET_ORDER);
+  preg_match_all('~
+    [^\w]Drupal\s*\.\s*t\s*                     # match "Drupal.t" with whitespace
+    \(\s*                                       # match "(" argument list start
+    (' . POTX_JS_STRING . ')\s*                 # capture string argument
+    (?:,\s*' . POTX_JS_OBJECT . '\s*            # optionally capture str args
+      (?:,\s*' . POTX_JS_OBJECT_CONTEXT . '\s*) # optionally capture context
+    ?)?                                         # close optional args
+    \)                                          # match ")" to finish
+    ~sx', $code, $t_matches, PREG_SET_ORDER);
+
+  // Add strings from Drupal.t().
   if (isset($t_matches) && count($t_matches)) {
     foreach ($t_matches as $match) {
       // Remove match from code to help us identify faulty Drupal.t() calls.
       $code = str_replace($match[0], '', $code);
-      // @todo: figure out how to parse out context, once Drupal supports it.
-      $save_callback(_potx_parse_js_string($match[1]), POTX_CONTEXT_NONE, $file, 0);
+
+      // Get context
+      if (!empty($match[2])) {
+        // Remove wrapping quotes
+        $context = preg_replace('~^[\'"]|[\'"]$~', '', $match[2]);
+        $context = _potx_parse_js_string($match[2]);
+      }
+      else {
+        // Set context to null
+        $context = POTX_CONTEXT_NONE;
+      }
+
+      $save_callback(_potx_parse_js_string($match[1]), $context, $file, 0);
     }
   }
 
   // Match all Drupal.formatPlural() calls in another array.
-  preg_match_all('~[^\w]Drupal\s*\.\s*formatPlural\s*\(\s*.+?\s*,\s*('. $js_string_regex .')\s*,\s*((?:(?:\'(?:\\\\\'|[^\'])*@count(?:\\\\\'|[^\'])*\'|"(?:\\\\"|[^"])*@count(?:\\\\"|[^"])*")(?:\s*\+\s*)?)+)\s*[,\)]~s', $code, $plural_matches, PREG_SET_ORDER);
+  preg_match_all('~
+    [^\w]Drupal\s*\.\s*formatPlural\s*  # match "Drupal.formatPlural" with whitespace
+    \(                                  # match "(" argument list start
+    \s*.+?\s*,\s*                       # match count argument
+    (' . POTX_JS_STRING . ')\s*,\s*     # match singular string argument
+    (                                   # capture plural string argument
+      (?:                               # non-capturing group to repeat string pieces
+        (?:
+          \'                            # match start of single-quoted string
+          (?:\\\\\'|[^\'])*             # match any character except unescaped single-quote
+          @count                        # match "@count"
+          (?:\\\\\'|[^\'])*             # match any character except unescaped single-quote
+          \'                            # match end of single-quoted string
+          |
+          "                             # match start of double-quoted string
+          (?:\\\\"|[^"])*               # match any character except unescaped double-quote
+          @count                        # match "@count"
+          (?:\\\\"|[^"])*               # match any character except unescaped double-quote
+          "                             # match end of double-quoted string
+        )
+        (?:\s*\+\s*)?                   # match "+" with possible whitespace, for str concat
+      )+                                # match multiple because we supports concatenating strs
+    )\s*                                # end capturing of plural string argument
+    (?:,\s*' . POTX_JS_OBJECT . '\s*              # optionally capture string args
+      (?:,\s*' . POTX_JS_OBJECT_CONTEXT . '\s*)?  # optionally capture context
+    )?
+    \)                                            # match ")" to finish
+    ~sx', $code, $plural_matches, PREG_SET_ORDER);
+
   if (isset($plural_matches) && count($plural_matches)) {
     foreach ($plural_matches as $index => $match) {
       // Remove match from code to help us identify faulty
       // Drupal.formatPlural() calls later.
       $code = str_replace($match[0], '', $code);
-      // @todo: figure out how to parse out context, once Drupal supports it.
+
+      // Get context
+      if (!empty($match[3])) {
+        // Remove wrapping quotes
+        $context = preg_replace('~^[\'"]|[\'"]$~', '', $match[3]);
+        $context = _potx_parse_js_string($match[3]);
+      }
+      else {
+        // Set context to null
+        $context = POTX_CONTEXT_NONE;
+      }
+
       $save_callback(
         _potx_parse_js_string($match[1]) ."\0". _potx_parse_js_string($match[2]),
-        POTX_CONTEXT_NONE,
+        $context,
         $file,
         0
       );
@@ -1401,6 +1761,1180 @@ function _potx_parse_js_string($string) {
 }
 
 /**
+ * Parse a Twig template for translatables. Drupal 8+.
+ */
+function _potx_parse_twig_file($code, $file, $save_callback) {
+  // Extract front-matter data, and save text in certain ones.
+  $keys_to_save = array('label');
+  // Implementation copied from core's \Drupal\help_topics\FrontMatter class.
+  $fm_separator = '---';
+  $fm_regexp = '/\A(' . $fm_separator . '(.*?)?\R' . $fm_separator . ')(\R.*)?\Z/s';
+  // Check for front matter data.
+  $len = strlen($fm_separator);
+  $matches = array();
+  if (substr($code, 0, $len + 1) === $fm_separator . "\n" || substr($code, 0, $len + 2) === $fm_separator . "\r\n") {
+    preg_match($fm_regexp, $code, $matches);
+    $matches = array_map('trim', $matches);
+  }
+  if (!empty($matches[1])) {
+    // Set the extracted source code.
+    $code = $matches[3];
+    try {
+      $metadata = Yaml::parse($matches[2]);
+      foreach ($metadata as $key => $content) {
+        if (in_array($key, $keys_to_save, TRUE)) {
+          $save_callback(_potx_format_quoted_string('"' . trim($content) . '"'), POTX_CONTEXT_NONE, $file, 1);
+          break;
+        }
+      }
+    }
+    catch (ParseException $e) {
+      potx_status('error', t("YAML parsing error on file @path: @error", array(
+        '@path' => $file,
+        '@error' => $e->getMessage(),
+      )), $file);
+    }
+  }
+
+  $twig_lexer = new Twig_Lexer(new Twig_Environment());
+
+  try {
+    $stream = $twig_lexer->tokenize($code, $file);
+  } catch(Twig_Error_Syntax $e) {
+    potx_status('error', t("Twig parsing error on file @path: @error", array(
+        '@path' => $file,
+        '@error' => $e->getMessage(),
+    )), $file);
+
+    return;
+  }
+
+  while (!$stream->isEOF()) {
+    $token = $stream->next();
+    // Capture strings translated with the t or trans filter.
+    if ($token->test(Twig_Token::VAR_START_TYPE)) {
+      $token = $stream->next();
+      if ($token->test(Twig_Token::NAME_TYPE)) {
+        continue;
+      }
+      $string = $token->getValue();
+      $line = $token->getLine();
+      $has_t = false;
+      $chained = false;
+      $is_concat = false;
+
+      if ($stream->test(Twig_Token::PUNCTUATION_TYPE, '.')) {
+        $is_concat = true;
+      }
+
+      while (!$stream->isEOF() && ($token = $stream->next()) && (!$token->test(Twig_Token::VAR_END_TYPE))) {
+        if ($token->test(Twig_Token::PUNCTUATION_TYPE, '|')) {
+          if ($stream->test(array('t', 'trans'))) {
+            $has_t = true;
+          }
+          else {
+            $chained = true;
+          }
+        }
+      }
+
+      if ($has_t) {
+        if (!$chained && !$is_concat) {
+          $save_callback(_potx_format_quoted_string('"' . trim($string) . '"'), POTX_CONTEXT_NONE, $file, $line);
+        }
+        else {
+          $message = t('Uses of the t filter in Twig templates should start with a single literal string, and should not be chained.');
+          // TODO: Fill in specific URL for Twig documentation once it exists.
+          potx_status('error', $message, $file, NULL, NULL, 'https://drupal.org/developing/api/localization');
+        }
+      }
+    }
+    elseif ($token->test(Twig_Token::BLOCK_START_TYPE)) {
+      $token = $stream->next();
+      if ($token->test('trans')) {
+        _potx_process_twig_trans_tag($stream, $file, $save_callback);
+      }
+    }
+  }
+}
+
+/**
+ * Parses a single {% trans %} tag, and extracts the translatable string.
+ *
+ * a {% trans %} tag can have the following formats:
+ *   1. {% trans 'string' %}
+ *   2. {% trans %} string {% endtrans %}
+ *   3. {% trans %} singular string {% plural %} plural string {% endtrans %}
+ *
+ * @param Twig_TokenStream $stream
+ */
+function _potx_process_twig_trans_tag($stream, $file, $save_callback) {
+  $is_plural = FALSE;
+  $context = POTX_CONTEXT_NONE;
+
+  // If the current token in the stream is a string, this trans tag
+  // has a simple string argument to be translated.
+  $token = $stream->next();
+  if ($token->test(Twig_Token::STRING_TYPE)) {
+    $text = $token->getValue();
+    // Check for context.
+    $token = $stream->next();
+    if ($token->test(Twig_Token::NAME_TYPE, 'with')) {
+      $context = _potx_find_twig_trans_context($stream);
+    }
+    $save_callback(_potx_format_quoted_string('"' . trim($text) . '"'), $context, $file, $token->getLine());
+    return;
+  }
+
+  // Otherwise, we are in a trans/endtrans structure.
+
+  $text = array();
+  $line = $token->getLine();
+  // Process the stream until we reach the endtrans tag.
+  while (!$stream->isEOF() && (!$token->test('endtrans'))) {
+    // If it's text, add it to the translation.
+    if ($token->test(Twig_Token::TEXT_TYPE)) {
+      $text[] = $token->getValue();
+    }
+    elseif ($token->test(Twig_Token::NAME_TYPE, 'with')) {
+      $context = _potx_find_twig_trans_context($stream);
+    }
+    elseif ($token->test('plural')) {
+      $singular = implode('', $text);
+      $is_plural = true;
+      $text = array();
+      // Skip past the 'count' token.
+      $stream->next();
+    }
+    elseif ($token->test(Twig_Token::VAR_START_TYPE)) {
+      $name = array();
+      while ($stream->look(1)->test(Twig_Token::PUNCTUATION_TYPE, '.')) {
+        $token = $stream->next();
+        $name[] = $token->getValue();
+        $stream->next();
+      }
+      $token = $stream->next();
+      $name[] = $token->getValue();
+
+      // Figure out if it's escaped or placeholder.
+      $prefix = '@';
+      $token = $stream->next();
+      // If the next thing we see is |, this may be a placeholder. The only
+      // "filter" supported is placeholder, so if there is any other filter
+      // then we keep assuming it is to be escaped. (Even if later a
+      // placeholder filter was attempted).
+      if ($token->test(Twig_Token::PUNCTUATION_TYPE, '|')) {
+        $token = $stream->next();
+        if ($token->getValue() == 'placeholder') {
+          $prefix = '%';
+        }
+      }
+      $text[] = $prefix . implode('.', $name);
+    }
+    $token = $stream->next();
+  }
+
+  if ($is_plural) {
+    $plural = implode('', $text);
+    $save_callback(_potx_format_quoted_string('"' . trim($singular) . '"') . "\0" . _potx_format_quoted_string('"' . trim($plural) . '"'), $context, $file, $line);
+  }
+  else {
+    $save_callback(_potx_format_quoted_string('"' . trim(implode('', $text)) . '"'), $context, $file, $line);
+  }
+}
+
+/**
+ * Look for a 'context' parameter in {% trans %} tags, that appear after the
+ *   'with' keyword.
+ */
+function _potx_find_twig_trans_context($stream) {
+  $token = $stream->next();
+  if ($token->test(Twig_Token::PUNCTUATION_TYPE, '{')) {
+    while (!$stream->isEOF() && ($token = $stream->next()) && !$token->test(Twig_Token::PUNCTUATION_TYPE, '}')) {
+      if ($token->test(Twig_Token::STRING_TYPE, 'context')) {
+        // Skip the ':' character.
+        $stream->next();
+
+        $token = $stream->next();
+        if ($token->test(Twig_Token::STRING_TYPE)) {
+          return $token->getValue();
+        }
+      }
+    }
+  }
+
+  return POTX_CONTEXT_NONE;
+}
+
+/**
+ * Detect all occurances of @Translation annotations in doc comments.
+ *
+ * @param $file
+ *   Name of file parsed.
+ * @param $save_callback
+ *   Callback function used to save strings.
+ */
+function _potx_find_translation_annotations($file, $save_callback) {
+  global $_potx_tokens, $_potx_lookup;
+
+  if (isset($_potx_lookup['T_DOC_COMMENT'])) {
+    foreach ($_potx_lookup['T_DOC_COMMENT'] as $ti) {
+      list($type, $string, $line) = $_potx_tokens[$ti];
+      // Match for a possible empty string too, so we can signal that kind of
+      // error in our standard way (from the save callback), instead of signaling
+      // a generic error from here around syntax.
+      preg_match_all('!=\s*@Translation\(\s*"([^"]*)"(\s*,\s*context\s*=\s*("[^"]+"))?\s*\)!', $string, $found);
+      if (isset($found) && is_array($found) && count($found[1])) {
+
+        foreach ($found[1] as $index => $match) {
+          $context = empty($found[3][$index]) ? POTX_CONTEXT_NONE : trim($found[3][$index], '"');
+
+          $save_callback(
+            $match,
+            $context,
+            $file,
+            $line
+          );
+          // Remove this annotation from the comment. This way if we have any
+          // left after this foreach, we have bugos ones left and can use that
+          // to signal an error.
+          $string = str_replace($found[0][$index], '', $string);
+        }
+      }
+      if (preg_match('!=\s*@Translation!', $string) === 1) {
+        // @Translation annotations still exist, so we have ones that did not
+        // match the expected pattern.
+        _potx_marker_error($file, $line, "@Translation", $ti, t('In @Translation, only one, non-empty static string is allowed in double quotes.'), 'https://drupal.org/node/1882526');
+      }
+    }
+  }
+}
+
+/**
+ * Initialize the list of translation patterns for YAML files.
+ *
+ * The patterns are loaded from a file named "yaml_translation_patterns.yml" in
+ * potx's root. Contrib projects can also include their own
+ * "yaml_translation_patterns.yml" file in their root folder to specify
+ * translatable strings in their own custom yaml files.
+ *
+ * @param string $path
+ *   The path to look for a custom "yaml_translation_patterns.yml" file.
+ */
+function _potx_init_yaml_translation_patterns($path = '') {
+  global $yaml_translation_patterns;
+
+  if (!is_array($yaml_translation_patterns)) {
+    $yaml_translation_patterns = array();
+    $default_patterns = __DIR__ . '/yaml_translation_patterns.yml';
+    _potx_load_yaml_translation_patterns($default_patterns);
+  }
+
+  $custom_patterns = $path . '/yaml_translation_patterns.yml';
+  if (!empty($path) && file_exists($custom_patterns)) {
+    _potx_load_yaml_translation_patterns($custom_patterns);
+  }
+}
+
+/**
+ * Load the list of YAML translation patterns from a file.
+ *
+ * The file is expected to be in the following format:
+ * @code
+ *   # A list of file matching patterns (as expected by fnmatch()).
+ *   - matches: *.test_format.yml:
+ *     # A sequence of translatable keys in the matched YAML files.
+ *     translatable_keys:
+ *
+ *       # Using the shorthand form
+ *       - test_label
+ *
+ *       # Using the long form
+ *       - key: test_label_2
+ *         # An optional key, used as context for the translatable string.
+ *         context: label_2_context
+ *     # To mark all top-level keys as translatable,
+ *     #   use the 'top_level_translatables' setting (optional; default: FALSE).
+ *     top_level_translatables: TRUE
+ * @endcode
+ *
+ * @param string $path
+ *   The path for the YAML translation patterns file.
+ */
+function _potx_load_yaml_translation_patterns($path) {
+  global $yaml_translation_patterns;
+
+  $content = _potx_parse_yaml($path);
+
+  if ($content === NULL) {
+    return;
+  }
+
+  if (isset($content['translation_patterns'])) {
+    $patterns = $content['translation_patterns'];
+    foreach ($patterns as $pattern) {
+      if (!isset($pattern['matches']) || !isset($pattern['translatable_keys'])) {
+        continue;
+      }
+
+      $match = $pattern['matches'];
+      $list = $pattern['translatable_keys'];
+      foreach ($list as $item) {
+        if (is_array($item)) {
+          $yaml_translation_patterns[$match]['keys'][] = $item['key'];
+          $yaml_translation_patterns[$match]['contexts'][$item['key']] = $item['context'];
+        }
+        else {
+          $yaml_translation_patterns[$match]['keys'][] = $item;
+        }
+      }
+
+      $yaml_translation_patterns[$match]['top_level_translatables'] = isset($pattern['top_level_translatables']) ? $pattern['top_level_translatables'] : FALSE;
+    }
+  }
+}
+
+/**
+ * Parse a YAML file for translatables. Drupal 8+.
+ */
+function _potx_parse_yaml_file($code, $file_name, $file_path, $save_callback) {
+  global $yaml_translation_patterns;
+  global $potx_callbacks;
+  global $_potx_module_metadata;
+
+  if (!is_array($yaml_translation_patterns)) {
+    _potx_init_yaml_translation_patterns();
+  }
+
+  try {
+    $yaml = Yaml::parse($code);
+
+    // Don't try to process empty yaml files.
+    if (!is_array($yaml)) {
+      return;
+    }
+  } catch (ParseException $e) {
+    potx_status('error', t("YAML parsing error on file @path: @error", array(
+        '@path' => $file_path,
+        '@error' => $e->getMessage(),
+    )), $file_path);
+
+    return;
+  }
+
+  foreach ($yaml_translation_patterns as $pattern => $trans_list) {
+    if (fnmatch($pattern, $file_name) || fnmatch('*/' . $pattern, $file_name)) {
+      _potx_find_yaml_translatables($yaml, $trans_list, $file_name, $save_callback, TRUE);
+    }
+  }
+
+  if (preg_match('~config/(schema|install|optional)/[^/]+\.yml$~', $file_name, $matches)) {
+    $module_name = basename(dirname(dirname(dirname($file_name))));
+    $_potx_module_metadata[$module_name]['config'][$matches[1]][] = array($file_name, $file_path);
+    if ($matches[1] == 'schema') {
+      $keys = array_keys($yaml);
+      $potx_callbacks['schema_store_lookup']($keys, $module_name);
+    }
+  }
+  elseif (preg_match('~[^/]+\.info\.yml~', $file_name)) {
+    $module_name = basename(dirname($file_name));
+    $_potx_module_metadata[$module_name]['dependencies'] = [];
+
+    // Module and theme projects have dependencies. Profiles have modules
+    // listed in the install key.
+    if (isset($yaml['dependencies'])) {
+      $_potx_module_metadata[$module_name]['dependencies'] = $yaml['dependencies'];
+    }
+    if (isset($yaml['install'])) {
+      $_potx_module_metadata[$module_name]['dependencies'] = $yaml['install'];
+    }
+
+    // Remove composer style naming prefix for dependencies.
+    foreach ($_potx_module_metadata[$module_name]['dependencies'] as &$dependency) {
+      $dependency = preg_replace('!^.+:(\S+)!', '\1', $dependency);
+    }
+  }
+}
+
+/**
+ * Recursively look for translatable strings in a YAML file.
+ *
+ * @param array $yaml
+ *   The parsed YAML data.
+ * @param array $trans_list
+ *   The list of translatable keys to look for, and (optionally) their contexts.
+ * @param $file_name
+ *   Name of the file parsed.
+ * @param $save_callback
+ *   Callback function used to save strings.
+ * @param $top_level
+ *   Indicates that the top-level keys are being scanned.
+ */
+function _potx_find_yaml_translatables($yaml, $trans_list, $file_name, $save_callback, $top_level) {
+  $extract_values = $top_level && $trans_list['top_level_translatables'];
+
+  foreach ($yaml as $key => $value) {
+
+    if (in_array($key, $trans_list['keys'], TRUE)) {
+      if (isset($trans_list['contexts'][$key])) {
+        $context_key = $trans_list['contexts'][$key];
+        if (isset($yaml[$context_key])) {
+          $context = $yaml[$context_key];
+        }
+        else {
+          $context = POTX_CONTEXT_NONE;
+        }
+      }
+      else {
+        $context = POTX_CONTEXT_NONE;
+      }
+
+      if (!is_array($value)) {
+        $save_callback(addcslashes($value, "\0..\37\\\""), $context, $file_name);
+      }
+    }
+    elseif (is_array($value)) {
+      _potx_find_yaml_translatables($value, $trans_list, $file_name, $save_callback, FALSE);
+    }
+    elseif ($extract_values) {
+      $save_callback(addcslashes($value, "\0..\37\\\""), POTX_CONTEXT_NONE, $file_name);
+    }
+  }
+}
+
+/**
+ * Recursively process config schema into a flat structure.
+ *
+ * This structure is used to extract translatable strings from shipped
+ * configuration, and identifies every element by joining all of its parent keys
+ * (including itself) separated by the '+' symbol. It stores the schema elements
+ * in four sublists:
+ *  'translatables': the list of elements that are translatable.
+ *  'types': the list of elements that rely on other schema elements for their
+ *    definition. generally, those with types other than "mapping".
+ *  'mappings': the list of elements that have a defined "mapping" property.
+ *  'contexts': the list of elements that have a defined context string, using
+ *    the "translation context" property.
+ *
+ * Note that 'types' and 'mappings' lists are not exclusive, i.e. an element can
+ * both have a 'type' definition and a separate 'mapping'.
+ *
+ * Here is an example config schema:
+ * @code
+ *   test_schema:
+ *     type: mapping
+ *     mapping:
+ *       name:
+ *         type: label
+ *       content:
+ *         type: text
+ *         translation context: Test schema content
+ *       test_filter:
+ *         type: filter
+ * @endcode
+ *
+ * And the resulting processed schema:
+ * @code
+ * Array
+ * (
+ *   [translatables] => Array
+ *     (
+ *       [0] => test_schema+name
+ *       [1] => test_schema+content
+ *     )
+ *
+ *   [types] => Array
+ *     (
+ *       [test_schema+test_filter] => filter
+ *     )
+ *
+ *   [mappings] => Array
+ *     (
+ *       [0] => test_schema
+ *     )
+ *
+ *   [contexts] => Array
+ *     (
+ *       [test_schema+content] => Test schema content
+ *     )
+ *
+ * )
+ * @endcode
+ *
+ * @param string $schema_prefix
+ *   All parent keys (including the element's key) joined by '+' symbol, e.g.
+ *   image.style.*+effects+sequence
+ * @param array $schema_data
+ *   The schema subtree belonging to the current element.
+ */
+function _potx_process_config_schema($schema_prefix, $schema_data) {
+  global $_potx_processed_schema;
+  global $_potx_module_schema;
+
+  // Elements can opt out of translation with a 'translatable: false' key.
+  if (isset($schema_data['translatable']) && $schema_data['translatable'] === FALSE) {
+    return;
+  }
+
+  // Do not process elements without a type, since the locale module strictly
+  // requires translatable elements to be of base type 'string', and also we
+  // can't traverse an element without knowing its type.
+  if (!isset($schema_data['type'])) {
+    return;
+  }
+
+  $type = $schema_data['type'];
+
+  if (isset($schema_data['mapping'])) {
+
+    foreach ($schema_data['mapping'] as $key => $element_data) {
+      $element_key = $schema_prefix . '+' . $key;
+      _potx_process_config_schema($element_key, $element_data);
+    }
+
+    if ($type != 'mapping') {
+      $_potx_processed_schema['types'][$schema_prefix] = $type;
+      $_potx_module_schema['types'][$schema_prefix] = $type;
+    }
+
+    $_potx_processed_schema['mappings'][] = $schema_prefix;
+    $_potx_module_schema['mappings'][] = $schema_prefix;
+  }
+  else {
+    if ($type == 'sequence') {
+      if (!isset($schema_data['sequence'])) {
+        return;
+      }
+      $sequence_schema = isset($schema_data['sequence'][0]) ? $schema_data['sequence'][0] : $schema_data['sequence'];
+      _potx_process_config_schema($schema_prefix . '+sequence', $sequence_schema);
+      $_potx_processed_schema['types'][$schema_prefix] = 'sequence';
+      $_potx_module_schema['types'][$schema_prefix] = 'sequence';
+    }
+    // If the element's type is in the "translatables" list, or it has a
+    // 'translatable: true' key, then it is translatable.
+    elseif (in_array($type, $_potx_processed_schema['translatables'])
+            || (isset($schema_data['translatable'])
+                && $schema_data['translatable'] === TRUE)) {
+      $_potx_processed_schema['translatables'][] = $schema_prefix;
+      $_potx_module_schema['translatables'][] = $schema_prefix;
+
+      // Elements can define a context string, or inherit the context from their
+      // defined type.
+      if (isset($schema_data['translation context'])) {
+        $_potx_processed_schema['contexts'][$schema_prefix] = $schema_data['translation context'];
+        $_potx_module_schema['contexts'][$schema_prefix] = $schema_data['translation context'];
+      }
+      elseif (isset($_potx_processed_schema['contexts'][$type])) {
+        $_potx_processed_schema['contexts'][$schema_prefix] = $_potx_processed_schema['contexts'][$type];
+        $_potx_module_schema['contexts'][$schema_prefix] = $_potx_processed_schema['contexts'][$type];
+      }
+    }
+    else {
+      $_potx_processed_schema['types'][$schema_prefix] = $type;
+      $_potx_module_schema['types'][$schema_prefix] = $type;
+    }
+  }
+}
+
+/**
+ * Checks whether an element exists in the processed schema.
+ *
+ * @param string $type
+ * @return boolean
+ */
+function _potx_element_has_schema($type) {
+  global $_potx_processed_schema;
+
+  if (empty($_potx_processed_schema)) {
+    return FALSE;
+  }
+
+  // If an element doesn't exist in any of the extracted lists, it hasn't been
+  // defined in schema. This is checked during processing shipped config.
+  return in_array($type, $_potx_processed_schema['translatables'])
+         || in_array($type, $_potx_processed_schema['mappings'])
+         || isset($_potx_processed_schema['types'][$type]);
+}
+
+/**
+ * Finds the possible schema keys that match with a config element name.
+ *
+ * @param string $name
+ *   Name of the config element.
+ */
+function _potx_find_matching_schema_candidates($name) {
+  $candidates = array($name);
+
+  $replaced = preg_replace('/([^.:]+)([.:*]*)$/', '*\2', $name);
+  if ($replaced != $name) {
+    $candidates[] = $replaced;
+
+    $one_star = preg_replace('/\.([:.*]*)$/', '.*', $replaced);
+    if ($one_star != $replaced) {
+      $candidates[] = $one_star;
+    }
+
+    $candidates = array_merge($candidates, _potx_find_matching_schema_candidates($replaced));
+    $candidates = array_unique($candidates);
+  }
+
+  return $candidates;
+}
+
+/**
+ * Find the schema element matching with a specific type.
+ *
+ * Based on Drupal\Core\Config\TypedConfigManager::getFallbackName($name)
+ *
+ * @param string $name
+ *   Configuration name or key.
+ *
+ * @return null|string
+ *   The resolved schema name for the given configuration name or key. Returns
+ *   null if there is no schema name to fallback to. For example,
+ *   breakpoint.breakpoint.module.toolbar.narrow will check for definitions in
+ *   the following order:
+ *     breakpoint.breakpoint.module.toolbar.*
+ *     breakpoint.breakpoint.module.*.*
+ *     breakpoint.breakpoint.module.*
+ *     breakpoint.breakpoint.*.*.*
+ *     breakpoint.breakpoint.*
+ *     breakpoint.*.*.*.*
+ *     breakpoint.*
+ *   Colons are also used, for example,
+ *   block.settings.system_menu_block:footer will check for definitions in the
+ *   following order:
+ *     block.settings.system_menu_block:*
+ *     block.settings.*:*
+ *     block.settings.*
+ *     block.*.*:*
+ *     block.*
+ */
+function _potx_find_matching_schema($name) {
+  if (_potx_element_has_schema($name)) {
+    return $name;
+  }
+
+  // Check for definition of $name with filesystem marker.
+  $replaced = preg_replace('/([^.:]+)([.:*]*)$/', '*\2', $name);
+  if ($replaced != $name ) {
+    if (_potx_element_has_schema($replaced)) {
+      return $replaced;
+    }
+    else {
+      // No definition for this level. Collapse multiple wildcards to a single
+      // wildcard to see if there is a greedy match. For example,
+      // breakpoint.breakpoint.*.* becomes
+      // breakpoint.breakpoint.*
+      $one_star = preg_replace('/\.([:.*]*)$/', '.*', $replaced);
+      if ($one_star != $replaced && _potx_element_has_schema($one_star)) {
+        return $one_star;
+      }
+      // Check for next level. For example, if breakpoint.breakpoint.* has
+      // been checked and no match found then check breakpoint.*.*
+      return _potx_find_matching_schema($replaced);
+    }
+  }
+
+  return NULL;
+}
+
+/**
+ * Replaces variables in configuration name.
+ *
+ * The configuration name may contain one or more variables to be replaced,
+ * enclosed in square brackets like '[name]' and will follow the replacement
+ * rules defined by the _potx_replace_variable() function.
+ *
+ * Based on Drupal\Core\Config\TypedConfigManager::replaceName($name, $data)
+ *
+ * @param string $name
+ *   Configuration name with variables in square brackets.
+ * @param mixed $data
+ *   Configuration data for the element.
+ * @return string
+ *   Configuration name with variables replaced.
+ */
+function _potx_config_replace_name($name, $config_data) {
+  if (preg_match_all("/\[(.*)\]/U", $name, $matches)) {
+    // Build our list of '[value]' => replacement.
+    $replace = array();
+    foreach (array_combine($matches[0], $matches[1]) as $key => $value) {
+      $replace[$key] = _potx_replace_variable($value, $config_data);
+    }
+
+    return strtr($name, $replace);
+  }
+  else {
+    return $name;
+  }
+}
+
+/**
+ * Replaces variable values in included names with configuration data.
+ *
+ * Variable values are nested configuration keys that will be replaced by
+ * their value or some of these special strings:
+ * - '%key', will be replaced by the element's key.
+ * - '%parent', to reference the parent element.
+ *
+ * There may be nested configuration keys separated by dots or more complex
+ * patterns like '%parent.name' which references the 'name' value of the
+ * parent element.
+ *
+ * Example patterns:
+ * - 'name.subkey', indicates a nested value of the current element.
+ * - '%parent.name', will be replaced by the 'name' value of the parent.
+ * - '%parent.%key', will be replaced by the parent element's key.
+ *
+ * Based on
+ *  Drupal\Core\Config\TypedConfigManager::replaceVariable($value, $data).
+ *
+ * @param string $value
+ *   Variable value to be replaced.
+ * @param mixed $data
+ *   Configuration data for the element.
+ *
+ * @return string
+ *   The replaced value if a replacement found or the original value if not.
+ */
+function _potx_replace_variable($value, $data) {
+  $parts = explode('.', $value);
+  // Process each value part, one at a time.
+  while ($name = array_shift($parts)) {
+    if (!is_array($data) || !isset($data[$name])) {
+      // Key not found, return original value
+      return $value;
+    }
+    elseif (!$parts) {
+      $value = $data[$name];
+      if (is_bool($value)) {
+        $value = (int) $value;
+      }
+      // If no more parts left, this is the final property.
+      return (string) $value;
+    }
+    else {
+      $data = $data[$name];
+    }
+  }
+}
+
+/**
+ * Parse shipped configuration for translatables. Drupal 8+
+ *
+ * @param string $save_callback
+ * @param string $api_version
+ */
+function _potx_parse_shipped_configuration($save_callback = '_potx_save_string', $api_version = POTX_API_CURRENT) {
+  global $_potx_module_metadata;
+  global $_potx_processed_schema;
+  global $_potx_processed_modules;
+  global $potx_callbacks;
+
+  foreach ($_potx_module_metadata as $module_name => $module_metadata) {
+    // Reset the processed schema for every module.
+    $_potx_processed_modules = array();
+    $_potx_processed_schema = array(
+        'translatables' => array(),
+        'types' => array(),
+        'mappings' => array(),
+        'contexts' => array()
+    );
+
+    // "core" contains the base data type and translatable definitions.
+    _potx_process_module_schemas(array('core'));
+    _potx_process_module_schemas(array($module_name));
+
+    if (isset($module_metadata['config']['install'])) {
+      foreach ($module_metadata['config']['install'] as $config_paths) {
+
+        $parsed_config = _potx_parse_yaml($config_paths[1]);
+
+        if ($parsed_config === NULL) {
+          continue;
+        }
+
+        // Dependencies defined in a config file itself should not be visible
+        // to other config files. So, make a temp copy here, and revert after
+        // parsing the config file.
+        $temp = $_potx_processed_schema;
+        if (isset($parsed_config['dependencies']['module'])) {
+          _potx_process_module_schemas($parsed_config['dependencies']['module']);
+        }
+
+        // Find the schema that matches the config file.
+        $path_info = pathinfo($config_paths[1]);
+        $config_name = $path_info['filename'];
+        $schema = _potx_find_matching_schema($config_name);
+
+        if ($schema !== NULL) {
+          _potx_find_shipped_config_translatables($parsed_config, $schema, NULL, NULL, $config_paths[0], $save_callback);
+        }
+
+        $_potx_processed_schema = $temp;
+      }
+    }
+
+    if (isset($module_metadata['config']['optional'])) {
+      // Optional configs are different, since they do not explicitly specify
+      // which module they belong to.
+      foreach ($module_metadata['config']['optional'] as $config_paths) {
+
+        $_potx_processed_modules = array();
+        $_potx_processed_schema = array(
+            'translatables' => array(),
+            'types' => array(),
+            'mappings' => array(),
+            'contexts' => array()
+        );
+
+        _potx_process_module_schemas(array('core'));
+
+        // Find the schema that matches the config file.
+        $path_info = pathinfo($config_paths[1]);
+        $config_name = $path_info['filename'];
+
+        $parsed_config = _potx_parse_yaml($config_paths[1]);
+        if ($parsed_config === NULL) {
+          continue;
+        }
+
+        $match_candidates = _potx_find_matching_schema_candidates($config_name);
+        $matched = $potx_callbacks['schema_reverse_lookup']($match_candidates);
+
+        if ($matched === NULL) {
+          continue;
+        }
+
+        _potx_process_module_schemas(array($matched));
+
+        if (isset($parsed_config['dependencies']['module'])) {
+          _potx_process_module_schemas($parsed_config['dependencies']['module']);
+        }
+
+        $schema = _potx_find_matching_schema($config_name);
+        _potx_find_shipped_config_translatables($parsed_config, $schema, NULL, NULL, $config_paths[0], $save_callback);
+      }
+    }
+  }
+}
+
+/**
+ * Helper function for parsing yaml files.
+ *
+ * @param string $yaml_path
+ *   Path to the yaml file.
+ *
+ * @return array
+ *   The parsed yaml, if it contains valid yaml. NULL if it's invalid or empty.
+ */
+function _potx_parse_yaml($yaml_path) {
+
+  try {
+    $code = file_get_contents($yaml_path);
+    $yaml = Yaml::parse($code);
+
+    return $yaml;
+
+  } catch (ParseException $e) {
+    potx_status('error', t("YAML parsing error on file @path: @error", array(
+        '@path' => $yaml_path,
+        '@error' => $e->getMessage(),
+    )), $yaml_path);
+  }
+
+  return NULL;
+}
+
+/**
+ * Recursively process and merge the schemas required for parsing shipped config.
+ *
+ * Handles module dependencies, and config optional dependencies.
+ *
+ * @param array $module_list
+ *   The list of modules that their schema should be processed.
+ */
+function _potx_process_module_schemas($module_list) {
+  global $_potx_module_metadata;
+  global $_potx_processed_modules;
+  global $_potx_module_schema;
+  global $potx_callbacks;
+
+  // Remove modules that have already been processed.
+  $module_list = array_diff($module_list, $_potx_processed_modules);
+
+  if (count($module_list) == 0) {
+    return;
+  }
+
+  // Mark as processed early, to prevent a loop while traversing dependency graph.
+  $_potx_processed_modules = array_merge($_potx_processed_modules, $module_list);
+
+  $dependencies = array();
+
+  // Gather list of all dependencies for the current $module_list.
+  foreach ($module_list as $module_name) {
+
+    // If the module is directly available from the initial given path, their
+    //  metadata is already available.
+    if (isset($_potx_module_metadata[$module_name])) {
+      if (!empty($_potx_module_metadata[$module_name]['dependencies'])) {
+        $dependencies = array_merge($dependencies, $_potx_module_metadata[$module_name]['dependencies']);
+      }
+    }
+    else {
+      // Try to load the module metadata from the globally available modules
+      //  (e.g. drupal install directory in local potx, database in l10n_server)
+      if ($potx_callbacks['load_module_metadata']($module_name)) {
+        $dependencies = array_merge($dependencies, $_potx_module_metadata[$module_name]['dependencies']);
+      }
+    }
+  }
+
+  if (!empty($dependencies)) {
+    // Process schema for dependencies first.
+    _potx_process_module_schemas($dependencies);
+  }
+
+  // If the schema for a module is already available, merge it.
+  foreach ($module_list as $module_name) {
+    $module_schema = $potx_callbacks['schema_load']($module_name);
+
+    // If the module is not in the current parsed project, and its config schema can be found in the database
+    if (!isset($_potx_module_metadata[$module_name]['config']['schema']) && $module_schema !== NULL) {
+      // If its config schema isn't empty
+      if (!empty($module_schema['types'])) {
+        _potx_merge_processed_schema($module_schema);
+      }
+
+      // Remove from list of unprocessed modules.
+      unset($module_list[array_search($module_name, $module_list)]);
+    }
+  }
+
+  foreach ($module_list as $module_name) {
+    if (!empty($_potx_module_metadata[$module_name]['config']['schema'])) {
+      $_potx_module_schema = array(
+          'translatables' => array(),
+          'types' => array(),
+          'mappings' => array(),
+          'contexts' => array()
+      );
+
+      foreach ($_potx_module_metadata[$module_name]['config']['schema'] as $file_paths) {
+        $yaml = _potx_parse_yaml($file_paths[1]);
+        if ($yaml === NULL) {
+          continue;
+        }
+
+        foreach ($yaml as $key => $element) {
+          _potx_process_config_schema($key, $element);
+        }
+      }
+
+      $potx_callbacks['schema_store']($module_name);
+    }
+  }
+}
+
+/**
+ * Merge a module's processed schema with the global schema storage.
+ */
+function _potx_merge_processed_schema($schema) {
+  global $_potx_processed_schema;
+
+  $_potx_processed_schema['translatables'] = array_merge($_potx_processed_schema['translatables'], $schema['translatables']);
+  $_potx_processed_schema['types'] = array_merge($_potx_processed_schema['types'], $schema['types']);
+  $_potx_processed_schema['mappings'] = array_merge($_potx_processed_schema['mappings'], $schema['mappings']);
+  $_potx_processed_schema['contexts'] = array_merge($_potx_processed_schema['contexts'], $schema['contexts']);
+}
+
+/**
+ * Recursively check elements in shipped configuration with the processed schema.
+ *
+ * To support complex cases of variable replacement, '%key' and '%parent'
+ * indexes are defined for every element when available. 'key' and 'parent'
+ * values are also passed through the function parameters, because $config might
+ * be a scalar value, which would not accept an index. Parsing an element's
+ * properties inherited from its 'type' are processed separately from the
+ * properties defined through its 'mapping'.
+ *
+ * @param mixed $config
+ *   The config element being processed.
+ * @param string $schema_prefix
+ *   All parent keys (including the element's key) joined by '+' symbol.
+ * @param string $config_key
+ *   The config element's key.
+ * @param array $config_parent
+ *   The config element's parent.
+ * @param string $file_name
+ *   Name of file parsed.
+ * @param callable $save_callback
+ *   Callback function used to save strings.
+ */
+function _potx_find_shipped_config_translatables($config, $schema_prefix, $config_key, $config_parent, $file_name, $save_callback) {
+  global $_potx_processed_schema;
+
+  if (in_array($schema_prefix, $_potx_processed_schema['translatables']) && is_string($config)) {
+    if (isset($_potx_processed_schema['contexts'][$schema_prefix])) {
+      $context = $_potx_processed_schema['contexts'][$schema_prefix];
+    }
+    else {
+      $context = POTX_CONTEXT_NONE;
+    }
+
+    if (strpos($config, "\03") !== FALSE) {
+      // Convert plural formatting from config to plural formatting in our
+      // format (replacing \03 with \0).
+      list($singular, $plural) = explode("\03", $config);
+      $save_callback(addcslashes($singular, "\0..\37\\\"") . "\0" . addcslashes($plural, "\0..\37\\\""), $context, $file_name);
+    }
+    else {
+      $save_callback(addcslashes($config, "\0..\37\\\""), $context, $file_name);
+    }
+  }
+  else {
+    // Resolve the config element's type in schema to a real type, replacing all
+    // placeholders, and find the shipped config translatables based on that
+    // type.
+    if (isset($_potx_processed_schema['types'][$schema_prefix])) {
+      $schema_type = $_potx_processed_schema['types'][$schema_prefix];
+
+      if ($schema_type == 'sequence') {
+        foreach ($config as $sequence_key => $sequence_item) {
+          // '%key' and '%parent' keys are added to $config by potx. skip them.
+          if ($sequence_key === '%parent' || $sequence_key === '%key') continue;
+
+          if (is_array($sequence_item)) {
+            $sequence_item['%key'] = $sequence_key;
+            $sequence_type = _potx_config_replace_name($schema_prefix, $sequence_item);
+          }
+          else {
+            $sequence_type = _potx_config_replace_name($schema_prefix, array('%key' => $sequence_key));
+          }
+
+          _potx_find_shipped_config_translatables($sequence_item, $sequence_type . '+sequence', $sequence_key, NULL, $file_name, $save_callback);
+        }
+      }
+      else {
+        if (is_array($config)) {
+          $schema_type = _potx_config_replace_name($schema_type, $config);
+        }
+        else {
+          $schema_type = _potx_config_replace_name($schema_type, array('%key' => $config_key, '%parent' => $config_parent));
+        }
+
+        $matching_schema = _potx_find_matching_schema($schema_type);
+        _potx_find_shipped_config_translatables($config, $matching_schema, $config_key, $config_parent, $file_name, $save_callback);
+      }
+    }
+
+    // Check the keys belonging to config element's schema's "mapping" key.
+    if (in_array($schema_prefix, $_potx_processed_schema['mappings']) && is_array($config)) {
+      foreach ($config as $key => $element) {
+        // '%key' and '%parent' keys are added to $config by potx. skip them.
+        if ($key === '%parent' || $key === '%key' || empty($element)) {
+          continue;
+        }
+
+        if (!_potx_element_has_schema($schema_prefix . '+' . $key)) {
+          continue;
+        }
+
+        if (is_array($element)) {
+          $element['%parent'] = $config;
+          $element['%key'] = $key;
+        }
+
+        _potx_find_shipped_config_translatables($element, $schema_prefix . '+' . $key, $key, $config, $file_name, $save_callback);
+      }
+    }
+  }
+}
+
+/**
+ * Detect validation constraint messages. Drupal 8+
+ *
+ * This sequences is searched for:
+ *   T_POTX_CONSTRAINT = T_CONSTANT_ENCAPSED_STRING
+ *
+ * note: T_POTX_CONSTRAINT is marked for T_VARIABLE tokens inside .php files
+ *   with the "Constraint" suffix, where the token is "$message", or ends
+ *   with "Message"
+ *
+ * @param $file_name
+ *   Name of file parsed.
+ * @param $save_callback
+ *   Callback function used to save strings.
+ */
+function _potx_find_constraint_messages($file_name, $save_callback) {
+  global $_potx_tokens, $_potx_lookup;
+
+  if (!isset($_potx_lookup['T_POTX_CONSTRAINT'])) {
+    return;
+  }
+
+  foreach ($_potx_lookup['T_POTX_CONSTRAINT'] as $key => $ti) {
+
+    if ($_potx_tokens[$ti + 1] == '=' && $_potx_tokens[$ti + 2][0] == T_CONSTANT_ENCAPSED_STRING) {
+      $str = $_potx_tokens[$ti + 2][1];
+
+      // Find plural versions if available.
+      if (strpos($str, '|') !== FALSE) {
+        $quo = substr($str, 0, 1);
+        $break = strpos($str, '|');
+        $singular = substr($str, 0, $break) . $quo;
+        $plural = $quo . substr($str, $break + 1);
+        $save_callback(
+            _potx_format_quoted_string($singular) ."\0". _potx_format_quoted_string($plural),
+            POTX_CONTEXT_NONE,
+            $file_name,
+            $_potx_tokens[$ti][2]
+        );
+      }
+      else {
+        $save_callback(_potx_format_quoted_string($str), POTX_CONTEXT_NONE, $file_name, $_potx_tokens[$ti][2]);
+      }
+    }
+  }
+}
+
+/**
+ * Process Twig inline templates inside PHP files. Drupal 8+
+ *
+ * The patterns searched for inline templates include:
+ *   1. '#template' => T_CONSTANT_ENCAPSED_STRING
+ *   2. ['#template'] = T_CONSTANT_ENCAPSED_STRING
+ *
+ * @param $file_name
+ *   Name of file parsed.
+ * @param $save_callback
+ *   Callback function used to save strings.
+ */
+function _potx_process_inline_templates($file_name, $save_callback) {
+  global $_potx_tokens, $_potx_lookup;
+
+  if (!isset($_potx_lookup["'#template'"])) {
+    return;
+  }
+
+  foreach ($_potx_lookup["'#template'"] as $key => $ti) {
+    // check for pattern: '#template' => T_CONSTANT_ENCAPSED_STRING
+    if ($_potx_tokens[$ti + 1][0] == T_DOUBLE_ARROW && $_potx_tokens[$ti + 2][0] == T_CONSTANT_ENCAPSED_STRING) {
+      $str = $_potx_tokens[$ti + 2][1];
+      _potx_parse_twig_file($str, $file_name, $save_callback);
+    }
+    // check for pattern: ['#template'] = T_CONSTANT_ENCAPSED_STRING
+    elseif ($_potx_tokens[$ti - 1] == '[' && $_potx_tokens[$ti + 1] == ']'
+            && $_potx_tokens[$ti + 2] == '=' && $_potx_tokens[$ti + 3][0] == T_CONSTANT_ENCAPSED_STRING) {
+      $str = $_potx_tokens[$ti + 3][1];
+      _potx_parse_twig_file($str, $file_name, $save_callback);
+    }
+  }
+}
+
+/**
  * Collect a list of file names relevant for extraction,
  * starting from the given path.
  *
@@ -1424,6 +2958,11 @@ function _potx_explore_dir($path = '', $basename = '*', $api_version = POTX_API_
   if ($api_version > POTX_API_5) {
     $extensions[] = 'js';
   }
+  if ($api_version > POTX_API_7) {
+    $extensions[] = 'twig';
+    $extensions[] = 'yml';
+    _potx_init_yaml_translation_patterns($path);
+  }
   $files = array();
   foreach ($extensions as $extension) {
     $files_here = glob($path . $basename .'.'. $extension);
@@ -1444,14 +2983,14 @@ function _potx_explore_dir($path = '', $basename = '*', $api_version = POTX_API_
   $dirs = glob($path .'*', GLOB_ONLYDIR);
   if (is_array($dirs)) {
     foreach ($dirs as $dir) {
-      if (!preg_match("!(^|.+/)(CVS|\.svn|\.git|tests)$!", $dir)) {
-        $files = array_merge($files, _potx_explore_dir("$dir/", $basename));
+      if (!preg_match("!(^|.+/)(CVS|\.svn|\.git|tests|Tests|vendor|node_modules)$!", $dir)) {
+        $files = array_merge($files, _potx_explore_dir("$dir/", $basename, $api_version, $skip_self));
       }
     }
   }
 
   // Skip API and test files. Also skip our own files, if that was requested.
-  $skip_pattern = ($skip_self ? '!(potx-cli\.php|potx\.inc|\.api\.php|\.test)$!' : '!(\.api\.php|\.test)$!');
+  $skip_pattern = ($skip_self ? '!(potx\.inc|\.api\.php|\.test)$!' : '!(\.api\.php|\.test)$!');
   foreach ($files as $id => $file_name) {
     if (preg_match($skip_pattern, $file_name)) {
       unset($files[$id]);
@@ -1546,7 +3085,7 @@ if (!function_exists('t')) {
 
 if (!function_exists('drupal_parse_info_file')) {
   // If invoked outside of Drupal, drupal_parse_info_file() will not be available,
-  // but we need this function to properly parse Drupal 6 .info files.
+  // but we need this function to properly parse Drupal 6/7 .info files.
   // Directly copied from common.inc,v 1.756.2.76 2010/02/01 16:01:41 goba Exp.
   function drupal_parse_info_file($filename) {
     $info = array();

@@ -25,6 +25,7 @@ function seckit_uninstall() {
   variable_del('seckit_ct');
   variable_del('seckit_various');
   variable_del('seckit_advanced');
+  variable_del('seckit_fp');
 }
 
 /**

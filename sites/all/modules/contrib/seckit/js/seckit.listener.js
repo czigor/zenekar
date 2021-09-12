@@ -66,6 +66,7 @@ function seckit_listener_csp(context) {
     var checkbox_status = $('#edit-seckit-xss-csp-checkbox').is(':checked');
     var policy_uri_status = $('#edit-seckit-xss-csp-policy-uri').val().length === 0;
     if (checkbox_status) {
+      $('#edit-seckit-xss-csp-upgrade-req', context).removeAttr('disabled');
       $('#edit-seckit-xss-csp-report-only', context).removeAttr('disabled');
       $('#edit-seckit-xss-csp-policy-uri', context).removeAttr('disabled');
       if (!policy_uri_status) {
@@ -76,6 +77,7 @@ function seckit_listener_csp(context) {
       }
     }
     else {
+      $('#edit-seckit-xss-csp-upgrade-req', context).attr('disabled', 'disabled');
       $('#edit-seckit-xss-csp-report-only', context).attr('disabled', 'disabled');
       $('#edit-seckit-xss-csp-policy-uri', context).attr('disabled', 'disabled');
       _seckit_csp_add_attributes(context);

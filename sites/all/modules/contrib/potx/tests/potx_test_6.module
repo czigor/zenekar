@@ -1,5 +1,4 @@
 <?php
-// $Id: potx_test_6.module,v 1.1.4.5 2011/01/26 12:16:06 goba Exp $
 
 /**
  * @file
@@ -40,12 +39,15 @@ function potx_test_6_menu_alter(&$items) {
 function potx_test_6_page() {
   t('This is a test string.');
   format_plural($count, '1 test string', '@count test strings');
+  format_plural($count);
+  format_plural();
   watchdog('test watchdog type', 'My watchdog message');
 
   st('Installer only test string');
   $t('Dynamic callback test string');
 
   t('Test string in context', array(), array('context' => 'Test context'));
+  format_plural($count, '1 test string in context', '@count test strings in context', array(), array('context' => 'Test context'));
   t('');
 
   st('Installer string in context', array(), array('context' => 'Installer context'));
