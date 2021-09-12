@@ -8,8 +8,8 @@ dependencies[] = taxonomy
 dependencies[] = entity
 dependencies[] = entity_translation
 
-; Information added by Drupal.org packaging script on 2019-09-14
-version = "7.x-1.0-beta1"
+; Information added by Drupal.org packaging script on 2021-02-27
+version = "7.x-1.0-beta4"
 core = "7.x"
 project = "title"
-datestamp = "1568461687"
+datestamp = "1614446628"
