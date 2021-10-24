@@ -1,0 +1,345 @@
+<?php
+
+/**
+ * @file
+ * Unit-ish tests for the Maillog module.
+ */
+
+/**
+ * All unit tests for the module.
+ */
+class MaillogTestCase extends DrupalWebTestCase {
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function getInfo() {
+    return array(
+      'name' => 'Maillog tests',
+      'description' => 'Test the main Maillog functionality.',
+      'group' => 'maillog',
+    );
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function setUp(array $modules = array()) {
+    // Requirements.
+    $modules[] = 'maillog';
+
+    // Some extra logic for fully testing the module.
+    $modules[] = 'maillog_tests';
+
+    parent::setUp($modules);
+
+    // Take over the email system.
+    variable_set('mail_system', array('default-system' => 'MaillogMailSystem'));
+
+    // Don't allow emails to be delivered.
+    variable_set('maillog_send', FALSE);
+
+    // Log all emails.
+    variable_set('maillog_log', TRUE);
+  }
+
+  /**
+   * Confirm that SimpleTest has taken over the 'mail_system' variable.
+   */
+  public function testSetup() {
+    $enabled = variable_get('mail_system', array());
+    $should_be = array(
+      'default-system' => 'MaillogMailSystem',
+    );
+    $this->assertEqual($enabled, $should_be, 'Maillog is controlling mail delivery.');
+
+    $delivery = variable_get('maillog_send', FALSE);
+    $this->assertEqual($delivery, FALSE, 'Email delivery is disabled.');
+
+    $logging = variable_get('maillog_log', TRUE);
+    $this->assertEqual($logging, TRUE, 'Email delivery is being logged.');
+  }
+
+  /**
+   * Tests logging mail with maillog module.
+   */
+  public function testLogging() {
+    // Login as an admin.
+    $this->loginAdminUser();
+
+    // Load the admin page.
+    $this->drupalGet('admin/reports/maillog');
+    $this->assertResponse(200);
+
+    // Confirm there are no emails present.
+    $this->assertText('Maillog is currently empty. Send an email!');
+
+    // This is automatically assigned by Simpletest.
+    $sender = 'simpletest@example.com';
+
+    // Some other items to test.
+    $from_email = 'from_test@example.com';
+    $to_email = 'to_test@example.com';
+    $test_subject = 'Test email subject';
+    $test_body = "Test email body.\n";
+
+    // Send an email.
+    $this->sendTestEmail();
+
+    // Compare the maillog db entry with the sent mail.
+    $logged_email = $this->getLatestMaillogEntry();
+    $this->assertTrue(!empty($logged_email), 'The test email was captured.');
+    $this->assertEqual($to_email, $logged_email['header_to'], 'Email "to" address is correct.');
+    $this->assertEqual($from_email, $logged_email['header_from'], 'Email "from" address is correct.');
+    $this->assertEqual($from_email, $logged_email['header_all']['From'], 'Email "from" header is correct.');
+    $this->assertEqual($sender, $logged_email['header_all']['Sender'], 'Email "sender" header is correct.');
+    $this->assertEqual($sender, $logged_email['header_all']['Return-Path'], 'Email "return-path" header is correct.');
+    $this->assertEqual('Drupal', $logged_email['header_all']['X-Mailer'], 'Email "x-mailer" header is correct.');
+    $this->assertEqual($test_subject, $logged_email['subject'], 'Email subject is correct.');
+    $this->assertEqual($test_body, $logged_email['body'], 'Email body is correct.');
+
+    // Load the admin page again.
+    $this->drupalGet('admin/reports/maillog');
+    $this->assertResponse(200);
+
+    // Confirm the message is present.
+    $this->assertText($test_subject);
+    $this->assertText($from_email);
+    $this->assertText($to_email);
+
+    // Confirm the operations links are present.
+    $this->assertLink('view', 0, '"view" link found.');
+    $this->assertLink('delete', 0, '"delete" link found.');
+  }
+
+  /**
+   * Confirm what happens with long subject lines.
+   */
+  public function testLongSubject() {
+    // Send an email.
+    $this->sendTestEmail('maillog_long_subject_test');
+
+    // Compare the maillog db entry with the sent mail.
+    $logged_email = $this->getLatestMaillogEntry();
+    $this->assertTrue(!empty($logged_email), 'The test email was captured.');
+
+    // The original subject line, as copied from maillog_tests_mail().
+    $subject = str_repeat(t('Test email subject') . ' ', 20);
+
+    // Duplicate the string trimming.
+    $subject_trimmed = drupal_substr($subject, 0, 255);
+
+    $this->assertEqual($subject_trimmed, $logged_email['subject'], 'Email subject was trimmed correctly.');
+    $this->assertNotEqual($subject, $logged_email['subject'], 'Email subject is not untrimmed.');
+  }
+
+  /**
+   * Confirm that it is not possible to create XSS attacks via an email subject.
+   */
+  public function testSubjectXss() {
+    $xss_string = '<script type="text/javascript">alert("XSS test")</script>';
+
+    // Send an email.
+    $this->sendTestEmail('maillog_subject_xss_test');
+
+    // Compare the maillog db entry with the sent mail.
+    $logged_email = $this->getLatestMaillogEntry();
+    $this->assertTrue(!empty($logged_email), 'The test email was captured.');
+
+    // Login as an admin.
+    $this->loginAdminUser();
+
+    // Load the admin list page.
+    $this->drupalGet('admin/reports/maillog');
+    $this->assertResponse(200);
+
+    // Confirm that the page has been defanged.
+    $this->assertText('XSS test');
+    $this->assertRaw(check_plain($xss_string));
+    $this->assertNoRaw($xss_string);
+
+    // Load the maillog view page.
+    $this->drupalGet('admin/reports/maillog/view/' . $logged_email['id']);
+    $this->assertResponse(200);
+
+    // Confirm that the page has been defanged.
+    $this->assertText('XSS test');
+    $this->assertRaw(check_plain($xss_string));
+    $this->assertNoRaw($xss_string);
+
+    // Check the title.
+    $this->assertTitle($xss_string . ' | ' . variable_get('site_name', 'Drupal'));
+  }
+
+  /**
+   * Confirm that it is not possible to create XSS attacks via an email body.
+   */
+  public function testBodyXss() {
+    $xss_string = '<script type="text/javascript">alert("XSS test")</script>';
+
+    // Send an email.
+    $this->sendTestEmail('maillog_body_xss_test');
+
+    // Compare the maillog db entry with the sent mail.
+    $logged_email = $this->getLatestMaillogEntry();
+    $this->assertTrue(!empty($logged_email), 'The test email was captured.');
+
+    // Login as an admin.
+    $this->loginAdminUser();
+
+    // Load the maillog view page.
+    $this->drupalGet('admin/reports/maillog/view/' . $logged_email['id']);
+    $this->assertResponse(200);
+
+    // The body field will be passed through check_plain, which will remove all
+    // possible XSS attacks. The JavaScript tag itself will be removed, but the
+    // code that was in it will be displayed.
+    $this->assertText(check_plain(strip_tags($xss_string)));
+    $this->assertRaw(check_plain(strip_tags($xss_string)));
+    // $this->assertRaw(check_plain('alert("XSS test")'));
+    $this->assertNoRaw(check_plain($xss_string));
+    $this->assertNoRaw($xss_string);
+  }
+
+  /**
+   * Confirm that the 'delete' pages are not able to delete messages.
+   */
+  public function testDeletePageSecurity() {
+    // Send some test emails.
+    $this->sendTestEmail();
+    $this->sendTestEmail();
+
+    // Load the message log data to confirm the records were created.
+    $messages = $this->getAllMaillogEntries();
+    $this->assertEqual(count($messages), 2, 'Two messages are in the maillog.');
+
+    // Log in as the admin.
+    $this->loginAdminUser();
+
+    // Load the 'delete' path for one of the items..
+    $this->drupalGet('admin/reports/maillog/delete/' . $messages[0]['id']);
+    $this->assertResponse(200);
+
+    // Confirm the page is a confirmation page.
+    $this->assertText('Delete Maillog record?');
+    $this->assertText('Message details');
+    $this->assertText('This action cannot be undone.');
+    $this->assertFieldByName('subject');
+    $this->assertFieldByName('to');
+    $this->assertFieldByName('op', 'Confirm');
+    $this->assertLink('Cancel');
+
+    // Confirm that just loading the delete page doesn't delete anything.
+    $messages = $this->getAllMaillogEntries();
+    $this->assertEqual(count($messages), 2, 'There are still two messages in the maillog.');
+
+    // Follow the 'delete' action.
+    $this->drupalPost(NULL, array(), 'Confirm');
+    $this->assertResponse(200);
+
+    // Confirm that only one message is left.
+    $messages = $this->getAllMaillogEntries();
+    $this->assertTrue(count($messages) === 1, 'There is now only one message in the maillog.');
+  }
+
+  /**
+   * Gets the latest Maillog entry.
+   *
+   * @return array
+   *   Maillog entry.
+   */
+  protected function getLatestMaillogEntry() {
+    $query = 'SELECT id, header_from, header_to, header_reply_to, header_all, subject, body FROM {maillog} ORDER BY id DESC';
+    $result = db_query_range($query, 0, 1);
+
+    if ($maillog = $result->fetchAssoc()) {
+      // Unserialize values.
+      $maillog['header_all'] = unserialize($maillog['header_all']);
+    }
+    return $maillog;
+  }
+
+  /**
+   * Gets all Maillog entries.
+   *
+   * @return array
+   *   A list of Maillog entries.
+   */
+  protected function getAllMaillogEntries() {
+    $query = 'SELECT id, header_from, header_to, header_reply_to, header_all, subject, body FROM {maillog} ORDER BY id ASC';
+    $results = db_query($query);
+
+    $messages = array();
+    if (!empty($results)) {
+      while ($message = $results->fetchAssoc()) {
+        // Unserialize values.
+        $this->verbose($message);
+        $message['header_all'] = unserialize($message['header_all']);
+        $messages[] = $message;
+      }
+    }
+
+    return $messages;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  protected function verbose($message, $title = NULL) {
+    // Handle arrays, objects, etc.
+    if (!is_string($message)) {
+      $message = "<pre>\n" . print_r($message, TRUE) . "\n</pre>\n";
+    }
+
+    // Optional title to go before the output.
+    if (!empty($title)) {
+      $title = '<h2>' . check_plain($title) . "</h2>\n";
+    }
+
+    parent::verbose($title . $message);
+  }
+
+  /**
+   * Log into the site as an admin user.
+   */
+  public function loginAdminUser() {
+    $user = $this->createAdminUser();
+    $this->drupalLogin($user);
+  }
+
+  /**
+   * Create an admin account.
+   */
+  public function createAdminUser() {
+    $permissions = array(
+      'administer maillog',
+      'view maillog',
+      'delete maillog',
+      // General admin access.
+      'access administration pages',
+    );
+
+    // Reset the static variable used to identify permissions, otherwise it's
+    // possible the permissions check in drupalCreateUser will fail.
+    $this->checkPermissions(array(), TRUE);
+    cache_clear_all();
+
+    return $this->drupalCreateUser($permissions);
+  }
+
+  /**
+   * Send a test email.
+   *
+   * @param string $key
+   *   The drupal_mail() key used to identify which message is being sent.
+   * @param array $params
+   *   Any additional parameters to process.
+   */
+  protected function sendTestEmail($key = 'maillog_basic_test', array $params = array()) {
+    $langcode = language_default('language');
+    $from_email = 'from_test@example.com';
+    $to_email = 'to_test@example.com';
+    drupal_mail('maillog_tests', $key, $to_email, $langcode, $params, $from_email);
+  }
+
+}
