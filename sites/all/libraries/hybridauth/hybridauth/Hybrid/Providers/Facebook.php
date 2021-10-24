@@ -23,7 +23,7 @@ class Hybrid_Providers_Facebook extends Hybrid_Provider_Model {
      * @link https://developers.facebook.com/docs/facebook-login/permissions
      * @var array $scope
      */
-    public $scope = ['email', 'user_about_me', 'user_birthday', 'user_hometown', 'user_location', 'user_website', 'publish_actions', 'read_custom_friendlists'];
+    public $scope = array('email', 'public_profile');
 
     /**
      * Provider API client
@@ -53,20 +53,8 @@ class Hybrid_Providers_Facebook extends Hybrid_Provider_Model {
 
         $trustForwarded = isset($this->config['trustForwarded']) ? (bool)$this->config['trustForwarded'] : false;
 
-        // Check if there is Graph SDK in thirdparty/Facebook.
-        if (file_exists(Hybrid_Auth::$config["path_libraries"] . "Facebook/autoload.php")) {
-            require_once Hybrid_Auth::$config["path_libraries"] . "Facebook/autoload.php";
-        }
-        else {
-            // If Composer install was executed, try to find autoload.php.
-            $vendorDir = dirname(Hybrid_Auth::$config['path_base']);
-            do {
-                if (file_exists($vendorDir . "/vendor/autoload.php")) {
-                    require_once $vendorDir . "/vendor/autoload.php";
-                    break;
-                }
-            } while (($vendorDir = dirname($vendorDir)) !== '/');
-        }
+        // Include 3rd-party SDK.
+        $this->autoLoaderInit();
 
         $this->api = new FacebookSDK([
             'app_id' => $this->config["keys"]["id"],
@@ -97,6 +85,9 @@ class Hybrid_Providers_Facebook extends Hybrid_Provider_Model {
     function loginFinish() {
 
         $helper = $this->api->getRedirectLoginHelper();
+        if (isset($_GET['state'])) {
+          $helper->getPersistentDataHandler()->set('state', $_GET['state']);
+        }
         try {
             $accessToken = $helper->getAccessToken($this->params['login_done']);
         } catch (Facebook\Exceptions\FacebookResponseException $e) {
@@ -187,8 +178,9 @@ class Hybrid_Providers_Facebook extends Hybrid_Provider_Model {
     * {@inheridoc}
     */
    function getUserPages($writableonly = false) {
-       if (( isset($this->config['scope']) && strpos($this->config['scope'], 'manage_pages') === false ) || (!isset($this->config['scope']) && strpos($this->scope, 'manage_pages') === false ))
-           throw new Exception("User status requires manage_page permission!");
+       if (!in_array('manage_pages', $this->scope)) {
+           throw new Exception("Get user pages requires manage_page permission!");
+       }
 
        try {
            $pages = $this->api->get("/me/accounts", $this->token('access_token'));
@@ -220,7 +212,7 @@ class Hybrid_Providers_Facebook extends Hybrid_Provider_Model {
      */
     function getUserProfile() {
         try {
-            $fields = [
+            $fields = array(
                 'id',
                 'name',
                 'first_name',
@@ -234,7 +226,7 @@ class Hybrid_Providers_Facebook extends Hybrid_Provider_Model {
                 'hometown',
                 'location',
                 'birthday'
-            ];
+            );
             $response = $this->api->get('/me?fields=' . implode(',', $fields), $this->token('access_token'));
             $data = $response->getDecodedBody();
         } catch (FacebookSDKException $e) {
@@ -287,8 +279,12 @@ class Hybrid_Providers_Facebook extends Hybrid_Provider_Model {
      * {@inheritdoc}
      */
     function getUserContacts() {
+        if (!in_array('user_friends', $this->scope)) {
+           throw new Exception("Get user contacts requires user_friends permission!");
+        }
+
         $apiCall = '?fields=link,name';
-        $returnedContacts = [];
+        $returnedContacts = array();
         $pagedList = true;
 
         while ($pagedList) {
@@ -312,7 +308,7 @@ class Hybrid_Providers_Facebook extends Hybrid_Provider_Model {
             $returnedContacts = array_merge($returnedContacts, $response['data']);
         }
 
-        $contacts = [];
+        $contacts = array();
         foreach ($returnedContacts as $item) {
 
             $uc = new Hybrid_User_Contact();
@@ -348,10 +344,10 @@ class Hybrid_Providers_Facebook extends Hybrid_Provider_Model {
         }
 
         if (!$response || !count($response['data'])) {
-            return [];
+            return array();
         }
 
-        $activities = [];
+        $activities = array();
         foreach ($response['data'] as $item) {
 
             $ua = new Hybrid_User_Activity();

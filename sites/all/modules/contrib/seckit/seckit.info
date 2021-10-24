@@ -8,8 +8,8 @@ files[] = seckit.module
 files[] = seckit.test
 files[] = includes/seckit.form.inc
 
-; Information added by Drupal.org packaging script on 2018-10-15
-version = "7.x-1.10"
+; Information added by Drupal.org packaging script on 2019-06-25
+version = "7.x-1.11"
 core = "7.x"
 project = "seckit"
-datestamp = "1539600185"
+datestamp = "1561463898"

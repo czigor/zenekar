@@ -2,24 +2,24 @@
 
 /**
  * @file
- * Make the fields from node type 'Logged Mail' available in views
+ * Make the fields from node type 'Logged Mail' available in views.
  */
 
 /**
- * Implementation of hook_views_data().
+ * Implements hook_views_data().
  */
 function maillog_views_data() {
   $data['maillog']['table']['group'] = t('Maillog');
 
   $data['maillog']['table']['base'] = array(
-    'field' => 'idmaillog',
+    'field' => 'id',
     'title' => t('Maillog'),
     'help' => t("This table contains the logged e-mails."),
     'weight' => -10,
   );
 
-  $data['maillog']['idmaillog'] = array(
-    'title' => t('Maillog_ID'),
+  $data['maillog']['id'] = array(
+    'title' => t('Maillog ID'),
     'help' => t('The primary key of the maillog table.'),
     'field' => array(
       'handler' => 'views_handler_field',
@@ -183,16 +183,16 @@ function maillog_views_data() {
   $data['maillog']['delete_maillog'] = array(
     'field' => array(
       'title' => t('Delete link'),
-      'help' => t('Provide a simple link to delete an eMail entry from the maillog table.'),
-      'handler' => 'maillog_handler_field_maillog_link_delete',
+      'help' => t('Provide a simple link to delete an email entry from the maillog table.'),
+      'handler' => 'MaillogHandlerFieldMaillogLinkDelete',
     ),
   );
+
   return $data;
 }
 
 /**
- * Implementation of hook_views_handlers() to register all of the basic handlers
- * views uses.
+ * Implements hook_views_handlers().
  */
 function maillog_views_handlers() {
   return array(
@@ -200,11 +200,10 @@ function maillog_views_handlers() {
       'path' => drupal_get_path('module', 'maillog') . '/includes',
     ),
     'handlers' => array(
-      // field handlers
-      'maillog_handler_field_maillog_link_delete' => array(
+      // Field handlers.
+      'MaillogHandlerFieldMaillogLinkDelete' => array(
         'parent' => 'views_handler_field',
       ),
     ),
   );
 }
-

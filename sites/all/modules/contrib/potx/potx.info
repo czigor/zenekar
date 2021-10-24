@@ -1,16 +1,15 @@
-; $Id: potx.info,v 1.1.2.3.2.2.2.1.2.3 2009/11/17 14:22:29 goba Exp $
 name = Translation template extractor
 description = Provides a web interface and an API to extract translatable text from the sources of installed components.
 dependencies[] = locale
-core = 7.x
-package = Multilanguage
-files[] = potx.module
 files[] = potx.inc
+files[] = potx.local.inc
 files[] = tests/potx.test
+core = 7.x
+package = Multilingual
+php = 5.3
 
-; Information added by drupal.org packaging script on January 1, 1970 - 00:00
-version = "7.x-1.0"
+; Information added by Drupal.org packaging script on 2020-09-08
+version = "7.x-3.0"
 core = "7.x"
 project = "potx"
-datestamp = "1296046593"
-
+datestamp = "1599561778"

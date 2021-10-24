@@ -2,241 +2,126 @@
 
 /**
  * @file
- * Creates the default view for the 'Log Mail' module
+ * Creates the default view for the 'Log Mail' module.
  */
 
 /**
- * Implementation of hook_views_default_views().
+ * Implements hook_views_default_views().
  */
 function maillog_views_default_views() {
-$view = new view;
-$view->name = 'Maillog';
-$view->description = 'Displays the list of e-mails logged by the \'Mail Log\' module.';
-$view->tag = '';
-$view->view_php = '';
-$view->base_table = 'maillog';
-$view->is_cacheable = FALSE;
-$view->api_version = 2;
-$view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
-$handler = $view->new_display('default', 'Defaults', 'default');
-$handler->override_option('fields', array(
-  'idmaillog' => array(
-    'label' => 'Maillog_ID',
-    'alter' => array(
-      'alter_text' => 0,
-      'text' => '',
-      'make_link' => 0,
-      'path' => '',
-      'link_class' => '',
-      'alt' => '',
-      'prefix' => '',
-      'suffix' => '',
-      'target' => '',
-      'help' => '',
-      'trim' => 0,
-      'max_length' => '',
-      'word_boundary' => 1,
-      'ellipsis' => 1,
-      'html' => 0,
-      'strip_tags' => 0,
-    ),
-    'empty' => '',
-    'hide_empty' => 0,
-    'empty_zero' => 0,
-    'exclude' => 1,
-    'id' => 'idmaillog',
-    'table' => 'maillog',
-    'field' => 'idmaillog',
-    'relationship' => 'none',
-  ),
-  'sent_date' => array(
-    'label' => 'Date',
-    'alter' => array(
-      'alter_text' => 0,
-      'text' => '',
-      'make_link' => 0,
-      'path' => '',
-      'link_class' => '',
-      'alt' => '',
-      'prefix' => '',
-      'suffix' => '',
-      'target' => '',
-      'help' => '',
-      'trim' => 0,
-      'max_length' => '',
-      'word_boundary' => 1,
-      'ellipsis' => 1,
-      'html' => 0,
-      'strip_tags' => 0,
-    ),
-    'empty' => '',
-    'hide_empty' => 0,
-    'empty_zero' => 0,
-    'exclude' => 0,
-    'id' => 'sent_date',
-    'table' => 'maillog',
-    'field' => 'sent_date',
-    'relationship' => 'none',
-  ),
-  'header_message_id' => array(
-    'id' => 'header_message_id',
-    'table' => 'maillog',
-    'field' => 'header_message_id',
-  ),
-  'subject' => array(
-    'label' => 'Subject',
-    'alter' => array(
-      'alter_text' => 0,
-      'text' => '',
-      'make_link' => 1,
-      'path' => 'maillog/details/[idmaillog]',
-      'link_class' => '',
-      'alt' => '',
-      'prefix' => '',
-      'suffix' => '',
-      'target' => '',
-      'help' => '',
-      'trim' => 0,
-      'max_length' => '',
-      'word_boundary' => 1,
-      'ellipsis' => 1,
-      'html' => 0,
-      'strip_tags' => 0,
-    ),
-    'empty' => '',
-    'hide_empty' => 0,
-    'empty_zero' => 0,
-    'exclude' => 0,
-    'id' => 'subject',
-    'table' => 'maillog',
-    'field' => 'subject',
-    'relationship' => 'none',
-  ),
-  'header_from' => array(
-    'label' => 'From',
-    'alter' => array(
-      'alter_text' => 0,
-      'text' => '',
-      'make_link' => 0,
-      'path' => '',
-      'link_class' => '',
-      'alt' => '',
-      'prefix' => '',
-      'suffix' => '',
-      'target' => '',
-      'help' => '',
-      'trim' => 0,
-      'max_length' => '',
-      'word_boundary' => 1,
-      'ellipsis' => 1,
-      'html' => 0,
-      'strip_tags' => 0,
-    ),
-    'empty' => '',
-    'hide_empty' => 0,
-    'empty_zero' => 0,
-    'exclude' => 0,
-    'id' => 'header_from',
-    'table' => 'maillog',
-    'field' => 'header_from',
-    'relationship' => 'none',
-  ),
-  'header_to' => array(
-    'label' => 'To',
-    'alter' => array(
-      'alter_text' => 0,
-      'text' => '',
-      'make_link' => 0,
-      'path' => '',
-      'link_class' => '',
-      'alt' => '',
-      'prefix' => '',
-      'suffix' => '',
-      'target' => '',
-      'help' => '',
-      'trim' => 0,
-      'max_length' => '',
-      'word_boundary' => 1,
-      'ellipsis' => 1,
-      'html' => 0,
-      'strip_tags' => 0,
-    ),
-    'empty' => '',
-    'hide_empty' => 0,
-    'empty_zero' => 0,
-    'exclude' => 0,
-    'id' => 'header_to',
-    'table' => 'maillog',
-    'field' => 'header_to',
-    'relationship' => 'none',
-  ),
-  'delete_maillog' => array(
-    'label' => 'Delete link',
-    'alter' => array(
-      'alter_text' => 0,
-      'text' => '',
-      'make_link' => 0,
-      'path' => '',
-      'link_class' => '',
-      'alt' => '',
-      'prefix' => '',
-      'suffix' => '',
-      'target' => '',
-      'help' => '',
-      'trim' => 0,
-      'max_length' => '',
-      'word_boundary' => 1,
-      'ellipsis' => 1,
-      'html' => 0,
-      'strip_tags' => 0,
-    ),
-    'empty' => '',
-    'hide_empty' => 0,
-    'empty_zero' => 0,
-    'exclude' => 0,
-    'id' => 'delete_maillog',
-    'table' => 'maillog',
-    'field' => 'delete_maillog',
-    'relationship' => 'none',
-  ),
-));
-$handler->override_option('sorts', array(
-  'sent_date' => array(
-    'order' => 'DESC',
-    'id' => 'sent_date',
-    'table' => 'maillog',
-    'field' => 'sent_date',
-    'relationship' => 'none',
-  ),
-));
-$handler->override_option('access', array(
-  'type' => 'perm',
-  'perm' => 'view maillog',
-));
-$handler->override_option('cache', array(
-  'type' => 'none',
-));
-$handler->override_option('title', 'Maillog');
-$handler->override_option('empty', 'Maillog is currently empty. Send a mail!');
-$handler->override_option('empty_format', 'plain_text');
-$handler->override_option('use_pager', '1');
-$handler->override_option('style_plugin', 'table');
-$handler = $view->new_display('page', 'Page', 'page_1');
-$handler->override_option('path', 'admin/reports/maillog');
-$handler->override_option('menu', array(
-  'type' => 'normal',
-  'title' => 'Maillog',
-  'description' => 'Show the logged mails',
-  'weight' => '0',
-  'name' => 'management',
-));
-$handler->override_option('tab_options', array(
-  'type' => 'none',
-  'title' => '',
-  'description' => '',
-  'weight' => 0,
-  'name' => 'navigation',
-));
+  $view = new view();
+  $view->name = 'Maillog';
+  $view->description = 'Displays the list of e-mails logged by the \'Mail Log\' module.';
+  $view->tag = '';
+  $view->base_table = 'maillog';
+  $view->human_name = '';
+  $view->core = 0;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Defaults */
+  $handler = $view->new_display('default', 'Defaults', 'default');
+  $handler->display->display_options['title'] = 'Maillog';
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['access']['perm'] = 'view maillog';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['style_plugin'] = 'table';
+  /* No results behavior: Global: Unfiltered text */
+  $handler->display->display_options['empty']['area_text_custom']['id'] = 'area_text_custom';
+  $handler->display->display_options['empty']['area_text_custom']['table'] = 'views';
+  $handler->display->display_options['empty']['area_text_custom']['field'] = 'area_text_custom';
+  $handler->display->display_options['empty']['area_text_custom']['label'] = 'Maillog';
+  $handler->display->display_options['empty']['area_text_custom']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area_text_custom']['content'] = 'Maillog is currently empty. Send an email!';
+  /* Field: Maillog: Maillog_ID */
+  $handler->display->display_options['fields']['id']['id'] = 'id';
+  $handler->display->display_options['fields']['id']['table'] = 'maillog';
+  $handler->display->display_options['fields']['id']['field'] = 'id';
+  $handler->display->display_options['fields']['id']['exclude'] = TRUE;
+  /* Field: Maillog: Date */
+  $handler->display->display_options['fields']['sent_date']['id'] = 'sent_date';
+  $handler->display->display_options['fields']['sent_date']['table'] = 'maillog';
+  $handler->display->display_options['fields']['sent_date']['field'] = 'sent_date';
+  /* Field: Maillog: Message_ID */
+  $handler->display->display_options['fields']['header_message_id']['id'] = 'header_message_id';
+  $handler->display->display_options['fields']['header_message_id']['table'] = 'maillog';
+  $handler->display->display_options['fields']['header_message_id']['field'] = 'header_message_id';
+  /* Field: Maillog: Subject */
+  $handler->display->display_options['fields']['subject']['id'] = 'subject';
+  $handler->display->display_options['fields']['subject']['table'] = 'maillog';
+  $handler->display->display_options['fields']['subject']['field'] = 'subject';
+  $handler->display->display_options['fields']['subject']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['subject']['alter']['path'] = 'admin/reports/maillog/view/[id]';
+  /* Field: Maillog: From */
+  $handler->display->display_options['fields']['header_from']['id'] = 'header_from';
+  $handler->display->display_options['fields']['header_from']['table'] = 'maillog';
+  $handler->display->display_options['fields']['header_from']['field'] = 'header_from';
+  /* Field: Maillog: To */
+  $handler->display->display_options['fields']['header_to']['id'] = 'header_to';
+  $handler->display->display_options['fields']['header_to']['table'] = 'maillog';
+  $handler->display->display_options['fields']['header_to']['field'] = 'header_to';
+  /* Field: Global: Custom text */
+  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['label'] = '';
+  $handler->display->display_options['fields']['nothing']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = 'view';
+  $handler->display->display_options['fields']['nothing']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['nothing']['alter']['path'] = 'admin/reports/maillog/view/[id]';
+  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
+  /* Field: Maillog: Delete link */
+  $handler->display->display_options['fields']['delete_maillog']['id'] = 'delete_maillog';
+  $handler->display->display_options['fields']['delete_maillog']['table'] = 'maillog';
+  $handler->display->display_options['fields']['delete_maillog']['field'] = 'delete_maillog';
+  $handler->display->display_options['fields']['delete_maillog']['label'] = '';
+  $handler->display->display_options['fields']['delete_maillog']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['delete_maillog']['element_label_colon'] = FALSE;
+  /* Field: Global: Custom text */
+  $handler->display->display_options['fields']['nothing_1']['id'] = 'nothing_1';
+  $handler->display->display_options['fields']['nothing_1']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing_1']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing_1']['label'] = 'Operations';
+  $handler->display->display_options['fields']['nothing_1']['alter']['text'] = '[nothing] | [delete_maillog]';
+  /* Sort criterion: Maillog: Date */
+  $handler->display->display_options['sorts']['sent_date']['id'] = 'sent_date';
+  $handler->display->display_options['sorts']['sent_date']['table'] = 'maillog';
+  $handler->display->display_options['sorts']['sent_date']['field'] = 'sent_date';
+  $handler->display->display_options['sorts']['sent_date']['order'] = 'DESC';
+
+  /* Display: Page */
+  $handler = $view->new_display('page', 'Page', 'page_1');
+  $handler->display->display_options['path'] = 'admin/reports/maillog';
+  $handler->display->display_options['menu']['type'] = 'normal';
+  $handler->display->display_options['menu']['title'] = 'Maillog';
+  $handler->display->display_options['menu']['description'] = 'Show the logged mails';
+  $handler->display->display_options['menu']['weight'] = '0';
+  $handler->display->display_options['menu']['name'] = 'management';
+  $translatables['Maillog'] = array(
+    t('Defaults'),
+    t('Maillog'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Maillog is currently empty. Send a mail!'),
+    t('Maillog_ID'),
+    t('Date'),
+    t('Message_ID'),
+    t('Subject'),
+    t('From'),
+    t('To'),
+    t('view'),
+    t('Actions'),
+    t('[nothing] | [delete_maillog]'),
+    t('Page'),
+  );
 
   $views[$view->name] = $view;
   return $views;

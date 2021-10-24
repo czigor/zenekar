@@ -1,0 +1,55 @@
+Maillog 7.x-1.0-rc1, 2020-05-19
+-------------------------------
+#2655518 by DamienMcKenna: Added some tests.
+#2601710 by DamienMcKenna, monika.kadam1206: Updated the README.txt file.
+#2191497 by aramboyajyan: Remove all variables on uninstall.
+#1932698 by jamesharv, mariacha1, jurgenhaas: Behat integration.
+#2245761 by David_Rothstein, DamienMcKenna: Truncate message subjects to avoid
+  SQL errors.
+#2184669 by DamienMcKenna: Clear the appropriate catches after installing the
+  module so that the list page works.
+#2655872 by DamienMcKenna: Update the Views default page per the latest API
+  changes.
+#2655742 by aramboyajyan: Emails are stored with an 'id' field, update status
+  messages accordingly.
+#2359521 by aramboyajyan, DamienMcKenna: Add a 'view' link to the view page.
+#2706153 by DamienMcKenna: Better support for other email modules, e.g. SMTP
+  module, doesn't override system default mail handler if already managed by
+  another module.
+By DamienMcKenna: Minor fix to a UI message in maillog.install.
+By DamienMcKenna: Minor code improvements.
+By DamienMcKenna: Added tests to confirm the list and view pages don't allow XSS
+  attacks.
+#2706153 by Alex Bukach: Enabling or disabling maillog silently disables SMTP.
+#3137677 by DamienMcKenna: Split delete/view pages into separate file.
+#3137676 by DamienMcKenna: Split settings page into separate file.
+#1401818 by DamienMcKenna, greggles: Prevent CSRF when deleting records.
+#3137782 by DamienMcKenna: Coding standards cleanup.
+#3137678 by DamienMcKenna: Add a CHANGELOG.txt file.
+#3137847 by DamienMcKenna: Rename test file.
+#3137869 by DamienMcKenna: 'delete' handler accidentally removed.
+#3137882 by DamienMcKenna: Make all permissions "restricted".
+#3137869 by DamienMcKenna: Re-enable all tests methods accidentally disabled.
+#1401818 by DamienMcKenna: Test coverage for message deletion.
+#3137940 by DamienMcKenna: Rename "idmaillog" field and variable usage to "id".
+#3137940 by DamienMcKenna: Corrected update script.
+#2831876 by DamienMcKenna, cebasqueira: Change callback paths to use the
+  admin/reports/maillog base.
+
+
+Maillog 7.x-1.0-alpha1, 2014-07-14
+----------------------------------
+#1107988 by pluess: Initial d7 port / first steps.
+By miro_dietiker: Rearrange .info.
+#1107988 by james.williams, Michael Lopez: d7 port, fix admin view.
+#1220818 by jonathan_hunt: Missing admin reports link to maillog.
+#1231168 by smk-ka, pluess: Fix deleting maillog entries.
+#1274222 by pluess: Merge cleanup.
+#1323694 by rootatwc: Mail is never sent.
+#1399768 by rootatwc: Remove maillog.inc.
+#1113580 by jjwhitney, miro_dietiker: Support multiple recipients.
+#1399768 by rootatwc: misdeleted, readded file.
+#1437716 by ferrum, miro_dietiker: decode headers, if mime encoded.
+#1404878 by George Petsagourakis: Fixed Alert Missing text format : 1.
+#1399752 by Alex Bukach, jonathan_hunt, ParisLiakos: Maillog integration with
+  other contrib modules.

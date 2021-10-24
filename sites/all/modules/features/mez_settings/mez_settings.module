@@ -97,7 +97,8 @@ function mez_settings_preprocess_mez_frontpage(&$vars) {
     ->entityCondition('bundle', 'concert')
     ->propertyCondition('status', 1)
     ->propertyCondition('promote', 1)
-    ->propertyOrderBy('created', 'DESC')
+    ->fieldOrderBy('field_time', 'value', 'DESC')
+	->propertyCondition('nid', $opening_nid, '!=')
     ->execute();
   if (isset($result['node'])) {
     $concert_nids = array_keys($result['node']);

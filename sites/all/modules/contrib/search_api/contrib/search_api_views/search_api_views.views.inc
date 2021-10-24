@@ -99,6 +99,7 @@ function search_api_views_views_data() {
       $table['search_api_relevance']['title'] = t('Relevance');
       $table['search_api_relevance']['help'] = t('The relevance of this search result with respect to the query.');
       $table['search_api_relevance']['field']['type'] = 'decimal';
+      $table['search_api_relevance']['field']['float'] = TRUE;
       $table['search_api_relevance']['field']['handler'] = 'entity_views_handler_field_numeric';
       $table['search_api_relevance']['field']['click sortable'] = TRUE;
       $table['search_api_relevance']['sort']['handler'] = 'SearchApiViewsHandlerSort';
@@ -219,7 +220,7 @@ function _search_api_views_add_handlers($id, array $field, EntityMetadataWrapper
       $table[$id]['filter']['vocabulary'] = $vocabulary;
     }
   }
-  elseif (in_array($inner_type, array('integer', 'decimal', 'duration', 'string'))) {
+  elseif (in_array($inner_type, array('integer', 'decimal', 'duration', 'string', 'uri'))) {
     $table[$id]['filter']['handler'] = 'SearchApiViewsHandlerFilterNumeric';
   }
   else {

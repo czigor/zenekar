@@ -1,16 +1,22 @@
 <?php
 
 /**
+ * @file
+ * An interface for pluggable mail back-ends.
+ */
+
+/**
  * An interface for pluggable mail back-ends.
  */
 class MaillogMailSystem implements MailSystemInterface {
+
   /**
    * Format a message composed by drupal_mail() prior sending.
    *
-   * @param $message
+   * @param array $message
    *   A message array, as described in hook_mail_alter().
    *
-   * @return
+   * @return string
    *   The formatted $message.
    */
   public function format(array $message) {
@@ -22,12 +28,12 @@ class MaillogMailSystem implements MailSystemInterface {
   /**
    * Send a message composed by drupal_mail().
    *
-   * @param $message
+   * @param array $message
    *   Message array with at least the following elements:
-   *   - id: A unique identifier of the e-mail type. Examples: 'contact_user_copy',
+   *   - id: A unique identifier of the e-mail type, e.g. 'contact_user_copy',
    *     'user_password_reset'.
    *   - to: The mail address or addresses where the message will be sent to.
-   *     The formatting of this string must comply with RFC 2822. Some examples:
+   *     The formatting of this string must comply with RFC 2822, e.g.:
    *     - user@example.com
    *     - user@example.com, anotheruser@example.com
    *     - User <user@example.com>
@@ -41,18 +47,20 @@ class MaillogMailSystem implements MailSystemInterface {
    *      defined by one of the other parameters.  PHP's mail() looks for Cc
    *      and Bcc headers and sends the mail to addresses in these headers too.
    *
-   * @return
+   * @return bool
    *   TRUE if the mail was successfully accepted for delivery, otherwise FALSE.
    */
   public function mail(array $message) {
-    // Log the e-mail
+    // Log the e-mail.
     if (variable_get('maillog_log', TRUE)) {
-      $record = new stdClass;
+      $record = new stdClass();
 
-      // In case the subject/from/to is already encoded, decode with mime_header_decode
+      // In case the subject/from/to is already encoded, decode with
+      // mime_header_decode().
       $record->header_message_id = isset($message['headers']['Message-ID']) ? $message['headers']['Message-ID'] : NULL;
       $record->subject = $message['subject'];
       $record->subject = mime_header_decode($record->subject);
+      $record->subject = drupal_substr($record->subject, 0, 255);
       $record->body = $message['body'];
       $record->header_from = isset($message['from']) ? $message['from'] : NULL;
       $record->header_from = mime_header_decode($record->header_from);
@@ -60,7 +68,7 @@ class MaillogMailSystem implements MailSystemInterface {
       $header_to = array();
       if (isset($message['to'])) {
         if (is_array($message['to'])) {
-          foreach($message['to'] as $value) {
+          foreach ($message['to'] as $value) {
             $header_to[] = mime_header_decode($value);
           }
         }
@@ -77,7 +85,7 @@ class MaillogMailSystem implements MailSystemInterface {
       drupal_write_record('maillog', $record);
     }
 
-    // Display the e-mail using Devel module
+    // Display the e-mail using Devel module.
     if (variable_get('maillog_devel', TRUE) && function_exists('dpm')) {
       $devel_msg = array();
       $devel_msg[t('Subject')] = $message['subject'];
@@ -87,7 +95,11 @@ class MaillogMailSystem implements MailSystemInterface {
       $devel_msg[t('Header')] = $message['headers'];
       $devel_msg[t('Body')] = $message['body'];
 
+      // dpm() is not recommended, but if it's available then use it. Ignore the
+      // coding standards as otherwise Coder will complain about this line.
+      // @codingStandardsIgnoreStart
       dpm($devel_msg, 'maillog');
+      // @codingStandardsIgnoreEnd
     }
 
     if (variable_get('maillog_send', TRUE)) {
@@ -106,4 +118,5 @@ class MaillogMailSystem implements MailSystemInterface {
     }
     return isset($result) ? $result : TRUE;
   }
+
 }

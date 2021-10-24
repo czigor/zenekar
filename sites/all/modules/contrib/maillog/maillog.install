@@ -2,86 +2,128 @@
 
 /**
  * @file
- * Provides the installation routines for the maillog module
+ * Provides the installation routines for the maillog module.
  */
 
 /**
- * Implementation of hook_enable().
+ * Implements hook_enable().
  */
 function maillog_enable() {
-  $mail_system = variable_get('mail_system', array('default-system' => 'DefaultMailSystem'));
+  // The system default class.
+  $default_class = 'DefaultMailSystem';
+
+  // Load the current mail configuration.
+  $mail_system = variable_get('mail_system', array('default-system' => $default_class));
   $mail_system['maillog'] = 'MaillogMailSystem';
-  $mail_system['default-system'] = $mail_system['maillog'];
+
+  // If maillog is enabled, don't take over the default.
+  if ($mail_system['default-system'] == $default_class) {
+    $mail_system['default-system'] = $mail_system['maillog'];
+  }
+  else {
+    drupal_set_message(t('The Maillog module was not set as the default email system because another module is already handling email.'));
+  }
+
+  // Update the settings.
   variable_set('mail_system', $mail_system);
+
+  // The maillog reports page is provided by a view, but it needs a menu cache
+  // clear after the default views are loaded in order for the menu item to
+  // become active.
+  global $language;
+  cache_clear_all('ctools_plugin_files:ctools:export_ui', 'cache');
+  cache_clear_all('ctools_plugin_type_info', 'cache');
+  cache_clear_all('views:plugin_data:' . $language->language, 'cache');
+  variable_set('menu_rebuild_needed', TRUE);
 }
 
 /**
- * Implementation of hook_disable().
- *
- * Removing smtp_libraries settings.
- *
- * If the smptp_library variable refers to the maillog_smtp_library the variable will be resetted. It does not make sense to backup the smtp_library
- * when enabling the maillog module, because before restoring when the maillog module gets disabled another module could changed the smtp variable.
+ * Implements hook_disable().
  */
 function maillog_disable() {
+  // Get the current mail system config.
   $mail_system = variable_get('mail_system', array('default-system' => 'DefaultMailSystem'));
+
+  // Delete any overrides that might be set for Maillog.
   unset($mail_system['maillog']);
-  $mail_system['default-system'] = 'DefaultMailSystem';
+
+  // Revert the default config mail config if it is currently set to use
+  // Maillog, and any others that are set to Maillog can be just deleted so they
+  // revert to the default.
+  $default_class = 'DefaultMailSystem';
+  $maillog_class = 'MaillogMailSystem';
+  foreach ($mail_system as $system => $class) {
+    // Look for the default mail handler.
+    if ($system == 'default-system') {
+      // If this is currently using Maillog, revert it to the default class.
+      if ($class == $maillog_class) {
+        $mail_system[$system] = $default_class;
+      }
+    }
+
+    // For all other mail handlers, just delete them if they're set to Maillog
+    // so that the system default handler is used instead.
+    elseif ($class == $maillog_class) {
+      unset($mail_system[$system]);
+    }
+  }
+
+  // Update the mail config.
   variable_set('mail_system', $mail_system);
 }
 
 /**
- * Implementation of hook_schema().
+ * Implements hook_schema().
  */
 function maillog_schema() {
   $schema['maillog'] = array(
-    'description' => t("Stores outgoing e-mail details for nodes of type 'maillog'."),
+    'description' => "Stores outgoing emails that are captured using the Maillog module.",
     'fields' => array(
-      'idmaillog' => array(
+      'id' => array(
         'type' => 'serial',
         'unsigned' => TRUE,
         'not null' => TRUE,
-        'description' => t("The mail_log {node}.nid"),
+        'description' => "The primary key of this table.",
       ),
       'header_message_id' => array(
         'type' => 'varchar',
         'length' => 255,
         'not null' => TRUE,
         'default' => '',
-        'description' => t("The 'message-id' field of the e-mail."),
+        'description' => "The 'message-id' field of the e-mail.",
       ),
       'header_from' => array(
         'type' => 'text',
         'not null' => TRUE,
-        'description' => t("The 'From' field of the e-mail."),
+        'description' => "The 'From' field of the e-mail.",
       ),
       'header_to' => array(
         'type' => 'text',
         'not null' => TRUE,
-        'description' => t("The 'To' field of the e-mail."),
+        'description' => "The 'To' field of the e-mail.",
       ),
       'header_reply_to' => array(
         'type' => 'text',
         'not null' => TRUE,
-        'description' => t("The 'Reply-To' field of the e-mail."),
+        'description' => "The 'Reply-To' field of the e-mail.",
       ),
       'header_all' => array(
         'type' => 'text',
         'not null' => TRUE,
-        'description' => t("The 'Header' field of the e-mail."),
+        'description' => "The 'Header' field of the e-mail.",
       ),
       'subject' => array(
-        'description' => t("The 'Subject' fieldof the e-mail."),
+        'description' => "The 'Subject' field of the e-mail.",
         'type' => 'varchar',
         'length' => 255,
         'not null' => TRUE,
         'default' => '',
       ),
       'body' => array(
-        'description' => 'The body of this version.',
+        'description' => 'The body of this message.',
         'type' => 'text',
         'not null' => TRUE,
-        'size' => 'big'
+        'size' => 'big',
       ),
       'sent_date' => array(
         'description' => 'The Unix timestamp when the mail was sent.',
@@ -90,8 +132,72 @@ function maillog_schema() {
         'default' => 0,
       ),
     ),
-    'primary key' => array('idmaillog'),
+    'primary key' => array('id'),
   );
 
   return $schema;
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function maillog_uninstall() {
+  variable_del('maillog_devel');
+  variable_del('maillog_log');
+  variable_del('maillog_send');
+  variable_del('maillog_engine');
+}
+
+/**
+ * Implementations of hook_update_N().
+ */
+
+/**
+ * Rename the 'idmaillog' field to just 'id'.
+ */
+function maillog_update_7100() {
+  if (!db_field_exists('maillog', 'id')) {
+    // Add the new 'id' field.
+    $spec = array(
+      'type' => 'int',
+      'not null' => TRUE,
+      'unsigned' => TRUE,
+      'default' => 0,
+      'description' => "The primary key of this table.",
+    );
+    db_add_field('maillog', 'id', $spec);
+
+    // Fill in all of the 'id' fields.
+    db_query("UPDATE {maillog} SET id=idmaillog");
+
+    // Drop the 'idmaillog' field
+    db_drop_field('maillog', 'idmaillog');
+
+    // Change the 'id' field to a serial.
+    $spec = array(
+      'type' => 'serial',
+      'unsigned' => TRUE,
+      'not null' => TRUE,
+      'description' => "The primary key of this table.",
+    );
+    $keys = array(
+      'primary key' => array('id'),
+    );
+    db_change_field('maillog', 'id', 'id', $spec, $keys);
+  }
+}
+
+/**
+ * Clear the menu cache so the new paths will be picked up.
+ */
+function maillog_update_7101() {
+  variable_set('menu_rebuild_needed', TRUE);
+}
+
+/**
+ * Clear the Views cache so the updated admin page will get the new paths.
+ */
+function maillog_update_7102() {
+  cache_clear_all('*', 'cache_views', TRUE);
+  cache_clear_all('*', 'cache_views_data', TRUE);
 }

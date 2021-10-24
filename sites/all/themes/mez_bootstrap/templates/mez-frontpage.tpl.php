@@ -12,7 +12,7 @@
 		<h1><?php print $site_name; ?></h1>
 		<span><?php print $site_slogan; ?></span>
 	</div>
-	<div id ="opening" class="jumbotron col-md-8 col-md-offset-1">
+	<div id ="opening" class="jumbotron col-md-10 col-md-offset-1">
 		<?php print render($opening['node']); ?>
 	</div>
 	<div id="concert" class="jumbotron col-md-8 col-md-offset-3">
