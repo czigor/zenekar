@@ -8,7 +8,7 @@
 
 % One ticket for the 2021. 12. 04. 2nd concert.
 \newcommand{\mezticket}[3]{
-  \begin{overpic}[unit=1mm, width=180mm]{<?php print drupal_realpath('sites/all/themes/mez_theme/images');?>/mez_ticket_5220.jpg}
+  \begin{overpic}[unit=1mm, width=180mm]{<?php print drupal_realpath('sites/all/themes/mez_bootstrap/images');?>/mez_ticket_5220.jpg}
     <?php if($env != 'live') :?>
       \put(10, 10){\Huge TESZTJEGY TESZTJEGY TESZTJEGY}
     <?php endif;?>
