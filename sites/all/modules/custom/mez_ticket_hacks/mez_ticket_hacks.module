@@ -468,7 +468,7 @@ function mez_ticket_from_seat_form($context) {
     $form['mez_ticket_price'] = array(
       '#type' => 'textfield',
       '#title' => t('Price (HUF)'),
-      '#element_validate' => array('element_validate_integer_positive'),
+      '#element_validate' => array('element_validate_integer'),
     );
   }
   else {
