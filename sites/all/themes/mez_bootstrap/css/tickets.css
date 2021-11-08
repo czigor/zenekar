@@ -58,21 +58,23 @@ body.node-type-concert .ds-2col-stacked .group-left {
 body.node-type-concert .ds-2col-stacked .group-right {
   width: 760px;
   float: left; }
+/* line 73, ../sass/tickets.scss */
+body.node-type-concert.page-node-5218 .mez_concert_bank_info, body.node-type-concert.page-node-5219 .mez_concert_bank_info, body.node-type-concert.page-node-5220 .mez_concert_bank_info {
+  display: none; }
 
-/* line 71, ../sass/tickets.scss */
+/* line 80, ../sass/tickets.scss */
 .view-mez-shopping-cart-block .views-field-commerce-total {
   text-align: right; }
-/* line 74, ../sass/tickets.scss */
+/* line 83, ../sass/tickets.scss */
 .view-mez-shopping-cart-block .views-row-even {
   background-color: #D99216; }
-/* line 77, ../sass/tickets.scss */
+/* line 86, ../sass/tickets.scss */
 .view-mez-shopping-cart-block .views-row-last {
   border-bottom: 1px solid black;
   margin-bottom: 10px;
   padding-bottom: 10px; }
 
-/* line 84, ../sass/tickets.scss */
+/* line 93, ../sass/tickets.scss */
 .mez_concert_bank_information {
   font-size: 0.6em;
   text-align: right; }
-  

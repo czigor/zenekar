@@ -65,6 +65,15 @@ body.node-type-concert {
       float: left;
     }
   }
+  
+  // No CIB and bank card logos for free concerts.
+  &.page-node-5218,
+  &.page-node-5219,
+  &.page-node-5220 {
+    .mez_concert_bank_info {
+      display: none;
+    }
+  }
 }
 
 .view-mez-shopping-cart-block {
