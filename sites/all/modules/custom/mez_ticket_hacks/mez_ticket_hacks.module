@@ -111,7 +111,7 @@ function mez_ticket_hacks_theme() {
  * Theme function for ticket.
  */
 function theme_mez_ticket($vars) {
-  if (!empty($vars['xcoord']) && !empty($vars['ycoord'])) {
+  if (isset($vars['xcoord']) && isset($vars['ycoord'])) {
     $markup = '<div id="mez-ticket-' . $vars['seat_nid'] . '" class="mez-ticket ' . $vars['status'] . ' mez-ticket-price-' . $vars['price'] . '" style="position:absolute; top:' . $vars['ycoord'] . 'px; left: ' . $vars['xcoord'] . 'px;">';
     $text = '<span class="inner" title="' . $vars['title'] . '"></span>';
     switch ($vars['status']) {
