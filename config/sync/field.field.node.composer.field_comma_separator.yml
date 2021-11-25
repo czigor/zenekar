@@ -1,0 +1,23 @@
+uuid: 7be9adb0-62cd-4b8c-b285-bcd7398901ee
+langcode: hu
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_comma_separator
+    - node.type.composer
+id: node.composer.field_comma_separator
+field_name: field_comma_separator
+entity_type: node
+bundle: composer
+label: 'Vessző elválasztó'
+description: 'The family name of the composer is displayed before the given name(s). Check this if you want a comma between them. (So do not check it for Hungarian names.)'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Be
+  off_label: Ki
+field_type: boolean

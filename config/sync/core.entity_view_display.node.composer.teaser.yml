@@ -1,0 +1,27 @@
+uuid: 574a9ab6-dc59-4edc-9a8a-c490dd49bc75
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.composer.field_comma_separator
+    - field.field.node.composer.field_family_name
+    - field.field.node.composer.field_given_name
+    - node.type.composer
+  module:
+    - user
+id: node.composer.teaser
+targetEntityType: node
+bundle: composer
+mode: teaser
+content:
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  field_comma_separator: true
+  field_family_name: true
+  field_given_name: true
+  langcode: true

@@ -1,0 +1,40 @@
+uuid: d7da5005-60aa-4dc4-b269-68edf4e256c9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.composer.field_comma_separator
+    - field.field.node.composer.field_family_name
+    - field.field.node.composer.field_given_name
+    - node.type.composer
+  module:
+    - user
+id: node.composer.default
+targetEntityType: node
+bundle: composer
+mode: default
+content:
+  field_family_name:
+    weight: 1
+    label: inline
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_given_name:
+    weight: 2
+    label: inline
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  links:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  field_comma_separator: true
+  langcode: true

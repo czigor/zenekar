@@ -1,0 +1,18 @@
+uuid: cf56bbd8-7ef5-40f4-9ecf-af7585851864
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.composer
+id: node.composer.title
+field_name: title
+entity_type: node
+bundle: composer
+label: Name
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

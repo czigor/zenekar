@@ -1,0 +1,11 @@
+uuid: d12918ef-2590-4087-a936-94df84e406c1
+langcode: hu
+status: true
+dependencies:
+  config:
+    - node.type.composer
+id: node.composer
+target_entity_type_id: node
+target_bundle: composer
+default_langcode: site_default
+language_alterable: false
