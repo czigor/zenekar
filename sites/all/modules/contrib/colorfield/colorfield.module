@@ -134,9 +134,9 @@ function colorfield_rgb_element_process($element, &$form_state, $form) {
       if (strlen($color) == '7') {
         $raw_value = substr($color, 1);
         $color = array(
-          'r' => $raw_value{0} . $raw_value{1},
-          'g' => $raw_value{2} . $raw_value{3},
-          'b' => $raw_value{4} . $raw_value{5},
+          'r' => $raw_value[0] . $raw_value[1],
+          'g' => $raw_value[2] . $raw_value[3],
+          'b' => $raw_value[4] . $raw_value[5],
         );
       }
     }
@@ -473,9 +473,9 @@ function colorfield_field_widget_form(&$form, &$form_state, $field, $instance, $
           if (strlen($color) == '7') {
             $raw_value = substr($color, 1);
             $color = array(
-              'r' => $raw_value{0} . $raw_value{1},
-              'g' => $raw_value{2} . $raw_value{3},
-              'b' => $raw_value{4} . $raw_value{5},
+              'r' => $raw_value[0] . $raw_value[1],
+              'g' => $raw_value[2] . $raw_value[3],
+              'b' => $raw_value[4] . $raw_value[5],
             );
           }
         }
