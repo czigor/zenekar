@@ -1,0 +1,49 @@
+uuid: 6a8af23d-c270-4476-942d-82159c55f15a
+langcode: hu
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_address
+    - node.type.location
+  module:
+    - address
+id: node.location.field_address
+field_name: field_address
+entity_type: node
+bundle: location
+label: Cím
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    langcode: ''
+    country_code: HU
+    administrative_area: null
+    locality: ''
+    dependent_locality: null
+    postal_code: null
+    sorting_code: null
+    address_line1: ''
+    address_line2: ''
+    organization: null
+    given_name: null
+    additional_name: null
+    family_name: null
+default_value_callback: ''
+settings:
+  available_countries: {  }
+  langcode_override: ''
+  field_overrides:
+    givenName:
+      override: hidden
+    additionalName:
+      override: hidden
+    familyName:
+      override: hidden
+    organization:
+      override: hidden
+    dependentLocality:
+      override: hidden
+  fields: {  }
+field_type: address

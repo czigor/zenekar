@@ -1,0 +1,16 @@
+uuid: 54bb652a-1c4d-4cf6-89b0-f5f4acc58a59
+langcode: hu
+status: true
+dependencies:
+  config:
+    - node.type.location
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+id: node.location
+target_entity_type_id: node
+target_bundle: location
+default_langcode: site_default
+language_alterable: true

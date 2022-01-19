@@ -1,0 +1,14 @@
+uuid: 63d8875d-7fbf-4c0b-bf5f-ac80d09b1ab8
+langcode: hu
+status: true
+dependencies: {  }
+id: openstreetmap
+label: OpenStreetMap
+plugin: openstreetmap
+configuration:
+  rootUrl: 'https://nominatim.openstreetmap.org'
+  userAgent: 'Drupal 9'
+  referer: 'https://zenekar.bme.hu'
+  throttle:
+    period: 2
+    limit: 1

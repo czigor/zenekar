@@ -1,0 +1,14 @@
+uuid: 7b721989-8534-4876-9aa4-4e1a47c08a96
+langcode: hu
+status: true
+dependencies: {  }
+id: nominatim
+label: Nominatim
+plugin: nominatim
+configuration:
+  rootUrl: 'https://nominatim.openstreetmap.org'
+  userAgent: 'Drupal 9'
+  referer: 'https://zenekar.bme.hu'
+  throttle:
+    period: null
+    limit: null
