@@ -1,0 +1,10 @@
+uuid: e987f3b7-db13-4260-9bec-8d78e1158ec6
+langcode: hu
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.token
+label: Vezérjel
+targetEntityType: paragraph
+cache: true

@@ -1,0 +1,10 @@
+uuid: 80014a22-214b-4b63-91cb-f61f88095ce7
+langcode: hu
+status: true
+dependencies:
+  module:
+    - node
+id: node.token
+label: Vezérjel
+targetEntityType: node
+cache: true

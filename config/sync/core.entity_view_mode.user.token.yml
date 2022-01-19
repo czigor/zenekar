@@ -1,0 +1,10 @@
+uuid: 2b39ac52-3a3a-4c3e-a53e-8952dba3d274
+langcode: hu
+status: true
+dependencies:
+  module:
+    - user
+id: user.token
+label: Vezérjel
+targetEntityType: user
+cache: true

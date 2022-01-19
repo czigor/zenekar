@@ -1,0 +1,10 @@
+uuid: 79b12104-d67d-4760-bfbe-2f3bd47a627b
+langcode: hu
+status: true
+dependencies:
+  module:
+    - block
+id: block.token
+label: Vezérjel
+targetEntityType: block
+cache: true

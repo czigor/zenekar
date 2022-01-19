@@ -111,6 +111,6 @@ status_canceled:
 
     --  [site:name] team
   subject: 'Account details for [user:display-name] at [site:name] (canceled)'
-langcode: en
+langcode: hu
 _core:
   default_config_hash: XcgosOepJxgEPlITLHaf0iS0kKeA_-Zus_XcQGrN-Rg

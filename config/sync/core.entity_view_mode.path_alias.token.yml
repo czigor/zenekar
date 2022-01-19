@@ -1,0 +1,10 @@
+uuid: f75c5f27-5955-4c42-b998-737fadc6fab2
+langcode: hu
+status: true
+dependencies:
+  module:
+    - path_alias
+id: path_alias.token
+label: Vezérjel
+targetEntityType: path_alias
+cache: true

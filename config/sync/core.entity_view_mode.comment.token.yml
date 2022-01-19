@@ -1,0 +1,10 @@
+uuid: 6092c6a9-b6f9-4300-b28e-1e8f5cdbd181
+langcode: hu
+status: true
+dependencies:
+  module:
+    - comment
+id: comment.token
+label: Vezérjel
+targetEntityType: comment
+cache: true

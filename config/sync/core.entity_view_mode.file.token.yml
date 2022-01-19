@@ -1,0 +1,10 @@
+uuid: 1f274975-9bee-4c32-abe6-c540e8b39fb3
+langcode: hu
+status: true
+dependencies:
+  module:
+    - file
+id: file.token
+label: Vezérjel
+targetEntityType: file
+cache: true

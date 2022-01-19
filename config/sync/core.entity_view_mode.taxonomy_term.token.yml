@@ -1,0 +1,10 @@
+uuid: 961af1a2-c965-40c3-86f1-590c409efe8f
+langcode: hu
+status: true
+dependencies:
+  module:
+    - taxonomy
+id: taxonomy_term.token
+label: Vezérjel
+targetEntityType: taxonomy_term
+cache: true

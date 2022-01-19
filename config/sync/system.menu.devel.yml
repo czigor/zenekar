@@ -1,0 +1,13 @@
+uuid: bd94c9cf-f751-487f-aa47-6f4c23bfa464
+langcode: hu
+status: true
+dependencies:
+  enforced:
+    module:
+      - devel
+_core:
+  default_config_hash: 3V-l1uuTcyirYOGLPZV5HWaDfr02uEbWZJIwc8Byz-c
+id: devel
+label: Development
+description: 'A Devel modulhoz kapcsolódó hivatkozások.'
+locked: true

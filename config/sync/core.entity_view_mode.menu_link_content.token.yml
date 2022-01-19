@@ -1,0 +1,10 @@
+uuid: f26b5432-f9ce-473b-a5a0-522e69dcbb0a
+langcode: hu
+status: true
+dependencies:
+  module:
+    - menu_link_content
+id: menu_link_content.token
+label: Vezérjel
+targetEntityType: menu_link_content
+cache: true
