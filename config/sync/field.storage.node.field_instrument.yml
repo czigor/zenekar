@@ -1,0 +1,20 @@
+uuid: e6024308-4ea3-4641-b8fa-14cff66a3c95
+langcode: hu
+status: true
+dependencies:
+  module:
+    - node
+    - taxonomy
+id: node.field_instrument
+field_name: field_instrument
+entity_type: node
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

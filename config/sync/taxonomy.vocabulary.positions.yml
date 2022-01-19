@@ -1,0 +1,8 @@
+uuid: 06c06fd8-90f8-4bf5-9757-434b18d0f93b
+langcode: hu
+status: true
+dependencies: {  }
+name: Tisztségek
+vid: positions
+description: ''
+weight: 0

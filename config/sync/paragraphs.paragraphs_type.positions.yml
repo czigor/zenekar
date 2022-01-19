@@ -1,0 +1,10 @@
+uuid: 24cf7ba7-73ba-49b8-b181-d9ad72fcd4cd
+langcode: hu
+status: true
+dependencies: {  }
+id: positions
+label: Tisztségek
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

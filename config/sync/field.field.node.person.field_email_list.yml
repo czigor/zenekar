@@ -1,0 +1,23 @@
+uuid: 67425b72-7c8b-4ff3-9424-b12fc07cca7c
+langcode: hu
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_email_list
+    - node.type.person
+id: node.person.field_email_list
+field_name: field_email_list
+entity_type: node
+bundle: person
+label: 'Zenekari levlista'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

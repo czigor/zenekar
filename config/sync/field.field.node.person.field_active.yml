@@ -1,0 +1,23 @@
+uuid: 50b8cf4c-121c-4367-a32a-63efcff76eab
+langcode: hu
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_active
+    - node.type.person
+id: node.person.field_active
+field_name: field_active
+entity_type: node
+bundle: person
+label: Aktív
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

@@ -1,0 +1,29 @@
+uuid: 0d796eef-6bf8-4b4b-8e75-77d5d021f4bf
+langcode: hu
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_student_status
+    - node.type.person
+    - taxonomy.vocabulary.student_status
+id: node.person.field_student_status
+field_name: field_student_status
+entity_type: node
+bundle: person
+label: 'Tanuló státusz'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      student_status: student_status
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

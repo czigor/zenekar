@@ -7,11 +7,9 @@ dependencies:
     - field.field.node.article.comment
     - field.field.node.article.field_image
     - field.field.node.article.field_tags
-    - image.style.thumbnail
     - node.type.article
   module:
     - comment
-    - image
     - path
     - text
 _core:
@@ -44,13 +42,15 @@ content:
     settings: {  }
     third_party_settings: {  }
   field_image:
-    type: image_image
-    weight: 4
-    region: content
+    weight: 121
     settings:
-      progress_indicator: throbber
-      preview_image_style: thumbnail
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
   field_tags:
     type: entity_reference_autocomplete_tags
     weight: 3

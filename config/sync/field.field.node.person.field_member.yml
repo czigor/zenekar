@@ -1,0 +1,23 @@
+uuid: ba37dfcf-2aae-4ac2-8d6e-cb3458a18297
+langcode: hu
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_member
+    - node.type.person
+id: node.person.field_member
+field_name: field_member
+entity_type: node
+bundle: person
+label: Tag
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

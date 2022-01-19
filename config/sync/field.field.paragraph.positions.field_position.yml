@@ -1,0 +1,29 @@
+uuid: 6d5b1699-bf97-4576-bfa5-68dd76fc472f
+langcode: hu
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_position
+    - paragraphs.paragraphs_type.positions
+    - taxonomy.vocabulary.positions
+id: paragraph.positions.field_position
+field_name: field_position
+entity_type: paragraph
+bundle: positions
+label: Tisztség
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      positions: positions
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

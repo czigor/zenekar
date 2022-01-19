@@ -16,7 +16,7 @@ mode: default
 content:
   field_family_name:
     weight: 1
-    label: inline
+    label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
@@ -24,7 +24,7 @@ content:
     region: content
   field_given_name:
     weight: 2
-    label: inline
+    label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }

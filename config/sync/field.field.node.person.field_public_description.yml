@@ -1,0 +1,23 @@
+uuid: 15919dee-b69a-4726-a511-3c10a6a54ce3
+langcode: hu
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_public_description
+    - node.type.person
+  module:
+    - text
+id: node.person.field_public_description
+field_name: field_public_description
+entity_type: node
+bundle: person
+label: 'Nyilvános leírás'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+  required_summary: false
+field_type: text_with_summary

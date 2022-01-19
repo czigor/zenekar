@@ -1,0 +1,19 @@
+uuid: 6d843f6a-d621-4b90-8343-d85c4f8e0e24
+langcode: hu
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_occupation
+    - node.type.person
+id: node.person.field_occupation
+field_name: field_occupation
+entity_type: node
+bundle: person
+label: Foglalkozás
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

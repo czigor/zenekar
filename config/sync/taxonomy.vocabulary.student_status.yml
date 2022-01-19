@@ -1,0 +1,8 @@
+uuid: d5647f1b-61e7-44f6-b531-c64f7ebc0fad
+langcode: hu
+status: true
+dependencies: {  }
+name: 'Tanuló státusz'
+vid: student_status
+description: ''
+weight: 0

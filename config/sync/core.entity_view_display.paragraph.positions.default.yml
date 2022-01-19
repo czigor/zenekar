@@ -1,0 +1,34 @@
+uuid: f6c40676-2656-4802-8d2c-c104924bc132
+langcode: hu
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.positions.field_position
+    - field.field.paragraph.positions.field_position_dates
+    - paragraphs.paragraphs_type.positions
+  module:
+    - datetime_range
+id: paragraph.positions.default
+targetEntityType: paragraph
+bundle: positions
+mode: default
+content:
+  field_position:
+    weight: 0
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_position_dates:
+    weight: 1
+    label: above
+    settings:
+      separator: '-'
+      format_type: medium
+      timezone_override: ''
+    third_party_settings: {  }
+    type: daterange_default
+    region: content
+hidden: {  }

@@ -1,0 +1,21 @@
+uuid: 186ca103-443a-4673-91d8-0bea1dc1b34b
+langcode: hu
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_position_dates
+    - paragraphs.paragraphs_type.positions
+  module:
+    - datetime_range
+id: paragraph.positions.field_position_dates
+field_name: field_position_dates
+entity_type: paragraph
+bundle: positions
+label: 'Tisztség dátumok'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: daterange

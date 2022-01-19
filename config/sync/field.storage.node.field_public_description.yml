@@ -1,0 +1,19 @@
+uuid: 06c9a48c-fdb4-4bb5-9649-189a53c60dea
+langcode: hu
+status: true
+dependencies:
+  module:
+    - node
+    - text
+id: node.field_public_description
+field_name: field_public_description
+entity_type: node
+type: text_with_summary
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

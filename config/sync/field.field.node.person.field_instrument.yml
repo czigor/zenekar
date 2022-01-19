@@ -1,0 +1,29 @@
+uuid: 7f35ba41-7107-4fa5-a5a8-7d29b4a80142
+langcode: hu
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_instrument
+    - node.type.person
+    - taxonomy.vocabulary.instrument
+id: node.person.field_instrument
+field_name: field_instrument
+entity_type: node
+bundle: person
+label: Hangszer
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      instrument: instrument
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,21 @@
+uuid: fc73c8a4-74a3-44e9-b896-7612f6463474
+langcode: hu
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_active_membership_dates
+    - node.type.person
+  module:
+    - datetime_range
+id: node.person.field_active_membership_dates
+field_name: field_active_membership_dates
+entity_type: node
+bundle: person
+label: 'Aktív tagság ideje'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: daterange

@@ -1,0 +1,23 @@
+uuid: ae23ed18-cc90-424a-95ed-557f71041c0f
+langcode: hu
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_remark
+    - node.type.person
+  module:
+    - text
+id: node.person.field_remark
+field_name: field_remark
+entity_type: node
+bundle: person
+label: Megjegyzés
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+  required_summary: false
+field_type: text_with_summary

@@ -1,0 +1,19 @@
+uuid: 9919a645-1fd8-4398-b59f-5658f26a87fe
+langcode: hu
+status: true
+dependencies:
+  module:
+    - address
+    - node
+id: node.field_place_of_birth
+field_name: field_place_of_birth
+entity_type: node
+type: address
+settings: {  }
+module: address
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

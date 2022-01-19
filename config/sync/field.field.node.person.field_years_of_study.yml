@@ -1,0 +1,21 @@
+uuid: d1c5c2e7-9518-4c2e-b18c-fcf226330314
+langcode: hu
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_years_of_study
+    - node.type.person
+  module:
+    - datetime_range
+id: node.person.field_years_of_study
+field_name: field_years_of_study
+entity_type: node
+bundle: person
+label: 'Tanulmányi évek'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: daterange

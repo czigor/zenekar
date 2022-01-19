@@ -1,0 +1,20 @@
+uuid: ff26c41e-5852-48be-9b4b-1920132a8da3
+langcode: hu
+status: true
+dependencies:
+  module:
+    - datetime_range
+    - node
+id: node.field_years_of_study
+field_name: field_years_of_study
+entity_type: node
+type: daterange
+settings:
+  datetime_type: date
+module: datetime_range
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

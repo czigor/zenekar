@@ -1,0 +1,31 @@
+uuid: 7142bba2-b63c-4ebf-b997-86c6f557859f
+langcode: hu
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_positions
+    - node.type.person
+    - paragraphs.paragraphs_type.positions
+  module:
+    - entity_reference_revisions
+id: node.person.field_positions
+field_name: field_positions
+entity_type: node
+bundle: person
+label: Tisztségek
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      positions: positions
+    target_bundles_drag_drop:
+      positions:
+        enabled: true
+        weight: 2
+field_type: entity_reference_revisions

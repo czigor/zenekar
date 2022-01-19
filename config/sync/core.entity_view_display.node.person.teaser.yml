@@ -1,0 +1,59 @@
+uuid: 12699d52-b836-4741-b56f-120f0cb087b5
+langcode: hu
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.person.field_active
+    - field.field.node.person.field_active_membership_dates
+    - field.field.node.person.field_address
+    - field.field.node.person.field_date_of_birth
+    - field.field.node.person.field_email
+    - field.field.node.person.field_email_list
+    - field.field.node.person.field_image
+    - field.field.node.person.field_instrument
+    - field.field.node.person.field_member
+    - field.field.node.person.field_neptun_code
+    - field.field.node.person.field_occupation
+    - field.field.node.person.field_phone
+    - field.field.node.person.field_place_of_birth
+    - field.field.node.person.field_positions
+    - field.field.node.person.field_public_description
+    - field.field.node.person.field_remark
+    - field.field.node.person.field_student_status
+    - field.field.node.person.field_studies
+    - field.field.node.person.field_years_of_study
+    - node.type.person
+  module:
+    - user
+id: node.person.teaser
+targetEntityType: node
+bundle: person
+mode: teaser
+content:
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  field_active: true
+  field_active_membership_dates: true
+  field_address: true
+  field_date_of_birth: true
+  field_email: true
+  field_email_list: true
+  field_image: true
+  field_instrument: true
+  field_member: true
+  field_neptun_code: true
+  field_occupation: true
+  field_phone: true
+  field_place_of_birth: true
+  field_positions: true
+  field_public_description: true
+  field_remark: true
+  field_student_status: true
+  field_studies: true
+  field_years_of_study: true
+  langcode: true

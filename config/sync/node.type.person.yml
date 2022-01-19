@@ -1,0 +1,17 @@
+uuid: f237c4d3-4069-4536-8223-e68f7663d999
+langcode: hu
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: Person
+type: person
+description: ''
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: false

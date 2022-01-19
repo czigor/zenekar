@@ -1,0 +1,19 @@
+uuid: 12e9f187-5e0f-47af-82c8-49507f0be7dc
+langcode: hu
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_neptun_code
+    - node.type.person
+id: node.person.field_neptun_code
+field_name: field_neptun_code
+entity_type: node
+bundle: person
+label: 'Neptun kód'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

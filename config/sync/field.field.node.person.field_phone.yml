@@ -1,0 +1,21 @@
+uuid: 91cd2599-27fa-4125-8f93-9c36598e12ee
+langcode: hu
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_phone
+    - node.type.person
+  module:
+    - telephone
+id: node.person.field_phone
+field_name: field_phone
+entity_type: node
+bundle: person
+label: Telefon
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: telephone

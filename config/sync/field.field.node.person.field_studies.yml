@@ -1,0 +1,19 @@
+uuid: d25d9c49-b59e-4de5-b8be-61bdd8723c8e
+langcode: hu
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_studies
+    - node.type.person
+id: node.person.field_studies
+field_name: field_studies
+entity_type: node
+bundle: person
+label: Tanulmányok
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

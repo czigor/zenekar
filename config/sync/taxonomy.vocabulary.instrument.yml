@@ -1,0 +1,8 @@
+uuid: 4d9902d5-5013-4bda-b202-a0accf8ee1be
+langcode: hu
+status: true
+dependencies: {  }
+name: Hangszer
+vid: instrument
+description: ''
+weight: 0

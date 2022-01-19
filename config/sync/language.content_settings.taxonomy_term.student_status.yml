@@ -1,0 +1,16 @@
+uuid: 35e315fe-9b87-4c68-b88f-8995a95d82b7
+langcode: hu
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.student_status
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+id: taxonomy_term.student_status
+target_entity_type_id: taxonomy_term
+target_bundle: student_status
+default_langcode: site_default
+language_alterable: true
