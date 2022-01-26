@@ -1,0 +1,79 @@
+uuid: 775b9ffe-590b-42ec-8abb-144df883aea1
+langcode: hu
+status: true
+dependencies:
+  config:
+    - field.field.node.concert.body
+    - field.field.node.concert.field_location
+    - field.field.node.concert.field_media
+    - field.field.node.concert.field_orchestra_type
+    - field.field.node.concert.field_programme
+    - field.field.node.concert.field_time
+    - node.type.concert
+  module:
+    - datetime
+    - entity_reference_revisions
+    - text
+    - user
+id: node.concert.default
+targetEntityType: node
+bundle: concert
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_location:
+    weight: 103
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_media:
+    type: entity_reference_entity_view
+    weight: 106
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    region: content
+  field_orchestra_type:
+    weight: 104
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_programme:
+    type: entity_reference_revisions_entity_view
+    weight: 105
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+  field_time:
+    weight: 102
+    label: above
+    settings:
+      format_type: medium
+      timezone_override: ''
+    third_party_settings: {  }
+    type: datetime_default
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  langcode: true

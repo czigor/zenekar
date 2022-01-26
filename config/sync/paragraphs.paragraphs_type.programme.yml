@@ -1,0 +1,10 @@
+uuid: f2b253ff-cc04-49cd-a8b4-b36f891dd55c
+langcode: hu
+status: true
+dependencies: {  }
+id: programme
+label: Műsor
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

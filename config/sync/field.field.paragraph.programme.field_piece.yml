@@ -1,0 +1,29 @@
+uuid: 94f4b704-77ed-4ebc-9be6-7bd23b669737
+langcode: hu
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_piece
+    - node.type.piece
+    - paragraphs.paragraphs_type.programme
+id: paragraph.programme.field_piece
+field_name: field_piece
+entity_type: paragraph
+bundle: programme
+label: Darab
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      piece: piece
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

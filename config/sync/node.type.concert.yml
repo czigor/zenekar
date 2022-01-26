@@ -1,4 +1,4 @@
-uuid: f237c4d3-4069-4536-8223-e68f7663d999
+uuid: 6df4b6b4-fea8-4c6e-90bc-b0a8691a064d
 langcode: hu
 status: true
 dependencies:
@@ -8,10 +8,10 @@ third_party_settings:
   menu_ui:
     available_menus: {  }
     parent: ''
-name: Személy
-type: person
+name: Koncert
+type: concert
 description: ''
 help: ''
-new_revision: true
+new_revision: false
 preview_mode: 1
 display_submitted: false

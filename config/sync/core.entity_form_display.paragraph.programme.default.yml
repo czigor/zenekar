@@ -1,0 +1,48 @@
+uuid: 3291f0e6-f8d9-48b6-b8c9-f90e1a914bc4
+langcode: hu
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.programme.field_hide_piece
+    - field.field.paragraph.programme.field_performers
+    - field.field.paragraph.programme.field_piece
+    - paragraphs.paragraphs_type.programme
+  module:
+    - paragraphs
+id: paragraph.programme.default
+targetEntityType: paragraph
+bundle: programme
+mode: default
+content:
+  field_hide_piece:
+    weight: 2
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
+  field_performers:
+    type: entity_reference_paragraphs
+    weight: 1
+    settings:
+      title: Bekezdés
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+    third_party_settings: {  }
+    region: content
+  field_piece:
+    weight: 0
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+hidden:
+  created: true
+  status: true

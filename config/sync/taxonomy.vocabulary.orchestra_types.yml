@@ -1,0 +1,8 @@
+uuid: b7524a89-363e-4e1a-911e-c2461b8e75f8
+langcode: hu
+status: true
+dependencies: {  }
+name: Zenekartípusok
+vid: orchestra_types
+description: ''
+weight: 0

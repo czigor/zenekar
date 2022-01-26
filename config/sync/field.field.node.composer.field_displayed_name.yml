@@ -1,0 +1,19 @@
+uuid: d8e44377-1dbf-4f1d-9e98-18f506c1d5c7
+langcode: hu
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_displayed_name
+    - node.type.composer
+id: node.composer.field_displayed_name
+field_name: field_displayed_name
+entity_type: node
+bundle: composer
+label: 'Megjelenített név'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

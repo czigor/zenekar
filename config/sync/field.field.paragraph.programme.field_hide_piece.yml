@@ -1,0 +1,23 @@
+uuid: 2fd7f047-3d1f-4a96-ba64-dd46841fc1a6
+langcode: hu
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_hide_piece
+    - paragraphs.paragraphs_type.programme
+id: paragraph.programme.field_hide_piece
+field_name: field_hide_piece
+entity_type: paragraph
+bundle: programme
+label: Elrejt
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

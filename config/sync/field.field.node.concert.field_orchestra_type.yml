@@ -1,0 +1,21 @@
+uuid: 0c039de6-ee09-4f82-b8a1-23b1b09402a6
+langcode: hu
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_orchestra_type
+    - node.type.concert
+id: node.concert.field_orchestra_type
+field_name: field_orchestra_type
+entity_type: node
+bundle: concert
+label: Zenekartípus
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings: {  }
+field_type: entity_reference

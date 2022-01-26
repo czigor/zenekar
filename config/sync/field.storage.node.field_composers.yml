@@ -1,0 +1,19 @@
+uuid: e62de61b-0432-4cd8-87b8-74a16b441f3d
+langcode: hu
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_composers
+field_name: field_composers
+entity_type: node
+type: entity_reference
+settings:
+  target_type: node
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

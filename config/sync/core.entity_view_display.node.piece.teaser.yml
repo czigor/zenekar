@@ -1,0 +1,27 @@
+uuid: 5075fb25-7b53-4594-9eee-bec7f0c03848
+langcode: hu
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.piece.field_composers
+    - field.field.node.piece.field_displayed_name
+    - field.field.node.piece.field_piece_title
+    - node.type.piece
+  module:
+    - user
+id: node.piece.teaser
+targetEntityType: node
+bundle: piece
+mode: teaser
+content:
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  field_composers: true
+  field_displayed_name: true
+  field_piece_title: true
+  langcode: true

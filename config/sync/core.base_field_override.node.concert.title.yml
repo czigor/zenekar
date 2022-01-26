@@ -1,14 +1,14 @@
-uuid: cf56bbd8-7ef5-40f4-9ecf-af7585851864
-langcode: en
+uuid: 467574f3-a52f-451e-8e06-0b1c162ce200
+langcode: hu
 status: true
 dependencies:
   config:
-    - node.type.composer
-id: node.composer.title
+    - node.type.concert
+id: node.concert.title
 field_name: title
 entity_type: node
-bundle: composer
-label: 'ABC sorrendhez használt név'
+bundle: concert
+label: Cím
 description: ''
 required: true
 translatable: true

@@ -1,0 +1,29 @@
+uuid: 47f416be-455d-4b33-9322-7b1e27a942af
+langcode: hu
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_person
+    - node.type.person
+    - paragraphs.paragraphs_type.performer
+id: paragraph.performer.field_person
+field_name: field_person
+entity_type: paragraph
+bundle: performer
+label: Személy
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      person: person
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

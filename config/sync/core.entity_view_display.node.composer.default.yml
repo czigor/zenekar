@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.composer.field_comma_separator
+    - field.field.node.composer.field_displayed_name
     - field.field.node.composer.field_family_name
     - field.field.node.composer.field_given_name
     - node.type.composer
@@ -14,16 +15,8 @@ targetEntityType: node
 bundle: composer
 mode: default
 content:
-  field_family_name:
+  field_displayed_name:
     weight: 1
-    label: hidden
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    type: string
-    region: content
-  field_given_name:
-    weight: 2
     label: hidden
     settings:
       link_to_entity: false
@@ -37,4 +30,6 @@ content:
     third_party_settings: {  }
 hidden:
   field_comma_separator: true
+  field_family_name: true
+  field_given_name: true
   langcode: true

@@ -1,0 +1,10 @@
+uuid: 756281b0-0324-454f-8727-94fc77593c5b
+langcode: hu
+status: true
+dependencies: {  }
+id: performer
+label: Előadó
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

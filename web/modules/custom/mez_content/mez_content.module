@@ -1,0 +1,36 @@
+<?php
+
+use Drupal\node\NodeInterface;
+
+/**
+ * Implements hook_node_presave().
+ */
+function mez_content_node_presave(NodeInterface $node) {
+  if ($node->bundle() === 'piece') {
+    $displayed_composers = '';
+    $alphabetic_composers = '';
+    foreach ($node->get('field_composers') as $composer) {
+      if ($displayed_composers) {
+        $displayed_composers .= ', ';
+        $alphabetic_composers .= ', ';
+      }
+      $alphabetic_composers .= $composer->entity->label();
+      $displayed_composers .= $composer->entity->get('field_displayed_name')->value;
+    }
+    $node->setTitle($alphabetic_composers . ': ' . $node->get('field_piece_title')->value);
+    $node->set('field_displayed_name', $displayed_composers . ': ' . $node->get('field_piece_title')->value);
+  }
+  if ($node->bundle() === 'composer') {
+    $title = $node->get('field_family_name')->value;
+    if ($node->get('field_comma_separator')->value === 1) {
+      $title .= ', ';
+      $node->set('field_displayed_name', $node->get('field_given_name')->value . ' ' . $node->get('field_family_name')->value);
+    }
+    else {
+      $title .= ' ';
+      $node->set('field_displayed_name', $node->get('field_family_name')->value . ' ' . $node->get('field_given_name')->value);
+    }
+    $title .= $node->get('field_given_name')->value;
+    $node->setTitle($title);
+  }
+}

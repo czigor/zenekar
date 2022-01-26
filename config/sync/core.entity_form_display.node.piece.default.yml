@@ -1,18 +1,17 @@
-uuid: 6500f87b-005e-4dd6-92c5-5a9480d7994d
-langcode: en
+uuid: 14f3a173-d19a-4fb1-9f32-d211034fb0d0
+langcode: hu
 status: true
 dependencies:
   config:
-    - field.field.node.composer.field_comma_separator
-    - field.field.node.composer.field_displayed_name
-    - field.field.node.composer.field_family_name
-    - field.field.node.composer.field_given_name
-    - node.type.composer
+    - field.field.node.piece.field_composers
+    - field.field.node.piece.field_displayed_name
+    - field.field.node.piece.field_piece_title
+    - node.type.piece
   module:
     - path
-id: node.composer.default
+id: node.piece.default
 targetEntityType: node
-bundle: composer
+bundle: piece
 mode: default
 content:
   created:
@@ -21,23 +20,18 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-  field_comma_separator:
-    weight: 9
+  field_composers:
+    weight: 8
     settings:
-      display_label: true
-    third_party_settings: {  }
-    type: boolean_checkbox
-    region: content
-  field_family_name:
-    weight: 7
-    settings:
+      match_operator: CONTAINS
+      match_limit: 10
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: string_textfield
+    type: entity_reference_autocomplete
     region: content
-  field_given_name:
-    weight: 8
+  field_piece_title:
+    weight: 9
     settings:
       size: 60
       placeholder: ''
@@ -53,7 +47,7 @@ content:
     third_party_settings: {  }
   path:
     type: path
-    weight: 5
+    weight: 6
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -61,22 +55,27 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 3
+    weight: 4
     region: content
     third_party_settings: {  }
   status:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 6
+    weight: 7
     region: content
     third_party_settings: {  }
   sticky:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 4
+    weight: 5
     region: content
+    third_party_settings: {  }
+  translation:
+    weight: 3
+    region: content
+    settings: {  }
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete

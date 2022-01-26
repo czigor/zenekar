@@ -1,4 +1,4 @@
-uuid: f237c4d3-4069-4536-8223-e68f7663d999
+uuid: 90439c7c-07a5-40e5-8a6e-5cf5bcdb99a6
 langcode: hu
 status: true
 dependencies:
@@ -8,8 +8,8 @@ third_party_settings:
   menu_ui:
     available_menus: {  }
     parent: ''
-name: Személy
-type: person
+name: Darab
+type: piece
 description: ''
 help: ''
 new_revision: true

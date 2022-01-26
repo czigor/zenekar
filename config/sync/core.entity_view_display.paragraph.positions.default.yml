@@ -15,19 +15,19 @@ mode: default
 content:
   field_position:
     weight: 0
-    label: above
+    label: hidden
     settings:
-      link: true
+      link: false
     third_party_settings: {  }
     type: entity_reference_label
     region: content
   field_position_dates:
     weight: 1
-    label: above
+    label: hidden
     settings:
-      separator: '-'
-      format_type: medium
       timezone_override: ''
+      format_type: html_date
+      separator: '-'
     third_party_settings: {  }
     type: daterange_default
     region: content

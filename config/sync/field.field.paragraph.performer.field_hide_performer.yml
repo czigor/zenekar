@@ -1,0 +1,23 @@
+uuid: 9d06ceeb-4ec6-41eb-81f4-ce7403b4a6c5
+langcode: hu
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_hide_performer
+    - paragraphs.paragraphs_type.performer
+id: paragraph.performer.field_hide_performer
+field_name: field_hide_performer
+entity_type: paragraph
+bundle: performer
+label: Elrejt
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

@@ -1,0 +1,36 @@
+uuid: 81dfa84b-f7ed-4835-b135-78408ec1c840
+langcode: hu
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.performer.field_auxiliary
+    - field.field.paragraph.performer.field_hide_performer
+    - field.field.paragraph.performer.field_instrument
+    - field.field.paragraph.performer.field_part_leader
+    - field.field.paragraph.performer.field_person
+    - paragraphs.paragraphs_type.performer
+id: paragraph.performer.default
+targetEntityType: paragraph
+bundle: performer
+mode: default
+content:
+  field_instrument:
+    weight: 1
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_person:
+    weight: 0
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+hidden:
+  field_auxiliary: true
+  field_hide_performer: true
+  field_part_leader: true

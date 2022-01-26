@@ -1,0 +1,23 @@
+uuid: 650d6f84-b71f-48b3-9f1d-c0a4ae9cf03e
+langcode: hu
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.concert
+  module:
+    - text
+id: node.concert.body
+field_name: body
+entity_type: node
+bundle: concert
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+  required_summary: false
+field_type: text_with_summary

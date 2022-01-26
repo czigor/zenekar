@@ -1,0 +1,37 @@
+uuid: 32525a6c-02b6-4037-b838-800591c81c23
+langcode: hu
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_programme
+    - node.type.concert
+    - paragraphs.paragraphs_type.programme
+  module:
+    - entity_reference_revisions
+id: node.concert.field_programme
+field_name: field_programme
+entity_type: node
+bundle: concert
+label: Műsor
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      programme: programme
+    target_bundles_drag_drop:
+      performer:
+        weight: 4
+        enabled: false
+      positions:
+        weight: 5
+        enabled: false
+      programme:
+        enabled: true
+        weight: 6
+field_type: entity_reference_revisions

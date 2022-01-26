@@ -1,0 +1,37 @@
+uuid: 77aa1465-3339-4241-b5e1-e6ca0effa51e
+langcode: hu
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_performers
+    - paragraphs.paragraphs_type.performer
+    - paragraphs.paragraphs_type.programme
+  module:
+    - entity_reference_revisions
+id: paragraph.programme.field_performers
+field_name: field_performers
+entity_type: paragraph
+bundle: programme
+label: Előadók
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      performer: performer
+    target_bundles_drag_drop:
+      performer:
+        enabled: true
+        weight: 4
+      positions:
+        weight: 5
+        enabled: false
+      programme:
+        weight: 6
+        enabled: false
+field_type: entity_reference_revisions

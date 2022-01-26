@@ -1,0 +1,5 @@
+name: MEZ Content
+type: module
+description: 'Content related customizations for zenekar.bme.hu.'
+package: MEZ
+core_version_requirement: ^9

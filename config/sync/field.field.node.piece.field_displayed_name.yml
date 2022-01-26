@@ -1,0 +1,19 @@
+uuid: 2ef5e81e-0440-4f34-bc89-abb924441865
+langcode: hu
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_displayed_name
+    - node.type.piece
+id: node.piece.field_displayed_name
+field_name: field_displayed_name
+entity_type: node
+bundle: piece
+label: 'Megjelenített cím'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

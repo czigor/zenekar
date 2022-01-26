@@ -1,14 +1,14 @@
-uuid: cf56bbd8-7ef5-40f4-9ecf-af7585851864
-langcode: en
+uuid: cf9c46cb-3733-4046-b936-d59be8b176a4
+langcode: hu
 status: true
 dependencies:
   config:
-    - node.type.composer
-id: node.composer.title
+    - node.type.piece
+id: node.piece.title
 field_name: title
 entity_type: node
-bundle: composer
-label: 'ABC sorrendhez használt név'
+bundle: piece
+label: 'Szerző + cím (ABC rendezéshez)'
 description: ''
 required: true
 translatable: true

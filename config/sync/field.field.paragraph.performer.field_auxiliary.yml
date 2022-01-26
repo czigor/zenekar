@@ -1,0 +1,23 @@
+uuid: 5b5b280c-3ea3-497a-b773-fe55e9eb4123
+langcode: hu
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_auxiliary
+    - paragraphs.paragraphs_type.performer
+id: paragraph.performer.field_auxiliary
+field_name: field_auxiliary
+entity_type: paragraph
+bundle: performer
+label: Kisegítő
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

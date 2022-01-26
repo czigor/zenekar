@@ -1,0 +1,16 @@
+uuid: 2b358e21-e875-413f-89c3-aa5f1d2462f2
+langcode: hu
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.orchestra_types
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+id: taxonomy_term.orchestra_types
+target_entity_type_id: taxonomy_term
+target_bundle: orchestra_types
+default_langcode: site_default
+language_alterable: true

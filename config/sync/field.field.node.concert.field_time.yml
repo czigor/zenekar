@@ -1,0 +1,21 @@
+uuid: 9ba9d51a-ccd4-48ed-ac51-03ca72903b7a
+langcode: hu
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_time
+    - node.type.concert
+  module:
+    - datetime
+id: node.concert.field_time
+field_name: field_time
+entity_type: node
+bundle: concert
+label: Idő
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

@@ -1,0 +1,56 @@
+uuid: e50dce2a-a9c2-44b1-b22a-625bc7fc9bc6
+langcode: hu
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.performer.field_auxiliary
+    - field.field.paragraph.performer.field_hide_performer
+    - field.field.paragraph.performer.field_instrument
+    - field.field.paragraph.performer.field_part_leader
+    - field.field.paragraph.performer.field_person
+    - paragraphs.paragraphs_type.performer
+id: paragraph.performer.default
+targetEntityType: paragraph
+bundle: performer
+mode: default
+content:
+  field_auxiliary:
+    weight: 2
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
+  field_hide_performer:
+    weight: 4
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
+  field_instrument:
+    weight: 1
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_part_leader:
+    weight: 3
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
+  field_person:
+    weight: 0
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+hidden:
+  created: true
+  status: true

@@ -1,0 +1,23 @@
+uuid: 5dfdade0-e0e2-4886-8db5-5a2477e961a2
+langcode: hu
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_part_leader
+    - paragraphs.paragraphs_type.performer
+id: paragraph.performer.field_part_leader
+field_name: field_part_leader
+entity_type: paragraph
+bundle: performer
+label: Szólamvezető
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean
