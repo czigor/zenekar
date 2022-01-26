@@ -2,15 +2,20 @@ SUMMARY OF STATE OF CURRENT CORE PATCHES (to be updated manually)
 =================================================================
 * applied: htaccess-force-https-and-no-www.patch
 * applied: robots.txt-disallow-robots-from-hybridauth.patch
-
-* unsure, not applied: 1038652-no-comment-body-field-68-tests-and-fix-D7.patch
-* unsure, not applied: 1068266-107.patch
+* applied: 1038652-no-comment-body-field-68-tests-and-fix-D7.patch
 * unsure, not applied: locale_drupal_http_request-1814980-17.patch
 
 
 HISTORY
 =======
-#4 - 2021.09.12. - After updating to Drupal 7.82
+#6 - 2022.01.26. - After updating to Drupal 7.87
+------------------------------------------------
+* Removed 1068266-107.patch as the issue got fixed.
+* applied: robots.txt-disallow-robots-from-hybridauth.patch
+* applied: htaccess-force-https-and-no-www.patch
+* applied: 1038652-no-comment-body-field-68-tests-and-fix-D7.patch 
+
+#5 - 2021.09.12. - After updating to Drupal 7.82
 ------------------------------------------------
 * No patch applied.
 
