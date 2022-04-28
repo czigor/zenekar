@@ -1,0 +1,1657 @@
+concert hall;floor;side;row;number;x;y
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;A;1;177;205
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;A;2;191;205
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;A;3;205;205
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;A;4;219;205
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;A;5;233;205
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;A;6;247;205
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;A;7;261;205
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;A;8;275;205
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;A;9;289;205
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;A;10;303;205
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;A;11;317;205
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;A;12;331;205
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;A;13;345;205
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;A;14;359;205
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;A;15;373;205
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;A;16;387;205
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;A;15;401;205
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;A;14;415;205
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;A;13;429;205
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;A;12;443;205
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;A;11;457;205
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;A;10;471;205
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;A;9;485;205
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;A;8;499;205
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;A;7;513;205
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;A;6;527;205
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;A;5;541;205
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;A;4;555;205
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;A;3;569;205
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;A;2;583;205
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;A;1;597;205
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;B;1;177;217
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;B;2;191;217
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;B;3;205;217
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;B;4;219;217
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;B;5;233;217
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;B;6;247;217
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;B;7;261;217
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;B;8;275;217
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;B;9;289;217
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;B;10;303;217
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;B;11;317;217
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;B;12;331;217
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;B;13;345;217
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;B;14;359;217
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;B;15;373;217
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;B;16;387;217
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;B;15;401;217
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;B;14;415;217
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;B;13;429;217
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;B;12;443;217
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;B;11;457;217
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;B;10;471;217
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;B;9;485;217
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;B;8;499;217
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;B;7;513;217
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;B;6;527;217
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;B;5;541;217
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;B;4;555;217
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;B;3;569;217
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;B;2;583;217
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;B;1;597;217
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;C;1;177;229
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;C;2;191;229
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;C;3;205;229
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;C;4;219;229
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;C;5;233;229
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;C;6;247;229
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;C;7;261;229
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;C;8;275;229
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;C;9;289;229
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;C;10;303;229
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;C;11;317;229
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;C;12;331;229
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;C;13;345;229
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;C;14;359;229
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;C;15;373;229
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;C;16;387;229
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;C;15;401;229
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;C;14;415;229
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;C;13;429;229
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;C;12;443;229
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;C;11;457;229
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;C;10;471;229
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;C;9;485;229
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;C;8;499;229
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;C;7;513;229
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;C;6;527;229
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;C;5;541;229
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;C;4;555;229
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;C;3;569;229
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;C;2;583;229
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;C;1;597;229
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;1;1;170;241
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;1;2;184;241
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;1;3;198;241
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;1;4;212;241
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;1;5;226;241
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;1;6;240;241
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;1;7;254;241
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;1;8;268;241
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;1;9;282;241
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;1;10;296;241
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;1;11;310;241
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;1;12;324;241
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;1;13;338;241
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;1;14;352;241
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;1;15;366;241
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;1;16;380;241
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;1;16;394;241
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;1;15;408;241
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;1;14;422;241
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;1;13;436;241
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;1;12;450;241
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;1;11;464;241
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;1;10;478;241
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;1;9;492;241
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;1;8;506;241
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;1;7;520;241
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;1;6;534;241
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;1;5;548;241
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;1;4;562;241
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;1;3;576;241
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;1;2;590;241
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;1;1;604;241
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;2;1;170;253
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;2;2;184;253
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;2;3;198;253
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;2;4;212;253
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;2;5;226;253
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;2;6;240;253
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;2;7;254;253
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;2;8;268;253
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;2;9;282;253
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;2;10;296;253
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;2;11;310;253
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;2;12;324;253
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;2;13;338;253
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;2;14;352;253
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;2;15;366;253
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;2;16;380;253
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;2;16;394;253
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;2;15;408;253
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;2;14;422;253
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;2;13;436;253
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;2;12;450;253
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;2;11;464;253
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;2;10;478;253
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;2;9;492;253
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;2;8;506;253
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;2;7;520;253
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;2;6;534;253
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;2;5;548;253
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;2;4;562;253
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;2;3;576;253
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;2;2;590;253
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;2;1;604;253
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;3;1;170;265
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;3;2;184;265
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;3;3;198;265
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;3;4;212;265
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;3;5;226;265
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;3;6;240;265
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;3;7;254;265
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;3;8;268;265
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;3;9;282;265
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;3;10;296;265
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;3;11;310;265
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;3;12;324;265
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;3;13;338;265
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;3;14;352;265
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;3;14;422;265
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;3;13;436;265
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;3;12;450;265
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;3;11;464;265
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;3;10;478;265
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;3;9;492;265
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;3;8;506;265
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;3;7;520;265
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;3;6;534;265
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;3;5;548;265
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;3;4;562;265
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;3;3;576;265
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;3;2;590;265
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;3;1;604;265
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;4;1;170;277
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;4;2;184;277
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;4;3;198;277
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;4;4;212;277
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;4;5;226;277
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;4;6;240;277
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;4;7;254;277
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;4;8;268;277
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;4;9;282;277
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;4;10;296;277
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;4;11;310;277
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;4;12;324;277
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;4;13;338;277
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;4;14;352;277
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;4;15;366;277
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;4;16;380;277
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;4;16;394;277
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;4;15;408;277
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;4;14;422;277
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;4;13;436;277
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;4;12;450;277
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;4;11;464;277
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;4;10;478;277
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;4;9;492;277
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;4;8;506;277
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;4;7;520;277
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;4;6;534;277
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;4;5;548;277
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;4;4;562;277
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;4;3;576;277
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;4;2;590;277
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;4;1;604;277
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;5;1;170;289
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;5;2;184;289
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;5;3;198;289
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;5;4;212;289
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;5;5;226;289
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;5;6;240;289
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;5;7;254;289
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;5;8;268;289
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;5;9;282;289
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;5;10;296;289
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;5;11;310;289
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;5;12;324;289
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;5;13;338;289
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;5;14;352;289
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;5;15;366;289
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;5;16;380;289
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;5;16;394;289
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;5;15;408;289
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;5;14;422;289
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;5;13;436;289
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;5;12;450;289
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;5;11;464;289
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;5;10;478;289
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;5;9;492;289
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;5;8;506;289
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;5;7;520;289
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;5;6;534;289
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;5;5;548;289
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;5;4;562;289
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;5;3;576;289
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;5;2;590;289
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;5;1;604;289
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;6;5;240;301
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;6;6;254;301
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;6;7;268;301
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;6;8;282;301
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;6;9;296;301
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;6;10;310;301
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;6;11;324;301
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;6;12;338;301
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;6;13;352;301
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;6;14;366;301
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;6;15;380;301
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;6;15;394;301
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;6;14;408;301
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;6;13;422;301
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;6;12;436;301
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;6;11;450;301
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;6;10;464;301
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;6;9;478;301
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;6;8;492;301
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;6;7;506;301
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;6;6;520;301
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;6;5;534;301
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;7;1;184;313
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;7;2;198;313
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;7;3;212;313
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;7;4;226;313
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;7;5;240;313
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;7;6;254;313
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;7;7;268;313
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;7;8;282;313
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;7;9;296;313
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;7;10;310;313
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;7;11;324;313
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;7;12;338;313
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;7;13;352;313
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;7;14;366;313
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;7;15;380;313
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;7;15;394;313
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;7;14;408;313
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;7;13;422;313
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;7;12;436;313
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;7;11;450;313
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;7;10;464;313
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;7;9;478;313
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;7;8;492;313
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;7;7;506;313
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;7;6;520;313
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;7;5;534;313
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;7;4;548;313
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;7;3;562;313
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;7;2;576;313
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;7;1;590;313
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;8;1;198;325
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;8;2;212;325
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;8;3;226;325
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;8;4;240;325
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;8;5;254;325
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;8;6;268;325
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;8;7;282;325
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;8;8;296;325
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;8;9;310;325
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;8;10;324;325
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;8;11;338;325
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;8;12;352;325
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;8;13;366;325
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;8;14;380;325
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;8;14;394;325
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;8;13;408;325
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;8;12;422;325
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;8;11;436;325
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;8;10;450;325
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;8;9;464;325
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;8;8;478;325
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;8;7;492;325
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;8;6;506;325
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;8;5;520;325
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;8;4;534;325
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;8;3;548;325
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;8;2;562;325
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;8;1;576;325
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;9;1;198;337
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;9;2;212;337
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;9;3;226;337
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;9;4;240;337
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;9;5;254;337
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;9;6;268;337
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;9;7;282;337
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;9;8;296;337
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;9;9;310;337
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;9;10;324;337
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;9;11;338;337
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;9;12;352;337
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;9;13;366;337
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;9;14;380;337
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;9;14;394;337
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;9;13;408;337
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;9;12;422;337
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;9;11;436;337
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;9;10;450;337
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;9;9;464;337
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;9;8;478;337
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;9;7;492;337
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;9;6;506;337
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;9;5;520;337
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;9;4;534;337
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;9;3;548;337
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;9;2;562;337
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;9;1;576;337
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;10;1;212;349
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;10;2;226;349
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;10;3;240;349
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;10;4;254;349
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;10;5;268;349
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;10;6;282;349
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;10;7;296;349
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;10;8;310;349
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;10;9;324;349
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;10;10;338;349
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;10;11;352;349
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;10;12;366;349
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;10;13;380;349
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;10;13;394;349
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;10;12;408;349
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;10;11;422;349
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;10;10;436;349
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;10;9;450;349
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;10;8;464;349
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;10;7;478;349
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;10;6;492;349
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;10;5;506;349
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;10;4;520;349
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;10;3;534;349
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;10;2;548;349
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;10;1;562;349
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;11;1;212;361
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;11;2;226;361
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;11;3;240;361
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;11;4;254;361
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;11;5;268;361
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;11;6;282;361
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;11;7;296;361
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;11;8;310;361
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;11;9;324;361
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;11;10;338;361
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;11;11;352;361
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;11;12;366;361
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;11;13;380;361
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;11;13;394;361
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;11;12;408;361
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;11;11;422;361
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;11;10;436;361
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;11;9;450;361
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;11;8;464;361
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;11;7;478;361
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;11;6;492;361
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;11;5;506;361
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;11;4;520;361
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;11;3;534;361
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;11;2;548;361
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;11;1;562;361
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;12;1;212;373
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;12;2;226;373
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;12;3;240;373
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;12;4;254;373
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;12;5;268;373
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;12;6;282;373
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;12;7;296;373
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;12;8;310;373
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;12;9;324;373
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;12;10;338;373
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;12;11;352;373
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;12;12;366;373
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;12;13;380;373
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;12;13;394;373
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;12;12;408;373
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;12;11;422;373
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;12;10;436;373
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;12;9;450;373
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;12;8;464;373
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;12;7;478;373
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;12;6;492;373
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;12;5;506;373
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;12;4;520;373
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;12;3;534;373
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;12;2;548;373
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;12;1;562;373
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;13;1;226;385
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;13;2;240;385
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;13;3;254;385
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;13;4;268;385
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;13;5;282;385
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;13;6;296;385
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;13;7;310;385
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;13;8;324;385
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;13;9;338;385
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;13;10;352;385
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;13;11;366;385
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;13;12;380;385
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;13;12;394;385
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;13;11;408;385
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;13;10;422;385
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;13;9;436;385
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;13;8;450;385
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;13;7;464;385
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;13;6;478;385
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;13;5;492;385
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;13;4;506;385
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;13;3;520;385
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;13;2;534;385
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;13;1;548;385
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;14;1;226;397
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;14;2;240;397
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;14;3;254;397
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;14;4;268;397
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;14;5;282;397
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;14;6;296;397
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;14;7;310;397
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;14;8;324;397
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;14;9;338;397
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;14;10;352;397
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;14;11;366;397
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;14;12;380;397
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;14;12;394;397
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;14;11;408;397
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;14;10;422;397
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;14;9;436;397
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;14;8;450;397
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;14;7;464;397
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;14;6;478;397
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;14;5;492;397
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;14;4;506;397
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;14;3;520;397
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;14;2;534;397
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;14;1;548;397
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;15;1;226;409
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;15;2;240;409
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;15;3;254;409
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;15;4;268;409
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;15;5;282;409
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;15;6;296;409
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;15;7;310;409
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;15;8;324;409
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;15;9;338;409
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;15;10;352;409
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;15;11;366;409
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;15;12;380;409
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;15;12;394;409
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;15;11;408;409
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;15;10;422;409
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;15;9;436;409
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;15;8;450;409
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;15;7;464;409
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;15;6;478;409
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;15;5;492;409
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;15;4;506;409
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;15;3;520;409
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;15;2;534;409
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;15;1;548;409
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;16;1;233;421
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;16;2;247;421
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;16;3;261;421
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;16;4;275;421
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;16;5;289;421
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;16;6;303;421
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;16;7;317;421
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;16;8;331;421
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;16;9;345;421
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;16;10;359;421
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;16;11;371;421
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;16;12;387;421
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;16;11;401;421
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;16;10;415;421
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;16;9;429;421
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;16;8;443;421
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;16;7;457;421
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;16;6;471;421
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;16;5;485;421
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;16;4;499;421
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;16;3;513;421
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;16;2;527;421
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;16;1;541;421
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;17;1;240;433
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;17;2;254;433
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;17;3;268;433
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;17;4;282;433
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;17;5;296;433
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;17;6;310;433
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;17;7;324;433
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;17;8;338;433
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;17;9;352;433
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;17;10;366;433
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;17;11;380;433
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;17;11;394;433
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;17;10;408;433
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;17;9;422;433
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;17;8;436;433
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;17;7;450;433
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;17;6;464;433
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;17;5;478;433
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;17;4;492;433
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;17;3;506;433
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;17;2;520;433
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;17;1;534;433
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;18;1;240;445
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;18;2;254;445
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;18;3;268;445
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;18;4;282;445
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;18;5;296;445
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;18;6;310;445
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;18;7;324;445
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;18;8;338;445
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;18;9;352;445
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;18;10;366;445
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;18;11;380;445
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;18;11;394;445
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;18;10;408;445
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;18;9;422;445
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;18;8;436;445
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;18;7;450;445
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;18;6;464;445
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;18;5;478;445
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;18;4;492;445
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;18;3;506;445
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;18;2;520;445
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;18;1;534;445
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;19;1;254;457
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;19;2;268;457
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;19;3;282;457
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;19;4;296;457
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;19;5;310;457
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;19;6;324;457
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;19;7;338;457
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;19;8;352;457
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;19;9;366;457
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;19;10;380;457
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;19;10;394;457
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;19;9;408;457
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;19;8;422;457
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;19;7;436;457
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;19;6;450;457
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;19;5;464;457
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;19;4;478;457
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;19;3;492;457
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;19;2;506;457
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;19;1;520;457
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;20;1;254;469
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;20;2;268;469
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;20;3;282;469
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;20;4;296;469
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;20;5;310;469
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;20;6;324;469
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;20;7;338;469
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;20;8;352;469
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;20;9;366;469
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;20;10;380;469
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;20;10;394;469
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;20;9;408;469
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;20;8;422;469
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;20;7;436;469
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;20;6;450;469
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;20;5;464;469
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;20;4;478;469
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;20;3;492;469
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;20;2;506;469
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;20;1;520;469
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;21;3;212;500
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;21;4;226;500
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;21;5;240;500
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;21;6;254;500
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;21;7;268;500
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;21;8;282;500
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;21;9;296;500
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;21;10;310;500
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;21;11;324;500
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;21;12;338;500
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;21;13;352;500
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;21;14;366;500
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;21;15;380;500
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;21;15;394;500
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;21;14;408;500
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;21;13;422;500
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;21;12;436;500
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;21;11;450;500
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;21;10;464;500
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;21;9;478;500
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;21;8;492;500
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;21;7;506;500
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;21;6;520;500
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;21;5;534;500
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;21;4;548;500
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;21;3;562;500
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;22;1;198;512
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;22;2;212;512
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;22;3;226;512
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;22;4;240;512
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;22;5;254;512
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;22;6;268;512
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;22;7;282;512
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;22;8;296;512
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;22;9;310;512
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;22;10;324;512
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;22;11;338;512
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;22;12;352;512
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;22;13;366;512
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;22;14;380;512
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;22;14;394;512
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;22;13;408;512
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;22;12;422;512
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;22;11;436;512
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;22;10;450;512
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;22;9;464;512
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;22;8;478;512
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;22;7;492;512
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;22;6;506;512
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;22;5;520;512
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;22;4;534;512
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;22;3;548;512
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;22;2;562;512
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;22;1;576;512
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;23;1;198;524
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;23;2;212;524
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;23;3;226;524
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;23;4;240;524
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;23;5;254;524
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;23;6;268;524
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;23;7;282;524
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;23;8;296;524
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;23;9;310;524
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;23;10;324;524
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;23;11;338;524
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;23;12;352;524
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;23;13;366;524
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;23;14;380;524
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;23;14;394;524
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;23;13;408;524
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;23;12;422;524
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;23;11;436;524
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;23;10;450;524
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;23;9;464;524
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;23;8;478;524
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;23;7;492;524
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;23;6;506;524
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;23;5;520;524
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;23;4;534;524
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;23;3;548;524
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;23;2;562;524
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;23;1;576;524
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;24;1;212;536
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;24;2;226;536
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;24;3;240;536
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;24;4;254;536
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;24;5;268;536
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;24;6;282;536
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;24;7;296;536
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;24;8;310;536
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;24;9;324;536
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;24;10;338;536
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;24;11;352;536
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;24;12;366;536
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;24;13;380;536
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;24;13;394;536
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;24;12;408;536
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;24;11;422;536
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;24;10;436;536
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;24;9;450;536
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;24;8;464;536
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;24;7;478;536
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;24;6;492;536
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;24;5;506;536
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;24;4;520;536
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;24;3;534;536
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;24;2;548;536
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;24;1;562;536
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;25;1;212;548
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;25;2;226;548
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;25;3;240;548
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;25;4;254;548
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;25;5;268;548
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;25;6;282;548
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;25;7;296;548
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;25;8;310;548
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;25;9;324;548
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;25;10;338;548
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;25;11;352;548
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;25;12;366;548
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;left;25;13;380;548
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;25;13;394;548
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;25;12;408;548
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;25;11;422;548
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;25;10;436;548
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;25;9;450;548
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;25;8;464;548
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;25;7;478;548
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;25;6;492;548
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;25;5;506;548
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;25;4;520;548
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;25;3;534;548
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;25;2;548;548
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra;right;25;1;562;548
+
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre left;1;1;198;580
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre left;1;2;212;580
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre left;1;3;226;580
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre left;1;4;240;580
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre left;1;5;254;580
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre left;1;6;268;580
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre left;1;7;282;580
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre left;1;8;296;580
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre left;1;9;310;580
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre left;1;10;324;580
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre left;1;11;338;580
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre left;1;12;352;580
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre left;1;13;366;580
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre left;1;14;380;580
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre right;1;14;394;580
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre right;1;13;408;580
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre right;1;12;422;580
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre right;1;11;436;580
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre right;1;10;450;580
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre right;1;9;464;580
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre right;1;8;478;580
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre right;1;7;492;580
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre right;1;6;506;580
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre right;1;5;520;580
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre right;1;4;534;580
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre right;1;3;548;580
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre right;1;2;562;580
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre right;1;1;576;580
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre left;2;1;205;592
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre left;2;2;219;592
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre left;2;3;231;592
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre left;2;4;247;592
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre left;2;5;261;592
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre left;2;6;275;592
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre left;2;7;289;592
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre left;2;8;303;592
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre left;2;9;317;592
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre left;2;10;331;592
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre left;2;11;345;592
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre left;2;12;359;592
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre left;2;13;373;592
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre left;2;14;387;592
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre right;2;13;401;592
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre right;2;12;415;592
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre right;2;11;429;592
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre right;2;10;443;592
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre right;2;9;457;592
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre right;2;8;471;592
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre right;2;7;485;592
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre right;2;6;499;592
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre right;2;5;513;592
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre right;2;4;527;592
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre right;2;3;541;592
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre right;2;2;555;592
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre right;2;1;569;592
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre left;3;1;212;604
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre left;3;2;226;604
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre left;3;3;240;604
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre left;3;4;254;604
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre left;3;5;268;604
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre left;3;6;282;604
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre left;3;7;296;604
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre left;3;8;310;604
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre left;3;9;324;604
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre left;3;10;338;604
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre left;3;11;352;604
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre left;3;12;366;604
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre left;3;13;380;604
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre right;3;13;394;604
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre right;3;12;408;604
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre right;3;11;422;604
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre right;3;10;436;604
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre right;3;9;450;604
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre right;3;8;464;604
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre right;3;7;478;604
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre right;3;6;492;604
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre right;3;5;506;604
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre right;3;4;520;604
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre right;3;3;534;604
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre right;3;2;548;604
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre right;3;1;562;604
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre left;4;1;212;616
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre left;4;2;226;616
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre left;4;3;240;616
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre left;4;4;254;616
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre left;4;5;268;616
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre left;4;6;282;616
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre left;4;7;296;616
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre left;4;8;310;616
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre left;4;9;324;616
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre left;4;10;338;616
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre left;4;11;352;616
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre left;4;12;366;616
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre left;4;13;380;616
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre right;4;13;394;616
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre right;4;12;408;616
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre right;4;11;422;616
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre right;4;10;436;616
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre right;4;9;450;616
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre right;4;8;464;616
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre right;4;7;478;616
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre right;4;6;492;616
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre right;4;5;506;616
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre right;4;4;520;616
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre right;4;3;534;616
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre right;4;2;548;616
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre right;4;1;562;616
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre left;5;1;219;628
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre left;5;2;231;628
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre left;5;3;247;628
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre left;5;4;261;628
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre left;5;5;275;628
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre left;5;6;289;628
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre left;5;7;303;628
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre left;5;8;317;628
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre left;5;9;331;628
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre left;5;10;345;628
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre left;5;11;359;628
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre left;5;12;373;628
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre left;5;13;387;628
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre right;5;12;401;628
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre right;5;11;415;628
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre right;5;10;429;628
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre right;5;9;443;628
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre right;5;8;457;628
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre right;5;7;471;628
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre right;5;6;485;628
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre right;5;5;499;628
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre right;5;4;513;628
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre right;5;3;527;628
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre right;5;2;541;628
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;centre right;5;1;555;628
+
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre left;1;1;198;650
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre left;1;2;212;650
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre left;1;3;226;650
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre left;1;4;240;650
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre left;1;5;254;650
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre left;1;6;268;650
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre left;1;7;282;650
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre left;1;8;296;650
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre left;1;9;310;650
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre left;1;10;324;650
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre left;1;11;338;650
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre left;1;12;352;650
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre left;1;13;366;650
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre left;1;14;380;650
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre right;1;14;394;650
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre right;1;13;408;650
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre right;1;12;422;650
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre right;1;11;436;650
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre right;1;10;450;650
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre right;1;9;464;650
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre right;1;8;478;650
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre right;1;7;492;650
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre right;1;6;506;650
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre right;1;5;520;650
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre right;1;4;534;650
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre right;1;3;548;650
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre right;1;2;562;650
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre right;1;1;576;650
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre left;2;1;205;662
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre left;2;2;219;662
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre left;2;3;231;662
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre left;2;4;247;662
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre left;2;5;261;662
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre left;2;6;275;662
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre left;2;7;289;662
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre left;2;8;303;662
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre left;2;9;317;662
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre left;2;10;331;662
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre left;2;11;345;662
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre left;2;12;359;662
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre left;2;13;373;662
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre left;2;14;387;662
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre right;2;13;401;662
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre right;2;12;415;662
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre right;2;11;429;662
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre right;2;10;443;662
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre right;2;9;457;662
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre right;2;8;471;662
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre right;2;7;485;662
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre right;2;6;499;662
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre right;2;5;513;662
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre right;2;4;527;662
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre right;2;3;541;662
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre right;2;2;555;662
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre right;2;1;569;662
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre left;3;1;212;674
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre left;3;2;226;674
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre left;3;3;240;674
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre left;3;4;254;674
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre left;3;5;268;674
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre left;3;6;282;674
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre left;3;7;296;674
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre left;3;8;310;674
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre left;3;9;324;674
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre left;3;10;338;674
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre left;3;11;352;674
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre left;3;12;366;674
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre left;3;13;380;674
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre right;3;13;394;674
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre right;3;12;408;674
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre right;3;11;422;674
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre right;3;10;436;674
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre right;3;9;450;674
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre right;3;8;464;674
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre right;3;7;478;674
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre right;3;6;492;674
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre right;3;5;506;674
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre right;3;4;520;674
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre right;3;3;534;674
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre right;3;2;548;674
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre right;3;1;562;674
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre left;4;1;219;686
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre left;4;2;231;686
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre left;4;3;247;686
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre left;4;4;261;686
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre left;4;5;275;686
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre left;4;6;289;686
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre left;4;7;303;686
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre left;4;8;317;686
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre left;4;9;331;686
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre left;4;10;345;686
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre left;4;11;359;686
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre left;4;12;373;686
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre left;4;13;387;686
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre right;4;12;401;686
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre right;4;11;415;686
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre right;4;10;429;686
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre right;4;9;443;686
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre right;4;8;457;686
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre right;4;7;471;686
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre right;4;6;485;686
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre right;4;5;499;686
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre right;4;4;513;686
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre right;4;3;527;686
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre right;4;2;541;686
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre right;4;1;555;686
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre left;5;1;226;698
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre left;5;2;240;698
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre left;5;3;254;698
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre left;5;4;268;698
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre left;5;5;282;698
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre left;5;6;296;698
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre left;5;7;310;698
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre left;5;8;324;698
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre left;5;9;338;698
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre left;5;10;352;698
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre left;5;11;366;698
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre left;5;12;380;698
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre right;5;12;394;698
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre right;5;11;408;698
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre right;5;10;422;698
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre right;5;9;436;698
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre right;5;8;450;698
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre right;5;7;464;698
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre right;5;6;478;698
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre right;5;5;492;698
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre right;5;4;506;698
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre right;5;3;520;698
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre right;5;2;534;698
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre right;5;1;548;698
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre left;6;1;233;710
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre left;6;2;247;710
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre left;6;3;261;710
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre left;6;4;275;710
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre left;6;5;289;710
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre left;6;6;303;710
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre left;6;7;317;710
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre left;6;8;331;710
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre left;6;9;345;710
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre left;6;10;359;710
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre left;6;11;373;710
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre left;6;12;387;710
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre right;6;11;401;710
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre right;6;10;415;710
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre right;6;9;429;710
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre right;6;8;443;710
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre right;6;7;457;710
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre right;6;6;471;710
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre right;6;5;485;710
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre right;6;4;499;710
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre right;6;3;513;710
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre right;6;2;527;710
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre right;6;1;541;710
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre left;7;1;226;722
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre left;7;2;240;722
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre left;7;3;254;722
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre left;7;4;268;722
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre left;7;5;282;722
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre left;7;6;296;722
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre left;7;7;310;722
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre left;7;8;324;722
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre left;7;9;338;722
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre left;7;10;352;722
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre left;7;11;366;722
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre left;7;12;380;722
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre right;7;12;394;722
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre right;7;11;408;722
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre right;7;10;422;722
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre right;7;9;436;722
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre right;7;8;450;722
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre right;7;7;464;722
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre right;7;6;478;722
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre right;7;5;492;722
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre right;7;4;506;722
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre right;7;3;520;722
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre right;7;2;534;722
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;grand circle;centre right;7;1;548;722
+
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre left;1;1;212;750
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre left;1;2;226;750
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre left;1;3;240;750
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre left;1;4;254;750
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre left;1;5;268;750
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre left;1;6;282;750
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre left;1;7;296;750
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre left;1;8;310;750
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre left;1;9;324;750
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre left;1;10;338;750
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre left;1;11;352;750
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre left;1;12;366;750
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre left;1;13;380;750
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre right;1;13;394;750
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre right;1;12;408;750
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre right;1;11;422;750
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre right;1;10;436;750
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre right;1;9;450;750
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre right;1;8;464;750
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre right;1;7;478;750
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre right;1;6;492;750
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre right;1;5;506;750
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre right;1;4;520;750
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre right;1;3;534;750
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre right;1;2;548;750
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre right;1;1;562;750
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre left;2;1;219;762
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre left;2;2;231;762
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre left;2;3;247;762
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre left;2;4;261;762
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre left;2;5;275;762
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre left;2;6;289;762
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre left;2;7;303;762
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre left;2;8;317;762
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre left;2;9;331;762
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre left;2;10;345;762
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre left;2;11;359;762
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre left;2;12;373;762
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre left;2;13;387;762
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre right;2;12;401;762
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre right;2;11;415;762
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre right;2;10;429;762
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre right;2;9;443;762
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre right;2;8;457;762
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre right;2;7;471;762
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre right;2;6;485;762
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre right;2;5;499;762
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre right;2;4;513;762
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre right;2;3;527;762
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre right;2;2;541;762
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre right;2;1;555;762
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre left;3;1;226;774
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre left;3;2;240;774
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre left;3;3;254;774
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre left;3;4;268;774
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre left;3;5;282;774
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre left;3;6;296;774
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre left;3;7;310;774
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre left;3;8;324;774
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre left;3;9;338;774
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre left;3;10;352;774
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre left;3;11;366;774
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre left;3;12;380;774
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre right;3;12;394;774
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre right;3;11;408;774
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre right;3;10;422;774
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre right;3;9;436;774
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre right;3;8;450;774
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre right;3;7;464;774
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre right;3;6;478;774
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre right;3;5;492;774
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre right;3;4;506;774
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre right;3;3;520;774
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre right;3;2;534;774
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre right;3;1;548;774
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre left;4;1;233;786
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre left;4;2;247;786
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre left;4;3;261;786
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre left;4;4;275;786
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre left;4;5;289;786
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre left;4;6;303;786
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre left;4;7;317;786
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre left;4;8;331;786
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre left;4;9;345;786
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre left;4;10;359;786
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre left;4;11;373;786
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre left;4;12;387;786
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre right;4;11;401;786
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre right;4;10;415;786
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre right;4;9;429;786
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre right;4;8;443;786
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre right;4;7;457;786
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre right;4;6;471;786
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre right;4;5;485;786
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre right;4;4;499;786
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre right;4;3;513;786
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre right;4;2;527;786
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre right;4;1;541;786
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre left;5;1;240;798
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre left;5;2;254;798
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre left;5;3;268;798
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre left;5;4;282;798
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre left;5;5;296;798
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre left;5;6;310;798
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre left;5;7;324;798
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre left;5;8;338;798
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre left;5;9;352;798
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre left;5;10;366;798
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre left;5;11;380;798
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre right;5;11;394;798
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre right;5;10;408;798
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre right;5;9;422;798
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre right;5;8;436;798
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre right;5;7;450;798
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre right;5;6;464;798
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre right;5;5;478;798
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre right;5;4;492;798
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre right;5;3;506;798
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre right;5;2;520;798
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;centre right;5;1;534;798
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra box;left;I;1;150;289
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra box;left;I;2;150;300
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra box;left;I;3;150;311
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra box;right;I;1;638;289
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra box;right;I;2;638;300
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra box;right;I;3;638;311
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra box;left;II;1;164;337
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra box;left;II;2;150;325
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra box;left;II;3;150;337
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra box;right;II;1;624;337
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra box;right;II;2;638;325
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra box;right;II;3;638;337
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra box;left;III;1;164;349
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra box;left;III;2;164;361
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra box;left;III;3;150;349
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra box;left;III;4;150;361
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra box;right;III;1;624;349
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra box;right;III;2;624;361
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra box;right;III;3;638;349
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra box;right;III;4;638;361
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra box;left;IV;1;164;373
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra box;left;IV;2;164;385
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra box;left;IV;3;150;373
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra box;left;IV;4;150;385
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra box;right;IV;1;624;373
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra box;right;IV;2;624;385
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra box;right;IV;3;638;373
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra box;right;IV;4;638;385
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra box;left;V;1;164;395
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra box;left;V;2;164;407
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra box;left;V;3;150;395
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra box;left;V;4;150;407
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra box;right;V;1;624;395
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra box;right;V;2;624;407
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra box;right;V;3;638;395
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra box;right;V;4;638;407
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra box;left;VI;1;164;421
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra box;left;VI;2;164;435
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra box;left;VI;3;150;421
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra box;left;VI;4;150;435
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra box;right;VI;1;624;421
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra box;right;VI;2;624;435
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra box;right;VI;3;638;421
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;orchestra box;right;VI;4;638;435
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage dress circle;left;1;1;130;0
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage dress circle;left;1;2;130;9
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage dress circle;left;1;3;130;18
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage dress circle;left;1;4;130;27
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage dress circle;left;1;5;130;36
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage dress circle;left;1;6;130;45
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage dress circle;left;1;7;130;54
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage dress circle;left;1;8;130;63
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage dress circle;left;1;9;130;72
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage dress circle;left;1;10;130;81
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage dress circle;left;1;11;130;90
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage dress circle;left;1;12;130;99
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage dress circle;left;1;13;130;108
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage dress circle;left;1;14;130;117
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage dress circle;left;1;15;130;126
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage dress circle;left;1;16;130;135
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage dress circle;left;1;17;130;144
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage dress circle;left;1;18;130;153
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage dress circle;left;1;19;130;162
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage dress circle;left;1;20;130;171
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage dress circle;left;1;21;130;180
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage dress circle;left;1;22;130;189
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage dress circle;left;1;23;130;198
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage dress circle;left;1;24;130;207
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage dress circle;left;1;25;130;216
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage dress circle;left;1;26;130;225
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage dress circle;left;1;27;130;234
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage dress circle;left;1;28;130;243
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage dress circle;left;1;29;130;252
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;left;1;1;130;280
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;left;1;2;130;288
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;left;1;3;130;296
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;left;1;4;130;304
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;left;1;5;130;312
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;left;1;6;130;320
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;left;1;7;130;328
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;left;1;8;130;336
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;left;1;9;130;344
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;left;1;10;130;352
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;left;1;11;130;360
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;left;1;12;130;368
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;left;1;13;130;376
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;left;1;14;130;384
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;left;1;15;130;392
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;left;1;16;130;400
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;left;1;17;130;408
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;left;1;18;130;416
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;left;1;19;130;424
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;left;1;20;130;432
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;left;1;21;130;440
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;left;1;wheel chair P1;130;460
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;left;1;wheel chair P2;130;470
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;left;1;wheel chair P3;130;480
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;left;2;1;110;280
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;left;2;2;110;290
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;left;2;3;110;300
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;left;2;4;110;310
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;left;2;5;110;320
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;left;2;6;110;330
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;left;2;7;110;340
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;left;2;8;110;350
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;left;2;9;110;360
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;left;2;10;110;370
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;left;2;11;110;380
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;left;2;12;110;390
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;left;2;13;110;400
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage dress circle;right;1;1;658;0
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage dress circle;right;1;2;658;9
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage dress circle;right;1;3;658;18
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage dress circle;right;1;4;658;27
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage dress circle;right;1;5;658;36
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage dress circle;right;1;6;658;45
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage dress circle;right;1;7;658;54
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage dress circle;right;1;8;658;63
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage dress circle;right;1;9;658;72
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage dress circle;right;1;10;658;81
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage dress circle;right;1;11;658;90
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage dress circle;right;1;12;658;99
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage dress circle;right;1;13;658;108
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage dress circle;right;1;14;658;117
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage dress circle;right;1;15;658;126
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage dress circle;right;1;16;658;135
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage dress circle;right;1;17;658;144
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage dress circle;right;1;18;658;153
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage dress circle;right;1;19;658;162
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage dress circle;right;1;20;658;171
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage dress circle;right;1;21;658;180
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage dress circle;right;1;22;658;189
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage dress circle;right;1;23;658;198
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage dress circle;right;1;24;658;207
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage dress circle;right;1;25;658;216
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage dress circle;right;1;26;658;225
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage dress circle;right;1;27;658;234
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage dress circle;right;1;28;658;243
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage dress circle;right;1;29;658;252
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;right;1;1;658;280
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;right;1;2;658;288
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;right;1;3;658;296
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;right;1;4;658;304
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;right;1;5;658;312
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;right;1;6;658;320
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;right;1;7;658;328
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;right;1;8;658;336
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;right;1;9;658;344
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;right;1;10;658;352
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;right;1;11;658;360
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;right;1;12;658;368
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;right;1;13;658;376
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;right;1;14;658;384
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;right;1;15;658;392
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;right;1;16;658;400
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;right;1;17;658;408
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;right;1;18;658;416
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;right;1;19;658;424
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;right;1;20;658;432
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;right;1;21;658;440
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;right;1;wheel chair P1;658;460
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;right;1;wheel chair P2;658;470
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;right;1;wheel chair P3;658;480
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;right;2;1;678;280
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;right;2;2;678;290
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;right;2;3;678;300
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;right;2;4;678;310
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;right;2;5;678;320
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;right;2;6;678;330
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;right;2;7;678;340
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;right;2;8;678;350
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;right;2;9;678;360
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;right;2;10;678;370
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;right;2;11;678;380
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;right;2;12;678;390
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;right;2;13;678;400
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;left;1;1;80;0
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;left;1;2;80;12
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;left;1;3;80;24
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;left;1;4;80;36
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;left;1;5;80;48
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;left;1;6;80;60
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;left;1;7;80;72
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;left;1;8;80;84
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;left;1;9;80;96
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;left;1;10;80;108
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;left;1;11;80;120
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;left;1;12;80;132
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;left;1;13;80;144
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;left;1;14;80;156
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;left;1;15;80;168
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;left;1;16;80;180
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;left;1;17;80;192
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;left;1;18;80;204
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;left;1;19;80;216
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;left;1;20;80;228
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;left;1;21;80;240
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;left;1;22;80;264
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;left;1;23;80;274
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;left;1;24;80;284
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;left;1;25;80;294
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;left;1;26;80;304
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;left;1;27;80;314
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;left;1;28;80;324
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;left;1;29;80;334
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;left;1;30;80;344
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;left;1;31;80;354
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;left;1;32;80;364
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;left;1;33;80;374
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;left;1;34;80;384
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;left;1;35;80;394
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;left;1;36;80;404
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;left;1;37;80;414
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;left;1;38;80;424
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;left;1;39;80;434
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;left;1;wheel chair P1;80;450
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;left;1;wheel chair P2;80;465
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;right;1;1;708;0
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;right;1;2;708;12
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;right;1;3;708;24
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;right;1;4;708;36
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;right;1;5;708;48
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;right;1;6;708;60
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;right;1;7;708;72
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;right;1;8;708;84
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;right;1;9;708;96
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;right;1;10;708;108
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;right;1;11;708;120
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;right;1;12;708;132
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;right;1;13;708;144
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;right;1;14;708;156
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;right;1;15;708;168
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;right;1;16;708;180
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;right;1;17;708;192
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;right;1;18;708;204
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;right;1;19;708;216
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;right;1;20;708;228
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;right;1;21;708;240
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;right;1;22;708;264
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;right;1;23;708;274
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;right;1;24;708;284
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;right;1;25;708;294
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;right;1;26;708;304
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;right;1;27;708;314
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;right;1;28;708;324
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;right;1;29;708;334
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;right;1;30;708;344
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;right;1;31;708;354
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;right;1;32;708;364
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;right;1;33;708;374
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;right;1;34;708;384
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;right;1;35;708;394
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;right;1;36;708;404
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;right;1;37;708;414
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;right;1;38;708;424
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;right;1;39;708;434
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;right;1;wheel chair P1;708;450
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;right;1;wheel chair P2;708;465
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;left;1;wheel chair P1;60;430
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;left;1;wheel chair P2;60;442
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;left;1;wheel chair P3;60;454
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;left;1;wheel chair P4;60;466
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;left;1;wheel chair P5;60;478
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;left;1;wheel chair P6;60;490
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;right;1;wheel chair P1;728;430
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;right;1;wheel chair P2;728;442
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;right;1;wheel chair P3;728;454
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;right;1;wheel chair P4;728;466
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;right;1;wheel chair P5;728;478
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;balcony;right;1;wheel chair P6;728;490
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;organ gallery;left;1;1;170;44
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;organ gallery;left;1;2;184;44
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;organ gallery;left;1;3;198;44
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;organ gallery;left;1;4;212;44
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;organ gallery;left;1;5;226;44
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;organ gallery;left;1;6;240;44
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;organ gallery;left;1;7;254;44
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;organ gallery;left;1;8;268;44
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;organ gallery;left;1;9;282;44
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;organ gallery;left;1;10;296;44
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;organ gallery;left;1;11;310;44
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;organ gallery;left;1;12;324;44
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;organ gallery;left;1;13;338;44
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;organ gallery;left;1;14;352;44
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;organ gallery;left;1;15;366;44
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;organ gallery;right;1;15;380;44
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;organ gallery;right;1;14;394;44
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;organ gallery;right;1;13;408;44
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;organ gallery;right;1;12;422;44
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;organ gallery;right;1;11;436;44
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;organ gallery;right;1;10;450;44
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;organ gallery;right;1;9;464;44
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;organ gallery;right;1;8;478;44
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;organ gallery;right;1;7;492;44
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;organ gallery;right;1;6;506;44
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;organ gallery;right;1;5;520;44
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;organ gallery;right;1;4;534;44
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;organ gallery;right;1;3;548;44
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;organ gallery;right;1;2;562;44
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;organ gallery;right;1;1;576;44
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;organ gallery;left;2;1;177;32
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;organ gallery;left;2;2;191;32
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;organ gallery;left;2;3;205;32
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;organ gallery;left;2;4;219;32
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;organ gallery;left;2;5;233;32
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;organ gallery;left;2;6;247;32
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;organ gallery;left;2;7;261;32
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;organ gallery;left;2;8;275;32
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;organ gallery;left;2;9;289;32
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;organ gallery;left;2;10;303;32
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;organ gallery;left;2;11;317;32
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;organ gallery;left;2;12;331;32
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;organ gallery;left;2;13;345;32
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;organ gallery;left;2;14;359;32
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;organ gallery;left;2;15;373;32
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;organ gallery;right;2;14;387;32
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;organ gallery;right;2;13;401;32
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;organ gallery;right;2;12;415;32
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;organ gallery;right;2;11;429;32
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;organ gallery;right;2;10;443;32
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;organ gallery;right;2;9;457;32
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;organ gallery;right;2;8;471;32
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;organ gallery;right;2;7;485;32
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;organ gallery;right;2;6;499;32
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;organ gallery;right;2;5;513;32
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;organ gallery;right;2;4;527;32
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;organ gallery;right;2;3;541;32
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;organ gallery;right;2;2;555;32
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;organ gallery;right;2;1;569;32
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;organ gallery;left;3;1;212;20
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;organ gallery;left;3;2;226;20
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;organ gallery;left;3;3;240;20
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;organ gallery;left;3;4;254;20
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;organ gallery;left;3;5;268;20
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;organ gallery;left;3;6;282;20
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;organ gallery;left;3;7;296;20
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;organ gallery;left;3;8;310;20
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;organ gallery;left;3;9;324;20
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;organ gallery;left;3;10;338;20
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;organ gallery;left;3;11;352;20
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;organ gallery;left;3;12;366;20
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;organ gallery;right;3;12;380;20
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;organ gallery;right;3;11;394;20
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;organ gallery;right;3;10;408;20
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;organ gallery;right;3;9;422;20
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;organ gallery;right;3;8;436;20
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;organ gallery;right;3;7;450;20
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;organ gallery;right;3;6;464;20
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;organ gallery;right;3;5;478;20
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;organ gallery;right;3;4;492;20
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;organ gallery;right;3;3;506;20
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;organ gallery;right;3;2;520;20
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;organ gallery;right;3;1;534;20
