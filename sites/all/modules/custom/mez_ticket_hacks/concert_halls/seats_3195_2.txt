@@ -1,0 +1,39 @@
+concert hall;floor;side;row;number;x;y
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;left;1;wheel chair P4;130;490
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;left;1;wheel chair P5;130;500
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;right;1;wheel chair P4;658;490
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;right;1;wheel chair P5;658;500
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;left;2;14;110;410
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;left;2;15;110;420
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;left;2;16;110;430
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;right;2;14;678;410
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;right;2;15;678;420
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;dress circle;right;2;16;678;430
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;left;1;40;80;444
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;left;1;41;80;454
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;left;1;42;80;464
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;left;1;43;80;474
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;left;1;44;80;484
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;left;1;45;80;494
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;left;1;wheel chair P3;80;480
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;left;1;wheel chair P4;80;495
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;left;1;wheel chair P5;80;510
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;left;1;wheel chair P6;80;525
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;right;1;40;708;444
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;right;1;41;708;454
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;right;1;42;708;464
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;right;1;43;708;474
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;right;1;44;708;484
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;right;1;45;708;494
+
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;right;1;wheel chair P3;708;480
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;right;1;wheel chair P4;708;495
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;right;1;wheel chair P5;708;510
+Művészetek Palotája, Bartók Béla Nemzeti Hangversenyterem;stage grand circle;right;1;wheel chair P6;708;525
+
