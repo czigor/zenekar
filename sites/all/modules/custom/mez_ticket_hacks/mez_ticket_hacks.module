@@ -6,6 +6,23 @@
  */
 
 /**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function mez_ticket_hacks_form_commerce_checkout_form_review_alter(&$form, $form_state) {
+  $fields = [
+    'commerce_cib_eki_user',
+    'commerce_cib_msg',
+    'commerce_cib_history',
+    'commerce_cib_anum',
+    'commerce_cib_end',
+    'commerce_cib_start',
+  ];
+  foreach ($fields as $field) {
+    $form['commerce_payment']['payment_details'][$field]['#access'] = FALSE;
+  }
+}
+
+/**
  * Implements hook_permission().
  */
 function mez_ticket_hacks_permission() {

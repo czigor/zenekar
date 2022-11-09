@@ -899,7 +899,7 @@ function _commerce_cib_configure_payment_entity() {
         'user_register_form' => FALSE,
       ),
       'widget' => array(
-        'active' => 1,
+        'active' => 0,
         'module' => 'text',
         'settings' => array(
           'size' => 16,
@@ -945,7 +945,7 @@ function _commerce_cib_configure_payment_entity() {
       'user_register_form' => FALSE,
     ),
     'widget' => array(
-      'active' => 1,
+      'active' => 0,
       'module' => 'date',
       'settings' => array(
         'increment' => 15,
@@ -991,7 +991,7 @@ function _commerce_cib_configure_payment_entity() {
       'user_register_form' => FALSE,
     ),
     'widget' => array(
-      'active' => 1,
+      'active' => 0,
       'module' => 'date',
       'settings' => array(
         'increment' => 15,
