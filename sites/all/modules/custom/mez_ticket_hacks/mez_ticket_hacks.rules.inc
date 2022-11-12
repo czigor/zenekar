@@ -66,9 +66,7 @@ function mez_ticket_hacks_rules_action_info() {
  */
 function mez_create_ticket_pdf_action($order) {
   // Attach ticket pdf to email.
-  $order_w = entity_metadata_wrapper('commerce_order', $order);
-  $concert_nid = $order_w->commerce_line_items[0]->commerce_product->field_concert->nid->value();
-  $tex = theme('mez_ticket_pdf__' . $concert_nid, array('order' => $order));
+  $tex = theme('mez_ticket_pdf', array('order' => $order));
 
   // Get the destination directory from the pdf sending rule
   $rule = rules_config_load('rules_mez_ticket_pdf_sending');

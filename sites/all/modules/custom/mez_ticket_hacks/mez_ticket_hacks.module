@@ -262,6 +262,7 @@ function mez_ticket_hacks_preprocess_mez_ticket_pdf(&$vars) {
       'seat' => $seat,
       'price' => $price,
       'id' => $cli->commerce_product->product_id->value(),
+	  'concert_id' => (int) (explode('-', $cli->commerce_product->sku->value())[0]),
     );
   }
   $vars['tickets'] = $tickets;
