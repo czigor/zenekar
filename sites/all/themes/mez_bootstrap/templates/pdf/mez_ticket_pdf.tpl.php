@@ -43,8 +43,8 @@
 \draw (4,0)--(4,7);
 % % Concert details
 \node[anchor=north, align=center] at (13,6.9) {
-	{\small Helyszín: BME Központi épület, aula
-	(1111 Budapest, Műegyetem rakpart 3.)
+	{\small Helyszín: #6
+	(#7)
 	}\\
 	\\
 	\LARGE \textsc{Műegyetemi Szimfonikus Zenekar}\\
@@ -85,26 +85,13 @@ Vásárlás ideje: \texttt{#4}\\
 
 
 <?php foreach ($tickets as $ticket) :?>
-  <?php
-  
-  // There must be a better way...
-  $field_time = db_select('field_data_field_time', 'fdft')
-	->fields('fdft', array('field_time_value'))
-    ->condition('fdft.entity_id', $ticket['concert_id'], '=')
-    ->execute()
-    ->fetch()
-	->field_time_value;
-  $datetime = new DateTime($field_time, new DateTimeZone("UTC"));
-  $datetime->setTimezone(new DateTimeZone('Europe/Budapest'));
-  $MONTHS = Array("január", "február", "március", "április", "május", "június", "július", "augusztus", "szeptember", "október", "november" , "december");
-  $DAYS = Array("vasárnap", "hétfő", "kedd", "szerda", "csütörtök", "péntek", "szombat");
-  $month = $MONTHS[$datetime->format("n") - 1];
-  $day = $DAYS[$datetime->format("w")];
-  $concert_time  = $datetime->format("Y. ") . $month . $datetime->format(" j.") . " $day " . $datetime->format("H:i");
-
-  
-  ?>
- \mezticket{<?php print ucfirst($ticket['seat']) ?>}{<?php print $ticket['price']?> Ft}{<?php print str_pad($ticket['id'], 8, '0', STR_PAD_LEFT); ?>}{<?php print format_date($order->placed, 'short', '', NULL, 'hu');?>}{<?php print $concert_time; ?>}
+ \mezticket{<?php print ucfirst($ticket['seat']) ?>}
+ {<?php print $ticket['price']?> Ft}
+ {<?php print str_pad($ticket['id'], 8, '0', STR_PAD_LEFT); ?>}
+ {<?php print format_date($order->placed, 'short', '', NULL, 'hu');?>}
+ {<?php print $ticket['time']; ?>}
+ {<?php print $ticket['location_title']; ?>}
+ {<?php print $ticket['location_address']; ?>}
 <?php endforeach;?>
 
 

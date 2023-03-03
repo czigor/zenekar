@@ -242,6 +242,10 @@ function mez_ticket_hacks_preprocess_mez_ticket(&$vars) {
     $vars['title'] = $title[0]['value'];
     $vars['seat_nid'] = $seat->nid;
     $vars['price'] = 0;
+    $vars['location_title'] = $ticket_w->field_seat->field_concert_hall->title->value();
+    $loc = $ticket_w->field_seat->field_concert_hall->field_location;
+    $vars['location_address'] = $loc->postal_code->value() . ' ' . $loc->city->value() . ', ' .  $loc->street->value();
+    $vars['time'] = format_date(strtotime($ticket_w->field_concert->field_time->value()[0]['value']), 'long');
   }
 }
 
