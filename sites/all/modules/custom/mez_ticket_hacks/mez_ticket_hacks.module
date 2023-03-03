@@ -222,10 +222,6 @@ function mez_ticket_hacks_preprocess_mez_ticket(&$vars) {
     if ($vars['status'] == 'free') {
       $vars['status'] = in_array($vars['ticket']->product_id, $tickets_in_cart) ? 'reserved' : 'free';
     }
-    $vars['location_title'] = $ticket_w->field_seat->field_concert_hall->title->value();
-    $loc = $ticket_w->field_seat->field_concert_hall->field_location;
-    $vars['location_address'] = $loc->postal_code->value() . ' ' . $loc->city->value() . ', ' .  $loc->street->value();
-    $vars['time'] = format_date(strtotime($ticket_w->field_concert->field_time->value()[0]['value']), 'long');
   }
   else {
     $seat = $vars['seat'];
@@ -262,11 +258,15 @@ function mez_ticket_hacks_preprocess_mez_ticket_pdf(&$vars) {
   foreach ($order_w->commerce_line_items as $cli) {
     $seat = $cli->commerce_product->language('hu')->field_seat->title_field->value();
     $price = $cli->commerce_unit_price->amount->value();
+    $loc = $cli->commerce_product->field_seat->field_concert_hall->field_location;
     $tickets[] = array(
       'seat' => $seat,
       'price' => $price,
       'id' => $cli->commerce_product->product_id->value(),
-	  'concert_id' => (int) (explode('-', $cli->commerce_product->sku->value())[0]),
+      'concert_id' => (int) (explode('-', $cli->commerce_product->sku->value())[0]),
+      'location_title' => $cli->commerce_product->field_seat->field_concert_hall->title->value(),
+      'location_address' => $loc->postal_code->value() . ' ' . $loc->city->value() . ', ' .  $loc->street->value(),
+      'time' => format_date(strtotime($cli->commerce_product->field_concert->field_time->value()[0]['value']), 'long'),
     );
   }
   $vars['tickets'] = $tickets;
