@@ -15,7 +15,7 @@
 \definecolor{lg}{rgb}{0.95,0.95,0.95}
 
 % One ticket for the 2015. 05. 13. concert.
-\newcommand{\mezticket}[5]{
+\newcommand{\mezticket}[7]{
 %\vspace*{\fill}%
 \begin{center}%
 \begin{tikzpicture}[scale=0.85]%
@@ -89,7 +89,7 @@ Vásárlás ideje: \texttt{#4}\\
  {<?php print $ticket['price']?> Ft}
  {<?php print str_pad($ticket['id'], 8, '0', STR_PAD_LEFT); ?>}
  {<?php print format_date($order->placed, 'short', '', NULL, 'hu');?>}
- {<?php print $ticket['time']; ?>}
+ {<?php print $ticket['concert_time']; ?>}
  {<?php print $ticket['location_title']; ?>}
  {<?php print $ticket['location_address']; ?>}
 <?php endforeach;?>
