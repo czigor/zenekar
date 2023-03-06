@@ -121,6 +121,12 @@ Drupal.gmap.addHandler('directions', function (element) {
             case 1:
                 directionsRequest.travelMode = google.maps.TravelMode.WALKING;
                 break;
+            case 2:
+                directionsRequest.travelMode = google.maps.TravelMode.BICYCLING;
+                break;
+            case 3:
+                directionsRequest.travelMode = google.maps.TravelMode.TRANSIT;
+                break;
             default:
                 directionsRequest.travelMode = google.maps.TravelMode.DRIVING;
         }

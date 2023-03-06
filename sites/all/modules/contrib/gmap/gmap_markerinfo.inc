@@ -15,6 +15,10 @@
  */
 function gmap_gmap_markerfiles_info() {
   $markerdirs = variable_get('gmap_markerfiles', array(drupal_get_path('module', 'gmap') . '/markers'));
+  $markercustomdir = variable_get('gmap_marker_custom_dir', NULL);
+  if ($markercustomdir) {
+    $markerdirs[] = $markercustomdir;
+  }
 
   if (module_exists('libraries')) {
     $markercustomdir = libraries_get_path('gmap_markers');

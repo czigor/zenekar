@@ -953,11 +953,11 @@ function gmap_location_node_type($op, $info) {
 }
 
 /**
- * Wrapper function for i18n_string_build() if i18n_string enabled.
+ * Wrapper function for i18n_string() if i18n_string enabled.
  */
 function gmap_location_t($name, $string) {
   if (module_exists('i18n_string')) {
-    return i18n_string_build($name, $string);
+    return i18n_string($name, $string);
   }
   else {
     return $string;

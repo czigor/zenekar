@@ -524,7 +524,7 @@ function gmap_regenerate_markers() {
  * @todo move this to GmapCacheToolbox
  */
 function gmap_flush_caches() {
-  gmap_regenerate_markers();
+  variable_del('gmap_marker_file');
 }
 
 /**
@@ -1212,7 +1212,7 @@ function gmap_decimal($num) {
  * @see http://drupal.org/node/1940474
  */
 function gmap_geocode($address, $tld = 'com') {
-  $data = drupal_http_request(gmap_views_protocol() . '://maps.googleapis.' . $tld . '/maps/api/geocode/json?address=' . urlencode($address) . '&sensor=false');
+  $data = drupal_http_request(gmap_views_protocol() . '://maps.googleapis.' . $tld . '/maps/api/geocode/json?address=' . urlencode($address));
   if ($data->code == 200) {
     $data_decoded = json_decode($data->data);
     if ($data_decoded->status == 'ZERO_RESULTS' || $data_decoded->status == 'OVER_QUERY_LIMIT') {

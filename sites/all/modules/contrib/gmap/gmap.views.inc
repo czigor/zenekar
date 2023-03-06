@@ -63,14 +63,13 @@ function template_preprocess_gmap_views_view_gmapextended(&$vars) {
   $options = $view->style_plugin->options;
   $handler = $view->style_plugin;
 
-  $fields = & $view->field;
+  $fields = &$view->field;
 
   if ($view->style_plugin->options['center_on_proximityfilter'] && $view->style_plugin->options['datasource'] == 'location' && module_exists('location')) {
     $vars['center'] = location_views_proximity_get_reference_location($view, array(
-        'origin' => 'tied',
-        'relationship' => $view->style_plugin->options['center_on_proximityfilter_rel'],
-      )
-    );
+      'origin' => 'tied',
+      'relationship' => $view->style_plugin->options['center_on_proximityfilter_rel'],
+    ));
   }
 
   // Render fields.
@@ -84,21 +83,11 @@ function template_preprocess_gmap_views_view_gmapextended(&$vars) {
       if (!isset($markers[$i][$purpose])) {
         $markers[$i][$purpose] = '';
       }
-      if ($purpose){
+      if ($purpose) {
         $markers[$i][$purpose] .= $row[$field];
       }
     }
   }
-  /*
-  foreach ($options['field_purposes'] as $field => $purpose) {
-  foreach ($renders as $i => $row) {
-  if (!isset($markers[$i][$purpose])) {
-  $markers[$i][$purpose] = '';
-  }
-  $markers[$i][$purpose] .= $row[$field];
-  }
-  }
-  */
 
   foreach ($markers as $offset => $marker) {
     // Set up 'opts' array to make tooltips work.
@@ -107,7 +96,7 @@ function template_preprocess_gmap_views_view_gmapextended(&$vars) {
     switch ($options['clickmode']) {
       case 'render':
         $markers[$offset]['text'] = $vars['result'][$offset];
-        // Fallthrough.
+      // Fallthrough.
       case 'text':
         unset ($markers[$offset]['link']);
         unset ($markers[$offset]['rmt']);
@@ -143,15 +132,6 @@ function template_preprocess_gmap_views_view_gmapextended(&$vars) {
         break;
     }
   }
-
-  // @@@ add rest of handling
-  /*
-  if ($options['markers'] == 'static') {
-  foreach ($markers as $offset => $marker) {
-  $markers[$offset]['markername'] = $options['markertype'];
-  }
-  }
-  */
 
   // Marker cleanup.
   foreach ($markers as $offset => $marker) {

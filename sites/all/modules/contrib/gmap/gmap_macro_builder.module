@@ -55,6 +55,9 @@ function gmap_macro_builder_menu() {
  * @param array $hide
  *   Fields to hide from the map. (See code for details.)
  *   Suggestions for better ways of doing this welcome!
+ *
+ * @return array
+ *   Form.
  */
 function gmap_macro_builder_form($form, &$form_state, $settings = array(), $hide = array()) {
   $path = drupal_get_path('module', 'gmap');

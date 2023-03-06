@@ -103,8 +103,7 @@ class GmapDefaults {
     $query = array(
       'v' => variable_get('gmap_api_version', GMAP_API_VERSION),
       'language' => $langcode,
-      'sensor' => 'false',
-      'libraries' => implode(array_merge(variable_get('gmap_api_libraries', array()), gmap_module_invoke('libraries', $m)), ','),
+      'libraries' => implode(',', array_merge(variable_get('gmap_api_libraries', array()), gmap_module_invoke('libraries', $m))),
     );
     if ($key = gmap_get_key()) {
       $query['key'] = $key;
@@ -119,7 +118,7 @@ class GmapDefaults {
       'type' => 'external',
       'weight' => 1,
     );
-    $this->basejs[base_path() . variable_get('file_public_path', conf_path() . '/files') . '/js/gmap_markers.js'] = array(
+    $this->basejs[file_create_url('public://js/gmap_markers.js')] = array(
       'type' => 'external',
       'weight' => 4,
     );

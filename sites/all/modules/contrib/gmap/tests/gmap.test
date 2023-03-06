@@ -288,6 +288,7 @@ class LGFATestCase extends DrupalWebTestCase {
       'administer site configuration',
       'administer content types',
       'bypass node access',
+      'administer fields',
     ));
     $this->drupalLogin($this->privileged_user);
 

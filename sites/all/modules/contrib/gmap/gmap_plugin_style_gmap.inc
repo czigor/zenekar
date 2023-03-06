@@ -105,6 +105,8 @@ class gmap_plugin_style_gmap extends views_plugin_style {
 
     $defaults = gmap_defaults();
 
+    $lat_field = NULL;
+    $lon_field = NULL;
     if ($this->options['datasource'] == 'location') {
       $lat_field = 'gmap_lat';
       $lon_field = 'gmap_lon';
@@ -124,15 +126,21 @@ class gmap_plugin_style_gmap extends views_plugin_style {
           $lon_field = 'field_' . $this->options['geolocation'];
         }
         // Determine fieldname for latitude and longitude fields.
-        else {
-          if ($this->options['datasource'] == 'fields') {
-            // "[0]['raw']['value']";
-            $lat_field = 'field_' . $this->options['latfield'];
-            // "[0]['raw']['value']";
-            $lon_field = 'field_' . $this->options['lonfield'];
+        elseif ($this->options['datasource'] == 'fields') {
+          if ($this->options['latfield'] && isset($this->view->field[$this->options['latfield']]->field_alias)) {
+            $lat_field = $this->view->field[$this->options['latfield']]->field_alias;
+          }
+
+          if ($this->options['lonfield'] && isset($this->view->field[$this->options['lonfield']]->field_alias)) {
+            $lon_field = $this->view->field[$this->options['lonfield']]->field_alias;
           }
         }
       }
+    }
+
+    // Exit if no lat / lon fields found.
+    if (empty($lat_field) || empty($lon_field)) {
+      return;
     }
 
     // Determine fieldname for marker field.
@@ -211,13 +219,13 @@ class gmap_plugin_style_gmap extends views_plugin_style {
           $lon = isset($row->{$lon_field}[0]['raw']['lng']) ? (float) $row->{$lon_field}[0]['raw']['lng'] : NULL;
         }
         elseif ($this->options['datasource'] == 'fields') {
-          $lat = isset($row->{$lat_field}[0]['raw']['value']) ? (float) $row->{$lat_field}[0]['raw']['value'] : NULL;
-          $lon = isset($row->{$lon_field}[0]['raw']['value']) ? (float) $row->{$lon_field}[0]['raw']['value'] : NULL;
+          $lat = isset($row->{$lat_field}) ? (float) $row->{$lat_field} : NULL;
+          $lon = isset($row->{$lon_field}) ? (float) $row->{$lon_field} : NULL;
 
           // Field is Location CCK.
           if (!$lat || !$lon) {
-            $lat = isset($row->{$lat_field}[0]['raw']['latitude']) ? $row->{$lat_field}[0]['raw']['latitude'] : NULL;
-            $lon = isset($row->{$lon_field}[0]['raw']['longitude']) ? $row->{$lon_field}[0]['raw']['longitude'] : NULL;
+            $lat = is_array($row->{$lat_field}) && isset($row->{$lat_field}[0]['raw']['latitude']) ? $row->{$lat_field}[0]['raw']['latitude'] : NULL;
+            $lon = is_array($row->{$lon_field}) && isset($row->{$lon_field}[0]['raw']['longitude']) ? $row->{$lon_field}[0]['raw']['longitude'] : NULL;
           }
         }
 

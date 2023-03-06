@@ -70,7 +70,10 @@ function gmap_fields_field_is_empty($item, $field) {
  */
 function gmap_fields_field_widget_form_alter(&$element, &$form_state, $context) {
   if ($context['field']['type'] == GMAP_FIELDS_TYPE_MARKER) {
+    $items = $context['items'];
+    $delta = $context['delta'];
     $element['#options'] += gmap_get_marker_titles();
+    $element['#default_value'] = !empty($items[$delta]['value']) ? $items[$delta]['value'] : '';
   }
 }
 
