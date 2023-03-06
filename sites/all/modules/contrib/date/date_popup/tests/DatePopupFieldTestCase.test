@@ -9,7 +9,7 @@
  * Test the custom field functionality provided by the Date Popup module.
  */
 class DatePopupFieldTestCase extends DateFieldTestBase {
-  
+
   /**
    * Define this test class.
    */
@@ -17,7 +17,7 @@ class DatePopupFieldTestCase extends DateFieldTestBase {
     return array(
       'name' => t('Date Popup'),
       'description' => t('Test the custom functionality of the Date Popup module.'),
-      'group' => t('Date'),
+      'group' => 'date',
     );
   }
 

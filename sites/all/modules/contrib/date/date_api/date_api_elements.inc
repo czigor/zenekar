@@ -179,6 +179,8 @@ function date_year_range_element_process($element, &$form_state, $form) {
   $context = array(
     'form' => $form,
   );
+
+  // Trigger hook_date_year_range_process_alter().
   drupal_alter('date_year_range_process', $element, $form_state, $context);
 
   return $element;
@@ -265,6 +267,8 @@ function date_timezone_element_process($element, &$form_state, $form) {
   $context = array(
     'form' => $form,
   );
+
+  // Trigger hook_date_timezone_process_alter().
   drupal_alter('date_timezone_process', $element, $form_state, $context);
 
   return $element;
@@ -326,6 +330,12 @@ function date_text_element_process($element, &$form_state, $form) {
   $element['date']['#type'] = 'textfield';
   $element['date']['#weight'] = !empty($element['date']['#weight']) ? $element['date']['#weight'] : $element['#weight'];
   $element['date']['#attributes'] = array('class' => isset($element['#attributes']['class']) ? $element['#attributes']['class'] += array('date-date') : array('date-date'));
+
+  // Allow an optional placeholder to be passed in.
+  if (isset($element['#attributes']['placeholder'])) {
+    $element['date']['#attributes']['placeholder'] = $element['#attributes']['placeholder'];
+  }
+
   $now = date_example_date();
   $element['date']['#title'] = t('Date');
   $element['date']['#title_display'] = 'invisible';
@@ -358,6 +368,8 @@ function date_text_element_process($element, &$form_state, $form) {
   $context = array(
     'form' => $form,
   );
+
+  // Trigger hook_date_text_process_alter().
   drupal_alter('date_text_process', $element, $form_state, $context);
 
   return $element;
@@ -386,6 +398,7 @@ function date_text_validate($element, &$form_state) {
     $input['date'] = trim($input['date']);
   }
 
+  // Trigger hook_date_text_pre_validate_alter().
   drupal_alter('date_text_pre_validate', $element, $form_state, $input);
 
   $label = !empty($element['#date_title']) ? $element['#date_title'] : (!empty($element['#title']) ? $element['#title'] : '');
@@ -536,6 +549,8 @@ function date_select_element_process($element, &$form_state, $form) {
   $context = array(
     'form' => $form,
   );
+
+  // Trigger hook_date_select_process_alter().
   drupal_alter('date_select_process', $element, $form_state, $context);
 
   return $element;
@@ -718,6 +733,7 @@ function date_select_validate($element, &$form_state) {
     }
   }
 
+  // Trigger hook_date_select_pre_validate_alter().
   drupal_alter('date_select_pre_validate', $element, $form_state, $input);
 
   $label = !empty($element['#date_title']) ? $element['#date_title'] : (!empty($element['#title']) ? $element['#title'] : '');

@@ -55,12 +55,16 @@ function date_field_formatter_settings_form($field, $instance, $view_mode, $form
     default:
       $form = date_default_formatter_settings_form($field, $instance, $view_mode, $form, $form_state);
   }
+
   $context = array(
     'field' => $field,
     'instance' => $instance,
     'view_mode' => $view_mode,
   );
+
+  // Trigger hook_date_field_formatter_settings_form_alter().
   drupal_alter('date_field_formatter_settings_form', $form, $form_state, $context);
+
   return $form;
 }
 
@@ -84,6 +88,8 @@ function date_field_formatter_settings_summary($field, $instance, $view_mode) {
     'instance' => $instance,
     'view_mode' => $view_mode,
   );
+
+  // Trigger hook_date_field_formatter_settings_summary_alter().
   drupal_alter('date_field_formatter_settings_summary', $summary, $context);
 
   return implode('<br />', $summary);
@@ -142,6 +148,7 @@ function date_field_formatter_view($entity_type, $entity, $field, $instance, $la
     }
   }
 
+  // Trigger hook_date_formatter_pre_view_alter().
   // Give other modules a chance to prepare the entity before formatting it.
   drupal_alter('date_formatter_pre_view', $entity, $variables);
 
@@ -188,7 +195,10 @@ function date_field_formatter_view($entity_type, $entity, $field, $instance, $la
           $variables['delta'] = $delta;
           $variables['item'] = $item;
           $variables['dates'] = date_formatter_process($formatter, $entity_type, $entity, $field, $instance, $langcode, $item, $display);
-          $variables['attributes'] = !empty($rdf_mapping) ? rdf_rdfa_attributes($rdf_mapping, $item['value']) : array();
+          $variables['attributes'] = array();
+          if (!empty($rdf_mapping) && function_exists('rdf_rdfa_attributes')) {
+            $variables['attributes'] = rdf_rdfa_attributes($rdf_mapping, $item['value']);
+          }
           $element[$delta] = array('#markup' => theme('date_display_interval', $variables));
         }
       }
@@ -203,7 +213,10 @@ function date_field_formatter_view($entity_type, $entity, $field, $instance, $la
           $variables['delta'] = $delta;
           $variables['item'] = $item;
           $variables['dates'] = date_formatter_process($formatter, $entity_type, $entity, $field, $instance, $langcode, $item, $display);
-          $variables['attributes'] = !empty($rdf_mapping) ? rdf_rdfa_attributes($rdf_mapping, $item['value']) : array();
+          $variables['attributes'] = array();
+          if (!empty($rdf_mapping) && function_exists('rdf_rdfa_attributes')) {
+            $variables['attributes'] = rdf_rdfa_attributes($rdf_mapping, $item['value']);
+          }
           $variables['show_remaining_days'] = isset($display['settings']['show_remaining_days']) ? $display['settings']['show_remaining_days'] : FALSE;
           $output = theme('date_display_combination', $variables);
           if (!empty($output)) {
@@ -247,7 +260,7 @@ function date_field_info() {
     'settings' => array(
       'todate' => '',
       'granularity' => drupal_map_assoc($granularity),
-      'tz_handling' => 'site',
+      'tz_handling' => 'none',
       'timezone_db' => 'UTC',
     ),
     'instance_settings' => array(
@@ -343,18 +356,6 @@ function date_field_load($entity_type, $entities, $field, $instances, $langcode,
         $item['timezone'] = date_get_timezone($field['settings']['tz_handling'], $timezone);
         $item['timezone_db'] = $timezone_db;
         $item['date_type'] = $field['type'];
-        if (!empty($field['settings']['cache_enabled']) && ($delta < $field['settings']['cache_count'] || $field['settings']['cache_count'] == 0)) {
-          foreach ($process as $processed) {
-            if (!empty($item[$processed])) {
-              $date = new DateObject($item[$processed], $item['timezone_db'], $db_format);
-              $date->limitGranularity($field['settings']['granularity']);
-              $item['db'][$processed] = $date;
-            }
-          }
-          if (!empty($item['db']['value']) && empty($item['db']['value2'])) {
-            $item['db']['value2'] = $item['db']['value'];
-          }
-        }
       }
     }
   }
@@ -388,13 +389,19 @@ function date_field_validate($entity_type, $entity, $field, $instance, $langcode
           if ($processed == 'value' && $field['settings']['todate'] && !$valid1 && $valid2) {
             $errors[$field['field_name']][$langcode][$delta][] = array(
               'error' => 'value',
-              'message' => t("A 'Start date' date is required for field %field #%delta.", array('%delta' => $field['cardinality'] ? intval($delta + 1) : '', '%field' => $instance['label'])),
+              'message' => t("A 'Start date' date is required for field %field #%delta.", array(
+                '%delta' => $field['cardinality'] ? intval($delta + 1) : '',
+                '%field' => $instance['label'],
+              )),
             );
           }
           if ($processed == 'value2' && $field['settings']['todate'] == 'required' && ($instance['required'] && $valid1 && !$valid2)) {
             $errors[$field['field_name']][$langcode][$delta][] = array(
               'error' => 'value2',
-              'message' => t("An 'End date' is required for field %field #%delta.", array('%delta' => $field['cardinality'] ? intval($delta + 1) : '', '%field' => $instance['label'])),
+              'message' => t("An 'End date' is required for field %field #%delta.", array(
+                '%delta' => $field['cardinality'] ? intval($delta + 1) : '',
+                '%field' => $instance['label'],
+              )),
             );
           }
         }
@@ -437,6 +444,8 @@ function date_field_insert($entity_type, $entity, $field, $instance, $langcode, 
     'instance' => $instance,
     'langcode' => $langcode,
   );
+
+  // Trigger hook_date_field_insert_alter().
   drupal_alter('date_field_insert', $items, $context);
 }
 
@@ -451,6 +460,7 @@ function date_field_update($entity_type, $entity, $field, $instance, $langcode, 
     'instance' => $instance,
     'langcode' => $langcode,
   );
+  // Trigger hook_date_field_update_alter().
   drupal_alter('date_field_update', $items, $context);
 }
 

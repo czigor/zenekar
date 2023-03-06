@@ -11,13 +11,13 @@
 class DateFormTestCase extends DrupalWebTestCase {
 
   /**
-   * {@inheritdoc}
+   * Date form info.
    */
   public static function getInfo() {
     return array(
       'name' => t('Date Form test'),
-      'description' => t('Test Date form functions.') ,
-      'group' => t('Date'),
+      'description' => t('Test Date form functions.'),
+      'group' => 'date',
     );
   }
 
