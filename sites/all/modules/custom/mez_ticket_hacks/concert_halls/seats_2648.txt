@@ -687,16 +687,16 @@ MOM Kulturális Központ;dress circle;right;6;8;350;396
 MOM Kulturális Központ;dress circle;right;6;9;364;396
 MOM Kulturális Központ;dress circle;right;6;10;378;396
 MOM Kulturális Központ;dress circle;right;6;11;392;396
-MOM Kulturális Központ;dress circle;right;6;12;306;396
+MOM Kulturális Központ;dress circle;right;6;12;406;396
 
 MOM Kulturális Központ;dress circle;left;7;8;60;408
 MOM Kulturális Központ;dress circle;left;7;7;74;408
 MOM Kulturális Központ;dress circle;left;7;6;88;408
 MOM Kulturális Központ;dress circle;left;7;5;102;408
-MOM Kulturális Központ;dress circle;left;7;4;106;408
-MOM Kulturális Központ;dress circle;left;7;3;120;408
-MOM Kulturális Központ;dress circle;left;7;2;134;408
-MOM Kulturális Központ;dress circle;left;7;1;148;408
+MOM Kulturális Központ;dress circle;left;7;4;116;408
+MOM Kulturális Központ;dress circle;left;7;3;130;408
+MOM Kulturális Központ;dress circle;left;7;2;144;408
+MOM Kulturális Központ;dress circle;left;7;1;158;408
 
 MOM Kulturális Központ;dress circle;right;7;1;252;408
 MOM Kulturális Központ;dress circle;right;7;2;266;408
