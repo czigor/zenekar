@@ -11,10 +11,10 @@
 
 \pagestyle{empty}
 
-\newcommand{\addsponsor}[1]{\includegraphics[width=2.3cm,height=8mm]{<?php print drupal_realpath(drupal_get_path('theme', 'mez_bootstrap') . '/images/sponsors') . '/';?>#1}}
-\definecolor{lg}{rgb}{0.95,0.95,0.95}
+\newcommand{\addsponsor}[1]{\includegraphics[width=2.3cm]{<?php print drupal_realpath(drupal_get_path('theme', 'mez_bootstrap') . '/images/sponsors') . '/';?>#1}\hspace{2mm}}
+\definecolor{lg}{rgb}{0.9,0.9,0.9}
 
-% One ticket for the 2015. 05. 13. concert.
+% One ticket a concert.
 \newcommand{\mezticket}[7]{
 %\vspace*{\fill}%
 \begin{center}%
@@ -38,21 +38,20 @@
 };
 \node[anchor=south west,align=center,font=\tiny] at (0.1,0.3) {
 \includegraphics[width=2.75cm]{<?php print drupal_realpath(drupal_get_path('theme', 'mez_bootstrap') . '/images') . '/';?>mszz_logo_HU_inverse_transparent.pdf}\\
-\url{http://zenekar.bme.hu}
+\url{https://zenekar.bme.hu}
 };
 \draw (4,0)--(4,7);
 % % Concert details
 \node[anchor=north, align=center] at (13,6.9) {
 	{\small Helyszín: #6
 	(#7)
-	}\\
-	\\
-	\LARGE \textsc{Műegyetemi Szimfonikus Zenekar}\\[5mm]
-	\LARGE\textsc{\bfseries Filmzenék}\\[3mm]
+	}\\[2mm]
+	\LARGE \textsc{Műegyetemi Szimfonikus Zenekar}\\[4mm]
+	\LARGE\textsc{\bfseries Filmzenék}\\[2mm]
 
-	\emph{Vezényel: Erdélyi Dániel -- Koncertmester: Orova-Pechan Laura}\vspace{3mm}\\
-	#5\vspace{3mm}\\
-	{\Large \textbf{#1}}\vspace{3mm}\\
+	\emph{Vezényel: Erdélyi Dániel -- Koncertmester: Orova-Pechan Laura}\\[2mm]
+	#5\\[2mm]
+	{\Large \textbf{#1}}\\[2mm]
 	Ára: #2
 };
 \node[anchor=south east,font=\scriptsize] at (22,0) {\qrcode[height=1.4cm]{#3}};
@@ -65,11 +64,10 @@ Vásárlás ideje: \texttt{#4}\\
 };
 % Sponsors
 \node[anchor=south west,align=right] at (4,0) {
-%	\addsponsor{nka.png}
-	\addsponsor{bme.png}
-	\quad
-	\addsponsor{bme-ehk.png}
-%	\addsponsor{pro-progressio.png}
+	\addsponsor{NKA.pdf}
+	\addsponsor{EHK.pdf}
+	\addsponsor{BME.pdf}
+	\addsponsor{EMET.pdf}
 };
 <?php if($env != 'live') :?>
 	\node[draw,rounded corners=2pt, line width=0.5mm] [opacity=0.3,rotate=15,font=\Huge] at (11,3.5) {\bfseries MINTA MINTA MINTA MINTA MINTA};
