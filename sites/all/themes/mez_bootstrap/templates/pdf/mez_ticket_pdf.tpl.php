@@ -47,9 +47,8 @@
 	(#7)
 	}\\
 	\\
-	\LARGE \textsc{Műegyetemi Szimfonikus Zenekar}\\
-	Saint-Saëns: III. (Orgona) szimfónia\\
-	Muszorgszkij--Ravel: Egy kiállítás képei\\
+	\LARGE \textsc{Műegyetemi Szimfonikus Zenekar}\\[5mm]
+	\LARGE\textsc{\bfseries Filmzenék}\\[3mm]
 
 	\emph{Vezényel: Erdélyi Dániel -- Koncertmester: Orova-Pechan Laura}\vspace{3mm}\\
 	#5\vspace{3mm}\\

@@ -23,7 +23,7 @@ function concert_hall_2648($concert_hall_nid, $concert_nid) {
   $return['ysize'] = 800;
   $return['markup'] = '<div style="position:absolute; top:' . 50 / $compression . 'px; left:' . 200 / $compression . 'px;">' . t('STAGE') . '</div>';
   $return['markup'] .= '<svg width="630" height="480" x="200" y="100">
-      <rect  x="' . 450 / $compression . '"  y="' .  90 / $compression . '" width="'. 180 / $compression . '" height="' . 100 / $compression . '" style="fill:white;stroke:black;stroke-width:1;fill-opacity:0;" />
+      <rect  x="' . 450 / $compression . '"  y="' .  90 / $compression . '" width="'. 180 / $compression . '" height="' . 120 / $compression . '" style="fill:white;stroke:black;stroke-width:1;fill-opacity:0;" />
       Sorry, your browser does not support inline SVG.
     </svg>';
   // Get all ticket prices for this concert.
