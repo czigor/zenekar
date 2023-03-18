@@ -78,3 +78,20 @@ body.node-type-concert.page-node-5218 .mez_concert_bank_info, body.node-type-con
 .mez_concert_bank_information {
   font-size: 0.6em;
   text-align: right; }
+  
+  
+  
+  
+  
+  
+  
+  
+/* MANUAL HACKS */
+  .mez-concert-hall .mez-ticket.free.mez-ticket-price-2600 span.inner {
+    background-color: orange; }
+  /* line 37, ../sass/tickets.scss */
+  .mez-concert-hall .mez-ticket.free.mez-ticket-price-3200 span.inner {
+    background-color: blue; }
+  /* line 40, ../sass/tickets.scss */
+  .mez-concert-hall .mez-ticket.free.mez-ticket-price-3800 span.inner {
+    background-color: green; }
