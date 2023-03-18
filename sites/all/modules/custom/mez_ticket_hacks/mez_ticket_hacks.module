@@ -259,6 +259,21 @@ function mez_ticket_hacks_preprocess_mez_ticket_pdf(&$vars) {
     $seat = $cli->commerce_product->language('hu')->field_seat->title_field->value();
     $price = $cli->commerce_unit_price->amount->value();
     $loc = $cli->commerce_product->field_seat->field_concert_hall->field_location;
+	
+	/* This should do the job, but we have no idea why not...
+	 * $concert_time_formatted = format_date(strtotime($cli->commerce_product->field_concert->field_time->value()[0]['value']), 'long', '', new DateTimeZone('Europe/Budapest'));
+	 *
+	 * SO instead we do this:
+	 */
+	$field_time = $cli->commerce_product->field_concert->field_time->value()[0]['value'];
+	$datetime = new DateTime($field_time, new DateTimeZone("UTC"));
+	$datetime->setTimezone(new DateTimeZone('Europe/Budapest'));
+	$MONTHS = Array("január", "február", "március", "április", "május", "június", "július", "augusztus", "szeptember", "október", "november" , "december");
+	$DAYS = Array("vasárnap", "hétfő", "kedd", "szerda", "csütörtök", "péntek", "szombat");
+	$month = $MONTHS[$datetime->format("n") - 1];
+	$day = $DAYS[$datetime->format("w")];
+	$concert_time_formatted  = $datetime->format("Y. ") . $month . $datetime->format(" j.") . " $day " . $datetime->format("H:i");
+	
     $tickets[] = array(
       'seat' => $seat,
       'price' => $price,
@@ -266,7 +281,7 @@ function mez_ticket_hacks_preprocess_mez_ticket_pdf(&$vars) {
       'concert_id' => (int) (explode('-', $cli->commerce_product->sku->value())[0]),
       'location_title' => $cli->commerce_product->field_seat->field_concert_hall->title->value(),
       'location_address' => $loc->postal_code->value() . ' ' . $loc->city->value() . ', ' .  $loc->street->value(),
-      'concert_time' => format_date(strtotime($cli->commerce_product->field_concert->field_time->value()[0]['value']), 'long'),
+      'concert_time' => $concert_time_formatted,
     );
   }
   $vars['tickets'] = $tickets;
