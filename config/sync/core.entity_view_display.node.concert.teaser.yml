@@ -1,0 +1,45 @@
+uuid: d4aeeb77-159b-470a-a5f7-669593106ed4
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.concert.body
+    - field.field.node.concert.field_concert_type
+    - field.field.node.concert.field_location_reference
+    - field.field.node.concert.field_media
+    - field.field.node.concert.field_orchestra_performers
+    - field.field.node.concert.field_programme
+    - field.field.node.concert.field_ticket_selling
+    - field.field.node.concert.field_time
+    - node.type.concert
+  module:
+    - text
+    - user
+id: node.concert.teaser
+targetEntityType: node
+bundle: concert
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_concert_type: true
+  field_location_reference: true
+  field_media: true
+  field_orchestra_performers: true
+  field_programme: true
+  field_ticket_selling: true
+  field_time: true
+  langcode: true

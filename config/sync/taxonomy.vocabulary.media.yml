@@ -1,0 +1,8 @@
+uuid: 39c450f3-e230-4664-bc27-99680098d53d
+langcode: en
+status: true
+dependencies: {  }
+name: 'Media tags'
+vid: media
+description: 'Tags for files'
+weight: 0

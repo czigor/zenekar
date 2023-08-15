@@ -1,0 +1,14 @@
+uuid: 807630ca-f744-4b28-ba68-6f5fffc2bcfd
+langcode: hu
+status: true
+dependencies: {  }
+id: ticket
+label: Ticket
+traits: {  }
+locked: false
+description: ''
+variationType: null
+variationTypes:
+  - ticket
+multipleVariations: true
+injectVariationFields: true

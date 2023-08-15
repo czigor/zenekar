@@ -1,0 +1,20 @@
+uuid: 66dd5cc7-6733-4afb-8b79-974d235cf216
+langcode: und
+status: true
+dependencies:
+  module:
+    - datetime
+    - file
+id: file.field_day_date
+field_name: field_day_date
+entity_type: file
+type: datetime
+settings:
+  datetime_type: date
+module: datetime
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

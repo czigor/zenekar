@@ -1,0 +1,36 @@
+uuid: 74079f83-31b5-4a62-874f-70e7ad17503d
+langcode: hu
+status: true
+dependencies:
+  config:
+    - filter.format.ckeditor
+  module:
+    - ckeditor5
+format: ckeditor
+editor: ckeditor5
+settings:
+  toolbar:
+    items:
+      - heading
+      - bold
+      - italic
+      - underline
+      - link
+      - blockQuote
+      - bulletedList
+      - numberedList
+      - drupalMedia
+  plugins:
+    ckeditor5_heading:
+      enabled_headings:
+        - heading2
+        - heading3
+        - heading4
+        - heading5
+        - heading6
+    ckeditor5_list:
+      reversed: true
+      startIndex: true
+    media_media:
+      allow_view_mode_override: false
+image_upload: {  }

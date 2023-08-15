@@ -1,0 +1,50 @@
+label: Boltok
+display:
+  default:
+    display_title: Mester
+    display_options:
+      title: Boltok
+      fields:
+        commerce_store_bulk_form:
+          action_title: 'A kiválasztottakkal'
+        is_default:
+          label: Alapértelmezés
+          separator: ', '
+        name:
+          label: Név
+          separator: ', '
+        changed:
+          label: Frissítve
+          separator: ', '
+        type:
+          label: Típus
+          separator: ', '
+        operations:
+          label: Műveletek
+      pager:
+        options:
+          tags:
+            next: 'következő ›'
+            previous: '‹ előző'
+            first: '« első'
+            last: 'utolsó »'
+          expose:
+            items_per_page_label: 'Elemek száma oldalanként'
+            items_per_page_options_all_label: '– Mind –'
+            offset_label: Eltolás
+      exposed_form:
+        options:
+          submit_button: Alkalmaz
+          reset_button_label: Alaphelyzet
+          exposed_sorts_label: Rendezés
+          sort_asc_label: Növ
+          sort_desc_label: Csökk
+      empty:
+        area_text_custom:
+          content: 'Nincs elérhető bolt.'
+      filters:
+        type:
+          expose:
+            label: Típus
+  page_1:
+    display_title: Oldal

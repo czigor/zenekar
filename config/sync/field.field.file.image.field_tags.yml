@@ -1,0 +1,27 @@
+uuid: 2d2d1101-d532-4af7-82e4-4a4bb78bc439
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.file.field_tags
+    - taxonomy.vocabulary.media
+  module:
+    - file
+id: file.image.field_tags
+field_name: field_tags
+entity_type: file
+bundle: image
+label: Tags
+description: 'Tags separated by commas.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      media: media
+    sort:
+      field: _none
+field_type: entity_reference

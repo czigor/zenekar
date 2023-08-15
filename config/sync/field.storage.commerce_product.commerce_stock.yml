@@ -1,0 +1,20 @@
+uuid: 9edfe834-5ccf-4187-ac2f-5a200542d983
+langcode: und
+status: true
+dependencies:
+  module:
+    - commerce_product
+id: commerce_product.commerce_stock
+field_name: commerce_stock
+entity_type: commerce_product
+type: decimal
+settings:
+  precision: 10
+  scale: 2
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

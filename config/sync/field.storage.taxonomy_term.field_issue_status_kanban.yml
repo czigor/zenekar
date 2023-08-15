@@ -1,0 +1,18 @@
+uuid: 6781c3ce-1c59-4453-aeff-840bbf1484cf
+langcode: und
+status: true
+dependencies:
+  module:
+    - taxonomy
+id: taxonomy_term.field_issue_status_kanban
+field_name: field_issue_status_kanban
+entity_type: taxonomy_term
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

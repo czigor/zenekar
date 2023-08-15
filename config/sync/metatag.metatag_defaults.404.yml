@@ -1,0 +1,11 @@
+uuid: 839d2ef5-8e14-4a6f-b713-f8f6a9b8768f
+langcode: hu
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: puBstSLDz8mbaWU357zaqQDBGMGsJzG0j-TQNQkjg20
+id: '404'
+label: '404 – Az oldal nem található'
+tags:
+  canonical_url: '[site:url]'
+  shortlink: '[site:url]'

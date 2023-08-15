@@ -1,0 +1,16 @@
+uuid: 43652451-7c5a-4286-a45f-8b0d64243108
+langcode: hu
+status: true
+dependencies:
+  config:
+    - node.type.concert
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+id: node.concert
+target_entity_type_id: node
+target_bundle: concert
+default_langcode: site_default
+language_alterable: true

@@ -1,0 +1,23 @@
+uuid: 7da73fa8-2003-4a3e-bc04-42162fc99ead
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_y_coordinate
+    - node.type.seat
+id: node.seat.field_y_coordinate
+field_name: field_y_coordinate
+entity_type: node
+bundle: seat
+label: 'Y coordinate'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 0
+  max: null
+  prefix: ''
+  suffix: px
+field_type: integer

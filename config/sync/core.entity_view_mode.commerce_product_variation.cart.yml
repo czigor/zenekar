@@ -1,0 +1,16 @@
+uuid: b52ce47c-b656-4095-b809-5151103261b6
+langcode: hu
+status: true
+dependencies:
+  module:
+    - commerce_product
+  enforced:
+    module:
+      - commerce_cart
+      - commerce_product
+_core:
+  default_config_hash: xtrHHgI_SwA-1npf3GB0ntU65fMvm4mxImBtkbmZWSk
+id: commerce_product_variation.cart
+label: Kosár
+targetEntityType: commerce_product_variation
+cache: true

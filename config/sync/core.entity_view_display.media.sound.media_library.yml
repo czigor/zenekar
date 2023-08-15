@@ -1,0 +1,33 @@
+uuid: a72adfa2-3f05-47a8-b802-66402ab62195
+langcode: hu
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.media_library
+    - field.field.media.sound.field_media_audio_file
+    - image.style.medium
+    - media.type.sound
+  module:
+    - image
+id: media.sound.media_library
+targetEntityType: media
+bundle: sound
+mode: media_library
+content:
+  thumbnail:
+    type: image
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: medium
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  created: true
+  field_media_audio_file: true
+  langcode: true
+  name: true
+  uid: true

@@ -1,0 +1,21 @@
+uuid: 5b0b5953-298f-479c-b6e2-0292aca1b789
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_seat_side
+    - node.type.seat
+  module:
+    - options
+id: node.seat.field_seat_side
+field_name: field_seat_side
+entity_type: node
+bundle: seat
+label: Side
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

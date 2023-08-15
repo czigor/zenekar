@@ -1,0 +1,12 @@
+uuid: 0eccbaec-f442-4bb2-ae15-913532964185
+langcode: en
+status: true
+dependencies:
+  module:
+    - file
+id: section_leader
+label: 'section leader'
+weight: 7
+is_admin: null
+permissions:
+  - 'delete own files'

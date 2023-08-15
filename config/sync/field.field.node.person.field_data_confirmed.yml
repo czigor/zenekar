@@ -1,0 +1,21 @@
+uuid: 36a1bb77-7500-4373-882a-cdf9e702b758
+langcode: hu
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_data_confirmed
+    - node.type.person
+id: node.person.field_data_confirmed
+field_name: field_data_confirmed
+entity_type: node
+bundle: person
+label: 'Adatok frissek'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: Be
+  off_label: Ki
+field_type: boolean

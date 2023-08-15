@@ -1,0 +1,20 @@
+uuid: 0f95ca24-b2a4-4d2d-a9fa-ac582c9064b6
+langcode: und
+status: true
+dependencies:
+  module:
+    - node
+    - taxonomy
+id: node.field_concert_type
+field_name: field_concert_type
+entity_type: node
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

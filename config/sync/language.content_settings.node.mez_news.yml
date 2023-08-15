@@ -1,0 +1,16 @@
+uuid: f94fa5a6-c4e5-4c69-be64-4c2c4fee2048
+langcode: hu
+status: true
+dependencies:
+  config:
+    - node.type.mez_news
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+id: node.mez_news
+target_entity_type_id: node
+target_bundle: mez_news
+default_langcode: site_default
+language_alterable: true

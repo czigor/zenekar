@@ -1,0 +1,20 @@
+uuid: 475e87f7-72c2-419e-81fa-084418917341
+langcode: und
+status: true
+dependencies:
+  module:
+    - taxonomy
+id: taxonomy_term.field_issue_status_limit
+field_name: field_issue_status_limit
+entity_type: taxonomy_term
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

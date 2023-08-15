@@ -1,0 +1,54 @@
+label: 'Felhasználó rendelései'
+description: 'Megjeleníti egy felhasználó rendeléseinek listáját.'
+display:
+  default:
+    display_title: Mester
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Alkalmaz
+          reset_button_label: Alaphelyzet
+          exposed_sorts_label: Rendezés
+          sort_asc_label: Növ
+          sort_desc_label: Csökk
+      pager:
+        options:
+          tags:
+            previous: '‹ Előző'
+            next: 'Következő ›'
+            first: '« Első'
+            last: 'Utolsó »'
+          expose:
+            items_per_page_label: 'Elemek száma oldalanként'
+            items_per_page_options_all_label: '– Mind –'
+            offset_label: Eltolás
+      fields:
+        order_id:
+          label: Azonosító
+          separator: ', '
+        order_number:
+          label: 'Rendelés száma'
+          separator: ', '
+        placed:
+          label: Dátum
+          separator: ', '
+        total_price__number:
+          label: Mindösszesen
+          separator: ', '
+        state:
+          label: Állapot
+          separator: ', '
+      title: Rendelések
+      empty:
+        area:
+          content:
+            value: 'A felhasználó még nem adott le megrendelést.'
+      arguments:
+        uid:
+          exception:
+            title: Mind
+  order_page:
+    display_title: 'Felhasználó rendelései'
+    display_options:
+      menu:
+        title: Rendelések

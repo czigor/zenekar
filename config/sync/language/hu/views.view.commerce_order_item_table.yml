@@ -1,0 +1,30 @@
+label: Rendeléselemek
+description: 'Táblázatosan megjeleníti rendelési tételek egy csoportját.'
+display:
+  default:
+    display_title: Mester
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Alkalmaz
+          reset_button_label: Alaphelyzet
+          exposed_sorts_label: Rendezés
+          sort_asc_label: Növ
+          sort_desc_label: Csökk
+      fields:
+        title:
+          label: Cím
+          separator: ', '
+        unit_price__number:
+          label: Egységár
+          separator: ', '
+        quantity:
+          label: Mennyiség
+          separator: ', '
+        total_price__number:
+          label: 'Végső ár'
+          separator: ', '
+      arguments:
+        order_item_id:
+          exception:
+            title: Mind

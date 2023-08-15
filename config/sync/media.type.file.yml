@@ -1,0 +1,13 @@
+uuid: 036f8374-506b-4b24-a3ab-163a4f4d7f5c
+langcode: hu
+status: true
+dependencies: {  }
+id: file
+label: Fájl
+description: ''
+source: file
+queue_thumbnail_downloads: false
+new_revision: false
+source_configuration:
+  source_field: field_media_file
+field_map: {  }

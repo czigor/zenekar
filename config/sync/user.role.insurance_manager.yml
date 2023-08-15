@@ -1,0 +1,12 @@
+uuid: a139fafb-d5b9-4144-9399-de3f26e277c3
+langcode: en
+status: true
+dependencies:
+  module:
+    - file
+id: insurance_manager
+label: 'insurance manager'
+weight: 11
+is_admin: null
+permissions:
+  - 'delete own files'

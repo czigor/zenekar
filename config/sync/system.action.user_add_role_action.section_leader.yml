@@ -1,0 +1,14 @@
+uuid: 4c7209c5-ebbe-4137-b9f9-bae96f49f7cc
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.section_leader
+  module:
+    - user
+id: user_add_role_action.section_leader
+label: 'Add the section leader role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: section_leader

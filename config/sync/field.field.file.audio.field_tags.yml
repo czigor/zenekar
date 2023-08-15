@@ -1,0 +1,27 @@
+uuid: 5ed0ab5e-0245-482d-81d8-f852cdb8f52f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.file.field_tags
+    - taxonomy.vocabulary.media
+  module:
+    - file
+id: file.audio.field_tags
+field_name: field_tags
+entity_type: file
+bundle: audio
+label: Tags
+description: 'Tags separated by commas.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      media: media
+    sort:
+      field: _none
+field_type: entity_reference

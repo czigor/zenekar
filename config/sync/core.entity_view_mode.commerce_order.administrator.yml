@@ -1,0 +1,10 @@
+uuid: c835759e-33b0-401d-ab95-f1cfcc9aead5
+langcode: en
+status: true
+dependencies:
+  module:
+    - commerce_order
+id: commerce_order.administrator
+label: administrator
+targetEntityType: commerce_order
+cache: true

@@ -1,0 +1,29 @@
+uuid: f5fb741e-041b-4e51-bbc5-8df5b4d33a16
+langcode: hu
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_student_status
+    - node.type.person
+    - taxonomy.vocabulary.student_status
+id: node.person.field_student_status
+field_name: field_student_status
+entity_type: node
+bundle: person
+label: 'Student status'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      student_status: student_status
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

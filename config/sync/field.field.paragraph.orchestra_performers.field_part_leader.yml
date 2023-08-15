@@ -1,0 +1,23 @@
+uuid: 899f95f4-aced-4391-b7a2-1333858cda71
+langcode: hu
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_part_leader
+    - paragraphs.paragraphs_type.orchestra_performers
+id: paragraph.orchestra_performers.field_part_leader
+field_name: field_part_leader
+entity_type: paragraph
+bundle: orchestra_performers
+label: 'Part leader'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Be
+  off_label: Ki
+field_type: boolean

@@ -1,0 +1,26 @@
+uuid: 51377c82-979e-49f5-9be8-f2b61d84879b
+langcode: hu
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.performers.field_hide_performer
+    - field.field.paragraph.performers.field_instrument
+    - field.field.paragraph.performers.field_performer
+    - paragraphs.paragraphs_type.performers
+id: paragraph.performers.default
+targetEntityType: paragraph
+bundle: performers
+mode: default
+content:
+  field_hide_performer:
+    type: boolean_checkbox
+    weight: 0
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+hidden:
+  created: true
+  field_instrument: true
+  field_performer: true
+  status: true

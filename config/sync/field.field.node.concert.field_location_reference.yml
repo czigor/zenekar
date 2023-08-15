@@ -1,0 +1,30 @@
+uuid: 7ec97704-2ee4-40e5-af99-30803c905302
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_location_reference
+    - node.type.concert
+    - node.type.location
+id: node.concert.field_location_reference
+field_name: field_location_reference
+entity_type: node
+bundle: concert
+label: Location
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      location: location
+    sort:
+      field: title
+      direction: ASC
+    behaviors:
+      views-select-list:
+        status: 1
+field_type: entity_reference

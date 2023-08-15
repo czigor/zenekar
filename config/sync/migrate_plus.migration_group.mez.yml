@@ -1,0 +1,15 @@
+uuid: c31c1feb-7cf6-4964-9fe1-6d80ba90bcca
+langcode: hu
+status: true
+dependencies:
+  enforced:
+    module:
+      - mez_migrate
+_core:
+  default_config_hash: whN2zMbO6t09FJ2Bj96yWqZnOiJz-xzUQZX9YiGlEd4
+id: mez
+label: MEZ
+description: 'MEZ migrations.'
+source_type: db
+module: null
+shared_configuration: null

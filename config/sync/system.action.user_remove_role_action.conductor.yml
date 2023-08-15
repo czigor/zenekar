@@ -1,0 +1,14 @@
+uuid: 13af44a8-e475-476e-ae23-97a37c14293a
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.conductor
+  module:
+    - user
+id: user_remove_role_action.conductor
+label: 'Remove the conductor role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: conductor

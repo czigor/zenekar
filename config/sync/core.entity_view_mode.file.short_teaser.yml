@@ -1,0 +1,10 @@
+uuid: 0e1a1640-2887-4072-b163-c84ada8b9446
+langcode: en
+status: true
+dependencies:
+  module:
+    - file
+id: file.short_teaser
+label: short_teaser
+targetEntityType: file
+cache: true

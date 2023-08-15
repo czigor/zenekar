@@ -1,0 +1,26 @@
+uuid: c0293e1c-2c30-417b-be85-59ba592bb70a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_tags
+    - node.type.mez_news
+    - taxonomy.vocabulary.media
+id: node.mez_news.field_tags
+field_name: field_tags
+entity_type: node
+bundle: mez_news
+label: Tags
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      media: media
+    sort:
+      field: _none
+field_type: entity_reference

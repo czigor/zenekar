@@ -1,0 +1,24 @@
+uuid: 9e6791e1-48ed-495a-951a-853c7a2dee6a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.concert
+  module:
+    - text
+id: node.concert.body
+field_name: body
+entity_type: node
+bundle: concert
+label: Remark
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+  required_summary: false
+  allowed_formats: {  }
+field_type: text_with_summary

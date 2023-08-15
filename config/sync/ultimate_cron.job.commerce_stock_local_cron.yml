@@ -1,0 +1,17 @@
+uuid: d4930009-032c-4918-867c-b1471775045d
+langcode: hu
+status: true
+dependencies:
+  module:
+    - commerce_stock_local
+title: 'Default cron handler'
+id: commerce_stock_local_cron
+weight: 0
+module: commerce_stock_local
+callback: commerce_stock_local_cron
+scheduler:
+  id: simple
+launcher:
+  id: serial
+logger:
+  id: database

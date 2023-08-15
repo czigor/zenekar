@@ -1,0 +1,31 @@
+uuid: 7c729c04-2292-4a7f-85c0-3c6fe299aadc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.file.field_pieces
+    - node.type.piece
+  module:
+    - file
+id: file.audio.field_pieces
+field_name: field_pieces
+entity_type: file
+bundle: audio
+label: Pieces
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      piece: piece
+    sort:
+      field: title
+      direction: ASC
+    behaviors:
+      views-select-list:
+        status: 1
+field_type: entity_reference

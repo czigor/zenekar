@@ -1,0 +1,51 @@
+uuid: 99f7a4f1-caf9-468a-bfe3-4e676917a86f
+langcode: und
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_seat_floor
+field_name: field_seat_floor
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: orchestra
+      label: orchestra
+    -
+      value: 'orchestra box'
+      label: 'orchestra box'
+    -
+      value: balcony
+      label: balcony
+    -
+      value: 'side dress circle'
+      label: 'side dress circle'
+    -
+      value: 'centre dress circle'
+      label: 'centre dress circle'
+    -
+      value: 'dress circle'
+      label: 'dress circle'
+    -
+      value: 'grand circle'
+      label: 'grand circle'
+    -
+      value: 'stage dress circle'
+      label: 'stage dress circle'
+    -
+      value: 'stage grand circle'
+      label: 'stage grand circle'
+    -
+      value: 'organ gallery'
+      label: 'organ gallery'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,26 @@
+uuid: 520e863d-b910-4895-93e7-9a64aec6ee8c
+langcode: hu
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - filter.format.ckeditor
+    - node.type.person
+  module:
+    - text
+id: node.person.body
+field_name: body
+entity_type: node
+bundle: person
+label: Remark
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+  required_summary: false
+  allowed_formats:
+    - ckeditor
+field_type: text_with_summary

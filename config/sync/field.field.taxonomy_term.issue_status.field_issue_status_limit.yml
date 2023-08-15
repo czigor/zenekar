@@ -1,0 +1,23 @@
+uuid: 7fe4884d-585f-4e0b-ace9-92edda417488
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_issue_status_limit
+    - taxonomy.vocabulary.issue_status
+id: taxonomy_term.issue_status.field_issue_status_limit
+field_name: field_issue_status_limit
+entity_type: taxonomy_term
+bundle: issue_status
+label: Limit
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 0
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

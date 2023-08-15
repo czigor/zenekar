@@ -1,0 +1,19 @@
+uuid: bcc70354-8a1f-4be0-81ea-dc62fc23bcbd
+langcode: hu
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_movement
+    - paragraphs.paragraphs_type.programme
+id: paragraph.programme.field_movement
+field_name: field_movement
+entity_type: paragraph
+bundle: programme
+label: Movement
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,12 @@
+uuid: a0cd5cbe-dd9b-4a07-b4c9-60b5a59aa412
+langcode: en
+status: true
+dependencies:
+  module:
+    - file
+id: leader
+label: leader
+weight: 9
+is_admin: null
+permissions:
+  - 'delete own files'

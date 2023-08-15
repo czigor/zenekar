@@ -1,0 +1,31 @@
+uuid: ee74b763-bc63-4fb9-a4a7-4194bdf25488
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.file.field_pieces
+    - node.type.piece
+  module:
+    - file
+id: file.video.field_pieces
+field_name: field_pieces
+entity_type: file
+bundle: video
+label: Pieces
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      piece: piece
+    sort:
+      field: title
+      direction: ASC
+    behaviors:
+      views-select-list:
+        status: 1
+field_type: entity_reference

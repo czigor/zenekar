@@ -1,0 +1,40 @@
+uuid: 7918ad1a-cd7d-443d-bdc9-5e8978d800b7
+langcode: hu
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_orchestra_performers
+    - node.type.concert
+    - paragraphs.paragraphs_type.orchestra_performers
+  module:
+    - entity_reference_revisions
+id: node.concert.field_orchestra_performers
+field_name: field_orchestra_performers
+entity_type: node
+bundle: concert
+label: 'Orchestra performers'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      orchestra_performers: orchestra_performers
+    negate: 0
+    target_bundles_drag_drop:
+      orchestra_performers:
+        weight: 5
+        enabled: true
+      performers:
+        weight: 6
+        enabled: false
+      positions:
+        weight: 7
+        enabled: false
+      programme:
+        weight: 8
+        enabled: false
+field_type: entity_reference_revisions

@@ -1,0 +1,31 @@
+uuid: fff4cb73-a312-43f8-a760-961d30af1157
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.file.field_location_reference
+    - node.type.location
+  module:
+    - file
+id: file.image.field_location_reference
+field_name: field_location_reference
+entity_type: file
+bundle: image
+label: Location
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      location: location
+    sort:
+      field: title
+      direction: ASC
+    behaviors:
+      views-select-list:
+        status: 1
+field_type: entity_reference

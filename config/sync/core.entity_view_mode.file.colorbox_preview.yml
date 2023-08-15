@@ -1,0 +1,10 @@
+uuid: 254e2b5f-2819-469f-9342-0a790d3f2304
+langcode: en
+status: true
+dependencies:
+  module:
+    - file
+id: file.colorbox_preview
+label: colorbox_preview
+targetEntityType: file
+cache: true

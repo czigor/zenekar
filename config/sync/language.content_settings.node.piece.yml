@@ -1,0 +1,16 @@
+uuid: c757b456-7e61-4c17-a44f-362bbfe96381
+langcode: hu
+status: true
+dependencies:
+  config:
+    - node.type.piece
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+id: node.piece
+target_entity_type_id: node
+target_bundle: piece
+default_langcode: site_default
+language_alterable: true

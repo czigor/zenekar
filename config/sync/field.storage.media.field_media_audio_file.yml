@@ -1,0 +1,23 @@
+uuid: fd2234ef-0c69-4e07-80fc-d59d7cc830ef
+langcode: hu
+status: true
+dependencies:
+  module:
+    - file
+    - media
+id: media.field_media_audio_file
+field_name: field_media_audio_file
+entity_type: media
+type: file
+settings:
+  target_type: file
+  display_field: false
+  display_default: false
+  uri_scheme: public
+module: file
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

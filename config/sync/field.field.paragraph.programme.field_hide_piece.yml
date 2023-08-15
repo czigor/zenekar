@@ -1,0 +1,23 @@
+uuid: fcb3302d-e9a9-4026-be3a-00053a4493e1
+langcode: hu
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_hide_piece
+    - paragraphs.paragraphs_type.programme
+id: paragraph.programme.field_hide_piece
+field_name: field_hide_piece
+entity_type: paragraph
+bundle: programme
+label: 'Hide piece'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Be
+  off_label: Ki
+field_type: boolean

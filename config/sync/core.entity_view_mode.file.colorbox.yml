@@ -1,0 +1,10 @@
+uuid: 1880ec3b-8794-46db-8432-a4f88b73a60d
+langcode: en
+status: true
+dependencies:
+  module:
+    - file
+id: file.colorbox
+label: colorbox
+targetEntityType: file
+cache: true

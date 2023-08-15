@@ -1,0 +1,10 @@
+uuid: f29b3956-8516-4cc2-b343-b8ed1e80b305
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.mez_frontpage
+label: mez_frontpage
+targetEntityType: node
+cache: true

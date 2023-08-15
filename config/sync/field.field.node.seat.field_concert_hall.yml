@@ -1,0 +1,30 @@
+uuid: 3db8cbc7-f140-4182-81ce-05e851a29215
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_concert_hall
+    - node.type.location
+    - node.type.seat
+id: node.seat.field_concert_hall
+field_name: field_concert_hall
+entity_type: node
+bundle: seat
+label: 'Concert hall'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      location: location
+    sort:
+      field: 'title_field:value'
+      direction: ASC
+    behaviors:
+      views-select-list:
+        status: 1
+field_type: entity_reference

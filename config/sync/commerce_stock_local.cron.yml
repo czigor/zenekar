@@ -1,0 +1,6 @@
+_core:
+  default_config_hash: NtOb2WwPDNGULCGLk1o00bMIcHZt2oWdR96ETB31Q8w
+langcode: hu
+update_interval: 3600
+update_batch_size: 50
+cron_run_mode: optimal

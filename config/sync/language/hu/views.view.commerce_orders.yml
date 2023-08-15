@@ -1,0 +1,73 @@
+label: Rendelések
+display:
+  default:
+    display_title: Mester
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Szűrő
+          reset_button_label: Alaphelyzet
+          exposed_sorts_label: Rendezés
+          sort_asc_label: Növ
+          sort_desc_label: Csökk
+      pager:
+        options:
+          expose:
+            items_per_page_label: 'Elemek száma oldalanként'
+            items_per_page_options_all_label: '– Mind –'
+            offset_label: Eltolás
+          tags:
+            previous: '‹ előző'
+            next: 'következő ›'
+            first: '« első'
+            last: 'utolsó »'
+      fields:
+        commerce_order_bulk_form:
+          action_title: 'A kiválasztottakkal'
+        order_number:
+          label: '#'
+          separator: ', '
+        placed:
+          label: Dátum
+          separator: ', '
+        type:
+          label: Típus
+          separator: ', '
+        store_id:
+          label: Bolt
+          separator: ', '
+        uid:
+          label: Vevő
+          separator: ', '
+        mail:
+          label: E-mail
+          separator: ', '
+        state:
+          label: Állapot
+          separator: ', '
+        total_price__number:
+          label: Mindösszesen
+          separator: ', '
+        operations:
+          label: Műveletek
+      filters:
+        order_number:
+          expose:
+            label: 'Rendelés száma'
+        type:
+          expose:
+            label: Típus
+        state:
+          expose:
+            label: Állapot
+      title: Rendelések
+      empty:
+        area_text_custom:
+          content: 'Nincs leadott rendelés.'
+  page_1:
+    display_title: Oldal
+    display_options:
+      menu:
+        title: Rendelések
+      tab_options:
+        title: Rendelések

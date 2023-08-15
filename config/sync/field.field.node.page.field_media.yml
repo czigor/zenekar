@@ -1,0 +1,35 @@
+uuid: a210a9ef-948f-4d0b-b0d6-056653b1c23e
+langcode: hu
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_media
+    - media.type.file
+    - media.type.image
+    - media.type.remote_video
+    - media.type.sound
+    - node.type.page
+id: node.page.field_media
+field_name: field_media
+entity_type: node
+bundle: page
+label: Média
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      file: file
+      sound: sound
+      image: image
+      remote_video: remote_video
+    sort:
+      field: name
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: file
+field_type: entity_reference

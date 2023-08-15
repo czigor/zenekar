@@ -1,0 +1,20 @@
+uuid: 8d6f5323-e918-459c-a9a6-cbe5c4f41d59
+langcode: und
+status: true
+dependencies:
+  module:
+    - node
+    - taxonomy
+id: node.field_issue_status_term
+field_name: field_issue_status_term
+entity_type: node
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

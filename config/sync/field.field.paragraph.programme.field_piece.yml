@@ -1,0 +1,30 @@
+uuid: 177e41f7-676a-48bf-b2e8-9f591204db95
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_piece
+    - node.type.piece
+    - paragraphs.paragraphs_type.programme
+id: paragraph.programme.field_piece
+field_name: field_piece
+entity_type: paragraph
+bundle: programme
+label: Piece
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      piece: piece
+    sort:
+      field: title
+      direction: ASC
+    behaviors:
+      views-select-list:
+        status: 0
+field_type: entity_reference

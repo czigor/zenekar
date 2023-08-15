@@ -1,0 +1,23 @@
+uuid: 858aca40-0512-43f6-98d3-f56f4ef26d83
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_email_list
+    - node.type.person
+id: node.person.field_email_list
+field_name: field_email_list
+entity_type: node
+bundle: person
+label: 'Orchestra email list'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: ''
+  off_label: ''
+field_type: boolean

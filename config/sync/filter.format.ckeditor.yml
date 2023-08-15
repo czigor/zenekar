@@ -1,0 +1,41 @@
+uuid: b2518731-a536-4bf2-a282-3ce760f65cd9
+langcode: hu
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.full
+  module:
+    - media
+name: CKEditor
+format: ckeditor
+weight: 0
+filters:
+  filter_html:
+    id: filter_html
+    provider: filter
+    status: true
+    weight: -10
+    settings:
+      allowed_html: '<br> <p> <h2> <h3> <h4> <h5> <h6> <strong> <em> <u> <blockquote> <a href> <ul> <ol reversed start> <li> <drupal-media data-entity-type data-entity-uuid alt>'
+      filter_html_help: true
+      filter_html_nofollow: false
+  media_embed:
+    id: media_embed
+    provider: media
+    status: true
+    weight: 100
+    settings:
+      default_view_mode: default
+      allowed_view_modes:
+        full: full
+      allowed_media_types:
+        file: file
+        image: image
+        remote_video: remote_video
+        sound: sound
+  filter_image_lazy_load:
+    id: filter_image_lazy_load
+    provider: filter
+    status: true
+    weight: 15
+    settings: {  }

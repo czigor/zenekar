@@ -1,0 +1,36 @@
+uuid: 8c9ef670-723d-439b-8112-4792af37e14b
+langcode: und
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_seat_side
+field_name: field_seat_side
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: left
+      label: left
+    -
+      value: centre
+      label: centre
+    -
+      value: 'centre left'
+      label: 'centre left'
+    -
+      value: 'centre right'
+      label: 'centre right'
+    -
+      value: right
+      label: right
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

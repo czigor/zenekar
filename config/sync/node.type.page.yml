@@ -1,0 +1,16 @@
+uuid: 3005af4f-1ea9-47be-9f46-b0d5101a007f
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    parent: 'main-menu:0:'
+name: Oldal
+type: page
+description: ''
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: false

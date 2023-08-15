@@ -1,0 +1,21 @@
+uuid: 3b0575c8-9f91-40b8-ad9f-ca5ebe5a2ab7
+langcode: hu
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_day_date
+    - node.type.media_asset
+  module:
+    - datetime
+id: node.media_asset.field_day_date
+field_name: field_day_date
+entity_type: node
+bundle: media_asset
+label: Date
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

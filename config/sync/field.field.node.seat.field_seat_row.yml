@@ -1,0 +1,21 @@
+uuid: 5ab3d34a-cc05-4937-ab8f-beee7d1efe6d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_seat_row
+    - node.type.seat
+  module:
+    - options
+id: node.seat.field_seat_row
+field_name: field_seat_row
+entity_type: node
+bundle: seat
+label: Row
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -1,0 +1,14 @@
+uuid: 7348306a-8bbe-4b05-b3c9-1faadfdc251f
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.bme_student_leader
+  module:
+    - user
+id: user_add_role_action.bme_student_leader
+label: 'Add the BME student leader role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: bme_student_leader

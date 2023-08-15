@@ -1,0 +1,10 @@
+uuid: dadfadd3-59e7-4d46-848a-27771940ed59
+langcode: en
+status: true
+dependencies:
+  module:
+    - commerce_product
+id: commerce_product.line_item
+label: line_item
+targetEntityType: commerce_product
+cache: true

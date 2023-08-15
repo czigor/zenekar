@@ -1,0 +1,31 @@
+uuid: 7fa554d0-6fcd-46d5-a3e6-a3ef002d0ba2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.file.field_location_reference
+    - node.type.location
+  module:
+    - file
+id: file.audio.field_location_reference
+field_name: field_location_reference
+entity_type: file
+bundle: audio
+label: Location
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      location: location
+    sort:
+      field: title
+      direction: ASC
+    behaviors:
+      views-select-list:
+        status: 1
+field_type: entity_reference

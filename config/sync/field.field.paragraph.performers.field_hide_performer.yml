@@ -1,0 +1,23 @@
+uuid: b6084709-d047-47d7-ac6d-0c8dd39d8d43
+langcode: hu
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_hide_performer
+    - paragraphs.paragraphs_type.performers
+id: paragraph.performers.field_hide_performer
+field_name: field_hide_performer
+entity_type: paragraph
+bundle: performers
+label: 'Előadó elrejtése'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Be
+  off_label: Ki
+field_type: boolean

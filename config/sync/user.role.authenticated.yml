@@ -1,0 +1,34 @@
+uuid: c2cf6e8b-ed50-43e6-b372-04979d29db44
+langcode: hu
+status: true
+dependencies:
+  config:
+    - filter.format.ckeditor
+  module:
+    - commerce_checkout
+    - commerce_order
+    - commerce_payment
+    - commerce_product
+    - file
+    - filter
+    - media
+    - node
+    - system
+_core:
+  default_config_hash: dJ0L2DNSj5q6XVZAGsuVDpJTh5UeYkIPwKrUOOpr8YI
+id: authenticated
+label: 'Azonosított felhasználó'
+weight: 1
+is_admin: false
+permissions:
+  - 'access checkout'
+  - 'access content'
+  - 'access content overview'
+  - 'access site in maintenance mode'
+  - 'access user profiles'
+  - 'delete own files'
+  - 'manage own commerce_payment_method'
+  - 'use text format ckeditor'
+  - 'view commerce_product'
+  - 'view media'
+  - 'view own commerce_order'

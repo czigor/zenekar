@@ -1,0 +1,10 @@
+uuid: edcb99eb-6248-4c2a-952a-c84366021af9
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.short_teaser
+label: short_teaser
+targetEntityType: node
+cache: true

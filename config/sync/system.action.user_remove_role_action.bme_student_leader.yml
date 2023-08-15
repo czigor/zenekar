@@ -1,0 +1,14 @@
+uuid: fa21fc6e-1816-440f-8265-baf0035d5255
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.bme_student_leader
+  module:
+    - user
+id: user_remove_role_action.bme_student_leader
+label: 'Remove the BME student leader role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: bme_student_leader

@@ -1,0 +1,8 @@
+uuid: fc721625-8dbf-4aa3-ae2c-4abb577040b4
+langcode: en
+status: true
+dependencies: {  }
+name: 'Concert type'
+vid: concert_type
+description: 'The type of orchestra performing at the concerts'
+weight: 0

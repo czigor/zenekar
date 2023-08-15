@@ -1,0 +1,53 @@
+uuid: 10604045-6ab5-4b89-b507-b7562e688ea8
+langcode: hu
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.programme.field_hide_piece
+    - field.field.paragraph.programme.field_movement
+    - field.field.paragraph.programme.field_performers
+    - field.field.paragraph.programme.field_piece
+    - paragraphs.paragraphs_type.programme
+  module:
+    - entity_reference_revisions
+id: paragraph.programme.default
+targetEntityType: paragraph
+bundle: programme
+mode: default
+content:
+  field_hide_piece:
+    type: boolean
+    label: inline
+    settings:
+      format: unicode-yes-no
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_movement:
+    type: string
+    label: inline
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_performers:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_piece:
+    type: entity_reference_label
+    label: inline
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

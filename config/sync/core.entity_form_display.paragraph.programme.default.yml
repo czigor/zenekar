@@ -1,0 +1,35 @@
+uuid: ffae43b7-77e5-45e1-84e3-39417b9da8ea
+langcode: hu
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.programme.field_hide_piece
+    - field.field.paragraph.programme.field_movement
+    - field.field.paragraph.programme.field_performers
+    - field.field.paragraph.programme.field_piece
+    - paragraphs.paragraphs_type.programme
+id: paragraph.programme.default
+targetEntityType: paragraph
+bundle: programme
+mode: default
+content:
+  field_hide_piece:
+    type: boolean_checkbox
+    weight: 1
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_movement:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  field_performers: true
+  field_piece: true
+  status: true

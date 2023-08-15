@@ -1,0 +1,20 @@
+uuid: aadaf66c-715a-43ed-9dff-b95e6d0f00b4
+langcode: hu
+status: true
+dependencies:
+  module:
+    - commerce_checkout
+    - commerce_product
+    - media
+    - system
+_core:
+  default_config_hash: j5zLMOdJBqC0bMvSdth5UebkprJB8g_2FXHqhfpJzow
+id: anonymous
+label: 'Névtelen felhasználó'
+weight: 0
+is_admin: false
+permissions:
+  - 'access checkout'
+  - 'access content'
+  - 'view commerce_product'
+  - 'view media'

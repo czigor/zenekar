@@ -1,0 +1,23 @@
+uuid: c2264c3a-1d06-4776-8c3c-1c3df71d9f6d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_ticket_map_compression
+    - node.type.location
+id: node.location.field_ticket_map_compression
+field_name: field_ticket_map_compression
+entity_type: node
+bundle: location
+label: 'Ticket map compression'
+description: 'The ticket map is compressed by this factor.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 0.001
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: float

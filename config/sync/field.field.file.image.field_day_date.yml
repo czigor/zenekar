@@ -1,0 +1,21 @@
+uuid: 5a78d497-a86d-4dd2-9e32-5049ca7c59a2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.file.field_day_date
+  module:
+    - datetime
+    - file
+id: file.image.field_day_date
+field_name: field_day_date
+entity_type: file
+bundle: image
+label: Dátum
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

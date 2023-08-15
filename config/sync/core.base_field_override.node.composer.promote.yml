@@ -1,0 +1,22 @@
+uuid: 006005be-86f0-4e94-9497-80ec4696eec6
+langcode: hu
+status: true
+dependencies:
+  config:
+    - node.type.composer
+id: node.composer.promote
+field_name: promote
+entity_type: node
+bundle: composer
+label: 'Címlapra helyezve'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Be
+  off_label: Ki
+field_type: boolean

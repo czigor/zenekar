@@ -1,0 +1,11 @@
+uuid: ff418e91-6304-42ca-b775-8884db90b4ea
+langcode: hu
+status: true
+dependencies:
+  config:
+    - commerce_product.commerce_product_type.ticket
+id: commerce_product.ticket
+target_entity_type_id: commerce_product
+target_bundle: ticket
+default_langcode: site_default
+language_alterable: false

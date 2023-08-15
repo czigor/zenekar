@@ -1,0 +1,34 @@
+uuid: 7635fa49-5304-4bb7-ba4e-ac2a1fa98571
+langcode: hu
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.positions.field_position
+    - field.field.paragraph.positions.field_position_dates
+    - paragraphs.paragraphs_type.positions
+  module:
+    - datetime_range
+id: paragraph.positions.default
+targetEntityType: paragraph
+bundle: positions
+mode: default
+content:
+  field_position:
+    type: entity_reference_autocomplete
+    weight: 0
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_position_dates:
+    type: daterange_default
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

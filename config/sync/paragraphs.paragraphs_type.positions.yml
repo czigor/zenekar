@@ -1,0 +1,10 @@
+uuid: 5d6d7b5f-a562-4750-a75e-cbaabe86e108
+langcode: en
+status: true
+dependencies: {  }
+id: positions
+label: Positions
+icon_uuid: null
+icon_default: null
+description: 'Migrated from field_collection field_positions'
+behavior_plugins: {  }

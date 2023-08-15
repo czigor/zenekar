@@ -1,0 +1,58 @@
+label: Payments
+display:
+  default:
+    display_title: Default
+    display_options:
+      title: Payments
+      fields:
+        amount__number:
+          label: Payment
+          separator: ', '
+        refunded_amount__number:
+          label: 'Refunded:'
+          alter:
+            text: 'Refunded: {{ refunded_amount__number }}'
+          separator: ', '
+        avs_response_code_label:
+          separator: ', '
+        avs_response_code:
+          label: 'AVS response code'
+          alter:
+            text: 'AVS response: [{{ avs_response_code }}] {{ avs_response_code_label }}'
+          separator: ', '
+        state:
+          label: State
+          separator: ', '
+        payment_gateway:
+          label: 'Payment gateway'
+          separator: ', '
+        authorized:
+          label: Authorized
+          separator: ', '
+        completed:
+          label: Completed
+          separator: ', '
+        remote_id:
+          label: 'Remote ID'
+          separator: ', '
+        operations:
+          label: Operations
+      exposed_form:
+        options:
+          submit_button: Apply
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+      empty:
+        area_text_custom:
+          content: 'No payments yet.'
+      arguments:
+        order_id:
+          exception:
+            title: All
+  page_1:
+    display_title: Page
+    display_options:
+      menu:
+        title: Payments

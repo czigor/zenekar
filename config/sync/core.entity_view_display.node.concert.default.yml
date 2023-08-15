@@ -1,0 +1,67 @@
+uuid: a027ec89-8726-45e5-a3f0-50851065ca1f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.concert.body
+    - field.field.node.concert.field_concert_type
+    - field.field.node.concert.field_location_reference
+    - field.field.node.concert.field_media
+    - field.field.node.concert.field_orchestra_performers
+    - field.field.node.concert.field_programme
+    - field.field.node.concert.field_ticket_selling
+    - field.field.node.concert.field_time
+    - node.type.concert
+  module:
+    - datetime
+    - text
+    - user
+id: node.concert.default
+targetEntityType: node
+bundle: concert
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_location_reference:
+    type: entity_reference_label
+    label: inline
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_media:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_time:
+    type: datetime_default
+    label: inline
+    settings:
+      timezone_override: ''
+      format_type: medium
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_concert_type: true
+  field_orchestra_performers: true
+  field_programme: true
+  field_ticket_selling: true
+  langcode: true

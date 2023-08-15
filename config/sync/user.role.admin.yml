@@ -1,0 +1,14 @@
+uuid: 06ef3d2f-2c80-42d0-abad-0ea1d8071c2e
+langcode: en
+status: true
+dependencies:
+  module:
+    - file
+    - system
+id: admin
+label: admin
+weight: 5
+is_admin: null
+permissions:
+  - 'delete own files'
+  - 'view the administration theme'

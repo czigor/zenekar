@@ -1,0 +1,27 @@
+uuid: fcf7bcdc-02e3-4d3f-89bb-e4a61ec1d19f
+langcode: hu
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_media_audio_file
+    - media.type.sound
+  module:
+    - file
+id: media.sound.field_media_audio_file
+field_name: field_media_audio_file
+entity_type: media
+bundle: sound
+label: Hangfájl
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:file'
+  handler_settings: {  }
+  file_directory: 'sound/[date:custom:Y]-[date:custom:m]'
+  file_extensions: 'mp3 wav aac ogg'
+  max_filesize: ''
+  description_field: true
+field_type: file

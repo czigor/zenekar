@@ -1,0 +1,12 @@
+uuid: 0cfe6d15-3195-4499-ae9c-16923d58881f
+langcode: hu
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: rpwvgyEURXLz_JjgMCrkS1rUv-0k3L79BpO-ReN7fDI
+id: node
+label: Tartalom
+tags:
+  title: '[node:title] | [site:name]'
+  description: '[node:summary]'
+  canonical_url: '[node:url]'

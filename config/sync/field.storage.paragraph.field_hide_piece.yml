@@ -1,0 +1,18 @@
+uuid: 6db85273-0a94-4c98-8d15-1876b15b43c9
+langcode: und
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.field_hide_piece
+field_name: field_hide_piece
+entity_type: paragraph
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

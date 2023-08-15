@@ -1,0 +1,16 @@
+uuid: 74596c9a-e96f-4fa1-8e3b-4543546e9744
+langcode: hu
+status: true
+dependencies:
+  config:
+    - node.type.seat
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+id: node.seat
+target_entity_type_id: node
+target_bundle: seat
+default_langcode: site_default
+language_alterable: true

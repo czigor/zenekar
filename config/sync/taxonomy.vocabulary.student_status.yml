@@ -1,0 +1,8 @@
+uuid: f260558c-1361-489b-b63d-1148b44cb1b8
+langcode: en
+status: true
+dependencies: {  }
+name: 'Student status'
+vid: student_status
+description: 'If member of BME'
+weight: 0

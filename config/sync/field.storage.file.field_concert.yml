@@ -1,0 +1,20 @@
+uuid: 4108867e-972d-463b-bc8c-0d422572f7c6
+langcode: und
+status: true
+dependencies:
+  module:
+    - file
+    - node
+id: file.field_concert
+field_name: field_concert
+entity_type: file
+type: entity_reference
+settings:
+  target_type: node
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

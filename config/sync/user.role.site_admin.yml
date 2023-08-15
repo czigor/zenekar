@@ -1,0 +1,18 @@
+uuid: 171474a8-064e-404d-8112-a7d173753cae
+langcode: en
+status: true
+dependencies:
+  module:
+    - file
+    - node
+    - system
+id: site_admin
+label: 'site admin'
+weight: 2
+is_admin: null
+permissions:
+  - 'access administration pages'
+  - 'administer nodes'
+  - 'administer users'
+  - 'delete own files'
+  - 'view the administration theme'

@@ -1,0 +1,22 @@
+uuid: b8e06b7a-01aa-4c65-8b43-97dae8032224
+langcode: hu
+status: true
+dependencies:
+  config:
+    - node.type.concert
+id: node.concert.promote
+field_name: promote
+entity_type: node
+bundle: concert
+label: 'Címlapra helyezve'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Be
+  off_label: Ki
+field_type: boolean

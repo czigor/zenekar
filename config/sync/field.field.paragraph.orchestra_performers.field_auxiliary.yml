@@ -1,0 +1,23 @@
+uuid: 331939ff-ffc0-4700-be5e-6ef96db3784f
+langcode: hu
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_auxiliary
+    - paragraphs.paragraphs_type.orchestra_performers
+id: paragraph.orchestra_performers.field_auxiliary
+field_name: field_auxiliary
+entity_type: paragraph
+bundle: orchestra_performers
+label: Kisegítő
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Be
+  off_label: Ki
+field_type: boolean

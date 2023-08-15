@@ -1,0 +1,14 @@
+uuid: 6dc23674-464b-4477-8f31-cd657df954ed
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.section_leader
+  module:
+    - user
+id: user_remove_role_action.section_leader
+label: 'Remove the section leader role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: section_leader

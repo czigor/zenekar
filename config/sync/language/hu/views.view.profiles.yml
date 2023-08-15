@@ -1,0 +1,29 @@
+label: Profilok
+display:
+  default:
+    display_title: Mester
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Alkalmaz
+          reset_button_label: Alaphelyzet
+          exposed_sorts_label: Rendezés
+          sort_asc_label: Növ
+          sort_desc_label: Csökk
+      empty:
+        area:
+          content:
+            value: 'Még nincsenek profilok.'
+      arguments:
+        uid:
+          exception:
+            title: Mind
+        type:
+          exception:
+            title: Mind
+        status:
+          exception:
+            title: Mind
+      title: Profilok
+  user_page:
+    display_title: 'Felhasználói oldal'

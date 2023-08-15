@@ -1,0 +1,13 @@
+uuid: deed07ba-cc9f-4397-92db-ad05d5de4b20
+langcode: hu
+status: true
+dependencies: {  }
+id: sound
+label: Hang
+description: ''
+source: audio_file
+queue_thumbnail_downloads: false
+new_revision: false
+source_configuration:
+  source_field: field_media_audio_file
+field_map: {  }

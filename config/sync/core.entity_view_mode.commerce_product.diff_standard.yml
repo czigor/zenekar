@@ -1,0 +1,10 @@
+uuid: 3b29ff16-4fd8-46d5-a3d9-8d53007b5509
+langcode: en
+status: true
+dependencies:
+  module:
+    - commerce_product
+id: commerce_product.diff_standard
+label: diff_standard
+targetEntityType: commerce_product
+cache: true

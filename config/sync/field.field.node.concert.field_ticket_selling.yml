@@ -1,0 +1,23 @@
+uuid: 54ceb85b-9b66-4722-9422-55cfb299cc06
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_ticket_selling
+    - node.type.concert
+  module:
+    - options
+id: node.concert.field_ticket_selling
+field_name: field_ticket_selling
+entity_type: node
+bundle: concert
+label: 'Ticket selling'
+description: "off: No ticket selling.\r\nadmin: Ticket selling is only visible for admin.\r\non: Webshop is visible for public."
+required: true
+translatable: false
+default_value:
+  -
+    value: 'off'
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -1,0 +1,23 @@
+uuid: d10f4f7e-fd88-4e5b-8ae9-55a2bf683371
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_x_coordinate
+    - node.type.seat
+id: node.seat.field_x_coordinate
+field_name: field_x_coordinate
+entity_type: node
+bundle: seat
+label: 'X coordinate'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: px
+field_type: integer

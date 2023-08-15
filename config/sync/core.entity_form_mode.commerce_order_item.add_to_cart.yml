@@ -1,0 +1,15 @@
+uuid: d4e405ed-d291-48b7-a9e5-1124812a645a
+langcode: hu
+status: true
+dependencies:
+  module:
+    - commerce_order
+  enforced:
+    module:
+      - commerce_cart
+_core:
+  default_config_hash: BeqBf6Mm59Nebv4SsV0yvK5EspkCegPqvwnqwEBvEp0
+id: commerce_order_item.add_to_cart
+label: Kosárba
+targetEntityType: commerce_order_item
+cache: true

@@ -1,0 +1,12 @@
+uuid: 1b0490af-aec2-43b6-b5bf-76c531317b64
+langcode: en
+status: true
+dependencies:
+  module:
+    - file
+id: bme_student_leader
+label: 'BME student leader'
+weight: 10
+is_admin: null
+permissions:
+  - 'delete own files'

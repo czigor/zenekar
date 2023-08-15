@@ -1,0 +1,16 @@
+uuid: acc1b4b2-d644-4193-b6c9-3be187c179c3
+langcode: hu
+status: true
+dependencies:
+  config:
+    - node.type.composer
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+id: node.composer
+target_entity_type_id: node
+target_bundle: composer
+default_langcode: site_default
+language_alterable: true

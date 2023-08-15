@@ -1,0 +1,17 @@
+uuid: f71044e6-21ce-4739-85d2-7b0803040363
+langcode: en
+status: true
+dependencies:
+  module:
+    - file
+    - node
+    - system
+id: editor
+label: editor
+weight: 3
+is_admin: null
+permissions:
+  - 'access administration pages'
+  - 'administer nodes'
+  - 'delete own files'
+  - 'view the administration theme'

@@ -1,0 +1,29 @@
+uuid: 89b0f2cd-9d10-4542-8dce-49f77372c006
+langcode: hu
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_performer
+    - node.type.person
+    - paragraphs.paragraphs_type.orchestra_performers
+id: paragraph.orchestra_performers.field_performer
+field_name: field_performer
+entity_type: paragraph
+bundle: orchestra_performers
+label: Person
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      person: person
+    sort:
+      field: title
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

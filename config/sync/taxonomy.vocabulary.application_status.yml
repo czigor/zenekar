@@ -1,0 +1,8 @@
+uuid: e92539f4-a20c-47d6-a9bb-951975de0ebb
+langcode: en
+status: true
+dependencies: {  }
+name: 'Application status'
+vid: application_status
+description: ''
+weight: 0

@@ -1,0 +1,35 @@
+uuid: e213d20e-58c3-4f54-b78d-94bee9b88763
+langcode: hu
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_media
+    - media.type.file
+    - media.type.image
+    - media.type.remote_video
+    - media.type.sound
+    - node.type.concert
+id: node.concert.field_media
+field_name: field_media
+entity_type: node
+bundle: concert
+label: Média
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      file: file
+      sound: sound
+      image: image
+      remote_video: remote_video
+    sort:
+      field: name
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: file
+field_type: entity_reference

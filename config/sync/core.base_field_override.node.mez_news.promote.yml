@@ -1,0 +1,22 @@
+uuid: 30752df0-186b-4a43-9c26-d6cd528aa452
+langcode: hu
+status: true
+dependencies:
+  config:
+    - node.type.mez_news
+id: node.mez_news.promote
+field_name: promote
+entity_type: node
+bundle: mez_news
+label: 'Címlapra helyezve'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Be
+  off_label: Ki
+field_type: boolean

@@ -1,0 +1,16 @@
+uuid: 1b2a3fac-6d39-4b73-8a4c-247e512ea76e
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    parent: 'main-menu:0:'
+name: 'MEZ Hír'
+type: mez_news
+description: ''
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: true

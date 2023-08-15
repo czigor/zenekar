@@ -1,0 +1,19 @@
+uuid: 2faf80e7-50cc-49d0-bf87-2bad0eaea113
+langcode: hu
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_studies
+    - node.type.person
+id: node.person.field_studies
+field_name: field_studies
+entity_type: node
+bundle: person
+label: Studies
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

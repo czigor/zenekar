@@ -1,0 +1,14 @@
+uuid: 359c291a-11be-49a5-bd5a-6bc5918a3ac8
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.application_manager
+  module:
+    - user
+id: user_remove_role_action.application_manager
+label: 'Remove the application manager role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: application_manager

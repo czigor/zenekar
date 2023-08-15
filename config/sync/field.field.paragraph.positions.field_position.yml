@@ -1,0 +1,29 @@
+uuid: 467f9a71-70d1-4b83-b354-d043ab1dc2f9
+langcode: hu
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_position
+    - paragraphs.paragraphs_type.positions
+    - taxonomy.vocabulary.positions
+id: paragraph.positions.field_position
+field_name: field_position
+entity_type: paragraph
+bundle: positions
+label: Position
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      positions: positions
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

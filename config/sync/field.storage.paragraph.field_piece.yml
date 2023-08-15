@@ -1,0 +1,20 @@
+uuid: d0a3f272-2706-4e07-995f-2191f93d2553
+langcode: und
+status: true
+dependencies:
+  module:
+    - node
+    - paragraphs
+id: paragraph.field_piece
+field_name: field_piece
+entity_type: paragraph
+type: entity_reference
+settings:
+  target_type: node
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

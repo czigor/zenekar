@@ -1,0 +1,29 @@
+uuid: 5e5f4293-d8b0-4378-9edb-8f65fcd448d6
+langcode: hu
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_concert_type
+    - node.type.concert
+    - taxonomy.vocabulary.concert_type
+id: node.concert.field_concert_type
+field_name: field_concert_type
+entity_type: node
+bundle: concert
+label: 'Zenekar típusa'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      concert_type: concert_type
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

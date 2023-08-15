@@ -1,0 +1,21 @@
+uuid: cc7225e0-f747-47d5-baa6-060989d71a66
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_seat_floor
+    - node.type.seat
+  module:
+    - options
+id: node.seat.field_seat_floor
+field_name: field_seat_floor
+entity_type: node
+bundle: seat
+label: Floor
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

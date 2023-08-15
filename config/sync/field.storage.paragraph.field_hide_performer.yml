@@ -1,0 +1,18 @@
+uuid: 21371266-8503-449e-91f2-575844eff7a3
+langcode: und
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.field_hide_performer
+field_name: field_hide_performer
+entity_type: paragraph
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

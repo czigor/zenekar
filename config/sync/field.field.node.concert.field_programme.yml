@@ -1,0 +1,40 @@
+uuid: 16c2cd77-15b8-4327-8730-920a018f8828
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_programme
+    - node.type.concert
+    - paragraphs.paragraphs_type.programme
+  module:
+    - entity_reference_revisions
+id: node.concert.field_programme
+field_name: field_programme
+entity_type: node
+bundle: concert
+label: Programme
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      programme: programme
+    negate: 0
+    target_bundles_drag_drop:
+      orchestra_performers:
+        weight: 2
+        enabled: false
+      performers:
+        weight: 3
+        enabled: false
+      positions:
+        weight: 4
+        enabled: false
+      programme:
+        weight: 1
+        enabled: true
+field_type: entity_reference_revisions

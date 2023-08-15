@@ -1,0 +1,26 @@
+uuid: 9d0d2390-ebf0-469d-8729-d92219f1fd8a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_instrument
+    - paragraphs.paragraphs_type.performers
+    - taxonomy.vocabulary.instruments
+id: paragraph.performers.field_instrument
+field_name: field_instrument
+entity_type: paragraph
+bundle: performers
+label: Instrument
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      instruments: instruments
+    sort:
+      field: _none
+field_type: entity_reference

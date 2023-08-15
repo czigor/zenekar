@@ -1,0 +1,40 @@
+uuid: 35a774f9-2c87-4b21-ae05-ff10a2487fee
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_performers
+    - paragraphs.paragraphs_type.performers
+    - paragraphs.paragraphs_type.programme
+  module:
+    - entity_reference_revisions
+id: paragraph.programme.field_performers
+field_name: field_performers
+entity_type: paragraph
+bundle: programme
+label: Performers
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      performers: performers
+    negate: 0
+    target_bundles_drag_drop:
+      orchestra_performers:
+        weight: 2
+        enabled: false
+      performers:
+        weight: 1
+        enabled: true
+      positions:
+        weight: 3
+        enabled: false
+      programme:
+        weight: 4
+        enabled: false
+field_type: entity_reference_revisions

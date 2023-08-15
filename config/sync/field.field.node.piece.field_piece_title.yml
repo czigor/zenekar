@@ -1,0 +1,19 @@
+uuid: 305fe403-aa8e-4c0c-9b3e-5672e361259b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_piece_title
+    - node.type.piece
+id: node.piece.field_piece_title
+field_name: field_piece_title
+entity_type: node
+bundle: piece
+label: 'Piece title'
+description: "No roman numbers should be used. If only some movements of the composition were played add each movement separately. Guideline examples: \r\n<ul><li>3rd symphony</li>\r\n<li>5th symphony - 1st movement</li>\r\n<li>1st symphony (Titan) - 2nd movement</li>\r\n<li>Romeo and Juliet - Dance of the Knights</li>\r\n</ul>"
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

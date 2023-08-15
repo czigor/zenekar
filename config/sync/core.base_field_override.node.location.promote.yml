@@ -1,0 +1,22 @@
+uuid: 10695e83-1f0c-4c29-b41f-47bd9fc00241
+langcode: hu
+status: true
+dependencies:
+  config:
+    - node.type.location
+id: node.location.promote
+field_name: promote
+entity_type: node
+bundle: location
+label: 'Címlapra helyezve'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Be
+  off_label: Ki
+field_type: boolean

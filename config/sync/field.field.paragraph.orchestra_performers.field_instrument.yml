@@ -1,0 +1,29 @@
+uuid: 97dad21d-6ac5-448a-b752-69e05c27c0aa
+langcode: hu
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_instrument
+    - paragraphs.paragraphs_type.orchestra_performers
+    - taxonomy.vocabulary.instruments
+id: paragraph.orchestra_performers.field_instrument
+field_name: field_instrument
+entity_type: paragraph
+bundle: orchestra_performers
+label: Instrument
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      instruments: instruments
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

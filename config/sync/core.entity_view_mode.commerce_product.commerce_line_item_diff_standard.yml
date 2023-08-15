@@ -1,0 +1,10 @@
+uuid: 86e9635d-2bbf-4b07-b3d2-df6983643626
+langcode: en
+status: true
+dependencies:
+  module:
+    - commerce_product
+id: commerce_product.commerce_line_item_diff_standard
+label: commerce_line_item_diff_standard
+targetEntityType: commerce_product
+cache: true

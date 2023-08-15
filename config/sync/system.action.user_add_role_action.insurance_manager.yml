@@ -1,0 +1,14 @@
+uuid: a351b5bf-2e5a-4be5-89f2-c22ff6548ca0
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.insurance_manager
+  module:
+    - user
+id: user_add_role_action.insurance_manager
+label: 'Add the insurance manager role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: insurance_manager

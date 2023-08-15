@@ -1,0 +1,21 @@
+uuid: 63b337b2-c9e7-4a6d-a97f-5cb6fdab3c05
+langcode: hu
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_years_of_study
+    - node.type.person
+  module:
+    - datetime_range
+id: node.person.field_years_of_study
+field_name: field_years_of_study
+entity_type: node
+bundle: person
+label: 'Years of study'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: daterange

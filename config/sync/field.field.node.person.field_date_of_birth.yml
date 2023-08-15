@@ -1,0 +1,21 @@
+uuid: 5cc50810-f8e4-4b29-8be5-85390432961b
+langcode: hu
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_date_of_birth
+    - node.type.person
+  module:
+    - datetime
+id: node.person.field_date_of_birth
+field_name: field_date_of_birth
+entity_type: node
+bundle: person
+label: 'Date of birth'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

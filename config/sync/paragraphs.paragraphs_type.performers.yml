@@ -1,0 +1,10 @@
+uuid: 5ebf3d06-8245-4188-8c1c-cd0bbea9666b
+langcode: en
+status: true
+dependencies: {  }
+id: performers
+label: Performers
+icon_uuid: null
+icon_default: null
+description: 'Migrated from field_collection field_performers'
+behavior_plugins: {  }

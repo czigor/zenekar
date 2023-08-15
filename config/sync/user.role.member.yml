@@ -1,0 +1,14 @@
+uuid: 3a386bfa-65d5-4561-8f8a-73f591cdc7a1
+langcode: en
+status: true
+dependencies:
+  module:
+    - file
+    - system
+id: member
+label: member
+weight: 4
+is_admin: null
+permissions:
+  - 'delete own files'
+  - 'view the administration theme'

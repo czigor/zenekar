@@ -1,0 +1,23 @@
+uuid: 6d4f7a05-9ffa-4327-9683-3492fafbfbc2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.mez_news
+  module:
+    - text
+id: node.mez_news.body
+field_name: body
+entity_type: node
+bundle: mez_news
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+  required_summary: false
+field_type: text_with_summary

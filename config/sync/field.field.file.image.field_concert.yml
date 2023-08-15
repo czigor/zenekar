@@ -1,0 +1,31 @@
+uuid: 22deebef-1c59-4830-81d1-9c588ed35f12
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.file.field_concert
+    - node.type.concert
+  module:
+    - file
+id: file.image.field_concert
+field_name: field_concert
+entity_type: file
+bundle: image
+label: Concert
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      concert: concert
+    sort:
+      field: title
+      direction: ASC
+    behaviors:
+      views-select-list:
+        status: 1
+field_type: entity_reference

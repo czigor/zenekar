@@ -1,0 +1,8 @@
+uuid: b4fccf12-11ba-42ab-add0-dab933905c35
+langcode: en
+status: true
+dependencies: {  }
+name: 'Issue status'
+vid: issue_status
+description: ''
+weight: -9

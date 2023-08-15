@@ -1,0 +1,30 @@
+uuid: 7f85d80f-293d-4004-95f7-15fc9c63d14d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_composer
+    - node.type.composer
+    - node.type.piece
+id: node.piece.field_composer
+field_name: field_composer
+entity_type: node
+bundle: piece
+label: Composer
+description: 'Több szerző hozzáadása a Ctrl billentyű nyomva tartása mellett lehetséges.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      composer: composer
+    sort:
+      field: title
+      direction: ASC
+    behaviors:
+      views-select-list:
+        status: 1
+field_type: entity_reference

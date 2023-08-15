@@ -1,0 +1,23 @@
+uuid: 0d709012-d96e-43bc-8563-d67cac0a451d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_member
+    - node.type.person
+id: node.person.field_member
+field_name: field_member
+entity_type: node
+bundle: person
+label: Member
+description: 'If this person is/was a member of the orchestra'
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: ''
+  off_label: ''
+field_type: boolean

@@ -1,0 +1,23 @@
+uuid: c7b486a1-a2d4-47c5-85f0-4ef66eea07f7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_issue_status_kanban
+    - taxonomy.vocabulary.issue_status
+id: taxonomy_term.issue_status.field_issue_status_kanban
+field_name: field_issue_status_kanban
+entity_type: taxonomy_term
+bundle: issue_status
+label: 'Kanban status'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: ''
+  off_label: ''
+field_type: boolean

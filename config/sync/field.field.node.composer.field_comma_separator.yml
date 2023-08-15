@@ -1,0 +1,23 @@
+uuid: daad794a-4d29-4ecc-8f66-2bab7a85e3fd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_comma_separator
+    - node.type.composer
+id: node.composer.field_comma_separator
+field_name: field_comma_separator
+entity_type: node
+bundle: composer
+label: 'Comma separator'
+description: 'The family name of the composer is displayed before the given name(s). Check this if you want a comma between them. (So do not check it for Hungarian names.)'
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: ''
+  off_label: ''
+field_type: boolean

@@ -1,0 +1,8 @@
+uuid: d4b62e13-f820-41d6-996c-a2d80c8b5244
+langcode: en
+status: true
+dependencies: {  }
+name: 'Issue tags'
+vid: issue_tags
+description: ''
+weight: -8

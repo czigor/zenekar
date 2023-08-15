@@ -1,0 +1,27 @@
+uuid: 4c84ee2d-7f0d-4d9c-8dbc-3a853f0bd033
+langcode: hu
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_media_file
+    - media.type.file
+  module:
+    - file
+id: media.file.field_media_file
+field_name: field_media_file
+entity_type: media
+bundle: file
+label: Fájl
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:file'
+  handler_settings: {  }
+  file_directory: 'file/[date:custom:Y]-[date:custom:m]'
+  file_extensions: 'txt doc docx pdf odt'
+  max_filesize: ''
+  description_field: false
+field_type: file

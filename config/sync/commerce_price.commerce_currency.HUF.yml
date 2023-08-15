@@ -1,0 +1,9 @@
+uuid: 40af5766-8169-4ee5-bc9b-757211f0b7f7
+langcode: hu
+status: true
+dependencies: {  }
+currencyCode: HUF
+name: 'magyar forint'
+numericCode: '348'
+symbol: Ft
+fractionDigits: 2

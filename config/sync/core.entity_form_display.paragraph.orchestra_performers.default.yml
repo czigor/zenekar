@@ -1,0 +1,52 @@
+uuid: e314802f-772f-4fce-b4b8-2748303f1deb
+langcode: hu
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.orchestra_performers.field_auxiliary
+    - field.field.paragraph.orchestra_performers.field_instrument
+    - field.field.paragraph.orchestra_performers.field_part_leader
+    - field.field.paragraph.orchestra_performers.field_performer
+    - paragraphs.paragraphs_type.orchestra_performers
+id: paragraph.orchestra_performers.default
+targetEntityType: paragraph
+bundle: orchestra_performers
+mode: default
+content:
+  field_auxiliary:
+    type: boolean_checkbox
+    weight: 3
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_instrument:
+    type: entity_reference_autocomplete
+    weight: 1
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_part_leader:
+    type: boolean_checkbox
+    weight: 2
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_performer:
+    type: entity_reference_autocomplete
+    weight: 0
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
