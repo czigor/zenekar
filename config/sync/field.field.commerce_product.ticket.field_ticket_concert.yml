@@ -1,0 +1,29 @@
+uuid: 77484efe-7003-447b-b4b5-398053f0d06c
+langcode: hu
+status: true
+dependencies:
+  config:
+    - commerce_product.commerce_product_type.ticket
+    - field.storage.commerce_product.field_ticket_concert
+    - node.type.concert
+id: commerce_product.ticket.field_ticket_concert
+field_name: field_ticket_concert
+entity_type: commerce_product
+bundle: ticket
+label: Concert
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      concert: concert
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

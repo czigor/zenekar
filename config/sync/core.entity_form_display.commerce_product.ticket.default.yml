@@ -5,6 +5,7 @@ dependencies:
   config:
     - commerce_product.commerce_product_type.ticket
     - field.field.commerce_product.ticket.body
+    - field.field.commerce_product.ticket.field_ticket_concert
   module:
     - commerce
     - path
@@ -29,6 +30,16 @@ content:
     weight: 10
     region: content
     settings: {  }
+    third_party_settings: {  }
+  field_ticket_concert:
+    type: entity_reference_autocomplete
+    weight: 91
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
   langcode:
     type: language_select

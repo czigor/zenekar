@@ -5,6 +5,7 @@ dependencies:
   config:
     - commerce_product.commerce_product_type.ticket
     - field.field.commerce_product.ticket.body
+    - field.field.commerce_product.ticket.field_ticket_concert
   module:
     - commerce_product
     - text
@@ -19,6 +20,14 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 11
+    region: content
+  field_ticket_concert:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 12
     region: content
   title:
     type: string
