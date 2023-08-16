@@ -23,6 +23,7 @@ module:
   commerce_stock_local: 0
   commerce_stock_ui: 0
   commerce_store: 0
+  config: 0
   config_translation: 0
   datetime: 0
   datetime_range: 0
@@ -47,8 +48,11 @@ module:
   language: 0
   link: 0
   locale: 0
+  location_migration: 0
   media: 0
   media_library: 0
+  menu_link_content: 0
+  menu_ui: 0
   metatag: 0
   metatag_facebook: 0
   metatag_open_graph: 0
@@ -57,7 +61,10 @@ module:
   mez_migrate: 0
   migrate: 0
   migrate_drupal: 0
+  migrate_drupal_ui: 0
   migrate_plus: 0
+  migrate_tools: 0
+  migrate_upgrade: 0
   mysql: 0
   node: 0
   options: 0
