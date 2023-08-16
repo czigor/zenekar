@@ -1,0 +1,235 @@
+uuid: 2fb7fcbd-b88d-4a15-b0ec-fb6f843cf2a6
+langcode: hu
+status: true
+dependencies: {  }
+id: upgrade_d7_node_complete_person
+class: Drupal\node\Plugin\migrate\D7NodeTranslation
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - Content
+migration_group: migrate_drupal_7
+label: 'Node complete (Person)'
+source:
+  plugin: d7_node_complete
+  node_type: person
+process:
+  nid:
+    -
+      plugin: get
+      source: tnid
+  vid:
+    -
+      plugin: get
+      source: vid
+  langcode:
+    -
+      plugin: default_value
+      source: language
+      default_value: und
+  title:
+    -
+      plugin: get
+      source: title
+  uid:
+    -
+      plugin: get
+      source: node_uid
+  status:
+    -
+      plugin: get
+      source: status
+  created:
+    -
+      plugin: get
+      source: created
+  changed:
+    -
+      plugin: get
+      source: timestamp
+  promote:
+    -
+      plugin: get
+      source: promote
+  sticky:
+    -
+      plugin: get
+      source: sticky
+  revision_uid:
+    -
+      plugin: get
+      source: revision_uid
+  revision_log:
+    -
+      plugin: get
+      source: log
+  revision_timestamp:
+    -
+      plugin: get
+      source: timestamp
+  content_translation_source:
+    -
+      plugin: get
+      source: source_langcode
+  comment_node_person/0/status:
+    -
+      plugin: get
+      source: comment
+  field_active:
+    -
+      plugin: get
+      source: field_active
+  field_email:
+    -
+      plugin: sub_process
+      source: field_email
+      process:
+        value: email
+  field_email_list:
+    -
+      plugin: get
+      source: field_email_list
+  field_image:
+    -
+      plugin: sub_process
+      source: field_image
+      process:
+        target_id: fid
+        alt: alt
+        title: title
+        width: width
+        height: height
+  field_instrument:
+    -
+      plugin: sub_process
+      source: field_instrument
+      process:
+        target_id: tid
+  field_member:
+    -
+      plugin: get
+      source: field_member
+  field_membership_dates:
+    -
+      plugin: sub_process
+      source: field_membership_dates
+      process:
+        value:
+          plugin: format_date
+          from_format: 'Y-m-d H:i:s'
+          to_format: Y-m-d
+          source: value
+        end_value:
+          plugin: format_date
+          from_format: 'Y-m-d H:i:s'
+          to_format: Y-m-d
+          source: value2
+  field_neptun_code:
+    -
+      plugin: get
+      source: field_neptun_code
+  field_occupation:
+    -
+      plugin: get
+      source: field_occupation
+  field_person_address:
+    -
+      plugin: get
+      source: field_person_address
+  field_phone:
+    -
+      plugin: get
+      source: field_phone
+  field_person_body:
+    -
+      plugin: get
+      source: field_person_body
+  field_positions:
+    -
+      plugin: sub_process
+      source: field_positions
+      process:
+        target_id:
+          -
+            plugin: paragraphs_lookup
+            tags: 'Field Collection Content'
+            source: value
+          -
+            plugin: extract
+            index:
+              - id
+        target_revision_id:
+          -
+            plugin: paragraphs_lookup
+            tags:
+              - 'Field Collection Revisions Content'
+              - 'Field Collection Content'
+            tag_ids:
+              'Field Collection Revisions Content':
+                - revision_id
+              'Field Collection Content':
+                - value
+          -
+            plugin: extract
+            index:
+              - revision_id
+  field_date_of_birth:
+    -
+      plugin: sub_process
+      source: field_date_of_birth
+      process:
+        value:
+          plugin: format_date
+          from_format: 'Y-m-d\TH:i:s'
+          to_format: Y-m-d
+          source: value
+  field_public_description:
+    -
+      plugin: get
+      source: field_public_description
+  field_studies:
+    -
+      plugin: get
+      source: field_studies
+  field_student_status:
+    -
+      plugin: get
+      source: field_student_status
+  field_data_confirmed:
+    -
+      plugin: get
+      source: field_data_confirmed
+  field_place_of_birth:
+    -
+      plugin: get
+      source: field_place_of_birth
+  field_years_of_study:
+    -
+      plugin: sub_process
+      source: field_years_of_study
+      process:
+        value:
+          plugin: format_date
+          from_format: 'Y-m-d\TH:i:s'
+          to_format: Y-m-d
+          source: value
+        end_value:
+          plugin: format_date
+          from_format: 'Y-m-d\TH:i:s'
+          to_format: Y-m-d
+          source: value2
+  field_metatag:
+    -
+      plugin: d7_metatag_entities
+      source: pseudo_metatag_entities
+destination:
+  plugin: 'entity_complete:node'
+  translations: true
+  default_bundle: person
+migration_dependencies:
+  required:
+    - upgrade_d7_user
+    - upgrade_d7_field_collection_positions
+    - upgrade_d7_field_collection_revisions_positions
+  optional: {  }

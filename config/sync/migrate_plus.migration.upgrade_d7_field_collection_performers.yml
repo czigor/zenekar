@@ -1,0 +1,58 @@
+uuid: bd9bc158-96f2-4bab-b13b-acee47f01071
+langcode: hu
+status: true
+dependencies: {  }
+id: upgrade_d7_field_collection_performers
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - Content
+  - 'Field Collection Content'
+migration_group: migrate_drupal_7
+label: 'Field Collections (Performers)'
+source:
+  plugin: d7_field_collection_item
+  field_name: field_performers
+process:
+  type:
+    -
+      plugin: get
+      source: bundle
+  parent_id:
+    -
+      plugin: get
+      source: parent_id
+  parent_type:
+    -
+      plugin: get
+      source: parent_type
+  parent_field_name:
+    -
+      plugin: get
+      source: field_name
+  field_instrument:
+    -
+      plugin: sub_process
+      source: field_instrument
+      process:
+        target_id: tid
+  field_performer:
+    -
+      plugin: get
+      source: field_performer
+  field_hide_performer:
+    -
+      plugin: get
+      source: field_hide_performer
+  field_metatag:
+    -
+      plugin: d7_metatag_entities
+      source: pseudo_metatag_entities
+destination:
+  plugin: 'entity_reference_revisions:paragraph'
+  default_bundle: performers
+migration_dependencies:
+  required: {  }
+  optional: {  }

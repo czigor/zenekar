@@ -1,0 +1,86 @@
+uuid: 342ab108-6f56-4bbe-bdc3-1252aaa1eafa
+langcode: hu
+status: true
+dependencies: {  }
+id: upgrade_d7_field_collection_programme
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - Content
+  - 'Field Collection Content'
+migration_group: migrate_drupal_7
+label: 'Field Collections (Programme)'
+source:
+  plugin: d7_field_collection_item
+  field_name: field_programme
+process:
+  type:
+    -
+      plugin: get
+      source: bundle
+  parent_id:
+    -
+      plugin: get
+      source: parent_id
+  parent_type:
+    -
+      plugin: get
+      source: parent_type
+  parent_field_name:
+    -
+      plugin: get
+      source: field_name
+  field_performers:
+    -
+      plugin: sub_process
+      source: field_performers
+      process:
+        target_id:
+          -
+            plugin: paragraphs_lookup
+            tags: 'Field Collection Content'
+            source: value
+          -
+            plugin: extract
+            index:
+              - id
+        target_revision_id:
+          -
+            plugin: paragraphs_lookup
+            tags:
+              - 'Field Collection Revisions Content'
+              - 'Field Collection Content'
+            tag_ids:
+              'Field Collection Revisions Content':
+                - revision_id
+              'Field Collection Content':
+                - value
+          -
+            plugin: extract
+            index:
+              - revision_id
+  field_piece:
+    -
+      plugin: get
+      source: field_piece
+  field_movement:
+    -
+      plugin: get
+      source: field_movement
+  field_hide_piece:
+    -
+      plugin: get
+      source: field_hide_piece
+  field_metatag:
+    -
+      plugin: d7_metatag_entities
+      source: pseudo_metatag_entities
+destination:
+  plugin: 'entity_reference_revisions:paragraph'
+  default_bundle: programme
+migration_dependencies:
+  required:
+    - upgrade_d7_field_collection_performers
+  optional: {  }
