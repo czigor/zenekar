@@ -266,6 +266,7 @@ function mez_ticket_hacks_preprocess_mez_ticket_pdf(&$vars) {
 	 * SO instead we do this:
 	 */
 	$field_time = $cli->commerce_product->field_concert->field_time->value()[0]['value'];
+	$field_latex_ticket_body = $cli->commerce_product->field_concert->field_latex_ticket_body->value();	
 	$datetime = new DateTime($field_time, new DateTimeZone("UTC"));
 	$datetime->setTimezone(new DateTimeZone('Europe/Budapest'));
 	$MONTHS = Array("január", "február", "március", "április", "május", "június", "július", "augusztus", "szeptember", "október", "november" , "december");
@@ -282,6 +283,7 @@ function mez_ticket_hacks_preprocess_mez_ticket_pdf(&$vars) {
       'location_title' => $cli->commerce_product->field_seat->field_concert_hall->title->value(),
       'location_address' => $loc->postal_code->value() . ' ' . $loc->city->value() . ', ' .  $loc->street->value(),
       'concert_time' => $concert_time_formatted,
+	  'latex_ticket_body' => $field_latex_ticket_body,
     );
   }
   $vars['tickets'] = $tickets;

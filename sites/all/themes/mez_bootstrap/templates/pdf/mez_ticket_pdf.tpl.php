@@ -15,7 +15,7 @@
 \definecolor{lg}{rgb}{0.9,0.9,0.9}
 
 % One ticket a concert.
-\newcommand{\mezticket}[7]{
+\newcommand{\mezticket}[8]{
 %\vspace*{\fill}%
 \begin{center}%
 \begin{tikzpicture}[scale=0.85]%
@@ -46,15 +46,16 @@
 	{\small Helyszín: #6
 	(#7)
 	}\\[2mm]
-	\LARGE \textsc{Műegyetemi Szimfonikus Zenekar}\\[4mm]
-	\LARGE\textsc{\bfseries Filmzenék}\\[2mm]
-
-	\emph{Vezényel: Erdélyi Dániel -- Koncertmester: Orova-Pechan Laura}\\[2mm]
-	#5\\[2mm]
+	\LARGE \textsc{Műegyetemi Szimfonikus Zenekar}
+	\\[4mm]
+	#8
+	\\[2mm]
+	#5
+	\\[2mm]
 	{\Large \textbf{#1}}\\[2mm]
 	Ára: #2
 };
-\node[anchor=south east,font=\scriptsize] at (22,0) {\qrcode[height=1.4cm]{#3}};
+\node[anchor=south east,font=\scriptsize] at (22,0) {\qrcode[height=2.2cm]{#3}};
 % Ticket data
 \node[anchor=south,align=center,rotate=90,font=\tiny] at (4,4.7) {
 \tiny
@@ -89,6 +90,7 @@ Vásárlás ideje: \texttt{#4}\\
  {<?php print $ticket['concert_time']; ?>}
  {<?php print $ticket['location_title']; ?>}
  {<?php print $ticket['location_address']; ?>}
+ {<?php print $ticket['latex_ticket_body']; ?>}
 <?php endforeach;?>
 
 

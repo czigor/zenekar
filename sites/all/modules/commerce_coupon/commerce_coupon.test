@@ -1,0 +1,372 @@
+<?php
+
+/**
+ * @file
+ * Commerce Coupon tests.
+ */
+
+/**
+ * Base class for Commerce Discount tests
+ */
+abstract class CommerceCouponTestBase extends CommerceBaseTestCase {
+  /**
+   * Don't need most of default core modules.
+   */
+  protected $profile = 'minimal';
+
+  /**
+   * Dummy commerce_product and related product node.
+   */
+  protected $product;
+  protected $product_node;
+
+  /**
+   * User accounts for testing.
+   */
+  protected $store_admin;
+  protected $store_customer;
+
+  /**
+   * Allows submodules to define themselves for setup.
+   *
+   * @var string
+   */
+  protected $sub_module;
+
+  /**
+   * Overrides CommerceBaseTestCase::permissionBuilder().
+   */
+  protected function permissionBuilder($set) {
+    $permissions = parent::permissionBuilder($set);
+
+    switch ($set) {
+      case 'store admin':
+      case 'site admin':
+        $permissions[] = 'administer commerce discounts';
+        $permissions[] = 'administer commerce_coupon entities';
+        $permissions[] = 'redeem any coupon';
+        break;
+      case 'customer':
+        $permissions[] = 'redeem any coupon';
+        break;
+    }
+
+    return $permissions;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function setUp() {
+    // Enable all commerce modules + commerce_discount.
+    $modules = parent::setUpHelper('all');
+
+    $modules[] = 'commerce_coupon';
+    if ($this->sub_module) {
+      $modules[] = $this->sub_module;
+    }
+    parent::setUp($modules);
+
+    // User creation for different operations.
+    $this->store_admin = $this->createStoreAdmin();
+    $this->store_customer = $this->createStoreCustomer();
+
+    // Create a dummy product.
+    $this->product = $this->createDummyProduct('PROD-01', 'Product One', 1000);
+
+    // Create a dummy product display content type.
+    $this->createDummyProductDisplayContentType();
+
+    // Create a product display node.
+    $this->product_node = $this->createDummyProductNode(array($this->product->product_id), 'Product One node');
+
+    // Set the default country to US.
+    variable_set('site_default_country', 'US');
+  }
+
+  /**
+   * Create a discount.
+   *
+   * @see \CommerceDiscountTestBase::createDiscount()
+   *
+   * @param string $discount_type
+   *   The discount type; Either 'order_discount' or 'product_discount'.
+   * @param string $offer_type
+   *   The discount offer type; Either 'fixed_amount' or 'percentage'.
+   * @param int|array $amount
+   *   The discount offer amount, percentage or product ids array.
+   * @param string $name
+   *   Discount name - Optional. If given, CANNOT start with a number.
+   * @param string $component_title
+   *   Component title - Optional.
+   *
+   * @return CommerceDiscount
+   *   The newly created commerce_discount entity.
+   */
+  protected function createDiscount($discount_type, $offer_type, $amount, $name = '', $component_title = '', $sort_order = 10) {
+    // Create the discount offer.
+    $commerce_discount_offer = entity_create('commerce_discount_offer', array('type' => $offer_type));
+    $offer_wrapper = entity_metadata_wrapper('commerce_discount_offer', $commerce_discount_offer);
+    switch ($offer_type) {
+      case 'fixed_amount':
+        $offer_wrapper->commerce_fixed_amount->amount = $amount;
+        $offer_wrapper->commerce_fixed_amount->currency_code = 'USD';
+        break;
+
+      case 'percentage':
+        $offer_wrapper->commerce_percentage = $amount;
+        break;
+
+      case 'free_products':
+        // Product ids array should be provided for $amount.
+        $offer_wrapper->commerce_free_products = $amount;
+        break;
+    }
+
+    $offer_wrapper->save();
+
+    // Provide default name.
+    $name = $name ? $name : $discount_type . '_' . $offer_type;
+    $component_title = $component_title ? $component_title : $name;
+
+    // Create the discount.
+    $values = array(
+      'name' => $name,
+      'label' => $name,
+      'type' => $discount_type,
+      'sort_order' => $sort_order,
+      'component_title' => $component_title,
+      'status' => TRUE,
+      'export_status' => TRUE,
+    );
+    $commerce_discount = entity_create('commerce_discount', $values);
+    $discount_wrapper = entity_metadata_wrapper('commerce_discount', $commerce_discount);
+    $discount_wrapper->commerce_discount_offer = $commerce_discount_offer;
+    $discount_wrapper->save();
+
+    return $discount_wrapper->value();
+  }
+}
+
+/**
+ * Testing commerce coupon UI and functionality.
+ */
+class CommerceCouponTest extends CommerceCouponTestBase {
+  /**
+   * Implementation of getInfo().
+   */
+  public static function getInfo() {
+    return array(
+      'name' => 'Coupons',
+      'description' => 'Test coupons UI and functionality',
+      'group' => 'Commerce Coupon',
+    );
+  }
+
+  /**
+   * Access to commerce discounts admin.
+   */
+  public function testCommerceCouponUIAccessCouponsListing() {
+    // Login with customer.
+    $this->drupalLogin($this->store_customer);
+    // Check the access to the profiles listing.
+    $this->drupalGet('admin/commerce/discounts');
+    $this->assertResponse(403, 'The store customer has no access to coupon administration.');
+
+    // Login with store admin.
+    $this->drupalLogin($this->store_admin);
+    // Check the access to the profiles listing.
+    $this->drupalGet('admin/commerce/coupons');
+    $this->assertResponse(200, 'The store admin has access to coupon administration.');
+
+    // Check the add customer profile link.
+    $this->assertRaw(l(t('Create Coupon'), 'admin/commerce/coupons/add'), "'Create Coupon' link is present in the page");
+  }
+
+  public function testCommerceCouponUIAddCoupon() {
+    // Login with normal user.
+    $this->drupalLogin($this->store_customer);
+
+    // Access to the admin discount creation page.
+    $this->drupalGet('admin/commerce/coupons/add');
+
+    $this->assertResponse(403, 'Normal user is not able to add a coupon using the admin interface');
+
+    // Login with store admin.
+    $this->drupalLogin($this->store_admin);
+
+    // Access to the admin discount creation page.
+    $this->drupalGet('admin/commerce/coupons/add');
+
+    $this->assertResponse(200, 'Store admin user is allowed to add a discount using the admin interface');
+
+    // Check the integrity of the add form.
+    $this->assertFieldByName('code', NULL, 'Coupon code field is present');
+    $this->assertFieldByName('generate', NULL, 'Coupon code generate field is present');
+    $this->assertFieldByName('commerce_discount_reference[und][0][target_id]', NULL, 'Discount reference field is present');
+    $this->assertFieldByName('status', 1, 'Coupon status field is present and enabled');
+    $this->assertFieldById('edit-submit', t('Save coupon'), 'Save coupon button is present');
+
+    // Try to save the product and check validation messages.
+    $this->drupalPost(NULL, array(), t('Save coupon'));
+
+    $this->assertText(t('You must enter a code.'), 'Validation message for missing code.');
+    $this->assertText(t('field is required.'), 'Validation message for discount reference.');
+
+    // Create a discount and make a legit coupon.
+    $discount = $this->createDiscount('order_discount', 'fixed_amount', 300);
+
+    // Load a fresh form.
+    $this->drupalGet('admin/commerce/coupons/add');
+
+    $values = array(
+      // Add a trailing space to test trimming.
+      'code' => 'TEST_COUPON ',
+      'commerce_discount_reference[und][0][target_id]' => $discount->label . ' (' . $discount->internalIdentifier() . ')',
+    );
+    $this->drupalPost(NULL, $values, t('Save coupon'));
+
+    // Try to verify coupon.
+    $coupon = entity_load_single('commerce_coupon', 1);
+    $this->assertEqual($coupon->code, 'TEST_COUPON', 'Coupon code is correct');
+
+    // Check the coupons listing.
+    $this->assertUrl('admin/commerce/coupons', array(), 'Landing page after save is the coupons list.');
+    $this->assertText($values['code'], 'Label of the coupon is present.');
+
+  }
+
+  public function testCommerceCouponUICartForm() {
+    // Login as administrator and add the field to the footer of the cart View.
+    $this->drupalLogin($this->store_admin);
+    $view = views_get_view('commerce_cart_form');
+    $view->add_item('default', 'footer', 'commerce_order', 'coupon_cart_form');
+    $view->save();
+
+    // Create a cart order and ensure we can see the code form on the cart
+    // management page.
+    $this->createDummyOrder($this->store_admin->uid, array($this->product->product_id => 1), $status = 'cart');
+    $this->drupalGet('cart');
+    $this->assertFieldByName('coupon_code', NULL, 'Coupon code field is present on cart management page.');
+    $this->assertFieldByName('coupon_add', NULL, 'Coupon add submit button is present on cart management page.');
+
+    // Test coupon code validation.
+    $this->drupalPost(NULL, array(), t('Add coupon'));
+    $this->assertText(t('Please enter a coupon code.'), 'Validation message for missing code.');
+    // Load a fresh form.
+    $this->drupalGet('cart');
+    $values = array('coupon_code' => 'BLAH');
+    $this->drupalPost(NULL, $values, t('Add coupon'));
+    $this->assertText(t('Please enter a valid coupon code.'), 'Validation message for code that doesn\'t exist.');
+
+    // Create a discount and add a coupon to it. Test it applies correctly.
+    $discount = $this->createDiscount('order_discount', 'fixed_amount', 300);
+    $coupon = commerce_coupon_create('discount_coupon');
+    $coupon->code = 'HALF OFF';
+    $coupon->commerce_discount_reference['und'][0]['target_id'] = $discount->discount_id;
+    commerce_coupon_save($coupon);
+    // Load a fresh form.
+    $this->drupalGet('cart');
+    $values = array('coupon_code' => 'HALF OFF');
+    $this->drupalPost(NULL, $values, t('Add coupon'));
+    $this->assertText(t('Coupon code applied.'), 'Coupon applied message for valid code.');
+
+    // Load a fresh form and try to apply the same code with a trailing space.
+    $this->drupalGet('cart');
+    $values = array('coupon_code' => 'HALF OFF ');
+    $this->drupalPost(NULL, $values, t('Add coupon'));
+    $this->assertText(t('The coupon you have entered has already been applied to your order'), 'Coupon applied message for valid code.');
+  }
+
+  public function testCommerceCouponTypeAccess() {
+    // Login with store admin.
+    $this->drupalLogin($this->store_admin);
+
+    $this->drupalGet('admin/commerce/coupons/types/discount-coupon');
+    $this->assertResponse(200, 'The store admin has access to coupons of the discount-coupon type.');
+    $this->drupalPost(NULL, array(), t('Save configuration'));
+    $this->assertText(t('The configuration options have been saved.'));
+  }
+
+  public function testCommerceCouponCouponCount() {
+    // Login with store admin.
+    $this->drupalLogin($this->store_admin);
+
+    // Create a discount and make a legit coupon.
+    $discount = $this->createDiscount('order_discount', 'fixed_amount', 300);
+    $discount_wrapper = entity_metadata_wrapper('commerce_discount', $discount);
+
+    // Load a fresh form.
+    $this->drupalGet('admin/commerce/coupons/add');
+
+    $values = array(
+      'code' => 'TEST_COUPON',
+      'commerce_discount_reference[und][0][target_id]' => $discount->label . ' (' . $discount->internalIdentifier() . ')',
+    );
+    $this->drupalPost(NULL, $values, t('Save coupon'));
+
+    // Enabled coupons contribute to the discount coupon count.
+    $this->assertEqual($discount_wrapper->coupon_count->value(), 1, 'Enabled discount coupon contributes to discount coupon count.');
+
+    $coupon = commerce_coupon_load(1);
+    $coupon->status = 0;
+    commerce_coupon_save($coupon);
+    // We need to save the discount to clear the coupon count cache.
+    entity_save('commerce_discount', $discount);
+    $discount_wrapper = entity_metadata_wrapper('commerce_discount', $discount);
+
+    // Disabled coupons also contribute to the discount coupon count.
+    $this->assertEqual($discount_wrapper->coupon_count->value(), 1, 'Disabled discount coupon contributes to discount coupon count.');
+  }
+
+}
+
+/**
+ * Testing commerce coupon UI and functionality.
+ */
+class CommerceCouponLoadCouponCodeDiscountsTest extends CommerceCouponTestBase {
+
+  /**
+   * Implementation of getInfo().
+   */
+  public static function getInfo() {
+    return array(
+      'name' => 'Coupons commerce_coupon_load_coupon_code_discounts',
+      'description' => 'Test commerce_coupon_load_coupon_code_discounts',
+      'group' => 'Commerce Coupon',
+    );
+  }
+
+  public function testCommerceCouponLoadCouponCodeDiscounts() {
+    // Login with store admin.
+    $this->drupalLogin($this->store_admin);
+
+    // Create a discount and make a legit coupon.
+    $discount = $this->createDiscount('order_discount', 'fixed_amount', 300);
+
+    // Load a fresh form.
+    $this->drupalGet('admin/commerce/coupons/add');
+
+    $values = array(
+      'code' => 'TEST_COUPON',
+      'commerce_discount_reference[und][0][target_id]' => $discount->label . ' (' . $discount->internalIdentifier() . ')',
+    );
+    $this->drupalPost(NULL, $values, t('Save coupon'));
+
+    $discounts = commerce_coupon_load_coupon_code_discounts('TEST_COUPON');
+    $this->assertTrue(!empty($discounts));
+    $this->assertEqual(1, count($discounts));
+
+    // Test the discount returned.
+    $returned_discount = reset($discounts);
+    $this->assertTrue($returned_discount !== FALSE);
+    $this->assertEqual($discount->label, $returned_discount->label);
+
+    $discount->status = 0;
+    $discount->save();
+
+    $discounts = commerce_coupon_load_coupon_code_discounts('TEST_COUPON');
+    $this->assertEqual(0, count($discounts));
+  }
+
+}

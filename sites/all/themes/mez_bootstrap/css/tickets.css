@@ -95,3 +95,9 @@ body.node-type-concert.page-node-5218 .mez_concert_bank_info, body.node-type-con
   /* line 40, ../sass/tickets.scss */
   .mez-concert-hall .mez-ticket.free.mez-ticket-price-3800 span.inner {
     background-color: green; }
+
+  .mez-concert-hall .mez-ticket.free.mez-ticket-price-1500 span.inner {
+    background-color: tomato; }
+	
+  .mez-concert-hall .mez-ticket.free.mez-ticket-price-4000 span.inner {
+    background-color: gold; }
