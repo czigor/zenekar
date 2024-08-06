@@ -182,9 +182,13 @@ process:
       source: field_studies
   field_student_status:
     -
-      plugin: migration_lookup
-      migration: upgrade_d7_taxonomy_term_student_status
+      plugin: sub_process
       source: field_student_status
+      process:
+        target_id:
+          plugin: migration_lookup
+          migration: upgrade_d7_taxonomy_term_student_status
+          source: target_id
   field_data_confirmed:
     -
       plugin: get
