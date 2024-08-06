@@ -1,0 +1,20 @@
+uuid: a619f8cb-3445-41ac-8a2c-65449c4505cf
+langcode: hu
+status: true
+dependencies:
+  config:
+    - media.type.remote_video
+id: media.remote_video.uid
+field_name: uid
+entity_type: media
+bundle: remote_video
+label: Szerző
+description: 'A szerző felhasználói azonosítója.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: 'Drupal\media\Entity\Media::getDefaultEntityOwner'
+settings:
+  handler: default
+  handler_settings: {  }
+field_type: entity_reference

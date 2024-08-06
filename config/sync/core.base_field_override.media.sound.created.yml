@@ -1,0 +1,18 @@
+uuid: 495d6501-d822-4fcb-a6ae-8bb33cf1f958
+langcode: hu
+status: true
+dependencies:
+  config:
+    - media.type.sound
+id: media.sound.created
+field_name: created
+entity_type: media
+bundle: sound
+label: 'Beküldés ideje'
+description: 'A médiaelem létrejöttének ideje.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: 'Drupal\media\Entity\Media::getRequestTime'
+settings: {  }
+field_type: created

@@ -1,0 +1,21 @@
+uuid: b947591b-0b52-4cba-93f8-32b42ef49d65
+langcode: hu
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_person_address_geoloc
+    - node.type.person
+  module:
+    - geolocation
+id: node.person.field_person_address_geoloc
+field_name: field_person_address_geoloc
+entity_type: node
+bundle: person
+label: 'Geolocation of Address'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: geolocation

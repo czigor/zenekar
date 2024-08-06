@@ -6,5 +6,6 @@ dependencies:
     - commerce_order
 id: commerce_order.token
 label: token
+description: ''
 targetEntityType: commerce_order
 cache: true

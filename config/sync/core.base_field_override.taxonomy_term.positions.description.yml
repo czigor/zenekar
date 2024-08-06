@@ -1,0 +1,21 @@
+uuid: 788abbca-2bdb-4262-89ed-bfff51a73a42
+langcode: hu
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.positions
+  module:
+    - text
+id: taxonomy_term.positions.description
+field_name: description
+entity_type: taxonomy_term
+bundle: positions
+label: Leírás
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

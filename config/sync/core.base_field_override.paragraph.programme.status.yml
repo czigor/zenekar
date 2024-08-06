@@ -1,0 +1,22 @@
+uuid: e51275ac-ad28-4a14-a298-2e3ab69de13d
+langcode: hu
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.programme
+id: paragraph.programme.status
+field_name: status
+entity_type: paragraph
+bundle: programme
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: Be
+  off_label: Ki
+field_type: boolean

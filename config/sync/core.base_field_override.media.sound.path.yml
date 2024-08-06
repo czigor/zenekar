@@ -1,0 +1,20 @@
+uuid: 9962045c-cfa6-48b3-8dcd-1dad54a65d6a
+langcode: hu
+status: true
+dependencies:
+  config:
+    - media.type.sound
+  module:
+    - path
+id: media.sound.path
+field_name: path
+entity_type: media
+bundle: sound
+label: Webcímálnév
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

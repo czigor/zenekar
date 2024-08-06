@@ -1,0 +1,21 @@
+uuid: ea4eacd9-7b5a-4421-8608-c1740c39e924
+langcode: hu
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.concert_type
+  module:
+    - text
+id: taxonomy_term.concert_type.description
+field_name: description
+entity_type: taxonomy_term
+bundle: concert_type
+label: Leírás
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

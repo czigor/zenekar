@@ -1,0 +1,18 @@
+uuid: 226e5177-8bc7-4731-a752-0d2544e550ea
+langcode: hu
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.concert_type
+id: taxonomy_term.concert_type.name
+field_name: name
+entity_type: taxonomy_term
+bundle: concert_type
+label: Name
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

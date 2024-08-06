@@ -1,0 +1,18 @@
+uuid: 6f32b0cd-c32a-4d1c-985d-91f829d70e43
+langcode: hu
+status: true
+dependencies:
+  config:
+    - media.type.image
+id: media.image.changed
+field_name: changed
+entity_type: media
+bundle: image
+label: Módosítva
+description: 'A médiaelem utolsó módosításának ideje.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

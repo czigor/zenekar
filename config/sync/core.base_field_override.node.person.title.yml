@@ -1,0 +1,18 @@
+uuid: e304d2a5-577c-4882-91fb-e82ad748a1d7
+langcode: hu
+status: true
+dependencies:
+  config:
+    - node.type.person
+id: node.person.title
+field_name: title
+entity_type: node
+bundle: person
+label: Cím
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

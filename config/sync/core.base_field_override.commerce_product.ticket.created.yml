@@ -1,0 +1,18 @@
+uuid: 70a92414-d385-4459-ad95-79f3ff1f286f
+langcode: hu
+status: true
+dependencies:
+  config:
+    - commerce_product.commerce_product_type.ticket
+id: commerce_product.ticket.created
+field_name: created
+entity_type: commerce_product
+bundle: ticket
+label: Létrehozva
+description: 'The time when the product was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

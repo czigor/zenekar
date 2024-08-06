@@ -6,5 +6,6 @@ dependencies:
     - file
 id: file.colorbox_preview
 label: colorbox_preview
+description: ''
 targetEntityType: file
 cache: true

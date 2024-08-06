@@ -6,18 +6,13 @@ dependencies:
     - filter.format.ckeditor
   module:
     - commerce_checkout
-    - commerce_order
-    - commerce_payment
-    - commerce_product
-    - file
     - filter
-    - media
     - node
     - system
 _core:
   default_config_hash: dJ0L2DNSj5q6XVZAGsuVDpJTh5UeYkIPwKrUOOpr8YI
 id: authenticated
-label: 'Azonosított felhasználó'
+label: 'authenticated user'
 weight: 1
 is_admin: false
 permissions:
@@ -26,9 +21,4 @@ permissions:
   - 'access content overview'
   - 'access site in maintenance mode'
   - 'access user profiles'
-  - 'delete own files'
-  - 'manage own commerce_payment_method'
   - 'use text format ckeditor'
-  - 'view commerce_product'
-  - 'view media'
-  - 'view own commerce_order'

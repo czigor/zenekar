@@ -1,0 +1,22 @@
+uuid: b018538f-aba9-4309-8f33-26e9f74c970f
+langcode: hu
+status: true
+dependencies:
+  config:
+    - media.type.sound
+id: media.sound.status
+field_name: status
+entity_type: media
+bundle: sound
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: Be
+  off_label: Ki
+field_type: boolean

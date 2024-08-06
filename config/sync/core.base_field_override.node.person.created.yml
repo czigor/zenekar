@@ -1,0 +1,18 @@
+uuid: 383c9832-f30a-46de-b42b-79a3936ac207
+langcode: hu
+status: true
+dependencies:
+  config:
+    - node.type.person
+id: node.person.created
+field_name: created
+entity_type: node
+bundle: person
+label: 'Beküldés ideje'
+description: 'The date and time that the content was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

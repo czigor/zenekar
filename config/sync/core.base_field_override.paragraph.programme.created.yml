@@ -1,0 +1,18 @@
+uuid: 292160c7-dd16-41c4-84c8-17f3823edb38
+langcode: hu
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.programme
+id: paragraph.programme.created
+field_name: created
+entity_type: paragraph
+bundle: programme
+label: 'Beküldés ideje'
+description: 'Az időpont, mikor a bekezdést létrehozták.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

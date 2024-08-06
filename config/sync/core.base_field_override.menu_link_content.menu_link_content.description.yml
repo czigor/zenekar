@@ -1,0 +1,18 @@
+uuid: ac7d35a3-a8b5-42c1-998b-3a8b9b6e8960
+langcode: hu
+status: true
+dependencies:
+  module:
+    - menu_link_content
+id: menu_link_content.menu_link_content.description
+field_name: description
+entity_type: menu_link_content
+bundle: menu_link_content
+label: Leírás
+description: 'Akkor jelenik meg, ha az egér a menühivatkozás fölé kerül.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -16,6 +16,7 @@ dependencies:
     - field.field.node.person.field_membership_dates
     - field.field.node.person.field_neptun_code
     - field.field.node.person.field_occupation
+    - field.field.node.person.field_person_address_geoloc
     - field.field.node.person.field_phone
     - field.field.node.person.field_place_of_birth
     - field.field.node.person.field_positions
@@ -101,6 +102,12 @@ targetEntityType: node
 bundle: person
 mode: default
 content:
+  '':
+    type: geolocation_latlng
+    weight: 6
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   body:
     type: text_textarea_with_summary
     weight: 5
@@ -321,4 +328,5 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-hidden: {  }
+hidden:
+  field_person_address_geoloc: true

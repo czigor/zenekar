@@ -6,5 +6,6 @@ dependencies:
     - commerce_product
 id: commerce_product.commerce_line_item_diff_standard
 label: commerce_line_item_diff_standard
+description: ''
 targetEntityType: commerce_product
 cache: true

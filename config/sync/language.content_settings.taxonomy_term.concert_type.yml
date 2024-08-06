@@ -1,0 +1,18 @@
+uuid: d84d010a-7e01-449b-9609-dcc6e09f0d96
+langcode: hu
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.concert_type
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: taxonomy_term.concert_type
+target_entity_type_id: taxonomy_term
+target_bundle: concert_type
+default_langcode: site_default
+language_alterable: false

@@ -1,0 +1,20 @@
+uuid: 30f5e33b-ec31-4482-bb68-0f3b9a85ef84
+langcode: hu
+status: true
+dependencies:
+  config:
+    - media.type.file
+id: media.file.uid
+field_name: uid
+entity_type: media
+bundle: file
+label: Szerző
+description: 'A szerző felhasználói azonosítója.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: 'Drupal\media\Entity\Media::getDefaultEntityOwner'
+settings:
+  handler: default
+  handler_settings: {  }
+field_type: entity_reference

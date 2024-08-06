@@ -6,5 +6,6 @@ dependencies:
     - node
 id: node.mez_frontpage
 label: mez_frontpage
+description: ''
 targetEntityType: node
 cache: true

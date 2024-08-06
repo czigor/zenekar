@@ -1,0 +1,20 @@
+uuid: e40511d3-1cf0-481e-a94a-16a6c7b192db
+langcode: hu
+status: true
+dependencies:
+  config:
+    - media.type.sound
+id: media.sound.name
+field_name: name
+entity_type: media
+bundle: sound
+label: Name
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: ''
+default_value_callback: ''
+settings: {  }
+field_type: string

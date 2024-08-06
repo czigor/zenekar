@@ -1,0 +1,20 @@
+uuid: 2b833a03-8ddb-485c-9d28-39d9a10aa8b7
+langcode: hu
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.media
+  module:
+    - path
+id: taxonomy_term.media.path
+field_name: path
+entity_type: taxonomy_term
+bundle: media
+label: Webcímálnév
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

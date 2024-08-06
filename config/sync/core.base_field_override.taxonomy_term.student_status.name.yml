@@ -1,0 +1,18 @@
+uuid: 6fcc6775-1325-48bb-95e8-d847f00d5b60
+langcode: hu
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.student_status
+id: taxonomy_term.student_status.name
+field_name: name
+entity_type: taxonomy_term
+bundle: student_status
+label: Name
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

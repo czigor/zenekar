@@ -1,0 +1,20 @@
+uuid: c1fc7b79-73f4-46fa-b274-c8e058682598
+langcode: hu
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.student_status
+  module:
+    - path
+id: taxonomy_term.student_status.path
+field_name: path
+entity_type: taxonomy_term
+bundle: student_status
+label: Webcímálnév
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

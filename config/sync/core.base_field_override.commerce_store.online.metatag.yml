@@ -1,0 +1,20 @@
+uuid: 600519fe-8f77-4940-9593-692bb83eff09
+langcode: hu
+status: true
+dependencies:
+  config:
+    - commerce_store.commerce_store_type.online
+  module:
+    - metatag
+id: commerce_store.online.metatag
+field_name: metatag
+entity_type: commerce_store
+bundle: online
+label: 'Metatags (Hidden field for JSON support)'
+description: 'The computed meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag_computed

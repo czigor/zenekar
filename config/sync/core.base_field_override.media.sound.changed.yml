@@ -1,0 +1,18 @@
+uuid: 61926fc3-0a0e-4041-85d1-95d1ca8b5ca4
+langcode: hu
+status: true
+dependencies:
+  config:
+    - media.type.sound
+id: media.sound.changed
+field_name: changed
+entity_type: media
+bundle: sound
+label: Módosítva
+description: 'A médiaelem utolsó módosításának ideje.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

@@ -1,0 +1,13 @@
+diff --git a/composer.json b/composer.json
+index 172dfbc73831d71b401a3bf46d8cddb077beab87..fa6b53a17a6b2482feaf44dd8801838a66ec6e38 100644
+--- a/composer.json
++++ b/composer.json
+@@ -16,7 +16,7 @@
+         "source": "https://git.drupalcode.org/project/location_migration"
+     },
+     "require": {
+-        "drupal/address": "^1.8",
++        "drupal/address": "^1.8 || ^2.0",
+         "drupal/geolocation": "^3.2",
+         "php": ">=7.1"
+     }

@@ -1,0 +1,18 @@
+uuid: 0b9aa0ed-14a7-4e13-9894-51b320c138f6
+langcode: hu
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.media
+id: taxonomy_term.media.name
+field_name: name
+entity_type: taxonomy_term
+bundle: media
+label: Name
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -6,5 +6,6 @@ dependencies:
     - commerce_product
 id: commerce_product.token
 label: token
+description: ''
 targetEntityType: commerce_product
 cache: true

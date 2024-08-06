@@ -1,0 +1,22 @@
+uuid: 9d4e0ea8-fc71-4c69-b00c-fe5e5ec419d8
+langcode: hu
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.orchestra_performers
+id: paragraph.orchestra_performers.status
+field_name: status
+entity_type: paragraph
+bundle: orchestra_performers
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: Be
+  off_label: Ki
+field_type: boolean

@@ -17,7 +17,7 @@ required: false
 translatable: false
 default_value:
   -
-    langcode: hu
+    langcode: null
     country_code: HU
     administrative_area: null
     locality: ''
@@ -26,10 +26,10 @@ default_value:
     sorting_code: null
     address_line1: ''
     address_line2: ''
-    organization: ''
-    given_name: ''
+    organization: null
+    given_name: null
     additional_name: null
-    family_name: ''
+    family_name: null
 default_value_callback: ''
 settings:
   available_countries: {  }
@@ -43,5 +43,13 @@ settings:
       override: hidden
     organization:
       override: hidden
+    addressLine1:
+      override: optional
+    addressLine2:
+      override: optional
+    postalCode:
+      override: optional
+    locality:
+      override: optional
   fields: {  }
 field_type: address

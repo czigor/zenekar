@@ -6,5 +6,6 @@ dependencies:
     - file
 id: file.media_original
 label: media_original
+description: ''
 targetEntityType: file
 cache: true

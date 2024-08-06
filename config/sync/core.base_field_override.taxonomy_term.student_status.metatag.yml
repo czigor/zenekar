@@ -1,0 +1,20 @@
+uuid: db5fb122-58c4-4c65-b4a3-b1dd85f70b4a
+langcode: hu
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.student_status
+  module:
+    - metatag
+id: taxonomy_term.student_status.metatag
+field_name: metatag
+entity_type: taxonomy_term
+bundle: student_status
+label: 'Metatags (Hidden field for JSON support)'
+description: 'The computed meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag_computed

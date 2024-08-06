@@ -3,12 +3,10 @@ langcode: en
 status: true
 dependencies:
   module:
-    - file
     - system
 id: member
 label: member
 weight: 4
 is_admin: null
 permissions:
-  - 'delete own files'
   - 'view the administration theme'

@@ -1,0 +1,22 @@
+uuid: e7af9954-2361-43da-83c4-c56580e1c786
+langcode: hu
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.positions
+id: paragraph.positions.status
+field_name: status
+entity_type: paragraph
+bundle: positions
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: Be
+  off_label: Ki
+field_type: boolean

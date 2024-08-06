@@ -1,0 +1,66 @@
+uuid: 18752988-7d86-4639-a8cc-e7b246b6e472
+langcode: hu
+status: true
+dependencies: {  }
+id: upgrade_d7_taxonomy_term_instruments
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - Content
+migration_group: migrate_drupal_7
+label: 'Taxonomy terms (Instruments)'
+source:
+  plugin: d7_taxonomy_term
+  bundle: instruments
+  constants:
+    vid: instruments
+process:
+  tid:
+    -
+      plugin: get
+      source: tid
+  vid: constants/vid
+  name: name
+  description/value:
+    -
+      plugin: get
+      source: description
+  description/format:
+    -
+      plugin: get
+      source: format
+  weight: weight
+  parent_id:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: parent
+    -
+      plugin: migration_lookup
+      migration:
+        - upgrade_d7_taxonomy_term_instruments
+  parent:
+    -
+      plugin: default_value
+      default_value: 0
+      source: '@parent_id'
+  forum_container:
+    -
+      plugin: get
+      source: is_container
+  changed:
+    -
+      plugin: get
+      source: timestamp
+  langcode:
+    -
+      plugin: default_value
+      default_value: hu
+destination:
+  plugin: 'entity:taxonomy_term'
+  default_bundle: instruments
+migration_dependencies:
+  required: {  }
+  optional: {  }

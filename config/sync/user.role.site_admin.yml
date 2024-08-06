@@ -2,9 +2,18 @@ uuid: 171474a8-064e-404d-8112-a7d173753cae
 langcode: en
 status: true
 dependencies:
+  config:
+    - node.type.composer
+    - node.type.concert
+    - node.type.location
+    - node.type.media_asset
+    - node.type.mez_news
+    - node.type.page
+    - node.type.person
+    - node.type.piece
   module:
-    - file
     - node
+    - path
     - system
 id: site_admin
 label: 'site admin'
@@ -14,5 +23,29 @@ permissions:
   - 'access administration pages'
   - 'administer nodes'
   - 'administer users'
-  - 'delete own files'
+  - 'create composer content'
+  - 'create concert content'
+  - 'create location content'
+  - 'create media_asset content'
+  - 'create mez_news content'
+  - 'create page content'
+  - 'create person content'
+  - 'create piece content'
+  - 'create url aliases'
+  - 'delete any composer content'
+  - 'delete any concert content'
+  - 'delete any location content'
+  - 'delete any media_asset content'
+  - 'delete any mez_news content'
+  - 'delete any page content'
+  - 'delete any person content'
+  - 'delete any piece content'
+  - 'edit any composer content'
+  - 'edit any concert content'
+  - 'edit any location content'
+  - 'edit any media_asset content'
+  - 'edit any mez_news content'
+  - 'edit any page content'
+  - 'edit any person content'
+  - 'edit any piece content'
   - 'view the administration theme'

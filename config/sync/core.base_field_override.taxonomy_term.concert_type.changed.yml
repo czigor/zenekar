@@ -1,0 +1,18 @@
+uuid: 399559dd-b93b-4ffa-a8ce-ea7408160b78
+langcode: hu
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.concert_type
+id: taxonomy_term.concert_type.changed
+field_name: changed
+entity_type: taxonomy_term
+bundle: concert_type
+label: Módosítva
+description: 'Az időpont, mikor a kifejezést utoljára szerkesztették.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

@@ -1,0 +1,20 @@
+uuid: 42c8183a-9f25-45ff-98ca-f053fbd99802
+langcode: hu
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.application_status
+  module:
+    - path
+id: taxonomy_term.application_status.path
+field_name: path
+entity_type: taxonomy_term
+bundle: application_status
+label: Webcímálnév
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

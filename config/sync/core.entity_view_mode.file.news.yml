@@ -6,5 +6,6 @@ dependencies:
     - file
 id: file.news
 label: news
+description: ''
 targetEntityType: file
 cache: true

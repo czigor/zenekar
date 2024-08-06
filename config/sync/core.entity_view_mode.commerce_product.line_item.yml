@@ -6,5 +6,6 @@ dependencies:
     - commerce_product
 id: commerce_product.line_item
 label: line_item
+description: ''
 targetEntityType: commerce_product
 cache: true

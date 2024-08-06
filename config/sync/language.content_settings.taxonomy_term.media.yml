@@ -1,0 +1,18 @@
+uuid: 5d57773e-d482-4132-af22-be55767afa88
+langcode: hu
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.media
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: taxonomy_term.media
+target_entity_type_id: taxonomy_term
+target_bundle: media
+default_langcode: site_default
+language_alterable: false

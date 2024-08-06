@@ -1,0 +1,21 @@
+uuid: 30ffeb23-a475-4726-b278-c310cc728521
+langcode: hu
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.application_status
+  module:
+    - text
+id: taxonomy_term.application_status.description
+field_name: description
+entity_type: taxonomy_term
+bundle: application_status
+label: Leírás
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

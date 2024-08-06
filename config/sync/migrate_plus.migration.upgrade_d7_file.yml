@@ -15,7 +15,7 @@ source:
   plugin: d7_file
   scheme: public
   constants:
-    source_base_path: https://zenekar.bme.hu
+    source_base_path: 'https://zenekar.bme.hu'
 process:
   fid:
     -

@@ -1,0 +1,18 @@
+uuid: ebf73409-27c6-474d-b2cf-57897ee3dc1f
+langcode: hu
+status: true
+dependencies:
+  config:
+    - media.type.remote_video
+id: media.remote_video.created
+field_name: created
+entity_type: media
+bundle: remote_video
+label: 'Beküldés ideje'
+description: 'A médiaelem létrejöttének ideje.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: 'Drupal\media\Entity\Media::getRequestTime'
+settings: {  }
+field_type: created

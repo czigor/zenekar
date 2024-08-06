@@ -1,0 +1,18 @@
+uuid: 18bd556f-a037-4485-b7e0-eaaa2810ceac
+langcode: hu
+status: true
+dependencies:
+  config:
+    - media.type.image
+id: media.image.created
+field_name: created
+entity_type: media
+bundle: image
+label: 'Beküldés ideje'
+description: 'A médiaelem létrejöttének ideje.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: 'Drupal\media\Entity\Media::getRequestTime'
+settings: {  }
+field_type: created

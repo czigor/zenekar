@@ -1,0 +1,18 @@
+uuid: dc29bc4b-18ca-4ce6-8052-0dbc749f8aee
+langcode: hu
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.application_status
+id: taxonomy_term.application_status.name
+field_name: name
+entity_type: taxonomy_term
+bundle: application_status
+label: Name
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -6,5 +6,6 @@ dependencies:
     - file
 id: file.short_teaser
 label: short_teaser
+description: ''
 targetEntityType: file
 cache: true

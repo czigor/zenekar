@@ -1,0 +1,22 @@
+uuid: 62badae3-2ef3-4af8-b183-6ee195f2912b
+langcode: hu
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.student_status
+id: taxonomy_term.student_status.status
+field_name: status
+entity_type: taxonomy_term
+bundle: student_status
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: Be
+  off_label: Ki
+field_type: boolean

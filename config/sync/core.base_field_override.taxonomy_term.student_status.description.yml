@@ -1,0 +1,21 @@
+uuid: d7a738f5-9fb5-41b7-af00-27d29bce73fa
+langcode: hu
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.student_status
+  module:
+    - text
+id: taxonomy_term.student_status.description
+field_name: description
+entity_type: taxonomy_term
+bundle: student_status
+label: Leírás
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

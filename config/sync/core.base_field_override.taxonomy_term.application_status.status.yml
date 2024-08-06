@@ -1,0 +1,22 @@
+uuid: 6bafcde0-e538-4636-9971-756bac60e397
+langcode: hu
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.application_status
+id: taxonomy_term.application_status.status
+field_name: status
+entity_type: taxonomy_term
+bundle: application_status
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: Be
+  off_label: Ki
+field_type: boolean

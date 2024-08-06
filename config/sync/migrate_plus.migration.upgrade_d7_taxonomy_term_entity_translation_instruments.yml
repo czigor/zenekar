@@ -1,0 +1,71 @@
+uuid: 7b539903-599a-499e-aea1-7b7c9a71eaa5
+langcode: hu
+status: true
+dependencies: {  }
+id: upgrade_d7_taxonomy_term_entity_translation_instruments
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - translation
+  - Content
+  - Multilingual
+migration_group: migrate_drupal_7
+label: 'Taxonomy term entity translations (Instruments)'
+source:
+  plugin: d7_taxonomy_term_entity_translation
+  bundle: instruments
+process:
+  tid:
+    -
+      plugin: get
+      source: entity_id
+  name:
+    -
+      plugin: get
+      source: name
+  description/value:
+    -
+      plugin: get
+      source: description
+  description/format:
+    -
+      plugin: get
+      source: format
+  langcode:
+    -
+      plugin: get
+      source: language
+  status:
+    -
+      plugin: get
+      source: status
+  content_translation_source:
+    -
+      plugin: get
+      source: source
+  content_translation_outdated:
+    -
+      plugin: get
+      source: translate
+  content_translation_uid:
+    -
+      plugin: get
+      source: uid
+  content_translation_created:
+    -
+      plugin: get
+      source: created
+  changed:
+    -
+      plugin: get
+      source: changed
+destination:
+  plugin: 'entity:taxonomy_term'
+  translations: true
+  destination_module: content_translation
+  default_bundle: instruments
+migration_dependencies:
+  required: {  }
+  optional: {  }

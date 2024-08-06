@@ -1,0 +1,20 @@
+uuid: 3d6f06b0-561a-485c-829f-369fae3e1976
+langcode: hu
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.concert_type
+  module:
+    - path
+id: taxonomy_term.concert_type.path
+field_name: path
+entity_type: taxonomy_term
+bundle: concert_type
+label: Webcímálnév
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

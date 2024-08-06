@@ -1,0 +1,18 @@
+uuid: 21c67443-84d1-4eb0-9d6f-ddf34c0f60e5
+langcode: hu
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.positions
+id: taxonomy_term.positions.name
+field_name: name
+entity_type: taxonomy_term
+bundle: positions
+label: Name
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,22 @@
+uuid: 18ae478a-5bdc-4585-a3fa-a96370fbc3c3
+langcode: hu
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.positions
+id: taxonomy_term.positions.status
+field_name: status
+entity_type: taxonomy_term
+bundle: positions
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: Be
+  off_label: Ki
+field_type: boolean

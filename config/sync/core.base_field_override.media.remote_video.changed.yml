@@ -1,0 +1,18 @@
+uuid: aaaca677-8fbc-426b-bde5-fedc3e0c8f94
+langcode: hu
+status: true
+dependencies:
+  config:
+    - media.type.remote_video
+id: media.remote_video.changed
+field_name: changed
+entity_type: media
+bundle: remote_video
+label: Módosítva
+description: 'A médiaelem utolsó módosításának ideje.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

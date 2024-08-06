@@ -1,0 +1,21 @@
+uuid: 9d1f2a1c-1019-4fb0-b83d-f593923e0345
+langcode: hu
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.media
+  module:
+    - text
+id: taxonomy_term.media.description
+field_name: description
+entity_type: taxonomy_term
+bundle: media
+label: Leírás
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

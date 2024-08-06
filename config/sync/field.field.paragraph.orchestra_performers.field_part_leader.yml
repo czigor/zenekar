@@ -12,7 +12,7 @@ bundle: orchestra_performers
 label: 'Part leader'
 description: ''
 required: false
-translatable: true
+translatable: false
 default_value:
   -
     value: 0

@@ -1,0 +1,18 @@
+uuid: cb2c8c5d-35d6-47fb-a6ac-c0f6f4e8b06e
+langcode: hu
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.instruments
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: taxonomy_term.instruments
+target_entity_type_id: taxonomy_term
+target_bundle: instruments
+default_langcode: site_default
+language_alterable: true

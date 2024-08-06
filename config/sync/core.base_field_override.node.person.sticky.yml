@@ -1,0 +1,22 @@
+uuid: 33df53d8-ac4f-4294-b473-7d94b8633609
+langcode: hu
+status: true
+dependencies:
+  config:
+    - node.type.person
+id: node.person.sticky
+field_name: sticky
+entity_type: node
+bundle: person
+label: 'Kiemelt, az oldal tetejére'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Be
+  off_label: Ki
+field_type: boolean

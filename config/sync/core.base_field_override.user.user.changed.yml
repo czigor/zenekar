@@ -1,0 +1,18 @@
+uuid: 5db30430-696f-4b5e-9a3c-217c96b10151
+langcode: hu
+status: true
+dependencies:
+  module:
+    - user
+id: user.user.changed
+field_name: changed
+entity_type: user
+bundle: user
+label: Módosítva
+description: 'Az időpont, mikor a felhasználót utoljára szerkesztették.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

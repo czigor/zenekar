@@ -17,6 +17,7 @@ dependencies:
     - field.field.node.person.field_membership_dates
     - field.field.node.person.field_neptun_code
     - field.field.node.person.field_occupation
+    - field.field.node.person.field_person_address_geoloc
     - field.field.node.person.field_phone
     - field.field.node.person.field_place_of_birth
     - field.field.node.person.field_positions
@@ -59,6 +60,7 @@ hidden:
   field_membership_dates: true
   field_neptun_code: true
   field_occupation: true
+  field_person_address_geoloc: true
   field_phone: true
   field_place_of_birth: true
   field_positions: true

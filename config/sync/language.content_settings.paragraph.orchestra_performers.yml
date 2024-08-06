@@ -1,0 +1,18 @@
+uuid: d0efbde8-7ec1-40be-b902-4da913601d89
+langcode: hu
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.orchestra_performers
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: paragraph.orchestra_performers
+target_entity_type_id: paragraph
+target_bundle: orchestra_performers
+default_langcode: site_default
+language_alterable: false

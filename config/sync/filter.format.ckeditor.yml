@@ -19,6 +19,12 @@ filters:
       allowed_html: '<br> <p> <h2> <h3> <h4> <h5> <h6> <strong> <em> <u> <blockquote> <a href> <ul> <ol reversed start> <li> <drupal-media data-entity-type data-entity-uuid alt>'
       filter_html_help: true
       filter_html_nofollow: false
+  filter_image_lazy_load:
+    id: filter_image_lazy_load
+    provider: filter
+    status: true
+    weight: 15
+    settings: {  }
   media_embed:
     id: media_embed
     provider: media
@@ -33,9 +39,3 @@ filters:
         image: image
         remote_video: remote_video
         sound: sound
-  filter_image_lazy_load:
-    id: filter_image_lazy_load
-    provider: filter
-    status: true
-    weight: 15
-    settings: {  }

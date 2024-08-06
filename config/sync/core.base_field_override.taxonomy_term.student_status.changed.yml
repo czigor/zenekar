@@ -1,0 +1,18 @@
+uuid: ded42a47-8aff-47fd-8187-800d3a486121
+langcode: hu
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.student_status
+id: taxonomy_term.student_status.changed
+field_name: changed
+entity_type: taxonomy_term
+bundle: student_status
+label: Módosítva
+description: 'Az időpont, mikor a kifejezést utoljára szerkesztették.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

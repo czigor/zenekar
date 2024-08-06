@@ -8,9 +8,9 @@ dependencies:
 _core:
   default_config_hash: EZYKCbgxvY_dDDwK9piZCx6wll1ArPTjellGybiFv10
 id: commerce_order_item_table
-label: 'Order items'
+label: Rendeléselemek
 module: views
-description: 'Display a set of order items in a table.'
+description: 'Táblázatosan megjeleníti rendelési tételek egy csoportját.'
 tag: commerce_order_item_table
 base_table: commerce_order_item
 base_field: order_item_id
@@ -97,7 +97,7 @@ display:
           entity_type: commerce_order_item
           entity_field: unit_price
           plugin_id: field
-          label: 'Unit price'
+          label: Egységár
           exclude: false
           alter:
             alter_text: false
@@ -163,7 +163,7 @@ display:
           entity_type: commerce_order_item
           entity_field: quantity
           plugin_id: field
-          label: Quantity
+          label: Mennyiség
           exclude: false
           alter:
             alter_text: false
@@ -231,7 +231,7 @@ display:
           entity_type: commerce_order_item
           entity_field: total_price
           plugin_id: field
-          label: 'Total price'
+          label: 'Végső ár'
           exclude: false
           alter:
             alter_text: false
@@ -296,11 +296,11 @@ display:
         options:
           submit_button: Alkalmaz
           reset_button: false
-          reset_button_label: Reset
-          exposed_sorts_label: 'Sort by'
+          reset_button_label: Alaphelyzet
+          exposed_sorts_label: Rendezés
           expose_sort_order: true
-          sort_asc_label: Asc
-          sort_desc_label: Desc
+          sort_asc_label: Növ
+          sort_desc_label: Csökk
       access:
         type: none
         options: {  }
@@ -335,13 +335,12 @@ display:
           exception:
             value: all
             title_enable: false
-            title: All
+            title: Mind
           title_enable: false
           title: ''
           default_argument_type: fixed
           default_argument_options:
             argument: ''
-          default_argument_skip_url: false
           summary_options:
             base_path: ''
             count: true

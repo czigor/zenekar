@@ -1,0 +1,18 @@
+uuid: 8389b842-eda2-468d-a8b3-7c61b233ff2d
+langcode: hu
+status: true
+dependencies:
+  config:
+    - commerce_store.commerce_store_type.online
+id: commerce_store.online.name
+field_name: name
+entity_type: commerce_store
+bundle: online
+label: Name
+description: 'A bolt neve.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

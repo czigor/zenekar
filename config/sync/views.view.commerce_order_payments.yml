@@ -19,7 +19,7 @@ base_field: payment_id
 display:
   default:
     id: default
-    display_title: Default
+    display_title: Alapértelmezés
     display_plugin: default
     position: 0
     display_options:
@@ -640,7 +640,7 @@ display:
           entity_type: null
           entity_field: null
           plugin_id: entity_operations
-          label: Operations
+          label: Műveletek
           exclude: false
           alter:
             alter_text: false
@@ -691,11 +691,11 @@ display:
         options:
           submit_button: Alkalmaz
           reset_button: false
-          reset_button_label: Reset
-          exposed_sorts_label: 'Sort by'
+          reset_button_label: Alaphelyzet
+          exposed_sorts_label: Rendezés
           expose_sort_order: true
-          sort_asc_label: Asc
-          sort_desc_label: Desc
+          sort_asc_label: Növ
+          sort_desc_label: Csökk
       access:
         type: perm
         options:
@@ -746,13 +746,12 @@ display:
           exception:
             value: all
             title_enable: false
-            title: All
+            title: Mind
           title_enable: false
           title: ''
           default_argument_type: fixed
           default_argument_options:
             argument: ''
-          default_argument_skip_url: false
           summary_options:
             base_path: ''
             count: true
@@ -896,7 +895,7 @@ display:
       tags: {  }
   page_1:
     id: page_1
-    display_title: Page
+    display_title: Oldal
     display_plugin: page
     position: 1
     display_options:

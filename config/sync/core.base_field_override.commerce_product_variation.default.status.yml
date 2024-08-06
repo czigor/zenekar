@@ -1,0 +1,22 @@
+uuid: f19b3123-7b77-44c8-9948-121c068d0b66
+langcode: hu
+status: true
+dependencies:
+  config:
+    - commerce_product.commerce_product_variation_type.default
+id: commerce_product_variation.default.status
+field_name: status
+entity_type: commerce_product_variation
+bundle: default
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: Be
+  off_label: Ki
+field_type: boolean

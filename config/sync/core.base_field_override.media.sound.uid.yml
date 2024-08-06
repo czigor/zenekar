@@ -1,0 +1,20 @@
+uuid: 2d77c769-e352-4a44-9511-886e0cb2c56f
+langcode: hu
+status: true
+dependencies:
+  config:
+    - media.type.sound
+id: media.sound.uid
+field_name: uid
+entity_type: media
+bundle: sound
+label: Szerző
+description: 'A szerző felhasználói azonosítója.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: 'Drupal\media\Entity\Media::getDefaultEntityOwner'
+settings:
+  handler: default
+  handler_settings: {  }
+field_type: entity_reference

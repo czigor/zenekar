@@ -1,0 +1,101 @@
+uuid: cd50e1ab-0ccf-4f96-bd24-7fffb7990357
+langcode: hu
+status: true
+dependencies: {  }
+id: upgrade_d7_node_complete_location
+class: Drupal\node\Plugin\migrate\D7NodeTranslation
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - Content
+migration_group: migrate_drupal_7
+label: 'Node complete (Location)'
+source:
+  plugin: d7_node_complete
+  node_type: location
+process:
+  nid:
+    -
+      plugin: get
+      source: tnid
+  vid:
+    -
+      plugin: get
+      source: vid
+  langcode:
+    -
+      plugin: default_value
+      source: language
+      default_value: und
+  title:
+    -
+      plugin: get
+      source: title
+  uid:
+    -
+      plugin: get
+      source: node_uid
+  status:
+    -
+      plugin: get
+      source: status
+  created:
+    -
+      plugin: get
+      source: created
+  changed:
+    -
+      plugin: get
+      source: timestamp
+  promote:
+    -
+      plugin: get
+      source: promote
+  sticky:
+    -
+      plugin: get
+      source: sticky
+  revision_uid:
+    -
+      plugin: get
+      source: revision_uid
+  revision_log:
+    -
+      plugin: get
+      source: log
+  revision_timestamp:
+    -
+      plugin: get
+      source: timestamp
+  content_translation_source:
+    -
+      plugin: get
+      source: source_langcode
+  comment_node_location/0/status:
+    -
+      plugin: get
+      source: comment
+  field_location:
+    -
+      plugin: location_to_address
+      source: field_location
+  field_location_geoloc:
+    -
+      plugin: location_to_geolocation
+      source: field_location
+  field_ticket_map_compression:
+    -
+      plugin: get
+      source: field_ticket_map_compression
+  field_metatag:
+    -
+      plugin: d7_metatag_entities
+      source: pseudo_metatag_entities
+destination:
+  plugin: 'entity_complete:node'
+  translations: true
+  default_bundle: location
+migration_dependencies:
+  required:
+    - upgrade_d7_user
