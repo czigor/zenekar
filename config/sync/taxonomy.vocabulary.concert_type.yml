@@ -6,3 +6,4 @@ name: 'Concert type'
 vid: concert_type
 description: 'The type of orchestra performing at the concerts'
 weight: 0
+new_revision: false

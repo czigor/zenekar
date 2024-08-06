@@ -6,3 +6,4 @@ name: 'Student status'
 vid: student_status
 description: 'If member of BME'
 weight: 0
+new_revision: false

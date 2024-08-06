@@ -10,7 +10,7 @@ third_party_settings:
 name: Piece
 type: piece
 description: 'A piece played on a concert.'
-help: ''
+help: null
 new_revision: true
 preview_mode: 1
 display_submitted: false

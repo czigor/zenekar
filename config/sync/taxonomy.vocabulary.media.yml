@@ -6,3 +6,4 @@ name: 'Media tags'
 vid: media
 description: 'Tags for files'
 weight: 0
+new_revision: false
