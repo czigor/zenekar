@@ -129,10 +129,14 @@ process:
     -
       plugin: get
       source: field_phone
-  body:
+  body/value: field_person_body/0/value
+  body/format:
     -
-      plugin: get
-      source: field_person_body
+      plugin: static_map
+      source: field_person_body/0/format
+      map:
+        wysiwyg: ckeditor
+        plain_text: plain_text
   field_positions:
     -
       plugin: sub_process
@@ -172,10 +176,10 @@ process:
           from_format: 'Y-m-d\TH:i:s'
           to_format: Y-m-d
           source: value
-  field_public_description:
-    -
-      plugin: get
-      source: field_public_description
+  field_public_description/value: field_public_description/0/value
+  field_public_description/format:
+    plugin: default_value
+    default_value: ckeditor
   field_studies:
     -
       plugin: get
