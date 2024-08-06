@@ -31,7 +31,7 @@ process:
   title:
     -
       plugin: get
-      source: title
+      source: title_field
   uid:
     -
       plugin: get
@@ -72,10 +72,6 @@ process:
     -
       plugin: get
       source: source_langcode
-  comment_node_composer/0/status:
-    -
-      plugin: get
-      source: comment
   field_comma_separator:
     -
       plugin: get
@@ -88,18 +84,10 @@ process:
     -
       plugin: get
       source: field_given_name
-  field_metatag:
-    -
-      plugin: d7_metatag_entities
-      source: pseudo_metatag_entities
 destination:
   plugin: 'entity_complete:node'
   translations: true
   default_bundle: composer
 migration_dependencies:
-  required:
-    - upgrade_d7_user
-    - upgrade_d7_node_type
-    - upgrade_language
-  optional:
-    - upgrade_d7_field_instance
+  required: {}
+  optional: {}

@@ -72,11 +72,11 @@ process:
     -
       plugin: get
       source: source_langcode
-  comment_node_location/0/status:
+  field_location: 
     -
-      plugin: get
-      source: comment
-  field_location:
+      plugin: location_to_geolocation
+      source: field_location
+  field_address:
     -
       plugin: location_to_address
       source: field_location
@@ -88,14 +88,9 @@ process:
     -
       plugin: get
       source: field_ticket_map_compression
-  field_metatag:
-    -
-      plugin: d7_metatag_entities
-      source: pseudo_metatag_entities
 destination:
   plugin: 'entity_complete:node'
   translations: true
   default_bundle: location
 migration_dependencies:
-  required:
-    - upgrade_d7_user
+  required: { }
