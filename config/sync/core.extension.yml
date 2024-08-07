@@ -51,6 +51,8 @@ module:
   location_migration: 0
   media: 0
   media_library: 0
+  media_migration: 0
+  media_migration_tools: 0
   menu_link_content: 0
   menu_ui: 0
   metatag: 0
@@ -59,6 +61,8 @@ module:
   metatag_twitter_cards: 0
   metatag_views: 0
   mez_content: 0
+  migmag: 0
+  migmag_process: 0
   migrate: 0
   migrate_drupal: 0
   migrate_drupal_ui: 0
@@ -73,6 +77,7 @@ module:
   path_alias: 0
   phpass: 0
   profile: 0
+  smart_sql_idmap: 0
   state_machine: 0
   syslog: 0
   system: 0

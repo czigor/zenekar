@@ -72,7 +72,7 @@ process:
     -
       plugin: get
       source: source_langcode
-  field_location: 
+  field_location:
     -
       plugin: location_to_geolocation
       source: field_location
@@ -93,4 +93,4 @@ destination:
   translations: true
   default_bundle: location
 migration_dependencies:
-  required: { }
+  required: {  }
