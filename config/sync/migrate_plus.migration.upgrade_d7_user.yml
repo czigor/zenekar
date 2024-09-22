@@ -74,33 +74,10 @@ process:
       plugin: migration_lookup
       migration: upgrade_d7_user_role
       source: roles
-  user_picture:
-    -
-      plugin: default_value
-      source: picture
-      default_value: null
-    -
-      plugin: migration_lookup
-      migration: upgrade_d7_file
-  field_metatag:
-    -
-      plugin: d7_metatag_entities
-      source: pseudo_metatag_entities
-  og_user_node:
-    -
-      plugin: get
-      source: og_user_node
 destination:
   plugin: 'entity:user'
 migration_dependencies:
   required:
     - upgrade_d7_user_role
   optional:
-    - upgrade_d7_field_instance
-    - upgrade_d7_file
-    - upgrade_language
-    - upgrade_default_language
-    - upgrade_user_picture_field_instance
-    - upgrade_user_picture_entity_display
-    - upgrade_user_picture_entity_form_display
     - upgrade_d7_user_role

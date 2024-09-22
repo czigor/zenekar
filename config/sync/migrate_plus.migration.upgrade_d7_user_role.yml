@@ -52,8 +52,4 @@ destination:
   plugin: 'entity:user_role'
 migration_dependencies:
   required: {  }
-  optional:
-    - upgrade_d7_filter_format
-    - upgrade_d7_node_type
-    - upgrade_d7_taxonomy_vocabulary
-    - upgrade_d7_taxonomy_vocabulary_translation
+  optional: {  }
