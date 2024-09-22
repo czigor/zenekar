@@ -8,21 +8,6 @@ module:
   block: 0
   breakpoint: 0
   ckeditor5: 0
-  commerce: 0
-  commerce_cart: 0
-  commerce_checkout: 0
-  commerce_log: 0
-  commerce_number_pattern: 0
-  commerce_order: 0
-  commerce_payment: 0
-  commerce_price: 0
-  commerce_product: 0
-  commerce_stock: 0
-  commerce_stock_enforcement: 0
-  commerce_stock_field: 0
-  commerce_stock_local: 0
-  commerce_stock_ui: 0
-  commerce_store: 0
   config: 0
   config_translation: 0
   datetime: 0
@@ -30,7 +15,6 @@ module:
   dblog: 0
   dynamic_page_cache: 0
   editor: 0
-  entity: 0
   entity_reference_revisions: 0
   field: 0
   field_group: 0
@@ -41,7 +25,6 @@ module:
   geolocation_address: 0
   geolocation_leaflet: 0
   image: 0
-  inline_entity_form: 0
   jquery_ui: 0
   jquery_ui_autocomplete: 0
   jquery_ui_menu: 0
@@ -51,8 +34,6 @@ module:
   location_migration: 0
   media: 0
   media_library: 0
-  media_migration: 0
-  media_migration_tools: 0
   menu_link_content: 0
   menu_ui: 0
   metatag: 0
@@ -61,11 +42,10 @@ module:
   metatag_twitter_cards: 0
   metatag_views: 0
   mez_content: 0
-  migmag: 0
-  migmag_process: 0
   migrate: 0
   migrate_drupal: 0
   migrate_drupal_ui: 0
+  migrate_file_to_media: 0
   migrate_plus: 0
   migrate_tools: 0
   migrate_upgrade: 0
@@ -76,9 +56,6 @@ module:
   path: 0
   path_alias: 0
   phpass: 0
-  profile: 0
-  smart_sql_idmap: 0
-  state_machine: 0
   syslog: 0
   system: 0
   taxonomy: 0

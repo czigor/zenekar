@@ -3,14 +3,12 @@ langcode: hu
 status: true
 dependencies:
   module:
-    - commerce_checkout
     - system
 _core:
   default_config_hash: j5zLMOdJBqC0bMvSdth5UebkprJB8g_2FXHqhfpJzow
 id: anonymous
-label: 'anonymous user'
+label: 'Névtelen felhasználó'
 weight: 0
 is_admin: false
 permissions:
-  - 'access checkout'
   - 'access content'

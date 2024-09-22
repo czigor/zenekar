@@ -5,18 +5,16 @@ dependencies:
   config:
     - filter.format.ckeditor
   module:
-    - commerce_checkout
     - filter
     - node
     - system
 _core:
   default_config_hash: dJ0L2DNSj5q6XVZAGsuVDpJTh5UeYkIPwKrUOOpr8YI
 id: authenticated
-label: 'authenticated user'
+label: 'Azonosított felhasználó'
 weight: 1
 is_admin: false
 permissions:
-  - 'access checkout'
   - 'access content'
   - 'access content overview'
   - 'access site in maintenance mode'
