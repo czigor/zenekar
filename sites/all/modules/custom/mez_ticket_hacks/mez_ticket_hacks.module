@@ -83,7 +83,7 @@ function mez_ticket_plan_visible($concert) {
       $time = field_get_items('node', $concert, 'field_time');
       $time = new DateTime($time[0]['value']);
       $seconds_to_concert = $time->getTimestamp()- REQUEST_TIME;
-      if ($seconds_to_concert < 30 * 60 ) {
+      if ($seconds_to_concert < - 30 * 60 ) {
         $concert->field_ticket_selling[LANGUAGE_NONE][0]['value'] = 'off';
         node_save($concert);
         return FALSE;
@@ -259,14 +259,14 @@ function mez_ticket_hacks_preprocess_mez_ticket_pdf(&$vars) {
     $seat = $cli->commerce_product->language('hu')->field_seat->title_field->value();
     $price = $cli->commerce_unit_price->amount->value();
     $loc = $cli->commerce_product->field_seat->field_concert_hall->field_location;
-	
+
 	/* This should do the job, but we have no idea why not...
 	 * $concert_time_formatted = format_date(strtotime($cli->commerce_product->field_concert->field_time->value()[0]['value']), 'long', '', new DateTimeZone('Europe/Budapest'));
 	 *
 	 * SO instead we do this:
 	 */
 	$field_time = $cli->commerce_product->field_concert->field_time->value()[0]['value'];
-	$field_latex_ticket_body = $cli->commerce_product->field_concert->field_latex_ticket_body->value();	
+	$field_latex_ticket_body = $cli->commerce_product->field_concert->field_latex_ticket_body->value();
 	$datetime = new DateTime($field_time, new DateTimeZone("UTC"));
 	$datetime->setTimezone(new DateTimeZone('Europe/Budapest'));
 	$MONTHS = Array("január", "február", "március", "április", "május", "június", "július", "augusztus", "szeptember", "október", "november" , "december");
@@ -274,7 +274,7 @@ function mez_ticket_hacks_preprocess_mez_ticket_pdf(&$vars) {
 	$month = $MONTHS[$datetime->format("n") - 1];
 	$day = $DAYS[$datetime->format("w")];
 	$concert_time_formatted  = $datetime->format("Y. ") . $month . $datetime->format(" j.") . " $day " . $datetime->format("H:i");
-	
+
     $tickets[] = array(
       'seat' => $seat,
       'price' => $price,
