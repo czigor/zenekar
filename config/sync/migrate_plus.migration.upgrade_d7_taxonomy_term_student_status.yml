@@ -67,6 +67,8 @@ process:
 destination:
   plugin: 'entity:taxonomy_term'
   default_bundle: student_status
+idMap: {  }
 migration_dependencies:
   required: {  }
   optional: {  }
+include: null

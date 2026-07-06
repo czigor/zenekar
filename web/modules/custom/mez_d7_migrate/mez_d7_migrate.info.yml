@@ -1,0 +1,14 @@
+name: Migrate D7 MEZ
+type: module
+description: 'Custom migration plugins for the Drupal 7 MEZ site.'
+package: MEZ
+core_version_requirement: ^11
+version: '1.0.0'
+dependencies:
+  - drupal:address
+  - drupal:file
+  - drupal:media
+  - drupal:migrate
+  - drupal:migrate_drupal
+  - migrate_plus:migrate_plus
+  - paragraphs:paragraphs

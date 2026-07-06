@@ -47,8 +47,10 @@ process:
       source: constants/field_name
 destination:
   plugin: 'entity:base_field_override'
+idMap: {  }
 migration_dependencies:
   required:
     - upgrade_d7_node_type
   optional:
     - upgrade_d7_field_collection_type
+include: null

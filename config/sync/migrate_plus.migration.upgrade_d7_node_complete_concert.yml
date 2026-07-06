@@ -81,9 +81,15 @@ process:
       plugin: sub_process
       source: field_media
       process:
-        target_id: fid
-        display: display
-        description: description
+        target_id:
+          -
+            plugin: mez_file_to_media
+            source: fid
+            migration: upgrade_d7_file_entity
+            no_stub: true
+          -
+            plugin: skip_on_empty
+            method: row
   field_programme:
     -
       plugin: sub_process
@@ -183,14 +189,24 @@ destination:
   plugin: 'entity_complete:node'
   translations: true
   default_bundle: concert
+idMap: {  }
 migration_dependencies:
   required:
     - upgrade_d7_user
     - upgrade_d7_node_type
     - upgrade_language
+    - upgrade_d7_file
+    - upgrade_d7_file_private
+    - upgrade_d7_file_entity
+    - upgrade_d7_node_complete_piece
+    - upgrade_d7_node_complete_person
+    - upgrade_d7_node_complete_location
     - upgrade_d7_field_collection_programme
     - upgrade_d7_field_collection_revisions_programme
     - upgrade_d7_field_collection_orchestra_performers
     - upgrade_d7_field_collection_revisions_orchestra_performers
+    - upgrade_d7_field_collection_performers
+    - upgrade_d7_field_collection_revisions_performers
   optional:
     - upgrade_d7_field_instance
+include: null

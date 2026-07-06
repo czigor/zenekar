@@ -40,8 +40,19 @@ process:
         target_id: tid
   field_performer:
     -
-      plugin: get
+      plugin: sub_process
       source: field_performer
+      process:
+        target_id:
+          -
+            plugin: get
+            source: target_id
+          -
+            plugin: mez_migration_lookup_or_skip
+            migration: upgrade_d7_node_complete_person
+          -
+            plugin: skip_on_empty
+            method: row
   field_hide_performer:
     -
       plugin: get
@@ -53,6 +64,9 @@ process:
 destination:
   plugin: 'entity_reference_revisions:paragraph'
   default_bundle: performers
+idMap: {  }
 migration_dependencies:
-  required: {  }
+  required:
+    - upgrade_d7_taxonomy_term_instruments
   optional: {  }
+include: null

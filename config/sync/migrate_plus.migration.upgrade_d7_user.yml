@@ -76,8 +76,10 @@ process:
       source: roles
 destination:
   plugin: 'entity:user'
+idMap: {  }
 migration_dependencies:
   required:
     - upgrade_d7_user_role
   optional:
     - upgrade_d7_user_role
+include: null

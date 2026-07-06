@@ -1,0 +1,6 @@
+name: MEZ Content
+type: module
+description: 'Content related customizations.'
+package: MEZ
+core_version_requirement: ^11
+version: '1.0.0'

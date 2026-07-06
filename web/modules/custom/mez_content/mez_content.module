@@ -1,0 +1,28 @@
+<?php
+
+use Drupal\node\NodeInterface;
+
+/**
+ * Implements hook_ENTITY_TYPE_presave().
+ */
+function mez_content_node_presave(NodeInterface $node): void {
+  if ($node->bundle() === 'composer') {
+    $title = $node->get('field_family_name')->value;
+    if ($node->get('field_comma_separator')->value) {
+      $title .= ', ';
+    }
+    else {
+      $title .= ' ';
+    }
+    foreach ($node->get('field_given_name') as $given_name) {
+      $title .= $given_name->value . ' ';
+    }
+    if (trim($title) == '') {
+      $title = 'NONAME';
+    }
+    $node->setTitle(trim($title));
+  }
+  if ($node->label() == '') {
+    $node->setTitle('NONAME');
+  }
+}

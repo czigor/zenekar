@@ -137,6 +137,7 @@ process:
       map:
         wysiwyg: ckeditor
         plain_text: plain_text
+      default_value: plain_text
   field_positions:
     -
       plugin: sub_process
@@ -220,6 +221,7 @@ destination:
   plugin: 'entity:node'
   translations: true
   default_bundle: person
+idMap: {  }
 migration_dependencies:
   required:
     - upgrade_d7_user
@@ -228,3 +230,4 @@ migration_dependencies:
     - upgrade_d7_taxonomy_term_instruments
     - upgrade_d7_taxonomy_term_student_status
   optional: {  }
+include: null

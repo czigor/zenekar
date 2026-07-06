@@ -81,9 +81,11 @@ process:
 destination:
   plugin: 'entity:taxonomy_term'
   default_bundle: media
+idMap: {  }
 migration_dependencies:
   required:
     - upgrade_d7_taxonomy_vocabulary
   optional:
     - upgrade_d7_field_instance
     - upgrade_d7_taxonomy_vocabulary
+include: null

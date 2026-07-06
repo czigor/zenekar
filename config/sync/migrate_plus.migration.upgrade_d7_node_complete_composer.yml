@@ -88,6 +88,8 @@ destination:
   plugin: 'entity_complete:node'
   translations: true
   default_bundle: composer
+idMap: {  }
 migration_dependencies:
   required: {  }
   optional: {  }
+include: null

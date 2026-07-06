@@ -116,6 +116,7 @@ destination:
   plugin: 'entity_complete:node'
   translations: true
   default_bundle: seat
+idMap: {  }
 migration_dependencies:
   required:
     - upgrade_d7_user
@@ -123,3 +124,4 @@ migration_dependencies:
     - upgrade_language
   optional:
     - upgrade_d7_field_instance
+include: null

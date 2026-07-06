@@ -79,6 +79,7 @@ process:
       source: pseudo_metatag_entities
 destination:
   plugin: 'entity:path_alias'
+idMap: {  }
 migration_dependencies:
   required: {  }
   optional:
@@ -110,3 +111,4 @@ migration_dependencies:
     - upgrade_d7_node_complete_piece
     - upgrade_d7_node_complete_project
     - upgrade_d7_node_complete_seat
+include: null

@@ -71,10 +71,10 @@ destination:
   plugin: 'entity_reference_revisions:paragraph'
   new_revisions: true
   default_bundle: positions
+idMap: {  }
 migration_dependencies:
   required:
-    - upgrade_d7_field_collection_performers
-    - upgrade_d7_field_collection_programme
     - upgrade_d7_field_collection_positions
-    - upgrade_d7_field_collection_orchestra_performers
+    - upgrade_d7_taxonomy_term_positions
   optional: {  }
+include: null

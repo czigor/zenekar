@@ -63,8 +63,19 @@ process:
               - revision_id
   field_piece:
     -
-      plugin: get
+      plugin: sub_process
       source: field_piece
+      process:
+        target_id:
+          -
+            plugin: get
+            source: target_id
+          -
+            plugin: mez_migration_lookup_or_skip
+            migration: upgrade_d7_node_complete_piece
+          -
+            plugin: skip_on_empty
+            method: row
   field_movement:
     -
       plugin: get
@@ -80,7 +91,10 @@ process:
 destination:
   plugin: 'entity_reference_revisions:paragraph'
   default_bundle: programme
+idMap: {  }
 migration_dependencies:
   required:
     - upgrade_d7_field_collection_performers
+    - upgrade_d7_node_complete_piece
   optional: {  }
+include: null

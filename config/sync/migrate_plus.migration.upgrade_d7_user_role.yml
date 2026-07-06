@@ -50,6 +50,8 @@ process:
       source: weight
 destination:
   plugin: 'entity:user_role'
+idMap: {  }
 migration_dependencies:
   required: {  }
   optional: {  }
+include: null

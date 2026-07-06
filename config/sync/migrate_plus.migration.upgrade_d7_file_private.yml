@@ -64,6 +64,8 @@ process:
       source: pseudo_metatag_entities
 destination:
   plugin: 'entity:file'
+idMap: {  }
 migration_dependencies:
   required: {  }
   optional: {  }
+include: null

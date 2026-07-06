@@ -92,10 +92,11 @@ destination:
   plugin: 'entity_complete:node'
   translations: true
   default_bundle: piece
+idMap: {  }
 migration_dependencies:
   required:
-    - upgrade_d7_user
     - upgrade_d7_node_type
     - upgrade_language
   optional:
     - upgrade_d7_field_instance
+include: null

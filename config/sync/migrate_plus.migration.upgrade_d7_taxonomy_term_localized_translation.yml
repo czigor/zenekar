@@ -56,6 +56,7 @@ process:
 destination:
   plugin: 'entity:taxonomy_term'
   translations: true
+idMap: {  }
 migration_dependencies:
   required:
     - upgrade_language
@@ -70,3 +71,4 @@ migration_dependencies:
     - upgrade_d7_taxonomy_term_student_status
   optional:
     - upgrade_d7_taxonomy_vocabulary
+include: null

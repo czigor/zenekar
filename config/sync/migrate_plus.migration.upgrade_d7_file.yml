@@ -60,12 +60,10 @@ process:
     -
       plugin: get
       source: uid
-  field_metatag:
-    -
-      plugin: d7_metatag_entities
-      source: pseudo_metatag_entities
 destination:
   plugin: 'entity:file'
+idMap: {  }
 migration_dependencies:
   required: {  }
   optional: {  }
+include: null

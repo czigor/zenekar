@@ -92,5 +92,7 @@ destination:
   plugin: 'entity_complete:node'
   translations: true
   default_bundle: location
+idMap: {  }
 migration_dependencies:
   required: {  }
+include: null

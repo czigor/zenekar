@@ -60,6 +60,9 @@ process:
 destination:
   plugin: 'entity_reference_revisions:paragraph'
   default_bundle: positions
+idMap: {  }
 migration_dependencies:
-  required: {  }
+  required:
+    - upgrade_d7_taxonomy_term_positions
   optional: {  }
+include: null

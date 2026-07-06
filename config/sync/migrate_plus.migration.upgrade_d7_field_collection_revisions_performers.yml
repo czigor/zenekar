@@ -50,8 +50,10 @@ process:
         target_id: tid
   field_performer:
     -
-      plugin: get
+      plugin: sub_process
       source: field_performer
+      process:
+        target_id: target_id
   field_hide_performer:
     -
       plugin: get
@@ -64,10 +66,10 @@ destination:
   plugin: 'entity_reference_revisions:paragraph'
   new_revisions: true
   default_bundle: performers
+idMap: {  }
 migration_dependencies:
   required:
     - upgrade_d7_field_collection_performers
-    - upgrade_d7_field_collection_programme
-    - upgrade_d7_field_collection_positions
-    - upgrade_d7_field_collection_orchestra_performers
+    - upgrade_d7_taxonomy_term_instruments
   optional: {  }
+include: null

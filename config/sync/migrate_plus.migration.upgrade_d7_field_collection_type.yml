@@ -29,6 +29,8 @@ process:
       source: description
 destination:
   plugin: 'entity:paragraphs_type'
+idMap: {  }
 migration_dependencies:
   required: {  }
   optional: {  }
+include: null

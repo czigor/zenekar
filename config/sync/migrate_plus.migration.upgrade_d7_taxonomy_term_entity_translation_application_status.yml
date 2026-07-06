@@ -86,6 +86,7 @@ destination:
   translations: true
   destination_module: content_translation
   default_bundle: application_status
+idMap: {  }
 migration_dependencies:
   required:
     - upgrade_language
@@ -100,3 +101,4 @@ migration_dependencies:
     - upgrade_d7_taxonomy_term_concert_type
     - upgrade_d7_taxonomy_term_student_status
   optional: {  }
+include: null

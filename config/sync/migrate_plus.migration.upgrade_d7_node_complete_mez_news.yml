@@ -76,18 +76,20 @@ process:
     -
       plugin: get
       source: comment
-  body:
+  body/value: body/0/value
+  body/format:
     -
-      plugin: get
-      source: body
+      plugin: static_map
+      source: body/0/format
+      map:
+        wysiwyg: ckeditor
+        plain_text: plain_text
+      default_value: ckeditor
   field_media:
-    -
-      plugin: sub_process
-      source: field_media
-      process:
-        target_id: fid
-        display: display
-        description: description
+    plugin: file_id_lookup
+    source: field_media
+    migration: migrate_files_to_media_mez_news_step1
+    no_stub: true
   field_tags:
     -
       plugin: sub_process
@@ -98,6 +100,8 @@ destination:
   plugin: 'entity_complete:node'
   translations: true
   default_bundle: mez_news
+idMap: {  }
 migration_dependencies:
-  required: { }
-  optional: { }
+  required: {  }
+  optional: {  }
+include: null
