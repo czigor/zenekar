@@ -1,0 +1,13 @@
+uuid: c753bd18-4626-45ef-9524-be6b487b53ef
+langcode: hu
+status: true
+dependencies: {  }
+id: audio
+label: Audio
+description: ''
+source: audio_file
+queue_thumbnail_downloads: false
+new_revision: false
+source_configuration:
+  source_field: field_media_audio_file_1
+field_map: {  }

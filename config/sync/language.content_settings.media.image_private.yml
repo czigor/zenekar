@@ -1,0 +1,11 @@
+uuid: 09b14656-1964-402a-941e-a3eee29058c8
+langcode: hu
+status: true
+dependencies:
+  config:
+    - media.type.image_private
+id: media.image_private
+target_entity_type_id: media
+target_bundle: image_private
+default_langcode: site_default
+language_alterable: false

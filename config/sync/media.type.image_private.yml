@@ -1,0 +1,13 @@
+uuid: eaed0b98-6827-4c7f-afe5-423343f2d2be
+langcode: hu
+status: true
+dependencies: {  }
+id: image_private
+label: 'Privát kép'
+description: ''
+source: image
+queue_thumbnail_downloads: false
+new_revision: false
+source_configuration:
+  source_field: field_media_image
+field_map: {  }

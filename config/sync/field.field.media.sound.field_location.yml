@@ -1,0 +1,29 @@
+uuid: 50ea23c0-fb31-4e81-bb01-ebb5ba512615
+langcode: hu
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_location
+    - media.type.sound
+    - node.type.location
+id: media.sound.field_location
+field_name: field_location
+entity_type: media
+bundle: sound
+label: Location
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      location: location
+    sort:
+      field: title
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

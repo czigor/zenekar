@@ -33,10 +33,7 @@ content:
     weight: 10
     region: content
     settings:
-      auto_client_location: ''
-      auto_client_location_marker: ''
       allow_override_map_settings: 0
-      hide_textfield_form: false
       centre:
         fit_bounds:
           enable: true
@@ -45,14 +42,14 @@ content:
           leaflet_control_zoom:
             enabled: true
           leaflet_control_attribution:
+            enabled: true
             settings:
               position: bottomright
-            enabled: true
           leaflet_marker_popup:
             enabled: true
           leaflet_control_geocoder:
-            weight: -100
             enabled: true
+            weight: -100
         zoom: '10'
         height: 400px
         width: 100%
@@ -87,6 +84,9 @@ content:
         tapTolerance: 15
         touchZoom: true
         bounceAtZoomLimits: true
+      auto_client_location: ''
+      auto_client_location_marker: ''
+      hide_textfield_form: false
     third_party_settings: {  }
   field_ticket_map_compression:
     type: number

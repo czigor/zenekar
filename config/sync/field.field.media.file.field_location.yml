@@ -1,0 +1,29 @@
+uuid: 88c564ec-5d8f-49c2-9ed4-de87a8052cc1
+langcode: hu
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_location
+    - media.type.file
+    - node.type.location
+id: media.file.field_location
+field_name: field_location
+entity_type: media
+bundle: file
+label: Location
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      location: location
+    sort:
+      field: title
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

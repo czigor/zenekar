@@ -3,15 +3,55 @@ langcode: hu
 status: true
 dependencies:
   config:
+    - field.field.media.sound.field_concert
+    - field.field.media.sound.field_date
+    - field.field.media.sound.field_description
+    - field.field.media.sound.field_location
     - field.field.media.sound.field_media_audio_file
+    - field.field.media.sound.field_pieces
+    - field.field.media.sound.field_tags
     - media.type.sound
   module:
+    - datetime
     - file
+    - text
 id: media.sound.default
 targetEntityType: media
 bundle: sound
 mode: default
 content:
+  field_concert:
+    type: entity_reference_label
+    label: inline
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_date:
+    type: datetime_default
+    label: hidden
+    settings:
+      timezone_override: ''
+      format_type: html_date
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_description:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_location:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 7
+    region: content
   field_media_audio_file:
     type: file_audio
     label: visually_hidden
@@ -21,11 +61,34 @@ content:
       loop: false
       multiple_file_display_type: tags
     third_party_settings: {  }
+    weight: 1
+    region: content
+  field_pieces:
+    type: entity_reference_label
+    label: inline
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_tags:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  name:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
     weight: 0
     region: content
 hidden:
   created: true
   langcode: true
-  name: true
   thumbnail: true
   uid: true

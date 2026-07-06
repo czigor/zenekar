@@ -1,0 +1,28 @@
+uuid: 20eb7e1e-ca2b-4b85-b512-605308432e71
+langcode: hu
+status: true
+dependencies:
+  config:
+    - field.field.media.document.field_media_file_1
+    - media.type.document
+  module:
+    - file
+id: media.document.default
+targetEntityType: media
+bundle: document
+mode: default
+content:
+  field_media_file_1:
+    type: file_default
+    label: visually_hidden
+    settings:
+      use_description_as_link_text: true
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  created: true
+  langcode: true
+  name: true
+  thumbnail: true
+  uid: true

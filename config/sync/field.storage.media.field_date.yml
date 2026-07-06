@@ -1,0 +1,20 @@
+uuid: ca27cbb1-051b-41e6-8734-97553fbe962f
+langcode: hu
+status: true
+dependencies:
+  module:
+    - datetime
+    - media
+id: media.field_date
+field_name: field_date
+entity_type: media
+type: datetime
+settings:
+  datetime_type: date
+module: datetime
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

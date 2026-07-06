@@ -1,0 +1,29 @@
+uuid: 9d7ce354-4659-4a96-a78a-e17669428569
+langcode: hu
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_concert
+    - media.type.audio
+    - node.type.concert
+id: media.audio.field_concert
+field_name: field_concert
+entity_type: media
+bundle: audio
+label: Concert
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      concert: concert
+    sort:
+      field: title
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

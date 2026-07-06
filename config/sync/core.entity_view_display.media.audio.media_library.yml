@@ -1,0 +1,45 @@
+uuid: a6f8e827-c13c-4904-baf6-2b55e7355822
+langcode: hu
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.media_library
+    - field.field.media.audio.field_concert
+    - field.field.media.audio.field_date
+    - field.field.media.audio.field_description
+    - field.field.media.audio.field_location
+    - field.field.media.audio.field_media_audio_file_1
+    - field.field.media.audio.field_pieces
+    - field.field.media.audio.field_tags
+    - image.style.medium
+    - media.type.audio
+  module:
+    - image
+id: media.audio.media_library
+targetEntityType: media
+bundle: audio
+mode: media_library
+content:
+  thumbnail:
+    type: image
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: medium
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  created: true
+  field_concert: true
+  field_date: true
+  field_description: true
+  field_location: true
+  field_media_audio_file_1: true
+  field_pieces: true
+  field_tags: true
+  langcode: true
+  name: true
+  uid: true

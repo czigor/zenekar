@@ -1,0 +1,21 @@
+uuid: 2cdb3e15-6dec-461a-b324-04d531439900
+langcode: hu
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_date
+    - media.type.file
+  module:
+    - datetime
+id: media.file.field_date
+field_name: field_date
+entity_type: media
+bundle: file
+label: Date
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

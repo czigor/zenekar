@@ -1,0 +1,29 @@
+uuid: 154277fd-68a0-4e9f-89d9-24af80de2a89
+langcode: hu
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_location
+    - media.type.image
+    - node.type.location
+id: media.image.field_location
+field_name: field_location
+entity_type: media
+bundle: image
+label: Location
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      location: location
+    sort:
+      field: title
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

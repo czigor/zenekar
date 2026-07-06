@@ -1,0 +1,29 @@
+uuid: 03a08fe7-c992-4899-b8e4-f4ec78b7d4bd
+langcode: hu
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_pieces
+    - media.type.sound
+    - node.type.piece
+id: media.sound.field_pieces
+field_name: field_pieces
+entity_type: media
+bundle: sound
+label: Pieces
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      piece: piece
+    sort:
+      field: title
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

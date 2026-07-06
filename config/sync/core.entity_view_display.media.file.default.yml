@@ -3,26 +3,89 @@ langcode: hu
 status: true
 dependencies:
   config:
+    - field.field.media.file.field_concert
+    - field.field.media.file.field_date
+    - field.field.media.file.field_description
+    - field.field.media.file.field_location
     - field.field.media.file.field_media_file
+    - field.field.media.file.field_pieces
+    - field.field.media.file.field_tags
     - media.type.file
   module:
+    - datetime
     - file
+    - text
 id: media.file.default
 targetEntityType: media
 bundle: file
 mode: default
 content:
+  field_concert:
+    type: entity_reference_label
+    label: inline
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_date:
+    type: datetime_default
+    label: hidden
+    settings:
+      timezone_override: ''
+      format_type: html_date
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_description:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_location:
+    type: entity_reference_label
+    label: inline
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 7
+    region: content
   field_media_file:
     type: file_default
     label: visually_hidden
     settings:
       use_description_as_link_text: true
     third_party_settings: {  }
+    weight: 1
+    region: content
+  field_pieces:
+    type: entity_reference_label
+    label: inline
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_tags:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  name:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
     weight: 0
     region: content
 hidden:
   created: true
   langcode: true
-  name: true
   thumbnail: true
   uid: true

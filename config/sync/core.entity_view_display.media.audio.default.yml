@@ -1,0 +1,87 @@
+uuid: f9654716-d9d7-41cf-bb6d-007f797cd742
+langcode: hu
+status: true
+dependencies:
+  config:
+    - field.field.media.audio.field_concert
+    - field.field.media.audio.field_date
+    - field.field.media.audio.field_description
+    - field.field.media.audio.field_location
+    - field.field.media.audio.field_media_audio_file_1
+    - field.field.media.audio.field_pieces
+    - field.field.media.audio.field_tags
+    - media.type.audio
+  module:
+    - datetime
+    - file
+    - text
+id: media.audio.default
+targetEntityType: media
+bundle: audio
+mode: default
+content:
+  field_concert:
+    type: entity_reference_label
+    label: inline
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_date:
+    type: datetime_default
+    label: hidden
+    settings:
+      timezone_override: ''
+      format_type: html_date
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_description:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_location:
+    type: entity_reference_label
+    label: inline
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  field_media_audio_file_1:
+    type: file_audio
+    label: visually_hidden
+    settings:
+      controls: true
+      autoplay: false
+      loop: false
+      multiple_file_display_type: tags
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_pieces:
+    type: entity_reference_label
+    label: inline
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_tags:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 2
+    region: content
+hidden:
+  created: true
+  langcode: true
+  name: true
+  thumbnail: true
+  uid: true

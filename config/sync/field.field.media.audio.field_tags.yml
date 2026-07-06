@@ -1,0 +1,29 @@
+uuid: 33e3e51f-01ce-4eac-bc1e-22c1b619d647
+langcode: hu
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_tags
+    - media.type.audio
+    - taxonomy.vocabulary.media
+id: media.audio.field_tags
+field_name: field_tags
+entity_type: media
+bundle: audio
+label: Tags
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      media: media
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

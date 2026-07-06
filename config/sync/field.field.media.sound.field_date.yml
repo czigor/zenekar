@@ -1,0 +1,21 @@
+uuid: bbc62e54-eefd-4aac-8c99-980336cab0a9
+langcode: hu
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_date
+    - media.type.sound
+  module:
+    - datetime
+id: media.sound.field_date
+field_name: field_date
+entity_type: media
+bundle: sound
+label: Date
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

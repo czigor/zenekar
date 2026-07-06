@@ -4,7 +4,13 @@ status: true
 dependencies:
   config:
     - core.entity_form_mode.media.media_library
+    - field.field.media.image.field_concert
+    - field.field.media.image.field_date
+    - field.field.media.image.field_description
+    - field.field.media.image.field_location
     - field.field.media.image.field_media_image
+    - field.field.media.image.field_pieces
+    - field.field.media.image.field_tags
     - image.style.thumbnail
     - media.type.image
   module:
@@ -32,6 +38,12 @@ content:
     third_party_settings: {  }
 hidden:
   created: true
+  field_concert: true
+  field_date: true
+  field_description: true
+  field_location: true
+  field_pieces: true
+  field_tags: true
   langcode: true
   path: true
   status: true

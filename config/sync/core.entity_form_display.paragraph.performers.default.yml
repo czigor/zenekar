@@ -14,13 +14,31 @@ mode: default
 content:
   field_hide_performer:
     type: boolean_checkbox
-    weight: 0
+    weight: 2
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
+  field_instrument:
+    type: entity_reference_autocomplete
+    weight: 1
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_performer:
+    type: entity_reference_autocomplete
+    weight: 0
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
 hidden:
   created: true
-  field_instrument: true
-  field_performer: true
   status: true

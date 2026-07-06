@@ -3,11 +3,19 @@ langcode: hu
 status: true
 dependencies:
   config:
+    - field.field.media.sound.field_concert
+    - field.field.media.sound.field_date
+    - field.field.media.sound.field_description
+    - field.field.media.sound.field_location
     - field.field.media.sound.field_media_audio_file
+    - field.field.media.sound.field_pieces
+    - field.field.media.sound.field_tags
     - media.type.sound
   module:
+    - datetime
     - file
     - path
+    - text
 id: media.sound.default
 targetEntityType: media
 bundle: sound
@@ -19,12 +27,56 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_concert:
+    type: entity_reference_autocomplete
+    weight: 5
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_date:
+    type: datetime_default
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_description:
+    type: text_textarea
+    weight: 2
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
   field_media_audio_file:
     type: file_generic
     weight: 0
     region: content
     settings:
       progress_indicator: throbber
+    third_party_settings: {  }
+  field_pieces:
+    type: entity_reference_autocomplete
+    weight: 6
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_tags:
+    type: entity_reference_autocomplete
+    weight: 4
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
   langcode:
     type: language_select
@@ -64,4 +116,5 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-hidden: {  }
+hidden:
+  field_location: true

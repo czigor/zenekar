@@ -4,7 +4,14 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.media.media_library
+    - field.field.media.remote_video.field_concert
+    - field.field.media.remote_video.field_date
+    - field.field.media.remote_video.field_description
+    - field.field.media.remote_video.field_location
     - field.field.media.remote_video.field_media_oembed_video
+    - field.field.media.remote_video.field_pieces
+    - field.field.media.remote_video.field_tags
+    - field.field.media.remote_video.field_title
     - image.style.medium
     - media.type.remote_video
   module:
@@ -27,7 +34,14 @@ content:
     region: content
 hidden:
   created: true
+  field_concert: true
+  field_date: true
+  field_description: true
+  field_location: true
   field_media_oembed_video: true
+  field_pieces: true
+  field_tags: true
+  field_title: true
   langcode: true
   name: true
   uid: true

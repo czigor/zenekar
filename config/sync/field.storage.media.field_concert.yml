@@ -1,0 +1,20 @@
+uuid: 1d9cd56b-d023-473f-99f5-2c88b0198b21
+langcode: hu
+status: true
+dependencies:
+  module:
+    - media
+    - node
+id: media.field_concert
+field_name: field_concert
+entity_type: media
+type: entity_reference
+settings:
+  target_type: node
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

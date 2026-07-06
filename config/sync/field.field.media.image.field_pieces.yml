@@ -1,0 +1,29 @@
+uuid: 4e67be3f-e6b3-4712-90fc-8c4f4d9e9b39
+langcode: hu
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_pieces
+    - media.type.image
+    - node.type.piece
+id: media.image.field_pieces
+field_name: field_pieces
+entity_type: media
+bundle: image
+label: Pieces
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      piece: piece
+    sort:
+      field: title
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -4,7 +4,13 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.media.media_library
+    - field.field.media.sound.field_concert
+    - field.field.media.sound.field_date
+    - field.field.media.sound.field_description
+    - field.field.media.sound.field_location
     - field.field.media.sound.field_media_audio_file
+    - field.field.media.sound.field_pieces
+    - field.field.media.sound.field_tags
     - image.style.medium
     - media.type.sound
   module:
@@ -27,7 +33,13 @@ content:
     region: content
 hidden:
   created: true
+  field_concert: true
+  field_date: true
+  field_description: true
+  field_location: true
   field_media_audio_file: true
+  field_pieces: true
+  field_tags: true
   langcode: true
   name: true
   uid: true
