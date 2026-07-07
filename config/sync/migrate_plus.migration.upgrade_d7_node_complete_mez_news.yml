@@ -77,6 +77,7 @@ process:
       plugin: get
       source: comment
   body/value: body/0/value
+  body/summary: body/0/summary
   body/format:
     -
       plugin: static_map
@@ -86,10 +87,19 @@ process:
         plain_text: plain_text
       default_value: ckeditor
   field_media:
-    plugin: file_id_lookup
-    source: field_media
-    migration: migrate_files_to_media_mez_news_step1
-    no_stub: true
+    -
+      plugin: sub_process
+      source: field_media
+      process:
+        target_id:
+          -
+            plugin: mez_file_to_media
+            source: fid
+            migration: upgrade_d7_file_entity
+            no_stub: true
+          -
+            plugin: skip_on_empty
+            method: row
   field_tags:
     -
       plugin: sub_process
@@ -102,6 +112,10 @@ destination:
   default_bundle: mez_news
 idMap: {  }
 migration_dependencies:
-  required: {  }
+  required:
+    - upgrade_d7_user
+    - upgrade_d7_node_type
+    - upgrade_language
+    - upgrade_d7_file_entity
   optional: {  }
 include: null

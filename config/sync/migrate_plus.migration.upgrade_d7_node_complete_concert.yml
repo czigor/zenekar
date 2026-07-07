@@ -134,10 +134,17 @@ process:
           from_format: 'Y-m-d H:i:s'
           to_format: 'Y-m-d\TH:i:s'
           source: value2
-  body:
+  body/value: body/0/value
+  body/summary: body/0/summary
+  body/format:
     -
-      plugin: get
-      source: body
+      plugin: static_map
+      source: body/0/format
+      map:
+        wysiwyg: ckeditor
+        full_html: ckeditor
+        plain_text: plain_text
+      default_value: ckeditor
   field_location_reference:
     -
       plugin: get

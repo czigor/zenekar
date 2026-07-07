@@ -95,9 +95,15 @@ process:
       plugin: sub_process
       source: field_media
       process:
-        target_id: fid
-        display: display
-        description: description
+        target_id:
+          -
+            plugin: mez_file_to_media
+            source: fid
+            migration: upgrade_d7_file_entity
+            no_stub: true
+          -
+            plugin: skip_on_empty
+            method: row
   field_tags:
     -
       plugin: sub_process
@@ -118,6 +124,7 @@ migration_dependencies:
     - upgrade_d7_user
     - upgrade_d7_node_type
     - upgrade_language
+    - upgrade_d7_file_entity
   optional:
     - upgrade_d7_field_instance
 include: null
