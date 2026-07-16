@@ -1,0 +1,23 @@
+uuid: 7ff47aae-fbe9-4baf-9897-34af46c25c89
+langcode: hu
+status: true
+dependencies:
+  module:
+    - node
+  theme:
+    - mez_theme
+_core:
+  default_config_hash: 0gq3VPg-_UM69FCCWurLFIrrnIjC2HLKhwo9iQNtcUo
+id: mez_theme_syndicate
+theme: mez_theme
+region: sidebar_first
+weight: 0
+provider: null
+plugin: node_syndicate_block
+settings:
+  id: node_syndicate_block
+  label: 'RSS hírcsatorna'
+  label_display: '0'
+  provider: node
+  block_count: 10
+visibility: {  }

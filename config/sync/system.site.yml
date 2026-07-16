@@ -2,13 +2,13 @@ _core:
   default_config_hash: l58O_yEXSo-SeJi19LXdzTU1tNJG3lmnIhCitRkM1tk
 langcode: hu
 uuid: e79bfda4-cc97-4a3d-a9e4-76e4d5d969af
-name: Zenekar
+name: 'Műegyetemi Szimfonikus Zenekar'
 mail: mez1896@gmail.com
-slogan: ''
+slogan: 'alapítva: 1896'
 page:
   403: ''
   404: ''
-  front: /user/login
+  front: /node
 admin_compact_mode: false
 weight_select_max: 100
 default_langcode: hu

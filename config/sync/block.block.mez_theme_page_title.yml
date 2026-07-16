@@ -1,0 +1,20 @@
+uuid: 88cc8ba8-71a8-4800-be65-b841dfef1ed5
+langcode: hu
+status: true
+dependencies:
+  theme:
+    - mez_theme
+_core:
+  default_config_hash: 6aOgWsNTXjqrDm98TXSAjP6qd2nCijD1xw45MrnbK-Y
+id: mez_theme_page_title
+theme: mez_theme
+region: sidebar_first
+weight: -5
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: 'Oldal címe'
+  label_display: '0'
+  provider: core
+visibility: {  }

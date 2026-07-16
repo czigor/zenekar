@@ -68,6 +68,5 @@ module:
   paragraphs: 11
   minimal: 1000
 theme:
-  stark: 0
-  olivero: 0
+  mez_theme: 0
 profile: minimal

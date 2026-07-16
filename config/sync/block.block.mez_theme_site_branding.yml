@@ -1,0 +1,25 @@
+uuid: 32b472d8-7858-4772-8322-184c186259a6
+langcode: hu
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - mez_theme
+_core:
+  default_config_hash: n_nlgjggHVfQt2H__zvLOKB2YtjPDbQ5tHijF9LE1aM
+id: mez_theme_site_branding
+theme: mez_theme
+region: header
+weight: 0
+provider: null
+plugin: system_branding_block
+settings:
+  id: system_branding_block
+  label: 'Webhely márkázása'
+  label_display: '0'
+  provider: system
+  use_site_logo: true
+  use_site_name: true
+  use_site_slogan: false
+visibility: {  }

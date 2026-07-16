@@ -132,7 +132,7 @@ display:
           entity_type: user
           entity_field: name
           plugin_id: field
-          label: Author
+          label: Szerző
           exclude: false
           alter:
             alter_text: false
@@ -163,8 +163,8 @@ display:
           type: boolean
           settings:
             format: custom
-            format_custom_false: Unpublished
-            format_custom_true: Published
+            format_custom_false: Rejtett
+            format_custom_true: Közzétéve
         changed:
           id: changed
           table: node_field_data
@@ -172,7 +172,7 @@ display:
           entity_type: node
           entity_field: changed
           plugin_id: field
-          label: Updated
+          label: Frissítve
           exclude: false
           alter:
             alter_text: false
@@ -394,7 +394,7 @@ display:
               authenticated: authenticated
           is_grouped: true
           group_info:
-            label: 'Published status'
+            label: 'Közzététel állapota'
             description: ''
             identifier: status
             optional: true
@@ -405,11 +405,11 @@ display:
             default_group_multiple: {  }
             group_items:
               1:
-                title: Published
+                title: Közzétéve
                 operator: '='
                 value: '1'
               2:
-                title: Unpublished
+                title: Rejtett
                 operator: '='
                 value: '0'
         langcode:
@@ -428,7 +428,7 @@ display:
           exposed: true
           expose:
             operator_id: langcode_op
-            label: Language
+            label: Nyelv
             description: ''
             use_operator: false
             operator: langcode_op

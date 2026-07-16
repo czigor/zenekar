@@ -1,0 +1,22 @@
+uuid: 6668bfc1-d8aa-4f53-b0ba-ffe89cd06942
+langcode: hu
+status: true
+dependencies:
+  theme:
+    - mez_theme
+_core:
+  default_config_hash: nGE3EoPQQaQCuqTUtZgw0-KIzmrqdKDzdNQf2JyPUt4
+id: mez_theme_primary_local_tasks
+theme: mez_theme
+region: sidebar_first
+weight: -4
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: 'Elsődleges fülek'
+  label_display: '0'
+  provider: core
+  primary: true
+  secondary: false
+visibility: {  }

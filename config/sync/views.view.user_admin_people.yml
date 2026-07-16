@@ -7,9 +7,9 @@ dependencies:
 _core:
   default_config_hash: njaZigMvB4ap21Fg_tQcJhWgYJCGNi49Z5rRL_N6RI0
 id: user_admin_people
-label: People
+label: Emberek
 module: user
-description: 'Find and manage people interacting with your site.'
+description: 'A webhellyel kapcsolatban álló emberek keresése és adminisztrációja.'
 tag: default
 base_table: users_field_data
 base_field: uid
@@ -20,7 +20,7 @@ display:
     display_plugin: default
     position: 0
     display_options:
-      title: People
+      title: Emberek
       fields:
         user_bulk_form:
           id: user_bulk_form
@@ -31,7 +31,7 @@ display:
           admin_label: ''
           entity_type: user
           plugin_id: user_bulk_form
-          label: 'Bulk update'
+          label: 'Tömeges frissítés'
           exclude: false
           alter:
             alter_text: false
@@ -82,7 +82,7 @@ display:
           entity_type: user
           entity_field: name
           plugin_id: field
-          label: Username
+          label: Felhasználónév
           exclude: false
           alter:
             alter_text: false
@@ -178,8 +178,8 @@ display:
           type: boolean
           settings:
             format: custom
-            format_custom_false: Blocked
-            format_custom_true: Active
+            format_custom_false: Zárolt
+            format_custom_true: Aktív
         roles_target_id:
           id: roles_target_id
           table: user__roles
@@ -188,7 +188,7 @@ display:
           group_type: group
           admin_label: ''
           plugin_id: user_roles
-          label: Roles
+          label: Szerepkörök
           exclude: false
           alter:
             alter_text: false
@@ -241,7 +241,7 @@ display:
           entity_type: user
           entity_field: created
           plugin_id: field
-          label: 'Member for'
+          label: 'Ennyi ideje tag'
           exclude: false
           alter:
             alter_text: false
@@ -297,7 +297,7 @@ display:
           entity_type: user
           entity_field: access
           plugin_id: field
-          label: 'Last access'
+          label: 'Utolsó tevékenység'
           exclude: false
           alter:
             alter_text: false
@@ -340,8 +340,8 @@ display:
           hide_alter_empty: true
           type: timestamp_ago
           settings:
-            future_format: '@interval hence'
-            past_format: '@interval ago'
+            future_format: '@interval múlva'
+            past_format: '@interval ideje'
             granularity: 2
         operations:
           id: operations
@@ -506,7 +506,7 @@ display:
           admin_label: ''
           plugin_id: text_custom
           empty: true
-          content: 'No people available.'
+          content: 'Nincsenek a webhellyel kapcsolatban álló emberek.'
           tokenize: false
       sorts:
         created:
@@ -540,7 +540,7 @@ display:
           exposed: true
           expose:
             operator_id: combine_op
-            label: 'Name or email contains'
+            label: 'Név vagy e-mail tartalmazza'
             description: ''
             use_operator: false
             operator: combine_op
@@ -608,11 +608,11 @@ display:
             default_group_multiple: {  }
             group_items:
               1:
-                title: Active
+                title: Aktív
                 operator: '='
                 value: '1'
               2:
-                title: Blocked
+                title: Zárolt
                 operator: '='
                 value: '0'
         roles_target_id:
@@ -629,7 +629,7 @@ display:
           exposed: true
           expose:
             operator_id: roles_target_id_op
-            label: Role
+            label: Szerepkör
             description: ''
             use_operator: false
             operator: roles_target_id_op
@@ -669,7 +669,7 @@ display:
           exposed: true
           expose:
             operator_id: permission_op
-            label: Permission
+            label: Jogosultság
             description: ''
             use_operator: false
             operator: permission_op
@@ -898,15 +898,15 @@ display:
       path: admin/people/list
       menu:
         type: 'default tab'
-        title: List
-        description: 'Find and manage people interacting with your site.'
+        title: Lista
+        description: 'A webhellyel kapcsolatban álló emberek keresése és adminisztrációja.'
         weight: -10
         menu_name: admin
         context: ''
       tab_options:
         type: normal
-        title: People
-        description: 'Manage user accounts, roles, and permissions.'
+        title: Emberek
+        description: 'Felhasználói fiókok kezelése, szerepkörök és jogosultságok.'
         weight: 0
         menu_name: admin
     cache_metadata:

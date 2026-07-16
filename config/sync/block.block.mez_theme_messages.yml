@@ -1,0 +1,22 @@
+uuid: d6b934e9-7e2f-4f88-9aff-5052ad63e392
+langcode: hu
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - mez_theme
+_core:
+  default_config_hash: BZ5tpW7H8X4PVGRm3MImTIHd2tN0eF7zOtp4SpRYUA0
+id: mez_theme_messages
+theme: mez_theme
+region: sidebar_first
+weight: -5
+provider: null
+plugin: system_messages_block
+settings:
+  id: system_messages_block
+  label: Állapotüzenetek
+  label_display: '0'
+  provider: system
+visibility: {  }

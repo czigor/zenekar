@@ -7,9 +7,9 @@ dependencies:
 _core:
   default_config_hash: suDsVMgawXoQt4rfmdfpr05EVX3z3KyfDDTYgeSM898
 id: who_s_online
-label: "Who's online block"
+label: 'Jelenlévő felhasználók blokk'
 module: user
-description: 'Shows the user names of the most recently active users, and the total number of active users.'
+description: 'Megmutatja a legutóbb aktív felhasználókat és az aktív felhasználók számát.'
 tag: default
 base_table: users_field_data
 base_field: uid
@@ -20,7 +20,7 @@ display:
     display_plugin: default
     position: 0
     display_options:
-      title: "Who's online"
+      title: 'Jelenlévő felhasználók'
       fields:
         name:
           id: name
@@ -88,7 +88,7 @@ display:
           admin_label: ''
           plugin_id: text_custom
           empty: true
-          content: 'There are currently 0 users online.'
+          content: 'Jelenleg 0 felhasználó van bejelentkezve.'
           tokenize: false
       sorts:
         access:
@@ -142,8 +142,8 @@ display:
           exposed: false
           expose:
             operator_id: access_op
-            label: 'Last access'
-            description: 'A user is considered online for this long after they have last viewed a page.'
+            label: 'Utolsó tevékenység'
+            description: 'Meghatározza, hogy mennyi ideig kell egy felhasználót a webhelyen lévőnek tekinteni, miután egy oldalt megtekintett.'
             use_operator: false
             operator: access_op
             operator_limit_selection: false
@@ -196,7 +196,7 @@ display:
           admin_label: ''
           plugin_id: result
           empty: false
-          content: 'There are currently @total users online.'
+          content: 'Jelenleg @total felhasználó van online.'
       footer: {  }
       display_extenders: {  }
     cache_metadata:
@@ -208,13 +208,13 @@ display:
       tags: {  }
   who_s_online_block:
     id: who_s_online_block
-    display_title: "Who's online"
+    display_title: 'Jelenlévő felhasználók'
     display_plugin: block
     position: 1
     display_options:
-      display_description: 'A list of users that are currently logged in.'
+      display_description: 'Egy lista a jelenleg bejelentkezett felhasználókról.'
       display_extenders: {  }
-      block_description: "Who's online"
+      block_description: 'Jelenlévő felhasználók'
     cache_metadata:
       max-age: -1
       contexts:

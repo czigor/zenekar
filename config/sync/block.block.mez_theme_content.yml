@@ -1,0 +1,22 @@
+uuid: ebd5a24c-818f-447d-8955-8c93de8455af
+langcode: hu
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - mez_theme
+_core:
+  default_config_hash: erQSEZF2XUjNmgTl0uNRBzmg18ZGXwUcw2FhApoeuHk
+id: mez_theme_content
+theme: mez_theme
+region: content
+weight: 0
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Az oldal fő tartalma'
+  label_display: '0'
+  provider: system
+visibility: {  }

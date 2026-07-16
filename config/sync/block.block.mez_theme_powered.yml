@@ -1,0 +1,22 @@
+uuid: 2538e5ec-aaa4-423f-8787-d6198993d440
+langcode: hu
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - mez_theme
+_core:
+  default_config_hash: eYL19CLDyinGTWYQfBD1DswWzglEotE_kHnHx3AxTXM
+id: mez_theme_powered
+theme: mez_theme
+region: sidebar_first
+weight: 0
+provider: null
+plugin: system_powered_by_block
+settings:
+  id: system_powered_by_block
+  label: 'Drupal működteti'
+  label_display: '0'
+  provider: system
+visibility: {  }

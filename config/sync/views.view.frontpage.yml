@@ -11,9 +11,9 @@ dependencies:
 _core:
   default_config_hash: 6eeliKIydPjqyv5V__QqTfahvJMWkHjOVUUuUIdB1ik
 id: frontpage
-label: Frontpage
+label: Címlap
 module: node
-description: 'All content promoted to the front page.'
+description: 'A kezdőlapon közzétett összes tartalom.'
 tag: default
 base_table: node_field_data
 base_field: nid
@@ -76,7 +76,7 @@ display:
           plugin_id: text_custom
           label: ''
           empty: true
-          content: 'No front page content has been created yet.<br/>Follow the <a target="_blank" href="https://www.drupal.org/docs/user_guide/en/index.html">User Guide</a> to start building your site.'
+          content: 'Még nem lett létrehozva címlapra kerülő tartalom. A <a target="_blank" href="https://www.drupal.org/hu/docs/user_guide/hu/index.html">Drupal 8 Kézikönyv</a> hasznos kiindulási pont lehet a webhelyépítés első lépéseihez.'
           tokenize: false
         node_listing_empty:
           id: node_listing_empty
@@ -99,7 +99,7 @@ display:
           plugin_id: title
           label: ''
           empty: true
-          title: Welcome!
+          title: Üdvözlet!
       sorts:
         sticky:
           id: sticky

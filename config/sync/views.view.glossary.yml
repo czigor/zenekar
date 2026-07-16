@@ -85,7 +85,7 @@ display:
           entity_type: user
           entity_field: name
           plugin_id: field
-          label: Author
+          label: Szerző
           exclude: false
           alter:
             alter_text: false

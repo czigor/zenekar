@@ -81,7 +81,7 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
-          action_title: Action
+          action_title: Művelet
           include_exclude: exclude
           selected_actions: {  }
         rendered_entity:
@@ -261,7 +261,7 @@ display:
               authenticated: authenticated
           is_grouped: true
           group_info:
-            label: Published
+            label: Közzétéve
             description: ''
             identifier: status
             optional: true
@@ -272,11 +272,11 @@ display:
             default_group_multiple: {  }
             group_items:
               1:
-                title: Published
+                title: Közzétéve
                 operator: '='
                 value: '1'
               2:
-                title: Unpublished
+                title: Rejtett
                 operator: '='
                 value: '0'
         name:
@@ -295,7 +295,7 @@ display:
           exposed: true
           expose:
             operator_id: name_op
-            label: Name
+            label: Név
             description: ''
             use_operator: false
             operator: name_op
@@ -418,7 +418,7 @@ display:
           exposed: true
           expose:
             operator_id: langcode_op
-            label: Language
+            label: Nyelv
             description: ''
             use_operator: false
             operator: langcode_op
@@ -537,7 +537,7 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
-          action_title: Action
+          action_title: Művelet
           include_exclude: exclude
           selected_actions: {  }
         name:
@@ -987,7 +987,7 @@ display:
           exposed: true
           expose:
             operator_id: name_op
-            label: Name
+            label: Név
             description: ''
             use_operator: false
             operator: name_op
@@ -1134,7 +1134,7 @@ display:
           entity_type: media
           entity_field: name
           plugin_id: field
-          label: Name
+          label: Név
           type: string
           settings:
             link_to_entity: false
@@ -1146,7 +1146,7 @@ display:
           entity_type: media
           entity_field: uid
           plugin_id: field
-          label: Author
+          label: Szerző
           type: entity_reference_label
           settings:
             link: true
@@ -1158,7 +1158,7 @@ display:
           entity_type: media
           entity_field: changed
           plugin_id: field
-          label: Updated
+          label: Frissítve
           type: timestamp
           settings:
             date_format: short
@@ -1275,7 +1275,7 @@ display:
           exposed: true
           expose:
             operator_id: name_op
-            label: Name
+            label: Név
             description: ''
             use_operator: false
             operator: name_op
