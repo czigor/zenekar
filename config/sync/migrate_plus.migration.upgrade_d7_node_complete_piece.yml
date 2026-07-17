@@ -1,98 +1,80 @@
 uuid: 3793045c-0dd5-4cd1-a683-6f83537d0f4f
 langcode: hu
 status: true
-dependencies: {  }
+dependencies: {}
 id: upgrade_d7_node_complete_piece
 class: Drupal\node\Plugin\migrate\D7NodeTranslation
 field_plugin_method: null
 cck_plugin_method: null
 migration_tags:
-  - 'Drupal 7'
+  - "Drupal 7"
   - Content
 migration_group: migrate_drupal_7
-label: 'Node complete (Piece)'
+label: "Node complete (Piece)"
 source:
   plugin: d7_node_complete
   node_type: piece
 process:
   nid:
-    -
-      plugin: get
+    - plugin: get
       source: tnid
   vid:
-    -
-      plugin: get
+    - plugin: get
       source: vid
   langcode:
-    -
-      plugin: default_value
+    - plugin: default_value
       source: language
       default_value: und
   title:
-    -
-      plugin: get
+    - plugin: get
       source: title
   uid:
-    -
-      plugin: get
+    - plugin: get
       source: node_uid
   status:
-    -
-      plugin: get
+    - plugin: get
       source: status
   created:
-    -
-      plugin: get
+    - plugin: get
       source: created
   changed:
-    -
-      plugin: get
-      source: timestamp
+    - plugin: get
+      source: changed
   promote:
-    -
-      plugin: get
+    - plugin: get
       source: promote
   sticky:
-    -
-      plugin: get
+    - plugin: get
       source: sticky
   revision_uid:
-    -
-      plugin: get
+    - plugin: get
       source: revision_uid
   revision_log:
-    -
-      plugin: get
+    - plugin: get
       source: log
   revision_timestamp:
-    -
-      plugin: get
+    - plugin: get
       source: timestamp
   content_translation_source:
-    -
-      plugin: get
+    - plugin: get
       source: source_langcode
   comment_node_piece/0/status:
-    -
-      plugin: get
+    - plugin: get
       source: comment
   field_composer:
-    -
-      plugin: get
+    - plugin: get
       source: field_composer
   field_piece_title:
-    -
-      plugin: get
+    - plugin: get
       source: field_piece_title
   field_metatag:
-    -
-      plugin: d7_metatag_entities
+    - plugin: d7_metatag_entities
       source: pseudo_metatag_entities
 destination:
-  plugin: 'entity_complete:node'
+  plugin: "entity_complete:node"
   translations: true
   default_bundle: piece
-idMap: {  }
+idMap: {}
 migration_dependencies:
   required:
     - upgrade_d7_node_type
