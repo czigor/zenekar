@@ -1,0 +1,20 @@
+uuid: 7ab005ce-50b8-4b3c-ae82-8c8c2e89eef1
+langcode: hu
+status: true
+dependencies:
+  module:
+    - language
+  theme:
+    - mez_theme
+id: mez_theme_lang_switcher
+theme: mez_theme
+region: header
+weight: 0
+provider: null
+plugin: 'language_block:language_interface'
+settings:
+  id: 'language_block:language_interface'
+  label: Nyelvválasztó
+  label_display: '0'
+  provider: language
+visibility: {  }

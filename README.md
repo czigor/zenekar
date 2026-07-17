@@ -66,7 +66,7 @@ Run migrations.
 
 ```
 ddev drush migrate:import --execute-dependencies upgrade_d7_file
-ddev drush migrate:import --execute-dependencies upgrade_d7_node_complete_piece,upgrade_d7_node_complete_person,upgrade_d7_node_complete_location
+ddev drush migrate:import --execute-dependencies upgrade_d7_node_complete_piece,upgrade_d7_node_complete_person,upgrade_d7_node_complete_location,upgrade_d7_node_complete_mez_news
 ddev drush migrate:import --execute-dependencies upgrade_d7_taxonomy_term_instruments,upgrade_d7_taxonomy_term_concert_type
 ddev drush migrate:import --execute-dependencies upgrade_d7_field_collection_performers,upgrade_d7_field_collection_revisions_performers
 ddev drush migrate:import --execute-dependencies upgrade_d7_field_collection_programme,upgrade_d7_field_collection_revisions_programme
