@@ -1,0 +1,33 @@
+uuid: 16b2a26b-1da4-4d5f-9ae4-70cc892f8c2a
+langcode: hu
+status: true
+dependencies:
+  config:
+    - node.type.person
+  module:
+    - language
+    - node
+id: person
+label: Person
+type: 'canonical_entities:node'
+pattern: '/szemely/[node:title]'
+selection_criteria:
+  bdbf4f15-872a-41bb-ad90-9b45493cd7bb:
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: node
+    bundles:
+      person: person
+  e3f44518-e6fb-49be-9209-760ebe88ebf0:
+    id: language
+    negate: false
+    context_mapping:
+      language: 'node:langcode:language'
+    langcodes:
+      hu: hu
+selection_logic: and
+weight: -10
+relationships:
+  'node:langcode:language':
+    label: Nyelv

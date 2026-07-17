@@ -1,71 +1,87 @@
 uuid: 2fb7fcbd-b88d-4a15-b0ec-fb6f843cf2a6
 langcode: hu
 status: true
-dependencies: {}
+dependencies: {  }
 id: upgrade_d7_node_complete_person
 class: null
 field_plugin_method: null
 cck_plugin_method: null
 migration_tags:
-  - "Drupal 7"
+  - 'Drupal 7'
   - Content
 migration_group: migrate_drupal_7
-label: "Node complete (Person)"
+label: 'Node complete (Person)'
 source:
   plugin: d7_node
   node_type: person
 process:
   nid:
-    - plugin: get
+    -
+      plugin: get
       source: tnid
   vid:
-    - plugin: get
+    -
+      plugin: get
       source: vid
   langcode:
-    - plugin: default_value
+    -
+      plugin: default_value
       source: language
       default_value: und
   title: title
   uid:
-    - plugin: get
+    -
+      plugin: get
       source: node_uid
   status:
-    - plugin: get
+    -
+      plugin: get
       source: status
   created:
-    - plugin: get
+    -
+      plugin: get
       source: created
   changed:
-    - plugin: get
+    -
+      plugin: get
       source: changed
   promote:
-    - plugin: get
+    -
+      plugin: get
       source: promote
   sticky:
-    - plugin: get
+    -
+      plugin: get
       source: sticky
   revision_uid:
-    - plugin: get
+    -
+      plugin: get
       source: revision_uid
   revision_log:
-    - plugin: get
+    -
+      plugin: get
       source: log
   revision_timestamp:
-    - plugin: get
+    -
+      plugin: get
       source: timestamp
   field_active:
-    - plugin: get
+    -
+      plugin: get
       source: field_active
   field_email:
-    - plugin: sub_process
+    -
+      plugin: sub_process
       source: field_email
       process:
         value: email
   field_email_list:
-    - plugin: get
+    -
+      plugin: get
       source: field_email_list
   field_image:
-    - plugin: sub_process
+    -
+      plugin: sub_process
       source: field_image
       process:
         target_id: fid
@@ -74,72 +90,86 @@ process:
         width: width
         height: height
   field_instrument:
-    - plugin: migration_lookup
+    -
+      plugin: migration_lookup
       migration: upgrade_d7_taxonomy_term_instruments
       source: field_instrument
   field_member:
-    - plugin: get
+    -
+      plugin: get
       source: field_member
   field_membership_dates:
-    - plugin: sub_process
+    -
+      plugin: sub_process
       source: field_membership_dates
       process:
         value:
           plugin: format_date
-          from_format: "Y-m-d H:i:s"
+          from_format: 'Y-m-d H:i:s'
           to_format: Y-m-d
           source: value
         end_value:
           plugin: format_date
-          from_format: "Y-m-d H:i:s"
+          from_format: 'Y-m-d H:i:s'
           to_format: Y-m-d
           source: value2
   field_neptun_code:
-    - plugin: get
+    -
+      plugin: get
       source: field_neptun_code
   field_occupation:
-    - plugin: get
+    -
+      plugin: get
       source: field_occupation
   field_address:
-    - plugin: location_to_address
+    -
+      plugin: location_to_address
       source: field_person_address
   field_phone:
-    - plugin: get
+    -
+      plugin: get
       source: field_phone
   body/value: field_person_body/0/value
   body/format:
-    - plugin: static_map
+    -
+      plugin: static_map
       source: field_person_body/0/format
       map:
         wysiwyg: ckeditor
         plain_text: plain_text
       default_value: plain_text
   field_positions:
-    - plugin: sub_process
+    -
+      plugin: sub_process
       source: field_positions
       process:
         target_id:
-          - plugin: paragraphs_lookup
-            tags: "Field Collection Content"
+          -
+            plugin: paragraphs_lookup
+            tags: 'Field Collection Content'
             source: value
-          - plugin: extract
+          -
+            plugin: extract
             index:
               - id
         target_revision_id:
-          - plugin: paragraphs_lookup
+          -
+            plugin: paragraphs_lookup
             tags:
-              - "Field Collection Revisions Content"
-              - "Field Collection Content"
+              - 'Field Collection Revisions Content'
+              - 'Field Collection Content'
             tag_ids:
-              "Field Collection Revisions Content":
+              'Field Collection Revisions Content':
                 - revision_id
-              "Field Collection Content":
+              'Field Collection Content':
                 - value
-          - plugin: extract
+          -
+            plugin: extract
             index:
               - revision_id
   field_date_of_birth:
-    - plugin: sub_process
+    -
+      plugin: sub_process
       source: field_date_of_birth
       process:
         value:
@@ -152,10 +182,12 @@ process:
     plugin: default_value
     default_value: ckeditor
   field_studies:
-    - plugin: get
+    -
+      plugin: get
       source: field_studies
   field_student_status:
-    - plugin: sub_process
+    -
+      plugin: sub_process
       source: field_student_status
       process:
         target_id:
@@ -163,13 +195,16 @@ process:
           migration: upgrade_d7_taxonomy_term_student_status
           source: target_id
   field_data_confirmed:
-    - plugin: get
+    -
+      plugin: get
       source: field_data_confirmed
   field_place_of_birth:
-    - plugin: get
+    -
+      plugin: get
       source: field_place_of_birth
   field_years_of_study:
-    - plugin: sub_process
+    -
+      plugin: sub_process
       source: field_years_of_study
       process:
         value:
@@ -183,10 +218,10 @@ process:
           to_format: Y-m-d
           source: value2
 destination:
-  plugin: "entity:node"
+  plugin: 'entity:node'
   translations: true
   default_bundle: person
-idMap: {}
+idMap: {  }
 migration_dependencies:
   required:
     - upgrade_d7_user
@@ -194,5 +229,5 @@ migration_dependencies:
     - upgrade_d7_field_collection_revisions_positions
     - upgrade_d7_taxonomy_term_instruments
     - upgrade_d7_taxonomy_term_student_status
-  optional: {}
+  optional: {  }
 include: null

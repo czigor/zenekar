@@ -1,0 +1,23 @@
+uuid: 90ecacb6-91c8-40be-8c25-c6e807dc1f6f
+langcode: hu
+status: true
+dependencies:
+  config:
+    - node.type.mez_news
+  module:
+    - node
+id: news
+label: Hír
+type: 'canonical_entities:node'
+pattern: '/news/[node:title]'
+selection_criteria:
+  692ef252-79f7-440c-b22d-e3bcff18fbce:
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: node
+    bundles:
+      mez_news: mez_news
+selection_logic: and
+weight: -5
+relationships: {  }

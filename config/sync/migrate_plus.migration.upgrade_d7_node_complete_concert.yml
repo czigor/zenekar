@@ -1,119 +1,144 @@
 uuid: 5ece1fc0-95a6-4269-ac4d-83da38276bc9
 langcode: hu
 status: true
-dependencies: {}
+dependencies: {  }
 id: upgrade_d7_node_complete_concert
 class: Drupal\node\Plugin\migrate\D7NodeTranslation
 field_plugin_method: null
 cck_plugin_method: null
 migration_tags:
-  - "Drupal 7"
+  - 'Drupal 7'
   - Content
 migration_group: migrate_drupal_7
-label: "Node complete (Concert)"
+label: 'Node complete (Concert)'
 source:
   plugin: d7_node_complete
   node_type: concert
 process:
   nid:
-    - plugin: get
+    -
+      plugin: get
       source: tnid
   vid:
-    - plugin: get
+    -
+      plugin: get
       source: vid
   langcode:
-    - plugin: default_value
+    -
+      plugin: default_value
       source: language
       default_value: und
   title:
-    - plugin: get
+    -
+      plugin: get
       source: title
   uid:
-    - plugin: get
+    -
+      plugin: get
       source: node_uid
   status:
-    - plugin: get
+    -
+      plugin: get
       source: status
   created:
-    - plugin: get
+    -
+      plugin: get
       source: created
   changed:
-    - plugin: get
+    -
+      plugin: get
       source: changed
   promote:
-    - plugin: get
+    -
+      plugin: get
       source: promote
   sticky:
-    - plugin: get
+    -
+      plugin: get
       source: sticky
   revision_uid:
-    - plugin: get
+    -
+      plugin: get
       source: revision_uid
   revision_log:
-    - plugin: get
+    -
+      plugin: get
       source: log
   revision_timestamp:
-    - plugin: get
+    -
+      plugin: get
       source: timestamp
   content_translation_source:
-    - plugin: get
+    -
+      plugin: get
       source: source_langcode
   comment_node_concert/0/status:
-    - plugin: get
+    -
+      plugin: get
       source: comment
   field_media:
-    - plugin: sub_process
+    -
+      plugin: sub_process
       source: field_media
       process:
         target_id:
-          - plugin: mez_file_to_media
+          -
+            plugin: mez_file_to_media
             source: fid
             migration: upgrade_d7_file_entity
             no_stub: true
-          - plugin: skip_on_empty
+          -
+            plugin: skip_on_empty
             method: row
   field_programme:
-    - plugin: sub_process
+    -
+      plugin: sub_process
       source: field_programme
       process:
         target_id:
-          - plugin: paragraphs_lookup
-            tags: "Field Collection Content"
+          -
+            plugin: paragraphs_lookup
+            tags: 'Field Collection Content'
             source: value
-          - plugin: extract
+          -
+            plugin: extract
             index:
               - id
         target_revision_id:
-          - plugin: paragraphs_lookup
+          -
+            plugin: paragraphs_lookup
             tags:
-              - "Field Collection Revisions Content"
-              - "Field Collection Content"
+              - 'Field Collection Revisions Content'
+              - 'Field Collection Content'
             tag_ids:
-              "Field Collection Revisions Content":
+              'Field Collection Revisions Content':
                 - revision_id
-              "Field Collection Content":
+              'Field Collection Content':
                 - value
-          - plugin: extract
+          -
+            plugin: extract
             index:
               - revision_id
   field_time:
-    - plugin: sub_process
+    -
+      plugin: sub_process
       source: field_time
       process:
         value:
           plugin: format_date
-          from_format: "Y-m-d H:i:s"
+          from_format: 'Y-m-d H:i:s'
           to_format: 'Y-m-d\TH:i:s'
           source: value
         end_value:
           plugin: format_date
-          from_format: "Y-m-d H:i:s"
+          from_format: 'Y-m-d H:i:s'
           to_format: 'Y-m-d\TH:i:s'
           source: value2
   body/value: body/0/value
   body/summary: body/0/summary
   body/format:
-    - plugin: static_map
+    -
+      plugin: static_map
       source: body/0/format
       map:
         wysiwyg: ckeditor
@@ -121,48 +146,57 @@ process:
         plain_text: plain_text
       default_value: ckeditor
   field_location_reference:
-    - plugin: get
+    -
+      plugin: get
       source: field_location_reference
   field_ticket_selling:
-    - plugin: get
+    -
+      plugin: get
       source: field_ticket_selling
   field_orchestra_performers:
-    - plugin: sub_process
+    -
+      plugin: sub_process
       source: field_orchestra_performers
       process:
         target_id:
-          - plugin: paragraphs_lookup
-            tags: "Field Collection Content"
+          -
+            plugin: paragraphs_lookup
+            tags: 'Field Collection Content'
             source: value
-          - plugin: extract
+          -
+            plugin: extract
             index:
               - id
         target_revision_id:
-          - plugin: paragraphs_lookup
+          -
+            plugin: paragraphs_lookup
             tags:
-              - "Field Collection Revisions Content"
-              - "Field Collection Content"
+              - 'Field Collection Revisions Content'
+              - 'Field Collection Content'
             tag_ids:
-              "Field Collection Revisions Content":
+              'Field Collection Revisions Content':
                 - revision_id
-              "Field Collection Content":
+              'Field Collection Content':
                 - value
-          - plugin: extract
+          -
+            plugin: extract
             index:
               - revision_id
   field_concert_type:
-    - plugin: sub_process
+    -
+      plugin: sub_process
       source: field_concert_type
       process:
         target_id: tid
   field_metatag:
-    - plugin: d7_metatag_entities
+    -
+      plugin: d7_metatag_entities
       source: pseudo_metatag_entities
 destination:
-  plugin: "entity_complete:node"
+  plugin: 'entity_complete:node'
   translations: true
   default_bundle: concert
-idMap: {}
+idMap: {  }
 migration_dependencies:
   required:
     - upgrade_d7_user
