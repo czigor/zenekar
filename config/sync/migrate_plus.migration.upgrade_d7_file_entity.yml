@@ -60,7 +60,6 @@ process:
       plugin: migration_lookup
       migration:
         - upgrade_d7_file
-        - upgrade_d7_file_private
       source: fid
       no_stub: true
     -
@@ -96,7 +95,6 @@ process:
       plugin: migration_lookup
       migration:
         - upgrade_d7_file
-        - upgrade_d7_file_private
       source: fid
       no_stub: true
     -
@@ -127,7 +125,6 @@ process:
       plugin: migration_lookup
       migration:
         - upgrade_d7_file
-        - upgrade_d7_file_private
       source: fid
       no_stub: true
     -
@@ -208,7 +205,6 @@ idMap: {  }
 migration_dependencies:
   required:
     - upgrade_d7_file
-    - upgrade_d7_file_private
     - upgrade_d7_user
   optional:
     - upgrade_d7_node_complete_location

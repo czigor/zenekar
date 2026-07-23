@@ -1,0 +1,24 @@
+diff --git a/core/lib/Drupal/Core/Entity/Element/EntityAutocomplete.php b/core/lib/Drupal/Core/Entity/Element/EntityAutocomplete.php
+index 0691239dfa..48de096e3e 100644
+--- a/core/lib/Drupal/Core/Entity/Element/EntityAutocomplete.php
++++ b/core/lib/Drupal/Core/Entity/Element/EntityAutocomplete.php
+@@ -77,9 +77,16 @@ public static function valueCallback(&$element, $input, FormStateInterface $form
+     // Potentially the #value is set directly, so it contains the 'target_id'
+     // array structure instead of a string.
+     if ($input !== FALSE && is_array($input)) {
+-      $entity_ids = array_map(function (array $item) {
+-        return $item['target_id'];
+-      }, $input);
++      $entity_ids = array_filter(array_map(function ($item) {
++        if (is_array($item) && array_key_exists('target_id', $item)) {
++          // Check if the item is an array with a 'target_id'.
++          return $item['target_id'];
++        }
++        elseif (is_numeric($item)) {
++          // For views exposed filters, the item may just be numeric.
++          return $item;
++        }
++      }, $input));
+ 
+       $entities = \Drupal::entityTypeManager()->getStorage($element['#target_type'])->loadMultiple($entity_ids);
+ 

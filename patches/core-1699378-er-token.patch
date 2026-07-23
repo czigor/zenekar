@@ -1,0 +1,324 @@
+diff --git a/core/lib/Drupal/Core/Entity/Element/EntityAutocomplete.php b/core/lib/Drupal/Core/Entity/Element/EntityAutocomplete.php
+index 132aaa439974a3a4acb7cf048f1cdc6868c9f247..08fda3bd3f6fa84924ffbe4d7faf5402db02f405 100644
+--- a/core/lib/Drupal/Core/Entity/Element/EntityAutocomplete.php
++++ b/core/lib/Drupal/Core/Entity/Element/EntityAutocomplete.php
+@@ -11,6 +11,8 @@
+ use Drupal\Core\Render\Attribute\FormElement;
+ use Drupal\Core\Render\Element\Textfield;
+ use Drupal\Core\Site\Settings;
++use Drupal\Core\Entity\EntityForm;
++use Drupal\views\Form\ViewsForm;
+ 
+ /**
+  * Provides an entity autocomplete form element.
+@@ -178,6 +180,43 @@ public static function processEntityAutocomplete(array &$element, FormStateInter
+       $element['#autocomplete_query_parameters']['entity_id'] = $selection_settings['entity']->id();
+       unset($selection_settings['entity']);
+     }
++
++    // Put entity into settings.
++    $form_object = $form_state->getFormObject();
++
++    if ($form_object instanceof EntityForm) {
++      $entity = $form_object->getEntity();
++
++      $ref = $complete_form;
++      foreach ($element['#array_parents'] as $parent_key) {
++        $ref = $ref[$parent_key];
++        if (!empty($ref['#entity'])) {
++          $entity = $ref['#entity'];
++        }
++      }
++
++      if ($entity !== NULL) {
++        $storage = $form_state->getStorage();
++        $parent_group = $storage['group'] ?? NULL;
++        $selection_settings['entity_info'] = [
++          'type' => $entity->getEntityTypeId(),
++          'id' => $entity->id(),
++          'parent_group' => $parent_group,
++        ];
++      }
++    }
++
++    // A view with arguments? Might provide multiple entities via relationships.
++    if ($form_object instanceof ViewsForm) {
++      $view = $form_state->getBuildInfo()['args'][0];
++      $selection_settings['parent_view'] = [
++        'id' => $view->id(),
++        'display' => $view->current_display,
++        'args' => $view->args,
++        'delta' => $element['#field_parents'][1],
++      ];
++    }
++
+     $data = serialize($selection_settings) . $element['#target_type'] . $element['#selection_handler'];
+     $selection_settings_key = Crypt::hmacBase64($data, Settings::getHashSalt());
+ 
+diff --git a/core/lib/Drupal/Core/Field/Plugin/Field/FieldWidget/OptionsWidgetBase.php b/core/lib/Drupal/Core/Field/Plugin/Field/FieldWidget/OptionsWidgetBase.php
+index 7b49b1c44fba76c816e17269f7abb9149e9ab0ab..073a5632d78d8d9cb10c8789820ca371078c74c6 100644
+--- a/core/lib/Drupal/Core/Field/Plugin/Field/FieldWidget/OptionsWidgetBase.php
++++ b/core/lib/Drupal/Core/Field/Plugin/Field/FieldWidget/OptionsWidgetBase.php
+@@ -2,6 +2,7 @@
+ 
+ namespace Drupal\Core\Field\Plugin\Field\FieldWidget;
+ 
++use Drupal\Core\Entity\EntityForm;
+ use Drupal\Core\Entity\FieldableEntityInterface;
+ use Drupal\Core\Field\FieldDefinitionInterface;
+ use Drupal\Core\Field\FieldFilteredMarkup;
+@@ -66,6 +67,40 @@ public function __construct($plugin_id, $plugin_definition, FieldDefinitionInter
+    * {@inheritdoc}
+    */
+   public function formElement(FieldItemListInterface $items, $delta, array $element, array &$form, FormStateInterface $form_state) {
++    // Add form object to field definition.
++    $field_definition = $items->getFieldDefinition();
++
++    // Put entity into settings.
++    $form_object = $form_state->getFormObject();
++    if ($form_object instanceof EntityForm) {
++      $entity = $form_object->getEntity();
++
++      // $complete_form['order_items']['widget']['entities'][0]['form']['inline_entity_form']['field_licensed_used_by']['widget'][0]['target_id']
++      $ref = $form;
++      if (isset($element['#array_parents'])) {
++        foreach ($element['#array_parents'] as $parent_key) {
++          $ref = $ref[$parent_key];
++          if (!empty($ref['#entity'])) {
++            $entity = $ref['#entity'];
++          }
++        }
++      }
++
++      if ($entity !== NULL) {
++        $storage = $form_state->getStorage();
++        $parent_group = (isset($storage['group'])) ? $storage['group'] : NULL;
++        $entity_data = [
++          'type' => $entity->getEntityTypeId(),
++          'id' => $entity->id(),
++          'parent_group' => $parent_group,
++        ];
++
++        $setting = $field_definition->getSetting('handler_settings');
++        $setting['entity_info'] = $entity_data;
++        $field_definition->setSetting('handler_settings', $setting);
++      }
++    }
++
+     // Prepare some properties for the child methods to build the actual form
+     // element.
+     $this->required = $element['#required'];
+diff --git a/core/modules/views/src/Plugin/EntityReferenceSelection/ViewsSelection.php b/core/modules/views/src/Plugin/EntityReferenceSelection/ViewsSelection.php
+index c51ea0451a33c545a2864e8dc47f233b54ab8898..b9b3489d01dd944fd6a959e91b752142e1c1e3f3 100644
+--- a/core/modules/views/src/Plugin/EntityReferenceSelection/ViewsSelection.php
++++ b/core/modules/views/src/Plugin/EntityReferenceSelection/ViewsSelection.php
+@@ -10,13 +10,16 @@
+ use Drupal\Core\Form\FormStateInterface;
+ use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
+ use Drupal\Core\Render\Element;
++use Drupal\Core\Render\BubbleableMetadata;
+ use Drupal\Core\Render\RendererInterface;
+ use Drupal\Core\Session\AccountInterface;
+ use Drupal\Core\StringTranslation\TranslatableMarkup;
+ use Drupal\Core\Url;
++use Drupal\Core\Utility\Token;
+ use Drupal\views\Render\ViewsRenderPipelineMarkup;
+ use Drupal\views\Views;
+ use Drupal\Core\StringTranslation\StringTranslationTrait;
++use Symfony\Component\DependencyInjection\ContainerInterface;
+ 
+ /**
+  * Plugin implementation of the 'selection' entity_reference.
+@@ -65,6 +68,13 @@ class ViewsSelection extends SelectionPluginBase implements ContainerFactoryPlug
+    */
+   protected $renderer;
+ 
++  /**
++   * The token service.
++   *
++   * @var \Drupal\Core\Utility\Token
++   */
++  protected $token;
++
+   /**
+    * Constructs a new ViewsSelection object.
+    *
+@@ -82,14 +92,33 @@ class ViewsSelection extends SelectionPluginBase implements ContainerFactoryPlug
+    *   The current user.
+    * @param \Drupal\Core\Render\RendererInterface $renderer
+    *   The renderer.
++   * @param \Drupal\Core\Utility\Token $token
++   *   The token replacement instance.
+    */
+-  public function __construct(array $configuration, $plugin_id, $plugin_definition, EntityTypeManagerInterface $entity_type_manager, ModuleHandlerInterface $module_handler, AccountInterface $current_user, RendererInterface $renderer) {
++  public function __construct(array $configuration, $plugin_id, $plugin_definition, EntityTypeManagerInterface $entity_type_manager, ModuleHandlerInterface $module_handler, AccountInterface $current_user, RendererInterface $renderer, Token $token) {
+     parent::__construct($configuration, $plugin_id, $plugin_definition);
+ 
+     $this->entityTypeManager = $entity_type_manager;
+     $this->moduleHandler = $module_handler;
+     $this->currentUser = $current_user;
+     $this->renderer = $renderer;
++    $this->token = $token;
++  }
++
++  /**
++   * {@inheritdoc}
++   */
++  public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
++    return new static(
++      $configuration,
++      $plugin_id,
++      $plugin_definition,
++      $container->get('entity_type.manager'),
++      $container->get('module_handler'),
++      $container->get('current_user'),
++      $container->get('renderer'),
++      $container->get('token')
++    );
+   }
+ 
+   /**
+@@ -151,7 +180,7 @@ public function buildConfigurationForm(array $form, FormStateInterface $form_sta
+         '#title' => $this->t('View arguments'),
+         '#default_value' => $default,
+         '#required' => FALSE,
+-        '#description' => $this->t('Provide a comma separated list of arguments to pass to the view.'),
++        '#description' => $this->t('Provide a comma separated list of arguments to pass to the view.') . '<br />' . $this->t('This field supports tokens.'),
+       ];
+     }
+     else {
+@@ -234,18 +263,27 @@ public function getReferenceableEntities($match = NULL, $match_operator = 'CONTA
+    *   indicates no limiting.
+    * @param array|null $ids
+    *   Array of entity IDs. Defaults to NULL.
++   * @param bool $bubble_cacheable_metadata
++   *   If TRUE the cacheability metadata emitted during token replacement will
++   *   be bubbled to the render context. If FALSE then the it will not in order
++   *   to prevent leaked cacheability metadata during early rendering.
+    *
+    * @return array
+    *   The results.
+    */
+-  protected function getDisplayExecutionResults(?string $match = NULL, string $match_operator = 'CONTAINS', int $limit = 0, ?array $ids = NULL) {
++  protected function getDisplayExecutionResults(?string $match = NULL, string $match_operator = 'CONTAINS', int $limit = 0, ?array $ids = NULL, $bubble_cacheable_metadata = TRUE): array {
+     $display_name = $this->getConfiguration()['view']['display_name'];
+-    $arguments = $this->getConfiguration()['view']['arguments'];
++    $arguments = $this->handleArgs($this->getConfiguration()['view']['arguments'], $bubble_cacheable_metadata);
+     $results = [];
+     if ($this->initializeView($match, $match_operator, $limit, $ids)) {
+       $results = $this->view->executeDisplay($display_name, $arguments);
+     }
+-    return $results;
++    if (is_null($results)) {
++      return (array) $results;
++    }
++    else {
++      return $results;
++    }
+   }
+ 
+   /**
+@@ -290,7 +328,7 @@ public function countReferenceableEntities($match = NULL, $match_operator = 'CON
+    * {@inheritdoc}
+    */
+   public function validateReferenceableEntities(array $ids) {
+-    $entities = $this->getDisplayExecutionResults(NULL, 'CONTAINS', 0, $ids);
++    $entities = $this->getDisplayExecutionResults(NULL, 'CONTAINS', 0, $ids, FALSE);
+     $result = [];
+     if ($entities) {
+       $result = array_keys($entities);
+@@ -331,4 +369,94 @@ public static function settingsFormValidate($element, FormStateInterface $form_s
+     $form_state->setValueForElement($element, $value);
+   }
+ 
++  /**
++   * Handles replacing tokens in arguments for views.
++   *
++   * Replaces tokens using Token::replace.
++   *
++   * @param array $args
++   *   An array of arguments that may contain tokens.
++   * @param bool $bubble_cacheable_metadata
++   *   If TRUE the cacheability metadata emitted during token replacement will
++   *   be bubbled to the render context. If FALSE then the it will not in order
++   *   to prevent leaked cacheability metadata during early rendering.
++   *
++   * @return array
++   *   The arguments to be sent to the View.
++   */
++  protected function handleArgs($args, $bubble_cacheable_metadata = TRUE) {
++    $entities = [];
++    if (isset($this->configuration['handler_settings']['entity'])) {
++      $entities[] = $this->configuration['handler_settings']['entity'];
++    }
++    if (isset($this->configuration['entity'])) {
++      $entities[] = $this->configuration['entity'];
++    }
++    if (isset($this->configuration['entity_info']) && !empty($this->configuration['entity_info']['id'])) {
++      $entity = $this->entityTypeManager
++        ->getStorage($this->configuration['entity_info']['type'])
++        ->load($this->configuration['entity_info']['id']);
++      if ($entity) {
++        $entity->parent_group = $this->configuration['entity_info']['parent_group'] ?: NULL;
++        $entities[] = $entity;
++      }
++    }
++    if (isset($this->configuration['parent_view'])) {
++      $view_config = $this->configuration['parent_view'];
++      $parent_view = $this->entityTypeManager
++        ->getStorage('view')
++        ->load($view_config['id']);
++      if (!$parent_view) {
++        return $args;
++      }
++      $view_executable = \Drupal::service('views.executable')
++        ->get($parent_view);
++
++      $display_id = $view_config['display'];
++      $parent_args = $view_config['args'];
++
++      $view_executable->setDisplay($display_id);
++      $view_executable->preExecute($parent_args);
++      $view_executable->execute($display_id);
++      $result = $view_executable->buildRenderable($display_id, $parent_args, FALSE);
++
++      $delta = $view_config['delta'];
++      $row = $result['#view']->result[$delta];
++      if (!$row) {
++        return $args;
++      }
++      $entities[] = $row->_entity;
++      foreach ($row->_relationship_entities as $entity) {
++        $entities[] = $entity;
++      }
++    }
++
++    $data = [];
++    foreach ($entities as $entity) {
++      $token_type = $entity->getEntityTypeId();
++
++      // Taxonomy term token type doesn't match the entity type's machine name.
++      if ($token_type === 'taxonomy_term') {
++        $token_type = 'term';
++      }
++
++      if (!isset($data[$token_type])) {
++        $data[$token_type] = $entity;
++      }
++    }
++
++    // If cacheability metadata should not be bubbled then we need to pass in
++    // our own BubbleableMetadata which will prevent any metadata generated from
++    // automatically bubbling to the render context.
++    $bubbleable_metadata = $bubble_cacheable_metadata ? NULL : new BubbleableMetadata();
++
++    // Replace tokens for each argument.
++    foreach ($args as $key => $arg) {
++      $value = $this->token->replace($arg, $data, ['clear' => TRUE], $bubbleable_metadata);
++      $args[$key] = !empty($value) ? $value : NULL;
++    }
++
++    return $args;
++  }
++
+ }

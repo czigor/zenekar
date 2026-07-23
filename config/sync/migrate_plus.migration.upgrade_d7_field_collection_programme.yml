@@ -48,18 +48,9 @@ process:
               - id
         target_revision_id:
           -
-            plugin: paragraphs_lookup
-            tags:
-              - 'Field Collection Revisions Content'
-              - 'Field Collection Content'
-            tag_ids:
-              'Field Collection Revisions Content':
-                - revision_id
-              'Field Collection Content':
-                - value
-          -
-            plugin: extract
-            index:
+            plugin: mez_paragraphs_err_lookup
+            source:
+              - value
               - revision_id
   field_piece:
     -

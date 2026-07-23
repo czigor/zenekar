@@ -7,6 +7,8 @@ module:
   admin_toolbar_tools: 0
   block: 0
   breakpoint: 0
+  chosen: 0
+  chosen_lib: 0
   ckeditor5: 0
   config: 0
   config_translation: 0
@@ -62,6 +64,7 @@ module:
   update: 0
   user: 0
   views_bulk_operations: 0
+  views_core_entity_reference: 0
   views_ui: 0
   pathauto: 1
   content_translation: 10
