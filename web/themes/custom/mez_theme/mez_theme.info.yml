@@ -1,0 +1,26 @@
+name: mez_theme
+type: theme
+'base theme': false
+version: 1.0.0
+libraries:
+  - mez_theme/base
+  - mez_theme/messages
+  - core/normalize
+libraries-extend:
+  user/drupal.user:
+    - mez_theme/user
+  core/drupal.dropbutton:
+    - mez_theme/dropbutton
+  core/drupal.dialog:
+    - mez_theme/dialog
+  file/drupal.file:
+    - mez_theme/file
+  core/drupal.item-list:
+    - mez_theme/item-list
+  core/drupal.progress:
+    - mez_theme/progress
+  core/drupal.tablesort:
+    - mez_theme/drupal.tablesort
+description: ''
+core_version_requirement: ^11
+generator: 'starterkit_theme:11.4.1'

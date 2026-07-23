@@ -1,0 +1,17 @@
+{
+  "name": "mez_theme",
+  "version": "1.0.0",
+  "description": "mez_theme theme, generated from starterkit_theme. Additional information on generating themes can be found in the [Starterkit documentation](https://www.drupal.org/docs/core-modules-and-themes/core-themes/starterkit-theme).",
+  "main": "index.js",
+  "scripts": {
+    "watch": "sass --watch scss:css --embed-source-map",
+    "build": "sass scss:css --style=compressed --no-source-map"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "sass": "^1.101.0"
+  }
+}
