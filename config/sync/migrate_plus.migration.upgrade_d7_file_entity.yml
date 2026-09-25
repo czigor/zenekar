@@ -206,6 +206,7 @@ migration_dependencies:
   required:
     - upgrade_d7_file
     - upgrade_d7_user
+    - upgrade_d7_taxonomy_term_media
   optional:
     - upgrade_d7_node_complete_location
     - upgrade_d7_node_complete_piece

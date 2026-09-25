@@ -14,16 +14,14 @@ label: 'Taxonomy terms (Media tags)'
 source:
   plugin: d7_taxonomy_term
   bundle: media
+  constants:
+    vid: media
 process:
   tid:
     -
       plugin: get
       source: tid
-  vid:
-    -
-      plugin: migration_lookup
-      migration: upgrade_d7_taxonomy_vocabulary
-      source: vid
+  vid: constants/vid
   name:
     -
       plugin: get
@@ -83,9 +81,6 @@ destination:
   default_bundle: media
 idMap: {  }
 migration_dependencies:
-  required:
-    - upgrade_d7_taxonomy_vocabulary
-  optional:
-    - upgrade_d7_field_instance
-    - upgrade_d7_taxonomy_vocabulary
+  required: {}
+  optional: {}
 include: null
