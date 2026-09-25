@@ -8,7 +8,7 @@ _core:
   default_config_hash: nGE3EoPQQaQCuqTUtZgw0-KIzmrqdKDzdNQf2JyPUt4
 id: mez_theme_primary_local_tasks
 theme: mez_theme
-region: sidebar_first
+region: content
 weight: -4
 provider: null
 plugin: local_tasks_block

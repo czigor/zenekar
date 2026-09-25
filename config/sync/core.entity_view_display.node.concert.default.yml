@@ -14,7 +14,6 @@ dependencies:
     - node.type.concert
   module:
     - datetime
-    - entity_reference_revisions
     - text
     - user
 id: node.concert.default
@@ -27,7 +26,7 @@ content:
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 1
+    weight: 2
     region: content
   field_location_reference:
     type: entity_reference_label
@@ -46,15 +45,6 @@ content:
     third_party_settings: {  }
     weight: 3
     region: content
-  field_programme:
-    type: entity_reference_revisions_entity_view
-    label: above
-    settings:
-      view_mode: default
-      link: ''
-    third_party_settings: {  }
-    weight: 5
-    region: content
   field_time:
     type: datetime_default
     label: inline
@@ -62,7 +52,7 @@ content:
       timezone_override: ''
       format_type: medium
     third_party_settings: {  }
-    weight: 2
+    weight: 1
     region: content
   links:
     settings: {  }
@@ -72,5 +62,6 @@ content:
 hidden:
   field_concert_type: true
   field_orchestra_performers: true
+  field_programme: true
   field_ticket_selling: true
   langcode: true

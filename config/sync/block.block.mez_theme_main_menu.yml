@@ -12,8 +12,8 @@ _core:
   default_config_hash: KWAiziL39uEzmOJEql_wbUP2RtqGceL3WM2CfxhMelE
 id: mez_theme_main_menu
 theme: mez_theme
-region: sidebar_first
-weight: 0
+region: primary_menu
+weight: -5
 provider: null
 plugin: 'system_menu_block:main'
 settings:

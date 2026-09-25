@@ -12,7 +12,7 @@ _core:
   default_config_hash: gmxYWWHmgbe0Pnv8y48ZLSLH5mEHejOjAP6RLxUfdzU
 id: mez_theme_account_menu
 theme: mez_theme
-region: sidebar_first
+region: primary_menu
 weight: -4
 provider: null
 plugin: 'system_menu_block:account'

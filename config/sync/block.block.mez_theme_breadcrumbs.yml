@@ -10,8 +10,8 @@ _core:
   default_config_hash: VhBzWb7lMRtIOg9G7VSw_0uopi-7zXeHq4vXqqV1HFE
 id: mez_theme_breadcrumbs
 theme: mez_theme
-region: sidebar_first
-weight: 0
+region: header
+weight: -2
 provider: null
 plugin: system_breadcrumb_block
 settings:

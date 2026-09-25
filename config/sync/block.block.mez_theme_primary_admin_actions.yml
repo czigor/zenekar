@@ -8,8 +8,8 @@ _core:
   default_config_hash: Q9_2whdOj1YIomfvsIfopROW4FT_X5pY0DjdOiOaQ5U
 id: mez_theme_primary_admin_actions
 theme: mez_theme
-region: sidebar_first
-weight: -5
+region: header
+weight: -4
 provider: null
 plugin: local_actions_block
 settings:

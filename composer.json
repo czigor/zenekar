@@ -24,6 +24,7 @@
         "drupal/core-composer-scaffold": "^11",
         "drupal/core-project-message": "^11",
         "drupal/core-recommended": "^11",
+        "drupal/date_filter": "^1.0",
         "drupal/devel_php": "^1.5",
         "drupal/field_group": "^4.0",
         "drupal/geolocation": "^4",

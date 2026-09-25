@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3729bd303f41296b4b35fadfbfd03cf8",
+    "content-hash": "b40237085d734e27a038ebd2fd4af541",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2770,6 +2770,59 @@
             "support": {
                 "source": "https://git.drupalcode.org/project/ctools",
                 "issues": "https://www.drupal.org/project/issues/ctools"
+            }
+        },
+        {
+            "name": "drupal/date_filter",
+            "version": "1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/date_filter.git",
+                "reference": "1.0.2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/date_filter-1.0.2.zip",
+                "reference": "1.0.2",
+                "shasum": "83c14d27df0d561e412d401b88a59e2cae681414"
+            },
+            "require": {
+                "drupal/core": "^9 || ^10 || ^11"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "1.0.2",
+                    "datestamp": "1732103275",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Marcin Grabias",
+                    "homepage": "https://www.drupal.org/u/graber"
+                },
+                {
+                    "name": "joelpittet",
+                    "homepage": "https://www.drupal.org/user/160302"
+                },
+                {
+                    "name": "_shy",
+                    "homepage": "https://www.drupal.org/user/3672933"
+                }
+            ],
+            "description": "Plug and play module replacing core date filters",
+            "homepage": "http://drupal.org/project/date_filter",
+            "support": {
+                "source": "https://git.drupalcode.org/project/date_filter",
+                "issues": "https://drupal.org/project/issues/date_filter"
             }
         },
         {
