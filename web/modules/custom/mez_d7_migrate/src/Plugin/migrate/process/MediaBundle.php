@@ -31,7 +31,8 @@ class MediaBundle extends ProcessPluginBase {
     return match ($type) {
       'image' => str_starts_with($uri, 'private://') ? 'image_private' : 'image',
       'audio' => 'sound',
-      'video', 'document' => 'file',
+      'video' => 'remote_video', 
+      'document' => 'file',
       default => 'file',
     };
   }
