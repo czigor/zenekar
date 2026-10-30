@@ -81,6 +81,6 @@ destination:
   default_bundle: media
 idMap: {  }
 migration_dependencies:
-  required: {}
-  optional: {}
+  required: {  }
+  optional: {  }
 include: null

@@ -1,17 +1,20 @@
-uuid: 3ce8f700-f709-4a0b-adcd-782e181e04d8
+uuid: 6514c368-42ae-49b0-b37f-1d4077326709
 langcode: hu
 status: true
 dependencies:
   config:
+    - media.type.file
+    - media.type.image
     - media.type.remote_video
+    - media.type.sound
     - taxonomy.vocabulary.media
   module:
     - datetime
     - media
     - taxonomy
     - user
-id: videos
-label: Videók
+id: media_material
+label: 'Kép-, hang- és videóanyagok'
 module: views
 description: ''
 tag: ''
@@ -24,7 +27,7 @@ display:
     display_plugin: default
     position: 0
     display_options:
-      title: Videók
+      title: 'Kép-, hang- és videóanyagok'
       fields:
         name:
           id: name
@@ -78,7 +81,7 @@ display:
         options:
           offset: 0
           pagination_heading_level: h4
-          items_per_page: 12
+          items_per_page: 30
           total_pages: null
           id: 0
           tags:
@@ -140,15 +143,6 @@ display:
           group: 1
           expose:
             operator: ''
-        bundle:
-          id: bundle
-          table: media_field_data
-          field: bundle
-          entity_type: media
-          entity_field: bundle
-          plugin_id: bundle
-          value:
-            remote_video: remote_video
         field_concert_target_id:
           id: field_concert_target_id
           table: media__field_concert
@@ -163,13 +157,13 @@ display:
           exposed: true
           expose:
             operator_id: field_concert_target_id_op
-            label: Koncert
+            label: Koncertek
             description: ''
             use_operator: false
             operator: field_concert_target_id_op
             operator_limit_selection: false
             operator_list: {  }
-            identifier: concert
+            identifier: concerts
             required: false
             remember: false
             multiple: true
@@ -294,6 +288,54 @@ display:
               direction: ASC
             auto_create: false
             auto_create_bundle: ''
+        bundle:
+          id: bundle
+          table: media_field_data
+          field: bundle
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: media
+          entity_field: bundle
+          plugin_id: bundle
+          operator: in
+          value:
+            file: file
+            sound: sound
+            image: image
+            remote_video: remote_video
+          group: 1
+          exposed: true
+          expose:
+            operator_id: bundle_op
+            label: Médiatípus
+            description: ''
+            use_operator: false
+            operator: bundle_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: bundle
+            required: false
+            remember: false
+            multiple: true
+            remember_roles:
+              authenticated: authenticated
+            reduce: true
+          is_grouped: false
+          group_info:
+            label: Médiatípus
+            description: null
+            identifier: bundle
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items:
+              1: {  }
+              2: {  }
+              3: {  }
         field_pieces_target_id:
           id: field_pieces_target_id
           table: media__field_pieces
@@ -336,14 +378,7 @@ display:
           reduce_duplicates: false
           sub_handler: 'default:node'
           widget: autocomplete
-          sub_handler_settings:
-            target_bundles:
-              piece: piece
-            sort:
-              field: _none
-              direction: ASC
-            auto_create: false
-            auto_create_bundle: ''
+          sub_handler_settings: {  }
         field_tags_target_id:
           id: field_tags_target_id
           table: media__field_tags
@@ -421,7 +456,7 @@ display:
     position: 1
     display_options:
       display_extenders: {  }
-      path: videos
+      path: media
     cache_metadata:
       max-age: -1
       contexts:
