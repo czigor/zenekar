@@ -11,7 +11,7 @@ _core:
 id: mez_theme_messages
 theme: mez_theme
 region: content
-weight: -2
+weight: 0
 provider: null
 plugin: system_messages_block
 settings:

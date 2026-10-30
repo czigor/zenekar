@@ -1,0 +1,12 @@
+features:
+  node_user_picture: false
+  comment_user_picture: true
+  comment_user_verification: true
+  favicon: 1
+logo:
+  use_default: 0
+  path: themes/custom/mez_theme/images/mszz_logo_sign_small.png
+favicon:
+  use_default: 0
+  path: themes/custom/mez_theme/images/mszz_favicon_b.ico
+  mimetype: image/vnd.microsoft.icon

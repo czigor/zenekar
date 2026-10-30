@@ -27,6 +27,7 @@
         "drupal/date_filter": "^1.0",
         "drupal/devel_php": "^1.5",
         "drupal/field_group": "^4.0",
+        "drupal/flags": "^2.1",
         "drupal/geolocation": "^4",
         "drupal/metatag": "^2",
         "drupal/migrate_plus": "^6.0",

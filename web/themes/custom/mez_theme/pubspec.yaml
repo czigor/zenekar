@@ -1,0 +1,7 @@
+name: mez_theme
+
+environment:
+  sdk: ^3.6.0
+
+dev_dependencies:
+  sass: ^1.107.0
