@@ -16,11 +16,8 @@ source:
   constants:
     slash: /
 process:
-  id:
-    -
-      plugin: get
-      source: pid
-  _path:
+  id: pid
+  path:
     -
       plugin: concat
       source:
@@ -32,51 +29,7 @@ process:
       source:
         - constants/slash
         - alias
-  node_translation:
-    -
-      plugin: explode
-      source: source
-      delimiter: /
-    -
-      plugin: extract
-      default: INVALID_NID
-      index:
-        - 1
-    -
-      plugin: migration_lookup
-      migration:
-        - upgrade_d7_node_complete_book
-        - upgrade_d7_node_complete_composer
-        - upgrade_d7_node_complete_concert
-        - upgrade_d7_node_complete_documentation
-        - upgrade_d7_node_complete_issue
-        - upgrade_d7_node_complete_location
-        - upgrade_d7_node_complete_media_asset
-        - upgrade_d7_node_complete_mez_news
-        - upgrade_d7_node_complete_news
-        - upgrade_d7_node_complete_page
-        - upgrade_d7_node_complete_person
-        - upgrade_d7_node_complete_piece
-        - upgrade_d7_node_complete_project
-        - upgrade_d7_node_complete_seat
-    -
-      plugin: node_complete_node_translation_lookup
-  langcode:
-    -
-      plugin: null_coalesce
-      source:
-        - '@node_translation/1'
-        - language
-  path:
-    -
-      plugin: path_set_translated
-      source:
-        - '@_path'
-        - '@node_translation'
-  field_metatag:
-    -
-      plugin: d7_metatag_entities
-      source: pseudo_metatag_entities
+  langcode: language
 destination:
   plugin: 'entity:path_alias'
 idMap: {  }

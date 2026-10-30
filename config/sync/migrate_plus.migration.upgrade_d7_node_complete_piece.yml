@@ -12,7 +12,7 @@ migration_tags:
 migration_group: migrate_drupal_7
 label: 'Node complete (Piece)'
 source:
-  plugin: d7_node_complete
+  plugin: mez_d7_node_complete
   node_type: piece
 process:
   nid:
