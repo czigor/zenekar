@@ -1,3 +1,18 @@
+ul.menu,
+ul.menu li.menu-item a,
+ul.menu li.menu-item a.is-active,
+div.language-switcher-language-url ul li a,
+div.language-switcher-language-url ul li a.is-active {
+  color: white;
+}
+
+.language-switcher-language-url a {
+  display: none;
+}
+.language-switcher-language-url a span {
+  display: block;
+}
+
 .region-header {
   background-color: #000;
   display: flex;

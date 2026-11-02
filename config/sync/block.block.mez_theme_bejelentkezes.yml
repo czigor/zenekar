@@ -1,0 +1,20 @@
+uuid: c1854b29-94f1-4987-bc80-6664949874a2
+langcode: hu
+status: true
+dependencies:
+  module:
+    - user
+  theme:
+    - mez_theme
+id: mez_theme_bejelentkezes
+theme: mez_theme
+region: footer
+weight: 0
+provider: null
+plugin: user_login_block
+settings:
+  id: user_login_block
+  label: Bejelentkezés
+  label_display: visible
+  provider: user
+visibility: {  }
