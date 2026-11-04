@@ -1,0 +1,50 @@
+elements: |
+  personal:
+    '#title': 'Personal information'
+  name:
+    '#title': Name
+  birth_year:
+    '#title': 'Birth year'
+  phone:
+    '#title': Phone
+  bme_contact:
+    '#title': 'Connection with BME'
+  studies:
+    '#title': Studies
+  munkahely_es_foglalkozas:
+    '#title': 'Workplace and occupation'
+  musical_data:
+    '#title': 'Musical information'
+  instrument:
+    '#title': Instrument
+  own_instrument:
+    '#title': 'Do you have an instrument?'
+    '#options':
+      'no': 'no'
+      'yes': 'yes'
+  last_pieces:
+    '#title': 'Last learnt music pieces'
+  music_school:
+    '#title': 'Music school'
+  study_years:
+    '#title': 'How long have you been playing your instrument?'
+  music_school_name:
+    '#title': 'Name of music school?'
+  highest_music_class:
+    '#title': 'Highest finished music class'
+  last_teacher_name:
+    '#title': 'Name of last teacher'
+  orchestra_years:
+    '#title': 'Years of orchestra experience'
+  orchestra_type:
+    '#title': 'Orchestra type'
+  prizes:
+    '#title': 'More siginificant music results, prizes with date'
+  orchestra_source:
+    '#title': 'Where did you hear about the orchestra?'
+  remark:
+    '#title': 'Remark, question, request'
+handlers:
+  email_confirmation:
+    settings:
+      body: '<p>Dear [webform_submission:values:name]! Thank you for your application! We will soon contact you.&nbsp;</p><p>Application date: [webform_submission:created]</p><p>Application data<br>[webform_submission:values]</p><p>Best regards,<br>Műegyetemi Zenekar</p>'

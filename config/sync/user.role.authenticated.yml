@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - filter.format.ckeditor
+    - filter.format.webform_default
   module:
     - filter
     - node
@@ -20,3 +21,4 @@ permissions:
   - 'access site in maintenance mode'
   - 'access user profiles'
   - 'use text format ckeditor'
+  - 'use text format webform_default'

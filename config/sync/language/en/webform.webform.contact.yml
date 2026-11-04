@@ -1,0 +1,18 @@
+title: Contact
+elements: |
+  name:
+    '#title': 'Your Name'
+    '#default_value': ''
+  email:
+    '#title': 'Your Email'
+    '#default_value': ''
+  subject:
+    '#title': Subject
+  message:
+    '#title': Message
+settings:
+  confirmation_message: '<p>Your message has been sent.</p>'
+handlers:
+  email_confirmation:
+    settings:
+      body: '<p>Dear [webform_submission:values:name],</p><p>Thank you for reaching out to us! We will soon contact you with an answer.</p><p>Sent data:<br>[webform_submission:values]</p><p>Best regards,<br>Műegyetemi Zenekar</p>'

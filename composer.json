@@ -40,6 +40,7 @@
         "drupal/ultimate_cron": "^2.0@beta",
         "drupal/views_bulk_operations": "^4.2",
         "drupal/views_core_entity_reference": "^1.0@alpha",
+        "drupal/webform": "^6.3",
         "drush/drush": "^13",
         "mglaman/composer-drupal-lenient": "^1.0",
         "php-http/guzzle7-adapter": "^1.0"
