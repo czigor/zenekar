@@ -252,7 +252,7 @@ handlers:
       sender_mail: ''
       sender_name: ''
       subject: '[webform_submission:values:subject:raw]'
-      body: '<p>Kedves [webform_submission:values:name]!</p><p>Köszönjük a megkeresést! Hamarosan válaszolunk.</p><p>Küldött adatok:<br>[webform_submission:values]</p><p>Üdvözlettel</p><p>Műegyetemi Zenekar</p>'
+      body: '<p>Submitted on [webform_submission:created]</p><p>Submitted values are:</p><p>[webform_submission:values]</p>'
       excluded_elements: {  }
       ignore_access: false
       exclude_empty: true

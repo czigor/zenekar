@@ -1,18 +1,43 @@
 title: Contact
+description: 'Basic email contact webform.'
 elements: |
   name:
     '#title': 'Your Name'
-    '#default_value': ''
+    '#type': textfield
+    '#required': true
+    '#default_value': '[current-user:display-name]'
   email:
     '#title': 'Your Email'
-    '#default_value': ''
+    '#type': email
+    '#required': true
+    '#default_value': '[current-user:mail]'
   subject:
     '#title': Subject
+    '#type': textfield
+    '#required': true
+    '#test': 'Testing contact webform from [site:name]'
   message:
     '#title': Message
+    '#type': textarea
+    '#required': true
+    '#test': 'Please ignore this email.'
+  actions:
+    '#type': webform_actions
+    '#title': 'Submit button(s)'
+    '#submit__label': 'Send message'
 settings:
-  confirmation_message: '<p>Your message has been sent.</p>'
+  confirmation_message: 'Your message has been sent.'
+  confirmation_url: '<front>'
 handlers:
   email_confirmation:
+    label: 'Email confirmation'
     settings:
-      body: '<p>Dear [webform_submission:values:name],</p><p>Thank you for reaching out to us! We will soon contact you with an answer.</p><p>Sent data:<br>[webform_submission:values]</p><p>Best regards,<br>Műegyetemi Zenekar</p>'
+      from_name: _default
+      subject: '[webform_submission:values:subject:raw]'
+      body: '[webform_submission:values:message:value]'
+  email_notification:
+    label: 'Email notification'
+    settings:
+      from_name: '[webform_submission:values:name:raw]'
+      subject: '[webform_submission:values:subject:raw]'
+      body: '[webform_submission:values:message:value]'
