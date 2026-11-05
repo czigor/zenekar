@@ -36,6 +36,7 @@ display:
     display_plugin: default
     position: 0
     display_options:
+      title: Karmesterek
       fields:
         id:
           id: id
@@ -591,7 +592,7 @@ display:
           row_class: ''
           default_row_class: true
           disableifone: 0
-          row-start-open: '0'
+          row-start-open: none
           collapsible: 1
           animated: none
           animation_time: '300'
@@ -625,7 +626,20 @@ display:
           admin_label: 'field_positions: Bekezdés'
           plugin_id: standard
           required: true
-      header: {  }
+      header:
+        area:
+          id: area
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: text
+          empty: false
+          content:
+            value: 'A Műegyetemi Zenekart törtéleme során az alábbi [view:total-rows] karmester vezette.'
+            format: ckeditor
+          tokenize: false
       footer: {  }
       display_extenders:
         metatag_display_extender:
