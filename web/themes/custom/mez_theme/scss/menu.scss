@@ -8,9 +8,9 @@ div.language-switcher-language-url ul li a.is-active {
 
 .language-switcher-language-url {
   a {
-    display: none;
+    font-size: 0;
     span {
-      display: block;
+      display: inline-block;
     }
   }
 }
