@@ -44,17 +44,41 @@ elements: |-
     studies:
       '#type': textfield
       '#title': Tanulmányok
-    munkahely_es_foglalkozas:
-      '#type': textfield
-      '#title': 'Munkahely és foglalkozás'
+    address:
+      '#type': address
+      '#title': 'Állandó lakcím'
+      '#title_display': before
+      '#field_overrides':
+        givenName: hidden
+        additionalName: hidden
+        familyName: hidden
+        organization: hidden
+        addressLine2: hidden
+        addressLine3: hidden
+        sortingCode: hidden
+        dependentLocality: hidden
+        administrativeArea: hidden
+    temporary_address:
+      '#type': address
+      '#title': 'Ideiglenes lakcím'
+      '#title_display': before
+      '#field_overrides':
+        givenName: hidden
+        additionalName: hidden
+        familyName: hidden
+        organization: hidden
+        addressLine2: hidden
+        addressLine3: hidden
+        sortingCode: hidden
+        dependentLocality: hidden
+        administrativeArea: hidden
   musical_data:
     '#type': fieldset
     '#title': 'Zenei adatok'
-    instrument:
-      '#type': webform_term_select
+    hangszer:
+      '#type': textfield
       '#title': Hangszer
       '#required': true
-      '#vocabulary': instruments
     own_instrument:
       '#type': radios
       '#title': 'Van-e saját hangszered?'
@@ -71,7 +95,7 @@ elements: |-
       '#title': Zeneiskola
       study_years:
         '#type': textfield
-        '#title': 'Hány éve tanultál  a hangszeren?'
+        '#title': 'Hány évet tanultál a hangszeren?'
         '#required': true
       music_school_name:
         '#type': textfield
@@ -101,6 +125,9 @@ elements: |-
   remark:
     '#type': textarea
     '#title': ' Megjegyzés, kérdés, kérés'
+  workplace:
+    '#type': textfield
+    '#title': 'Munkahely és foglalkozás'
 css: ''
 javascript: ''
 settings:
