@@ -6,6 +6,7 @@ dependencies:
     - field.storage.node.field_composer
     - field.storage.node.field_piece_title
     - node.type.piece
+    - system.menu.main
   module:
     - node
     - paragraphs
@@ -685,6 +686,15 @@ display:
           metatags: {  }
           tokenize: false
       path: repertoar
+      menu:
+        type: normal
+        title: Repertoár
+        description: ''
+        weight: -49
+        expanded: false
+        menu_name: main
+        parent: 'menu_link_content:3acbae43-b4ed-4da2-b9cf-f706b39b119e'
+        context: '0'
     cache_metadata:
       max-age: -1
       contexts:

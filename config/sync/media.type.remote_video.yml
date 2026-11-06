@@ -3,7 +3,7 @@ langcode: hu
 status: true
 dependencies: {  }
 id: remote_video
-label: 'Remote video'
+label: Videó
 description: ''
 source: 'oembed:video'
 queue_thumbnail_downloads: false

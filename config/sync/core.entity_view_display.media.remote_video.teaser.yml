@@ -1,0 +1,61 @@
+uuid: 85dfafa3-45e7-4716-96ac-1189326607ea
+langcode: hu
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.teaser
+    - field.field.media.remote_video.field_concert
+    - field.field.media.remote_video.field_date
+    - field.field.media.remote_video.field_description
+    - field.field.media.remote_video.field_location
+    - field.field.media.remote_video.field_media_oembed_video
+    - field.field.media.remote_video.field_pieces
+    - field.field.media.remote_video.field_tags
+    - field.field.media.remote_video.field_title
+    - media.type.remote_video
+  module:
+    - media
+id: media.remote_video.teaser
+targetEntityType: media
+bundle: remote_video
+mode: teaser
+content:
+  field_concert:
+    type: entity_reference_label
+    label: inline
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_media_oembed_video:
+    type: oembed
+    label: visually_hidden
+    settings:
+      max_width: 300
+      max_height: 150
+      loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+      link_rel: canonical
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  created: true
+  field_date: true
+  field_description: true
+  field_location: true
+  field_pieces: true
+  field_tags: true
+  langcode: true
+  name: true
+  thumbnail: true
+  uid: true

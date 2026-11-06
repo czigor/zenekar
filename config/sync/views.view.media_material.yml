@@ -3,6 +3,7 @@ langcode: hu
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.media.teaser
     - media.type.file
     - media.type.image
     - media.type.remote_video
@@ -77,7 +78,7 @@ display:
           separator: ', '
           field_api_classes: false
       pager:
-        type: mini
+        type: full
         options:
           offset: 0
           pagination_heading_level: h4
@@ -87,6 +88,8 @@ display:
           tags:
             next: ››
             previous: ‹‹
+            first: '« Első'
+            last: 'Utolsó »'
           expose:
             items_per_page: false
             items_per_page_label: 'Elemek száma oldalanként'
@@ -95,6 +98,7 @@ display:
             items_per_page_options_all_label: '– Mind –'
             offset: false
             offset_label: Eltolás
+          quantity: 9
       exposed_form:
         type: basic
         options:
@@ -378,7 +382,14 @@ display:
           reduce_duplicates: false
           sub_handler: 'default:node'
           widget: autocomplete
-          sub_handler_settings: {  }
+          sub_handler_settings:
+            target_bundles:
+              piece: piece
+            sort:
+              field: _none
+              direction: ASC
+            auto_create: false
+            auto_create_bundle: ''
         field_tags_target_id:
           id: field_tags_target_id
           table: media__field_tags
@@ -428,6 +439,9 @@ display:
         type: grid
       row:
         type: 'entity:media'
+        options:
+          relationship: none
+          view_mode: teaser
       query:
         type: views_query
         options:
@@ -455,7 +469,10 @@ display:
     display_plugin: page
     position: 1
     display_options:
-      display_extenders: {  }
+      display_extenders:
+        metatag_display_extender:
+          metatags: {  }
+          tokenize: false
       path: media
     cache_metadata:
       max-age: -1

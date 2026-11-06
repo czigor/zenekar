@@ -10,7 +10,7 @@ id: media.remote_video.field_concert
 field_name: field_concert
 entity_type: media
 bundle: remote_video
-label: Concert
+label: Koncert
 description: ''
 required: false
 translatable: false

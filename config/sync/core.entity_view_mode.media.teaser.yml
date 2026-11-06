@@ -1,0 +1,11 @@
+uuid: f070e9a5-8d0d-4adf-867e-4ffc3ecc02d0
+langcode: hu
+status: true
+dependencies:
+  module:
+    - media
+id: media.teaser
+label: Teaser
+description: null
+targetEntityType: media
+cache: true

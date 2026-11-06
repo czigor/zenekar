@@ -1,0 +1,33 @@
+uuid: 7c2f597b-6b06-448f-8ad1-c42d6d4872a8
+langcode: hu
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.teaser
+    - field.field.media.image_private.field_media_image
+    - image.style.large
+    - media.type.image_private
+  module:
+    - image
+id: media.image_private.teaser
+targetEntityType: media
+bundle: image_private
+mode: teaser
+content:
+  field_media_image:
+    type: image
+    label: visually_hidden
+    settings:
+      image_link: ''
+      image_style: large
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  created: true
+  langcode: true
+  name: true
+  thumbnail: true
+  uid: true
